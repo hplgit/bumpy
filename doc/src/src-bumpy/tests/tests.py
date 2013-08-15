@@ -25,6 +25,34 @@ def lhs_eq(t, m, b, s, u, damping='linear'):
 
 def test_quadratic():
     """Verify a quadratic solution."""
+    I = 1.2; V = 3; m = 2; b = 0.9; k = 4
+    s = lambda u: k*u
+    T = 2
+    dt = 0.2
+    N = int(round(T/dt))
+    time_points = np.linspace(0, T, N+1)
+
+    # Test linear damping
+    t = sm.Symbol('t')
+    q = 2  # arbitrary constant
+    u_exact = I + V*t + q*t**2   # sympy expression
+    exact_solution = sm.lambdify(t, u_exact, modules='numpy')
+    F = sm.lambdify(t, lhs_eq(t, m, b, s, u_exact, 'linear'))
+    u1, t1 = solver(I, V, m, b, s, F, time_points, 'linear')
+    error = abs(exact_solution(t1) - u1).max()
+    nt.assert_almost_equal(error, 0, places=13)
+
+    # Test quadratic damping: u_exact must be linear
+    # in order exactly recover this solution
+    u_exact = I + V*t
+    exact_solution = sm.lambdify(t, u_exact, modules='numpy')
+    F = sm.lambdify(t, lhs_eq(t, m, b, s, u_exact, 'quadratic'))
+    u2, t2 = solver(I, V, m, b, s, F, time_points, 'quadratic')
+    error = abs(exact_solution(t2) - u2).max()
+    nt.assert_almost_equal(error, 0, places=13)
+
+def test_quadratic_all_functions():
+    """Verify a quadratic solution."""
     I = 1.2; V = 3; m = 2; b = 0.9
     s = lambda u: 4*u
     t = sm.Symbol('t')
@@ -56,8 +84,8 @@ def test_quadratic():
         exact_solution = sm.lambdify(t, u_exact, modules='numpy')
         F = sm.lambdify(t, lhs_eq(t, m, b, s, u_exact, 'linear'))
         u1, t1 = solver(I, V, m, b, s, F, time_points, 'linear')
-        difference = abs(exact_solution(t1) - u1).max()
-        nt.assert_almost_equal(difference, 0, places=13)
+        error = abs(exact_solution(t1) - u1).max()
+        nt.assert_almost_equal(error, 0, places=13)
 
         # Test quadratic damping
         if function != solver_linear_damping_wrapper:
@@ -68,8 +96,8 @@ def test_quadratic():
             exact_solution = sm.lambdify(t, u_exact, modules='numpy')
             F = sm.lambdify(t, lhs_eq(t, m, b, s, u_exact, 'quadratic'))
             u2, t2 = solver(I, V, m, b, s, F, time_points, 'quadratic')
-            difference = abs(exact_solution(t2) - u2).max()
-            nt.assert_almost_equal(difference, 0, places=13)
+            error = abs(exact_solution(t2) - u2).max()
+            nt.assert_almost_equal(error, 0, places=13)
 
 if __name__ == '__main__':
     test_quadratic()
