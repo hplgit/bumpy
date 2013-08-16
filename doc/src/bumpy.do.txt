@@ -20,7 +20,7 @@ DATE: today
 
 This worked example
 
-  * fetches a data file from a web site,
+  * fetches data file from a web site,
   * applies that file as input data for a differential equation modeling a vibrating system,
   * solves the equation,
   * visualizes various properties of the solution and the input data.
@@ -72,19 +72,30 @@ Alternative tutorials for scientific programming with Python:
   * "AstroPython": "http://www.astropython.org/tutorial/2011/8/Python-Scientific-Lecture-Notes"
   * "IPython": "http://ipython.scipy.org/doc/manual/html"
   * "Python(x,y)": "http://code.google.com/p/pythonxy/wiki/Welcome"
+  * "Basic Motion Graphics with Python": "http://www.yourmachines.org/tutorials/mgpy.html"
 
-Some Python books:
+# Basic Motion Graphics with Python contains a lot about making movies
+# and animation - check it out
 
-  * "Learn Python The Hard Way": "http://learnpythonthehardway.org/book/"
+Some relevant Python books:
+
   * "Think Python": "http://www.greenteapress.com/thinkpython/"
+  * "Learn Python The Hard Way": "http://learnpythonthehardway.org/book/"
   * "Dive Into Python": "http://diveintopython.org/toc/index.html"
   * "Think Like a Computer Scientist": "http://www.freenetpages.co.uk/hp/alan.gauld/"
   * "Introduction to Python Programming": "http://femhub.com/textbook-python/python_en.pdf/" (for scientists)
   * "A Primer on Scientific Programming with Python": "http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642183654/ref=sr_1_2?ie=UTF8&qid=1354752885&sr=8-2&keywords=langtangen"
   * "Python Scripting for Computational Science": "http://www.amazon.com/Python-Scripting-Computational-Science-Engineering/dp/3642093159/ref=sr_1_1?ie=UTF8&qid=1354752885&sr=8-1&keywords=langtangen"
 
-Course material:
+Other, general course material on Python programming:
 
+  * "The Official Python Tutorial": "http://docs.python.org/2/tutorial/"
+  * "Python Tutorial on tutorialspoint.com": "http://www.tutorialspoint.com/python/"
+  * "Interactive Python tutorial site": "http://www.learnpython.org/"
+  * "A Beginner's Python Tutorial on wikibooks.org": "http://en.wikibooks.org/wiki/A_Beginner's_Python_Tutorial"
+  * "Python Programming on wikibooks.org": "http://en.wikibooks.org/wiki/Python_Programming/"
+  * "Non-Programmer's Tutorial for Python on wikibooks.org": "http://en.wikibooks.org/wiki/Non-Programmer's_Tutorial_for_Python_2.6"
+  * "Python For Beginners": "http://www.pythonforbeginners.com/"
   * "A Gentle Introduction to Programming Using Python": "http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-189-a-gentle-introduction-to-programming-using-python-january-iap-2008/" (MIT OpenCourseWare)
   * "Introduction to Computer Science and Programming": "http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/" (MIT OpenCourseWare with videos)
 <br/><br/>
@@ -104,12 +115,13 @@ results in the following type of equation for $u$:
 
 !bt
 \begin{equation}
-mu''(t) + f(u') + s(u) = F(t),
+mu'' + f(u') + s(u) = F(t),
 label{bumpy:eq1}
 \end{equation}
 !et
-The prime, as in $u'$ or $u'(t)$, denotes differentiation with respect to time.
-Furthermore, $m$ is the mass of the system, $f(u')$ is friction force
+The prime, as in $u'$, denotes differentiation with respect to time
+($u'(t)$ or $du/dt$).
+Furthermore, $m$ is the mass of the system, $f(u')$ is a friction force
 that gives rise to a damping of the motion,
 $s(u)$ represents a restoring force, such as
 a spring, and $F(t)$ models the external environmental forces on the system.
