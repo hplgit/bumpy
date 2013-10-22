@@ -33,7 +33,7 @@ This worked example
   * visualizes various properties of the solution and the input data.
 !esummary
 
-=== The following programming topics are illustrated: ===
+=== The following programming topics are illustrated ===
 
   * downloading files from a web site,
   * working with `numpy` arrays,
@@ -44,7 +44,7 @@ This worked example
 
 All files can be forked at URL: "https://github.com/hplgit/bumpy".
 
-=== Required backround: ===
+=== Required backround ===
 
   * some interest in exploring physics through numerical simulation
   * some very basic knowledge of differential equations
@@ -60,17 +60,17 @@ physical problem (with low mathematical complexity).*
 # Python Scientific are also in 5620/literature, some of those above
 # could be copied here
 
-=== Quick motivation: ===
+=== Quick motivation ===
 
   * "Why Python?": "http://www.pyzo.org/whypython.html"
   * "Why Python for Scientific Computing?": "http://fperez.org/py4science/warts.html"
 
-=== Full tutorials on scientific programming with Python: ===
+=== Full tutorials on scientific programming with Python ===
 
   * "Python Scientific Lecture Notes": "http://scipy-lectures.github.com/" (from EuroSciPy tutorials, based on "Python Scientific": "http://web.phys.ntnu.no/~ingves/Teaching/TFY4240/Assignments/PythonScientific.pdf")
   * "Scientific Python Lectures as IPython notebooks": "https://github.com/jrjohansson/scientific-python-lectures"
 
-=== NumPy resources: ===
+=== NumPy resources ===
 
   * "NumPy Tutorial": "http://www.scipy.org/Tentative_NumPy_Tutorial"
   * "NumPy User Guide": "http://docs.scipy.org/doc/numpy/user/"
@@ -82,7 +82,7 @@ physical problem (with low mathematical complexity).*
   * "NumPy for Matlab Users": "http://www.scipy.org/NumPy_for_Matlab_Users"
   * "NumPy for Matlab/R/IDL Users": "http://mathesaurus.sf.net"
 
-=== Useful resources: ===
+=== Useful resources ===
 
   * "AstroPython": "http://www.astropython.org/"
   * "Talk on IPython by Fernando Perez": "http://www.youtube.com/watch?feature=player_embedded&v=F4rFuIb1Ie4"
@@ -96,7 +96,7 @@ physical problem (with low mathematical complexity).*
 # Basic Motion Graphics with Python contains a lot about making movies
 # and animation - check it out
 
-=== Some relevant Python books: ===
+=== Some relevant Python books ===
 
   * "Think Python": "http://www.greenteapress.com/thinkpython/"
   * "Learn Python The Hard Way": "http://learnpythonthehardway.org/book/"
@@ -108,7 +108,7 @@ physical problem (with low mathematical complexity).*
     * Traditional beamer "slides": "http://www.ifi.uio.no~inf1100/foiler" are also available
   * "Python Scripting for Computational Science": "http://www.amazon.com/Python-Scripting-Computational-Science-Engineering/dp/3642093159/ref=sr_1_1?ie=UTF8&qid=1354752885&sr=8-1&keywords=langtangen"
 
-=== Course material on Python programming in general: ===
+=== Course material on Python programming in general ===
 
   * "The Official Python Tutorial": "http://docs.python.org/2/tutorial/"
   * "Python Tutorial on tutorialspoint.com": "http://www.tutorialspoint.com/python/"

@@ -1,6 +1,15 @@
 .. Automatically generated reST file from Doconce source
    (https://github.com/hplgit/doconce/)
 
+.. NOTE: This document is written in Doconce syntax and automatically
+
+.. compiled to HTML, Sphinx, LaTeX, Markdown, MediaWiki, IPython notebooks, ...
+
+
+.. See `<https://github.com/hplgit/doconce>`_
+
+
+
 .. reuse vib.py implementation, solver_v1
 
 .. then extend to F array and function, if func, F = F(t)
@@ -22,7 +31,7 @@
 .. we steel from this text to new book
 
 
-A Worked Example on Scientific Computing with Python
+A worked example on scientific computing with Python
 ====================================================
 
 :Author: Hans Petter Langtangen
@@ -50,7 +59,10 @@ A Worked Example on Scientific Computing with Python
      * visualizes various properties of the solution and the input data.
 
 
-*The following programming topics are illustrated:* * downloading files from a web site,
+The following programming topics are illustrated
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  * downloading files from a web site,
 
   * working with ``numpy`` arrays,
 
@@ -64,7 +76,10 @@ A Worked Example on Scientific Computing with Python
 
 All files can be forked at `<https://github.com/hplgit/bumpy>`_.
 
-*Required backround:* * some interest in exploring physics through numerical simulation
+Required backround
+~~~~~~~~~~~~~~~~~~
+
+  * some interest in exploring physics through numerical simulation
 
   * some very basic knowledge of differential equations
 
@@ -85,15 +100,24 @@ All files can be forked at `<https://github.com/hplgit/bumpy>`_.
 .. could be copied here
 
 
-*Quick motivation:* * `Why Python? <http://www.pyzo.org/whypython.html>`_
+Quick motivation
+~~~~~~~~~~~~~~~~
+
+  * `Why Python? <http://www.pyzo.org/whypython.html>`_
 
   * `Why Python for Scientific Computing? <http://fperez.org/py4science/warts.html>`_
 
-*Full tutorials on scientific programming with Python:* * `Python Scientific Lecture Notes <http://scipy-lectures.github.com/>`_ (from EuroSciPy tutorials, based on `Python Scientific <http://web.phys.ntnu.no/~ingves/Teaching/TFY4240/Assignments/PythonScientific.pdf>`_)
+Full tutorials on scientific programming with Python
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  * `Python Scientific Lecture Notes <http://scipy-lectures.github.com/>`_ (from EuroSciPy tutorials, based on `Python Scientific <http://web.phys.ntnu.no/~ingves/Teaching/TFY4240/Assignments/PythonScientific.pdf>`_)
 
   * `Scientific Python Lectures as IPython notebooks <https://github.com/jrjohansson/scientific-python-lectures>`_
 
-*NumPy resources:* * `NumPy Tutorial <http://www.scipy.org/Tentative_NumPy_Tutorial>`_
+NumPy resources
+~~~~~~~~~~~~~~~
+
+  * `NumPy Tutorial <http://www.scipy.org/Tentative_NumPy_Tutorial>`_
 
   * `NumPy User Guide <http://docs.scipy.org/doc/numpy/user/>`_
 
@@ -111,7 +135,10 @@ All files can be forked at `<https://github.com/hplgit/bumpy>`_.
 
   * `NumPy for Matlab/R/IDL Users <http://mathesaurus.sf.net>`_
 
-*Useful resources:* * `AstroPython <http://www.astropython.org/>`_
+Useful resources
+~~~~~~~~~~~~~~~~
+
+  * `AstroPython <http://www.astropython.org/>`_
 
   * `Talk on IPython by Fernando Perez <http://www.youtube.com/watch?feature=player_embedded&v=F4rFuIb1Ie4>`_
 
@@ -129,7 +156,10 @@ All files can be forked at `<https://github.com/hplgit/bumpy>`_.
 .. and animation - check it out
 
 
-*Some relevant Python books:* * `Think Python <http://www.greenteapress.com/thinkpython/>`_
+Some relevant Python books
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  * `Think Python <http://www.greenteapress.com/thinkpython/>`_
 
   * `Learn Python The Hard Way <http://learnpythonthehardway.org/book/>`_
 
@@ -148,7 +178,10 @@ All files can be forked at `<https://github.com/hplgit/bumpy>`_.
 
   * `Python Scripting for Computational Science <http://www.amazon.com/Python-Scripting-Computational-Science-Engineering/dp/3642093159/ref=sr_1_1?ie=UTF8&qid=1354752885&sr=8-1&keywords=langtangen>`_
 
-*Course material on Python programming in general:* * `The Official Python Tutorial <http://docs.python.org/2/tutorial/>`_
+Course material on Python programming in general
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  * `The Official Python Tutorial <http://docs.python.org/2/tutorial/>`_
 
   * `Python Tutorial on tutorialspoint.com <http://www.tutorialspoint.com/python/>`_
 
@@ -510,7 +543,8 @@ checks that variables have correct values or are of correct type.
 Dissection of the code  (2)
 ---------------------------
 
-*Two types of import.* This time we replace ``from numpy import *``, which imports over 500
+**Two types of import.**
+This time we replace ``from numpy import *``, which imports over 500
 variables and functions, by ``import numpy as np``, which just imports
 one variable, the package ``numpy``, here under the nickname ``np``.
 All variables and functions in ``numpy`` must now be reached via the
@@ -547,12 +581,14 @@ and skip the prefix.
 .. index:: doc strings
 
 
-*Doc strings.* The string, enclosed in triple double-quotes, right after
+**Doc strings.**
+The string, enclosed in triple double-quotes, right after
 the function definition, is a *doc string* used for documenting the
 function. Various tools can extract function definitions and doc strings
 to automatically produce nicely typeset manuals.
 
-*Avoiding integer division.* At one line we explicitly convert ``b`` and ``m`` to ``float`` variables.
+**Avoiding integer division.**
+At one line we explicitly convert ``b`` and ``m`` to ``float`` variables.
 This is not strictly necessary, but if we supply ``b=2`` and ``m=4``,
 a computation like ``b/m`` will give zero as result because both ``b`` and ``m``
 are then integers and ``b/m`` implies *integer division*, not the
@@ -570,14 +606,16 @@ However, future edits may alter the way formulas are written, so to
 be on the safe side we ensure that real input parameters are ``float``
 objects.
 
-*Flexible variable type.* As mentioned, we allow ``F`` to be either a function or an array.
+**Flexible variable type.**
+As mentioned, we allow ``F`` to be either a function or an array.
 In the former case, we convert ``F`` to an array such that the
 rest of the code can assume that ``F`` is indeed an array.
 It is easy to check the type of variables in Python. The
 test ``if callable(F)`` is true if the object ``F`` can be called
 as a function.
 
-*Checking correct variable type.* To test that ``F`` is an array, we can use ``isinstance(F, np.ndarray)``
+**Checking correct variable type.**
+To test that ``F`` is an array, we can use ``isinstance(F, np.ndarray)``
 (``ndarray`` is the name of the array type in ``numpy``). In the code
 above we allow that ``F`` can also be a list or a tuple. Running ``F``
 through the ``asarray`` function makes an array out of ``F`` in the cases
@@ -615,7 +653,8 @@ of right type as well. For example,
 and similar for ``V``, ``m``, ``b``, while ``s`` must be tested by ``callable(s)``,
 ``t`` must be ``np.ndarray``, and ``damping`` must be ``str``.
 
-*Calling the function.* Below is a simple example on how the ``solver`` function can be called
+**Calling the function.**
+Below is a simple example on how the ``solver`` function can be called
 to solve the differential equation problem :math:`mu'' + bu' + ku = A\sin\pi t`,
 :math:`u(0)=I`, :math:`u'(0)=0`:
 
@@ -643,7 +682,8 @@ to solve the differential equation problem :math:`mu'' + bu' + ku = A\sin\pi t`,
         plt.show()
 
 
-*Local and global variables.* We use in this example a linear spring function :math:`s(u)`,
+**Local and global variables.**
+We use in this example a linear spring function :math:`s(u)`,
 
 .. code-block:: python
 
