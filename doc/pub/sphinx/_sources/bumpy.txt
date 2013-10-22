@@ -1267,7 +1267,7 @@ these arrays:
 
 
 If all the plot commands above are placed in a file, as in
-`<_static-bumpy/explore.py>`_, a final ``show()`` call is needed to show the
+`explore.py <https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/explore.py>`_, a final ``show()`` call is needed to show the
 plots on the screen. On the other hand, the commands are usually
 more conveniently performed in an interactive Python shell, preferably
 IPython.

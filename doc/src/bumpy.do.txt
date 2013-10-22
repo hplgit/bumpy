@@ -934,7 +934,7 @@ FIGURE: [fig-bumpy/hau1, width=700] Second realization of a bumpy road, with cor
 FIGURE: [fig-bumpy/hau2, width=700] Third realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations. label{bumpy:fig6}
 
 If all the plot commands above are placed in a file, as in
-"URL": "_static-bumpy/explore.py", a final `show()` call is needed to show the
+"explore.py": "https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/explore.py", a final `show()` call is needed to show the
 plots on the screen. On the other hand, the commands are usually
 more conveniently performed in an interactive Python shell, preferably
 IPython.
