@@ -1,0 +1,5 @@
+src: source of documents
+web: entry point for web pages
+pub: published documents
+
+Documents in src and compiled and copied to pub.

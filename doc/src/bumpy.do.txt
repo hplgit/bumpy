@@ -1,3 +1,9 @@
+# NOTE: This document is written in Doconce syntax and automatically
+# compiled to HTML, Sphinx, LaTeX, Markdown, MediaWiki, IPython notebooks, ...
+
+# See https://github.com/hplgit/doconce
+
+
 # reuse vib.py implementation, solver_v1
 # then extend to F array and function, if func, F = F(t)
 # Insert subtle integer division problem in solver_v1 which we
@@ -18,14 +24,16 @@ DATE: today
 # The lists below could be coded in Python via Mako and processed
 # for table of contents, requirements, etc. of teaching modules
 
+!bsummary Contents
 This worked example
 
   * fetches data file from a web site,
   * applies that file as input data for a differential equation modeling a vibrating system,
   * solves the equation,
   * visualizes various properties of the solution and the input data.
+!esummary
 
-The following programming topics are illustrated:
+__The following programming topics are illustrated:__
 
   * downloading files from a web site,
   * working with `numpy` arrays,
@@ -34,30 +42,36 @@ The following programming topics are illustrated:
   * signal processing and FFT,
   * curve plotting of data.
 
-All files can be forked at URL: "https://bitbucket.org/hplbit/bumpy".
+All files can be forked at URL: "https://github.com/hplgit/bumpy".
 
-Required backround:
+__Required backround:__
 
   * some interest in exploring physics through numerical simulation
   * some very basic knowledge of differential equations
   * some very basic knowledge of finite difference approximations
   * significant interest in exploring Python for scientific computations
 
+!bblock
 *No background in Python is assumed - the aim is to give an impression of
 how Python can be used in a MATLAB-like fashion to solve a real-world
 physical problem (with low mathematical complexity).*
+!eblock
 
 # Python Scientific are also in 5620/literature, some of those above
 # could be copied here
 
-Alternative tutorials for scientific programming with Python:
+__Quick motivation:__
 
-  * "J. R. Johanson's Scientific Python Lectures": "https://github.com/jrjohansson/scientific-python-lectures"
-  * "Python Scientific Lecture Notes": "http://scipy-lectures.github.com/"
-  * "Talk on IPython by Fernando Perez": "http://www.youtube.com/watch?feature=player_embedded&v=F4rFuIb1Ie4"
-  * "PyPrimer": "http://physics.nyu.edu/pine/pymanual/"
-  * "Useful software": "http://fperez.org/py4science/starter_kit.html"
+  * "Why Python?": "http://www.pyzo.org/whypython.html"
   * "Why Python for Scientific Computing?": "http://fperez.org/py4science/warts.html"
+
+__Full tutorials on scientific programming with Python:__
+
+  * "Python Scientific Lecture Notes": "http://scipy-lectures.github.com/" (from EuroSciPy tutorials, based on "Python Scientific": "http://web.phys.ntnu.no/~ingves/Teaching/TFY4240/Assignments/PythonScientific.pdf")
+  * "Scientific Python Lectures as IPython notebooks": "https://github.com/jrjohansson/scientific-python-lectures"
+
+__NumPy resources:__
+
   * "NumPy Tutorial": "http://www.scipy.org/Tentative_NumPy_Tutorial"
   * "NumPy User Guide": "http://docs.scipy.org/doc/numpy/user/"
   * "Advanced NumPy Tutorial": "https://github.com/pv/advanced-numpy-tutorial"
@@ -67,17 +81,22 @@ Alternative tutorials for scientific programming with Python:
   * "NumPy and SciPy Cookbook": "http://www.scipy.org/Cookbook"
   * "NumPy for Matlab Users": "http://www.scipy.org/NumPy_for_Matlab_Users"
   * "NumPy for Matlab/R/IDL Users": "http://mathesaurus.sf.net"
-  * "Python Scientific": "http://web.phys.ntnu.no/~ingves/Teaching/TFY4240/Assignments/PythonScientific.pdf" (lecture notes)
-  * "Practical Scientific Computing with Python": "http://www.maths.lth.se/na/help/media/Practical_Scientific_Computing_with_Python.pdf"
-  * "AstroPython": "http://www.astropython.org/tutorial/2011/8/Python-Scientific-Lecture-Notes"
+
+__Useful resources:__
+
+  * "AstroPython": "http://www.astropython.org/"
+  * "Talk on IPython by Fernando Perez": "http://www.youtube.com/watch?feature=player_embedded&v=F4rFuIb1Ie4"
+  * "Useful software in the Scientific Python Ecosystem": "http://fperez.org/py4science/starter_kit.html"
   * "IPython": "http://ipython.scipy.org/doc/manual/html"
   * "Python(x,y)": "http://code.google.com/p/pythonxy/wiki/Welcome"
   * "Basic Motion Graphics with Python": "http://www.yourmachines.org/tutorials/mgpy.html"
 
+#  This is now local in doc/literature since the link is broken: "Practical Scientific Computing with Python": "http://www.maths.lth.se/na/help/media/Practical_Scientific_Computing_with_Python.pdf"
+
 # Basic Motion Graphics with Python contains a lot about making movies
 # and animation - check it out
 
-Some relevant Python books:
+__Some relevant Python books:__
 
   * "Think Python": "http://www.greenteapress.com/thinkpython/"
   * "Learn Python The Hard Way": "http://learnpythonthehardway.org/book/"
@@ -85,9 +104,11 @@ Some relevant Python books:
   * "Think Like a Computer Scientist": "http://www.freenetpages.co.uk/hp/alan.gauld/"
   * "Introduction to Python Programming": "http://femhub.com/textbook-python/python_en.pdf/" (for scientists)
   * "A Primer on Scientific Programming with Python": "http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642183654/ref=sr_1_2?ie=UTF8&qid=1354752885&sr=8-2&keywords=langtangen"
+    * Gerard Gorman has made associated "IPython notebooks": "http://ggorman.github.io/Introduction-to-programming-for-geoscientists/" for teaching
+    * Traditional beamer "slides": "http://www.ifi.uio.no~inf1100/foiler" are also available
   * "Python Scripting for Computational Science": "http://www.amazon.com/Python-Scripting-Computational-Science-Engineering/dp/3642093159/ref=sr_1_1?ie=UTF8&qid=1354752885&sr=8-1&keywords=langtangen"
 
-Other, general course material on Python programming:
+__Course material on Python programming in general:__
 
   * "The Official Python Tutorial": "http://docs.python.org/2/tutorial/"
   * "Python Tutorial on tutorialspoint.com": "http://www.tutorialspoint.com/python/"
@@ -98,7 +119,6 @@ Other, general course material on Python programming:
   * "Python For Beginners": "http://www.pythonforbeginners.com/"
   * "A Gentle Introduction to Programming Using Python": "http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-189-a-gentle-introduction-to-programming-using-python-january-iap-2008/" (MIT OpenCourseWare)
   * "Introduction to Computer Science and Programming": "http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/" (MIT OpenCourseWare with videos)
-<br/><br/>
   * "Learning Python Programming Language Through Video Lectures": "http://www.catonmat.net/blog/learning-python-programming-language-through-video-lectures/"
   * "Python Programming Tutorials Video Lecture Course": "http://www.learnerstv.com/Free-Computers-Video-lectures-ltv163-Page1.htm" (Learners TV)
   * "Python Videos, Tutorials and Screencasts": "http://showmedo.com/videotutorials/python"
@@ -176,7 +196,7 @@ In case of quadratic damping one can use a geometric mean to approximate
 $u'|u'|$ and thereby linearize the equations. The result of using
 such numerical methods is an algorithm for computing $u(t)$ at
 discrete points in time. Let $u^n$ be the approximation to $u$ at
-time $t_n$=n\Delta t$, $n=1,2,\ldots$, where $\Delta t$
+time $t_n=n\Delta t$, $n=1,2,\ldots$, where $\Delta t$
 is a (small) time interval. For example, if $\Delta t = 0.1$, we
 find approximations $u^1$ to $u$ at $t=0.1$, $u^2$ at $t=0.2$, $u^3$
 to $t=0.3$, and so forth. Any value $u^{n+1}$ can be computed if $u^n$
@@ -307,7 +327,6 @@ shows the result.
 
 FIGURE: [fig-bumpy/solver_linear_damping, width=500] Plot of computed curve. label{bumpy:fig0}
 
-[hpl: written so far ]
 
 ===== More advanced implementation =====
 
@@ -341,9 +360,13 @@ from numpy import sin, pi
 def myfunction(x):
     return sin(pi*x)
 !ec
-Another disadvantage with the `np.` prefix is that names are not the
+Another disadvantage with the `np.` prefix is that names are no longer
+(almost) the
 same as in MATLAB. Many will therefore prefer to do `from numpy import *`
 and skip the prefix.
+#Still much import * so the following is not yet valid:
+#We shall keep `np.` as it has become a standard
+#in the Python scientific computing community.
 
 idx{doc strings}
 
@@ -351,21 +374,26 @@ __Doc strings.__
 The string, enclosed in triple double-quotes, right after
 the function definition, is a *doc string* used for documenting the
 function. Various tools can extract function definitions and doc strings
-to automatically produced manuals.
+to automatically produce nicely typeset manuals.
 
 __Avoiding integer division.__
 At one line we explicitly convert `b` and `m` to `float` variables.
 This is not strictly necessary, but if we supply `b=2` and `m=4`,
 a computation like `b/m` will give zero as result because both `b` and `m`
 are then integers and `b/m` implies *integer division*, not the
-mathematical division of real numbers (note that many languages invoke
-integer division if both operands are integers). We need to make
+mathematical division of real numbers (this is not a special
+feature of Python - all languges with a strong heritage from C
+invoke integer division if both operands in a division are integers).
+We need to make
 sure that at least one of the operands in a division is a real
-number (`float`) to ensure the intended mathematics. Looking at
+number (`float`) to ensure the intended mathematical operation. Looking at
 the formulas, there is never a problem with integer division in
 our implementation, because `dt` is computed from `t`, which has
 `float` elements (`linspace` makes `float` elements by default),
 and all divisions in our code involve `dt` as one of the operands.
+However, future edits may alter the way formulas are written, so to
+be on the safe side we ensure that real input parameters are `float`
+objects.
 
 __Flexible variable type.__
 As mentioned, we allow `F` to be either a function or an array.
@@ -375,6 +403,7 @@ It is easy to check the type of variables in Python. The
 test `if callable(F)` is true if the object `F` can be called
 as a function.
 
+__Checking correct variable type.__
 To test that `F` is an array, we can use `isinstance(F, np.ndarray)`
 (`ndarray` is the name of the array type in `numpy`). In the code
 above we allow that `F` can also be a list or a tuple. Running `F`
@@ -384,8 +413,8 @@ the situation where `F` is neither a function, nor an object that can
 easily be converted to an array, and an error message is issued. More
 precisely, we *raise* a `TypeError` *exception* indicating that we
 have encountered a wrong type. The error message will contain the type
-of `F` as obtained from `type(F)`. Instead of testing `isinstance(F,
-list)` we may test `type(F) == list` or `type(F) in
+of `F` as obtained from `type(F)`. Instead of using the syntax `isinstance(F,
+list)` we may test `type(F) == list` or even `type(F) in
 (list,tuple,np.ndarray)`.
 
 We could simplify the `if-else` test involving `F` to just the two lines
@@ -412,27 +441,40 @@ and similar for `V`, `m`, `b`, while `s` must be tested by `callable(s)`,
 __Calling the function.__
 Below is a simple example on how the `solver` function can be called
 to solve the differential equation problem $mu'' + bu' + ku = A\sin\pi t$,
-$u(0)=I, $u'(0)=0$:
+$u(0)=I$, $u'(0)=0$:
 
 !bc pycod
-from numpy import sin, pi, linspace
+import numpy as np
+from numpy import sin, pi  # for nice math
 
 def F(t):
+    # Sinusoidal bumpy road
     return A*sin(pi*t)
 
 def s(u):
     return k*u
 
-A = 0.5
+A = 0.25
 k = 2
-t = linspace(0, 20, 2001)
-u, t = solver(I=1, V=0, m=0.25, b=0.05, s=s, F=F, t=t)
+t = np.linspace(0, 20, 2001)
+u, t = solver(I=0.1, V=0, m=2, b=0.05, s=s, F=F, t=t)
 
 # Show u(t) as a curve plot
 import matplotlib.pyplot as plt
 plt.plot(t, u)
 plt.show()
 !ec
+
+__Local and global variables.__
+We use in this example a linear spring function $s(u)$,
+!bc cod
+def f(u):
+    return k*u
+!ec
+Here, `u` is a *local variable*,
+which is accessible just inside in the function,
+while `k` is a *global variable*, which must be initialized outside
+the function prior to calling `f`.
 
 
 ===== The excitation force =====
@@ -444,7 +486,8 @@ Various shapes are
 available as a file with web address "URL":"http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz". The Python functionality for downloading this `gzip`
 compressed file as a local file `bumpy.dat.gz`
 and reading it into a `numpy` array goes as follows:
-!bc cod
+
+!bc pycod
 filename = 'bumpy.dat.gz'
 url = 'http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz'
 import urllib
@@ -460,11 +503,12 @@ The `h_data` object is a rectangular `numpy` array where the first
 column contains the $x$ coordinates along the road and the next columns
 contain various road shapes $h(x)$. We can extract the $x$ data and
 redefine `h_data` to contain solely the $h(x)$ shapes:
-!bc cod
+
+!bc pycod
 x = h_data[0,:]                # 1st column: x coordinates
 h_data = h_data[1:,:]          # other columns: h shapes
 !ec
-In general, the syntax `a[s:t:i,2]` gives a view (not a copy) to the part of
+In general, the syntax `a[s:t:i,2]` gives a *view* (not a copy) to the part of
 the array `a` where the first index goes from `s` to `t`,
 *but not including* the `t` value, in increments of `i`, and the
 second index is fixed at 2. Just writing `:` for an index means all
@@ -473,30 +517,26 @@ legal values of this index.
 Given $h(x)$, the corresponding acceleration $a(t)$ needed in the
 force $F(t)=-ma(t)$, follows from $a(t)=h''(vt)v^2$, where $v$ is
 the velocity of the vehicle. The compuation may utilize a finite
-difference approximation for the second-order derivative and
+difference approximation for the second-order derivative $h''$ and
 be encapsulated in a Python function:
 
-@@@CODE src-bumpy/bumpy.py fromto: def accel@def solve
+@@@CODE src-bumpy/bumpy.py fromto: def acceleration\(@def acceleration_vectorized
 
 Note that here, `h` is a one-dimensional array containing the $h(x)$
 values corresponding to a given coordinate array `x`. Also note that
-we simply set $h''(x)$ at the end points equal to $h''(x)$ at the
-closest interior point.
+we for mathematical simplicity set $h''(x)$ at the end points equal to
+$h''(x)$ at the closest interior point.
 
-We use in this example a linear spring function $s(u)$,
-!bc cod
-def f(u):
-    return k*u
-!ec
-Here, `u` is a *local variable*,
-which lives just inside in the function,
-while `k` is a *global variable*, which must be initialized outside
-the function prior to calling `f`.
+The computations of `d2h` above was done array element by array element.
+This loop can be a slow process in Python for long arrays. To speed
+up computations dramatically, we can invoke a *vectorization* of
+the above alogrithm. This means that we get rid of the loops and
+perform arithmetics on complete (or almost complete) arrays.
+The vectorized form of the
+`acceleration` function goes like
 
-Parameters can be set as $m=60$ kg, $v=5$ m/s, $k=60$ N/m,
-and $b=80$ Ns/m.
-This choice corresponds to a velocity of 18 km/h and a mass of 60 kg, i.e.,
-bicycle conditions.
+@@@CODE src-bumpy/bumpy.py fromto: def acceleration_vectorized@def rms
+
 
 For each shape $h(x)$ we want to compute the corresponding
 vertical displacement $u(t)$ using the mathematical model (ref{bumpy:eq1}).
@@ -512,21 +552,30 @@ arrays. This composition is convenient when analyzing and visualizing
 key quantities in the problem.
 
 The computations of `u` for each road shape can be done as follows:
-!bc cod
+
+!bc pycod
 data = [x, t]      # key input and output data (arrays)
 for i in range(h_data.shape[0]):
     h = h_data[i,:]            # extract a column
     a = acceleration(h, x, v)
-    u = forced_vibrations(t=t, I=0, m=m, b=2000, f=f, F=-m*a)
+    u = forced_vibrations(t=t, I=0, m=m, b=b, f=f, F=-m*a)
     data.append([h, a, u])
 !ec
+
+A parameter choice $m=60$ kg, $v=5$ m/s, $k=60$ N/m,
+and $b=80$ Ns/m
+corresponds to a velocity of 18 km/h and a mass of 60 kg, i.e.,
+bicycle conditions.
+
+===== A solver function =====
 
 The code above is naturally implemented as a Python function.
 This function can take the most important physical parameters of the problem
 as input, along with information about the file with road shapes.
 We allow for defining road shapes either through a file on a web site
 or a local file.
-!bc cod
+
+!bc pycod
 def solve(url=None, m=60, b=80, k=60, v=5):
     """
     Solve model for verticle vehicle vibrations.
@@ -586,7 +635,7 @@ removing files and directories, running stand-alone applications, etc.
 # #endif
 
 Since the roads have a quite noise shape, the force $F=-ma$ looks
-very noise, while the response $u(t)$ to this excitation is
+very noisy, while the response $u(t)$ to this excitation is
 significantly less noisy,
 see Figure ref{bumpy:fig4} for an example.
 It may be useful to compute the root mean square value of the various
@@ -648,9 +697,11 @@ demonstrated above. However, most users will find it more
 convenient to set parameters through a user interface rather
 than editing the source code directly.
 
+[hpl: haven't read the following yet...]
+
 # #ifndef BOOK
 
-===== Positional command-Line arguments =====
+===== Positional command-line arguments =====
 
 The simplest, and often also the most effective, type of
 user interface is to use the command line. Suppose $m$, $k$,
@@ -660,12 +711,14 @@ $b$ only. Then it is convenient, both for the user and
 the programmer, to specify $b$ as the first command-line
 argument to the program. If the name of the program file
 is `bumpy.py` and $b=10$ is desired, we can write
+
 !bc sys
 Terminal> python bumpy.py 10
 !ec
 The corresponding code in the program for setting input data
 and extract the user-given value of $b$ reads
-!bc cod
+
+!bc pycod
 def prepare_input():
     url = 'http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz'
     m = 60
@@ -693,6 +746,7 @@ if no command-line argument is given.
 
 Letting the user set many parameters on the command line is most
 conveniently done by allowing option-value pairs, e.g.,
+
 !bc sys
 Terminal> python bumpy.py --m 40 --b 280
 !ec
@@ -702,7 +756,8 @@ the command line by providing the string (option) `--name`, where
 the parameter. Implementation of option-value input is
 most easily carried out using Python's `argparse` module.
 The recipe goes as follows.
-!bc cod
+
+!bc pycod
 def command_line_options():
     import argparse
     parser = argparse.ArgumentParser()
@@ -747,7 +802,8 @@ to visualize these arrays. We want to produce the following plots:
 
 We use Matplotlib's `pylab` module for curve plotting since it provides
 a syntax very close to that of MATLAB, which is well known by many readers.
-!bc cod
+
+!bc pycod
 from matplotlib.pylab import *
 !ec
 This import also perform as `from numpy import *` such that we have access
@@ -755,7 +811,8 @@ to all the array functionality too.
 
 Loading the computational data from file back to a list `data` is done
 by
-!bc cod
+
+!bc pycod
 import cPickle
 outfile = open('bumpy.res', 'r')
 data = cPickle.load(outfile)
@@ -770,7 +827,8 @@ from the computations in the function `forced_vibrations`.
 Since now we concentrate on the part $t\geq t_s$ of the data, we
 can grab the corresponding parts of the arrays in the following way,
 using boolean arrays as indices:
-!bc cod
+
+!bc pycod
 indices = t >= t_s   # True/False boolean array
 t = t[indices]       # fetch the part of t for which t > t_s
 x = x[indices]       # fetch the part of x for which t > t_s
@@ -779,7 +837,8 @@ Indexing by a boolean array extracts all the elements corresponding to
 the `True` elements in the index array.
 
 Plotting the root mean square value array `u_rms` for `t >= t_s` is now done by
-!bc cod
+
+!bc pycod
 figure()
 u_rms = u_rms[indices]
 plot(t, u_rms)
@@ -794,7 +853,8 @@ FIGURE: [fig-bumpy/u_rms, width=600] Root mean square of displacement. label{bum
 
 The spectrum of a $u(t)$ function (represented through the arrays `u`
 and `t`) can be computed by the Python function
-!bc cod
+
+!bc pycod
 def frequency_analysis(u, t):
     A = fft(u)
     A = 2*A
@@ -813,7 +873,8 @@ Note here that we truncate that last part of the spectrum where the
 amplitudes are small (this usually gives a plot that is easier to inspect).
 
 In the present case, we utilize the `frequency_analysis` through
-!bc cod
+
+!bc pycod
 figure()
 u = data[3][2][indices]  # 2nd realization of u
 f, A = frequency_analysis(u, t)
@@ -833,7 +894,8 @@ FIGURE: [fig-bumpy/u_spectrum, width=600] Spectrum of displacement. label{bumpy:
 
 Finally, we can run through all the 3-lists `[h, a, u]` and plot
 these arrays:
-!bc cod
+
+!bc pycod
 case_counter = 0
 for h, a, u in data[2:-1]:
     h = h[indices]
@@ -881,6 +943,8 @@ IPython.
 
 ======= Software engineering =======
 
+Just sketchy at the moment...
+
 ===== Testing =====
 
  * Unit tests via nose
@@ -920,4 +984,4 @@ Wrapped in nose test:
 
 ===== Installation =====
 
-`setup.py`
+Install the `solver` module using a very simple `setup.py` script.

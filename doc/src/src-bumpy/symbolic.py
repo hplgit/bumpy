@@ -1,3 +1,5 @@
+# Example on symbolic computations.
+# Note: very unfinished...
 from sympy import *
 w = Symbol('w')
 m = 60
