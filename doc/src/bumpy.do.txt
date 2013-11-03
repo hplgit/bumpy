@@ -4,16 +4,20 @@
 # See https://github.com/hplgit/doconce
 
 
-# reuse vib.py implementation, solver_v1
-# then extend to F array and function, if func, F = F(t)
-# Insert subtle integer division problem in solver_v1 which we
-# solve in solver (e.g., remove float(dt))
-# Cython
-# class for b when quadratic damping
-# nose tests for u=const, u=quadratic
-# could have class Problem and Solver
-# extension: use scipy to solve ODE
-# we steel from this text to new book
+## reuse vib.py implementation, solver_v1
+## Insert subtle integer division problem in solver_v1 which we
+##   solve in solver (e.g., remove float(dt))
+## Cython
+## class for b when quadratic damping
+## nose tests for u=const, u=quadratic
+## exemplify class Problem and Solver
+## Put core solver in Fortran, C, or C++ - interface with f2py,
+##   callbacks are problematic, can use the f2py pointer trick,
+##   or map callbacks to arrays (difficult for s(u) here...),
+##   compiled code should be a brief illustration since it is not
+##   needed for these small simulations - wave2D/wave3D is much better
+## extension: use scipy to solve ODE
+## steel from this text to any book project
 
 TITLE: A worked example on scientific computing with Python
 AUTHOR: Hans Petter Langtangen at Simula Research Laboratory and University of Oslo
