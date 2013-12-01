@@ -357,7 +357,7 @@ $\sin (\pi x)$ must be written `np.sin(np.pi*x)`. We can always perform
 an explicit import of some names, like `sin` and `pi`, to write
 the formula as `sin(pi*x)`:
 
-!bc pycoe
+!bc pycod
 import numpy as np
 from numpy import sin, pi
 
