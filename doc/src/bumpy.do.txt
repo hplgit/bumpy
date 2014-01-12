@@ -20,7 +20,7 @@
 ## steel from this text to any book project
 
 TITLE: A worked example on scientific computing with Python
-AUTHOR: Hans Petter Langtangen at Simula Research Laboratory and University of Oslo
+AUTHOR: Hans Petter Langtangen at Simula Research Laboratory & Univiversity of Oslo
 DATE: today
 
 # Make corresponding slides
