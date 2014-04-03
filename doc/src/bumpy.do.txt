@@ -48,7 +48,7 @@ This worked example
 
 All files can be forked at URL: "https://github.com/hplgit/bumpy".
 
-=== Required backround ===
+=== Optimal backround ===
 
   * some interest in exploring physics through numerical simulation
   * some very basic knowledge of differential equations
@@ -61,10 +61,15 @@ how Python can be used in a MATLAB-like fashion to solve a real-world
 physical problem (with low mathematical complexity).*
 !eblock
 
+# Comment on usefulness even for those without phys/math background,
+# but with extensive programming background: being a programmer
+# means divining into domains with a lot of details, yet being able
+# to program.
+
 # Python Scientific are also in 5620/literature, some of those above
 # could be copied here
 
-=== Quick motivation ===
+=== Quick motivation for programming with Python ===
 
   * "Why Python?": "http://www.pyzo.org/whypython.html"
   * "Why Python for Scientific Computing?": "http://fperez.org/py4science/warts.html"
@@ -121,6 +126,7 @@ physical problem (with low mathematical complexity).*
   * "Python Programming on wikibooks.org": "http://en.wikibooks.org/wiki/Python_Programming/"
   * "Non-Programmer's Tutorial for Python on wikibooks.org": "http://en.wikibooks.org/wiki/Non-Programmer's_Tutorial_for_Python_2.6"
   * "Python For Beginners": "http://www.pythonforbeginners.com/"
+  * "Gentle Python introduction for high school": "http://intropython.org" (with "associated IPython notebooks": "https://github.com/ehmatthes/intro_programming")
   * "A Gentle Introduction to Programming Using Python": "http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-189-a-gentle-introduction-to-programming-using-python-january-iap-2008/" (MIT OpenCourseWare)
   * "Introduction to Computer Science and Programming": "http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/" (MIT OpenCourseWare with videos)
   * "Learning Python Programming Language Through Video Lectures": "http://www.catonmat.net/blog/learning-python-programming-language-through-video-lectures/"
