@@ -1,4 +1,4 @@
-# NOTE: This document is written in Doconce syntax and automatically
+# NOTE: This document is written in DocOnce syntax and automatically
 # compiled to HTML, Sphinx, LaTeX, Markdown, MediaWiki, IPython notebooks, ...
 
 # See https://github.com/hplgit/doconce
