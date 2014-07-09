@@ -78,6 +78,7 @@ physical problem (with low mathematical complexity).*
 
   * "Python Scientific Lecture Notes": "http://scipy-lectures.github.com/" (from EuroSciPy tutorials, based on "Python Scientific": "http://web.phys.ntnu.no/~ingves/Teaching/TFY4240/Assignments/PythonScientific.pdf")
   * "Scientific Python Lectures as IPython notebooks": "https://github.com/jrjohansson/scientific-python-lectures"
+  * "Stefan van der Walt's lectures": "https://github.com/stefanv/teaching"
 
 === NumPy resources ===
 
