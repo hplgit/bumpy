@@ -26,10 +26,11 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
     <link rel="top" title="A Worked Example on Scientific Computing with Python" href="index.html" />
     <link rel="prev" title="A Worked Example on Scientific Computing with Python" href="index.html" /> 
   
-   <style type=text/css>
+   <style type="text/css">
      div.admonition {
        background-color: whiteSmoke;
        border: 1px solid #bababa;
@@ -62,9 +63,9 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
+<tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Oct 22, 2013</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Sep 8, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -94,8 +95,8 @@
 </div></blockquote>
 <p>All files can be forked at <a class="reference external" href="https://github.com/hplgit/bumpy">https://github.com/hplgit/bumpy</a>.</p>
 </div>
-<div class="section" id="required-backround">
-<h2>Required backround<a class="headerlink" href="#required-backround" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="optimal-backround">
+<h2>Optimal backround<a class="headerlink" href="#optimal-backround" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>some interest in exploring physics through numerical simulation</li>
@@ -111,8 +112,8 @@ how Python can be used in a MATLAB-like fashion to solve a real-world
 physical problem (with low mathematical complexity).</em></p>
 </div>
 </div>
-<div class="section" id="quick-motivation">
-<h2>Quick motivation<a class="headerlink" href="#quick-motivation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="quick-motivation-for-programming-with-python">
+<h2>Quick motivation for programming with Python<a class="headerlink" href="#quick-motivation-for-programming-with-python" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference external" href="http://www.pyzo.org/whypython.html">Why Python?</a></li>
@@ -126,6 +127,7 @@ physical problem (with low mathematical complexity).</em></p>
 <div><ul class="simple">
 <li><a class="reference external" href="http://scipy-lectures.github.com/">Python Scientific Lecture Notes</a> (from EuroSciPy tutorials, based on <a class="reference external" href="http://web.phys.ntnu.no/~ingves/Teaching/TFY4240/Assignments/PythonScientific.pdf">Python Scientific</a>)</li>
 <li><a class="reference external" href="https://github.com/jrjohansson/scientific-python-lectures">Scientific Python Lectures as IPython notebooks</a></li>
+<li><a class="reference external" href="https://github.com/stefanv/teaching">Stefan van der Walt&#8217;s lectures</a></li>
 </ul>
 </div></blockquote>
 </div>
@@ -169,7 +171,7 @@ physical problem (with low mathematical complexity).</em></p>
 <li><a class="reference external" href="http://femhub.com/textbook-python/python_en.pdf/">Introduction to Python Programming</a> (for scientists)</li>
 <li><a class="reference external" href="http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642183654/ref=sr_1_2?ie=UTF8&amp;qid=1354752885&amp;sr=8-2&amp;keywords=langtangen">A Primer on Scientific Programming with Python</a><ul>
 <li>Gerard Gorman has made associated <a class="reference external" href="http://ggorman.github.io/Introduction-to-programming-for-geoscientists/">IPython notebooks</a> for teaching</li>
-<li>Traditional beamer <a class="reference external" href="http://www.ifi.uio.no~inf1100/foiler">slides</a> are also available</li>
+<li>Traditional beamer <a class="reference external" href="http://www.ifi.uio.no|nbsp|inf1100/foiler">slides</a> are also available</li>
 </ul>
 </li>
 <li><a class="reference external" href="http://www.amazon.com/Python-Scripting-Computational-Science-Engineering/dp/3642093159/ref=sr_1_1?ie=UTF8&amp;qid=1354752885&amp;sr=8-1&amp;keywords=langtangen">Python Scripting for Computational Science</a></li>
@@ -187,6 +189,7 @@ physical problem (with low mathematical complexity).</em></p>
 <li><a class="reference external" href="http://en.wikibooks.org/wiki/Python_Programming/">Python Programming on wikibooks.org</a></li>
 <li><a class="reference external" href="http://en.wikibooks.org/wiki/Non-Programmer's_Tutorial_for_Python_2.6">Non-Programmer&#8217;s Tutorial for Python on wikibooks.org</a></li>
 <li><a class="reference external" href="http://www.pythonforbeginners.com/">Python For Beginners</a></li>
+<li><a class="reference external" href="http://intropython.org">Gentle Python introduction for high school</a> (with <a class="reference external" href="https://github.com/ehmatthes/intro_programming">associated IPython notebooks</a>)</li>
 <li><a class="reference external" href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-189-a-gentle-introduction-to-programming-using-python-january-iap-2008/">A Gentle Introduction to Programming Using Python</a> (MIT OpenCourseWare)</li>
 <li><a class="reference external" href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/">Introduction to Computer Science and Programming</a> (MIT OpenCourseWare with videos)</li>
 <li><a class="reference external" href="http://www.catonmat.net/blog/learning-python-programming-language-through-video-lectures/">Learning Python Programming Language Through Video Lectures</a></li>
@@ -194,10 +197,10 @@ physical problem (with low mathematical complexity).</em></p>
 <li><a class="reference external" href="http://showmedo.com/videotutorials/python">Python Videos, Tutorials and Screencasts</a></li>
 </ul>
 </div></blockquote>
-</div>
-</div>
 <div class="section" id="a-scientific-application">
-<h1>A scientific application<a class="headerlink" href="#a-scientific-application" title="Permalink to this headline">¶</a></h1>
+<h3>A scientific application<a class="headerlink" href="#a-scientific-application" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="physical-problem-and-mathematical-model">
+<h4>Physical problem and mathematical model<a class="headerlink" href="#physical-problem-and-mathematical-model" title="Permalink to this headline">¶</a></h4>
 <p>The task is to make a simulation program that can predict how a (simple)
 mechanical system oscillates in response to environmental forces.
 Introducing <span class="math">\(u(t)\)</span> as some displacement of the system at time <span class="math">\(t\)</span>,
@@ -247,6 +250,9 @@ spring and damper on the building, modeled through the damping parameter
 compression of the spring.</p>
 <p>Our task is to compute and analyse the vertical <span class="math">\(u(t)\)</span> vibrations
 of a vehicle, given the shape <span class="math">\(h(x)\)</span> of the road and some velocity <span class="math">\(v\)</span>.</p>
+</div>
+<div class="section" id="numerical-model">
+<h4>Numerical model<a class="headerlink" href="#numerical-model" title="Permalink to this headline">¶</a></h4>
 <p>The differential equation problem <a href="#equation-bumpy:eq1">(1)</a> can be solved
 by introducing finite difference approximations for <span class="math">\(u''\)</span> and <span class="math">\(u'\)</span>.
 In case of quadratic damping one can use a geometric mean to approximate
@@ -286,6 +292,9 @@ with time points <span class="math">\(t_0,t_1,\ldots\)</span>,
 the initial displacement <tt class="docutils literal"><span class="pre">I</span></tt>, mass <tt class="docutils literal"><span class="pre">m</span></tt>, damping parameter <tt class="docutils literal"><span class="pre">b</span></tt>,
 restoring force <tt class="docutils literal"><span class="pre">s(u)</span></tt>, environmental forces <tt class="docutils literal"><span class="pre">F</span></tt> as an array
 (corresponding to <tt class="docutils literal"><span class="pre">t</span></tt>).</p>
+</div>
+<div class="section" id="simple-implementation">
+<h4>Simple implementation<a class="headerlink" href="#simple-implementation" title="Permalink to this headline">¶</a></h4>
 <p>Let us first implement the computational formulas for the linear
 damping case in a short and compact Python function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
@@ -303,6 +312,9 @@ damping case in a short and compact Python function:</p>
     <span class="k">return</span> <span class="n">u</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="dissection-of-the-code-1">
+<h4>Dissection of the code  (1)<a class="headerlink" href="#dissection-of-the-code-1" title="Permalink to this headline">¶</a></h4>
 <p>Functions in Python start with <tt class="docutils literal"><span class="pre">def</span></tt>, followed by the function name and
 the list of input objects separated by comma. The function body is
 indented, and the first non-indented line signifies the end of the function
@@ -384,6 +396,9 @@ shows the result.</p>
 <img alt="_images/solver_linear_damping.png" src="_images/solver_linear_damping.png" style="width: 500px;" />
 <p class="caption"><em>Plot of computed curve</em></p>
 </div>
+</div>
+<div class="section" id="more-advanced-implementation">
+<h4>More advanced implementation<a class="headerlink" href="#more-advanced-implementation" title="Permalink to this headline">¶</a></h4>
 <p>Let us extend the function above to also include the quadratic damping
 formulas. The <span class="math">\(F(t)\)</span> function in <a href="#equation-bumpy:eq1">(1)</a> is required to be
 available as an array in the <tt class="docutils literal"><span class="pre">solver_linear_damping</span></tt> function, but
@@ -436,6 +451,9 @@ checks that variables have correct values or are of correct type.</p>
     <span class="k">return</span> <span class="n">u</span><span class="p">,</span> <span class="n">t</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="dissection-of-the-code-2">
+<h4>Dissection of the code  (2)<a class="headerlink" href="#dissection-of-the-code-2" title="Permalink to this headline">¶</a></h4>
 <p><strong>Two types of import.</strong>
 This time we replace <tt class="docutils literal"><span class="pre">from</span> <span class="pre">numpy</span> <span class="pre">import</span> <span class="pre">*</span></tt>, which imports over 500
 variables and functions, by <tt class="docutils literal"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></tt>, which just imports
@@ -447,11 +465,11 @@ comes from. The disadvantage is that mathematical formulas like
 <span class="math">\(\sin (\pi x)\)</span> must be written <tt class="docutils literal"><span class="pre">np.sin(np.pi*x)</span></tt>. We can always perform
 an explicit import of some names, like <tt class="docutils literal"><span class="pre">sin</span></tt> and <tt class="docutils literal"><span class="pre">pi</span></tt>, to write
 the formula as <tt class="docutils literal"><span class="pre">sin(pi*x)</span></tt>:</p>
-<div class="highlight-text"><div class="highlight"><pre>import numpy as np
-from numpy import sin, pi
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span>
 
-def myfunction(x):
-    return sin(pi*x)
+<span class="k">def</span> <span class="nf">myfunction</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Another disadvantage with the <tt class="docutils literal"><span class="pre">np.</span></tt> prefix is that names are no longer
@@ -553,6 +571,9 @@ We use in this example a linear spring function <span class="math">\(s(u)\)</spa
 which is accessible just inside in the function,
 while <tt class="docutils literal"><span class="pre">k</span></tt> is a <em>global variable</em>, which must be initialized outside
 the function prior to calling <tt class="docutils literal"><span class="pre">f</span></tt>.</p>
+</div>
+<div class="section" id="the-excitation-force">
+<h4>The excitation force<a class="headerlink" href="#the-excitation-force" title="Permalink to this headline">¶</a></h4>
 <p>Considering the application where the present mathematical model describes
 the vibrations of a vehicle driving along a bumpy road, we need
 to establish the force array <tt class="docutils literal"><span class="pre">F</span></tt> from the shape of the road <span class="math">\(h(x)\)</span>.
@@ -647,6 +668,9 @@ key quantities in the problem.</p>
 and <span class="math">\(b=80\)</span> Ns/m
 corresponds to a velocity of 18 km/h and a mass of 60 kg, i.e.,
 bicycle conditions.</p>
+</div>
+<div class="section" id="a-solver-function">
+<h4>A solver function<a class="headerlink" href="#a-solver-function" title="Permalink to this headline">¶</a></h4>
 <p>The code above is naturally implemented as a Python function.
 This function can take the most important physical parameters of the problem
 as input, along with information about the file with road shapes.
@@ -756,14 +780,17 @@ outfile.close()
 </pre></div>
 </div>
 </div>
+</div>
 <div class="section" id="user-input">
-<h1>User input<a class="headerlink" href="#user-input" title="Permalink to this headline">¶</a></h1>
+<h3>User input<a class="headerlink" href="#user-input" title="Permalink to this headline">¶</a></h3>
 <p>We can in this example easily set the input data directly in
 the program, e.g., in the call to the <tt class="docutils literal"><span class="pre">solve</span></tt> function, as
 demonstrated above. However, most users will find it more
 convenient to set parameters through a user interface rather
 than editing the source code directly.</p>
-<p>(<strong>hpl 1</strong>: haven&#8217;t read the following yet...)</p>
+<p>[<strong>hpl 1</strong>: haven&#8217;t read the following yet...]</p>
+<div class="section" id="positional-command-line-arguments">
+<h4>Positional command-line arguments<a class="headerlink" href="#positional-command-line-arguments" title="Permalink to this headline">¶</a></h4>
 <p>The simplest, and often also the most effective, type of
 user interface is to use the command line. Suppose <span class="math">\(m\)</span>, <span class="math">\(k\)</span>,
 and <span class="math">\(v\)</span>, as well as the URL or filename for the road shapes,
@@ -772,7 +799,7 @@ are fixed parameters and that the user is allowed to vary
 the programmer, to specify <span class="math">\(b\)</span> as the first command-line
 argument to the program. If the name of the program file
 is <tt class="docutils literal"><span class="pre">bumpy.py</span></tt> and <span class="math">\(b=10\)</span> is desired, we can write</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; python bumpy.py 10</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; python bumpy.py 10
 </pre></div>
 </div>
 <p>The corresponding code in the program for setting input data
@@ -796,12 +823,15 @@ so it must be converted to a <tt class="docutils literal"><span class="pre">floa
 real number) prior to computations. If the command-line
 argument is missing, <tt class="docutils literal"><span class="pre">sys.argv[1]</span></tt> is illegal indexing
 and the <tt class="docutils literal"><span class="pre">IndexError</span></tt> exception is raised. We can test for this
-error and provide a default value. Without the <tt class="docutils literal"><span class="pre">try</span></tt>-<cite>except</cite>
+error and provide a default value. Without the <tt class="docutils literal"><span class="pre">try-except</span></tt>
 construction, the program will abort with an error message
 if no command-line argument is given.</p>
+</div>
+<div class="section" id="option-value-pairs-on-the-command-line">
+<h4>Option-value pairs on the command line<a class="headerlink" href="#option-value-pairs-on-the-command-line" title="Permalink to this headline">¶</a></h4>
 <p>Letting the user set many parameters on the command line is most
 conveniently done by allowing option-value pairs, e.g.,</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; python bumpy.py --m 40 --b 280</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; python bumpy.py --m 40 --b 280
 </pre></div>
 </div>
 <p>All parameters have a default value which can be overrided on
@@ -838,8 +868,9 @@ mathematical symbol (like <tt class="docutils literal"><span class="pre">--v</sp
 for downloading road shapes and solving the problem with aid of the
 code snippets above.</p>
 </div>
+</div>
 <div class="section" id="visual-exploration">
-<h1>Visual exploration<a class="headerlink" href="#visual-exploration" title="Permalink to this headline">¶</a></h1>
+<h3>Visual exploration<a class="headerlink" href="#visual-exploration" title="Permalink to this headline">¶</a></h3>
 <p>This section explains how to load the data from the computation, stored
 as a pickled list in the file <tt class="docutils literal"><span class="pre">bumpy.res</span></tt>, into various arrays, and how
 to visualize these arrays. We want to produce the following plots:</p>
@@ -982,11 +1013,13 @@ more conveniently performed in an interactive Python shell, preferably
 IPython.</p>
 </div>
 <div class="section" id="software-engineering">
-<h1>Software engineering<a class="headerlink" href="#software-engineering" title="Permalink to this headline">¶</a></h1>
+<h3>Software engineering<a class="headerlink" href="#software-engineering" title="Permalink to this headline">¶</a></h3>
 <p>Just sketchy at the moment...</p>
+<div class="section" id="testing">
+<h4>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
-<li>Unit tests via nose</li>
+<li>Unit tests via nose and pytest</li>
 <li>Subdirectory <tt class="docutils literal"><span class="pre">tests</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">test*.py</span></tt> files</li>
 </ul>
@@ -1046,7 +1079,13 @@ IPython.</p>
     <span class="n">nt</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">places</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="installation">
+<h4>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h4>
 <p>Install the <tt class="docutils literal"><span class="pre">solver</span></tt> module using a very simple <tt class="docutils literal"><span class="pre">setup.py</span></tt> script.</p>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -1055,26 +1094,48 @@ IPython.</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="index.html">
+            <center>
+            <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
               <img class="logo" src="_static/cbc_logo.png" alt="Logo"/>
             </a></p>
+            </center>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">A worked example on scientific computing with Python</a><ul>
 <li><a class="reference internal" href="#the-following-programming-topics-are-illustrated">The following programming topics are illustrated</a></li>
-<li><a class="reference internal" href="#required-backround">Required backround</a></li>
-<li><a class="reference internal" href="#quick-motivation">Quick motivation</a></li>
+<li><a class="reference internal" href="#optimal-backround">Optimal backround</a></li>
+<li><a class="reference internal" href="#quick-motivation-for-programming-with-python">Quick motivation for programming with Python</a></li>
 <li><a class="reference internal" href="#full-tutorials-on-scientific-programming-with-python">Full tutorials on scientific programming with Python</a></li>
 <li><a class="reference internal" href="#numpy-resources">NumPy resources</a></li>
 <li><a class="reference internal" href="#useful-resources">Useful resources</a></li>
 <li><a class="reference internal" href="#some-relevant-python-books">Some relevant Python books</a></li>
-<li><a class="reference internal" href="#course-material-on-python-programming-in-general">Course material on Python programming in general</a></li>
+<li><a class="reference internal" href="#course-material-on-python-programming-in-general">Course material on Python programming in general</a><ul>
+<li><a class="reference internal" href="#a-scientific-application">A scientific application</a><ul>
+<li><a class="reference internal" href="#physical-problem-and-mathematical-model">Physical problem and mathematical model</a></li>
+<li><a class="reference internal" href="#numerical-model">Numerical model</a></li>
+<li><a class="reference internal" href="#simple-implementation">Simple implementation</a></li>
+<li><a class="reference internal" href="#dissection-of-the-code-1">Dissection of the code  (1)</a></li>
+<li><a class="reference internal" href="#more-advanced-implementation">More advanced implementation</a></li>
+<li><a class="reference internal" href="#dissection-of-the-code-2">Dissection of the code  (2)</a></li>
+<li><a class="reference internal" href="#the-excitation-force">The excitation force</a></li>
+<li><a class="reference internal" href="#a-solver-function">A solver function</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#a-scientific-application">A scientific application</a></li>
-<li><a class="reference internal" href="#user-input">User input</a></li>
+<li><a class="reference internal" href="#user-input">User input</a><ul>
+<li><a class="reference internal" href="#positional-command-line-arguments">Positional command-line arguments</a></li>
+<li><a class="reference internal" href="#option-value-pairs-on-the-command-line">Option-value pairs on the command line</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#visual-exploration">Visual exploration</a></li>
-<li><a class="reference internal" href="#software-engineering">Software engineering</a></li>
+<li><a class="reference internal" href="#software-engineering">Software engineering</a><ul>
+<li><a class="reference internal" href="#testing">Testing</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
   <h4>Previous topic</h4>

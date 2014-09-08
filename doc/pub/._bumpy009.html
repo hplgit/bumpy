@@ -1,0 +1,376 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="A worked example on scientific computing with Python">
+<meta name="keywords" content="doc strings,pickling">
+
+<title>A worked example on scientific computing with Python</title>
+
+<!-- Bootstrap style: bootstrap -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' The following programming topics are illustrated ',
+               3,
+               None,
+               '___sec0'),
+              (' Optimal backround ', 3, None, '___sec1'),
+              (' Quick motivation for programming with Python ',
+               3,
+               None,
+               '___sec2'),
+              (' Full tutorials on scientific programming with Python ',
+               3,
+               None,
+               '___sec3'),
+              (' NumPy resources ', 3, None, '___sec4'),
+              (' Useful resources ', 3, None, '___sec5'),
+              (' Some relevant Python books ', 3, None, '___sec6'),
+              (' Course material on Python programming in general ',
+               3,
+               None,
+               '___sec7'),
+              (' A scientific application ', 1, None, '___sec8'),
+              (' Physical problem and mathematical model ',
+               2,
+               None,
+               '___sec9'),
+              (' Numerical model ', 2, None, '___sec10'),
+              (' Simple implementation ', 2, None, '___sec11'),
+              (' Dissection of the code ', 2, None, '___sec12'),
+              (' More advanced implementation ', 2, None, '___sec13'),
+              (' Dissection of the code ', 2, None, '___sec14'),
+              (' The excitation force ', 2, None, '___sec15'),
+              (' A solver function ', 2, None, '___sec16'),
+              (' User input ', 1, None, '___sec17'),
+              (' Positional command-line arguments ', 2, None, '___sec18'),
+              (' Option-value pairs on the command line ',
+               2,
+               None,
+               '___sec19'),
+              (' Visual exploration ', 1, None, '___sec20'),
+              (' Software engineering ', 1, None, '___sec21'),
+              (' Testing ', 2, None, '___sec22'),
+              (' Installation ', 2, None, '___sec23')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="bumpy.html">A worked example on scientific computing with Python</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._bumpy002.html#___sec8" style="font-size: 80%;"><b>A scientific application</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy002.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Physical problem and mathematical model</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy003.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Numerical model</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy004.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Simple implementation</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy004.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dissection of the code</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy005.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;More advanced implementation</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy005.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dissection of the code</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy006.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The excitation force</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy007.html#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A solver function</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec17" style="font-size: 80%;"><b>User input</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Positional command-line arguments</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Option-value pairs on the command line</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec20" style="font-size: 80%;"><b>Visual exploration</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec21" style="font-size: 80%;"><b>Software engineering</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec22" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Testing</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec23" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installation</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0009"></a>
+<!-- !split -->
+
+<h1 id="___sec20">Visual exploration <a name="___sec20"></a></h1>
+
+This section explains how to load the data from the computation, stored
+as a pickled list in the file <code>bumpy.res</code>, into various arrays, and how
+to visualize these arrays. We want to produce the following plots:
+
+<ul>
+ <li> the root mean square value of \( u(t) \), to see the typical amplitudes</li>
+ <li> the spectrum of \( u(t) \), for \( t>t_s \) (using FFT) to see which frequencies
+   that dominate in the signal</li>
+ <li> for each road shape, a plot of \( h(x) \), \( a(t) \), and \( u(t) \), for
+   \( t\geq t_s \)</li>
+</ul>
+
+We use Matplotlib's <code>pylab</code> module for curve plotting since it provides
+a syntax very close to that of MATLAB, which is well known by many readers.
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pylab</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+</pre></div>
+<p>
+This import also perform as <code>from numpy import *</code> such that we have access
+to all the array functionality too.
+
+<p>
+Loading the computational data from file back to a list <code>data</code> is done
+by
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">cPickle</span>
+outfile <span style="color: #666666">=</span> <span style="color: #008000">open</span>(<span style="color: #BA2121">&#39;bumpy.res&#39;</span>, <span style="color: #BA2121">&#39;r&#39;</span>)
+data <span style="color: #666666">=</span> cPickle<span style="color: #666666">.</span>load(outfile)
+outfile<span style="color: #666666">.</span>close()
+
+x, t <span style="color: #666666">=</span> data[<span style="color: #666666">0</span>:<span style="color: #666666">2</span>]
+u_rms <span style="color: #666666">=</span> data[<span style="color: #666666">-1</span>]
+</pre></div>
+<p>
+The remaining data, <code>data[2:-1]</code>, contains all the 3-lists <code>[h, a, u]</code>
+from the computations in the function <code>forced_vibrations</code>.
+
+<p>
+Since now we concentrate on the part \( t\geq t_s \) of the data, we
+can grab the corresponding parts of the arrays in the following way,
+using boolean arrays as indices:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">indices <span style="color: #666666">=</span> t <span style="color: #666666">&gt;=</span> t_s   <span style="color: #408080; font-style: italic"># True/False boolean array</span>
+t <span style="color: #666666">=</span> t[indices]       <span style="color: #408080; font-style: italic"># fetch the part of t for which t &gt; t_s</span>
+x <span style="color: #666666">=</span> x[indices]       <span style="color: #408080; font-style: italic"># fetch the part of x for which t &gt; t_s</span>
+</pre></div>
+<p>
+Indexing by a boolean array extracts all the elements corresponding to
+the <code>True</code> elements in the index array.
+
+<p>
+Plotting the root mean square value array <code>u_rms</code> for <code>t >= t_s</code> is now done by
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">figure()
+u_rms <span style="color: #666666">=</span> u_rms[indices]
+plot(t, u_rms)
+legend([<span style="color: #BA2121">&#39;u&#39;</span>])
+xlabel(<span style="color: #BA2121">&#39;t&#39;</span>)
+title(<span style="color: #BA2121">&#39;Root mean square value of u(t) functions&#39;</span>)
+</pre></div>
+<p>
+Figure <a href="#bumpy:fig3">3</a> shows the result.
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 3:  Root mean square of displacement. <a name="bumpy:fig3"></a> </p></center>
+<p><img src="fig-bumpy/u_rms.png" align="bottom" width=600></p>
+</center>
+
+<p>
+The spectrum of a \( u(t) \) function (represented through the arrays <code>u</code>
+and <code>t</code>) can be computed by the Python function
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">frequency_analysis</span>(u, t):
+    A <span style="color: #666666">=</span> fft(u)
+    A <span style="color: #666666">=</span> <span style="color: #666666">2*</span>A
+    dt <span style="color: #666666">=</span> t[<span style="color: #666666">1</span>] <span style="color: #666666">-</span> t[<span style="color: #666666">0</span>]
+    N <span style="color: #666666">=</span> t<span style="color: #666666">.</span>size
+    freq <span style="color: #666666">=</span> arange(N<span style="color: #666666">/2</span>, dtype<span style="color: #666666">=</span><span style="color: #008000">float</span>)<span style="color: #666666">/</span>N<span style="color: #666666">/</span>dt
+    A <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(A[<span style="color: #666666">0</span>:freq<span style="color: #666666">.</span>size])<span style="color: #666666">/</span>N
+    <span style="color: #408080; font-style: italic"># Remove small high frequency part</span>
+    tol <span style="color: #666666">=</span> <span style="color: #666666">0.05*</span>A<span style="color: #666666">.</span>max()
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">xrange</span>(<span style="color: #008000">len</span>(A)<span style="color: #666666">-1</span>, <span style="color: #666666">0</span>, <span style="color: #666666">-1</span>):
+        <span style="color: #008000; font-weight: bold">if</span> A[i] <span style="color: #666666">&gt;</span> tol:
+            <span style="color: #008000; font-weight: bold">break</span>
+    <span style="color: #008000; font-weight: bold">return</span> freq[:i<span style="color: #666666">+1</span>], A[:i<span style="color: #666666">+1</span>]
+</pre></div>
+<p>
+Note here that we truncate that last part of the spectrum where the
+amplitudes are small (this usually gives a plot that is easier to inspect).
+
+<p>
+In the present case, we utilize the <code>frequency_analysis</code> through
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">figure()
+u <span style="color: #666666">=</span> data[<span style="color: #666666">3</span>][<span style="color: #666666">2</span>][indices]  <span style="color: #408080; font-style: italic"># 2nd realization of u</span>
+f, A <span style="color: #666666">=</span> frequency_analysis(u, t)
+plot(f, A)
+title(<span style="color: #BA2121">&#39;Spectrum of u&#39;</span>)
+</pre></div>
+<p>
+Note the list look-up <code>data[3][2][indices]</code>: the element with index
+3 contains the 2nd 3-list <code>[h, a, u]</code>, and the element with index 2
+in this 3-list is the <code>u</code> array, in which we seek the part where
+\( t\geq t_s \), here corresponding to the <code>True</code> indices in the boolean
+array <code>indices</code>.
+
+<p>
+Figure <a href="#bumpy:fig2">4</a> shows the amplitudes and that the
+dominating frequency is 1 Hz.
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 4:  Spectrum of displacement. <a name="bumpy:fig2"></a> </p></center>
+<p><img src="fig-bumpy/u_spectrum.png" align="bottom" width=600></p>
+</center>
+
+<p>
+Finally, we can run through all the 3-lists <code>[h, a, u]</code> and plot
+these arrays:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">case_counter <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+<span style="color: #008000; font-weight: bold">for</span> h, a, u <span style="color: #AA22FF; font-weight: bold">in</span> data[<span style="color: #666666">2</span>:<span style="color: #666666">-1</span>]:
+    h <span style="color: #666666">=</span> h[indices]
+    a <span style="color: #666666">=</span> a[indices]
+    u <span style="color: #666666">=</span> u[indices]
+
+    figure()
+    subplot(<span style="color: #666666">3</span>, <span style="color: #666666">1</span>, <span style="color: #666666">1</span>)
+    plot(x, h, <span style="color: #BA2121">&#39;g-&#39;</span>)
+    legend([<span style="color: #BA2121">&#39;h </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> case_counter])
+    hmax <span style="color: #666666">=</span> (<span style="color: #008000">abs</span>(h<span style="color: #666666">.</span>max()) <span style="color: #666666">+</span> <span style="color: #008000">abs</span>(h<span style="color: #666666">.</span>min()))<span style="color: #666666">/2</span>
+    axis([x[<span style="color: #666666">0</span>], x[<span style="color: #666666">-1</span>], <span style="color: #666666">-</span>hmax<span style="color: #666666">*5</span>, hmax<span style="color: #666666">*5</span>])
+    xlabel(<span style="color: #BA2121">&#39;distance&#39;</span>); ylabel(<span style="color: #BA2121">&#39;height&#39;</span>)
+
+    subplot(<span style="color: #666666">3</span>, <span style="color: #666666">1</span>, <span style="color: #666666">2</span>)
+    plot(t, a)
+    legend([<span style="color: #BA2121">&#39;a </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> case_counter])
+    xlabel(<span style="color: #BA2121">&#39;t&#39;</span>); ylabel(<span style="color: #BA2121">&#39;acceleration&#39;</span>)
+
+    subplot(<span style="color: #666666">3</span>, <span style="color: #666666">1</span>, <span style="color: #666666">3</span>)
+    plot(t, u, <span style="color: #BA2121">&#39;r-&#39;</span>)
+    legend([<span style="color: #BA2121">&#39;u </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> case_counter])
+    xlabel(<span style="color: #BA2121">&#39;t&#39;</span>); ylabel(<span style="color: #BA2121">&#39;displacement&#39;</span>)
+    savefig(<span style="color: #BA2121">&#39;tmp</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">.png&#39;</span> <span style="color: #666666">%</span> case_counter)
+    case_counter <span style="color: #666666">+=</span> <span style="color: #666666">1</span>
+</pre></div>
+<p>
+<!-- A word about what happens to the <code>h</code> (or <code>a</code> or <code>u</code>) variable might -->
+<!-- illustrate much about dynamic typing in Python. In the loop, <code>h</code> is -->
+<!-- set equal to an -->
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 5:  First realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations. <a name="bumpy:fig4"></a> </p></center>
+<p><img src="fig-bumpy/hau0.png" align="bottom" width=700></p>
+</center>
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 6:  Second realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations. <a name="bumpy:fig5"></a> </p></center>
+<p><img src="fig-bumpy/hau1.png" align="bottom" width=700></p>
+</center>
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 7:  Third realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations. <a name="bumpy:fig6"></a> </p></center>
+<p><img src="fig-bumpy/hau2.png" align="bottom" width=700></p>
+</center>
+
+<p>
+If all the plot commands above are placed in a file, as in
+<a href="https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/explore.py" target="_self">explore.py</a>, a final <code>show()</code> call is needed to show the
+plots on the screen. On the other hand, the commands are usually
+more conveniently performed in an interactive Python shell, preferably
+IPython.
+
+<p>
+<!-- include something about Cython -->
+
+<p>
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pagination">
+<li><a href="._bumpy008.html">&laquo;</a></li>
+  <li><a href="._bumpy000.html">1</a></li>
+  <li><a href="._bumpy001.html">2</a></li>
+  <li><a href="._bumpy002.html">3</a></li>
+  <li><a href="._bumpy003.html">4</a></li>
+  <li><a href="._bumpy004.html">5</a></li>
+  <li><a href="._bumpy005.html">6</a></li>
+  <li><a href="._bumpy006.html">7</a></li>
+  <li><a href="._bumpy007.html">8</a></li>
+  <li><a href="._bumpy008.html">9</a></li>
+  <li class="active"><a href="._bumpy009.html">10</a></li>
+  <li><a href="._bumpy010.html">11</a></li>
+  <li><a href="._bumpy010.html">&raquo;</a></li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

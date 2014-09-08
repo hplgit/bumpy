@@ -3,9 +3,9 @@ name=bumpy
 wrap=$name
 
 # Plain HTML
-doconce format html $wrap
+doconce format html $wrap --html_style=bootstrap
 if [ $? -ne 0 ]; then echo "doconce could not compile document"; exit; fi
-
+doconce split_html $wrap.html --pagination
 # Sphinx
 doconce format sphinx $wrap  # always generate new
 doconce sphinx_dir theme=cbc title="A Worked Example on Scientific Computing with Python" author="H. P. Langtangen" $wrap
@@ -15,3 +15,4 @@ python automake_sphinx.py
 dest=../pub
 rm -rf $dest/sphinx
 cp -r sphinx-rootdir/_build/html $dest/sphinx
+cp $wrap.html ._${wrap}*.html $dest/

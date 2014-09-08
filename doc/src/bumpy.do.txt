@@ -48,6 +48,7 @@ This worked example
 
 All files can be forked at URL: "https://github.com/hplgit/bumpy".
 
+!split
 === Optimal backround ===
 
   * some interest in exploring physics through numerical simulation
@@ -134,6 +135,7 @@ physical problem (with low mathematical complexity).*
   * "Python Programming Tutorials Video Lecture Course": "http://www.learnerstv.com/Free-Computers-Video-lectures-ltv163-Page1.htm" (Learners TV)
   * "Python Videos, Tutorials and Screencasts": "http://showmedo.com/videotutorials/python"
 
+!split
 ======= A scientific application =======
 
 ===== Physical problem and mathematical model =====
@@ -198,7 +200,7 @@ compression of the spring.
 Our task is to compute and analyse the vertical $u(t)$ vibrations
 of a vehicle, given the shape $h(x)$ of the road and some velocity $v$.
 
-
+!split
 ===== Numerical model =====
 
 The differential equation problem (ref{bumpy:eq1}) can be solved
@@ -261,6 +263,7 @@ the initial displacement `I`, mass `m`, damping parameter `b`,
 restoring force `s(u)`, environmental forces `F` as an array
 (corresponding to `t`).
 
+!split
 ===== Simple implementation =====
 
 Let us first implement the computational formulas for the linear
@@ -338,7 +341,7 @@ shows the result.
 
 FIGURE: [fig-bumpy/solver_linear_damping, width=500] Plot of computed curve. label{bumpy:fig0}
 
-
+!split
 ===== More advanced implementation =====
 
 Let us extend the function above to also include the quadratic damping
@@ -487,7 +490,7 @@ which is accessible just inside in the function,
 while `k` is a *global variable*, which must be initialized outside
 the function prior to calling `f`.
 
-
+!split
 ===== The excitation force =====
 
 Considering the application where the present mathematical model describes
@@ -508,7 +511,7 @@ h_data = np.loadtxt(filename)     # read numpy array from file
 
 #It may happen that the URL is wrong or that the Internet connection is
 #down, resulting in a `ValueError` exception in `np.loadtxt`.
-#This potential error can be handled in a `try`-`except` construction:
+#This potential error can be handled in a `try-except` construction:
 
 The `h_data` object is a rectangular `numpy` array where the first
 column contains the $x$ coordinates along the road and the next columns
@@ -578,6 +581,7 @@ and $b=80$ Ns/m
 corresponds to a velocity of 18 km/h and a mass of 60 kg, i.e.,
 bicycle conditions.
 
+!split
 ===== A solver function =====
 
 The code above is naturally implemented as a Python function.
@@ -652,6 +656,7 @@ see Figure ref{bumpy:fig4} for an example.
 It may be useful to compute the root mean square value of the various
 realizations of $u(t)$ and add this array to the `data` list of input
 and output data in the problem:
+
 !bc cod
 def rms(data):
     t = data[1]
@@ -700,6 +705,7 @@ outfile.close()
 
 # joblib!!
 
+!split
 ======= User input =======
 
 We can in this example easily set the input data directly in
@@ -748,7 +754,7 @@ so it must be converted to a `float` object (representing
 real number) prior to computations. If the command-line
 argument is missing, `sys.argv[1]` is illegal indexing
 and the `IndexError` exception is raised. We can test for this
-error and provide a default value. Without the `try`-`except`
+error and provide a default value. Without the `try-except`
 construction, the program will abort with an error message
 if no command-line argument is given.
 # #endif
@@ -798,7 +804,9 @@ The files in `doc/src/src-bumpy/` on "Bitbucket":
 for downloading road shapes and solving the problem with aid of the
 code snippets above.
 
+## Flask!
 
+!split
 ======= Visual exploration =======
 
 This section explains how to load the data from the computation, stored
@@ -952,13 +960,14 @@ IPython.
 
 # include something about Cython
 
+!split
 ======= Software engineering =======
 
 Just sketchy at the moment...
 
 ===== Testing =====
 
- * Unit tests via nose
+ * Unit tests via nose and pytest
  * Subdirectory `tests`
  * `test*.py` files
 
