@@ -37,7 +37,7 @@ This worked example
   * visualizes various properties of the solution and the input data.
 !esummary
 
-=== The following programming topics are illustrated ===
+The following programming topics are illustrated:
 
   * downloading files from a web site,
   * working with `numpy` arrays,

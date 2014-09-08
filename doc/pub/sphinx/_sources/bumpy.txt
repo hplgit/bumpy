@@ -38,8 +38,7 @@ A worked example on scientific computing with Python
 
 
 
-The following programming topics are illustrated
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The following programming topics are illustrated:
 
   * downloading files from a web site,
 

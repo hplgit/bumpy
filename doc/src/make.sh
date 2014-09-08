@@ -15,4 +15,4 @@ python automake_sphinx.py
 dest=../pub
 rm -rf $dest/sphinx
 cp -r sphinx-rootdir/_build/html $dest/sphinx
-cp $wrap.html ._${wrap}*.html $dest/
+cp -r fig-bumpy $wrap.html ._${wrap}*.html $dest/
