@@ -36,7 +36,7 @@ def solver(I, V, m, b, s, F, t, damping='linear'):
     for n in range(1,N):
         if damping == 'linear':
             u[n+1] = (2*m*u[n] + (b*dt/2 - m)*u[n-1] +
-                      dt**2*(F([n] - s(u[n])))/(m + b*dt/2)
+                      dt**2*(F[n] - s(u[n])))/(m + b*dt/2)
         elif damping == 'quadratic':
             u[n+1] = (2*m*u[n] - m*u[n-1] + b*u[n]*abs(u[n] - u[n-1])
                       - dt**2*(s(u[n]) - F[n]))/\
@@ -57,4 +57,3 @@ def solver_linear_damping(I, V, m, b, s, F, t):
         u[n+1] = 1./(m + b*dt/2)*(2*m*u[n] + \
                  (b*dt/2 - m)*u[n-1] + dt**2*(F[n] - s(u[n])))
     return u
-

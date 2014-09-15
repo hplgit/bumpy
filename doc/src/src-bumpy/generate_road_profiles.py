@@ -31,7 +31,7 @@ def generate_bumpy_roads(L, nroads, resolution):
     np.random.seed(1)
     nbumps = int(L/30.)
     h_list = []
-    for i in range(3):
+    for i in range(nroads):
         h, x = generate_bumpy_road(nbumps, L, resolution)
         h_list.append(h)
     h_list.insert(0, x)
