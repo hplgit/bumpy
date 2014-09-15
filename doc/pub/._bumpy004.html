@@ -1,0 +1,294 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="A worked example on scientific computing with Python">
+<meta name="keywords" content="doc strings,pickling">
+
+<title>A worked example on scientific computing with Python</title>
+
+<!-- Bootstrap style: bootstrap -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Optimal backround ', 3, None, '___sec0'),
+              (' Quick motivation for programming with Python ',
+               3,
+               None,
+               '___sec1'),
+              (' Full tutorials on scientific programming with Python ',
+               3,
+               None,
+               '___sec2'),
+              (' NumPy resources ', 3, None, '___sec3'),
+              (' Useful resources ', 3, None, '___sec4'),
+              (' Some relevant Python books ', 3, None, '___sec5'),
+              (' Course material on Python programming in general ',
+               3,
+               None,
+               '___sec6'),
+              (' A scientific application ', 1, None, '___sec7'),
+              (' Physical problem and mathematical model ',
+               2,
+               None,
+               '___sec8'),
+              (' Numerical model ', 2, None, '___sec9'),
+              (' Simple implementation ', 2, None, '___sec10'),
+              (' Dissection of the code ', 2, None, '___sec11'),
+              (' More advanced implementation ', 2, None, '___sec12'),
+              (' Dissection of the code ', 2, None, '___sec13'),
+              (' The excitation force ', 2, None, '___sec14'),
+              (' A solver function ', 2, None, '___sec15'),
+              (' User input ', 1, None, '___sec16'),
+              (' Positional command-line arguments ', 2, None, '___sec17'),
+              (' Option-value pairs on the command line ',
+               2,
+               None,
+               '___sec18'),
+              (' Visual exploration ', 1, None, '___sec19'),
+              (' Software engineering ', 1, None, '___sec20'),
+              (' Testing ', 2, None, '___sec21'),
+              (' Installation ', 2, None, '___sec22')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="bumpy.html">A worked example on scientific computing with Python</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._bumpy002.html#___sec7" style="font-size: 80%;"><b>A scientific application</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy002.html#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Physical problem and mathematical model</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy003.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Numerical model</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Simple implementation</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dissection of the code</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy005.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;More advanced implementation</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy005.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dissection of the code</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy006.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The excitation force</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy007.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A solver function</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec16" style="font-size: 80%;"><b>User input</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Positional command-line arguments</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Option-value pairs on the command line</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy009.html#___sec19" style="font-size: 80%;"><b>Visual exploration</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec20" style="font-size: 80%;"><b>Software engineering</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Testing</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec22" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installation</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0004"></a>
+<!-- !split -->
+
+<h2 id="___sec10">Simple implementation <a name="___sec10"></a></h2>
+
+Let us first implement the computational formulas for the linear
+damping case in a short and compact Python function:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver_linear_damping</span>(I, V, m, b, s, F, t):
+    N <span style="color: #666666">=</span> t<span style="color: #666666">.</span>size <span style="color: #666666">-</span> <span style="color: #666666">1</span>              <span style="color: #408080; font-style: italic"># No of time intervals</span>
+    dt <span style="color: #666666">=</span> t[<span style="color: #666666">1</span>] <span style="color: #666666">-</span> t[<span style="color: #666666">0</span>]            <span style="color: #408080; font-style: italic"># Time step</span>
+    u <span style="color: #666666">=</span> zeros(N<span style="color: #666666">+1</span>)              <span style="color: #408080; font-style: italic"># Result array</span>
+    u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> I
+    u[<span style="color: #666666">1</span>] <span style="color: #666666">=</span> u[<span style="color: #666666">0</span>] <span style="color: #666666">+</span> dt<span style="color: #666666">*</span>V <span style="color: #666666">+</span> dt<span style="color: #666666">**2/</span>(<span style="color: #666666">2*</span>m)<span style="color: #666666">*</span>(<span style="color: #666666">-</span>b<span style="color: #666666">*</span>V <span style="color: #666666">-</span> s(u[<span style="color: #666666">0</span>]) <span style="color: #666666">+</span> F[<span style="color: #666666">0</span>])
+
+    <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>,N):
+        u[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> <span style="color: #666666">1./</span>(m <span style="color: #666666">+</span> b<span style="color: #666666">*</span>dt<span style="color: #666666">/2</span>)<span style="color: #666666">*</span>(<span style="color: #666666">2*</span>m<span style="color: #666666">*</span>u[n] <span style="color: #666666">+</span> \ 
+                 (b<span style="color: #666666">*</span>dt<span style="color: #666666">/2</span> <span style="color: #666666">-</span> m)<span style="color: #666666">*</span>u[n<span style="color: #666666">-1</span>] <span style="color: #666666">+</span> dt<span style="color: #666666">**2*</span>(F[n] <span style="color: #666666">-</span> s(u[n])))
+    <span style="color: #008000; font-weight: bold">return</span> u
+</pre></div>
+
+<h2 id="___sec11">Dissection of the code <a name="___sec11"></a></h2>
+
+Functions in Python start with <code>def</code>, followed by the function name and
+the list of input objects separated by comma. The function body is
+indented, and the first non-indented line signifies the end of the function
+body block.
+
+<p>
+The arguments to this function and the variables created
+inside the function are not declared with type. We therefore need to
+know what the variables are supposed to be: <code>I</code>, <code>V</code>, <code>m</code>, and <code>b</code>
+are real numbers, while <code>F</code> and <code>t</code> are one-dimensional arrays of
+the same length, where <code>F</code> holds \( F(t_n) \) and <code>t</code> holds \( t_n \),
+\( n=0,1,\ldots,N+1 \).
+
+<p>
+The number of elements in an array <code>t</code> is given by <code>t.size</code> (or
+<code>len(t)</code>, but <code>t.size</code> works for multi-dimensional arrays too).
+Arrays are indexed by square brackets, and indices always start at 0.
+For/do loops in Python are more general than those in Fortran, C, C++,
+and Java, as one can loop over the any set of objects with the
+syntax <code>for element in some_set</code>. In numerical code, it is common
+to loop over array indices, i.e., a set of integers. Such a set
+is produced by <code>range(start, stop, increment)</code>, which returns a
+list of integers <code>start, start+increment, start+2*increment</code>, and so on,
+up to <em>but not including</em> <code>stop</code>. Writing just <code>range(stop)</code> means
+<code>range(0, stop, 1)</code>. The particular call <code>range(1, N)</code> used in the code
+above results in a list of integers: <code>1</code>, <code>2</code>, ..., <code>N-1</code>.
+
+<p>
+Array functionality is enabled by the <code>numpy</code> package, which offers
+functions such as <code>zeros</code> and <code>linspace</code>, as known from MATLAB.
+Here we import all objects in the <code>numpy</code> package by the statement
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+</pre></div>
+<p>
+Only the <code>zeros</code> function is used to create the output array <code>u</code>.
+
+<p>
+Comments start with the character <code>#</code> and the rest of the line
+is then ignored by Python.
+
+<p>
+Every variable in Python is an object. In particular, the <code>s</code> function
+above is a function object, transferred to the function as any other
+object, and called as any other function. Transferring a function as
+argument to another function is therefore simpler and cleaner in Python
+than in, e.g., C, C++, Java, and C#.
+
+<p>
+How can we use the <code>solver_linear_damping</code> function? We need to <em>call</em> it
+with relevant values for the arguments. Suppose we want to solve
+a vibration problem with \( I=1 \), \( V=0 \),
+\( F=0 \), \( m=2 \), \( b=0.2 \), \( s(u)=2u \), \( \Delta t=0.2 \),
+for \( t\in [0,10\pi] \). This will be a damped sinusoidal solution
+(setting \( b=0 \) will result in \( u(t)=\cos t \)).
+The test code becomes
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">solver</span> <span style="color: #008000; font-weight: bold">import</span> solver_linear_damping
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">s</span>(u):
+    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">2*</span>u
+
+T <span style="color: #666666">=</span> <span style="color: #666666">10*</span>pi      <span style="color: #408080; font-style: italic"># simulate for t in [0,T]</span>
+dt <span style="color: #666666">=</span> <span style="color: #666666">0.2</span>
+N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span>dt))
+t <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, T, N<span style="color: #666666">+1</span>)
+F <span style="color: #666666">=</span> zeros(t<span style="color: #666666">.</span>size)
+I <span style="color: #666666">=</span> <span style="color: #666666">1</span>; V <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+m <span style="color: #666666">=</span> <span style="color: #666666">2</span>; b <span style="color: #666666">=</span> <span style="color: #666666">0.2</span>
+u <span style="color: #666666">=</span> solver_linear_damping(I, V, m, b, s, F, t)
+
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+plot(t, u)
+savefig(<span style="color: #BA2121">&#39;tmp.pdf&#39;</span>)   <span style="color: #408080; font-style: italic"># save plot to PDF file</span>
+savefig(<span style="color: #BA2121">&#39;tmp.png&#39;</span>)   <span style="color: #408080; font-style: italic"># save plot to PNG file</span>
+show()
+</pre></div>
+<p>
+The <code>solver_linear_damping</code> function resides in the file <code>solver.py</code>,
+so if we make the call to this function in separate file (assumed above),
+we have to import the function as shown. We also need functions and
+variables from
+the <code>numpy</code> package, here <code>pi</code>, <code>linspace</code>, and <code>zeros</code>.
+Normally, there is one statement per line in Python programs, and there
+is no need to end the statement with a semicolon. However, if we
+want multiple statements on a line, they must be separated by semi colon
+as demonstrated in the initialization of <code>I</code> and <code>V</code>. Plotting the
+computed curve makes use of the <code>matplotlib</code> package, where we call
+its <code>plot</code>, <code>savefig</code>, and <code>show</code> functions. Figure <a href="#bumpy:fig0">2</a>
+shows the result.
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 2:  Plot of computed curve. <a name="bumpy:fig0"></a> </p></center>
+<p><img src="fig-bumpy/solver_linear_damping.png" align="bottom" width=500></p>
+</center>
+
+<p>
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pagination">
+<li><a href="._bumpy003.html">&laquo;</a></li>
+  <li><a href="._bumpy000.html">1</a></li>
+  <li><a href="._bumpy001.html">2</a></li>
+  <li><a href="._bumpy002.html">3</a></li>
+  <li><a href="._bumpy003.html">4</a></li>
+  <li class="active"><a href="._bumpy004.html">5</a></li>
+  <li><a href="._bumpy005.html">6</a></li>
+  <li><a href="._bumpy006.html">7</a></li>
+  <li><a href="._bumpy007.html">8</a></li>
+  <li><a href="._bumpy008.html">9</a></li>
+  <li><a href="._bumpy009.html">10</a></li>
+  <li><a href="._bumpy010.html">11</a></li>
+  <li><a href="._bumpy005.html">&raquo;</a></li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

@@ -7,7 +7,7 @@ A Worked Example on Scientific Computing with Python
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    bumpy
 

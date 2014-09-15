@@ -1,0 +1,231 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="A worked example on scientific computing with Python">
+<meta name="keywords" content="doc strings,pickling">
+
+<title>A worked example on scientific computing with Python</title>
+
+<!-- Bootstrap style: bootstrap -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Optimal backround ', 3, None, '___sec0'),
+              (' Quick motivation for programming with Python ',
+               3,
+               None,
+               '___sec1'),
+              (' Full tutorials on scientific programming with Python ',
+               3,
+               None,
+               '___sec2'),
+              (' NumPy resources ', 3, None, '___sec3'),
+              (' Useful resources ', 3, None, '___sec4'),
+              (' Some relevant Python books ', 3, None, '___sec5'),
+              (' Course material on Python programming in general ',
+               3,
+               None,
+               '___sec6'),
+              (' A scientific application ', 1, None, '___sec7'),
+              (' Physical problem and mathematical model ',
+               2,
+               None,
+               '___sec8'),
+              (' Numerical model ', 2, None, '___sec9'),
+              (' Simple implementation ', 2, None, '___sec10'),
+              (' Dissection of the code ', 2, None, '___sec11'),
+              (' More advanced implementation ', 2, None, '___sec12'),
+              (' Dissection of the code ', 2, None, '___sec13'),
+              (' The excitation force ', 2, None, '___sec14'),
+              (' A solver function ', 2, None, '___sec15'),
+              (' User input ', 1, None, '___sec16'),
+              (' Positional command-line arguments ', 2, None, '___sec17'),
+              (' Option-value pairs on the command line ',
+               2,
+               None,
+               '___sec18'),
+              (' Visual exploration ', 1, None, '___sec19'),
+              (' Software engineering ', 1, None, '___sec20'),
+              (' Testing ', 2, None, '___sec21'),
+              (' Installation ', 2, None, '___sec22')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="bumpy.html">A worked example on scientific computing with Python</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._bumpy002.html#___sec7" style="font-size: 80%;"><b>A scientific application</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy002.html#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Physical problem and mathematical model</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Numerical model</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy004.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Simple implementation</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy004.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dissection of the code</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy005.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;More advanced implementation</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy005.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dissection of the code</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy006.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The excitation force</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy007.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A solver function</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec16" style="font-size: 80%;"><b>User input</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Positional command-line arguments</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Option-value pairs on the command line</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy009.html#___sec19" style="font-size: 80%;"><b>Visual exploration</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec20" style="font-size: 80%;"><b>Software engineering</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Testing</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec22" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installation</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0003"></a>
+<!-- !split -->
+
+<h2 id="___sec9">Numerical model <a name="___sec9"></a></h2>
+
+The differential equation problem <a href="._bumpy002.html#mjx-eqn-1">(1)</a> can be solved
+by introducing finite difference approximations for \( u'' \) and \( u' \).
+In case of quadratic damping one can use a geometric mean to approximate
+\( u'|u'| \) and thereby linearize the equations. The result of using
+such numerical methods is an algorithm for computing \( u(t) \) at
+discrete points in time. Let \( u^n \) be the approximation to \( u \) at
+time \( t_n=n\Delta t \), \( n=1,2,\ldots \), where \( \Delta t \)
+is a (small) time interval. For example, if \( \Delta t = 0.1 \), we
+find approximations \( u^1 \) to \( u \) at \( t=0.1 \), \( u^2 \) at \( t=0.2 \), \( u^3 \)
+to \( t=0.3 \), and so forth. Any value \( u^{n+1} \) can be computed if \( u^n \)
+and \( u^{n-1} \) are known (i.e., previously computed).
+The formula for \( u^{n+1} \) is, in case of linear damping \( f(u')=bu' \),
+
+$$
+\begin{equation}
+u^{n+1} = \left(2mu^n + (\frac{b}{2}\Delta t - m)u^{n-1} +
+\Delta t^2(F^n - s(u^n))
+\right)(m + \frac{b}{2}\Delta t)^{-1},
+\tag{2}
+\end{equation}
+$$
+
+where \( F^n \) means \( F(t) \) evaluated for \( t=t_n \). A special formula
+must be applied for \( n=0 \):
+
+$$
+\begin{equation}
+u^1 = u^0 + \Delta t\, V
++ \frac{\Delta t^2}{2m}(-bV - s(u^0) + F^0)
+\thinspace .
+\tag{3}
+\end{equation}
+$$
+
+For quadratic damping we have a slightly different formula,
+
+$$
+\begin{equation}
+u^{n+1} = \left( m + b|u^n-u^{n-1}|\right)^{-1}
+\left(2m u^n - mu^{n-1} + bu^n|u^n-u^{n-1}| + \Delta t^2 (F^n - s(u^n))
+\right),
+\tag{4}
+\end{equation}
+$$
+
+and again a special formula for \( u^1 \):
+$$
+\begin{equation}
+u^1 = u^0 + \Delta t V + \frac{\Delta t^2}{2m}\left(-bV|V| - s(u^0) + F^0\right)
+\thinspace .
+\tag{5}
+\end{equation}
+$$
+
+
+<p>
+The implementation of the computational algorithm can make use
+of an array <code>u</code> to represent \( u^n \) as <code>u[n]</code>. The force \( F(t_n) \) is
+assumed to be available as an array element <code>F[n]</code>. The following
+Python function computes <code>u</code> given  an array <code>t</code>
+with time points \( t_0,t_1,\ldots \),
+the initial displacement <code>I</code>, mass <code>m</code>, damping parameter <code>b</code>,
+restoring force <code>s(u)</code>, environmental forces <code>F</code> as an array
+(corresponding to <code>t</code>).
+
+<p>
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pagination">
+<li><a href="._bumpy002.html">&laquo;</a></li>
+  <li><a href="._bumpy000.html">1</a></li>
+  <li><a href="._bumpy001.html">2</a></li>
+  <li><a href="._bumpy002.html">3</a></li>
+  <li class="active"><a href="._bumpy003.html">4</a></li>
+  <li><a href="._bumpy004.html">5</a></li>
+  <li><a href="._bumpy005.html">6</a></li>
+  <li><a href="._bumpy006.html">7</a></li>
+  <li><a href="._bumpy007.html">8</a></li>
+  <li><a href="._bumpy008.html">9</a></li>
+  <li><a href="._bumpy009.html">10</a></li>
+  <li><a href="._bumpy010.html">11</a></li>
+  <li><a href="._bumpy004.html">&raquo;</a></li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

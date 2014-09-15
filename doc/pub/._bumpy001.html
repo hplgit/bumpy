@@ -1,0 +1,268 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="A worked example on scientific computing with Python">
+<meta name="keywords" content="doc strings,pickling">
+
+<title>A worked example on scientific computing with Python</title>
+
+<!-- Bootstrap style: bootstrap -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Optimal backround ', 3, None, '___sec0'),
+              (' Quick motivation for programming with Python ',
+               3,
+               None,
+               '___sec1'),
+              (' Full tutorials on scientific programming with Python ',
+               3,
+               None,
+               '___sec2'),
+              (' NumPy resources ', 3, None, '___sec3'),
+              (' Useful resources ', 3, None, '___sec4'),
+              (' Some relevant Python books ', 3, None, '___sec5'),
+              (' Course material on Python programming in general ',
+               3,
+               None,
+               '___sec6'),
+              (' A scientific application ', 1, None, '___sec7'),
+              (' Physical problem and mathematical model ',
+               2,
+               None,
+               '___sec8'),
+              (' Numerical model ', 2, None, '___sec9'),
+              (' Simple implementation ', 2, None, '___sec10'),
+              (' Dissection of the code ', 2, None, '___sec11'),
+              (' More advanced implementation ', 2, None, '___sec12'),
+              (' Dissection of the code ', 2, None, '___sec13'),
+              (' The excitation force ', 2, None, '___sec14'),
+              (' A solver function ', 2, None, '___sec15'),
+              (' User input ', 1, None, '___sec16'),
+              (' Positional command-line arguments ', 2, None, '___sec17'),
+              (' Option-value pairs on the command line ',
+               2,
+               None,
+               '___sec18'),
+              (' Visual exploration ', 1, None, '___sec19'),
+              (' Software engineering ', 1, None, '___sec20'),
+              (' Testing ', 2, None, '___sec21'),
+              (' Installation ', 2, None, '___sec22')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="bumpy.html">A worked example on scientific computing with Python</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._bumpy002.html#___sec7" style="font-size: 80%;"><b>A scientific application</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy002.html#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Physical problem and mathematical model</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy003.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Numerical model</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy004.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Simple implementation</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy004.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dissection of the code</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy005.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;More advanced implementation</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy005.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dissection of the code</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy006.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The excitation force</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy007.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A solver function</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec16" style="font-size: 80%;"><b>User input</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Positional command-line arguments</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Option-value pairs on the command line</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy009.html#___sec19" style="font-size: 80%;"><b>Visual exploration</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec20" style="font-size: 80%;"><b>Software engineering</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Testing</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec22" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installation</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0001"></a>
+<!-- !split -->
+
+<h3 id="___sec0">Optimal backround <a name="___sec0"></a></h3>
+
+<ul>
+  <li> some interest in exploring physics through numerical simulation</li>
+  <li> some very basic knowledge of differential equations</li>
+  <li> some very basic knowledge of finite difference approximations</li>
+  <li> significant interest in exploring Python for scientific computations</li>
+</ul>
+
+<div class="alert alert-block alert-success alert-text-normal"><b></b>
+<em>No background in Python is assumed - the aim is to give an impression of
+how Python can be used in a MATLAB-like fashion to solve a real-world
+physical problem (with low mathematical complexity).</em>
+</div>
+
+
+<p>
+<!-- Comment on usefulness even for those without phys/math background, -->
+<!-- but with extensive programming background: being a programmer -->
+<!-- means divining into domains with a lot of details, yet being able -->
+<!-- to program. -->
+
+<p>
+<!-- Python Scientific are also in 5620/literature, some of those above -->
+<!-- could be copied here -->
+
+<h3 id="___sec1">Quick motivation for programming with Python <a name="___sec1"></a></h3>
+
+<ul>
+  <li> <a href="http://www.pyzo.org/whypython.html" target="_self">Why Python?</a></li>
+  <li> <a href="http://fperez.org/py4science/warts.html" target="_self">Why Python for Scientific Computing?</a></li>
+</ul>
+
+<h3 id="___sec2">Full tutorials on scientific programming with Python <a name="___sec2"></a></h3>
+
+<ul>
+  <li> <a href="http://scipy-lectures.github.com/" target="_self">Python Scientific Lecture Notes</a> (from EuroSciPy tutorials, based on <a href="http://web.phys.ntnu.no/~ingves/Teaching/TFY4240/Assignments/PythonScientific.pdf" target="_self">Python Scientific</a>)</li>
+  <li> <a href="https://github.com/jrjohansson/scientific-python-lectures" target="_self">Scientific Python Lectures as IPython notebooks</a></li>
+  <li> <a href="https://github.com/stefanv/teaching" target="_self">Stefan van der Walt's lectures</a></li>
+</ul>
+
+<h3 id="___sec3">NumPy resources <a name="___sec3"></a></h3>
+
+<ul>
+  <li> <a href="http://www.scipy.org/Tentative_NumPy_Tutorial" target="_self">NumPy Tutorial</a></li>
+  <li> <a href="http://docs.scipy.org/doc/numpy/user/" target="_self">NumPy User Guide</a></li>
+  <li> <a href="https://github.com/pv/advanced-numpy-tutorial" target="_self">Advanced NumPy Tutorial</a></li>
+  <li> <a href="http://scipy2010.blogspot.com/2010/06/tutorials-day-1-advanced-numpy.html" target="_self">Advanced NumPy Course</a></li>
+  <li> <a href="http://www.scipy.org/Numpy_Example_List" target="_self">NumPy Example List</a></li>
+  <li> <a href="http://mentat.za.net/numpy/numpy_advanced_slides/" target="_self">NumPy Medkit</a></li>
+  <li> <a href="http://www.scipy.org/Cookbook" target="_self">NumPy and SciPy Cookbook</a></li>
+  <li> <a href="http://www.scipy.org/NumPy_for_Matlab_Users" target="_self">NumPy for Matlab Users</a></li>
+  <li> <a href="http://mathesaurus.sf.net" target="_self">NumPy for Matlab/R/IDL Users</a></li>
+</ul>
+
+<h3 id="___sec4">Useful resources <a name="___sec4"></a></h3>
+
+<ul>
+  <li> <a href="http://www.astropython.org/" target="_self">AstroPython</a></li>
+  <li> <a href="http://www.youtube.com/watch?feature=player_embedded&v=F4rFuIb1Ie4" target="_self">Talk on IPython by Fernando Perez</a></li>
+  <li> <a href="http://fperez.org/py4science/starter_kit.html" target="_self">Useful software in the Scientific Python Ecosystem</a></li>
+  <li> <a href="http://ipython.scipy.org/doc/manual/html" target="_self">IPython</a></li>
+  <li> <a href="http://code.google.com/p/pythonxy/wiki/Welcome" target="_self">Python(x,y)</a></li>
+  <li> <a href="http://www.yourmachines.org/tutorials/mgpy.html" target="_self">Basic Motion Graphics with Python</a>
+<!-- This is now local in doc/literature since the link is broken: <a href="http://www.maths.lth.se/na/help/media/Practical_Scientific_Computing_with_Python.pdf" target="_self">Practical Scientific Computing with Python</a> -->
+<!-- Basic Motion Graphics with Python contains a lot about making movies -->
+<!-- and animation - check it out --></li>
+</ul>
+
+<h3 id="___sec5">Some relevant Python books <a name="___sec5"></a></h3>
+
+<ul>
+  <li> <a href="http://www.greenteapress.com/thinkpython/" target="_self">Think Python</a></li>
+  <li> <a href="http://learnpythonthehardway.org/book/" target="_self">Learn Python The Hard Way</a></li>
+  <li> <a href="http://diveintopython.org/toc/index.html" target="_self">Dive Into Python</a></li>
+  <li> <a href="http://www.freenetpages.co.uk/hp/alan.gauld/" target="_self">Think Like a Computer Scientist</a></li>
+  <li> <a href="http://femhub.com/textbook-python/python_en.pdf/" target="_self">Introduction to Python Programming</a> (for scientists)</li>
+  <li> <a href="http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642183654/ref=sr_1_2?ie=UTF8&qid=1354752885&sr=8-2&keywords=langtangen" target="_self">A Primer on Scientific Programming with Python</a></li>
+
+<ul>
+    <li> Gerard Gorman has made associated <a href="http://ggorman.github.io/Introduction-to-programming-for-geoscientists/" target="_self">IPython notebooks</a> for teaching</li>
+    <li> Traditional beamer <a href="http://www.ifi.uio.no&nbsp;inf1100/foiler" target="_self">slides</a> are also available</li>
+</ul>
+
+  <li> <a href="http://www.amazon.com/Python-Scripting-Computational-Science-Engineering/dp/3642093159/ref=sr_1_1?ie=UTF8&qid=1354752885&sr=8-1&keywords=langtangen" target="_self">Python Scripting for Computational Science</a></li>
+</ul>
+
+<h3 id="___sec6">Course material on Python programming in general <a name="___sec6"></a></h3>
+
+<ul>
+  <li> <a href="http://docs.python.org/2/tutorial/" target="_self">The Official Python Tutorial</a></li>
+  <li> <a href="http://www.tutorialspoint.com/python/" target="_self">Python Tutorial on tutorialspoint.com</a></li>
+  <li> <a href="http://www.learnpython.org/" target="_self">Interactive Python tutorial site</a></li>
+  <li> <a href="http://en.wikibooks.org/wiki/A_Beginner's_Python_Tutorial" target="_self">A Beginner's Python Tutorial on wikibooks.org</a></li>
+  <li> <a href="http://en.wikibooks.org/wiki/Python_Programming/" target="_self">Python Programming on wikibooks.org</a></li>
+  <li> <a href="http://en.wikibooks.org/wiki/Non-Programmer's_Tutorial_for_Python_2.6" target="_self">Non-Programmer's Tutorial for Python on wikibooks.org</a></li>
+  <li> <a href="http://www.pythonforbeginners.com/" target="_self">Python For Beginners</a></li>
+  <li> <a href="http://intropython.org" target="_self">Gentle Python introduction for high school</a> (with <a href="https://github.com/ehmatthes/intro_programming" target="_self">associated IPython notebooks</a>)</li>
+  <li> <a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-189-a-gentle-introduction-to-programming-using-python-january-iap-2008/" target="_self">A Gentle Introduction to Programming Using Python</a> (MIT OpenCourseWare)</li>
+  <li> <a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/" target="_self">Introduction to Computer Science and Programming</a> (MIT OpenCourseWare with videos)</li>
+  <li> <a href="http://www.catonmat.net/blog/learning-python-programming-language-through-video-lectures/" target="_self">Learning Python Programming Language Through Video Lectures</a></li>
+  <li> <a href="http://www.learnerstv.com/Free-Computers-Video-lectures-ltv163-Page1.htm" target="_self">Python Programming Tutorials Video Lecture Course</a> (Learners TV)</li>
+  <li> <a href="http://showmedo.com/videotutorials/python" target="_self">Python Videos, Tutorials and Screencasts</a></li>
+</ul>
+
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pagination">
+<li><a href="._bumpy000.html">&laquo;</a></li>
+  <li><a href="._bumpy000.html">1</a></li>
+  <li class="active"><a href="._bumpy001.html">2</a></li>
+  <li><a href="._bumpy002.html">3</a></li>
+  <li><a href="._bumpy003.html">4</a></li>
+  <li><a href="._bumpy004.html">5</a></li>
+  <li><a href="._bumpy005.html">6</a></li>
+  <li><a href="._bumpy006.html">7</a></li>
+  <li><a href="._bumpy007.html">8</a></li>
+  <li><a href="._bumpy008.html">9</a></li>
+  <li><a href="._bumpy009.html">10</a></li>
+  <li><a href="._bumpy010.html">11</a></li>
+  <li><a href="._bumpy002.html">&raquo;</a></li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+
