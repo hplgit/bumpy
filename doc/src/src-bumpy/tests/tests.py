@@ -18,13 +18,12 @@ def test_acceleration():
 def lhs_eq(t, m, b, s, u, damping='linear'):
     """Return lhs of differential equation as sympy expression."""
     v = sm.diff(u, t)
-    if damping == 'linear':
-        return m*sm.diff(u, t, t) + b*v + s(u)
-    else:
-        return m*sm.diff(u, t, t) + b*v*sm.Abs(v) + s(u)
+    d = b*v if damping == 'linear' else b*v*sm.Abs(v)
+    return m*sm.diff(u, t, t) + d + s(u)
 
-def test_quadratic():
-    """Verify a quadratic solution."""
+def test_solver():
+    """Verify linear/quadratic solution."""
+    # Set input data for the test
     I = 1.2; V = 3; m = 2; b = 0.9; k = 4
     s = lambda u: k*u
     T = 2
@@ -36,23 +35,27 @@ def test_quadratic():
     t = sm.Symbol('t')
     q = 2  # arbitrary constant
     u_exact = I + V*t + q*t**2   # sympy expression
-    exact_solution = sm.lambdify(t, u_exact, modules='numpy')
-    F = sm.lambdify(t, lhs_eq(t, m, b, s, u_exact, 'linear'))
-    u1, t1 = solver(I, V, m, b, s, F, time_points, 'linear')
-    error = abs(exact_solution(t1) - u1).max()
-    nt.assert_almost_equal(error, 0, places=13)
+    F_term = lhs_eq(t, m, b, s, u_exact, 'linear')
+    print 'Fitted source term, linear case:', F_term
+    F = sm.lambdify([t], F_term)
+    u, t_ = solver(I, V, m, b, s, F, time_points, 'linear')
+    u_e = sm.lambdify([t], u_exact, modules='numpy')
+    error = abs(u_e(t_) - u).max()
+    tol = 1E-13
+    assert error < tol
 
     # Test quadratic damping: u_exact must be linear
-    # in order exactly recover this solution
     u_exact = I + V*t
-    exact_solution = sm.lambdify(t, u_exact, modules='numpy')
-    F = sm.lambdify(t, lhs_eq(t, m, b, s, u_exact, 'quadratic'))
-    u2, t2 = solver(I, V, m, b, s, F, time_points, 'quadratic')
-    error = abs(exact_solution(t2) - u2).max()
-    nt.assert_almost_equal(error, 0, places=13)
+    F_term = lhs_eq(t, m, b, s, u_exact, 'quadratic')
+    print 'Fitted source term, quadratic case:', F_term
+    F = sm.lambdify([t], F_term)
+    u, t_ = solver(I, V, m, b, s, F, time_points, 'quadratic')
+    u_e = sm.lambdify([t], u_exact, modules='numpy')
+    error = abs(u_e(t_) - u).max()
+    assert error < tol
 
-def test_quadratic_all_functions():
-    """Verify a quadratic solution."""
+def test_all_functions():
+    """Verify a linear/quadratic solution."""
     I = 1.2; V = 3; m = 2; b = 0.9
     s = lambda u: 4*u
     t = sm.Symbol('t')
@@ -81,10 +84,10 @@ def test_quadratic_all_functions():
         # Test linear damping
         q = 2  # arbitrary constant
         u_exact = I + V*t + q*t**2
-        exact_solution = sm.lambdify(t, u_exact, modules='numpy')
+        u_e = sm.lambdify(t, u_exact, modules='numpy')
         F = sm.lambdify(t, lhs_eq(t, m, b, s, u_exact, 'linear'))
-        u1, t1 = solver(I, V, m, b, s, F, time_points, 'linear')
-        error = abs(exact_solution(t1) - u1).max()
+        u, t_ = solver(I, V, m, b, s, F, time_points, 'linear')
+        error = abs(u_e(t_) - u).max()
         nt.assert_almost_equal(error, 0, places=13)
 
         # Test quadratic damping
@@ -93,12 +96,12 @@ def test_quadratic_all_functions():
             # In the quadratic damping case, u_exact must be linear
             # in order exactly recover this solution
             u_exact = I + V*t
-            exact_solution = sm.lambdify(t, u_exact, modules='numpy')
+            u_e = sm.lambdify(t, u_exact, modules='numpy')
             F = sm.lambdify(t, lhs_eq(t, m, b, s, u_exact, 'quadratic'))
-            u2, t2 = solver(I, V, m, b, s, F, time_points, 'quadratic')
-            error = abs(exact_solution(t2) - u2).max()
+            u, t_ = solver(I, V, m, b, s, F, time_points, 'quadratic')
+            error = abs(u_e(t_) - u).max()
             nt.assert_almost_equal(error, 0, places=13)
 
 if __name__ == '__main__':
-    test_quadratic()
+    test_solver()
     test_acceleration()

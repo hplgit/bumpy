@@ -17,48 +17,61 @@ Automatically generated HTML file from DocOnce source
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
+
 </head>
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Optimal backround ', 3, None, '___sec0'),
-              (' Quick motivation for programming with Python ',
+ 'sections': [(' Optimal backround for reading this note ',
                3,
                None,
-               '___sec1'),
-              (' Full tutorials on scientific programming with Python ',
-               3,
-               None,
-               '___sec2'),
-              (' NumPy resources ', 3, None, '___sec3'),
-              (' Useful resources ', 3, None, '___sec4'),
-              (' Some relevant Python books ', 3, None, '___sec5'),
-              (' Course material on Python programming in general ',
-               3,
-               None,
-               '___sec6'),
-              (' A scientific application ', 1, None, '___sec7'),
+               '___sec0'),
+              (' A scientific application ', 1, None, '___sec1'),
               (' Physical problem and mathematical model ',
                2,
                None,
-               '___sec8'),
-              (' Numerical model ', 2, None, '___sec9'),
-              (' Simple implementation ', 2, None, '___sec10'),
-              (' Dissection of the code ', 2, None, '___sec11'),
-              (' More advanced implementation ', 2, None, '___sec12'),
-              (' Dissection of the code ', 2, None, '___sec13'),
-              (' The excitation force ', 2, None, '___sec14'),
-              (' A solver function ', 2, None, '___sec15'),
-              (' User input ', 1, None, '___sec16'),
-              (' Positional command-line arguments ', 2, None, '___sec17'),
+               '___sec2'),
+              (' Numerical model ', 2, None, '___sec3'),
+              (' Simple implementation ', 2, None, '___sec4'),
+              (' Dissection of the code ', 2, None, '___sec5'),
+              (' More advanced implementation ', 2, None, '___sec6'),
+              (' Dissection of the code ', 2, None, '___sec7'),
+              (' The excitation force ', 2, None, '___sec8'),
+              (' A solver function ', 2, None, '___sec9'),
+              (' User input ', 1, None, '___sec10'),
+              (' Positional command-line arguments ', 2, None, '___sec11'),
               (' Option-value pairs on the command line ',
                2,
                None,
+               '___sec12'),
+              (' Visual exploration ', 1, None, '___sec13'),
+              (' Advanced topics ', 1, None, '___sec14'),
+              (' Symbolic computing via SymPy ', 2, None, '___sec15'),
+              (' Testing ', 2, None, '___sec16'),
+              (' Example on a test function ', 3, None, '___sec17'),
+              (' Test function for the numerical solver ',
+               3,
+               None,
                '___sec18'),
-              (' Visual exploration ', 1, None, '___sec19'),
-              (' Software engineering ', 1, None, '___sec20'),
-              (' Testing ', 2, None, '___sec21'),
-              (' Installation ', 2, None, '___sec22')]}
+              (' Appendix: Quick motivation for programming with Python ',
+               1,
+               'app:motivation',
+               'app:motivation'),
+              (' Appendix: Scientific Python resources ',
+               1,
+               'app:resources',
+               'app:resources'),
+              (' Full tutorials on scientific programming with Python ',
+               3,
+               None,
+               '___sec21'),
+              (' NumPy resources ', 3, None, '___sec22'),
+              (' Useful resources ', 3, None, '___sec23'),
+              (' Some relevant Python books ', 3, None, '___sec24'),
+              (' Course material on Python programming in general ',
+               3,
+               None,
+               '___sec25')]}
 end of tocinfo -->
 
 <body>
@@ -95,22 +108,12 @@ MathJax.Hub.Config({
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._bumpy002.html#___sec7" style="font-size: 80%;"><b>A scientific application</b></a></li>
-     <!-- navigation toc: --> <li><a href="._bumpy002.html#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Physical problem and mathematical model</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Numerical model</a></li>
-     <!-- navigation toc: --> <li><a href="._bumpy004.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Simple implementation</a></li>
-     <!-- navigation toc: --> <li><a href="._bumpy004.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dissection of the code</a></li>
-     <!-- navigation toc: --> <li><a href="._bumpy005.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;More advanced implementation</a></li>
-     <!-- navigation toc: --> <li><a href="._bumpy005.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dissection of the code</a></li>
-     <!-- navigation toc: --> <li><a href="._bumpy006.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The excitation force</a></li>
-     <!-- navigation toc: --> <li><a href="._bumpy007.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A solver function</a></li>
-     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec16" style="font-size: 80%;"><b>User input</b></a></li>
-     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Positional command-line arguments</a></li>
-     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Option-value pairs on the command line</a></li>
-     <!-- navigation toc: --> <li><a href="._bumpy009.html#___sec19" style="font-size: 80%;"><b>Visual exploration</b></a></li>
-     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec20" style="font-size: 80%;"><b>Software engineering</b></a></li>
-     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Testing</a></li>
-     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec22" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installation</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy002.html#___sec1" style="font-size: 80%;">A scientific application</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec10" style="font-size: 80%;">User input</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy009.html#___sec13" style="font-size: 80%;">Visual exploration</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy009.html#___sec14" style="font-size: 80%;">Advanced topics</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy009.html#app:motivation" style="font-size: 80%;">Appendix: Quick motivation for programming with Python</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy009.html#app:resources" style="font-size: 80%;">Appendix: Scientific Python resources</a></li>
 
         </ul>
       </li>
@@ -126,8 +129,9 @@ MathJax.Hub.Config({
 <a name="part0003"></a>
 <!-- !split -->
 
-<h2 id="___sec9">Numerical model <a name="___sec9"></a></h2>
+<h2 id="___sec3">Numerical model <a name="___sec3"></a></h2>
 
+<p>
 The differential equation problem <a href="._bumpy002.html#mjx-eqn-1">(1)</a> can be solved
 by introducing finite difference approximations for \( u'' \) and \( u' \).
 In case of quadratic damping one can use a geometric mean to approximate
@@ -165,15 +169,16 @@ $$
 For quadratic damping we have a slightly different formula,
 
 $$
-\begin{equation}
-u^{n+1} = \left( m + b|u^n-u^{n-1}|\right)^{-1}
-\left(2m u^n - mu^{n-1} + bu^n|u^n-u^{n-1}| + \Delta t^2 (F^n - s(u^n))
+\begin{align}
+u^{n+1} = & \left( m + b|u^n-u^{n-1}|\right)^{-1}\times\nonumber\\
+&\quad \left(2m u^n - mu^{n-1} + bu^n|u^n-u^{n-1}| + \Delta t^2 (F^n - s(u^n))
 \right),
 \tag{4}
-\end{equation}
+\end{align}
 $$
 
 and again a special formula for \( u^1 \):
+
 $$
 \begin{equation}
 u^1 = u^0 + \Delta t V + \frac{\Delta t^2}{2m}\left(-bV|V| - s(u^0) + F^0\right)
@@ -208,7 +213,6 @@ restoring force <code>s(u)</code>, environmental forces <code>F</code> as an arr
   <li><a href="._bumpy007.html">8</a></li>
   <li><a href="._bumpy008.html">9</a></li>
   <li><a href="._bumpy009.html">10</a></li>
-  <li><a href="._bumpy010.html">11</a></li>
   <li><a href="._bumpy004.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->

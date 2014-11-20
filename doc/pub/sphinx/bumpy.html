@@ -15,7 +15,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -27,8 +27,26 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/sidebar.js"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
     <link rel="top" title="A Worked Example on Scientific Computing with Python" href="index.html" />
-    <link rel="prev" title="A Worked Example on Scientific Computing with Python" href="index.html" /> 
+    <link rel="prev" title="A Worked Example on Scientific Computing with Python" href="index.html" />
+ 
   
    <style type="text/css">
      div.admonition {
@@ -63,9 +81,9 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen # (hpl at simula.no)</td>
+<tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen (hpl at simula.no)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Sep 8, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Nov 20, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -74,9 +92,9 @@
 <p>This worked example</p>
 <blockquote class="last">
 <div><ul class="simple">
-<li>fetches data file from a web site,</li>
+<li>fetches a data file from a web site,</li>
 <li>applies that file as input data for a differential equation modeling a vibrating system,</li>
-<li>solves the equation,</li>
+<li>solves the equation by a finite difference method,</li>
 <li>visualizes various properties of the solution and the input data.</li>
 </ul>
 </div></blockquote>
@@ -84,17 +102,19 @@
 <p>The following programming topics are illustrated:</p>
 <blockquote>
 <div><ul class="simple">
-<li>downloading files from a web site,</li>
-<li>working with <tt class="docutils literal"><span class="pre">numpy</span></tt> arrays,</li>
+<li>basic Python constructs: variables, loops, if-tests, arrays, functions</li>
 <li>flexible storage of objects in lists,</li>
-<li>easy storage of objects in files (persistence),</li>
+<li>storage of objects in files (persistence),</li>
+<li>downloading files from the web,</li>
+<li>user input via the command line</li>
 <li>signal processing and FFT,</li>
-<li>curve plotting of data.</li>
+<li>curve plotting of data,</li>
+<li>testing.</li>
 </ul>
 </div></blockquote>
 <p>All files can be forked at <a class="reference external" href="https://github.com/hplgit/bumpy">https://github.com/hplgit/bumpy</a>.</p>
-<div class="section" id="optimal-backround">
-<h2>Optimal backround<a class="headerlink" href="#optimal-backround" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="optimal-backround-for-reading-this-note">
+<h2>Optimal backround for reading this note<a class="headerlink" href="#optimal-backround-for-reading-this-note" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>some interest in exploring physics through numerical simulation</li>
@@ -105,96 +125,14 @@
 </div></blockquote>
 <div class="admonition-notice admonition">
 <p class="first admonition-title">Notice</p>
-<p class="last"><em>No background in Python is assumed - the aim is to give an impression of
+<p class="last">No background in Python is assumed - the aim is to give an impression of
 how Python can be used in a MATLAB-like fashion to solve a real-world
-physical problem (with low mathematical complexity).</em></p>
+physical problem (with low mathematical complexity).</p>
 </div>
-</div>
-<div class="section" id="quick-motivation-for-programming-with-python">
-<h2>Quick motivation for programming with Python<a class="headerlink" href="#quick-motivation-for-programming-with-python" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference external" href="http://www.pyzo.org/whypython.html">Why Python?</a></li>
-<li><a class="reference external" href="http://fperez.org/py4science/warts.html">Why Python for Scientific Computing?</a></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="full-tutorials-on-scientific-programming-with-python">
-<h2>Full tutorials on scientific programming with Python<a class="headerlink" href="#full-tutorials-on-scientific-programming-with-python" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference external" href="http://scipy-lectures.github.com/">Python Scientific Lecture Notes</a> (from EuroSciPy tutorials, based on <a class="reference external" href="http://web.phys.ntnu.no/~ingves/Teaching/TFY4240/Assignments/PythonScientific.pdf">Python Scientific</a>)</li>
-<li><a class="reference external" href="https://github.com/jrjohansson/scientific-python-lectures">Scientific Python Lectures as IPython notebooks</a></li>
-<li><a class="reference external" href="https://github.com/stefanv/teaching">Stefan van der Walt&#8217;s lectures</a></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="numpy-resources">
-<h2>NumPy resources<a class="headerlink" href="#numpy-resources" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference external" href="http://www.scipy.org/Tentative_NumPy_Tutorial">NumPy Tutorial</a></li>
-<li><a class="reference external" href="http://docs.scipy.org/doc/numpy/user/">NumPy User Guide</a></li>
-<li><a class="reference external" href="https://github.com/pv/advanced-numpy-tutorial">Advanced NumPy Tutorial</a></li>
-<li><a class="reference external" href="http://scipy2010.blogspot.com/2010/06/tutorials-day-1-advanced-numpy.html">Advanced NumPy Course</a></li>
-<li><a class="reference external" href="http://www.scipy.org/Numpy_Example_List">NumPy Example List</a></li>
-<li><a class="reference external" href="http://mentat.za.net/numpy/numpy_advanced_slides/">NumPy Medkit</a></li>
-<li><a class="reference external" href="http://www.scipy.org/Cookbook">NumPy and SciPy Cookbook</a></li>
-<li><a class="reference external" href="http://www.scipy.org/NumPy_for_Matlab_Users">NumPy for Matlab Users</a></li>
-<li><a class="reference external" href="http://mathesaurus.sf.net">NumPy for Matlab/R/IDL Users</a></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="useful-resources">
-<h2>Useful resources<a class="headerlink" href="#useful-resources" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference external" href="http://www.astropython.org/">AstroPython</a></li>
-<li><a class="reference external" href="http://www.youtube.com/watch?feature=player_embedded&amp;v=F4rFuIb1Ie4">Talk on IPython by Fernando Perez</a></li>
-<li><a class="reference external" href="http://fperez.org/py4science/starter_kit.html">Useful software in the Scientific Python Ecosystem</a></li>
-<li><a class="reference external" href="http://ipython.scipy.org/doc/manual/html">IPython</a></li>
-<li><a class="reference external" href="http://code.google.com/p/pythonxy/wiki/Welcome">Python(x,y)</a></li>
-<li><a class="reference external" href="http://www.yourmachines.org/tutorials/mgpy.html">Basic Motion Graphics with Python</a></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="some-relevant-python-books">
-<h2>Some relevant Python books<a class="headerlink" href="#some-relevant-python-books" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference external" href="http://www.greenteapress.com/thinkpython/">Think Python</a></li>
-<li><a class="reference external" href="http://learnpythonthehardway.org/book/">Learn Python The Hard Way</a></li>
-<li><a class="reference external" href="http://diveintopython.org/toc/index.html">Dive Into Python</a></li>
-<li><a class="reference external" href="http://www.freenetpages.co.uk/hp/alan.gauld/">Think Like a Computer Scientist</a></li>
-<li><a class="reference external" href="http://femhub.com/textbook-python/python_en.pdf/">Introduction to Python Programming</a> (for scientists)</li>
-<li><a class="reference external" href="http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642183654/ref=sr_1_2?ie=UTF8&amp;qid=1354752885&amp;sr=8-2&amp;keywords=langtangen">A Primer on Scientific Programming with Python</a><ul>
-<li>Gerard Gorman has made associated <a class="reference external" href="http://ggorman.github.io/Introduction-to-programming-for-geoscientists/">IPython notebooks</a> for teaching</li>
-<li>Traditional beamer <a class="reference external" href="http://www.ifi.uio.no|nbsp|inf1100/foiler">slides</a> are also available</li>
-</ul>
-</li>
-<li><a class="reference external" href="http://www.amazon.com/Python-Scripting-Computational-Science-Engineering/dp/3642093159/ref=sr_1_1?ie=UTF8&amp;qid=1354752885&amp;sr=8-1&amp;keywords=langtangen">Python Scripting for Computational Science</a></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="course-material-on-python-programming-in-general">
-<h2>Course material on Python programming in general<a class="headerlink" href="#course-material-on-python-programming-in-general" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference external" href="http://docs.python.org/2/tutorial/">The Official Python Tutorial</a></li>
-<li><a class="reference external" href="http://www.tutorialspoint.com/python/">Python Tutorial on tutorialspoint.com</a></li>
-<li><a class="reference external" href="http://www.learnpython.org/">Interactive Python tutorial site</a></li>
-<li><a class="reference external" href="http://en.wikibooks.org/wiki/A_Beginner's_Python_Tutorial">A Beginner&#8217;s Python Tutorial on wikibooks.org</a></li>
-<li><a class="reference external" href="http://en.wikibooks.org/wiki/Python_Programming/">Python Programming on wikibooks.org</a></li>
-<li><a class="reference external" href="http://en.wikibooks.org/wiki/Non-Programmer's_Tutorial_for_Python_2.6">Non-Programmer&#8217;s Tutorial for Python on wikibooks.org</a></li>
-<li><a class="reference external" href="http://www.pythonforbeginners.com/">Python For Beginners</a></li>
-<li><a class="reference external" href="http://intropython.org">Gentle Python introduction for high school</a> (with <a class="reference external" href="https://github.com/ehmatthes/intro_programming">associated IPython notebooks</a>)</li>
-<li><a class="reference external" href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-189-a-gentle-introduction-to-programming-using-python-january-iap-2008/">A Gentle Introduction to Programming Using Python</a> (MIT OpenCourseWare)</li>
-<li><a class="reference external" href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/">Introduction to Computer Science and Programming</a> (MIT OpenCourseWare with videos)</li>
-<li><a class="reference external" href="http://www.catonmat.net/blog/learning-python-programming-language-through-video-lectures/">Learning Python Programming Language Through Video Lectures</a></li>
-<li><a class="reference external" href="http://www.learnerstv.com/Free-Computers-Video-lectures-ltv163-Page1.htm">Python Programming Tutorials Video Lecture Course</a> (Learners TV)</li>
-<li><a class="reference external" href="http://showmedo.com/videotutorials/python">Python Videos, Tutorials and Screencasts</a></li>
-</ul>
-</div></blockquote>
+<p>If you need motivation for using Python as programming language,
+see Appendix <a class="reference internal" href="#app-motivation"><em>Appendix: Quick motivation for programming with Python</em></a>. Lists of many useful tutorials
+and introductions to Python, with emphasis on scientific computing,
+are found in Appendix <a class="reference internal" href="#app-resources"><em>Appendix: Scientific Python resources</em></a>.</p>
 <div class="section" id="a-scientific-application">
 <h3>A scientific application<a class="headerlink" href="#a-scientific-application" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="physical-problem-and-mathematical-model">
@@ -235,7 +173,7 @@ spring constant <span class="math">\(k\)</span>. The unknown <span class="math">
 of the vehicle relative to the road. Figure <a class="reference internal" href="#bumpy-fig1"><em>Vehicle on a bumpy road</em></a>
 illustrates the situation.</p>
 <div class="figure" id="bumpy-fig1">
-<img alt="_images/vehicle2.png" src="_images/vehicle2.png" style="width: 600px;" />
+<a class="reference internal image-reference" href="_images/vehicle2.png"><img alt="_images/vehicle2.png" src="_images/vehicle2.png" style="width: 600px;" /></a>
 <p class="caption"><em>Vehicle on a bumpy road</em></p>
 </div>
 <p>Another example regards the vertical shaking of a building due to
@@ -274,9 +212,10 @@ must be applied for <span class="math">\(n=0\)</span>:</p>
      + \frac{\Delta t^2}{2m}(-bV - s(u^0) + F^0)
      \thinspace .\]</div>
 <p>For quadratic damping we have a slightly different formula,</p>
+<div class="math">
+\[u^{n+1} =  \left( m + b|u^n-u^{n-1}|\right)^{-1}\times\nonumber\]</div>
 <div class="math" id="equation-bumpy:u:scheme:quad">
-<span class="eqno">(4)</span>\[     u^{n+1} = \left( m + b|u^n-u^{n-1}|\right)^{-1}
-     \left(2m u^n - mu^{n-1} + bu^n|u^n-u^{n-1}| + \Delta t^2 (F^n - s(u^n))
+<span class="eqno">(4)</span>\[     \quad \left(2m u^n - mu^{n-1} + bu^n|u^n-u^{n-1}| + \Delta t^2 (F^n - s(u^n))
      \right),\]</div>
 <p>and again a special formula for <span class="math">\(u^1\)</span>:</p>
 <div class="math" id="equation-bumpy:u:scheme0:quad">
@@ -348,7 +287,7 @@ is then ignored by Python.</p>
 above is a function object, transferred to the function as any other
 object, and called as any other function. Transferring a function as
 argument to another function is therefore simpler and cleaner in Python
-than in, e.g., C, C++, Java, and C#.</p>
+than in, e.g., C, C++, Java, C#, and MATLAB.</p>
 <p>How can we use the <tt class="docutils literal"><span class="pre">solver_linear_damping</span></tt> function? We need to <em>call</em> it
 with relevant values for the arguments. Suppose we want to solve
 a vibration problem with <span class="math">\(I=1\)</span>, <span class="math">\(V=0\)</span>,
@@ -391,7 +330,7 @@ computed curve makes use of the <tt class="docutils literal"><span class="pre">m
 its <tt class="docutils literal"><span class="pre">plot</span></tt>, <tt class="docutils literal"><span class="pre">savefig</span></tt>, and <tt class="docutils literal"><span class="pre">show</span></tt> functions. Figure <a class="reference internal" href="#bumpy-fig0"><em>Plot of computed curve</em></a>
 shows the result.</p>
 <div class="figure" id="bumpy-fig0">
-<img alt="_images/solver_linear_damping.png" src="_images/solver_linear_damping.png" style="width: 500px;" />
+<a class="reference internal image-reference" href="_images/solver_linear_damping.png"><img alt="_images/solver_linear_damping.png" src="_images/solver_linear_damping.png" style="width: 500px;" /></a>
 <p class="caption"><em>Plot of computed curve</em></p>
 </div>
 </div>
@@ -441,7 +380,7 @@ checks that variables have correct values or are of correct type.</p>
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">damping</span> <span class="o">==</span> <span class="s">&#39;linear&#39;</span><span class="p">:</span>
             <span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">dt</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span>
-                      <span class="n">dt</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">F</span><span class="p">([</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">s</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="p">])))</span><span class="o">/</span><span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">dt</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+                      <span class="n">dt</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">F</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">s</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="p">])))</span><span class="o">/</span><span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">dt</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">damping</span> <span class="o">==</span> <span class="s">&#39;quadratic&#39;</span><span class="p">:</span>
             <span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
                       <span class="o">-</span> <span class="n">dt</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="o">-</span> <span class="n">F</span><span class="p">[</span><span class="n">n</span><span class="p">]))</span><span class="o">/</span>\
@@ -786,10 +725,9 @@ the program, e.g., in the call to the <tt class="docutils literal"><span class="
 demonstrated above. However, most users will find it more
 convenient to set parameters through a user interface rather
 than editing the source code directly.</p>
-<p>[<strong>hpl 1</strong>: haven&#8217;t read the following yet...]</p>
 <div class="section" id="positional-command-line-arguments">
 <h4>Positional command-line arguments<a class="headerlink" href="#positional-command-line-arguments" title="Permalink to this headline">¶</a></h4>
-<p>The simplest, and often also the most effective, type of
+<p>The simplest, and often also the most effective type of
 user interface is to use the command line. Suppose <span class="math">\(m\)</span>, <span class="math">\(k\)</span>,
 and <span class="math">\(v\)</span>, as well as the URL or filename for the road shapes,
 are fixed parameters and that the user is allowed to vary
@@ -922,7 +860,7 @@ the <tt class="docutils literal"><span class="pre">True</span></tt> elements in 
 </div>
 <p>Figure <a class="reference internal" href="#bumpy-fig3"><em>Root mean square of displacement</em></a> shows the result.</p>
 <div class="figure" id="bumpy-fig3">
-<img alt="_images/u_rms.png" src="_images/u_rms.png" style="width: 600px;" />
+<a class="reference internal image-reference" href="_images/u_rms.png"><img alt="_images/u_rms.png" src="_images/u_rms.png" style="width: 600px;" /></a>
 <p class="caption"><em>Root mean square of displacement</em></p>
 </div>
 <p>The spectrum of a <span class="math">\(u(t)\)</span> function (represented through the arrays <tt class="docutils literal"><span class="pre">u</span></tt>
@@ -960,7 +898,7 @@ array <tt class="docutils literal"><span class="pre">indices</span></tt>.</p>
 <p>Figure <a class="reference internal" href="#bumpy-fig2"><em>Spectrum of displacement</em></a> shows the amplitudes and that the
 dominating frequency is 1 Hz.</p>
 <div class="figure" id="bumpy-fig2">
-<img alt="_images/u_spectrum.png" src="_images/u_spectrum.png" style="width: 600px;" />
+<a class="reference internal image-reference" href="_images/u_spectrum.png"><img alt="_images/u_spectrum.png" src="_images/u_spectrum.png" style="width: 600px;" /></a>
 <p class="caption"><em>Spectrum of displacement</em></p>
 </div>
 <p>Finally, we can run through all the 3-lists <tt class="docutils literal"><span class="pre">[h,</span> <span class="pre">a,</span> <span class="pre">u]</span></tt> and plot
@@ -993,15 +931,15 @@ these arrays:</p>
 </pre></div>
 </div>
 <div class="figure" id="bumpy-fig4">
-<img alt="_images/hau0.png" src="_images/hau0.png" style="width: 700px;" />
+<a class="reference internal image-reference" href="_images/hau0.png"><img alt="_images/hau0.png" src="_images/hau0.png" style="width: 700px;" /></a>
 <p class="caption"><em>First realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations</em></p>
 </div>
 <div class="figure" id="bumpy-fig5">
-<img alt="_images/hau1.png" src="_images/hau1.png" style="width: 700px;" />
+<a class="reference internal image-reference" href="_images/hau1.png"><img alt="_images/hau1.png" src="_images/hau1.png" style="width: 700px;" /></a>
 <p class="caption"><em>Second realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations</em></p>
 </div>
 <div class="figure" id="bumpy-fig6">
-<img alt="_images/hau2.png" src="_images/hau2.png" style="width: 700px;" />
+<a class="reference internal image-reference" href="_images/hau2.png"><img alt="_images/hau2.png" src="_images/hau2.png" style="width: 700px;" /></a>
 <p class="caption"><em>Third realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations</em></p>
 </div>
 <p>If all the plot commands above are placed in a file, as in
@@ -1010,46 +948,106 @@ plots on the screen. On the other hand, the commands are usually
 more conveniently performed in an interactive Python shell, preferably
 IPython.</p>
 </div>
-<div class="section" id="software-engineering">
-<h3>Software engineering<a class="headerlink" href="#software-engineering" title="Permalink to this headline">¶</a></h3>
-<p>Just sketchy at the moment...</p>
-<div class="section" id="testing">
-<h4>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div><ul class="simple">
-<li>Unit tests via nose and pytest</li>
-<li>Subdirectory <tt class="docutils literal"><span class="pre">tests</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">test*.py</span></tt> files</li>
-</ul>
-</div></blockquote>
-<p>Sympy:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sympy</span> <span class="kn">as</span> <span class="nn">sm</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s">&#39;t&#39;</span><span class="p">)</span>
-<span class="n">q</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c"># arbitrary constant</span>
-<span class="n">u_exact</span> <span class="o">=</span> <span class="n">I</span> <span class="o">+</span> <span class="n">V</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="n">q</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span>   <span class="c"># sympy expression</span>
-
-<span class="c"># Compute left-hand side of differential equation symbolically</span>
-<span class="n">m</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">0.9</span><span class="p">;</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">s</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">u</span><span class="p">:</span> <span class="n">k</span><span class="o">*</span><span class="n">u</span>
-<span class="n">expr</span> <span class="o">=</span> <span class="n">m</span><span class="o">*</span><span class="n">sm</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">u_exact</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">sm</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">u_exact</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span> \
-       <span class="n">s</span><span class="p">(</span><span class="n">u_exact</span><span class="p">)</span>  <span class="c"># linear damping</span>
-<span class="c"># Turn expr into a Python function</span>
-<span class="n">F</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">expr</span><span class="p">)</span>
-
-<span class="c"># Solve differential equation with this F</span>
-<span class="n">I</span> <span class="o">=</span> <span class="mf">1.2</span><span class="p">;</span> <span class="n">V</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">dt</span> <span class="o">=</span> <span class="mf">0.2</span>
-<span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">T</span><span class="o">/</span><span class="n">dt</span><span class="p">))</span>
-<span class="n">time_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">u1</span><span class="p">,</span> <span class="n">t1</span> <span class="o">=</span> <span class="n">solver</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">time_points</span><span class="p">,</span> <span class="s">&#39;linear&#39;</span><span class="p">)</span>
-
-<span class="c"># Error</span>
-<span class="n">exact_solution</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u_exact</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="s">&#39;numpy&#39;</span><span class="p">)</span>
-<span class="n">error</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">exact_solution</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="o">-</span> <span class="n">u1</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<div class="section" id="advanced-topics">
+<h3>Advanced topics<a class="headerlink" href="#advanced-topics" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="symbolic-computing-via-sympy">
+<h4>Symbolic computing via SymPy<a class="headerlink" href="#symbolic-computing-via-sympy" title="Permalink to this headline">¶</a></h4>
+<p>Python has a package SymPy that offers symbolic computing. Here is
+a simple introductory example where we differentiate a quadratic
+polynomial, integrate it again, and find the roots:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sympy</span> <span class="kn">as</span> <span class="nn">sp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s">&#39;x a&#39;</span><span class="p">)</span>        <span class="c"># Define mathematical symbols</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Q</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>                  <span class="c"># Quadratic function</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dQdx</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>            <span class="c"># Differentiate wrt x</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dQdx</span>
+<span class="go">2*a*x</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Q2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">dQdx</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>      <span class="c"># Integrate (no constant)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Q2</span>
+<span class="go">a*x**2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Q2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span> <span class="c"># Definite integral</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Q2</span>
+<span class="go">a**4/3 - a</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">roots</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>          <span class="c"># Solve Q = 0 wrt x</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">roots</span>
+<span class="go">[-sqrt(1/a), sqrt(1/a)]</span>
 </pre></div>
 </div>
-<p>Wrapped in nose test:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">test_quadratic</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Verify a quadratic solution.&quot;&quot;&quot;</span>
+<p>One can easily convert a SymPy expression like <tt class="docutils literal"><span class="pre">Q</span></tt> into
+a Python function <tt class="docutils literal"><span class="pre">Q(x,</span> <span class="pre">a)</span></tt> to be used for further numerical
+computing:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Q</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">],</span> <span class="n">Q</span><span class="p">)</span>      <span class="c"># Turn Q into Py func.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Q</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>                     <span class="c"># 3*2**2 - 1 = 11</span>
+<span class="go">11</span>
+</pre></div>
+</div>
+<p>Sympy can do a lot of other things. Here is an example on
+computing the Taylor series of <span class="math">\(e^{-x}\sin(rx)\)</span>, where <span class="math">\(r\)</span>
+is the smallest root of <span class="math">\(Q=ax^2-1=0\)</span> as computed above:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">roots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">series</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">-x*sqrt(1/a) + x**3*(-a**2*sqrt(1/a)/2 + (1/a)**(3/2)/6) +</span>
+<span class="go">a*x**2*sqrt(1/a) + O(x**4)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="testing">
+<h4>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h4>
+<p>Software testing in Python is best done with a <em>unit test framework</em>
+such as <tt class="docutils literal"><span class="pre">nose</span></tt> or <tt class="docutils literal"><span class="pre">pytest</span></tt>. These frameworks can automatically
+run all functions starting with <tt class="docutils literal"><span class="pre">test_</span></tt> recursively in files in a
+directory tree. Each <tt class="docutils literal"><span class="pre">test_*</span></tt> function is called a <em>test function</em>
+and must take no arguments and apply <tt class="docutils literal"><span class="pre">assert</span></tt> to a boolean expression
+that is <tt class="docutils literal"><span class="pre">True</span></tt> if the test passes and <tt class="docutils literal"><span class="pre">False</span></tt> if it fails.</p>
+</div>
+</div>
+</div>
+<div class="section" id="example-on-a-test-function">
+<h2>Example on a test function<a class="headerlink" href="#example-on-a-test-function" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">halve</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return half of x.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">/</span><span class="mf">2.0</span>
+
+<span class="k">def</span> <span class="nf">test_halve</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">expected</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">computed</span> <span class="o">=</span> <span class="n">halve</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="c"># Compare real numbers using tolerance</span>
+    <span class="n">tol</span> <span class="o">=</span> <span class="mf">1E-14</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">computed</span> <span class="o">-</span> <span class="n">expected</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">diff</span> <span class="o">&lt;</span> <span class="n">tol</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="test-function-for-the-numerical-solver">
+<h2>Test function for the numerical solver<a class="headerlink" href="#test-function-for-the-numerical-solver" title="Permalink to this headline">¶</a></h2>
+<p>A frequently used technique to test differential equation solvers
+is to just specify a solution and fit a source term in the differential
+equation such that the specified solution solves the equation.
+The initial conditions must be set according to the specified
+solution. This technique is known as the <em>method of manufactured
+solutions</em>.</p>
+<p>Here we shall specify a solution that is quadratic or linear
+in <span class="math">\(t\)</span> because
+such lower-order polynomials will often be an exact solution of both
+the differential equation <em>and</em> the finite difference equations.
+This means that the polynomial should be reproduced to machine
+precision by our <tt class="docutils literal"><span class="pre">solver</span></tt> function.</p>
+<p>We can use SymPy to find an appropriate <span class="math">\(F(t)\)</span> term in the
+differential equation such that a specified solution <span class="math">\(u(t)=I + Vt + qt^2\)</span>
+fits the equation and initial conditions. With quadratic damping,
+only a linear <span class="math">\(u\)</span> will solve the discrete equation so in this case
+we choose <span class="math">\(u=I+Vt\)</span>.</p>
+<p>We embed the SymPy calculations and the numerical calcuations
+in a <em>test function</em>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">lhs_eq</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">damping</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return lhs of differential equation as sympy expression.&quot;&quot;&quot;</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">b</span><span class="o">*</span><span class="n">v</span> <span class="k">if</span> <span class="n">damping</span> <span class="o">==</span> <span class="s">&#39;linear&#39;</span> <span class="k">else</span> <span class="n">b</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">sm</span><span class="o">.</span><span class="n">Abs</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">m</span><span class="o">*</span><span class="n">sm</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">d</span> <span class="o">+</span> <span class="n">s</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">test_solver</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Verify linear/quadratic solution.&quot;&quot;&quot;</span>
+    <span class="c"># Set input data for the test</span>
     <span class="n">I</span> <span class="o">=</span> <span class="mf">1.2</span><span class="p">;</span> <span class="n">V</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">0.9</span><span class="p">;</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">4</span>
     <span class="n">s</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">u</span><span class="p">:</span> <span class="n">k</span><span class="o">*</span><span class="n">u</span>
     <span class="n">T</span> <span class="o">=</span> <span class="mi">2</span>
@@ -1061,28 +1059,115 @@ IPython.</p>
     <span class="n">t</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s">&#39;t&#39;</span><span class="p">)</span>
     <span class="n">q</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c"># arbitrary constant</span>
     <span class="n">u_exact</span> <span class="o">=</span> <span class="n">I</span> <span class="o">+</span> <span class="n">V</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="n">q</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span>   <span class="c"># sympy expression</span>
-    <span class="n">exact_solution</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u_exact</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="s">&#39;numpy&#39;</span><span class="p">)</span>
-    <span class="n">F</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">lhs_eq</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">u_exact</span><span class="p">,</span> <span class="s">&#39;linear&#39;</span><span class="p">))</span>
-    <span class="n">u1</span><span class="p">,</span> <span class="n">t1</span> <span class="o">=</span> <span class="n">solver</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">time_points</span><span class="p">,</span> <span class="s">&#39;linear&#39;</span><span class="p">)</span>
-    <span class="n">error</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">exact_solution</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="o">-</span> <span class="n">u1</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-    <span class="n">nt</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">places</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+    <span class="n">F_term</span> <span class="o">=</span> <span class="n">lhs_eq</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">u_exact</span><span class="p">,</span> <span class="s">&#39;linear&#39;</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&#39;Fitted source term, linear case:&#39;</span><span class="p">,</span> <span class="n">F_term</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">lambdify</span><span class="p">([</span><span class="n">t</span><span class="p">],</span> <span class="n">F_term</span><span class="p">)</span>
+    <span class="n">u</span><span class="p">,</span> <span class="n">t_</span> <span class="o">=</span> <span class="n">solver</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">time_points</span><span class="p">,</span> <span class="s">&#39;linear&#39;</span><span class="p">)</span>
+    <span class="n">u_e</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">lambdify</span><span class="p">([</span><span class="n">t</span><span class="p">],</span> <span class="n">u_exact</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="s">&#39;numpy&#39;</span><span class="p">)</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">u_e</span><span class="p">(</span><span class="n">t_</span><span class="p">)</span> <span class="o">-</span> <span class="n">u</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">tol</span> <span class="o">=</span> <span class="mf">1E-13</span>
+    <span class="k">assert</span> <span class="n">error</span> <span class="o">&lt;</span> <span class="n">tol</span>
 
     <span class="c"># Test quadratic damping: u_exact must be linear</span>
-    <span class="c"># in order exactly recover this solution</span>
     <span class="n">u_exact</span> <span class="o">=</span> <span class="n">I</span> <span class="o">+</span> <span class="n">V</span><span class="o">*</span><span class="n">t</span>
-    <span class="n">exact_solution</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u_exact</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="s">&#39;numpy&#39;</span><span class="p">)</span>
-    <span class="n">F</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">lhs_eq</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">u_exact</span><span class="p">,</span> <span class="s">&#39;quadratic&#39;</span><span class="p">))</span>
-    <span class="n">u2</span><span class="p">,</span> <span class="n">t2</span> <span class="o">=</span> <span class="n">solver</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">time_points</span><span class="p">,</span> <span class="s">&#39;quadratic&#39;</span><span class="p">)</span>
-    <span class="n">error</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">exact_solution</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span> <span class="o">-</span> <span class="n">u2</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-    <span class="n">nt</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">places</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+    <span class="n">F_term</span> <span class="o">=</span> <span class="n">lhs_eq</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">u_exact</span><span class="p">,</span> <span class="s">&#39;quadratic&#39;</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&#39;Fitted source term, quadratic case:&#39;</span><span class="p">,</span> <span class="n">F_term</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">lambdify</span><span class="p">([</span><span class="n">t</span><span class="p">],</span> <span class="n">F_term</span><span class="p">)</span>
+    <span class="n">u</span><span class="p">,</span> <span class="n">t_</span> <span class="o">=</span> <span class="n">solver</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">time_points</span><span class="p">,</span> <span class="s">&#39;quadratic&#39;</span><span class="p">)</span>
+    <span class="n">u_e</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">lambdify</span><span class="p">([</span><span class="n">t</span><span class="p">],</span> <span class="n">u_exact</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="s">&#39;numpy&#39;</span><span class="p">)</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">u_e</span><span class="p">(</span><span class="n">t_</span><span class="p">)</span> <span class="o">-</span> <span class="n">u</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">error</span> <span class="o">&lt;</span> <span class="n">tol</span>
 </pre></div>
 </div>
+<div class="section" id="appendix-quick-motivation-for-programming-with-python">
+<span id="app-motivation"></span><h3>Appendix: Quick motivation for programming with Python<a class="headerlink" href="#appendix-quick-motivation-for-programming-with-python" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://www.pyzo.org/whypython.html">Why Python?</a></li>
+<li><a class="reference external" href="http://fperez.org/py4science/warts.html">Why Python for Scientific Computing?</a></li>
+</ul>
+</div></blockquote>
 </div>
-<div class="section" id="installation">
-<h4>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h4>
-<p>Install the <tt class="docutils literal"><span class="pre">solver</span></tt> module using a very simple <tt class="docutils literal"><span class="pre">setup.py</span></tt> script.</p>
+<div class="section" id="appendix-scientific-python-resources">
+<span id="app-resources"></span><h3>Appendix: Scientific Python resources<a class="headerlink" href="#appendix-scientific-python-resources" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
+<div class="section" id="full-tutorials-on-scientific-programming-with-python">
+<h2>Full tutorials on scientific programming with Python<a class="headerlink" href="#full-tutorials-on-scientific-programming-with-python" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://scipy-lectures.github.com/">Python Scientific Lecture Notes</a> (from EuroSciPy tutorials, based on <a class="reference external" href="http://web.phys.ntnu.no/~ingves/Teaching/TFY4240/Assignments/PythonScientific.pdf">Python Scientific</a>)</li>
+<li><a class="reference external" href="https://github.com/jrjohansson/scientific-python-lectures">Scientific Python Lectures as IPython notebooks</a></li>
+<li><a class="reference external" href="https://github.com/stefanv/teaching">Stefan van der Walt&#8217;s lectures</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="numpy-resources">
+<h2>NumPy resources<a class="headerlink" href="#numpy-resources" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://www.scipy.org/Tentative_NumPy_Tutorial">NumPy Tutorial</a></li>
+<li><a class="reference external" href="http://docs.scipy.org/doc/numpy/user/">NumPy User Guide</a></li>
+<li><a class="reference external" href="https://github.com/pv/advanced-numpy-tutorial">Advanced NumPy Tutorial</a></li>
+<li><a class="reference external" href="http://scipy2010.blogspot.com/2010/06/tutorials-day-1-advanced-numpy.html">Advanced NumPy Course</a></li>
+<li><a class="reference external" href="http://www.scipy.org/Numpy_Example_List">NumPy Example List</a></li>
+<li><a class="reference external" href="http://mentat.za.net/numpy/numpy_advanced_slides/">NumPy Medkit</a></li>
+<li><a class="reference external" href="http://www.scipy.org/Cookbook">NumPy and SciPy Cookbook</a></li>
+<li><a class="reference external" href="http://www.scipy.org/NumPy_for_Matlab_Users">NumPy for Matlab Users</a></li>
+<li><a class="reference external" href="http://mathesaurus.sf.net">NumPy for Matlab/R/IDL Users</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="useful-resources">
+<h2>Useful resources<a class="headerlink" href="#useful-resources" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://www.astropython.org/">AstroPython</a></li>
+<li><a class="reference external" href="http://www.youtube.com/watch?feature=player_embedded&amp;v=F4rFuIb1Ie4">Talk on IPython by Fernando Perez</a></li>
+<li><a class="reference external" href="http://fperez.org/py4science/starter_kit.html">Useful software in the Scientific Python Ecosystem</a></li>
+<li><a class="reference external" href="http://ipython.scipy.org/doc/manual/html">IPython</a></li>
+<li><a class="reference external" href="http://code.google.com/p/pythonxy/wiki/Welcome">Python(x,y)</a></li>
+<li><a class="reference external" href="http://www.yourmachines.org/tutorials/mgpy.html">Basic Motion Graphics with Python</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="some-relevant-python-books">
+<h2>Some relevant Python books<a class="headerlink" href="#some-relevant-python-books" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://www.greenteapress.com/thinkpython/">Think Python</a></li>
+<li><a class="reference external" href="http://learnpythonthehardway.org/book/">Learn Python The Hard Way</a></li>
+<li><a class="reference external" href="http://diveintopython.org/toc/index.html">Dive Into Python</a></li>
+<li><a class="reference external" href="http://www.freenetpages.co.uk/hp/alan.gauld/">Think Like a Computer Scientist</a></li>
+<li><a class="reference external" href="http://femhub.com/textbook-python/python_en.pdf/">Introduction to Python Programming</a> (for scientists)</li>
+<li><a class="reference external" href="http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642183654/ref=sr_1_2?ie=UTF8&amp;qid=1354752885&amp;sr=8-2&amp;keywords=langtangen">A Primer on Scientific Programming with Python</a><ul>
+<li>Gerard Gorman has made associated <a class="reference external" href="http://ggorman.github.io/Introduction-to-programming-for-geoscientists/">IPython notebooks</a> for teaching</li>
+<li>Traditional beamer <a class="reference external" href="http://www.ifi.uio.no|nbsp|inf1100/foiler">slides</a> are also available</li>
+</ul>
+</li>
+<li><a class="reference external" href="http://www.amazon.com/Python-Scripting-Computational-Science-Engineering/dp/3642093159/ref=sr_1_1?ie=UTF8&amp;qid=1354752885&amp;sr=8-1&amp;keywords=langtangen">Python Scripting for Computational Science</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="course-material-on-python-programming-in-general">
+<h2>Course material on Python programming in general<a class="headerlink" href="#course-material-on-python-programming-in-general" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://docs.python.org/2/tutorial/">The Official Python Tutorial</a></li>
+<li><a class="reference external" href="http://www.tutorialspoint.com/python/">Python Tutorial on tutorialspoint.com</a></li>
+<li><a class="reference external" href="http://www.learnpython.org/">Interactive Python tutorial site</a></li>
+<li><a class="reference external" href="http://en.wikibooks.org/wiki/A_Beginner's_Python_Tutorial">A Beginner&#8217;s Python Tutorial on wikibooks.org</a></li>
+<li><a class="reference external" href="http://en.wikibooks.org/wiki/Python_Programming/">Python Programming on wikibooks.org</a></li>
+<li><a class="reference external" href="http://en.wikibooks.org/wiki/Non-Programmer's_Tutorial_for_Python_2.6">Non-Programmer&#8217;s Tutorial for Python on wikibooks.org</a></li>
+<li><a class="reference external" href="http://www.pythonforbeginners.com/">Python For Beginners</a></li>
+<li><a class="reference external" href="http://intropython.org">Gentle Python introduction for high school</a> (with <a class="reference external" href="https://github.com/ehmatthes/intro_programming">associated IPython notebooks</a>)</li>
+<li><a class="reference external" href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-189-a-gentle-introduction-to-programming-using-python-january-iap-2008/">A Gentle Introduction to Programming Using Python</a> (MIT OpenCourseWare)</li>
+<li><a class="reference external" href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/">Introduction to Computer Science and Programming</a> (MIT OpenCourseWare with videos)</li>
+<li><a class="reference external" href="http://www.catonmat.net/blog/learning-python-programming-language-through-video-lectures/">Learning Python Programming Language Through Video Lectures</a></li>
+<li><a class="reference external" href="http://www.learnerstv.com/Free-Computers-Video-lectures-ltv163-Page1.htm">Python Programming Tutorials Video Lecture Course</a> (Learners TV)</li>
+<li><a class="reference external" href="http://showmedo.com/videotutorials/python">Python Videos, Tutorials and Screencasts</a></li>
+</ul>
+</div></blockquote>
 </div>
 </div>
 
@@ -1100,13 +1185,7 @@ IPython.</p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">A worked example on scientific computing with Python</a><ul>
-<li><a class="reference internal" href="#optimal-backround">Optimal backround</a></li>
-<li><a class="reference internal" href="#quick-motivation-for-programming-with-python">Quick motivation for programming with Python</a></li>
-<li><a class="reference internal" href="#full-tutorials-on-scientific-programming-with-python">Full tutorials on scientific programming with Python</a></li>
-<li><a class="reference internal" href="#numpy-resources">NumPy resources</a></li>
-<li><a class="reference internal" href="#useful-resources">Useful resources</a></li>
-<li><a class="reference internal" href="#some-relevant-python-books">Some relevant Python books</a></li>
-<li><a class="reference internal" href="#course-material-on-python-programming-in-general">Course material on Python programming in general</a><ul>
+<li><a class="reference internal" href="#optimal-backround-for-reading-this-note">Optimal backround for reading this note</a><ul>
 <li><a class="reference internal" href="#a-scientific-application">A scientific application</a><ul>
 <li><a class="reference internal" href="#physical-problem-and-mathematical-model">Physical problem and mathematical model</a></li>
 <li><a class="reference internal" href="#numerical-model">Numerical model</a></li>
@@ -1124,13 +1203,24 @@ IPython.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#visual-exploration">Visual exploration</a></li>
-<li><a class="reference internal" href="#software-engineering">Software engineering</a><ul>
+<li><a class="reference internal" href="#advanced-topics">Advanced topics</a><ul>
+<li><a class="reference internal" href="#symbolic-computing-via-sympy">Symbolic computing via SymPy</a></li>
 <li><a class="reference internal" href="#testing">Testing</a></li>
-<li><a class="reference internal" href="#installation">Installation</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li><a class="reference internal" href="#example-on-a-test-function">Example on a test function</a></li>
+<li><a class="reference internal" href="#test-function-for-the-numerical-solver">Test function for the numerical solver</a><ul>
+<li><a class="reference internal" href="#appendix-quick-motivation-for-programming-with-python">Appendix: Quick motivation for programming with Python</a></li>
+<li><a class="reference internal" href="#appendix-scientific-python-resources">Appendix: Scientific Python resources</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#full-tutorials-on-scientific-programming-with-python">Full tutorials on scientific programming with Python</a></li>
+<li><a class="reference internal" href="#numpy-resources">NumPy resources</a></li>
+<li><a class="reference internal" href="#useful-resources">Useful resources</a></li>
+<li><a class="reference internal" href="#some-relevant-python-books">Some relevant Python books</a></li>
+<li><a class="reference internal" href="#course-material-on-python-programming-in-general">Course material on Python programming in general</a></li>
 </ul>
 </li>
 </ul>

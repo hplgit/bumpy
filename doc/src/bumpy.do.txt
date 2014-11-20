@@ -20,7 +20,7 @@
 ## steel from this text to any book project
 
 TITLE: A worked example on scientific computing with Python
-AUTHOR: Hans Petter Langtangen #mail:hpl@simula.no at Simula Research Laboratory & University of Oslo
+AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Simula Research Laboratory & University of Oslo
 DATE: today
 
 # Make corresponding slides
@@ -31,25 +31,27 @@ DATE: today
 !bsummary Contents
 This worked example
 
-  * fetches data file from a web site,
+  * fetches a data file from a web site,
   * applies that file as input data for a differential equation modeling a vibrating system,
-  * solves the equation,
+  * solves the equation by a finite difference method,
   * visualizes various properties of the solution and the input data.
 !esummary
 
 The following programming topics are illustrated:
 
-  * downloading files from a web site,
-  * working with `numpy` arrays,
+  * basic Python constructs: variables, loops, if-tests, arrays, functions
   * flexible storage of objects in lists,
-  * easy storage of objects in files (persistence),
+  * storage of objects in files (persistence),
+  * downloading files from the web,
+  * user input via the command line
   * signal processing and FFT,
-  * curve plotting of data.
+  * curve plotting of data,
+  * testing.
 
 All files can be forked at URL: "https://github.com/hplgit/bumpy".
 
 !split
-=== Optimal backround ===
+=== Optimal backround for reading this note ===
 
   * some interest in exploring physics through numerical simulation
   * some very basic knowledge of differential equations
@@ -57,83 +59,16 @@ All files can be forked at URL: "https://github.com/hplgit/bumpy".
   * significant interest in exploring Python for scientific computations
 
 !bblock
-*No background in Python is assumed - the aim is to give an impression of
+No background in Python is assumed - the aim is to give an impression of
 how Python can be used in a MATLAB-like fashion to solve a real-world
-physical problem (with low mathematical complexity).*
+physical problem (with low mathematical complexity).
 !eblock
 
-# Comment on usefulness even for those without phys/math background,
-# but with extensive programming background: being a programmer
-# means divining into domains with a lot of details, yet being able
-# to program.
+If you need motivation for using Python as programming language,
+see Appendix ref{app:motivation}. Lists of many useful tutorials
+and introductions to Python, with emphasis on scientific computing,
+are found in Appendix ref{app:resources}.
 
-# Python Scientific are also in 5620/literature, some of those above
-# could be copied here
-
-=== Quick motivation for programming with Python ===
-
-  * "Why Python?": "http://www.pyzo.org/whypython.html"
-  * "Why Python for Scientific Computing?": "http://fperez.org/py4science/warts.html"
-
-=== Full tutorials on scientific programming with Python ===
-
-  * "Python Scientific Lecture Notes": "http://scipy-lectures.github.com/" (from EuroSciPy tutorials, based on "Python Scientific": "http://web.phys.ntnu.no/~ingves/Teaching/TFY4240/Assignments/PythonScientific.pdf")
-  * "Scientific Python Lectures as IPython notebooks": "https://github.com/jrjohansson/scientific-python-lectures"
-  * "Stefan van der Walt's lectures": "https://github.com/stefanv/teaching"
-
-=== NumPy resources ===
-
-  * "NumPy Tutorial": "http://www.scipy.org/Tentative_NumPy_Tutorial"
-  * "NumPy User Guide": "http://docs.scipy.org/doc/numpy/user/"
-  * "Advanced NumPy Tutorial": "https://github.com/pv/advanced-numpy-tutorial"
-  * "Advanced NumPy Course": "http://scipy2010.blogspot.com/2010/06/tutorials-day-1-advanced-numpy.html"
-  * "NumPy Example List": "http://www.scipy.org/Numpy_Example_List"
-  * "NumPy Medkit": "http://mentat.za.net/numpy/numpy_advanced_slides/"
-  * "NumPy and SciPy Cookbook": "http://www.scipy.org/Cookbook"
-  * "NumPy for Matlab Users": "http://www.scipy.org/NumPy_for_Matlab_Users"
-  * "NumPy for Matlab/R/IDL Users": "http://mathesaurus.sf.net"
-
-=== Useful resources ===
-
-  * "AstroPython": "http://www.astropython.org/"
-  * "Talk on IPython by Fernando Perez": "http://www.youtube.com/watch?feature=player_embedded&v=F4rFuIb1Ie4"
-  * "Useful software in the Scientific Python Ecosystem": "http://fperez.org/py4science/starter_kit.html"
-  * "IPython": "http://ipython.scipy.org/doc/manual/html"
-  * "Python(x,y)": "http://code.google.com/p/pythonxy/wiki/Welcome"
-  * "Basic Motion Graphics with Python": "http://www.yourmachines.org/tutorials/mgpy.html"
-
-#  This is now local in doc/literature since the link is broken: "Practical Scientific Computing with Python": "http://www.maths.lth.se/na/help/media/Practical_Scientific_Computing_with_Python.pdf"
-
-# Basic Motion Graphics with Python contains a lot about making movies
-# and animation - check it out
-
-=== Some relevant Python books ===
-
-  * "Think Python": "http://www.greenteapress.com/thinkpython/"
-  * "Learn Python The Hard Way": "http://learnpythonthehardway.org/book/"
-  * "Dive Into Python": "http://diveintopython.org/toc/index.html"
-  * "Think Like a Computer Scientist": "http://www.freenetpages.co.uk/hp/alan.gauld/"
-  * "Introduction to Python Programming": "http://femhub.com/textbook-python/python_en.pdf/" (for scientists)
-  * "A Primer on Scientific Programming with Python": "http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642183654/ref=sr_1_2?ie=UTF8&qid=1354752885&sr=8-2&keywords=langtangen"
-    * Gerard Gorman has made associated "IPython notebooks": "http://ggorman.github.io/Introduction-to-programming-for-geoscientists/" for teaching
-    * Traditional beamer "slides": "http://www.ifi.uio.no~inf1100/foiler" are also available
-  * "Python Scripting for Computational Science": "http://www.amazon.com/Python-Scripting-Computational-Science-Engineering/dp/3642093159/ref=sr_1_1?ie=UTF8&qid=1354752885&sr=8-1&keywords=langtangen"
-
-=== Course material on Python programming in general ===
-
-  * "The Official Python Tutorial": "http://docs.python.org/2/tutorial/"
-  * "Python Tutorial on tutorialspoint.com": "http://www.tutorialspoint.com/python/"
-  * "Interactive Python tutorial site": "http://www.learnpython.org/"
-  * "A Beginner's Python Tutorial on wikibooks.org": "http://en.wikibooks.org/wiki/A_Beginner's_Python_Tutorial"
-  * "Python Programming on wikibooks.org": "http://en.wikibooks.org/wiki/Python_Programming/"
-  * "Non-Programmer's Tutorial for Python on wikibooks.org": "http://en.wikibooks.org/wiki/Non-Programmer's_Tutorial_for_Python_2.6"
-  * "Python For Beginners": "http://www.pythonforbeginners.com/"
-  * "Gentle Python introduction for high school": "http://intropython.org" (with "associated IPython notebooks": "https://github.com/ehmatthes/intro_programming")
-  * "A Gentle Introduction to Programming Using Python": "http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-189-a-gentle-introduction-to-programming-using-python-january-iap-2008/" (MIT OpenCourseWare)
-  * "Introduction to Computer Science and Programming": "http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/" (MIT OpenCourseWare with videos)
-  * "Learning Python Programming Language Through Video Lectures": "http://www.catonmat.net/blog/learning-python-programming-language-through-video-lectures/"
-  * "Python Programming Tutorials Video Lecture Course": "http://www.learnerstv.com/Free-Computers-Video-lectures-ltv163-Page1.htm" (Learners TV)
-  * "Python Videos, Tutorials and Screencasts": "http://showmedo.com/videotutorials/python"
 
 !split
 ======= A scientific application =======
@@ -238,14 +173,15 @@ label{bumpy:u:scheme0:lin}
 For quadratic damping we have a slightly different formula,
 
 !bt
-\begin{equation}
-u^{n+1} = \left( m + b|u^n-u^{n-1}|\right)^{-1}
-\left(2m u^n - mu^{n-1} + bu^n|u^n-u^{n-1}| + \Delta t^2 (F^n - s(u^n))
+\begin{align}
+u^{n+1} = & \left( m + b|u^n-u^{n-1}|\right)^{-1}\times\nonumber\\
+&\quad \left(2m u^n - mu^{n-1} + bu^n|u^n-u^{n-1}| + \Delta t^2 (F^n - s(u^n))
 \right),
 label{bumpy:u:scheme:quad}
-\end{equation}
+\end{align}
 !et
 and again a special formula for $u^1$:
+
 !bt
 \begin{equation}
 u^1 = u^0 + \Delta t V + \frac{\Delta t^2}{2m}\left(-bV|V| - s(u^0) + F^0\right)
@@ -314,7 +250,7 @@ Every variable in Python is an object. In particular, the `s` function
 above is a function object, transferred to the function as any other
 object, and called as any other function. Transferring a function as
 argument to another function is therefore simpler and cleaner in Python
-than in, e.g., C, C++, Java, and C#.
+than in, e.g., C, C++, Java, C#, and MATLAB.
 
 How can we use the `solver_linear_damping` function? We need to *call* it
 with relevant values for the arguments. Suppose we want to solve
@@ -714,13 +650,13 @@ demonstrated above. However, most users will find it more
 convenient to set parameters through a user interface rather
 than editing the source code directly.
 
-[hpl: haven't read the following yet...]
+##[hpl: haven't read the following yet...]
 
 # #ifndef BOOK
 
 ===== Positional command-line arguments =====
 
-The simplest, and often also the most effective, type of
+The simplest, and often also the most effective type of
 user interface is to use the command line. Suppose $m$, $k$,
 and $v$, as well as the URL or filename for the road shapes,
 are fixed parameters and that the user is allowed to vary
@@ -958,50 +894,188 @@ plots on the screen. On the other hand, the commands are usually
 more conveniently performed in an interactive Python shell, preferably
 IPython.
 
-# include something about Cython
+# include something about Cython, software engineering (classes, testing,
+# modules)
 
-!split
-======= Software engineering =======
+#======= Software engineering =======
 
-Just sketchy at the moment...
+======= Advanced topics =======
+
+===== Symbolic computing via SymPy =====
+
+Python has a package SymPy that offers symbolic computing. Here is
+a simple introductory example where we differentiate a quadratic
+polynomial, integrate it again, and find the roots:
+
+!bc pyshell
+>>> import sympy as sp
+>>> x, a = sp.symbols('x a')        # Define mathematical symbols
+>>> Q = a*x**2 - 1                  # Quadratic function
+>>> dQdx = sp.diff(Q, x)            # Differentiate wrt x
+>>> dQdx
+2*a*x
+>>> Q2 = sp.integrate(dQdx, x)      # Integrate (no constant)
+>>> Q2
+a*x**2
+>>> Q2 = sp.integrate(Q, (x, 0, a)) # Definite integral
+>>> Q2
+a**4/3 - a
+>>> roots = sp.solve(Q, x)          # Solve Q = 0 wrt x
+>>> roots
+[-sqrt(1/a), sqrt(1/a)]
+!ec
+
+One can easily convert a SymPy expression like `Q` into
+a Python function `Q(x, a)` to be used for further numerical
+computing:
+
+!bc pyshell
+>>> Q = sp.lambdify([x, a], Q)      # Turn Q into Py func.
+>>> Q(x=2, a=3)                     # 3*2**2 - 1 = 11
+11
+!ec
+
+Sympy can do a lot of other things. Here is an example on
+computing the Taylor series of $e^{-x}\sin(rx)$, where $r$
+is the smallest root of $Q=ax^2-1=0$ as computed above:
+
+!bc pyshell
+>>> f = sp.exp(-a*x)*sp.sin(roots[0]*x)
+>>> f.series(x, 0, 4)
+-x*sqrt(1/a) + x**3*(-a**2*sqrt(1/a)/2 + (1/a)**(3/2)/6) +
+a*x**2*sqrt(1/a) + O(x**4)
+!ec
 
 ===== Testing =====
 
- * Unit tests via nose and pytest
- * Subdirectory `tests`
- * `test*.py` files
+Software testing in Python is best done with a *unit test framework*
+such as `nose` or `pytest`. These frameworks can automatically
+run all functions starting with `test_` recursively in files in a
+directory tree. Each `test_*` function is called a *test function*
+and must take no arguments and apply `assert` to a boolean expression
+that is `True` if the test passes and `False` if it fails.
 
-Sympy:
+=== Example on a test function ===
 
 !bc pycod
-import sympy as sm
-t = sm.Symbol('t')
-q = 2  # arbitrary constant
-u_exact = I + V*t + q*t**2   # sympy expression
+def halve(x):
+    """Return half of x."""
+    return x/2.0
 
-# Compute left-hand side of differential equation symbolically
-m = 2; b = 0.9; k = 4
-s = lambda u: k*u
-expr = m*sm.diff(u_exact, t, t) + b*sm.diff(u_exact, t) + \
-       s(u_exact)  # linear damping
-# Turn expr into a Python function
-F = sm.lambdify(t, expr)
-
-# Solve differential equation with this F
-I = 1.2; V = 3; T = 2; dt = 0.2
-N = int(round(T/dt))
-time_points = np.linspace(0, T, N+1)
-u1, t1 = solver(I, V, m, b, s, F, time_points, 'linear')
-
-# Error
-exact_solution = sm.lambdify(t, u_exact, modules='numpy')
-error = abs(exact_solution(t1) - u1).max()
+def test_halve():
+    x = 4
+    expected = 2
+    computed = halve(x)
+    # Compare real numbers using tolerance
+    tol = 1E-14
+    diff = abs(computed - expected)
+    assert diff < tol
 !ec
 
-Wrapped in nose test:
+=== Test function for the numerical solver ===
 
-@@@CODE src-bumpy/tests/tests.py def test_quadratic\(@def test_quadratic_all
+A frequently used technique to test differential equation solvers
+is to just specify a solution and fit a source term in the differential
+equation such that the specified solution solves the equation.
+The initial conditions must be set according to the specified
+solution. This technique is known as the *method of manufactured
+solutions*.
 
-===== Installation =====
+Here we shall specify a solution that is quadratic or linear
+in $t$ because
+such lower-order polynomials will often be an exact solution of both
+the differential equation *and* the finite difference equations.
+This means that the polynomial should be reproduced to machine
+precision by our `solver` function.
 
-Install the `solver` module using a very simple `setup.py` script.
+We can use SymPy to find an appropriate $F(t)$ term in the
+differential equation such that a specified solution $u(t)=I + Vt + qt^2$
+fits the equation and initial conditions. With quadratic damping,
+only a linear $u$ will solve the discrete equation so in this case
+we choose $u=I+Vt$.
+
+We embed the SymPy calculations and the numerical calcuations
+in a *test function*:
+
+@@@CODE src-bumpy/tests/tests.py def lhs@def test_all
+
+#===== Installation =====
+
+#Install the `solver` module using a very simple `setup.py` script.
+
+# Comment on usefulness even for those without phys/math background,
+# but with extensive programming background: being a programmer
+# means divining into domains with a lot of details, yet being able
+# to program.
+
+# Python Scientific are also in 5620/literature, some of those above
+# could be copied here
+
+======= Appendix: Quick motivation for programming with Python =======
+label{app:motivation}
+
+  * "Why Python?": "http://www.pyzo.org/whypython.html"
+  * "Why Python for Scientific Computing?": "http://fperez.org/py4science/warts.html"
+
+======= Appendix: Scientific Python resources =======
+label{app:resources}
+
+=== Full tutorials on scientific programming with Python ===
+
+  * "Python Scientific Lecture Notes": "http://scipy-lectures.github.com/" (from EuroSciPy tutorials, based on "Python Scientific": "http://web.phys.ntnu.no/~ingves/Teaching/TFY4240/Assignments/PythonScientific.pdf")
+  * "Scientific Python Lectures as IPython notebooks": "https://github.com/jrjohansson/scientific-python-lectures"
+  * "Stefan van der Walt's lectures": "https://github.com/stefanv/teaching"
+
+=== NumPy resources ===
+
+  * "NumPy Tutorial": "http://www.scipy.org/Tentative_NumPy_Tutorial"
+  * "NumPy User Guide": "http://docs.scipy.org/doc/numpy/user/"
+  * "Advanced NumPy Tutorial": "https://github.com/pv/advanced-numpy-tutorial"
+  * "Advanced NumPy Course": "http://scipy2010.blogspot.com/2010/06/tutorials-day-1-advanced-numpy.html"
+  * "NumPy Example List": "http://www.scipy.org/Numpy_Example_List"
+  * "NumPy Medkit": "http://mentat.za.net/numpy/numpy_advanced_slides/"
+  * "NumPy and SciPy Cookbook": "http://www.scipy.org/Cookbook"
+  * "NumPy for Matlab Users": "http://www.scipy.org/NumPy_for_Matlab_Users"
+  * "NumPy for Matlab/R/IDL Users": "http://mathesaurus.sf.net"
+
+=== Useful resources ===
+
+  * "AstroPython": "http://www.astropython.org/"
+  * "Talk on IPython by Fernando Perez": "http://www.youtube.com/watch?feature=player_embedded&v=F4rFuIb1Ie4"
+  * "Useful software in the Scientific Python Ecosystem": "http://fperez.org/py4science/starter_kit.html"
+  * "IPython": "http://ipython.scipy.org/doc/manual/html"
+  * "Python(x,y)": "http://code.google.com/p/pythonxy/wiki/Welcome"
+  * "Basic Motion Graphics with Python": "http://www.yourmachines.org/tutorials/mgpy.html"
+
+#  This is now local in doc/literature since the link is broken: "Practical Scientific Computing with Python": "http://www.maths.lth.se/na/help/media/Practical_Scientific_Computing_with_Python.pdf"
+
+# Basic Motion Graphics with Python contains a lot about making movies
+# and animation - check it out
+
+=== Some relevant Python books ===
+
+  * "Think Python": "http://www.greenteapress.com/thinkpython/"
+  * "Learn Python The Hard Way": "http://learnpythonthehardway.org/book/"
+  * "Dive Into Python": "http://diveintopython.org/toc/index.html"
+  * "Think Like a Computer Scientist": "http://www.freenetpages.co.uk/hp/alan.gauld/"
+  * "Introduction to Python Programming": "http://femhub.com/textbook-python/python_en.pdf/" (for scientists)
+  * "A Primer on Scientific Programming with Python": "http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642183654/ref=sr_1_2?ie=UTF8&qid=1354752885&sr=8-2&keywords=langtangen"
+    * Gerard Gorman has made associated "IPython notebooks": "http://ggorman.github.io/Introduction-to-programming-for-geoscientists/" for teaching
+    * Traditional beamer "slides": "http://www.ifi.uio.no~inf1100/foiler" are also available
+  * "Python Scripting for Computational Science": "http://www.amazon.com/Python-Scripting-Computational-Science-Engineering/dp/3642093159/ref=sr_1_1?ie=UTF8&qid=1354752885&sr=8-1&keywords=langtangen"
+
+=== Course material on Python programming in general ===
+
+  * "The Official Python Tutorial": "http://docs.python.org/2/tutorial/"
+  * "Python Tutorial on tutorialspoint.com": "http://www.tutorialspoint.com/python/"
+  * "Interactive Python tutorial site": "http://www.learnpython.org/"
+  * "A Beginner's Python Tutorial on wikibooks.org": "http://en.wikibooks.org/wiki/A_Beginner's_Python_Tutorial"
+  * "Python Programming on wikibooks.org": "http://en.wikibooks.org/wiki/Python_Programming/"
+  * "Non-Programmer's Tutorial for Python on wikibooks.org": "http://en.wikibooks.org/wiki/Non-Programmer's_Tutorial_for_Python_2.6"
+  * "Python For Beginners": "http://www.pythonforbeginners.com/"
+  * "Gentle Python introduction for high school": "http://intropython.org" (with "associated IPython notebooks": "https://github.com/ehmatthes/intro_programming")
+  * "A Gentle Introduction to Programming Using Python": "http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-189-a-gentle-introduction-to-programming-using-python-january-iap-2008/" (MIT OpenCourseWare)
+  * "Introduction to Computer Science and Programming": "http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/" (MIT OpenCourseWare with videos)
+  * "Learning Python Programming Language Through Video Lectures": "http://www.catonmat.net/blog/learning-python-programming-language-through-video-lectures/"
+  * "Python Programming Tutorials Video Lecture Course": "http://www.learnerstv.com/Free-Computers-Video-lectures-ltv163-Page1.htm" (Learners TV)
+  * "Python Videos, Tutorials and Screencasts": "http://showmedo.com/videotutorials/python"
