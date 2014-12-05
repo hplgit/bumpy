@@ -16,7 +16,7 @@ A worked example on scientific computing with Python
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen (hpl at simula.no)
-:Date: Nov 20, 2014
+:Date: Dec 5, 2014
 
 .. Make corresponding slides
 
@@ -552,6 +552,35 @@ which is accessible just inside in the function,
 while ``k`` is a *global variable*, which must be initialized outside
 the function prior to calling ``f``.
 
+
+.. admonition:: Advanced programming of functions with parameters
+
+   The best way to implement mathematical functions that has a set
+   of parameters in addition some
+   independent variables is to create a *class* where
+   the parameters are attributes and a ``__call__`` method evaluates
+   the function formula given the independent variables as arguments.
+   This requires, of course,
+   knowledge of classes and special methods like ``__call__``.
+   
+   As an example, the ``f(u)`` function above can be implemented as
+   
+   .. code-block:: python
+   
+           class Spring:
+               def __init__(self, k):
+                   self.k = k
+               def __call__(self, u):
+                   return self.k*u
+           
+           f = Spring(k)
+   
+   Because of the ``__call__`` method, we can make calls ``f(u)``. Note that
+   the ``k`` parameter is bundled with the function in the ``f`` object.
+
+
+
+
 The excitation force
 --------------------
 
@@ -669,8 +698,8 @@ and :math:`b=80` Ns/m
 corresponds to a velocity of 18 km/h and a mass of 60 kg, i.e.,
 bicycle conditions.
 
-A solver function
------------------
+A high-level solve function
+---------------------------
 
 The code above is naturally implemented as a Python function.
 This function can take the most important physical parameters of the problem

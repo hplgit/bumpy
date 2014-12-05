@@ -15,7 +15,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
+        URL_ROOT:    '',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -27,26 +27,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/sidebar.js"></script>
-
-        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
-        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
-
-        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
-
-        <style type="text/css">
-                .sagecell .CodeMirror-scroll {
-                        overflow-y: hidden;
-                        overflow-x: auto;
-                }
-                .sagecell .CodeMirror {
-                        height: auto;
-                }
-        </style>
-
-    
     <link rel="top" title="A Worked Example on Scientific Computing with Python" href="index.html" />
-    <link rel="prev" title="A Worked Example on Scientific Computing with Python" href="index.html" />
- 
+    <link rel="prev" title="A Worked Example on Scientific Computing with Python" href="index.html" /> 
   
    <style type="text/css">
      div.admonition {
@@ -83,7 +65,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen (hpl at simula.no)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Nov 20, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Dec 5, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -173,7 +155,7 @@ spring constant <span class="math">\(k\)</span>. The unknown <span class="math">
 of the vehicle relative to the road. Figure <a class="reference internal" href="#bumpy-fig1"><em>Vehicle on a bumpy road</em></a>
 illustrates the situation.</p>
 <div class="figure" id="bumpy-fig1">
-<a class="reference internal image-reference" href="_images/vehicle2.png"><img alt="_images/vehicle2.png" src="_images/vehicle2.png" style="width: 600px;" /></a>
+<img alt="_images/vehicle2.png" src="_images/vehicle2.png" style="width: 600px;" />
 <p class="caption"><em>Vehicle on a bumpy road</em></p>
 </div>
 <p>Another example regards the vertical shaking of a building due to
@@ -330,7 +312,7 @@ computed curve makes use of the <tt class="docutils literal"><span class="pre">m
 its <tt class="docutils literal"><span class="pre">plot</span></tt>, <tt class="docutils literal"><span class="pre">savefig</span></tt>, and <tt class="docutils literal"><span class="pre">show</span></tt> functions. Figure <a class="reference internal" href="#bumpy-fig0"><em>Plot of computed curve</em></a>
 shows the result.</p>
 <div class="figure" id="bumpy-fig0">
-<a class="reference internal image-reference" href="_images/solver_linear_damping.png"><img alt="_images/solver_linear_damping.png" src="_images/solver_linear_damping.png" style="width: 500px;" /></a>
+<img alt="_images/solver_linear_damping.png" src="_images/solver_linear_damping.png" style="width: 500px;" />
 <p class="caption"><em>Plot of computed curve</em></p>
 </div>
 </div>
@@ -508,6 +490,28 @@ We use in this example a linear spring function <span class="math">\(s(u)\)</spa
 which is accessible just inside in the function,
 while <tt class="docutils literal"><span class="pre">k</span></tt> is a <em>global variable</em>, which must be initialized outside
 the function prior to calling <tt class="docutils literal"><span class="pre">f</span></tt>.</p>
+<div class="admonition-advanced-programming-of-functions-with-parameters admonition">
+<p class="first admonition-title">Advanced programming of functions with parameters</p>
+<p>The best way to implement mathematical functions that has a set
+of parameters in addition some
+independent variables is to create a <em>class</em> where
+the parameters are attributes and a <tt class="docutils literal"><span class="pre">__call__</span></tt> method evaluates
+the function formula given the independent variables as arguments.
+This requires, of course,
+knowledge of classes and special methods like <tt class="docutils literal"><span class="pre">__call__</span></tt>.</p>
+<p>As an example, the <tt class="docutils literal"><span class="pre">f(u)</span></tt> function above can be implemented as</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Spring</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="n">k</span>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="o">*</span><span class="n">u</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">Spring</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="last">Because of the <tt class="docutils literal"><span class="pre">__call__</span></tt> method, we can make calls <tt class="docutils literal"><span class="pre">f(u)</span></tt>. Note that
+the <tt class="docutils literal"><span class="pre">k</span></tt> parameter is bundled with the function in the <tt class="docutils literal"><span class="pre">f</span></tt> object.</p>
+</div>
 </div>
 <div class="section" id="the-excitation-force">
 <h4>The excitation force<a class="headerlink" href="#the-excitation-force" title="Permalink to this headline">¶</a></h4>
@@ -606,8 +610,8 @@ and <span class="math">\(b=80\)</span> Ns/m
 corresponds to a velocity of 18 km/h and a mass of 60 kg, i.e.,
 bicycle conditions.</p>
 </div>
-<div class="section" id="a-solver-function">
-<h4>A solver function<a class="headerlink" href="#a-solver-function" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="a-high-level-solve-function">
+<h4>A high-level solve function<a class="headerlink" href="#a-high-level-solve-function" title="Permalink to this headline">¶</a></h4>
 <p>The code above is naturally implemented as a Python function.
 This function can take the most important physical parameters of the problem
 as input, along with information about the file with road shapes.
@@ -860,7 +864,7 @@ the <tt class="docutils literal"><span class="pre">True</span></tt> elements in 
 </div>
 <p>Figure <a class="reference internal" href="#bumpy-fig3"><em>Root mean square of displacement</em></a> shows the result.</p>
 <div class="figure" id="bumpy-fig3">
-<a class="reference internal image-reference" href="_images/u_rms.png"><img alt="_images/u_rms.png" src="_images/u_rms.png" style="width: 600px;" /></a>
+<img alt="_images/u_rms.png" src="_images/u_rms.png" style="width: 600px;" />
 <p class="caption"><em>Root mean square of displacement</em></p>
 </div>
 <p>The spectrum of a <span class="math">\(u(t)\)</span> function (represented through the arrays <tt class="docutils literal"><span class="pre">u</span></tt>
@@ -898,7 +902,7 @@ array <tt class="docutils literal"><span class="pre">indices</span></tt>.</p>
 <p>Figure <a class="reference internal" href="#bumpy-fig2"><em>Spectrum of displacement</em></a> shows the amplitudes and that the
 dominating frequency is 1 Hz.</p>
 <div class="figure" id="bumpy-fig2">
-<a class="reference internal image-reference" href="_images/u_spectrum.png"><img alt="_images/u_spectrum.png" src="_images/u_spectrum.png" style="width: 600px;" /></a>
+<img alt="_images/u_spectrum.png" src="_images/u_spectrum.png" style="width: 600px;" />
 <p class="caption"><em>Spectrum of displacement</em></p>
 </div>
 <p>Finally, we can run through all the 3-lists <tt class="docutils literal"><span class="pre">[h,</span> <span class="pre">a,</span> <span class="pre">u]</span></tt> and plot
@@ -931,15 +935,15 @@ these arrays:</p>
 </pre></div>
 </div>
 <div class="figure" id="bumpy-fig4">
-<a class="reference internal image-reference" href="_images/hau0.png"><img alt="_images/hau0.png" src="_images/hau0.png" style="width: 700px;" /></a>
+<img alt="_images/hau0.png" src="_images/hau0.png" style="width: 700px;" />
 <p class="caption"><em>First realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations</em></p>
 </div>
 <div class="figure" id="bumpy-fig5">
-<a class="reference internal image-reference" href="_images/hau1.png"><img alt="_images/hau1.png" src="_images/hau1.png" style="width: 700px;" /></a>
+<img alt="_images/hau1.png" src="_images/hau1.png" style="width: 700px;" />
 <p class="caption"><em>Second realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations</em></p>
 </div>
 <div class="figure" id="bumpy-fig6">
-<a class="reference internal image-reference" href="_images/hau2.png"><img alt="_images/hau2.png" src="_images/hau2.png" style="width: 700px;" /></a>
+<img alt="_images/hau2.png" src="_images/hau2.png" style="width: 700px;" />
 <p class="caption"><em>Third realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations</em></p>
 </div>
 <p>If all the plot commands above are placed in a file, as in
@@ -1194,7 +1198,7 @@ in a <em>test function</em>:</p>
 <li><a class="reference internal" href="#more-advanced-implementation">More advanced implementation</a></li>
 <li><a class="reference internal" href="#dissection-of-the-code-2">Dissection of the code  (2)</a></li>
 <li><a class="reference internal" href="#the-excitation-force">The excitation force</a></li>
-<li><a class="reference internal" href="#a-solver-function">A solver function</a></li>
+<li><a class="reference internal" href="#a-high-level-solve-function">A high-level solve function</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#user-input">User input</a><ul>

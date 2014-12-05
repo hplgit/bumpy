@@ -37,7 +37,7 @@ Automatically generated HTML file from DocOnce source
               (' More advanced implementation ', 2, None, '___sec6'),
               (' Dissection of the code ', 2, None, '___sec7'),
               (' The excitation force ', 2, None, '___sec8'),
-              (' A solver function ', 2, None, '___sec9'),
+              (' A high-level solve function ', 2, None, '___sec9'),
               (' User input ', 1, None, '___sec10'),
               (' Positional command-line arguments ', 2, None, '___sec11'),
               (' Option-value pairs on the command line ',
@@ -344,6 +344,36 @@ Here, <code>u</code> is a <em>local variable</em>,
 which is accessible just inside in the function,
 while <code>k</code> is a <em>global variable</em>, which must be initialized outside
 the function prior to calling <code>f</code>.
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Advanced programming of functions with parameters.</b>
+The best way to implement mathematical functions that has a set
+of parameters in addition some
+independent variables is to create a <em>class</em> where
+the parameters are attributes and a <code>__call__</code> method evaluates
+the function formula given the independent variables as arguments.
+This requires, of course,
+knowledge of classes and special methods like <code>__call__</code>.
+
+<p>
+As an example, the <code>f(u)</code> function above can be implemented as
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Spring</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, k):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>k <span style="color: #666666">=</span> k
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, u):
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>k<span style="color: #666666">*</span>u
+
+f <span style="color: #666666">=</span> Spring(k)
+</pre></div>
+<p>
+Because of the <code>__call__</code> method, we can make calls <code>f(u)</code>. Note that
+the <code>k</code> parameter is bundled with the function in the <code>f</code> object.
+</div>
+
 
 <p>
 <p>
