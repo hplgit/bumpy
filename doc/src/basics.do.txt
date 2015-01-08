@@ -1,0 +1,166 @@
+TITLE: A very basic introduction to scientific Python programming
+AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Simula Research Laboratory & University of Oslo
+DATE: today
+
+!bsummary Contents
+This worked example
+
+  * fetches a data file from a web site,
+  * applies that file as input data for a differential equation modeling a vibrating system,
+  * solves the equation by a finite difference method,
+  * visualizes various properties of the solution and the input data.
+!esummary
+
+The following programming topics are illustrated:
+
+  * basic Python constructs: variables, loops, if-tests, arrays, functions
+  * flexible storage of objects in lists,
+  * storage of objects in files (persistence),
+  * downloading files from the web,
+  * user input via the command line
+  * signal processing and FFT,
+  * curve plotting of data,
+  * testing.
+
+======= Variables, loops, functions, and branching =======
+
+===== Mathematical example =====
+
+We shall use a famous mathematical formula in our programming examples.
+The formula tells how long distance $s$ an object has moved in
+a time interval $[0,t]$ if it starts
+out with a velocity $v_0$ and undergoes constant acceleration $a$:
+
+!bt
+\begin{equation}
+s = v_0t + \frac{1}{2}at^2\tp
+label{basics:seq}
+\end{equation}
+!et
+We may view $s$ as a function of $t$: $s(t)$, and also include the
+parameters in the notation: $s(t;v_0,a)$.
+
+===== A program for evaluating a formula =====
+
+Let us write a Python program for computing $s$, given $t=0.5$, $v_0=2$,
+and $a=0.2$:
+
+@@@CODE src-bumpy/distance.py
+The program is pure text and must be placed in a *pure text file*.
+To this end, use a *text editor* like Gedit, Nano, Emacs, or Vim (Linux),
+TextWrangler (Mac OS X), or Notepad++ (Windows).
+Save the text to a
+program file whose name ends in `.py`, say `distance.py`.
+Alternatively, you may
+use the Spyder graphical interface which has a built-in text editor.
+
+The program is run in a terminal window (Command Prompt on Windows,
+Terminal application on Mac OS X, `xterm` or `gnome-terminal` on Linux):
+
+!bc sys
+Terminal> python distance.py
+1.025
+!ec
+The result of the `print` statement is the number `1.025` in the terminal
+window.
+
+The `distance.py` contains first four *assignment statements* where we
+assign numbers or the results of arithmetic expressions to *variables*.
+The variables have names coinciding with the mathematical notation
+used in the formula: `t`, `v0`, `a`, and `s`. You may think of
+variables in this programs just as variables in mathematics.
+
+!bnotice More technical details
+A statement like `t = 0.5` works as follows. First, the right-hand side
+is interpreted by Python as a real number and a `float` object containing
+the value 0.5 is created. Then the name `t` is defined as a reference
+to this object.
+
+In the statement `s = v0*t + 0.5*a*t**2`, Python will first go to the
+right-hand side and observe that it is an arithmetic expression
+involving variables with known values (or names referring to created
+objects). The arithmetic expression is calculated, resulting in a
+real number that is save as a `float` object with value 1.025 in
+the computer's memory.
+
+Everything in Python is an object of some type. Here, `t`, `a`, and `s`
+are `float` objects, representing real (floating-point) numbers, while
+`v0` is an `int` object, representing the integer 2.
+There are many other types of objects: strings, lists, tuples,
+dictionaries, arrays, files, ...
+!enotice
+
+===== A program for making a table =====
+
+Suppose we want to make a table with two columns, one with $t$ values and
+one with the corresponding $s$ values. Now we have to repeat a lot
+of calculations with the formula (ref{basics:seq}). This is easily
+done with a *loop*. There are two types of loops in Python: *while* loops
+and *for* loops.
+
+Let the $t$ values go from 0 to 2 in increments of 0.1. The following
+program applies a *while* loop:
+
+@@@CODE src-bumpy/while.py
+The result of running this program, named `while.py`, in a terminal window
+is the textual output
+
+!bc sys
+Terminal> python while.py
+0 0.0
+0.1 0.201
+0.2 0.404
+0.3 0.609
+0.4 0.816
+0.5 1.025
+0.6 1.236
+0.7 1.449
+0.8 1.664
+0.9 1.881
+1.0 2.1
+1.1 2.321
+1.2 2.544
+1.3 2.769
+1.4 2.996
+1.5 3.225
+1.6 3.456
+1.7 3.689
+1.8 3.924
+1.9 4.161
+!ec
+
+So, how do we interpret the `while.py` program? First we initialize four
+variables: `v0`, `a`, `dt`, and `t`. Everything after `#` on
+a line is a *comment* and does not affect what happens in the program, but
+is meant to be of help for a human reading the program.
+Then comes the while loop:
+
+!bc pycod
+while condition:
+    <intented statement>
+    <intented statement>
+    <intented statement>
+!ec
+The set of indented statements are repeated as long as the expression or
+variable `condition` evaluates to `True`. In the present case, the condition
+is the *boolean expression* `t <= 2`, so as long as the value is less
+than or equal to 2,
+`t <= 2` evaluates to `True`, otherwise it evaluates to `False`.
+
+The "Python Online Tutor"
+
+
+@@@CODE src-bumpy/for.py
+
+
+======= Exercises =======
+
+===== Exercise: Program a formula =====
+
+Make a Python program that calculates and prints the value of the
+formula
+
+!bt
+\[ y = 6x^2 + 3x + 2,\]
+for $x=2$.
+!et
