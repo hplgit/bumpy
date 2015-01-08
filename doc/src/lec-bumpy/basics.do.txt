@@ -1,0 +1,810 @@
+
+!split
+===== This is a very quick intro to Python programming =====
+
+ * variables for numbers, lists, and arrays
+ * while loops and for loops
+ * functions
+ * if tests
+ * plotting
+
+Method: show program code through math examples
+
+
+!split
+======= Variables, loops, lists, and arrays =======
+label{basics:basic:objects}
+
+FIGURE: [fig-bumpy/implementation5, width=500 frac=0.7]
+
+!split
+===== Do you have access to Python? =====
+label{basics:accesspy}
+
+Many methods:
+
+ * Mac and Windows: "Anaconda": "https://store.continuum.io/cshop/anaconda/"
+ * Ubuntu: `sudo apt-get install`
+ * Web browser
+
+See "How to access Python for doing scientific computing": "http://hplgit.github.io/edu/accesspy/accesspy.html" for more details!
+
+!split
+===== Mathematical example =====
+
+Most examples will involve this formula:
+
+!bt
+\[
+s = v_0t + \frac{1}{2}at^2
+\]
+!et
+We may view $s$ as a function of $t$: $s(t)$, and also include the
+parameters in the notation: $s(t;v_0,a)$.
+
+!split
+===== A program for evaluating a formula =====
+label{basics:formula:eval}
+
+idx{text editor}
+idx{program file}
+
+!bblock Task
+Compute $s$ for $t=0.5$, $v_0=2$, and $a=0.2$.
+!eblock
+
+!bblock Code
+@@@CODE src-bumpy/distance.py
+!eblock
+
+!bblock Execution
+!bc sys
+Terminal> python distance.py
+1.025
+!ec
+!eblock
+
+!split
+===== Assignment statements assign a name to an object =====
+
+idx{assignment statement}
+idx{print statement}
+idx{variable}
+
+idx{objects}
+idx{`float`}
+idx{`int`}
+
+
+!bc pycod
+t = 0.5                   # real number makes float object
+v0 = 2                    # integer makes int object
+a = 0.2                   # float object
+s = v0*t + 0.5*a*t**2     # float object
+!ec
+
+Rule: evaluate right-hand side object, left-hand side is a name for
+that object
+
+
+!split
+===== Formatted output with text and numbers =====
+label{basics:printf}
+
+ * Task: write out `s=1.025`
+ * Method: printf syntax
+
+!bc pycod
+print 's=%g' % s       # g: compact notation
+print 's=%.2f' % s     # f: decimal notation, .2f: 2 decimals
+!ec
+
+idx{format string syntax}
+
+Modern alternative: format string syntax
+
+!bc pycod
+print 's={s:.2f}'.format(s=s)
+!ec
+
+!split
+===== Programming with a while loop =====
+label{basics:while}
+
+idx{while loop}
+
+ * Task: write out a table of $t$ and $s(t)$ values (two columns),
+   for $t\in [0,2]$ in steps of 0.1
+ * Method: while loop
+
+@@@CODE src-bumpy/while.py
+
+!split
+===== Output of the previous program =====
+
+!bc sys
+Terminal> python while.py
+0 0.0
+0.1 0.201
+0.2 0.404
+0.3 0.609
+0.4 0.816
+0.5 1.025
+0.6 1.236
+0.7 1.449
+0.8 1.664
+0.9 1.881
+1.0 2.1
+1.1 2.321
+1.2 2.544
+1.3 2.769
+1.4 2.996
+1.5 3.225
+1.6 3.456
+1.7 3.689
+1.8 3.924
+1.9 4.161
+!ec
+
+!split
+===== Structure of a while loop =====
+idx{boolean expression}
+idx{`True`}
+idx{`False`}
+
+!bc pycod
+while condition:
+    <intented statement>
+    <intented statement>
+    <intented statement>
+!ec
+
+Note:
+
+ * the colon in the first line
+ * all statements in the loop must be indented
+ * `condition` is a boolean expression (e.g., `t <= 2`)
+
+!split
+===== The Python Online Tutor can help you understand the program flow =====
+idx{Python Online Tutor}
+
+"Python Online Tutor": "http://pythontutor.com/visualize.html#mode=edit"
+lets you step through the program and examine variables.
+
+!bc pyoptpro
+a = 1
+da = 0.5
+while a <= 3:
+    print a
+    a = a + da
+!ec
+
+
+!split
+===== Lists =====
+label{basics:list}
+
+idx{list}
+
+A list collects several variables (objects) in a given sequence:
+
+!bc pycod
+L = [-1, 1, 8.0]
+!ec
+
+A list can contain any type of objects, e.g.,
+
+!bc pycod
+L = ['mydata.txt', 3.14, 10]
+!ec
+
+Some basic list operations:
+
+!bc pyshell
+>>> L = ['mydata.txt', 3.14, 10]
+>>> print L[0]
+mydata.txt
+>>> print L[1]
+3.14
+>>> del L[0]  # delete the first element
+>>> print L
+[3.14, 10]
+>>> print len(L)  # length of L
+2
+>>> L.append(-1)  # add -1 at the end of the list
+>>> print L
+[3.14, 10, -1]
+!ec
+
+!split
+===== Store our table in two lists, one for each column =====
+
+@@@CODE src-bumpy/while_list.py
+
+!split
+===== For loops =====
+label{basics:for}
+
+idx{for loop}
+
+A for loop is used for visiting elements in a list, one by one:
+
+!bc pyshell
+>>> L = [1, 4, 8, 9]
+>>> for e in L:
+...     print e
+...
+1
+4
+8
+9
+!ec
+
+Demo in the Python Online Tutor:
+
+!bc pyoptpro
+list1 = [0, 0.1, 0.2]
+list2 = []
+for element in somelist:
+    p = element + 2
+    list2.append(p)
+print list2
+!ec
+
+!split
+===== For loops used traditionally an integer counter over list/array indices =====
+
+!bc pycod
+for i in range(len(somelist)):
+    # Work with somelist[i]
+!ec
+
+Note:
+
+ * `range` returns a list of integers
+ * `range(a, b, s)` returns the integers
+   `a, a+s, a+2*s, ...` up to *but not including* (!!) `b`
+ * `range(b)` implies `a=0` and `s=1`
+ * `range(len(somelist))` returns `[0, 1, 2]`
+
+
+!split
+===== Let's replace our while loop by a for loop =====
+
+@@@CODE src-bumpy/for_list.py
+
+!split
+===== Traversal of multiple lists at the same time with `zip` =====
+
+idx{`zip`}
+idx{multiple lists traversal with `zip`}
+
+!bc pycod
+for e1, e2, e3, ... in zip(list1, list2, list3, ...):
+!ec
+
+Alternative: loop over a common index for the lists
+
+!bc pycod
+for i in range(len(list1)):
+    e1 = list1[i]
+    e2 = list2[i]
+    ...
+!ec
+
+
+!split
+===== Arrays =====
+label{basics:numpy}
+
+idx{array}
+idx{`numpy`}
+
+ * List: collect a set of numbers or other objects
+   in a single variable
+ * Lists are very flexible (can grow, can contain ``anything'')
+ * Array: computationally efficient and convenient list
+ * Arrays must have fixed length and can only contain numbers of
+   the same type (integers, real numbers, complex numbers)
+ * Arrays require the `numpy` module
+
+!bc pyshell
+>>> import numpy
+>>> L = [1, 4, 10.0]    # List of numbers
+>>> a = numpy.array(L)  # Make corresponding array
+>>> print a
+[  1.   4.  10.]
+>>> print a[1]
+4.0
+>>> print a.dtype       # Data type of an element
+float64
+>>> b = 2*a + 1
+>>> print b
+[  3.   9.  21.]
+!ec
+
+!split
+===== `numpy` functions creates entire arrays at once =====
+
+!bc pyshell
+>>> c = numpy.log(a)  # Take ln of all elements in a
+>>> print c
+[ 0.          1.38629436  2.30258509]
+!ec
+
+idx{`linspace`}
+
+Create $n+1$ uniformly distributed coordinates in $[a,b]$:
+
+!bc pycod
+t = numpy.linspace(a, b, n+1)
+!ec
+
+!split
+===== Let's use arrays in our previous program =====
+
+@@@CODE src-bumpy/for_array.py
+
+
+!split
+===== Standard mathematical functions are found in the `math` module =====
+label{basics:math}
+
+idx{mathematical functions}
+idx{`math`}
+
+!bc pyshell
+>>> import math
+>>> print math.sin(math.pi)
+1.2246467991473532e-16         # Note: only approximate value
+!ec
+
+Get rid of the `math` prefix:
+
+!bc pycod
+from math import sin, pi
+print sin(pi)
+
+# Or import everything from math
+from math import *
+print sin(pi), log(e), tanh(0.5)
+!ec
+
+!split
+===== Use the `numpy` module for standard mathematical functions applied to arrays =====
+
+idx{import of modules}
+
+Matlab users can do
+
+!bc pycod
+from numpy import *
+!ec
+
+The Python community likes
+
+!bc pycod
+import numpy as np
+print np.sin(np.pi)
+!ec
+
+Our convention: use `np` prefix, but not in formulas involving
+math functions
+
+!bc pycod
+import numpy as np
+from numpy import sin, exp
+t = np.linspace(0, 4, 1001)
+p = exp(-t)*sin(2*t)
+!ec
+
+!split
+===== Plotting =====
+label{basics:plot}
+
+idx{plotting}
+idx{graphics}
+idx{visualization}
+idx{`matplotlib`}
+
+Plotting is done with `matplotlib`:
+
+@@@CODE src-bumpy/plot1.py
+% if FORMAT != 'ipynb':
+The plotfile `myplot.png` looks like
+
+FIGURE: [fig-bumpy/plot1_s, width=500 frac=0.5]
+% endif
+
+!split
+===== Plotting of multiple curves =====
+
+@@@CODE src-bumpy/plot1.py
+
+% if FORMAT != 'ipynb':
+FIGURE: [fig-bumpy/plot2_s, width=500 frac=0.5]
+% endif
+
+
+!split
+======= Functions and branching =======
+label{basics:func:branching}
+
+FIGURE: [fig-bumpy/branching3, width=500 frac=0.7]
+
+!split
+===== Functions =====
+label{basics:func}
+
+ * $s(t)=v_0t + \frac{1}{2}at^2$ is a mathematical function
+ * Can implement $s(t)$ as a Python function `s(t)`
+
+!bc pypro
+def s(t):
+    return v0*t + 0.5*a*t**2
+
+v0 = 0.2
+a = 4
+value = s(3)   # Call the function
+!ec
+
+idx{global variables}
+
+Note:
+
+ * `v0` and `a` are *global variables*
+ * `v0` and `a` must be initialzed before `s` is called
+
+Have `v0` and `a` as function arguments instead of as global
+variables:
+
+!bc pypro
+def s(t, v0, a):
+    return v0*t + 0.5*a*t**2
+
+value = s(3, 0.2, 4)   # Call the function
+
+# More readable call
+value = s(t=3, v0=0.2, a=4)
+!ec
+
+# #ifdef REMAINING
+
+idx{vectorization}
+idx{vectorized functions}
+
+!bnotice Vectorized functions
+Applying the function `s(t, v0, a)` to an array `t` can be done
+in two ways:
+
+!bc pycod
+# Scalar code: work with one element at a time
+for i in range(len(t)):
+    s_values[i] = s(t_values[i], v0, a)
+
+# Vectorized code: apply s to the whole array
+s_values = s(t_values, v0, a)
+!ec
+For the last line to work, the function `s` must contain statements
+that work correctly when `t` is an array argument.
+
+The advantage of vectorized code is that we avoid a loop in Python.
+Instead, we carry out mathematical operations on entire arrays, e.g.,
+`v0*t` and `a*t**2`. Technically, such (binary) operations are
+executed as loops in very fast (compiled) C code.
+!enotice
+
+idx{multiple return values}
+
+A function can return more than one value, say $s(t)$ and the
+velocity $s'(t)=v_0 + at$:
+
+!bc pypro
+def movement(t, v0, a):
+    s = v0*t + 0.5*a*t**2
+    v = v0 + a*t
+    return s, v
+
+s_value, v_value = movement(t=0.2, v0=2, a=4)
+!ec
+When $n$ values are returned, we list $n$ variables on the left-hand
+side in the call.
+
+!bnotice Python functions return only one object
+Even when we return several values, as in `return s, v`, actually only
+one object is returned. The `s` and `v` values are packed together
+in a *tuple* object (which is very similar to a list).
+
+!bc pyshell
+>>> def f(x):
+...     return x+1, x+2, x+3
+...
+>>> r = f(3)     # Store all three return values in one object r
+>>> print r
+(4, 5, 6)
+>>> type(r)      # What type of object is r?
+<type 'tuple'>
+>>> print r[1]
+5
+!ec
+Tuples are constant lists, so you can index them as lists, but you cannot
+change the contents (`append` or `del` is illegal).
+!enotice
+
+===== A more general mathematical formula =====
+label{basics:formula:piecewise}
+
+The formula (ref{basics:seq}) arises from the basic differential
+equations in kinematics:
+
+!bt
+\begin{align}
+v = \frac{ds}{dt},\quad s(0)=s_0,
+label{basics:vdef}\\
+a = \frac{dv}{dt},\quad v(0)=v_0\thinspace .
+label{basics:adef}
+\end{align}
+!et
+Given any acceleration $a(t)$, we can solve for $s(t)$ through integration.
+First, we integrate to find $v(t)$:
+
+!bt
+\[ \int_0^t a(t)dt = \int_0^t \frac{dv}{dt} dt,\]
+!et
+which gives
+
+!bt
+\[ v(t) = v_0 + \int_0^t a(t)dt\thinspace . \]
+!et
+Then we integrate again over $[0,t]$ to find $s(t)$:
+
+!bt
+\[ s(t) = s_0 + v_0t + \int_0^t\left( \int_0^t a(t)dt \right) dt\thinspace .\]
+!et
+
+Suppose we have some constant acceleration $a_0$ in $[0,t_1]$ and no
+acceleration thereafter. We find
+
+!bt
+\begin{equation}
+s(t) = \left\lbrace\begin{array}{ll}
+s_0 + v_0 t + \frac{1}{2}a_0 t^2,& t\leq t_1\\
+s_0 + v_0t_1 + \frac{1}{2}a_0 t_1^2 + a_0t_1(t-t_1),& t> t_1
+\end{array}\right.
+label{basics:seq2}
+\end{equation}
+!et
+
+To implement a function like (ref{basics:seq2}), we need to
+branch into one type of code (formula) if $t\leq t_1$ and another
+type of code (formula) if $t>t_1$. This is called *branching* and
+the *if test* is the primary construction to use.
+
+===== If tests =====
+label{basics:if}
+
+idx{branching}
+idx{if test}
+idx{boolean expression}
+
+An if test has the structure
+
+!bc pycod
+if condition:
+    <statements when condition is True>
+else:
+    <statements when condition is False>
+!ec
+Here, `condition` is a boolean expression that evaluates to `True` or
+`False`. For the picewisely defined function (ref{basics:seq2})
+we would use an if test in the implementation:
+
+!bc pycod
+if t <= t1:
+    s = v0*t + 0.5*a0*t**2
+else:
+    s = v0*t + 0.5*a0*t1**2 + a0*t1*(t-t1)
+!ec
+
+The `else` part can be omitted when not needed. Several branches are
+also possible:
+
+!bc pycod
+if condition1:
+    <statements when condition1 is True>
+elif condition2:
+    <statements when condition1 is False and condition2 is True>
+elif condition3:
+    <statements when condition1 and conditon 2 are False
+     and condition3 is True>
+else:
+    <statements when condition1/2/3 all are False>
+!ec
+
+A Python function implementing the mathematical function (ref{basics:seq2})
+reads
+
+@@@CODE src-bumpy/plot3.py fromto: def s_func@n = 201
+
+To plot this $s(t)$, we need to compute points on the curve.
+Trying to call `s_func` with an array `t` as argument will not
+work because of the if test. In general, functions if if tests
+will not automatically work with arrays. One solution is to
+compute the function values one by one in a loop.
+Appropriate code is
+
+@@@CODE src-bumpy/plot3.py fromto: n = 201@plt\.plot
+
+Relevant statements for plotting are now
+
+@@@CODE src-bumpy/plot3.py fromto: plt\.plot@
+
+idx{vectorizing if tests}
+
+!bnotice Vectorization of functions with if tests
+To vectorize the computation of the array of $s(t)$ values, i.e.,
+avoid a loop where `s_func` is called for each `t[i]` element,
+we must completely rewrite the if test. There are two methods:
+the `numpy.where` function and array indexing.
+
+=== Using the `where` function ===
+
+A vectorized if-else test can be coded as
+
+!bc pycod
+s = np.where(condition, s1, s2)
+!ec
+Here, `condition` i[i]`s an array of boolean values, and
+`s[i] = s1[i]` if `condition[i]` is `True`, and otherwise `s[i] = s2[i]`.
+
+Our example then becomes
+
+!bc pycod
+s = np.where(t <= t1,
+             v0*t + 0.5*a0*t**2,
+             v0*t + 0.5*a0*t1**2 + a0*t1*(t-t1))
+!ec
+Note that `t <= t1` with array `t` and scalar `t1` results in a boolean
+array `b` where `b[i] = t[i] <= t1`.
+
+=== Using array indexing ===
+
+It is possible to index a subset of indices in an array `s` using
+a boolean array `b`: `s[b]`. This construction picks out all the
+elements `s[i]` where `b[i]` is to `True`. On the right-hand side
+we can then assign some array expression `expr` of the same length
+as `s[b]`:
+
+!bc pycod
+s[b] = (expr)[b]
+!ec
+Our example can utilize this technique with `b` as `t <= t1` and `t > t1`:
+
+!bc pycod
+s = np.zeros_like(t)  # Make s as zeros, same size & type as t
+s[t <= t1] = (v0*t + 0.5*a0*t**2)[t <= t1]
+s[t > t1]  = (v0*t + 0.5*a0*t1**2 + a0*t1*(t-t1))[t > t1]
+!ec
+!enotice
+
+======= Exercises =======
+label{basics:exer}
+
+===== Exercise: Program a formula =====
+label{basics:exer:formula1}
+
+Make a Python program that calculates and prints the value of the
+formula
+
+!bt
+\[ y = 6x^2 + 3x + 2,\]
+for $x=2$.
+!et
+
+===== Exercise: Combine text and numbers in output =====
+label{basics:exer:printf1}
+
+Let $y=x^2$. Make a program that writes the text
+
+!bc
+y(2.550)=6.502
+!ec
+if $x=2.55$. The values of $x$ and $y$ should be written with three
+decimals. Run the program for $x=\pi$ (the value if $\pi$ is available
+as the variable `pi` in the `math` module).
+
+===== Exercise: Program a while loop =====
+label{basics:exer:while1}
+
+Define a sequence of numbers,
+
+!bt
+\[ x_n = n^2 + 1,\]
+!et
+for integers $n=0,1,2,\ldots,N$.
+Write a program that prints out $x_n$ for $n=0,1,\ldots,20$ using
+a while loop.
+
+===== Exercise: Create a list with a while loop =====
+label{basics:exer:while2}
+
+Store all the $x_n$ values computed in Exercise ref{basics:exer:while1}
+in a list (using a while loop). Print the entire list (as one object).
+
+===== Exercise: Program a for loop =====
+label{basics:exer:for1}
+
+Do Exercise ref{basics:exer:while1}, but use a for loop.
+
+===== Exercise: Create a list with a for loop =====
+label{basics:exer:for2}
+
+Do Exercise ref{basics:exer:while2}, but use a for loop.
+
+===== Exercise: Write a Python function =====
+label{basics:exer:func1}
+
+Write a function `x(n)` for computing an element in the
+sequence $x_n=n^2+1$. Call the function for $n=4$ and write
+out the result.
+
+===== Exercise: Return three values from a Python function =====
+label{basics:exer:func3}
+
+Write a Python function that evaluates the mathematical function
+$f(x)=\cos x$, $f'(x)=-\sin x$, and $f''(x)=-\cos x$. Return
+these three values. Write out the results of these values for $x=\pi$.
+
+===== Exercise: Plot a function =====
+label{basics:exer:plot1}
+
+Make a program that plots the function $g(y)=e^{-y}\sin (4y)$ for
+$y\in [0,4]$. Use 501 points along the curve and store these
+points in arrays.
+
+===== Exercise: Measure the efficiency of vectorization =====
+label{basics:exer:timeit}
+
+"IPython": "http://ipython.org/" an enhanced interactive shell
+for doing computing with Python. IPython has some user-friendly functionality
+for quick testing of the efficiency of different Python constructions.
+Start IPython by writing `ipython` in a terminal window.
+The interactive session below demonstrates how we can use the
+timer feature `%timeit` to measure the CPU time required by
+computing $\sin (x)$, where $x$ is an array of 1M elements, using
+scalar computing with a loop (function `sin_func`) and vectorized
+computing using the `sin` function from `numpy`.
+
+!bc ipy
+In [1]: import numpy as np
+
+In [2]: n = 1000000
+
+In [3]: x = np.linspace(0, 1, n+1)
+
+In [4]: def sin_func(x):
+   ...:     r = np.zeros_like(x)  # result
+   ...:     for i in range(len(x)):
+   ...:         r[i] = np.sin(x[i])
+   ...:     return r
+   ...:
+
+In [5]: %timeit y = sin_func(x)
+1 loops, best of 3: 2.68 s per loop
+
+In [6]: %timeit y = np.sin(x)
+10 loops, best of 3: 40.1 ms per loop
+!ec
+Here, `%timeit` ran our function once, but the vectorized function
+10 times. The most relevant CPU times measured are listed, and we
+realize that
+the vectorized code is $2.68/(40.1/1000)\approx 67$ times faster
+than the loop-based scalar code.
+
+Use the recipe above to investigate the speed up of the
+vectorized computation of the $s(t)$ function in
+Section ref{basics:func}.
+
+# factor 134
+# #endif

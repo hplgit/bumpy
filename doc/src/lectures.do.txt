@@ -1,0 +1,8 @@
+TITLE: Intro to scientific Python programming
+AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Simula Research Laboratory & University of Oslo
+DATE: today
+
+TOC: on
+
+
+# #include "lec-bumpy/basics.do.txt"

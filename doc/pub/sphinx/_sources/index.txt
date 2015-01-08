@@ -1,15 +1,15 @@
 
 .. Master file automatically created by doconce sphinx_dir
 
-A Worked Example on Scientific Computing with Python
-====================================================
+A very basic introduction to scientific Python programming
+==========================================================
 
 Contents:
 
 .. toctree::
    :maxdepth: 3
 
-   bumpy
+   basics
 
 
 Indices and tables

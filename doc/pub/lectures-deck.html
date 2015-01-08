@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Intro to scientific Python programming">
+<meta name="keywords" content="text editor,program file,assignment statement,print statement,variable,objects,format string syntax,while loop,boolean expression,Python Online Tutor,list,for loop,array,mathematical functions,import of modules,plotting,graphics,visualization,global variables">
+
+<title>Intro to scientific Python programming</title>
+
+
+
+
+
+
+
+<!-- deck.js: https://github.com/imakewebthings/deck.js -->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=1024, user-scalable=no">
+
+<!-- Required stylesheet -->
+<link rel="stylesheet" href="deck.js/core/deck.core.css">
+
+<!-- Extension CSS files go here. Remove or add as needed.
+deck.goto: Adds a shortcut key to jump to any slide number.
+Hit g, type in the slide number, and hit enter.
+
+deck.hash: Enables internal linking within slides, deep
+linking to individual slides, and updates the address bar and
+a permalink anchor with each slide change.
+
+deck.menu: Adds a menu view, letting you see all slides in a grid.
+Hit m to toggle to menu view, continue navigating your deck,
+and hit m to return to normal view. Touch devices can double-tap
+the deck to switch between views.
+
+deck.navigation: Adds clickable left and right buttons for the
+less keyboard inclined.
+
+deck.status: Adds a page number indicator. (current/total).
+
+deck.scale: Scales each slide to fit within the deck container
+using CSS Transforms for those browsers that support them.
+
+deck.pointer: Turn mouse into laser pointer (toggle with p).
+(Requires https://github.com/mikeharris100/deck.pointer.js)
+-->
+
+<link rel="stylesheet" href="deck.js/extensions/menu/deck.menu.css">
+<link rel="stylesheet" href="deck.js/extensions/navigation/deck.navigation.css">
+<link rel="stylesheet" href="deck.js/extensions/scale/deck.scale.css">
+<link rel="stylesheet" href="deck.js/extensions/pointer/deck.pointer.css">
+<link rel="stylesheet" href="deck.js/extensions/notes/deck.notes.css">
+<!--
+<link rel="stylesheet" href="deck.js/extensions/goto/deck.goto.css">
+<link rel="stylesheet" href="deck.js/extensions/hash/deck.hash.css">
+<link rel="stylesheet" href="deck.js/extensions/status/deck.status.css">
+-->
+
+<!-- Style theme. More available in themes/style/ or create your own. -->
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.default.css">
+
+<!--
+<link rel="stylesheet" href="deck.js/themes/style/neon.css">
+<link rel="stylesheet" href="deck.js/themes/style/swiss.css">
+<link rel="stylesheet" href="deck.js/themes/style/web-2.0.css">
+
+git clone git://github.com/duijf/mnml.git
+<link rel="stylesheet" href="deck.js/themes/style/mnml.css">
+
+git://github.com/groovecoder/deckjs-theme-mozilla.git
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.aurora.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.dark.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.default.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.firefox.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.light.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.mdn.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.nightly.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.cbc.css">
+
+git://github.com/barraq/deck.ext.js.git
+<link rel="stylesheet" href="deck.js/themes/style/beamer.css">
+-->
+
+<!--
+Transition theme. More available in /themes/transition/ or create your own. -->
+<!--
+<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
+<link rel="stylesheet" href="deck.js/themes/transition/fade.css">
+<link rel="stylesheet" href="deck.js/themes/transition/vertical-slide.css">
+<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
+-->
+
+<!-- Required Modernizr file -->
+<script src="deck.js/modernizr.custom.js"></script>
+
+<style type="text/css">
+/* Override h1, h2, ... styles */
+h1 { font-size: 2.8em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.4em; }
+h4 { font-size: 1.3em; }
+h1, h2, h3, h4 { font-weight: bold; line-height: 1.2; }
+body { overflow: auto; } /* vertical scrolling */
+
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.slide .alert-text-small   { font-size: 80%;  }
+.slide .alert-text-large   { font-size: 130%; }
+.slide .alert-text-normal  { font-size: 90%;  }
+.slide .alert {
+     padding:8px 35px 8px 14px; margin-bottom:18px;
+     text-shadow:0 1px 0 rgba(255,255,255,0.5);
+     border:5px solid #bababa;
+       -webkit-border-radius:14px; -moz-border-radius:14px;
+     border-radius:14px
+     background-position: 10px 10px;
+     background-repeat: no-repeat;
+     background-size: 38px;
+     padding-left: 30px; /* 55px; if icon */
+ }
+ .slide .alert-block {padding-top:14px; padding-bottom:14px}
+ .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
+ /*.slide .alert li {margin-top: 1em}*/
+ .deck .alert-block p+p {margin-top:5px}
+ /*.slide .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_notice.png); }
+ .slide .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_summary.png); }
+ .slide .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_warning.png); }
+ .slide .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+
+</style>
+
+
+
+<!-- Styles for table layout of slides -->
+<style type="text/css">
+td.padding {
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-right:50px;
+  padding-left:50px;
+}
+</style>
+
+</head>
+
+<body class="deck-container">
+
+<header>
+<!-- Here goes a potential header -->
+</header>
+
+<!-- do not use the article tag - it gives strange sizings -->
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+
+
+
+<section class="slide">
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<h2 style="text-align: center;">Intro to scientific Python programming</h2>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b style="font-weight: bold">Hans Petter Langtangen</b> [1, 2] (<tt>hpl at simula.no</tt>)
+</center>
+
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b style="font-weight: bold">Simula Research Laboratory</b></center>
+<center>[2] <b style="font-weight: bold">University of Oslo</b></center>
+<p>
+<center><b style="font-weight: bold">Jan 8, 2015</b></center> <!-- date -->
+
+<h2>Table of contents</h2>
+
+<p>
+&nbsp; &nbsp; &nbsp; <a href="#___sec0"> This is a very quick intro to Python programming </a><br>
+<a href="#basics:basic:objects"> Variables, loops, lists, and arrays </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#basics:accesspy"> Do you have access to Python? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec3"> Mathematical example </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#basics:formula:eval"> A program for evaluating a formula </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec5"> Assignment statements assign a name to an object </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#basics:printf"> Formatted output with text and numbers </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#basics:while"> Programming with a while loop </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec8"> Output of the previous program </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec9"> Structure of a while loop </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec10"> The Python Online Tutor can help you to understand the program flow </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#basics:list"> Lists </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec12"> Store our table in two lists, one for each column </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#basics:for"> For loops </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec14"> For loops used traditionally an integer counter over list/array indices </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec15"> Let's replace our while loop by a for loop </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec16"> Traversal of multiple lists at the same time with <code>zip</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#basics:numpy"> Arrays </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec18"> <code>numpy</code> functions creates entire arrays at once </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec19"> Let's use arrays in our previous program </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#basics:math"> Standard mathematical functions are found in the <code>math</code> module </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec21"> Use the <code>numpy</code> module for standard mathematical functions applied to arrays </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#basics:plot"> Plotting </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec23"> Plotting of multiple curves </a><br>
+<a href="#basics:func:branching"> Functions and branching </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#basics:func"> Functions </a><br>
+</p>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>This is a very quick intro to Python programming  <a name="___sec0"></a></h2>
+
+<ul>
+ <p><li> variables for numbers, lists, and arrays</li>
+ <p><li> while loops and for loops</li>
+ <p><li> functions</li>
+ <p><li> if tests</li>
+ <p><li> plotting</li>
+</ul>
+<p>
+
+Method: show program code through math examples
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h1 style="text-align: center;">Variables, loops, lists, and arrays <a name="basics:basic:objects"></a></h1>
+
+<p>
+<center><p><img src="fig-bumpy/implementation5.jpg" align="bottom" width=700></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Do you have access to Python? <a name="basics:accesspy"></a></h2>
+
+<p>
+Many methods:
+
+<ul>
+ <p><li> Mac and Windows: <a href="https://store.continuum.io/cshop/anaconda/" target="_blank">Anaconda</a></li>
+ <p><li> Ubuntu: <code>sudo apt-get install</code></li>
+ <p><li> Web browser</li>
+</ul>
+<p>
+
+See <a href="http://hplgit.github.io/edu/accesspy/accesspy.html" target="_blank">How to access Python for doing scientific computing</a> for more details!
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Mathematical example  <a name="___sec3"></a></h2>
+
+<p>
+Most examples will involve this formula:
+
+<p>&nbsp;<br>
+$$
+s = v_0t + \frac{1}{2}at^2
+$$
+<p>&nbsp;<br>
+
+We may view \( s \) as a function of \( t \): \( s(t) \), and also include the
+parameters in the notation: \( s(t;v_0,a) \).
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>A program for evaluating a formula <a name="basics:formula:eval"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Task.</b>
+<p>
+Compute \( s \) for \( t=0.5 \), \( v_0=2 \), and \( a=0.2 \).
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Code.</b>
+<p>
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">t = <span style="color: #B452CD">0.5</span>
+v0 = <span style="color: #B452CD">2</span>
+a = <span style="color: #B452CD">0.2</span>
+s = v0*t + <span style="color: #B452CD">0.5</span>*a*t**<span style="color: #B452CD">2</span>
+<span style="color: #8B008B; font-weight: bold">print</span> s
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Execution.</b>
+<p>
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; python distance.py
+1.025
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Assignment statements assign a name to an object  <a name="___sec5"></a></h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">t = <span style="color: #B452CD">0.5</span>                   <span style="color: #228B22"># real number makes float object</span>
+v0 = <span style="color: #B452CD">2</span>                    <span style="color: #228B22"># integer makes int object</span>
+a = <span style="color: #B452CD">0.2</span>                   <span style="color: #228B22"># float object</span>
+s = v0*t + <span style="color: #B452CD">0.5</span>*a*t**<span style="color: #B452CD">2</span>     <span style="color: #228B22"># float object</span>
+</pre></div>
+<p>
+Rule: evaluate right-hand side object, left-hand side is a name for
+that object
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Formatted output with text and numbers <a name="basics:printf"></a></h2>
+
+<ul>
+ <p><li> Task: write out <code>s=1.025</code></li>
+ <p><li> Method: printf syntax</li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;s=%g&#39;</span> % s       <span style="color: #228B22"># g: compact notation</span>
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;s=%.2f&#39;</span> % s     <span style="color: #228B22"># f: decimal notation, .2f: 2 decimals</span>
+</pre></div>
+<p>
+Modern alternative: format string syntax
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;s={s:.2f}&#39;</span>.format(s=s)
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Programming with a while loop <a name="basics:while"></a></h2>
+
+<ul>
+ <p><li> Task: write out a table of \( t \) and \( s(t) \) values (two columns),
+   for \( t\in [0,2] \) in steps of 0.1</li>
+ <p><li> Method: while loop</li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">v0 = <span style="color: #B452CD">2</span>
+a = <span style="color: #B452CD">0.2</span>
+dt = <span style="color: #B452CD">0.1</span>  <span style="color: #228B22"># Increment</span>
+t = <span style="color: #B452CD">0</span>     <span style="color: #228B22"># Start value</span>
+<span style="color: #8B008B; font-weight: bold">while</span> t &lt;= <span style="color: #B452CD">2</span>:
+    s = v0*t + <span style="color: #B452CD">0.5</span>*a*t**<span style="color: #B452CD">2</span>
+    <span style="color: #8B008B; font-weight: bold">print</span> t, s
+    t = t + dt
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Output of the previous program  <a name="___sec8"></a></h2>
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; python while.py
+0 0.0
+0.1 0.201
+0.2 0.404
+0.3 0.609
+0.4 0.816
+0.5 1.025
+0.6 1.236
+0.7 1.449
+0.8 1.664
+0.9 1.881
+1.0 2.1
+1.1 2.321
+1.2 2.544
+1.3 2.769
+1.4 2.996
+1.5 3.225
+1.6 3.456
+1.7 3.689
+1.8 3.924
+1.9 4.161
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Structure of a while loop  <a name="___sec9"></a></h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">while</span> condition:
+    &lt;intented statement&gt;
+    &lt;intented statement&gt;
+    &lt;intented statement&gt;
+</pre></div>
+<p>
+Note:
+
+<ul>
+ <p><li> the colon in the first line</li>
+ <p><li> all statements in the loop must be indented</li>
+ <p><li> <code>condition</code> is a boolean expression (e.g., <code>t &lt;= 2</code>)</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section class="slide">
+
+<h2>The Python Online Tutor can help you to understand the program flow  <a name="___sec10"></a></h2>
+
+<p>
+<a href="http://pythontutor.com/visualize.html#mode=edit" target="_blank">Python Online Tutor</a>
+lets you step through the program and examine variables.
+
+<p>
+
+<iframe width="950" height="500" frameborder="0"
+        src="http://pythontutor.com/iframe-embed.html#code=a+%3D+1%0Ada+%3D+0.5%0Awhile+a+%3C%3D+3%3A%0A++++print+a%0A++++a+%3D+a+%2B+da&curInstr=0&py=2&cumulative=false">
+</iframe>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Lists <a name="basics:list"></a></h2>
+
+<p>
+A list collects several variables (objects) in a given sequence:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">L = [-<span style="color: #B452CD">1</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">8.0</span>]
+</pre></div>
+<p>
+A list can contain any type of objects, e.g.,
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">L = [<span style="color: #CD5555">&#39;mydata.txt&#39;</span>, <span style="color: #B452CD">3.14</span>, <span style="color: #B452CD">10</span>]
+</pre></div>
+<p>
+Some basic list operations:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; L = [<span style="color: #CD5555">&#39;mydata.txt&#39;</span>, <span style="color: #B452CD">3.14</span>, <span style="color: #B452CD">10</span>]
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> L[<span style="color: #B452CD">0</span>]
+mydata.txt
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> L[<span style="color: #B452CD">1</span>]
+<span style="color: #B452CD">3.14</span>
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">del</span> L[<span style="color: #B452CD">0</span>]  <span style="color: #228B22"># delete the first element</span>
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> L
+[<span style="color: #B452CD">3.14</span>, <span style="color: #B452CD">10</span>]
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #658b00">len</span>(L)  <span style="color: #228B22"># length of L</span>
+<span style="color: #B452CD">2</span>
+&gt;&gt;&gt; L.append(-<span style="color: #B452CD">1</span>)  <span style="color: #228B22"># add -1 at the end of the list</span>
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> L
+[<span style="color: #B452CD">3.14</span>, <span style="color: #B452CD">10</span>, -<span style="color: #B452CD">1</span>]
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Store our table in two lists, one for each column  <a name="___sec12"></a></h2>
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">v0 = <span style="color: #B452CD">2</span>
+a = <span style="color: #B452CD">0.2</span>
+dt = <span style="color: #B452CD">0.1</span>  <span style="color: #228B22"># Increment</span>
+t = <span style="color: #B452CD">0</span>
+t_values = []
+s_values = []
+<span style="color: #8B008B; font-weight: bold">while</span> t &lt;= <span style="color: #B452CD">2</span>:
+    s = v0*t + <span style="color: #B452CD">0.5</span>*a*t**<span style="color: #B452CD">2</span>
+    t_values.append(t)
+    s_values.append(s)
+    t = t + dt
+<span style="color: #8B008B; font-weight: bold">print</span> s_values  <span style="color: #228B22"># Just take a look at a created list</span>
+
+<span style="color: #228B22"># Print a nicely formatted table</span>
+i = <span style="color: #B452CD">0</span>
+<span style="color: #8B008B; font-weight: bold">while</span> i &lt;= <span style="color: #658b00">len</span>(t_values)-<span style="color: #B452CD">1</span>:
+    <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;%.2f  %.4f&#39;</span> % (t_values[i], s_values[i])
+    i += <span style="color: #B452CD">1</span>   <span style="color: #228B22"># Same as i = i + 1</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>For loops <a name="basics:for"></a></h2>
+
+<p>
+A for loop is used for visiting elements in a list, one by one:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; L = [<span style="color: #B452CD">1</span>, <span style="color: #B452CD">4</span>, <span style="color: #B452CD">8</span>, <span style="color: #B452CD">9</span>]
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">for</span> e <span style="color: #8B008B">in</span> L:
+...     <span style="color: #8B008B; font-weight: bold">print</span> e
+...
+<span style="color: #B452CD">1</span>
+<span style="color: #B452CD">4</span>
+<span style="color: #B452CD">8</span>
+<span style="color: #B452CD">9</span>
+</pre></div>
+<p>
+Demo in the Python Online Tutor:
+
+<p>
+
+<iframe width="950" height="500" frameborder="0"
+        src="http://pythontutor.com/iframe-embed.html#code=list1+%3D+%5B0%2C+0.1%2C+0.2%5D%0Alist2+%3D+%5B%5D%0Afor+element+in+somelist%3A%0A++++p+%3D+element+%2B+2%0A++++list2.append%28p%29%0Aprint+list2&curInstr=0&py=2&cumulative=false">
+</iframe>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>For loops used traditionally an integer counter over list/array indices  <a name="___sec14"></a></h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(somelist)):
+    <span style="color: #228B22"># Work with somelist[i]</span>
+</pre></div>
+<p>
+Note:
+
+<ul>
+ <p><li> <code>range</code> returns a list of integers</li>
+ <p><li> <code>range(a, b, s)</code> returns the integers
+   <code>a, a+s, a+2*s, ...</code> up to <em>but not including</em> (!!) <code>b</code></li>
+ <p><li> <code>range(b)</code> implies <code>a=0</code> and <code>s=1</code></li>
+ <p><li> <code>range(len(somelist))</code> returns <code>[0, 1, 2]</code></li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section class="slide">
+
+<h2>Let's replace our while loop by a for loop  <a name="___sec15"></a></h2>
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">v0 = <span style="color: #B452CD">2</span>
+a = <span style="color: #B452CD">0.2</span>
+dt = <span style="color: #B452CD">0.1</span>  <span style="color: #228B22"># Increment</span>
+t_values = []
+s_values = []
+n = <span style="color: #658b00">int</span>(<span style="color: #658b00">round</span>(<span style="color: #B452CD">2</span>/dt)) + <span style="color: #B452CD">1</span>  <span style="color: #228B22"># No of t values</span>
+<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(n):
+    t = i*dt
+    s = v0*t + <span style="color: #B452CD">0.5</span>*a*t**<span style="color: #B452CD">2</span>
+    t_values.append(t)
+    s_values.append(s)
+<span style="color: #8B008B; font-weight: bold">print</span> s_values  <span style="color: #228B22"># Just take a look at a created list</span>
+
+<span style="color: #228B22"># Make nicely formatted table</span>
+<span style="color: #8B008B; font-weight: bold">for</span> t, s <span style="color: #8B008B">in</span> <span style="color: #658b00">zip</span>(t_values, s_values):
+    <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;%.2f  %.4f&#39;</span> % (t, s)
+
+<span style="color: #228B22"># Alternative</span>
+<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(t_values)):
+    <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;%.2f  %.4f&#39;</span> % (t_values[i], s_values[i])
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Traversal of multiple lists at the same time with <code>zip</code>  <a name="___sec16"></a></h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">for</span> e1, e2, e3, ... <span style="color: #8B008B">in</span> <span style="color: #658b00">zip</span>(list1, list2, list3, ...):
+</pre></div>
+<p>
+Alternative: loop over a common index for the lists
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(list1)):
+    e1 = list1[i]
+    e2 = list2[i]
+    ...
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Arrays <a name="basics:numpy"></a></h2>
+
+<ul>
+ <p><li> List: collect a set of numbers or other objects
+   in a single variable</li>
+ <p><li> Lists are very flexible (can grow, can contain &quot;anything&quot;)</li>
+ <p><li> Array: computationally efficient and convenient list</li>
+ <p><li> Arrays must have fixed length and can only contain numbers of
+   the same type (integers, real numbers, complex numbers)</li>
+ <p><li> Arrays require the <code>numpy</code> module</li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span>
+&gt;&gt;&gt; L = [<span style="color: #B452CD">1</span>, <span style="color: #B452CD">4</span>, <span style="color: #B452CD">10.0</span>]    <span style="color: #228B22"># List of numbers</span>
+&gt;&gt;&gt; a = numpy.array(L)  <span style="color: #228B22"># Make corresponding array</span>
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> a
+[  <span style="color: #B452CD">1.</span>   <span style="color: #B452CD">4.</span>  <span style="color: #B452CD">10.</span>]
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> a[<span style="color: #B452CD">1</span>]
+<span style="color: #B452CD">4.0</span>
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> a.dtype       <span style="color: #228B22"># Data type of an element</span>
+float64
+&gt;&gt;&gt; b = <span style="color: #B452CD">2</span>*a + <span style="color: #B452CD">1</span>
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> b
+[  <span style="color: #B452CD">3.</span>   <span style="color: #B452CD">9.</span>  <span style="color: #B452CD">21.</span>]
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2><code>numpy</code> functions creates entire arrays at once  <a name="___sec18"></a></h2>
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; c = numpy.log(a)  <span style="color: #228B22"># Take ln of all elements in a</span>
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> c
+[ <span style="color: #B452CD">0.</span>          <span style="color: #B452CD">1.38629436</span>  <span style="color: #B452CD">2.30258509</span>]
+</pre></div>
+<p>
+Create \( n+1 \) uniformly distributed coordinates in \( [a,b] \):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">t = numpy.linspace(a, b, n+<span style="color: #B452CD">1</span>)
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Let's use arrays in our previous program  <a name="___sec19"></a></h2>
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span>
+v0 = <span style="color: #B452CD">2</span>
+a = <span style="color: #B452CD">0.2</span>
+dt = <span style="color: #B452CD">0.1</span>  <span style="color: #228B22"># Increment</span>
+n = <span style="color: #658b00">int</span>(<span style="color: #658b00">round</span>(<span style="color: #B452CD">2</span>/dt)) + <span style="color: #B452CD">1</span>  <span style="color: #228B22"># No of t values</span>
+
+t_values = numpy.linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">2</span>, n+<span style="color: #B452CD">1</span>)
+s_values = v0*t + <span style="color: #B452CD">0.5</span>*a*t**<span style="color: #B452CD">2</span>
+
+<span style="color: #228B22"># Make nicely formatted table</span>
+<span style="color: #8B008B; font-weight: bold">for</span> t, s <span style="color: #8B008B">in</span> <span style="color: #658b00">zip</span>(t_values, s_values):
+    <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;%.2f  %.4f&#39;</span> % (t, s)
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Standard mathematical functions are found in the <code>math</code> module <a name="basics:math"></a></h2>
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">math</span>
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> math.sin(math.pi)
+<span style="color: #B452CD">1.2246467991473532e-16</span>         <span style="color: #228B22"># Note: only approximate value</span>
+</pre></div>
+<p>
+Get rid of the <code>math</code> prefix:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> sin, pi
+<span style="color: #8B008B; font-weight: bold">print</span> sin(pi)
+
+<span style="color: #228B22"># Or import everything from math</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+<span style="color: #8B008B; font-weight: bold">print</span> sin(pi), log(e), tanh(<span style="color: #B452CD">0.5</span>)
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Use the <code>numpy</code> module for standard mathematical functions applied to arrays  <a name="___sec21"></a></h2>
+
+<p>
+Matlab users can do
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+</pre></div>
+<p>
+The Python community likes
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">print</span> np.sin(np.pi)
+</pre></div>
+<p>
+Our convention: use <code>np</code> prefix, but not in formulas involving
+math functions
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> sin, exp
+t = np.linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">4</span>, <span style="color: #B452CD">1001</span>)
+p = exp(-t)*sin(<span style="color: #B452CD">2</span>*t)
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Plotting <a name="basics:plot"></a></h2>
+
+<p>
+Plotting is done with <code>matplotlib</code>:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+
+v0 = <span style="color: #B452CD">0.2</span>
+a = <span style="color: #B452CD">2</span>
+n = <span style="color: #B452CD">21</span>  <span style="color: #228B22"># No of t values for plotting</span>
+
+t = np.linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">2</span>, n+<span style="color: #B452CD">1</span>)
+s = v0*t + <span style="color: #B452CD">0.5</span>*a*t**<span style="color: #B452CD">2</span>
+
+plt.plot(t, s)
+plt.savefig(<span style="color: #CD5555">&#39;myplot.png&#39;</span>)
+plt.show()
+</pre></div>
+<p>
+The plotfile <code>myplot.png</code> looks like
+
+<p>
+<center><p><img src="fig-bumpy/plot1_s.png" align="bottom" width=500></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Plotting of multiple curves  <a name="___sec23"></a></h2>
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+
+v0 = <span style="color: #B452CD">0.2</span>
+a = <span style="color: #B452CD">2</span>
+n = <span style="color: #B452CD">21</span>  <span style="color: #228B22"># No of t values for plotting</span>
+
+t = np.linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">2</span>, n+<span style="color: #B452CD">1</span>)
+s = v0*t + <span style="color: #B452CD">0.5</span>*a*t**<span style="color: #B452CD">2</span>
+
+plt.plot(t, s)
+plt.savefig(<span style="color: #CD5555">&#39;myplot.png&#39;</span>)
+plt.show()
+</pre></div>
+<p>
+<center><p><img src="fig-bumpy/plot2_s.png" align="bottom" width=500></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h1 style="text-align: center;">Functions and branching <a name="basics:func:branching"></a></h1>
+
+<p>
+<center><p><img src="fig-bumpy/branching3.jpg" align="bottom" width=700></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Functions <a name="basics:func"></a></h2>
+
+<ul>
+ <p><li> \( s(t)=v_0t + \frac{1}{2}at^2 \) is a mathematical function</li>
+ <p><li> Can implement \( s(t) \) as a Python function <code>s(t)</code></li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">s</span>(t):
+    <span style="color: #8B008B; font-weight: bold">return</span> v0*t + <span style="color: #B452CD">0.5</span>*a*t**<span style="color: #B452CD">2</span>
+
+v0 = <span style="color: #B452CD">0.2</span>
+a = <span style="color: #B452CD">4</span>
+value = s(<span style="color: #B452CD">3</span>)   <span style="color: #228B22"># Call the function</span>
+</pre></div>
+<p>
+Note:
+
+<ul>
+ <p><li> <code>v0</code> and <code>a</code> are <em>global variables</em></li>
+ <p><li> <code>v0</code> and <code>a</code> must be initialzed before <code>s</code> is called</li>
+</ul>
+<p>
+
+Have <code>v0</code> and <code>a</code> as function arguments instead of as global
+variables:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">s</span>(t, v0, a):
+    <span style="color: #8B008B; font-weight: bold">return</span> v0*t + <span style="color: #B452CD">0.5</span>*a*t**<span style="color: #B452CD">2</span>
+
+value = s(<span style="color: #B452CD">3</span>, <span style="color: #B452CD">0.2</span>, <span style="color: #B452CD">4</span>)   <span style="color: #228B22"># Call the function</span>
+
+<span style="color: #228B22"># More readable call</span>
+value = s(t=<span style="color: #B452CD">3</span>, v0=<span style="color: #B452CD">0.2</span>, a=<span style="color: #B452CD">4</span>)
+</pre></div>
+<p>
+
+
+</section>
+
+
+
+
+<footer>
+<!-- Here goes a footer -->
+</footer>
+
+<!-- Begin extension snippets. Add or remove as needed. -->
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+-->
+
+<!-- deck.goto snippet
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+-->
+
+<!-- deck.hash snippet
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+-->
+
+<!-- End extension snippets. -->
+
+
+<!-- Required JS files. -->
+<script src="deck.js/jquery.min.js"></script>
+<script src="deck.js/core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="deck.js/core/deck.core.js"></script>
+<script src="deck.js/extensions/hash/deck.hash.js"></script>
+<script src="deck.js/extensions/menu/deck.menu.js"></script>
+<script src="deck.js/extensions/goto/deck.goto.js"></script>
+<script src="deck.js/extensions/status/deck.status.js"></script>
+<script src="deck.js/extensions/navigation/deck.navigation.js"></script>
+<script src="deck.js/extensions/scale/deck.scale.js"></script>
+<script src="deck.js/extensions/notes/deck.notes.js"></script>
+
+<!-- From https://github.com/mikeharris100/deck.pointer.js -->
+<script src="deck.js/extensions/pointer/deck.pointer.js"></script>
+
+<!-- From https://github.com/stvnwrgs/presenterview
+<script type="text/javascript" src="deck.js/extensions/presenterview/deck.presenterview.js"></script> -->
+
+<!-- From https://github.com/nemec/deck.annotate.js
+<script type="text/javascript" src="deck.js/extensions/deck.annotate.js/deck.annotate.js"></script>
+-->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+
+
+</body>
+</html>

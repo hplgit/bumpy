@@ -1,25 +1,39 @@
 #!/bin/sh
-name=bumpy
-wrap=$name
+# Make the basics.do.txt and bumpy.do.txt documents in various formats
 
-doconce format pdflatex $wrap --device=paper
-doconce ptex2tex $wrap envir=minted
-pdflatex -shell-escape $wrap
-pdflatex -shell-escape $wrap
+set -x  # show all commands in output
 
+function system {
+  "$@"
+  if [ $? -ne 0 ]; then
+    echo "make.sh: unsuccessful command $@"
+    echo "abort!"
+    exit 1
+  fi
+}
+
+names="basics bumpy"
+names="basics"
+for name in $names; do
+
+system doconce format pdflatex $name --device=paper --minted_latex_style=trac
+system doconce ptex2tex $name envir=minted
+pdflatex -shell-escape $name
+pdflatex -shell-escape $name
 
 # Plain HTML
-doconce format html $wrap --html_style=bootstrap
+system doconce format html $name --html_style=bootstrap
 if [ $? -ne 0 ]; then echo "doconce could not compile document"; exit; fi
-doconce split_html $wrap.html --pagination
+system doconce split_html $name.html --pagination
 
 # Sphinx
-doconce format sphinx $wrap  # always generate new
-doconce sphinx_dir theme=cbc title="A Worked Example on Scientific Computing with Python" author="H. P. Langtangen" $wrap
-python automake_sphinx.py
+system doconce format sphinx $name  # always generate new
+system doconce sphinx_dir theme=cbc author="H. P. Langtangen" $name
+system python automake_sphinx.py
 
 # Publish
 dest=../pub
 rm -rf $dest/sphinx
 cp -r sphinx-rootdir/_build/html $dest/sphinx
-cp -r fig-bumpy $wrap.html ._${wrap}*.html ${wrap}.pdf $dest/
+cp -r fig-bumpy $name.html ._${name}*.html ${name}.pdf $dest/
+done

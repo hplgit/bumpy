@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>A Worked Example on Scientific Computing with Python</title>
+    <title>A very basic introduction to scientific Python programming</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -27,8 +27,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/sidebar.js"></script>
-    <link rel="top" title="A Worked Example on Scientific Computing with Python" href="#" />
-    <link rel="next" title="A worked example on scientific computing with Python" href="bumpy.html" /> 
+    <link rel="top" title="A very basic introduction to scientific Python programming" href="#" />
+    <link rel="next" title="A very basic introduction to scientific Python programming" href="basics.html" /> 
   
    <style type="text/css">
      div.admonition {
@@ -46,9 +46,9 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="bumpy.html" title="A worked example on scientific computing with Python"
+          <a href="basics.html" title="A very basic introduction to scientific Python programming"
              accesskey="N">next</a> |</li>
-        <li><a href="#">A Worked Example on Scientific Computing with Python</a> &raquo;</li> 
+        <li><a href="#">A very basic introduction to scientific Python programming</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -57,30 +57,44 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="a-worked-example-on-scientific-computing-with-python">
-<h1>A Worked Example on Scientific Computing with Python<a class="headerlink" href="#a-worked-example-on-scientific-computing-with-python" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="a-very-basic-introduction-to-scientific-python-programming">
+<h1>A very basic introduction to scientific Python programming<a class="headerlink" href="#a-very-basic-introduction-to-scientific-python-programming" title="Permalink to this headline">¶</a></h1>
 <p>Contents:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="bumpy.html">A worked example on scientific computing with Python</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="bumpy.html#optimal-backround-for-reading-this-note">Optimal backround for reading this note</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="bumpy.html#a-scientific-application">A scientific application</a></li>
-<li class="toctree-l3"><a class="reference internal" href="bumpy.html#user-input">User input</a></li>
-<li class="toctree-l3"><a class="reference internal" href="bumpy.html#visual-exploration">Visual exploration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="bumpy.html#advanced-topics">Advanced topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">A very basic introduction to scientific Python programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#variables-loops-lists-and-arrays">Variables, loops, lists, and arrays</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basics.html#getting-access-to-python">Getting access to Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html#mathematical-example">Mathematical example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html#a-program-for-evaluating-a-formula">A program for evaluating a formula</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html#formatted-output-with-text-and-numbers">Formatted output with text and numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html#while-loops">While loops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html#lists">Lists</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html#for-loops">For loops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html#arrays">Arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html#mathematical-functions">Mathematical functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html#plotting">Plotting</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="bumpy.html#example-on-a-test-function">Example on a test function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bumpy.html#test-function-for-the-numerical-solver">Test function for the numerical solver</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="bumpy.html#appendix-quick-motivation-for-programming-with-python">Appendix: Quick motivation for programming with Python</a></li>
-<li class="toctree-l3"><a class="reference internal" href="bumpy.html#appendix-scientific-python-resources">Appendix: Scientific Python resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#functions-and-branching">Functions and branching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basics.html#functions">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html#a-more-general-mathematical-formula">A more general mathematical formula</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html#if-tests">If tests</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="bumpy.html#full-tutorials-on-scientific-programming-with-python">Full tutorials on scientific programming with Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bumpy.html#numpy-resources">NumPy resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bumpy.html#useful-resources">Useful resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bumpy.html#some-relevant-python-books">Some relevant Python books</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bumpy.html#course-material-on-python-programming-in-general">Course material on Python programming in general</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#exercises">Exercises</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basics.html#exercise-1-program-a-formula">Exercise 1: Program a formula</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html#exercise-2-combine-text-and-numbers-in-output">Exercise 2: Combine text and numbers in output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html#exercise-3-program-a-while-loop">Exercise 3: Program a while loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html#exercise-4-create-a-list-with-a-while-loop">Exercise 4: Create a list with a while loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html#exercise-5-program-a-for-loop">Exercise 5: Program a for loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html#exercise-6-create-a-list-with-a-for-loop">Exercise 6: Create a list with a for loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html#exercise-7-write-a-python-function">Exercise 7: Write a Python function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html#exercise-8-return-three-values-from-a-python-function">Exercise 8: Return three values from a Python function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html#exercise-9-plot-a-function">Exercise 9: Plot a function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html#exercise-10-measure-the-efficiency-of-vectorization">Exercise 10: Measure the efficiency of vectorization</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -108,15 +122,15 @@
             </center>
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">A Worked Example on Scientific Computing with Python</a><ul>
+<li><a class="reference internal" href="#">A very basic introduction to scientific Python programming</a><ul>
 </ul>
 </li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 
   <h4>Next topic</h4>
-  <p class="topless"><a href="bumpy.html"
-                        title="next chapter">A worked example on scientific computing with Python</a></p>
+  <p class="topless"><a href="basics.html"
+                        title="next chapter">A very basic introduction to scientific Python programming</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/index.txt"
@@ -146,9 +160,9 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="bumpy.html" title="A worked example on scientific computing with Python"
+          <a href="basics.html" title="A very basic introduction to scientific Python programming"
              >next</a> |</li>
-        <li><a href="#">A Worked Example on Scientific Computing with Python</a> &raquo;</li> 
+        <li><a href="#">A very basic introduction to scientific Python programming</a> &raquo;</li> 
       </ul>
     </div>
 <div class="wrapper">
