@@ -2,6 +2,7 @@ TITLE: Intro to scientific Python programming
 AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Simula Research Laboratory & University of Oslo
 DATE: today
 
+!split
 TOC: on
 
 
