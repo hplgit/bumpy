@@ -35,9 +35,10 @@ See "How to access Python for doing scientific computing": "http://hplgit.github
 Most examples will involve this formula:
 
 !bt
-\[
+\begin{equation}
+label{basics:seq}
 s = v_0t + \frac{1}{2}at^2
-\]
+\end{equation}
 !et
 We may view $s$ as a function of $t$: $s(t)$, and also include the
 parameters in the notation: $s(t;v_0,a)$.
@@ -220,7 +221,7 @@ mydata.txt
 !split
 ===== Store our table in two lists, one for each column =====
 
-@@@CODE src-bumpy/while_list.py
+# @@@CODE src-bumpy/while_list.py
 
 !split
 ===== For loops =====
@@ -246,7 +247,7 @@ Demo in the Python Online Tutor:
 !bc pyoptpro
 list1 = [0, 0.1, 0.2]
 list2 = []
-for element in somelist:
+for element in list1:
     p = element + 2
     list2.append(p)
 print list2
@@ -410,7 +411,7 @@ idx{`matplotlib`}
 
 Plotting is done with `matplotlib`:
 
-@@@CODE src-bumpy/plot1.py
+# @@@CODE src-bumpy/plot1.py
 % if FORMAT != 'ipynb':
 The plotfile `myplot.png` looks like
 
@@ -420,7 +421,7 @@ FIGURE: [fig-bumpy/plot1_s, width=500 frac=0.5]
 !split
 ===== Plotting of multiple curves =====
 
-@@@CODE src-bumpy/plot1.py
+# @@@CODE src-bumpy/plot1.py
 
 % if FORMAT != 'ipynb':
 FIGURE: [fig-bumpy/plot2_s, width=500 frac=0.5]
