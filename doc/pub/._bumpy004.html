@@ -53,6 +53,7 @@ Automatically generated HTML file from DocOnce source
                3,
                None,
                '___sec18'),
+              (' Modules ', 2, None, '___sec19'),
               (' Appendix: Quick motivation for programming with Python ',
                1,
                'app:motivation',
@@ -64,14 +65,14 @@ Automatically generated HTML file from DocOnce source
               (' Full tutorials on scientific programming with Python ',
                3,
                None,
-               '___sec21'),
-              (' NumPy resources ', 3, None, '___sec22'),
-              (' Useful resources ', 3, None, '___sec23'),
-              (' Some relevant Python books ', 3, None, '___sec24'),
+               '___sec22'),
+              (' NumPy resources ', 3, None, '___sec23'),
+              (' Useful resources ', 3, None, '___sec24'),
+              (' Some relevant Python books ', 3, None, '___sec25'),
               (' Course material on Python programming in general ',
                3,
                None,
-               '___sec25')]}
+               '___sec26')]}
 end of tocinfo -->
 
 <body>
@@ -111,9 +112,9 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="._bumpy002.html#___sec1" style="font-size: 80%;">A scientific application</a></li>
      <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec10" style="font-size: 80%;">User input</a></li>
      <!-- navigation toc: --> <li><a href="._bumpy009.html#___sec13" style="font-size: 80%;">Visual exploration</a></li>
-     <!-- navigation toc: --> <li><a href="._bumpy009.html#___sec14" style="font-size: 80%;">Advanced topics</a></li>
-     <!-- navigation toc: --> <li><a href="._bumpy009.html#app:motivation" style="font-size: 80%;">Appendix: Quick motivation for programming with Python</a></li>
-     <!-- navigation toc: --> <li><a href="._bumpy009.html#app:resources" style="font-size: 80%;">Appendix: Scientific Python resources</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec14" style="font-size: 80%;">Advanced topics</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#app:motivation" style="font-size: 80%;">Appendix: Quick motivation for programming with Python</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#app:resources" style="font-size: 80%;">Appendix: Scientific Python resources</a></li>
 
         </ul>
       </li>
@@ -159,7 +160,8 @@ damping case in a short and compact Python function:
 Functions in Python start with <code>def</code>, followed by the function name and
 the list of input objects separated by comma. The function body is
 indented, and the first non-indented line signifies the end of the function
-body block.
+body block. Output objects are returned to the calling code by a
+<code>return</code> statement.
 
 <p>
 The arguments to this function and the variables created
@@ -173,10 +175,8 @@ the same length, where <code>F</code> holds \( F(t_n) \) and <code>t</code> hold
 The number of elements in an array <code>t</code> is given by <code>t.size</code> (or
 <code>len(t)</code>, but <code>t.size</code> works for multi-dimensional arrays too).
 Arrays are indexed by square brackets, and indices always start at 0.
-For/do loops in Python are more general than those in Fortran, C, C++,
-and Java, as one can loop over the any set of objects with the
-syntax <code>for element in some_set</code>. In numerical code, it is common
-to loop over array indices, i.e., a set of integers. Such a set
+Numerical codes frequently needs to loop over array indices, i.e.,
+a set of integers. Such a set
 is produced by <code>range(start, stop, increment)</code>, which returns a
 list of integers <code>start, start+increment, start+2*increment</code>, and so on,
 up to <em>but not including</em> <code>stop</code>. Writing just <code>range(stop)</code> means
@@ -185,7 +185,7 @@ above results in a list of integers: <code>1</code>, <code>2</code>, ..., <code>
 
 <p>
 Array functionality is enabled by the <code>numpy</code> package, which offers
-functions such as <code>zeros</code> and <code>linspace</code>, as known from MATLAB.
+functions such as <code>zeros</code> and <code>linspace</code>, as known from Matlab.
 Here we import all objects in the <code>numpy</code> package by the statement
 
 <p>
@@ -194,7 +194,8 @@ Here we import all objects in the <code>numpy</code> package by the statement
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
 </pre></div>
 <p>
-Only the <code>zeros</code> function is used to create the output array <code>u</code>.
+Only the <code>zeros</code> function is used to create the correct
+size of the output array <code>u</code>.
 
 <p>
 Comments start with the character <code>#</code> and the rest of the line
@@ -205,7 +206,7 @@ Every variable in Python is an object. In particular, the <code>s</code> functio
 above is a function object, transferred to the function as any other
 object, and called as any other function. Transferring a function as
 argument to another function is therefore simpler and cleaner in Python
-than in, e.g., C, C++, Java, C#, and MATLAB.
+than in, e.g., C, C++, Java, C#, and Matlab.
 
 <p>
 How can we use the <code>solver_linear_damping</code> function? We need to <em>call</em> it
@@ -256,7 +257,7 @@ shows the result.
 
 <p>
 <center> <!-- figure -->
-
+<hr class="figure">
 <center><p class="caption">Figure 2:  Plot of computed curve. <a name="bumpy:fig0"></a> </p></center>
 <p><img src="fig-bumpy/solver_linear_damping.png" align="bottom" width=500></p>
 </center>
@@ -276,6 +277,7 @@ shows the result.
   <li><a href="._bumpy007.html">8</a></li>
   <li><a href="._bumpy008.html">9</a></li>
   <li><a href="._bumpy009.html">10</a></li>
+  <li><a href="._bumpy010.html">11</a></li>
   <li><a href="._bumpy005.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->

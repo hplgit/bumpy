@@ -122,7 +122,7 @@ def command_line_options():
                         default=80, help='damping parameter')
     parser.add_argument('--v', '--velocity', type=float,
                         default=5, help='velocity of vehicle')
-    parser.add_argument('--cython', action='store_false')
+    parser.add_argument('--cython', action='store_true')
     url = 'http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz'
     parser.add_argument('--roadfile', type=str,
               default=url, help='filename/URL with road data')
@@ -135,6 +135,7 @@ def command_line_options():
 if __name__ == '__main__':
     #url, m, b, k, v = prepare_input()
     url, m, b, k, v, cy = command_line_options()
+    print 'cy', cy
 
     data = bumpy_road(url=url, m=60, b=b, k=60, v=10, cy=cy)
     data = rms(data)

@@ -1,0 +1,20 @@
+
+.. Master file automatically created by doconce sphinx_dir
+
+A worked example on scientific computing with Python
+====================================================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 3
+
+   bumpy
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

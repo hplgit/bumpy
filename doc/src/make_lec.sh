@@ -40,16 +40,13 @@ html=${name}-deck
 system doconce format html $name --pygments_html_style=perldoc --keep_pygments_html_bg --html_links_in_new_window --html_output=$html $opt
 system doconce slides_html $html deck --html_slide_theme=sandstone.default
 
-# Plain HTML slides
+# Plain HTML slides, 1 big file in solarized style
 html=${name}-solarized
 system doconce format html $name --pygments_html_style=perldoc --html_style=solarized3 --html_links_in_new_window --html_output=$html $opt
-system doconce slides_html $html doconce --nav_button=text
-
-html=${name}-plain
-system doconce format html $name --pygments_html_style=default --html_style=bloodish --html_links_in_new_window --html_output=$html $opt
-system doconce split_html $html.html
-# Remove top navigation in all parts
-doconce subst -s '<!-- begin top navigation.+?end top navigation -->' '' ${html}.html ._${html}*.html
+# Don't split into separate pages since we need the enlargen the
+# font in the browser (must often be redone for each page)
+system doconce split_html $html.html --method=space8
+#system doconce slides_html $html doconce --nav_button=text
 
 # One big HTML file with space between the slides (good for browsing)
 html=${name}-1
@@ -87,6 +84,8 @@ rm -f *.aux  # important after beamer!
 system doconce format pdflatex $name --minted_latex_style=trac --latex_admon=paragraph --latex_table_format=footnotesize $opt
 system doconce ptex2tex $name envir=minted
 doconce replace 'section{' 'section*{' $name.tex
+pdflatex -shell-escape $name
+makeindex $name
 pdflatex -shell-escape $name
 mv -f $name.pdf ${name}-minted.pdf
 cp $name.tex ${name}-plain-minted.tex

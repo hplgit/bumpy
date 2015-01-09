@@ -453,11 +453,18 @@ idx{global variables}
 
 Note:
 
+ * functions start with the keyword `def`
+ * statements belonging to the function must be indented
+ * function input is represented by arguments
+   (separated by comma if more than one)
+ * function output is returned to the calling code
  * `v0` and `a` are *global variables*
  * `v0` and `a` must be initialzed before `s` is called
 
-Have `v0` and `a` as function arguments instead of as global
-variables:
+!split
+===== Functions can have multiple arguments =====
+
+`v0` and `a` as function arguments instead of global variables:
 
 !bc pypro
 def s(t, v0, a):
@@ -469,36 +476,93 @@ value = s(3, 0.2, 4)   # Call the function
 value = s(t=3, v0=0.2, a=4)
 !ec
 
-# #ifdef REMAINING
+!split
+===== Keyword arguments are arguments with default values =====
+
+idx{keyword arguments}
+
+!bc pypro
+def s(t, v0=1, a=1):
+    return v0*t + 0.5*a*t**2
+
+value = s(3, 0.2, 4)         # specify new v0 and a
+value = s(3)                 # rely on v0=1 and a=1
+value = s(3, a=2)            # rely on v0=1
+value = s(3, v0=2)           # rely on a=1
+value = s(t=3, v0=2, a=2)    # specify everything
+value = s(a=2, t=3, v0=2)    # any sequence allowed
+!ec
+
+ * Arguments without the argument name are called *positional arguments*
+ * Positional arguments mustalways be listed before the keyword arguments
+   in the function and in any call
+ * The sequence of the keyword arguments can be arbitrary
+
+!split
+===== Vectorization speeds up the code =====
 
 idx{vectorization}
 idx{vectorized functions}
 
-!bnotice Vectorized functions
-Applying the function `s(t, v0, a)` to an array `t` can be done
-in two ways:
+Scalar code (work with one number at a time):
 
 !bc pycod
-# Scalar code: work with one element at a time
+def s(t, v0, a):
+    return v0*t + 0.5*a*t**2
+
 for i in range(len(t)):
     s_values[i] = s(t_values[i], v0, a)
+!ec
 
-# Vectorized code: apply s to the whole array
+Vectorized code: apply `s` to the entire array
+
+!bc pycod
 s_values = s(t_values, v0, a)
 !ec
-For the last line to work, the function `s` must contain statements
-that work correctly when `t` is an array argument.
 
-The advantage of vectorized code is that we avoid a loop in Python.
-Instead, we carry out mathematical operations on entire arrays, e.g.,
-`v0*t` and `a*t**2`. Technically, such (binary) operations are
-executed as loops in very fast (compiled) C code.
-!enotice
+How can this work?
 
+ * Array: `t`
+ * Expression: v0*t + 0.5*a*t**2
+ * `r1 = v0*t`  (scalar times array)
+ * `r2 = t**2`  (square each element)
+ * `r3 = 0.5*a*r2` (scalar times array)
+ * `r1 + r3` (add each element)
+
+!split
+===== Python functions written for scalars normally work for arrays too! =====
+
+True if computations involve arithmetic operations and math functions:
+
+!bc pycod
+from math import exp, sin
+
+def f(x):
+    return 2*x + x**2*exp(-x)*sin(x)
+
+v = f(4)  # f(x) works with scalar x
+
+# Redefine exp and sin with their vectorized versions
+from numpy import exp, sin, linspace
+x = linspace(0, 4, 100001)
+v = f(x)  # f(x) works with array x
+!ec
+
+However, if tests are not allowed:
+
+!bc pycod
+def f(x):
+    return -1 if x < 0 else x**4*exp(-x)*sin(x)
+
+x = linspace(0, 4, 100001)
+v = f(x)  # will not work
+!ec
+
+!split
+===== Python functions can return multiple values =====
 idx{multiple return values}
 
-A function can return more than one value, say $s(t)$ and the
-velocity $s'(t)=v_0 + at$:
+Return $s(t)=v_0t+\frac{1}{2}at^2$ and $s'(t)=v_0 + at$:
 
 !bc pypro
 def movement(t, v0, a):
@@ -508,13 +572,8 @@ def movement(t, v0, a):
 
 s_value, v_value = movement(t=0.2, v0=2, a=4)
 !ec
-When $n$ values are returned, we list $n$ variables on the left-hand
-side in the call.
 
-!bnotice Python functions return only one object
-Even when we return several values, as in `return s, v`, actually only
-one object is returned. The `s` and `v` values are packed together
-in a *tuple* object (which is very similar to a list).
+`return s, v` means that we return a *tuple* ($\approx$ list):
 
 !bc pyshell
 >>> def f(x):
@@ -528,60 +587,54 @@ in a *tuple* object (which is very similar to a list).
 >>> print r[1]
 5
 !ec
-Tuples are constant lists, so you can index them as lists, but you cannot
-change the contents (`append` or `del` is illegal).
-!enotice
 
+Tuples are constant lists (cannot be changed)
+
+!split
 ===== A more general mathematical formula =====
 label{basics:formula:piecewise}
 
-The formula (ref{basics:seq}) arises from the basic differential
-equations in kinematics:
+Equations from basic kinematics:
 
 !bt
-\begin{align}
-v = \frac{ds}{dt},\quad s(0)=s_0,
-label{basics:vdef}\\
-a = \frac{dv}{dt},\quad v(0)=v_0\thinspace .
-label{basics:adef}
-\end{align}
+\begin{align*}
+v = \frac{ds}{dt},\quad s(0)=s_0\\
+a = \frac{dv}{dt},\quad v(0)=v_0
+\end{align*}
 !et
-Given any acceleration $a(t)$, we can solve for $s(t)$ through integration.
-First, we integrate to find $v(t)$:
+
+Integrate to find $v(t)$:
 
 !bt
-\[ \int_0^t a(t)dt = \int_0^t \frac{dv}{dt} dt,\]
+\[ \int_0^t a(t)dt = \int_0^t \frac{dv}{dt} dt\]
 !et
 which gives
 
 !bt
-\[ v(t) = v_0 + \int_0^t a(t)dt\thinspace . \]
-!et
-Then we integrate again over $[0,t]$ to find $s(t)$:
-
-!bt
-\[ s(t) = s_0 + v_0t + \int_0^t\left( \int_0^t a(t)dt \right) dt\thinspace .\]
+\[ v(t) = v_0 + \int_0^t a(t)dt \]
 !et
 
-Suppose we have some constant acceleration $a_0$ in $[0,t_1]$ and no
-acceleration thereafter. We find
+Integrate again over $[0,t]$ to find $s(t)$:
 
 !bt
-\begin{equation}
+\[ s(t) = s_0 + v_0t + \int_0^t\left( \int_0^t a(t)dt \right) dt\]
+!et
+
+$a(t)=a_0$ for $t\in[0,t_1]$, else $a(t)=0$:
+
+!bt
+\[
 s(t) = \left\lbrace\begin{array}{ll}
 s_0 + v_0 t + \frac{1}{2}a_0 t^2,& t\leq t_1\\
 s_0 + v_0t_1 + \frac{1}{2}a_0 t_1^2 + a_0t_1(t-t_1),& t> t_1
 \end{array}\right.
-label{basics:seq2}
-\end{equation}
+\]
 !et
 
-To implement a function like (ref{basics:seq2}), we need to
-branch into one type of code (formula) if $t\leq t_1$ and another
-type of code (formula) if $t>t_1$. This is called *branching* and
-the *if test* is the primary construction to use.
+Need *if test* to implement this!
 
-===== If tests =====
+!split
+===== Basic if-else tests =====
 label{basics:if}
 
 idx{branching}
@@ -596,9 +649,10 @@ if condition:
 else:
     <statements when condition is False>
 !ec
-Here, `condition` is a boolean expression that evaluates to `True` or
-`False`. For the picewisely defined function (ref{basics:seq2})
-we would use an if test in the implementation:
+Here,
+
+ * `condition` is a boolean expression with value `True` or
+   `False`.
 
 !bc pycod
 if t <= t1:
@@ -607,8 +661,8 @@ else:
     s = v0*t + 0.5*a0*t1**2 + a0*t1*(t-t1)
 !ec
 
-The `else` part can be omitted when not needed. Several branches are
-also possible:
+!split
+===== Multi-branch if tests =====
 
 !bc pycod
 if condition1:
@@ -622,41 +676,73 @@ else:
     <statements when condition1/2/3 all are False>
 !ec
 
+Just if, no else:
+
+!bc pycod
+if condition:
+    <statements when condition is True>
+!ec
+
+!split
+===== Implementation of a piecewisely defined function with if =====
+
 A Python function implementing the mathematical function (ref{basics:seq2})
 reads
 
+!bt
+\[
+s(t) = \left\lbrace\begin{array}{ll}
+s_0 + v_0 t + \frac{1}{2}a_0 t^2,& t\leq t_1\\
+s_0 + v_0t_1 + \frac{1}{2}a_0 t_1^2 + a_0t_1(t-t_1),& t> t_1
+\end{array}\right.
+\]
+!et
+
 @@@CODE src-bumpy/plot3.py fromto: def s_func@n = 201
 
-To plot this $s(t)$, we need to compute points on the curve.
-Trying to call `s_func` with an array `t` as argument will not
-work because of the if test. In general, functions if if tests
-will not automatically work with arrays. One solution is to
-compute the function values one by one in a loop.
-Appropriate code is
+!split
+===== Python functions containing if will not accept array arguments =====
+
+!bc pyshell
+>>> def f(x): return x if x < 1 else 2*x
+...
+>>> import numpy as np
+>>> x = np.linspace(0, 2, 5)
+>>> f(x)
+Traceback (most recent call last):
+...
+ValueError: The truth value of an array with more than one
+element is ambiguous. Use a.any() or a.all()
+!ec
+
+Problem: `x < 1` evaluates to a boolean array, not just a boolean
+
+!split
+===== Remedy 1: Call the function with scalar arguments =====
 
 @@@CODE src-bumpy/plot3.py fromto: n = 201@plt\.plot
 
-Relevant statements for plotting are now
+Can now easily plot:
 
 @@@CODE src-bumpy/plot3.py fromto: plt\.plot@
 
+!split
+===== Remedy 2: Vectorize the if test with `where` =====
+
 idx{vectorizing if tests}
 
-!bnotice Vectorization of functions with if tests
-To vectorize the computation of the array of $s(t)$ values, i.e.,
-avoid a loop where `s_func` is called for each `t[i]` element,
-we must completely rewrite the if test. There are two methods:
-the `numpy.where` function and array indexing.
-
-=== Using the `where` function ===
-
-A vectorized if-else test can be coded as
+Functions with if tests require a complete rewrite to work with
+arrays.
 
 !bc pycod
 s = np.where(condition, s1, s2)
 !ec
-Here, `condition` i[i]`s an array of boolean values, and
-`s[i] = s1[i]` if `condition[i]` is `True`, and otherwise `s[i] = s2[i]`.
+
+Explanation:
+
+ * `condition`: array of boolean values
+ * `s[i] = s1[i]` if `condition[i]` is `True`
+ * `s[i] = s2[i]` if `condition[i]` is `False`
 
 Our example then becomes
 
@@ -665,20 +751,18 @@ s = np.where(t <= t1,
              v0*t + 0.5*a0*t**2,
              v0*t + 0.5*a0*t1**2 + a0*t1*(t-t1))
 !ec
+
 Note that `t <= t1` with array `t` and scalar `t1` results in a boolean
 array `b` where `b[i] = t[i] <= t1`.
 
-=== Using array indexing ===
+!split
+===== Remedy 3: Vectorize the if test with array indexing =====
 
-It is possible to index a subset of indices in an array `s` using
-a boolean array `b`: `s[b]`. This construction picks out all the
-elements `s[i]` where `b[i]` is to `True`. On the right-hand side
-we can then assign some array expression `expr` of the same length
-as `s[b]`:
+ * Let `b` be a boolean array (e.g., `b = t <= t1`)
+ * `s[b]` selects all elements `s[i]` where `b[i]` is `True`
+ * Can assign some array expression `expr` of length
+   `len(s[b])` to `s[b]`: `s[b] = (expr)[b]`
 
-!bc pycod
-s[b] = (expr)[b]
-!ec
 Our example can utilize this technique with `b` as `t <= t1` and `t > t1`:
 
 !bc pycod
@@ -686,125 +770,134 @@ s = np.zeros_like(t)  # Make s as zeros, same size & type as t
 s[t <= t1] = (v0*t + 0.5*a0*t**2)[t <= t1]
 s[t > t1]  = (v0*t + 0.5*a0*t1**2 + a0*t1*(t-t1))[t > t1]
 !ec
-!enotice
 
-======= Exercises =======
-label{basics:exer}
 
-===== Exercise: Program a formula =====
-label{basics:exer:formula1}
+======= Classes =======
+label{basics:class}
 
-Make a Python program that calculates and prints the value of the
-formula
+!bblock
+ * All objects in Python are made from a class
+ * You don't need to know about classes to use Python
+ * But class programming is powerful
+!eblock
+
+!bblock
+ * Class = functions + variables packed together
+ * A class is a logical unit in a program
+ * A large program as a combination of appropriate units
+!eblock
+
+!split
+===== A very simple class =====
+
+ * One variable: `a`
+ * One function: `dump` for printing `a`
+
+!bc pycod
+class Trivial:
+    def __init__(self, a):
+        self.a = a
+
+    def dump(self):
+        print self.a
+!ec
+
+Class terminology: Functions are called
+*methods* and variables are called *attributes*.
+
+!split
+===== How can we use this class? =====
+
+First, make an *instance* (object) of the class:
+
+!bc pycod
+t = Trivial(a=4)
+t.dump()
+!ec
+
+Note:
+
+ * The syntax `Trivial(a=4)` actually means `Trivial.__init__(t, 4)`
+ * `self` is an argument in `__init__` and `dump`, but not used in the calls
+ * `__init__` is called *constructor* and is used to construct an object
+   (instance) if the class
+
+!split
+===== The `self` argument is a difficult thing for newcomers... =====
+
+It takes time and experience to understand the `self` argument in
+class methods!
+
+ o `self` must always be the first argument
+ o `self` is never used in calls
+ o `self` is used to access attributes and methods inside methods
+
+We refer to a "more comprehensive text on classes":
+"http://hplgit.github.io/primer.html/doc/pub/class/index.html"
+for better explanation of `self`.
+
+!bblock
+`self` is confusing in the beginning, but later it greatly helps
+the understanding of how classes work!
+!eblock
+
+!split
+===== A class for representing a mathematical function =====
+
+Function with one independent variable $t$ and two parameters
+$v_0$ and $a$:
 
 !bt
-\[ y = 6x^2 + 3x + 2,\]
-for $x=2$.
+\[ s(t; v_0, a) = v_0t + \frac{1}{2}at^2\]
 !et
 
-===== Exercise: Combine text and numbers in output =====
-label{basics:exer:printf1}
+Class representation of this function:
 
-Let $y=x^2$. Make a program that writes the text
+ * `v0` and `a` are variables (data)
+ * A method to evaluate $s(t)$, but just function of `t`
 
-!bc
-y(2.550)=6.502
+Usage:
+
+!bc pycod
+s = Distance(v0=2, a=0.5)  # create instance
+v = s(t=0.2)               # compute formula
 !ec
-if $x=2.55$. The values of $x$ and $y$ should be written with three
-decimals. Run the program for $x=\pi$ (the value if $\pi$ is available
-as the variable `pi` in the `math` module).
 
-===== Exercise: Program a while loop =====
-label{basics:exer:while1}
+!split
+===== The class code =====
 
-Define a sequence of numbers,
+!bc pycod
+class Distance:
+    def __init__(self, v0, a):
+        self.v0 = v0
+        self.a = a
 
-!bt
-\[ x_n = n^2 + 1,\]
-!et
-for integers $n=0,1,2,\ldots,N$.
-Write a program that prints out $x_n$ for $n=0,1,\ldots,20$ using
-a while loop.
+    def __call__(self, t):
+        v0, a = self.v0, self.a  # make local variables
+        return v0*t + 0.5*a*t**2
 
-===== Exercise: Create a list with a while loop =====
-label{basics:exer:while2}
-
-Store all the $x_n$ values computed in Exercise ref{basics:exer:while1}
-in a list (using a while loop). Print the entire list (as one object).
-
-===== Exercise: Program a for loop =====
-label{basics:exer:for1}
-
-Do Exercise ref{basics:exer:while1}, but use a for loop.
-
-===== Exercise: Create a list with a for loop =====
-label{basics:exer:for2}
-
-Do Exercise ref{basics:exer:while2}, but use a for loop.
-
-===== Exercise: Write a Python function =====
-label{basics:exer:func1}
-
-Write a function `x(n)` for computing an element in the
-sequence $x_n=n^2+1$. Call the function for $n=4$ and write
-out the result.
-
-===== Exercise: Return three values from a Python function =====
-label{basics:exer:func3}
-
-Write a Python function that evaluates the mathematical function
-$f(x)=\cos x$, $f'(x)=-\sin x$, and $f''(x)=-\cos x$. Return
-these three values. Write out the results of these values for $x=\pi$.
-
-===== Exercise: Plot a function =====
-label{basics:exer:plot1}
-
-Make a program that plots the function $g(y)=e^{-y}\sin (4y)$ for
-$y\in [0,4]$. Use 501 points along the curve and store these
-points in arrays.
-
-===== Exercise: Measure the efficiency of vectorization =====
-label{basics:exer:timeit}
-
-"IPython": "http://ipython.org/" an enhanced interactive shell
-for doing computing with Python. IPython has some user-friendly functionality
-for quick testing of the efficiency of different Python constructions.
-Start IPython by writing `ipython` in a terminal window.
-The interactive session below demonstrates how we can use the
-timer feature `%timeit` to measure the CPU time required by
-computing $\sin (x)$, where $x$ is an array of 1M elements, using
-scalar computing with a loop (function `sin_func`) and vectorized
-computing using the `sin` function from `numpy`.
-
-!bc ipy
-In [1]: import numpy as np
-
-In [2]: n = 1000000
-
-In [3]: x = np.linspace(0, 1, n+1)
-
-In [4]: def sin_func(x):
-   ...:     r = np.zeros_like(x)  # result
-   ...:     for i in range(len(x)):
-   ...:         r[i] = np.sin(x[i])
-   ...:     return r
-   ...:
-
-In [5]: %timeit y = sin_func(x)
-1 loops, best of 3: 2.68 s per loop
-
-In [6]: %timeit y = np.sin(x)
-10 loops, best of 3: 40.1 ms per loop
+s = Distance(v0=2, a=0.5)  # create instance
+v = s(t=0.2)               # actually s.__call__(t=0.2)
 !ec
-Here, `%timeit` ran our function once, but the vectorized function
-10 times. The most relevant CPU times measured are listed, and we
-realize that
-the vectorized code is $2.68/(40.1/1000)\approx 67$ times faster
-than the loop-based scalar code.
 
-Use the recipe above to investigate the speed up of the
-vectorized computation of the $s(t)$ function in
-Section ref{basics:func}.
+!split
+===== Class implementation of $f(x,y,z; p_1,p_2,\ldots,p_n)$ =====
 
-# factor 134
-# #endif
+ * The $n$ parameters $p_1,p_2,\ldots,p_n$ are attributes
+ * `__call__(self, x, y, z)` is used to compute $f(x, y, z)$
+
+!bc pycod
+class F:
+    def __init__(self, p1, p2, ...):
+        self.p1 = p1
+        self.p2 = p2
+        ...
+
+    def __call__(self, x, y, z):
+        # return formula involving x, y, z and self.p1, self.p2 ...
+
+f = F(p1=..., p2=..., ...)   # create instance with parameters
+print f(1, 4, -1)            # evaluate f(x,y,z) function
+!ec
+
+

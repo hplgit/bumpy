@@ -43,10 +43,11 @@ The following programming topics are illustrated:
   * flexible storage of objects in lists,
   * storage of objects in files (persistence),
   * downloading files from the web,
-  * user input via the command line
+  * user input via the command line,
   * signal processing and FFT,
   * curve plotting of data,
-  * testing.
+  * testing,
+  * modules.
 
 All files can be forked at URL: "https://github.com/hplgit/bumpy".
 
@@ -60,7 +61,7 @@ All files can be forked at URL: "https://github.com/hplgit/bumpy".
 
 !bblock
 No background in Python is assumed - the aim is to give an impression of
-how Python can be used in a MATLAB-like fashion to solve a real-world
+how Python can be used in a Matlab-like fashion to solve a real-world
 physical problem (with low mathematical complexity).
 !eblock
 
@@ -212,7 +213,8 @@ damping case in a short and compact Python function:
 Functions in Python start with `def`, followed by the function name and
 the list of input objects separated by comma. The function body is
 indented, and the first non-indented line signifies the end of the function
-body block.
+body block. Output objects are returned to the calling code by a
+`return` statement.
 
 The arguments to this function and the variables created
 inside the function are not declared with type. We therefore need to
@@ -224,10 +226,8 @@ $n=0,1,\ldots,N+1$.
 The number of elements in an array `t` is given by `t.size` (or
 `len(t)`, but `t.size` works for multi-dimensional arrays too).
 Arrays are indexed by square brackets, and indices always start at 0.
-For/do loops in Python are more general than those in Fortran, C, C++,
-and Java, as one can loop over the any set of objects with the
-syntax `for element in some_set`. In numerical code, it is common
-to loop over array indices, i.e., a set of integers. Such a set
+Numerical codes frequently needs to loop over array indices, i.e.,
+a set of integers. Such a set
 is produced by `range(start, stop, increment)`, which returns a
 list of integers `start, start+increment, start+2*increment`, and so on,
 up to *but not including* `stop`. Writing just `range(stop)` means
@@ -235,13 +235,14 @@ up to *but not including* `stop`. Writing just `range(stop)` means
 above results in a list of integers: `1`, `2`, ..., `N-1`.
 
 Array functionality is enabled by the `numpy` package, which offers
-functions such as `zeros` and `linspace`, as known from MATLAB.
+functions such as `zeros` and `linspace`, as known from Matlab.
 Here we import all objects in the `numpy` package by the statement
 
 !bc pycod
 from numpy import *
 !ec
-Only the `zeros` function is used to create the output array `u`.
+Only the `zeros` function is used to create the correct
+size of the output array `u`.
 
 Comments start with the character `#` and the rest of the line
 is then ignored by Python.
@@ -250,7 +251,7 @@ Every variable in Python is an object. In particular, the `s` function
 above is a function object, transferred to the function as any other
 object, and called as any other function. Transferring a function as
 argument to another function is therefore simpler and cleaner in Python
-than in, e.g., C, C++, Java, C#, and MATLAB.
+than in, e.g., C, C++, Java, C#, and Matlab.
 
 How can we use the `solver_linear_damping` function? We need to *call* it
 with relevant values for the arguments. Suppose we want to solve
@@ -312,7 +313,7 @@ def myfunction(x):
 !ec
 Another disadvantage with the `np.` prefix is that names are no longer
 (almost) the
-same as in MATLAB. Many will therefore prefer to do `from numpy import *`
+same as in Matlab. Many will therefore prefer to do `from numpy import *`
 and skip the prefix.
 #Still much import * so the following is not yet valid:
 #We shall keep `np.` as it has become a standard
@@ -663,6 +664,10 @@ cPickle.dump(data, outfile)
 outfile.close()
 !ec
 
+The complete code containing the functions above is found in the
+file
+"`bumpy.py`": "https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/bumpy.py".
+
 # joblib!!
 
 !split
@@ -674,7 +679,6 @@ demonstrated above. However, most users will find it more
 convenient to set parameters through a user interface rather
 than editing the source code directly.
 
-##[hpl: haven't read the following yet...]
 
 # #ifndef BOOK
 
@@ -727,7 +731,7 @@ conveniently done by allowing option-value pairs, e.g.,
 !bc sys
 Terminal> python bumpy.py --m 40 --b 280
 !ec
-All parameters have a default value which can be overrided on
+All parameters have a default value which can be overridden on
 the command line by providing the string (option) `--name`, where
 `name` is the name of the parameter, followed by the desired value of
 the parameter. Implementation of option-value input is
@@ -759,11 +763,6 @@ We may offer two options for each parameter, one reflecting the
 mathematical symbol (like `--v`) and one more descriptive text
 (like `--velocity-`).
 
-The files in `doc/src/src-bumpy/` on "Bitbucket":
-"https://bitbucket.org/hplbit/bumpy" contain the complete code
-for downloading road shapes and solving the problem with aid of the
-code snippets above.
-
 ## Flask!
 
 !split
@@ -779,14 +778,13 @@ to visualize these arrays. We want to produce the following plots:
  * for each road shape, a plot of $h(x)$, $a(t)$, and $u(t)$, for
    $t\geq t_s$
 
-We use Matplotlib's `pylab` module for curve plotting since it provides
-a syntax very close to that of MATLAB, which is well known by many readers.
+The following two imports give access to Matlab-style functions for
+plotting and computing with arrays:
 
 !bc pycod
-from matplotlib.pylab import *
+from numpy import *
+from matplotlib.pyplot import *
 !ec
-This import also perform as `from numpy import *` such that we have access
-to all the array functionality too.
 
 Loading the computational data from file back to a list `data` is done
 by
@@ -800,8 +798,14 @@ outfile.close()
 x, t = data[0:2]
 u_rms = data[-1]
 !ec
-The remaining data, `data[2:-1]`, contains all the 3-lists `[h, a, u]`
-from the computations in the function `forced_vibrations`.
+Note that `data` first contains `x` and `t` and then
+a sequence of 3-lists `[h, a, u]`, before the final element,
+the array `u_rms`. With `data[0:2]` we extract
+the sublist with elements `data[0]` and `data[1]` (`0:2` means
+up to, but not including `2`). The index `-1` means the last
+element, so `data[-1]` extracts the `u_rms` array.
+All the 3-lists `[h, a, u]` are extracted as `data[2:-1]` (up to,
+but not including, the last element `u_rms`).
 
 Since now we concentrate on the part $t\geq t_s$ of the data, we
 can grab the corresponding parts of the arrays in the following way,
@@ -825,9 +829,11 @@ legend(['u'])
 xlabel('t')
 title('Root mean square value of u(t) functions')
 !ec
+% if FORMAT != 'ipynb':
 Figure ref{bumpy:fig3} shows the result.
 
 FIGURE: [fig-bumpy/u_rms, width=600] Root mean square of displacement. label{bumpy:fig3}
+% endif
 
 
 The spectrum of a $u(t)$ function (represented through the arrays `u`
@@ -913,7 +919,7 @@ FIGURE: [fig-bumpy/hau1, width=700] Second realization of a bumpy road, with cor
 FIGURE: [fig-bumpy/hau2, width=700] Third realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations. label{bumpy:fig6}
 
 If all the plot commands above are placed in a file, as in
-"explore.py": "https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/explore.py", a final `show()` call is needed to show the
+"`explore.py`": "https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/explore.py", a final `show()` call is needed to show the
 plots on the screen. On the other hand, the commands are usually
 more conveniently performed in an interactive Python shell, preferably
 IPython.
@@ -923,6 +929,7 @@ IPython.
 
 #======= Software engineering =======
 
+!split
 ======= Advanced topics =======
 
 ===== Symbolic computing via SymPy =====
@@ -1023,6 +1030,52 @@ in a *test function*:
 
 @@@CODE src-bumpy/tests/tests.py def lhs@def test_all
 
+===== Modules =====
+
+Python software is frequently organized as modules, or in collection
+of modules, called packages. A module enables sharing
+functions, variables, and classes between programs and other modules.
+
+It is very easy to make a module in Python. Just put all the functions
+and global variables (and classes, if you have) you want to include in
+the module in a file. If you have a main program calling functions
+or using global variables, these statements will be executed with you
+import the module in other programs, which is not what you want.
+Therefore, move the main program to a so-called *test block* at the
+end of the module:
+
+!bc pycod
+if __name__ == '__main__':
+    <statements in the main program>
+!ec
+The module file, say its name is `mymod.py`, now typically looks like
+
+!bc pycod
+import module1
+from module2 import func1, func2
+
+def myfunc1(...):
+    ...
+
+def myfunc2(...):
+    ...
+
+if __name__ == '__main__':
+    <statements in the main program>
+!ec
+The name of the module `mymod` if the filename is `mymod.py`.
+During `import mymod` or `from mymod import *`, the special Python
+variable `__name__`
+equals the name of the module and the test block with statements
+in the main program will not be executed. However, if you run
+`mymod.py` as a program, `__name__` equals `__main__` and
+the main program will be executed. In this way, you can have a single
+file that both acts as a library and that is an executable program.
+
+[[[
+
+
+
 #===== Installation =====
 
 #Install the `solver` module using a very simple `setup.py` script.
@@ -1083,10 +1136,9 @@ label{app:resources}
   * "Dive Into Python": "http://diveintopython.org/toc/index.html"
   * "Think Like a Computer Scientist": "http://www.freenetpages.co.uk/hp/alan.gauld/"
   * "Introduction to Python Programming": "http://femhub.com/textbook-python/python_en.pdf/" (for scientists)
-  * "A Primer on Scientific Programming with Python": "http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642183654/ref=sr_1_2?ie=UTF8&qid=1354752885&sr=8-2&keywords=langtangen"
-    * Gerard Gorman has made associated "IPython notebooks": "http://ggorman.github.io/Introduction-to-programming-for-geoscientists/" for teaching
-    * Traditional beamer "slides": "http://www.ifi.uio.no~inf1100/foiler" are also available
-  * "Python Scripting for Computational Science": "http://www.amazon.com/Python-Scripting-Computational-Science-Engineering/dp/3642093159/ref=sr_1_1?ie=UTF8&qid=1354752885&sr=8-1&keywords=langtangen"
+  * "A Primer on Scientific Programming with Python": "http://goo.gl/SWEQlz"
+    ("slides": "http://hplgit.github.io/scipro-primer/slides/index.html" are also available)
+  * "Python Scripting for Computational Science": "http://goo.gl/q8tM7D"
 
 === Course material on Python programming in general ===
 

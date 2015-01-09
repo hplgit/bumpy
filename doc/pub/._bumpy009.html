@@ -53,6 +53,7 @@ Automatically generated HTML file from DocOnce source
                3,
                None,
                '___sec18'),
+              (' Modules ', 2, None, '___sec19'),
               (' Appendix: Quick motivation for programming with Python ',
                1,
                'app:motivation',
@@ -64,14 +65,14 @@ Automatically generated HTML file from DocOnce source
               (' Full tutorials on scientific programming with Python ',
                3,
                None,
-               '___sec21'),
-              (' NumPy resources ', 3, None, '___sec22'),
-              (' Useful resources ', 3, None, '___sec23'),
-              (' Some relevant Python books ', 3, None, '___sec24'),
+               '___sec22'),
+              (' NumPy resources ', 3, None, '___sec23'),
+              (' Useful resources ', 3, None, '___sec24'),
+              (' Some relevant Python books ', 3, None, '___sec25'),
               (' Course material on Python programming in general ',
                3,
                None,
-               '___sec25')]}
+               '___sec26')]}
 end of tocinfo -->
 
 <body>
@@ -111,9 +112,9 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="._bumpy002.html#___sec1" style="font-size: 80%;">A scientific application</a></li>
      <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec10" style="font-size: 80%;">User input</a></li>
      <!-- navigation toc: --> <li><a href="#___sec13" style="font-size: 80%;">Visual exploration</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec14" style="font-size: 80%;">Advanced topics</a></li>
-     <!-- navigation toc: --> <li><a href="#app:motivation" style="font-size: 80%;">Appendix: Quick motivation for programming with Python</a></li>
-     <!-- navigation toc: --> <li><a href="#app:resources" style="font-size: 80%;">Appendix: Scientific Python resources</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec14" style="font-size: 80%;">Advanced topics</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#app:motivation" style="font-size: 80%;">Appendix: Quick motivation for programming with Python</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#app:resources" style="font-size: 80%;">Appendix: Scientific Python resources</a></li>
 
         </ul>
       </li>
@@ -144,18 +145,15 @@ to visualize these arrays. We want to produce the following plots:
    \( t\geq t_s \)</li>
 </ul>
 
-We use Matplotlib's <code>pylab</code> module for curve plotting since it provides
-a syntax very close to that of MATLAB, which is well known by many readers.
+The following two imports give access to Matlab-style functions for
+plotting and computing with arrays:
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pylab</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
 </pre></div>
-<p>
-This import also perform as <code>from numpy import *</code> such that we have access
-to all the array functionality too.
-
 <p>
 Loading the computational data from file back to a list <code>data</code> is done
 by
@@ -172,8 +170,14 @@ x, t <span style="color: #666666">=</span> data[<span style="color: #666666">0</
 u_rms <span style="color: #666666">=</span> data[<span style="color: #666666">-1</span>]
 </pre></div>
 <p>
-The remaining data, <code>data[2:-1]</code>, contains all the 3-lists <code>[h, a, u]</code>
-from the computations in the function <code>forced_vibrations</code>.
+Note that <code>data</code> first contains <code>x</code> and <code>t</code> and then
+a sequence of 3-lists <code>[h, a, u]</code>, before the final element,
+the array <code>u_rms</code>. With <code>data[0:2]</code> we extract
+the sublist with elements <code>data[0]</code> and <code>data[1]</code> (<code>0:2</code> means
+up to, but not including <code>2</code>). The index <code>-1</code> means the last
+element, so <code>data[-1]</code> extracts the <code>u_rms</code> array.
+All the 3-lists <code>[h, a, u]</code> are extracted as <code>data[2:-1]</code> (up to,
+but not including, the last element <code>u_rms</code>).
 
 <p>
 Since now we concentrate on the part \( t\geq t_s \) of the data, we
@@ -209,7 +213,7 @@ Figure <a href="#bumpy:fig3">3</a> shows the result.
 
 <p>
 <center> <!-- figure -->
-
+<hr class="figure">
 <center><p class="caption">Figure 3:  Root mean square of displacement. <a name="bumpy:fig3"></a> </p></center>
 <p><img src="fig-bumpy/u_rms.png" align="bottom" width=600></p>
 </center>
@@ -264,7 +268,7 @@ dominating frequency is 1 Hz.
 
 <p>
 <center> <!-- figure -->
-
+<hr class="figure">
 <center><p class="caption">Figure 4:  Spectrum of displacement. <a name="bumpy:fig2"></a> </p></center>
 <p><img src="fig-bumpy/u_spectrum.png" align="bottom" width=600></p>
 </center>
@@ -309,28 +313,28 @@ these arrays:
 
 <p>
 <center> <!-- figure -->
-
+<hr class="figure">
 <center><p class="caption">Figure 5:  First realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations. <a name="bumpy:fig4"></a> </p></center>
 <p><img src="fig-bumpy/hau0.png" align="bottom" width=700></p>
 </center>
 
 <p>
 <center> <!-- figure -->
-
+<hr class="figure">
 <center><p class="caption">Figure 6:  Second realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations. <a name="bumpy:fig5"></a> </p></center>
 <p><img src="fig-bumpy/hau1.png" align="bottom" width=700></p>
 </center>
 
 <p>
 <center> <!-- figure -->
-
+<hr class="figure">
 <center><p class="caption">Figure 7:  Third realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations. <a name="bumpy:fig6"></a> </p></center>
 <p><img src="fig-bumpy/hau2.png" align="bottom" width=700></p>
 </center>
 
 <p>
 If all the plot commands above are placed in a file, as in
-<a href="https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/explore.py" target="_self">explore.py</a>, a final <code>show()</code> call is needed to show the
+<a href="https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/explore.py" target="_self"><tt>explore.py</tt></a>, a final <code>show()</code> call is needed to show the
 plots on the screen. On the other hand, the commands are usually
 more conveniently performed in an interactive Python shell, preferably
 IPython.
@@ -342,258 +346,7 @@ IPython.
 <p>
 <!-- ======= Software engineering ======= -->
 
-<h1 id="___sec14">Advanced topics <a name="___sec14"></a></h1>
-
-<h2 id="___sec15">Symbolic computing via SymPy <a name="___sec15"></a></h2>
-
 <p>
-Python has a package SymPy that offers symbolic computing. Here is
-a simple introductory example where we differentiate a quadratic
-polynomial, integrate it again, and find the roots:
-
-<p>
-
-<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sympy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">sp</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> x, a <span style="color: #666666">=</span> sp<span style="color: #666666">.</span>symbols(<span style="color: #BA2121">&#39;x a&#39;</span>)        <span style="color: #408080; font-style: italic"># Define mathematical symbols</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> Q <span style="color: #666666">=</span> a<span style="color: #666666">*</span>x<span style="color: #666666">**2</span> <span style="color: #666666">-</span> <span style="color: #666666">1</span>                  <span style="color: #408080; font-style: italic"># Quadratic function</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> dQdx <span style="color: #666666">=</span> sp<span style="color: #666666">.</span>diff(Q, x)            <span style="color: #408080; font-style: italic"># Differentiate wrt x</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> dQdx
-<span style="color: #666666">2*</span>a<span style="color: #666666">*</span>x
-<span style="color: #666666">&gt;&gt;&gt;</span> Q2 <span style="color: #666666">=</span> sp<span style="color: #666666">.</span>integrate(dQdx, x)      <span style="color: #408080; font-style: italic"># Integrate (no constant)</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> Q2
-a<span style="color: #666666">*</span>x<span style="color: #666666">**2</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> Q2 <span style="color: #666666">=</span> sp<span style="color: #666666">.</span>integrate(Q, (x, <span style="color: #666666">0</span>, a)) <span style="color: #408080; font-style: italic"># Definite integral</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> Q2
-a<span style="color: #666666">**4/3</span> <span style="color: #666666">-</span> a
-<span style="color: #666666">&gt;&gt;&gt;</span> roots <span style="color: #666666">=</span> sp<span style="color: #666666">.</span>solve(Q, x)          <span style="color: #408080; font-style: italic"># Solve Q = 0 wrt x</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> roots
-[<span style="color: #666666">-</span>sqrt(<span style="color: #666666">1/</span>a), sqrt(<span style="color: #666666">1/</span>a)]
-</pre></div>
-<p>
-One can easily convert a SymPy expression like <code>Q</code> into
-a Python function <code>Q(x, a)</code> to be used for further numerical
-computing:
-
-<p>
-
-<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> Q <span style="color: #666666">=</span> sp<span style="color: #666666">.</span>lambdify([x, a], Q)      <span style="color: #408080; font-style: italic"># Turn Q into Py func.</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> Q(x<span style="color: #666666">=2</span>, a<span style="color: #666666">=3</span>)                     <span style="color: #408080; font-style: italic"># 3*2**2 - 1 = 11</span>
-<span style="color: #666666">11</span>
-</pre></div>
-<p>
-Sympy can do a lot of other things. Here is an example on
-computing the Taylor series of \( e^{-x}\sin(rx) \), where \( r \)
-is the smallest root of \( Q=ax^2-1=0 \) as computed above:
-
-<p>
-
-<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> f <span style="color: #666666">=</span> sp<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>a<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>sp<span style="color: #666666">.</span>sin(roots[<span style="color: #666666">0</span>]<span style="color: #666666">*</span>x)
-<span style="color: #666666">&gt;&gt;&gt;</span> f<span style="color: #666666">.</span>series(x, <span style="color: #666666">0</span>, <span style="color: #666666">4</span>)
-<span style="color: #666666">-</span>x<span style="color: #666666">*</span>sqrt(<span style="color: #666666">1/</span>a) <span style="color: #666666">+</span> x<span style="color: #666666">**3*</span>(<span style="color: #666666">-</span>a<span style="color: #666666">**2*</span>sqrt(<span style="color: #666666">1/</span>a)<span style="color: #666666">/2</span> <span style="color: #666666">+</span> (<span style="color: #666666">1/</span>a)<span style="color: #666666">**</span>(<span style="color: #666666">3/2</span>)<span style="color: #666666">/6</span>) <span style="color: #666666">+</span>
-a<span style="color: #666666">*</span>x<span style="color: #666666">**2*</span>sqrt(<span style="color: #666666">1/</span>a) <span style="color: #666666">+</span> O(x<span style="color: #666666">**4</span>)
-</pre></div>
-
-<h2 id="___sec16">Testing <a name="___sec16"></a></h2>
-
-<p>
-Software testing in Python is best done with a <em>unit test framework</em>
-such as <code>nose</code> or <code>pytest</code>. These frameworks can automatically
-run all functions starting with <code>test_</code> recursively in files in a
-directory tree. Each <code>test_*</code> function is called a <em>test function</em>
-and must take no arguments and apply <code>assert</code> to a boolean expression
-that is <code>True</code> if the test passes and <code>False</code> if it fails.
-
-<h3 id="___sec17">Example on a test function <a name="___sec17"></a></h3>
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">halve</span>(x):
-    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Return half of x.&quot;&quot;&quot;</span>
-    <span style="color: #008000; font-weight: bold">return</span> x<span style="color: #666666">/2.0</span>
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_halve</span>():
-    x <span style="color: #666666">=</span> <span style="color: #666666">4</span>
-    expected <span style="color: #666666">=</span> <span style="color: #666666">2</span>
-    computed <span style="color: #666666">=</span> halve(x)
-    <span style="color: #408080; font-style: italic"># Compare real numbers using tolerance</span>
-    tol <span style="color: #666666">=</span> <span style="color: #666666">1E-14</span>
-    diff <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(computed <span style="color: #666666">-</span> expected)
-    <span style="color: #008000; font-weight: bold">assert</span> diff <span style="color: #666666">&lt;</span> tol
-</pre></div>
-
-<h3 id="___sec18">Test function for the numerical solver <a name="___sec18"></a></h3>
-
-<p>
-A frequently used technique to test differential equation solvers
-is to just specify a solution and fit a source term in the differential
-equation such that the specified solution solves the equation.
-The initial conditions must be set according to the specified
-solution. This technique is known as the <em>method of manufactured
-solutions</em>.
-
-<p>
-Here we shall specify a solution that is quadratic or linear
-in \( t \) because
-such lower-order polynomials will often be an exact solution of both
-the differential equation <em>and</em> the finite difference equations.
-This means that the polynomial should be reproduced to machine
-precision by our <code>solver</code> function.
-
-<p>
-We can use SymPy to find an appropriate \( F(t) \) term in the
-differential equation such that a specified solution \( u(t)=I + Vt + qt^2 \)
-fits the equation and initial conditions. With quadratic damping,
-only a linear \( u \) will solve the discrete equation so in this case
-we choose \( u=I+Vt \).
-
-<p>
-We embed the SymPy calculations and the numerical calcuations
-in a <em>test function</em>:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">lhs_eq</span>(t, m, b, s, u, damping<span style="color: #666666">=</span><span style="color: #BA2121">&#39;linear&#39;</span>):
-    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Return lhs of differential equation as sympy expression.&quot;&quot;&quot;</span>
-    v <span style="color: #666666">=</span> sm<span style="color: #666666">.</span>diff(u, t)
-    d <span style="color: #666666">=</span> b<span style="color: #666666">*</span>v <span style="color: #008000; font-weight: bold">if</span> damping <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;linear&#39;</span> <span style="color: #008000; font-weight: bold">else</span> b<span style="color: #666666">*</span>v<span style="color: #666666">*</span>sm<span style="color: #666666">.</span>Abs(v)
-    <span style="color: #008000; font-weight: bold">return</span> m<span style="color: #666666">*</span>sm<span style="color: #666666">.</span>diff(u, t, t) <span style="color: #666666">+</span> d <span style="color: #666666">+</span> s(u)
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_solver</span>():
-    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Verify linear/quadratic solution.&quot;&quot;&quot;</span>
-    <span style="color: #408080; font-style: italic"># Set input data for the test</span>
-    I <span style="color: #666666">=</span> <span style="color: #666666">1.2</span>; V <span style="color: #666666">=</span> <span style="color: #666666">3</span>; m <span style="color: #666666">=</span> <span style="color: #666666">2</span>; b <span style="color: #666666">=</span> <span style="color: #666666">0.9</span>; k <span style="color: #666666">=</span> <span style="color: #666666">4</span>
-    s <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> u: k<span style="color: #666666">*</span>u
-    T <span style="color: #666666">=</span> <span style="color: #666666">2</span>
-    dt <span style="color: #666666">=</span> <span style="color: #666666">0.2</span>
-    N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span>dt))
-    time_points <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, T, N<span style="color: #666666">+1</span>)
-
-    <span style="color: #408080; font-style: italic"># Test linear damping</span>
-    t <span style="color: #666666">=</span> sm<span style="color: #666666">.</span>Symbol(<span style="color: #BA2121">&#39;t&#39;</span>)
-    q <span style="color: #666666">=</span> <span style="color: #666666">2</span>  <span style="color: #408080; font-style: italic"># arbitrary constant</span>
-    u_exact <span style="color: #666666">=</span> I <span style="color: #666666">+</span> V<span style="color: #666666">*</span>t <span style="color: #666666">+</span> q<span style="color: #666666">*</span>t<span style="color: #666666">**2</span>   <span style="color: #408080; font-style: italic"># sympy expression</span>
-    F_term <span style="color: #666666">=</span> lhs_eq(t, m, b, s, u_exact, <span style="color: #BA2121">&#39;linear&#39;</span>)
-    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Fitted source term, linear case:&#39;</span>, F_term
-    F <span style="color: #666666">=</span> sm<span style="color: #666666">.</span>lambdify([t], F_term)
-    u, t_ <span style="color: #666666">=</span> solver(I, V, m, b, s, F, time_points, <span style="color: #BA2121">&#39;linear&#39;</span>)
-    u_e <span style="color: #666666">=</span> sm<span style="color: #666666">.</span>lambdify([t], u_exact, modules<span style="color: #666666">=</span><span style="color: #BA2121">&#39;numpy&#39;</span>)
-    error <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(u_e(t_) <span style="color: #666666">-</span> u)<span style="color: #666666">.</span>max()
-    tol <span style="color: #666666">=</span> <span style="color: #666666">1E-13</span>
-    <span style="color: #008000; font-weight: bold">assert</span> error <span style="color: #666666">&lt;</span> tol
-
-    <span style="color: #408080; font-style: italic"># Test quadratic damping: u_exact must be linear</span>
-    u_exact <span style="color: #666666">=</span> I <span style="color: #666666">+</span> V<span style="color: #666666">*</span>t
-    F_term <span style="color: #666666">=</span> lhs_eq(t, m, b, s, u_exact, <span style="color: #BA2121">&#39;quadratic&#39;</span>)
-    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Fitted source term, quadratic case:&#39;</span>, F_term
-    F <span style="color: #666666">=</span> sm<span style="color: #666666">.</span>lambdify([t], F_term)
-    u, t_ <span style="color: #666666">=</span> solver(I, V, m, b, s, F, time_points, <span style="color: #BA2121">&#39;quadratic&#39;</span>)
-    u_e <span style="color: #666666">=</span> sm<span style="color: #666666">.</span>lambdify([t], u_exact, modules<span style="color: #666666">=</span><span style="color: #BA2121">&#39;numpy&#39;</span>)
-    error <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(u_e(t_) <span style="color: #666666">-</span> u)<span style="color: #666666">.</span>max()
-    <span style="color: #008000; font-weight: bold">assert</span> error <span style="color: #666666">&lt;</span> tol
-</pre></div>
-<p>
-<!-- ===== Installation ===== -->
-
-<p>
-<!-- Install the <code>solver</code> module using a very simple <code>setup.py</code> script. -->
-
-<p>
-<!-- Comment on usefulness even for those without phys/math background, -->
-<!-- but with extensive programming background: being a programmer -->
-<!-- means divining into domains with a lot of details, yet being able -->
-<!-- to program. -->
-
-<p>
-<!-- Python Scientific are also in 5620/literature, some of those above -->
-<!-- could be copied here -->
-
-<h1 id="app:motivation">Appendix: Quick motivation for programming with Python<a name="app:motivation"></a></h1>
-
-<ul>
-  <li> <a href="http://www.pyzo.org/whypython.html" target="_self">Why Python?</a></li>
-  <li> <a href="http://fperez.org/py4science/warts.html" target="_self">Why Python for Scientific Computing?</a></li>
-</ul>
-
-<h1 id="app:resources">Appendix: Scientific Python resources<a name="app:resources"></a></h1>
-
-<h3 id="___sec21">Full tutorials on scientific programming with Python <a name="___sec21"></a></h3>
-
-<ul>
-  <li> <a href="http://scipy-lectures.github.com/" target="_self">Python Scientific Lecture Notes</a> (from EuroSciPy tutorials, based on <a href="http://web.phys.ntnu.no/~ingves/Teaching/TFY4240/Assignments/PythonScientific.pdf" target="_self">Python Scientific</a>)</li>
-  <li> <a href="https://github.com/jrjohansson/scientific-python-lectures" target="_self">Scientific Python Lectures as IPython notebooks</a></li>
-  <li> <a href="https://github.com/stefanv/teaching" target="_self">Stefan van der Walt's lectures</a></li>
-</ul>
-
-<h3 id="___sec22">NumPy resources <a name="___sec22"></a></h3>
-
-<ul>
-  <li> <a href="http://www.scipy.org/Tentative_NumPy_Tutorial" target="_self">NumPy Tutorial</a></li>
-  <li> <a href="http://docs.scipy.org/doc/numpy/user/" target="_self">NumPy User Guide</a></li>
-  <li> <a href="https://github.com/pv/advanced-numpy-tutorial" target="_self">Advanced NumPy Tutorial</a></li>
-  <li> <a href="http://scipy2010.blogspot.com/2010/06/tutorials-day-1-advanced-numpy.html" target="_self">Advanced NumPy Course</a></li>
-  <li> <a href="http://www.scipy.org/Numpy_Example_List" target="_self">NumPy Example List</a></li>
-  <li> <a href="http://mentat.za.net/numpy/numpy_advanced_slides/" target="_self">NumPy Medkit</a></li>
-  <li> <a href="http://www.scipy.org/Cookbook" target="_self">NumPy and SciPy Cookbook</a></li>
-  <li> <a href="http://www.scipy.org/NumPy_for_Matlab_Users" target="_self">NumPy for Matlab Users</a></li>
-  <li> <a href="http://mathesaurus.sf.net" target="_self">NumPy for Matlab/R/IDL Users</a></li>
-</ul>
-
-<h3 id="___sec23">Useful resources <a name="___sec23"></a></h3>
-
-<ul>
-  <li> <a href="http://www.astropython.org/" target="_self">AstroPython</a></li>
-  <li> <a href="http://www.youtube.com/watch?feature=player_embedded&v=F4rFuIb1Ie4" target="_self">Talk on IPython by Fernando Perez</a></li>
-  <li> <a href="http://fperez.org/py4science/starter_kit.html" target="_self">Useful software in the Scientific Python Ecosystem</a></li>
-  <li> <a href="http://ipython.scipy.org/doc/manual/html" target="_self">IPython</a></li>
-  <li> <a href="http://code.google.com/p/pythonxy/wiki/Welcome" target="_self">Python(x,y)</a></li>
-  <li> <a href="http://www.yourmachines.org/tutorials/mgpy.html" target="_self">Basic Motion Graphics with Python</a>
-<!-- This is now local in doc/literature since the link is broken: <a href="http://www.maths.lth.se/na/help/media/Practical_Scientific_Computing_with_Python.pdf" target="_self">Practical Scientific Computing with Python</a> -->
-<!-- Basic Motion Graphics with Python contains a lot about making movies -->
-<!-- and animation - check it out --></li>
-</ul>
-
-<h3 id="___sec24">Some relevant Python books <a name="___sec24"></a></h3>
-
-<ul>
-  <li> <a href="http://www.greenteapress.com/thinkpython/" target="_self">Think Python</a></li>
-  <li> <a href="http://learnpythonthehardway.org/book/" target="_self">Learn Python The Hard Way</a></li>
-  <li> <a href="http://diveintopython.org/toc/index.html" target="_self">Dive Into Python</a></li>
-  <li> <a href="http://www.freenetpages.co.uk/hp/alan.gauld/" target="_self">Think Like a Computer Scientist</a></li>
-  <li> <a href="http://femhub.com/textbook-python/python_en.pdf/" target="_self">Introduction to Python Programming</a> (for scientists)</li>
-  <li> <a href="http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642183654/ref=sr_1_2?ie=UTF8&qid=1354752885&sr=8-2&keywords=langtangen" target="_self">A Primer on Scientific Programming with Python</a></li>
-
-<ul>
-    <li> Gerard Gorman has made associated <a href="http://ggorman.github.io/Introduction-to-programming-for-geoscientists/" target="_self">IPython notebooks</a> for teaching</li>
-    <li> Traditional beamer <a href="http://www.ifi.uio.no&nbsp;inf1100/foiler" target="_self">slides</a> are also available</li>
-</ul>
-
-  <li> <a href="http://www.amazon.com/Python-Scripting-Computational-Science-Engineering/dp/3642093159/ref=sr_1_1?ie=UTF8&qid=1354752885&sr=8-1&keywords=langtangen" target="_self">Python Scripting for Computational Science</a></li>
-</ul>
-
-<h3 id="___sec25">Course material on Python programming in general <a name="___sec25"></a></h3>
-
-<ul>
-  <li> <a href="http://docs.python.org/2/tutorial/" target="_self">The Official Python Tutorial</a></li>
-  <li> <a href="http://www.tutorialspoint.com/python/" target="_self">Python Tutorial on tutorialspoint.com</a></li>
-  <li> <a href="http://www.learnpython.org/" target="_self">Interactive Python tutorial site</a></li>
-  <li> <a href="http://en.wikibooks.org/wiki/A_Beginner's_Python_Tutorial" target="_self">A Beginner's Python Tutorial on wikibooks.org</a></li>
-  <li> <a href="http://en.wikibooks.org/wiki/Python_Programming/" target="_self">Python Programming on wikibooks.org</a></li>
-  <li> <a href="http://en.wikibooks.org/wiki/Non-Programmer's_Tutorial_for_Python_2.6" target="_self">Non-Programmer's Tutorial for Python on wikibooks.org</a></li>
-  <li> <a href="http://www.pythonforbeginners.com/" target="_self">Python For Beginners</a></li>
-  <li> <a href="http://intropython.org" target="_self">Gentle Python introduction for high school</a> (with <a href="https://github.com/ehmatthes/intro_programming" target="_self">associated IPython notebooks</a>)</li>
-  <li> <a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-189-a-gentle-introduction-to-programming-using-python-january-iap-2008/" target="_self">A Gentle Introduction to Programming Using Python</a> (MIT OpenCourseWare)</li>
-  <li> <a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/" target="_self">Introduction to Computer Science and Programming</a> (MIT OpenCourseWare with videos)</li>
-  <li> <a href="http://www.catonmat.net/blog/learning-python-programming-language-through-video-lectures/" target="_self">Learning Python Programming Language Through Video Lectures</a></li>
-  <li> <a href="http://www.learnerstv.com/Free-Computers-Video-lectures-ltv163-Page1.htm" target="_self">Python Programming Tutorials Video Lecture Course</a> (Learners TV)</li>
-  <li> <a href="http://showmedo.com/videotutorials/python" target="_self">Python Videos, Tutorials and Screencasts</a></li>
-</ul>
-
-
 <p>
 <!-- navigation buttons at the bottom of the page -->
 <ul class="pagination">
@@ -608,6 +361,8 @@ in a <em>test function</em>:
   <li><a href="._bumpy007.html">8</a></li>
   <li><a href="._bumpy008.html">9</a></li>
   <li class="active"><a href="._bumpy009.html">10</a></li>
+  <li><a href="._bumpy010.html">11</a></li>
+  <li><a href="._bumpy010.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->
 

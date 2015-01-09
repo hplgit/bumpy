@@ -1,8 +1,8 @@
 """Explore the bumpy.py model via making various plots."""
 
-# Import Matlab-style plotting commands + from numpy import *
-# using the Matplotlib plotting package
-from matplotlib.pylab import *
+# Import a Matlab-like environment
+from numpy import *
+from matplotlib.pyplot import *
 
 # Load computed data
 import cPickle
@@ -10,6 +10,7 @@ outfile = open('bumpy.res', 'r')
 data = cPickle.load(outfile)
 outfile.close()
 
+# data = [x, t, [h, a, u], [h, a, u], ..., u_rms]
 x, t = data[0:2]
 u_rms = data[-1]
 
@@ -36,6 +37,7 @@ x = x[indices]       # fetch the part of x for which t > t_s
 # Plot rms value of all u arrays
 figure()
 u_rms = u_rms[indices]
+import sys; sys.exit(0)
 plot(t, u_rms)
 legend(['u'])
 xlabel('t')
@@ -43,7 +45,7 @@ title('Root mean square value of u(t) functions')
 savefig('u_rms.png')
 
 def frequency_analysis(u, t):
-    A = fft(u)
+    A = fft.fft(u)
     A = 2*A
     dt = t[1] - t[0]
     N = t.size

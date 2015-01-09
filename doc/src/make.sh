@@ -13,11 +13,13 @@ function system {
 }
 
 names="basics bumpy"
-names="basics"
+#names="basics"
 for name in $names; do
 
 system doconce format pdflatex $name --device=paper --minted_latex_style=trac
 system doconce ptex2tex $name envir=minted
+pdflatex -shell-escape $name
+makeindex $name
 pdflatex -shell-escape $name
 pdflatex -shell-escape $name
 
@@ -33,7 +35,7 @@ system python automake_sphinx.py
 
 # Publish
 dest=../pub
-rm -rf $dest/sphinx
-cp -r sphinx-rootdir/_build/html $dest/sphinx
+rm -rf $dest/sphinx-${name}
+cp -r sphinx-rootdir/_build/html $dest/sphinx-${name}
 cp -r fig-bumpy $name.html ._${name}*.html ${name}.pdf $dest/
 done
