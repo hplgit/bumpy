@@ -588,48 +588,48 @@ s_value, v_value = movement(t=0.2, v0=2, a=4)
 
 Tuples are constant lists (cannot be changed)
 
-!split
-===== A more general mathematical formula =====
-label{basics:formula:piecewise}
+# !split
+# ===== A more general mathematical formula =====
+# label{basics:formula:piecewise}
 
-Equations from basic kinematics:
+# Equations from basic kinematics:
 
-!bt
-\begin{align*}
-v = \frac{ds}{dt},\quad s(0)=s_0\\
-a = \frac{dv}{dt},\quad v(0)=v_0
-\end{align*}
-!et
+# !bt
+# \begin{align*}
+# v = \frac{ds}{dt},\quad s(0)=s_0\\
+# a = \frac{dv}{dt},\quad v(0)=v_0
+# \end{align*}
+# !et
 
-Integrate to find $v(t)$:
+# Integrate to find $v(t)$:
 
-!bt
-\[ \int_0^t a(t)dt = \int_0^t \frac{dv}{dt} dt\]
-!et
-which gives
+# !bt
+# \[ \int_0^t a(t)dt = \int_0^t \frac{dv}{dt} dt\]
+# !et
+# which gives
 
-!bt
-\[ v(t) = v_0 + \int_0^t a(t)dt \]
-!et
+# !bt
+# \[ v(t) = v_0 + \int_0^t a(t)dt \]
+# !et
 
-Integrate again over $[0,t]$ to find $s(t)$:
+# Integrate again over $[0,t]$ to find $s(t)$:
 
-!bt
-\[ s(t) = s_0 + v_0t + \int_0^t\left( \int_0^t a(t)dt \right) dt\]
-!et
+# !bt
+# \[ s(t) = s_0 + v_0t + \int_0^t\left( \int_0^t a(t)dt \right) dt\]
+# !et
 
-$a(t)=a_0$ for $t\in[0,t_1]$, else $a(t)=0$:
+# $a(t)=a_0$ for $t\in[0,t_1]$, else $a(t)=0$:
 
-!bt
-\[
-s(t) = \left\lbrace\begin{array}{ll}
-s_0 + v_0 t + \frac{1}{2}a_0 t^2,& t\leq t_1\\
-s_0 + v_0t_1 + \frac{1}{2}a_0 t_1^2 + a_0t_1(t-t_1),& t> t_1
-\end{array}\right.
-\]
-!et
+# !bt
+# \[
+# s(t) = \left\lbrace\begin{array}{ll}
+# s_0 + v_0 t + \frac{1}{2}a_0 t^2,& t\leq t_1\\
+# s_0 + v_0t_1 + \frac{1}{2}a_0 t_1^2 + a_0t_1(t-t_1),& t> t_1
+# \end{array}\right.
+# \]
+# !et
 
-Need *if test* to implement this!
+# Need *if test* to implement this!
 
 !split
 ===== Basic if-else tests =====
