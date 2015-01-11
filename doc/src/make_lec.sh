@@ -23,6 +23,7 @@ opt="COURSE=$COURSE"
 #names="basics bumpy"
 #names="basics"
 names="lectures"
+names="lectures_tkt4140"
 for name in $names; do
 
 # Note: can be smart to run beamer slides first since latex finds
