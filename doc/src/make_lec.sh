@@ -22,7 +22,7 @@ opt="COURSE=$COURSE"
 
 #names="basics bumpy"
 #names="basics"
-names="lectures"
+#names="lectures"
 names="lectures_tkt4140"
 for name in $names; do
 
