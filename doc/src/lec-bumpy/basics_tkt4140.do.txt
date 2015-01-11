@@ -244,7 +244,7 @@ Demo in the Python Online Tutor:
 !bc pyoptpro
 list1 = [0, 0.1, 0.2]
 list2 = []
-for element in somelist:
+for element in list1:
     p = element + 2
     list2.append(p)
 print list2
