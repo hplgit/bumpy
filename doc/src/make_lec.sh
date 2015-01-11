@@ -12,10 +12,17 @@ function system {
   fi
 }
 
+if [ $# -ge 1 ]; then
+  COURSE=$1
+else
+  COURSE=any
+fi
+
+opt="COURSE=$COURSE"
+
 #names="basics bumpy"
 #names="basics"
-#names="lectures"
-names="lectures_tkt4140"
+names="lectures"
 for name in $names; do
 
 # Note: can be smart to run beamer slides first since latex finds

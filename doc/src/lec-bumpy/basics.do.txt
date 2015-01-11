@@ -21,13 +21,23 @@ FIGURE: [fig-bumpy/implementation5, width=500 frac=0.7]
 ===== Do you have access to Python? =====
 label{basics:accesspy}
 
+% if COURSE == 'TKT4140':
+See "TKT4140 Course specific installation guidelines": "https://www.ntnu.no/wiki/display/kt/Python"
+
+Other methods:
+
+ * Mac and Windows: "Anaconda": "https://store.continuum.io/cshop/anaconda/"
+ * Web browser ("Wakari": "https://wakari.io/" or "SageMathCloud": "https://cloud.sagemath.com/")
+
+% else:
 Many methods:
 
  * Mac and Windows: "Anaconda": "https://store.continuum.io/cshop/anaconda/"
  * Ubuntu: `sudo apt-get install`
- * Web browser
+ * Web browser ("Wakari": "https://wakari.io/" or "SageMathCloud": "https://cloud.sagemath.com/")
 
 See "How to access Python for doing scientific computing": "http://hplgit.github.io/edu/accesspy/accesspy.html" for more details!
+% endif
 
 !split
 ===== Mathematical example =====
@@ -686,8 +696,7 @@ if condition:
 !split
 ===== Implementation of a piecewisely defined function with if =====
 
-A Python function implementing the mathematical function (ref{basics:seq2})
-reads
+A Python function implementing the mathematical function
 
 !bt
 \[
@@ -697,6 +706,8 @@ s_0 + v_0t_1 + \frac{1}{2}a_0 t_1^2 + a_0t_1(t-t_1),& t> t_1
 \end{array}\right.
 \]
 !et
+
+reads
 
 @@@CODE src-bumpy/plot3.py fromto: def s_func@n = 201
 
@@ -771,6 +782,7 @@ s[t <= t1] = (v0*t + 0.5*a0*t**2)[t <= t1]
 s[t > t1]  = (v0*t + 0.5*a0*t1**2 + a0*t1*(t-t1))[t > t1]
 !ec
 
+% if COURSE == 'any':
 
 ======= Classes =======
 label{basics:class}
@@ -899,5 +911,4 @@ class F:
 f = F(p1=..., p2=..., ...)   # create instance with parameters
 print f(1, 4, -1)            # evaluate f(x,y,z) function
 !ec
-
-
+% endif

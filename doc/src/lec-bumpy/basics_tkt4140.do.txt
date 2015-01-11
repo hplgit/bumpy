@@ -897,5 +897,3 @@ s[t > t1]  = (v0*t + 0.5*a0*t1**2 + a0*t1*(t-t1))[t > t1]
 # f = F(p1=..., p2=..., ...)   # create instance with parameters
 # print f(1, 4, -1)            # evaluate f(x,y,z) function
 # !ec
-
-

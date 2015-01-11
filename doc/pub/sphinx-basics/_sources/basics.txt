@@ -7,7 +7,7 @@ A very basic introduction to scientific Python programming
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen (hpl at simula.no)
-:Date: Jan 9, 2015
+:Date: Jan 11, 2015
 
 
 .. admonition:: Contents
@@ -1459,7 +1459,7 @@ computing :math:`\sin (x)`, where :math:`x` is an array of 1M elements, using
 scalar computing with a loop (function ``sin_func``) and vectorized
 computing using the ``sin`` function from ``numpy``.
 
-.. code-block:: python
+.. code-block:: ipy
 
         In [1]: import numpy as np
         

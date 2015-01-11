@@ -13,7 +13,7 @@ A worked example on scientific computing with Python
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen (hpl at simula.no)
-:Date: Jan 9, 2015
+:Date: Jan 11, 2015
 
 .. Make corresponding slides
 
