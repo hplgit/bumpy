@@ -31,11 +31,7 @@ Automatically generated HTML file from DocOnce source
                1,
                'basics:basic:objects',
                'basics:basic:objects'),
-              (' Do you have access to Python? ',
-               2,
-               'basics:accesspy',
-               'basics:accesspy'),
-              (' Mathematical example ', 2, None, '___sec3'),
+              (' Mathematical example ', 2, None, '___sec2'),
               (' A program for evaluating a formula ',
                2,
                'basics:formula:eval',
@@ -43,7 +39,7 @@ Automatically generated HTML file from DocOnce source
               (' Assignment statements assign a name to an object ',
                2,
                None,
-               '___sec5'),
+               '___sec4'),
               (' Formatted output with text and numbers ',
                2,
                'basics:printf',
@@ -52,39 +48,39 @@ Automatically generated HTML file from DocOnce source
                2,
                'basics:while',
                'basics:while'),
-              (' Output of the previous program ', 2, None, '___sec8'),
-              (' Structure of a while loop ', 2, None, '___sec9'),
+              (' Output of the previous program ', 2, None, '___sec7'),
+              (' Structure of a while loop ', 2, None, '___sec8'),
               (' The Python Online Tutor can help you understand the program flow ',
                2,
                None,
-               '___sec10'),
+               '___sec9'),
               (' Lists ', 2, 'basics:list', 'basics:list'),
               (' Store our table in two lists, one for each column ',
                2,
                None,
-               '___sec12'),
+               '___sec11'),
               (' For loops ', 2, 'basics:for', 'basics:for'),
               (' For loops used traditionally an integer counter over list/array indices ',
                2,
                None,
-               '___sec14'),
+               '___sec13'),
               (" Let's replace our while loop by a for loop ",
                2,
                None,
-               '___sec15'),
+               '___sec14'),
               (' Traversal of multiple lists at the same time with `zip` ',
                2,
                None,
-               '___sec16'),
+               '___sec15'),
               (' Arrays ', 2, 'basics:numpy', 'basics:numpy'),
               (' `numpy` functions creates entire arrays at once ',
                2,
                None,
-               '___sec18'),
+               '___sec17'),
               (" Let's use arrays in our previous program ",
                2,
                None,
-               '___sec19'),
+               '___sec18'),
               (' Standard mathematical functions are found in the `math` module ',
                2,
                'basics:math',
@@ -92,9 +88,9 @@ Automatically generated HTML file from DocOnce source
               (' Use the `numpy` module for standard mathematical functions applied to arrays ',
                2,
                None,
-               '___sec21'),
+               '___sec20'),
               (' Plotting ', 2, 'basics:plot', 'basics:plot'),
-              (' Plotting of multiple curves ', 2, None, '___sec23'),
+              (' Plotting of multiple curves ', 2, None, '___sec22'),
               (' Functions and branching ',
                1,
                'basics:func:branching',
@@ -103,42 +99,42 @@ Automatically generated HTML file from DocOnce source
               (' Functions can have multiple arguments ',
                2,
                None,
-               '___sec26'),
+               '___sec25'),
               (' Keyword arguments are arguments with default values ',
                2,
                None,
-               '___sec27'),
-              (' Vectorization speeds up the code ', 2, None, '___sec28'),
+               '___sec26'),
+              (' Vectorization speeds up the code ', 2, None, '___sec27'),
               (' Python functions written for scalars normally work for arrays too! ',
                2,
                None,
-               '___sec29'),
+               '___sec28'),
               (' Python functions can return multiple values ',
                2,
                None,
-               '___sec30'),
+               '___sec29'),
               (' Basic if-else tests ', 2, 'basics:if', 'basics:if'),
-              (' Multi-branch if tests ', 2, None, '___sec32'),
+              (' Multi-branch if tests ', 2, None, '___sec31'),
               (' Implementation of a piecewisely defined function with if ',
                2,
                None,
-               '___sec33'),
+               '___sec32'),
               (' Python functions containing if will not accept array arguments ',
                2,
                None,
-               '___sec34'),
+               '___sec33'),
               (' Remedy 1: Call the function with scalar arguments ',
                2,
                None,
-               '___sec35'),
+               '___sec34'),
               (' Remedy 2: Vectorize the if test with `where` ',
                2,
                None,
-               '___sec36'),
+               '___sec35'),
               (' Remedy 3: Vectorize the if test with array indexing ',
                2,
                None,
-               '___sec37')]}
+               '___sec36')]}
 end of tocinfo -->
 
 <body>
@@ -176,7 +172,7 @@ MathJax.Hub.Config({
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
      <!-- navigation toc: --> <li><a href="._lectures_tkt4140-bootstrap_bg003.html#basics:basic:objects" style="font-size: 80%;">Variables, loops, lists, and arrays</a></li>
-     <!-- navigation toc: --> <li><a href="._lectures_tkt4140-bootstrap_bg026.html#basics:func:branching" style="font-size: 80%;">Functions and branching</a></li>
+     <!-- navigation toc: --> <li><a href="._lectures_tkt4140-bootstrap_bg024.html#basics:func:branching" style="font-size: 80%;">Functions and branching</a></li>
 
         </ul>
       </li>
@@ -208,47 +204,28 @@ MathJax.Hub.Config({
   <li><a href="._lectures_tkt4140-bootstrap_bg041.html">42</a></li>
   <li><a href="._lectures_tkt4140-bootstrap_bg042.html">43</a></li>
   <li><a href="._lectures_tkt4140-bootstrap_bg043.html">44</a></li>
-  <li><a href="._lectures_tkt4140-bootstrap_bg044.html">45</a></li>
-  <li><a href="._lectures_tkt4140-bootstrap_bg045.html">46</a></li>
   <li><a href="._lectures_tkt4140-bootstrap_bg040.html">&raquo;</a></li>
 </ul>
 <!-- !split -->
-
-<h2 id="___sec37">Remedy 3: Vectorize the if test with array indexing </h2>
-
-<ul>
- <li> Let <code>b</code> be a boolean array (e.g., <code>b = t &lt;= t1</code>)</li>
- <li> <code>s[b]</code> selects all elements <code>s[i]</code> where <code>b[i]</code> is <code>True</code></li>
- <li> Can assign some array expression <code>expr</code> of length
-   <code>len(s[b])</code> to <code>s[b]</code>: <code>s[b] = (expr)[b]</code></li>
-</ul>
-
-Our example can utilize this technique with <code>b</code> as <code>t &lt;= t1</code> and <code>t &gt; t1</code>:
+<!-- ===== How can we use this class? ===== -->
 
 <p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">s <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros_like(t)  <span style="color: #408080; font-style: italic"># Make s as zeros, same size &amp; type as t</span>
-s[t <span style="color: #666666">&lt;=</span> t1] <span style="color: #666666">=</span> (v0<span style="color: #666666">*</span>t <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>a0<span style="color: #666666">*</span>t<span style="color: #666666">**2</span>)[t <span style="color: #666666">&lt;=</span> t1]
-s[t <span style="color: #666666">&gt;</span> t1]  <span style="color: #666666">=</span> (v0<span style="color: #666666">*</span>t <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>a0<span style="color: #666666">*</span>t1<span style="color: #666666">**2</span> <span style="color: #666666">+</span> a0<span style="color: #666666">*</span>t1<span style="color: #666666">*</span>(t<span style="color: #666666">-</span>t1))[t <span style="color: #666666">&gt;</span> t1]
-</pre></div>
-<p>
-<!-- ======= Classes ======= -->
-<!-- <div id="basics:class"></div> -->
+<!-- First, make an <em>instance</em> (object) of the class: -->
 
 <p>
-<!-- !bblock -->
-<!-- * All objects in Python are made from a class -->
-<!-- * You don't need to know about classes to use Python -->
-<!-- * But class programming is powerful -->
-<!-- !eblock -->
+<!-- !bc pycod -->
+<!-- t = Trivial(a=4) -->
+<!-- t.dump() -->
+<!-- !ec -->
 
 <p>
-<!-- !bblock -->
-<!-- * Class = functions + variables packed together -->
-<!-- * A class is a logical unit in a program -->
-<!-- * A large program as a combination of appropriate units -->
-<!-- !eblock -->
+<!-- Note: -->
+
+<p>
+<!-- * The syntax <code>Trivial(a=4)</code> actually means <code>Trivial.__init__(t, 4)</code> -->
+<!-- * <code>self</code> is an argument in <code>__init__</code> and <code>dump</code>, but not used in the calls -->
+<!-- * <code>__init__</code> is called <em>constructor</em> and is used to construct an object -->
+<!-- (instance) if the class -->
 
 <p>
 <p>
@@ -270,8 +247,6 @@ s[t <span style="color: #666666">&gt;</span> t1]  <span style="color: #666666">=
   <li><a href="._lectures_tkt4140-bootstrap_bg041.html">42</a></li>
   <li><a href="._lectures_tkt4140-bootstrap_bg042.html">43</a></li>
   <li><a href="._lectures_tkt4140-bootstrap_bg043.html">44</a></li>
-  <li><a href="._lectures_tkt4140-bootstrap_bg044.html">45</a></li>
-  <li><a href="._lectures_tkt4140-bootstrap_bg045.html">46</a></li>
   <li><a href="._lectures_tkt4140-bootstrap_bg040.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->

@@ -17,17 +17,6 @@ label{basics:basic:objects}
 
 FIGURE: [fig-bumpy/implementation5, width=500 frac=0.7]
 
-!split
-===== Do you have access to Python? =====
-label{basics:accesspy}
-
-See "TKT4140 Course specific installation guidelines": "https://www.ntnu.no/wiki/display/kt/Python"
-
-Other methods:
- * Mac and Windows: "Anaconda": "https://store.continuum.io/cshop/anaconda/"
- * Web browser
-
-!split
 ===== Mathematical example =====
 
 Most examples will involve this formula:

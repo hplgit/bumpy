@@ -31,11 +31,7 @@ Automatically generated HTML file from DocOnce source
                1,
                'basics:basic:objects',
                'basics:basic:objects'),
-              (' Do you have access to Python? ',
-               2,
-               'basics:accesspy',
-               'basics:accesspy'),
-              (' Mathematical example ', 2, None, '___sec3'),
+              (' Mathematical example ', 2, None, '___sec2'),
               (' A program for evaluating a formula ',
                2,
                'basics:formula:eval',
@@ -43,7 +39,7 @@ Automatically generated HTML file from DocOnce source
               (' Assignment statements assign a name to an object ',
                2,
                None,
-               '___sec5'),
+               '___sec4'),
               (' Formatted output with text and numbers ',
                2,
                'basics:printf',
@@ -52,39 +48,39 @@ Automatically generated HTML file from DocOnce source
                2,
                'basics:while',
                'basics:while'),
-              (' Output of the previous program ', 2, None, '___sec8'),
-              (' Structure of a while loop ', 2, None, '___sec9'),
+              (' Output of the previous program ', 2, None, '___sec7'),
+              (' Structure of a while loop ', 2, None, '___sec8'),
               (' The Python Online Tutor can help you understand the program flow ',
                2,
                None,
-               '___sec10'),
+               '___sec9'),
               (' Lists ', 2, 'basics:list', 'basics:list'),
               (' Store our table in two lists, one for each column ',
                2,
                None,
-               '___sec12'),
+               '___sec11'),
               (' For loops ', 2, 'basics:for', 'basics:for'),
               (' For loops used traditionally an integer counter over list/array indices ',
                2,
                None,
-               '___sec14'),
+               '___sec13'),
               (" Let's replace our while loop by a for loop ",
                2,
                None,
-               '___sec15'),
+               '___sec14'),
               (' Traversal of multiple lists at the same time with `zip` ',
                2,
                None,
-               '___sec16'),
+               '___sec15'),
               (' Arrays ', 2, 'basics:numpy', 'basics:numpy'),
               (' `numpy` functions creates entire arrays at once ',
                2,
                None,
-               '___sec18'),
+               '___sec17'),
               (" Let's use arrays in our previous program ",
                2,
                None,
-               '___sec19'),
+               '___sec18'),
               (' Standard mathematical functions are found in the `math` module ',
                2,
                'basics:math',
@@ -92,9 +88,9 @@ Automatically generated HTML file from DocOnce source
               (' Use the `numpy` module for standard mathematical functions applied to arrays ',
                2,
                None,
-               '___sec21'),
+               '___sec20'),
               (' Plotting ', 2, 'basics:plot', 'basics:plot'),
-              (' Plotting of multiple curves ', 2, None, '___sec23'),
+              (' Plotting of multiple curves ', 2, None, '___sec22'),
               (' Functions and branching ',
                1,
                'basics:func:branching',
@@ -103,42 +99,42 @@ Automatically generated HTML file from DocOnce source
               (' Functions can have multiple arguments ',
                2,
                None,
-               '___sec26'),
+               '___sec25'),
               (' Keyword arguments are arguments with default values ',
                2,
                None,
-               '___sec27'),
-              (' Vectorization speeds up the code ', 2, None, '___sec28'),
+               '___sec26'),
+              (' Vectorization speeds up the code ', 2, None, '___sec27'),
               (' Python functions written for scalars normally work for arrays too! ',
                2,
                None,
-               '___sec29'),
+               '___sec28'),
               (' Python functions can return multiple values ',
                2,
                None,
-               '___sec30'),
+               '___sec29'),
               (' Basic if-else tests ', 2, 'basics:if', 'basics:if'),
-              (' Multi-branch if tests ', 2, None, '___sec32'),
+              (' Multi-branch if tests ', 2, None, '___sec31'),
               (' Implementation of a piecewisely defined function with if ',
                2,
                None,
-               '___sec33'),
+               '___sec32'),
               (' Python functions containing if will not accept array arguments ',
                2,
                None,
-               '___sec34'),
+               '___sec33'),
               (' Remedy 1: Call the function with scalar arguments ',
                2,
                None,
-               '___sec35'),
+               '___sec34'),
               (' Remedy 2: Vectorize the if test with `where` ',
                2,
                None,
-               '___sec36'),
+               '___sec35'),
               (' Remedy 3: Vectorize the if test with array indexing ',
                2,
                None,
-               '___sec37')]}
+               '___sec36')]}
 end of tocinfo -->
 
 <body>
@@ -176,7 +172,7 @@ MathJax.Hub.Config({
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
      <!-- navigation toc: --> <li><a href="._lectures_tkt4140-bootstrap_bg003.html#basics:basic:objects" style="font-size: 80%;">Variables, loops, lists, and arrays</a></li>
-     <!-- navigation toc: --> <li><a href="._lectures_tkt4140-bootstrap_bg026.html#basics:func:branching" style="font-size: 80%;">Functions and branching</a></li>
+     <!-- navigation toc: --> <li><a href="._lectures_tkt4140-bootstrap_bg024.html#basics:func:branching" style="font-size: 80%;">Functions and branching</a></li>
 
         </ul>
       </li>
@@ -207,31 +203,30 @@ MathJax.Hub.Config({
   <li><a href="._lectures_tkt4140-bootstrap_bg041.html">42</a></li>
   <li><a href="._lectures_tkt4140-bootstrap_bg042.html">43</a></li>
   <li><a href="._lectures_tkt4140-bootstrap_bg043.html">44</a></li>
-  <li><a href="._lectures_tkt4140-bootstrap_bg044.html">45</a></li>
-  <li><a href="._lectures_tkt4140-bootstrap_bg045.html">46</a></li>
   <li><a href="._lectures_tkt4140-bootstrap_bg041.html">&raquo;</a></li>
 </ul>
 <!-- !split -->
-<!-- ===== A very simple class ===== -->
+<!-- ===== The <code>self</code> argument is a difficult thing for newcomers... ===== -->
 
 <p>
-<!-- * One variable: <code>a</code> -->
-<!-- * One function: <code>dump</code> for printing <code>a</code> -->
+<!-- It takes time and experience to understand the <code>self</code> argument in -->
+<!-- class methods! -->
 
 <p>
-<!-- !bc pycod -->
-<!-- class Trivial: -->
-<!-- def __init__(self, a): -->
-<!-- self.a = a -->
+<!-- o <code>self</code> must always be the first argument -->
+<!-- o <code>self</code> is never used in calls -->
+<!-- o <code>self</code> is used to access attributes and methods inside methods -->
 
 <p>
-<!-- def dump(self): -->
-<!-- print self.a -->
-<!-- !ec -->
+<!-- We refer to a "more comprehensive text on classes": -->
+<!-- "http://hplgit.github.io/primer.html/doc/pub/class/index.html" -->
+<!-- for better explanation of <code>self</code>. -->
 
 <p>
-<!-- Class terminology: Functions are called -->
-<!-- <em>methods</em> and variables are called <em>attributes</em>. -->
+<!-- !bblock -->
+<!-- <code>self</code> is confusing in the beginning, but later it greatly helps -->
+<!-- the understanding of how classes work! -->
+<!-- !eblock -->
 
 <p>
 <p>
@@ -252,8 +247,6 @@ MathJax.Hub.Config({
   <li><a href="._lectures_tkt4140-bootstrap_bg041.html">42</a></li>
   <li><a href="._lectures_tkt4140-bootstrap_bg042.html">43</a></li>
   <li><a href="._lectures_tkt4140-bootstrap_bg043.html">44</a></li>
-  <li><a href="._lectures_tkt4140-bootstrap_bg044.html">45</a></li>
-  <li><a href="._lectures_tkt4140-bootstrap_bg045.html">46</a></li>
   <li><a href="._lectures_tkt4140-bootstrap_bg041.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->
