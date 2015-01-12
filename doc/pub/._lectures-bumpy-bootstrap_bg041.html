@@ -1,0 +1,262 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="A worked example on scientific computing with Python">
+
+<title>A worked example on scientific computing with Python</title>
+
+<!-- Bootstrap style: bootstrap_bluegray -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/bootstrap_bluegray.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Contents ', 2, None, '___sec0'),
+              (' The following programming topics are illustrated ',
+               2,
+               None,
+               '___sec1'),
+              (' A scientific application ', 1, None, '___sec2'),
+              (' Physical problem and mathematical model ',
+               2,
+               None,
+               '___sec3'),
+              (' Numerical model ', 2, None, '___sec4'),
+              (' Extension to quadratic damping ', 2, None, '___sec5'),
+              (' Simple implementation ', 2, None, '___sec6'),
+              (' Using the function ', 2, None, '___sec7'),
+              (' Plot ', 2, None, '___sec8'),
+              (' More advanced implementation (part I) ', 2, None, '___sec9'),
+              (' More advanced implementation (part II) ',
+               2,
+               None,
+               '___sec10'),
+              (' Important features ', 2, None, '___sec11'),
+              (' Using the solver function ', 2, None, '___sec12'),
+              (' Local vs global variables ', 2, None, '___sec13'),
+              (' Advanced programming of functions with parameters ',
+               2,
+               None,
+               '___sec14'),
+              (' The excitation force ', 2, None, '___sec15'),
+              (' Computing the force from the road profile ',
+               2,
+               None,
+               '___sec16'),
+              (' Vectorized version of the previous function ',
+               2,
+               None,
+               '___sec17'),
+              (' Performing the simulation of vibrations ',
+               2,
+               None,
+               '___sec18'),
+              (' A high-level solve function (part I) ', 2, None, '___sec19'),
+              (' A high-level solve function (part II) ',
+               2,
+               None,
+               '___sec20'),
+              (' Computing an expression for the noise level of the vibrations ',
+               2,
+               None,
+               '___sec21'),
+              (' Pickling objects to file ', 2, None, '___sec22'),
+              (' User input ', 1, None, '___sec23'),
+              (' Positional command-line arguments ', 2, None, '___sec24'),
+              (' Option-value pairs on the command line ',
+               2,
+               None,
+               '___sec25'),
+              (' Example on using `argparse` ', 2, None, '___sec26'),
+              (' Visual exploration ', 1, None, '___sec27'),
+              (' Code (part I) ', 2, None, '___sec28'),
+              (' Code (part II) ', 2, None, '___sec29'),
+              (' Code (part III) ', 2, None, '___sec30'),
+              (' Plot of the spectrum ', 2, None, '___sec31'),
+              (' Code (part IV) ', 2, None, '___sec32'),
+              (' Plot ', 2, None, '___sec33'),
+              (' Advanced topics ', 1, None, '___sec34'),
+              (' Symbolic computing via SymPy ', 2, None, '___sec35'),
+              (' Go seamlessly from symbolic expression to Python function ',
+               2,
+               None,
+               '___sec36'),
+              (' Testing via test functions and test frameworks ',
+               2,
+               None,
+               '___sec37'),
+              (' Example on a test function ', 2, None, '___sec38'),
+              (' Test function for the numerical solver (part I) ',
+               2,
+               None,
+               '___sec39'),
+              (' Test function for the numerical solver (part II) ',
+               2,
+               None,
+               '___sec40'),
+              (' Using a test framework ', 2, None, '___sec41'),
+              (' Modules ', 2, None, '___sec42'),
+              (' Example on a module file ', 2, None, '___sec43'),
+              (' What gets imported? ', 2, None, '___sec44')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="lectures-bumpy-bootstrap_bg.html">A worked example on scientific computing with Python</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._lectures-bumpy-bootstrap_bg004.html#___sec2" style="font-size: 80%;">A scientific application</a></li>
+     <!-- navigation toc: --> <li><a href="._lectures-bumpy-bootstrap_bg025.html#___sec23" style="font-size: 80%;">User input</a></li>
+     <!-- navigation toc: --> <li><a href="._lectures-bumpy-bootstrap_bg029.html#___sec27" style="font-size: 80%;">Visual exploration</a></li>
+     <!-- navigation toc: --> <li><a href="._lectures-bumpy-bootstrap_bg036.html#___sec34" style="font-size: 80%;">Advanced topics</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0041"></a>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pagination">
+<li><a href="._lectures-bumpy-bootstrap_bg040.html">&laquo;</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg000.html">1</a></li>
+  <li><a href="">...</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg033.html">34</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg034.html">35</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg035.html">36</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg036.html">37</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg037.html">38</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg038.html">39</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg039.html">40</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg040.html">41</a></li>
+  <li class="active"><a href="._lectures-bumpy-bootstrap_bg041.html">42</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg042.html">43</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg043.html">44</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg044.html">45</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg045.html">46</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg046.html">47</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg042.html">&raquo;</a></li>
+</ul>
+<!-- !split -->
+
+<h2 id="___sec39">Test function for the numerical solver (part I) </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">lhs_eq</span>(t, m, b, s, u, damping<span style="color: #666666">=</span><span style="color: #BA2121">&#39;linear&#39;</span>):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Return lhs of differential equation as sympy expression.&quot;&quot;&quot;</span>
+    v <span style="color: #666666">=</span> sm<span style="color: #666666">.</span>diff(u, t)
+    d <span style="color: #666666">=</span> b<span style="color: #666666">*</span>v <span style="color: #008000; font-weight: bold">if</span> damping <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;linear&#39;</span> <span style="color: #008000; font-weight: bold">else</span> b<span style="color: #666666">*</span>v<span style="color: #666666">*</span>sm<span style="color: #666666">.</span>Abs(v)
+    <span style="color: #008000; font-weight: bold">return</span> m<span style="color: #666666">*</span>sm<span style="color: #666666">.</span>diff(u, t, t) <span style="color: #666666">+</span> d <span style="color: #666666">+</span> s(u)
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_solver</span>():
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Verify linear/quadratic solution.&quot;&quot;&quot;</span>
+    <span style="color: #408080; font-style: italic"># Set input data for the test</span>
+    I <span style="color: #666666">=</span> <span style="color: #666666">1.2</span>; V <span style="color: #666666">=</span> <span style="color: #666666">3</span>; m <span style="color: #666666">=</span> <span style="color: #666666">2</span>; b <span style="color: #666666">=</span> <span style="color: #666666">0.9</span>; k <span style="color: #666666">=</span> <span style="color: #666666">4</span>
+    s <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> u: k<span style="color: #666666">*</span>u
+    T <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+    dt <span style="color: #666666">=</span> <span style="color: #666666">0.2</span>
+    N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span>dt))
+    time_points <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, T, N<span style="color: #666666">+1</span>)
+
+    <span style="color: #408080; font-style: italic"># Test linear damping</span>
+    t <span style="color: #666666">=</span> sm<span style="color: #666666">.</span>Symbol(<span style="color: #BA2121">&#39;t&#39;</span>)
+    q <span style="color: #666666">=</span> <span style="color: #666666">2</span>  <span style="color: #408080; font-style: italic"># arbitrary constant</span>
+    u_exact <span style="color: #666666">=</span> I <span style="color: #666666">+</span> V<span style="color: #666666">*</span>t <span style="color: #666666">+</span> q<span style="color: #666666">*</span>t<span style="color: #666666">**2</span>   <span style="color: #408080; font-style: italic"># sympy expression</span>
+    F_term <span style="color: #666666">=</span> lhs_eq(t, m, b, s, u_exact, <span style="color: #BA2121">&#39;linear&#39;</span>)
+    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Fitted source term, linear case:&#39;</span>, F_term
+    F <span style="color: #666666">=</span> sm<span style="color: #666666">.</span>lambdify([t], F_term)
+    u, t_ <span style="color: #666666">=</span> solver(I, V, m, b, s, F, time_points, <span style="color: #BA2121">&#39;linear&#39;</span>)
+    u_e <span style="color: #666666">=</span> sm<span style="color: #666666">.</span>lambdify([t], u_exact, modules<span style="color: #666666">=</span><span style="color: #BA2121">&#39;numpy&#39;</span>)
+    error <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(u_e(t_) <span style="color: #666666">-</span> u)<span style="color: #666666">.</span>max()
+    tol <span style="color: #666666">=</span> <span style="color: #666666">1E-13</span>
+    <span style="color: #008000; font-weight: bold">assert</span> error <span style="color: #666666">&lt;</span> tol
+</pre></div>
+<p>
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pagination">
+<li><a href="._lectures-bumpy-bootstrap_bg040.html">&laquo;</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg000.html">1</a></li>
+  <li><a href="">...</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg033.html">34</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg034.html">35</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg035.html">36</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg036.html">37</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg037.html">38</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg038.html">39</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg039.html">40</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg040.html">41</a></li>
+  <li class="active"><a href="._lectures-bumpy-bootstrap_bg041.html">42</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg042.html">43</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg043.html">44</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg044.html">45</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg045.html">46</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg046.html">47</a></li>
+  <li><a href="._lectures-bumpy-bootstrap_bg042.html">&raquo;</a></li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

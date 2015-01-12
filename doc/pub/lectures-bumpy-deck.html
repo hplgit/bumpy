@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="A worked example on scientific computing with Python">
+
+<title>A worked example on scientific computing with Python</title>
+
+
+
+
+
+
+
+<!-- deck.js: https://github.com/imakewebthings/deck.js -->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=1024, user-scalable=no">
+
+<!-- Required stylesheet -->
+<link rel="stylesheet" href="deck.js/core/deck.core.css">
+
+<!-- Extension CSS files go here. Remove or add as needed.
+deck.goto: Adds a shortcut key to jump to any slide number.
+Hit g, type in the slide number, and hit enter.
+
+deck.hash: Enables internal linking within slides, deep
+linking to individual slides, and updates the address bar and
+a permalink anchor with each slide change.
+
+deck.menu: Adds a menu view, letting you see all slides in a grid.
+Hit m to toggle to menu view, continue navigating your deck,
+and hit m to return to normal view. Touch devices can double-tap
+the deck to switch between views.
+
+deck.navigation: Adds clickable left and right buttons for the
+less keyboard inclined.
+
+deck.status: Adds a page number indicator. (current/total).
+
+deck.scale: Scales each slide to fit within the deck container
+using CSS Transforms for those browsers that support them.
+
+deck.pointer: Turn mouse into laser pointer (toggle with p).
+(Requires https://github.com/mikeharris100/deck.pointer.js)
+-->
+
+<link rel="stylesheet" href="deck.js/extensions/menu/deck.menu.css">
+<link rel="stylesheet" href="deck.js/extensions/navigation/deck.navigation.css">
+<link rel="stylesheet" href="deck.js/extensions/scale/deck.scale.css">
+<link rel="stylesheet" href="deck.js/extensions/pointer/deck.pointer.css">
+<link rel="stylesheet" href="deck.js/extensions/notes/deck.notes.css">
+<!--
+<link rel="stylesheet" href="deck.js/extensions/goto/deck.goto.css">
+<link rel="stylesheet" href="deck.js/extensions/hash/deck.hash.css">
+<link rel="stylesheet" href="deck.js/extensions/status/deck.status.css">
+-->
+
+<!-- Style theme. More available in themes/style/ or create your own. -->
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.default.css">
+
+<!--
+<link rel="stylesheet" href="deck.js/themes/style/neon.css">
+<link rel="stylesheet" href="deck.js/themes/style/swiss.css">
+<link rel="stylesheet" href="deck.js/themes/style/web-2.0.css">
+
+git clone git://github.com/duijf/mnml.git
+<link rel="stylesheet" href="deck.js/themes/style/mnml.css">
+
+git://github.com/groovecoder/deckjs-theme-mozilla.git
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.aurora.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.dark.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.default.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.firefox.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.light.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.mdn.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.nightly.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.cbc.css">
+
+git://github.com/barraq/deck.ext.js.git
+<link rel="stylesheet" href="deck.js/themes/style/beamer.css">
+-->
+
+<!--
+Transition theme. More available in /themes/transition/ or create your own. -->
+<!--
+<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
+<link rel="stylesheet" href="deck.js/themes/transition/fade.css">
+<link rel="stylesheet" href="deck.js/themes/transition/vertical-slide.css">
+<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
+-->
+
+<!-- Required Modernizr file -->
+<script src="deck.js/modernizr.custom.js"></script>
+
+<style type="text/css">
+/* Override h1, h2, ... styles */
+h1 { font-size: 2.8em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.4em; }
+h4 { font-size: 1.3em; }
+h1, h2, h3, h4 { font-weight: bold; line-height: 1.2; }
+body { overflow: auto; } /* vertical scrolling */
+
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.slide .alert-text-small   { font-size: 80%;  }
+.slide .alert-text-large   { font-size: 130%; }
+.slide .alert-text-normal  { font-size: 90%;  }
+.slide .alert {
+     padding:8px 35px 8px 14px; margin-bottom:18px;
+     text-shadow:0 1px 0 rgba(255,255,255,0.5);
+     border:5px solid #bababa;
+       -webkit-border-radius:14px; -moz-border-radius:14px;
+     border-radius:14px
+     background-position: 10px 10px;
+     background-repeat: no-repeat;
+     background-size: 38px;
+     padding-left: 30px; /* 55px; if icon */
+ }
+ .slide .alert-block {padding-top:14px; padding-bottom:14px}
+ .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
+ /*.slide .alert li {margin-top: 1em}*/
+ .deck .alert-block p+p {margin-top:5px}
+ /*.slide .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_notice.png); }
+ .slide .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_summary.png); }
+ .slide .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_warning.png); }
+ .slide .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+
+</style>
+
+
+
+<!-- Styles for table layout of slides -->
+<style type="text/css">
+td.padding {
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-right:50px;
+  padding-left:50px;
+}
+</style>
+
+</head>
+
+<body class="deck-container">
+
+<header>
+<!-- Here goes a potential header -->
+</header>
+
+<!-- do not use the article tag - it gives strange sizings -->
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+
+
+
+<section class="slide">
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<h2 style="text-align: center;">A worked example on scientific computing with Python</h2>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b style="font-weight: bold">Hans Petter Langtangen</b> [1, 2] (<tt>hpl at simula.no</tt>)
+</center>
+
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b style="font-weight: bold">Simula Research Laboratory</b></center>
+<center>[2] <b style="font-weight: bold">University of Oslo</b></center>
+<p>
+<center><b style="font-weight: bold">Jan 12, 2015</b></center> <!-- date -->
+<p>
+<center><p><img src="fig-bumpy/bumpy_road_sign1.jpg" align="bottom" width=100></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec0">Contents </h2>
+
+<p>
+This worked example
+
+<ul>
+  <p><li> fetches a data file from a web site,</li>
+  <p><li> applies that file as input data for a differential equation modeling a vibrating system,</li>
+  <p><li> solves the equation by a finite difference method,</li>
+  <p><li> visualizes various properties of the solution and the input data.</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec1">The following programming topics are illustrated </h2>
+
+<ul>
+  <p><li> basic Python constructs: variables, loops, if-tests, arrays, functions</li>
+  <p><li> flexible storage of objects in lists</li>
+  <p><li> storage of objects in files (persistence)</li>
+  <p><li> downloading files from the web</li>
+  <p><li> user input via the command line</li>
+  <p><li> signal processing and FFT</li>
+  <p><li> curve plotting of data</li>
+  <p><li> testing</li>
+  <p><li> modules</li>
+</ul>
+<p>
+
+All files can be forked at <a href="https://github.com/hplgit/bumpy" target="_blank"><tt>https://github.com/hplgit/bumpy</tt></a>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Table of contents</h2>
+
+<p>
+&nbsp; &nbsp; &nbsp; <a href="#___sec0"> Contents </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec1"> The following programming topics are illustrated </a><br>
+<a href="#___sec2"> A scientific application </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec3"> Physical problem and mathematical model </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec4"> Numerical model </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec5"> Extension to quadratic damping </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec6"> Simple implementation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec7"> Using the function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec8"> Plot </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec9"> More advanced implementation (part I) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec10"> More advanced implementation (part II) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec11"> Important features </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec12"> Using the solver function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec13"> Local vs global variables </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec14"> Advanced programming of functions with parameters </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec15"> The excitation force </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec16"> Computing the force from the road profile </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec17"> Vectorized version of the previous function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec18"> Performing the simulation of vibrations </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec19"> A high-level solve function (part I) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec20"> A high-level solve function (part II) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec21"> Computing an expression for the noise level of the vibrations </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec22"> Pickling objects to file </a><br>
+<a href="#___sec23"> User input </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec24"> Positional command-line arguments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec25"> Option-value pairs on the command line </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec26"> Example on using <code>argparse</code> </a><br>
+<a href="#___sec27"> Visual exploration </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec28"> Code (part I) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec29"> Code (part II) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec30"> Code (part III) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec31"> Plot of the spectrum </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec32"> Code (part IV) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec33"> Plot </a><br>
+<a href="#___sec34"> Advanced topics </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec35"> Symbolic computing via SymPy </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec36"> Go seamlessly from symbolic expression to Python function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec37"> Testing via test functions and test frameworks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec38"> Example on a test function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec39"> Test function for the numerical solver (part I) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec40"> Test function for the numerical solver (part II) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec41"> Using a test framework </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec42"> Modules </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec43"> Example on a module file </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec44"> What gets imported? </a><br>
+</p>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h1 id="___sec2">A scientific application </h1>
+
+<p>
+<center><p><img src="fig-bumpy/bumpy_road1.jpg" align="bottom" width=400></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec3">Physical problem and mathematical model </h2>
+
+<p>&nbsp;<br>
+$$
+\begin{equation}
+mu'' + f(u') + s(u) = F(t),\quad u(0)=I,\ u'(0)=V
+\tag{1}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+
+<ul>
+ <p><li> Input: mass \( m \), friction force \( f(u') \), spring \( s(u) \), external
+   forcing \( F(t) \), \( I \), \( V \)</li>
+ <p><li> Output: vertical displacement \( u(t) \)</li>
+</ul>
+<p>
+
+<center><p><img src="fig-bumpy/vehicle2.png" align="bottom" width=500></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec4">Numerical model </h2>
+
+<ul>
+ <p><li> Finite difference method</li>
+ <p><li> Centered differences</li>
+ <p><li> \( u^n \): approximation to exact \( u \) at \( t=t_n=n\Delta t \)</li>
+ <p><li> First: linear damping</li>
+</ul>
+<p>
+
+<p>&nbsp;<br>
+$$
+\begin{equation*}
+u^{n+1} = \left(2mu^n + (\frac{b}{2}\Delta t - m)u^{n-1} +
+\Delta t^2(F^n - s(u^n))
+\right)(m + \frac{b}{2}\Delta t)^{-1}
+\end{equation*}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+A special formula must be applied for \( n=0 \):
+
+<p>&nbsp;<br>
+$$
+\begin{equation*}
+u^1 = u^0 + \Delta t\, V
++ \frac{\Delta t^2}{2m}(-bV - s(u^0) + F^0)
+\end{equation*}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec5">Extension to quadratic damping </h2>
+
+<p>
+Linearization via geometric mean:
+
+<p>&nbsp;<br>
+$$
+f(u'(t_n)) = \left. |u'|u'\right\vert^n \approx |u'|^{n-\frac{1}{2}}
+(u')^{n+\frac{1}{2}}
+$$
+<p>&nbsp;<br>
+
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
+u^{n+1} = & \left( m + b|u^n-u^{n-1}|\right)^{-1}\times \\ 
+&\quad \left(2m u^n - mu^{n-1} + bu^n|u^n-u^{n-1}| + \Delta t^2 (F^n - s(u^n))
+\right)
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+(and again a special formula for \( u^1 \))
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec6">Simple implementation </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">solver_linear_damping</span>(I, V, m, b, s, F, t):
+    N = t.size - <span style="color: #B452CD">1</span>              <span style="color: #228B22"># No of time intervals</span>
+    dt = t[<span style="color: #B452CD">1</span>] - t[<span style="color: #B452CD">0</span>]            <span style="color: #228B22"># Time step</span>
+    u = zeros(N+<span style="color: #B452CD">1</span>)              <span style="color: #228B22"># Result array</span>
+    u[<span style="color: #B452CD">0</span>] = I
+    u[<span style="color: #B452CD">1</span>] = u[<span style="color: #B452CD">0</span>] + dt*V + dt**<span style="color: #B452CD">2</span>/(<span style="color: #B452CD">2</span>*m)*(-b*V - s(u[<span style="color: #B452CD">0</span>]) + F[<span style="color: #B452CD">0</span>])
+
+    <span style="color: #8B008B; font-weight: bold">for</span> n <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">1</span>,N):
+        u[n+<span style="color: #B452CD">1</span>] = <span style="color: #B452CD">1.</span>/(m + b*dt/<span style="color: #B452CD">2</span>)*(<span style="color: #B452CD">2</span>*m*u[n] + \ 
+                 (b*dt/<span style="color: #B452CD">2</span> - m)*u[n-<span style="color: #B452CD">1</span>] + dt**<span style="color: #B452CD">2</span>*(F[n] - s(u[n])))
+    <span style="color: #8B008B; font-weight: bold">return</span> u
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec7">Using the function </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">solver</span> <span style="color: #8B008B; font-weight: bold">import</span> solver_linear_damping
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">s</span>(u):
+    <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #B452CD">2</span>*u
+
+T = <span style="color: #B452CD">10</span>*pi      <span style="color: #228B22"># simulate for t in [0,T]</span>
+dt = <span style="color: #B452CD">0.2</span>
+N = <span style="color: #658b00">int</span>(<span style="color: #658b00">round</span>(T/dt))
+t = linspace(<span style="color: #B452CD">0</span>, T, N+<span style="color: #B452CD">1</span>)
+F = zeros(t.size)
+I = <span style="color: #B452CD">1</span>; V = <span style="color: #B452CD">0</span>
+m = <span style="color: #B452CD">2</span>; b = <span style="color: #B452CD">0.2</span>
+u = solver_linear_damping(I, V, m, b, s, F, t)
+
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+plot(t, u)
+savefig(<span style="color: #CD5555">&#39;tmp.pdf&#39;</span>)   <span style="color: #228B22"># save plot to PDF file</span>
+savefig(<span style="color: #CD5555">&#39;tmp.png&#39;</span>)   <span style="color: #228B22"># save plot to PNG file</span>
+show()
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec8">Plot </h2>
+
+<p>
+<center><p><img src="fig-bumpy/solver_linear_damping.png" align="bottom" width=500></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec9">More advanced implementation (part I) </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">solver</span>(I, V, m, b, s, F, t, damping=<span style="color: #CD5555">&#39;linear&#39;</span>):
+    <span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">    Solve m*u&#39;&#39; + f(u&#39;) + s(u) = F for time points in t.</span>
+<span style="color: #CD5555">    u(0)=I and u&#39;(0)=V,</span>
+<span style="color: #CD5555">    by a central finite difference method with time step dt.</span>
+<span style="color: #CD5555">    If damping is &#39;linear&#39;, f(u&#39;)=b*u, while if damping is</span>
+<span style="color: #CD5555">    &#39;quadratic&#39;, we have f(u&#39;)=b*u&#39;*abs(u&#39;).</span>
+<span style="color: #CD5555">    s(u) is a Python function, while F may be a function</span>
+<span style="color: #CD5555">    or an array (then F[i] corresponds to F at t[i]).</span>
+<span style="color: #CD5555">    &quot;&quot;&quot;</span>
+    N = t.size - <span style="color: #B452CD">1</span>              <span style="color: #228B22"># No of time intervals</span>
+    dt = t[<span style="color: #B452CD">1</span>] - t[<span style="color: #B452CD">0</span>]            <span style="color: #228B22"># Time step</span>
+    u = np.zeros(N+<span style="color: #B452CD">1</span>)           <span style="color: #228B22"># Result array</span>
+    b = <span style="color: #658b00">float</span>(b); m = <span style="color: #658b00">float</span>(m)  <span style="color: #228B22"># Avoid integer division</span>
+
+    <span style="color: #228B22"># Convert F to array</span>
+    <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">callable</span>(F):
+        F = F(t)
+    <span style="color: #8B008B; font-weight: bold">elif</span> <span style="color: #658b00">isinstance</span>(F, (<span style="color: #658b00">list</span>,<span style="color: #658b00">tuple</span>,np.ndarray)):
+        F = np.asarray(F)
+    <span style="color: #8B008B; font-weight: bold">else</span>:
+        <span style="color: #8B008B; font-weight: bold">raise</span> <span style="color: #008b45; font-weight: bold">TypeError</span>(
+            <span style="color: #CD5555">&#39;F must be function or array, not %s&#39;</span> % <span style="color: #658b00">type</span>(F))
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec10">More advanced implementation (part II) </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">solver</span>(I, V, m, b, s, F, t, damping=<span style="color: #CD5555">&#39;linear&#39;</span>):
+    ...
+    u[<span style="color: #B452CD">0</span>] = I
+    <span style="color: #8B008B; font-weight: bold">if</span> damping == <span style="color: #CD5555">&#39;linear&#39;</span>:
+        u[<span style="color: #B452CD">1</span>] = u[<span style="color: #B452CD">0</span>] + dt*V + dt**<span style="color: #B452CD">2</span>/(<span style="color: #B452CD">2</span>*m)*(-b*V - s(u[<span style="color: #B452CD">0</span>]) + F[<span style="color: #B452CD">0</span>])
+    <span style="color: #8B008B; font-weight: bold">elif</span> damping == <span style="color: #CD5555">&#39;quadratic&#39;</span>:
+        u[<span style="color: #B452CD">1</span>] = u[<span style="color: #B452CD">0</span>] + dt*V + \ 
+               dt**<span style="color: #B452CD">2</span>/(<span style="color: #B452CD">2</span>*m)*(-b*V*<span style="color: #658b00">abs</span>(V) - s(u[<span style="color: #B452CD">0</span>]) + F[<span style="color: #B452CD">0</span>])
+    <span style="color: #8B008B; font-weight: bold">else</span>:
+        <span style="color: #8B008B; font-weight: bold">raise</span> <span style="color: #008b45; font-weight: bold">ValueError</span>(<span style="color: #CD5555">&#39;Wrong value: damping=&quot;%s&quot;&#39;</span> % damping)
+
+    <span style="color: #8B008B; font-weight: bold">for</span> n <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">1</span>,N):
+        <span style="color: #8B008B; font-weight: bold">if</span> damping == <span style="color: #CD5555">&#39;linear&#39;</span>:
+            u[n+<span style="color: #B452CD">1</span>] = (<span style="color: #B452CD">2</span>*m*u[n] + (b*dt/<span style="color: #B452CD">2</span> - m)*u[n-<span style="color: #B452CD">1</span>] +
+                      dt**<span style="color: #B452CD">2</span>*(F[n] - s(u[n])))/(m + b*dt/<span style="color: #B452CD">2</span>)
+        <span style="color: #8B008B; font-weight: bold">elif</span> damping == <span style="color: #CD5555">&#39;quadratic&#39;</span>:
+            u[n+<span style="color: #B452CD">1</span>] = (<span style="color: #B452CD">2</span>*m*u[n] - m*u[n-<span style="color: #B452CD">1</span>] + b*u[n]*<span style="color: #658b00">abs</span>(u[n] - u[n-<span style="color: #B452CD">1</span>])
+                      - dt**<span style="color: #B452CD">2</span>*(s(u[n]) - F[n]))/\ 
+                      (m + b*<span style="color: #658b00">abs</span>(u[n] - u[n-<span style="color: #B452CD">1</span>]))
+    <span style="color: #8B008B; font-weight: bold">return</span> u, t
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec11">Important features </h2>
+
+<ul>
+ <p><li> Two types of import: <code>import module</code> vs <code>from module import function</code></li>
+ <p><li> Doc strings for documentation</li>
+ <p><li> Avoiding integer division</li>
+ <p><li> Flexible variable type: <code>F</code> can be function or array</li>
+ <p><li> Checking correct variable type</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec12">Using the solver function </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> sin, pi  <span style="color: #228B22"># for nice math</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">solver</span> <span style="color: #8B008B; font-weight: bold">import</span> solver
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">F</span>(t):
+    <span style="color: #228B22"># Sinusoidal bumpy road</span>
+    <span style="color: #8B008B; font-weight: bold">return</span> A*sin(pi*t)
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">s</span>(u):
+    <span style="color: #8B008B; font-weight: bold">return</span> k*u
+
+A = <span style="color: #B452CD">0.25</span>
+k = <span style="color: #B452CD">2</span>
+t = np.linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">20</span>, <span style="color: #B452CD">2001</span>)
+u, t = solver(I=<span style="color: #B452CD">0.1</span>, V=<span style="color: #B452CD">0</span>, m=<span style="color: #B452CD">2</span>, b=<span style="color: #B452CD">0.05</span>, s=s, F=F, t=t)
+
+<span style="color: #228B22"># Show u(t) as a curve plot</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+plt.plot(t, u)
+plt.show()
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec13">Local vs global variables </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(u):
+    <span style="color: #8B008B; font-weight: bold">return</span> k*u
+</pre></div>
+<p>
+Here,
+
+<ul>
+  <p><li> <code>u</code> is a <em>local variable</em>,
+    which is accessible just inside in the function</li>
+  <p><li> <code>k</code> is a <em>global variable</em>, which must be initialized outside
+    the function prior to calling <code>f</code></li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec14">Advanced programming of functions with parameters </h2>
+
+<ul>
+ <p><li> \( f(u)=ku \) needs parameter \( k \)</li>
+ <p><li> Implement \( f \) as a class with \( k \) as attribute and <code>__call__</code>
+   for evaluating <code>f(u)</code></li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Spring</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, k):
+        <span style="color: #658b00">self</span>.k = k
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, u):
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">self</span>.k*u
+
+f = Spring(k)
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec15">The excitation force </h2>
+
+<ul>
+ <p><li> Bumpy road gives an excitation</li>
+ <p><li> <a href="http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz" target="_blank"><tt>http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz</tt></a></li>
+ <p><li> File contains various road profiles</li>
+</ul>
+<p>
+
+Dowload road profile data from the Internet:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">filename = <span style="color: #CD5555">&#39;bumpy.dat.gz&#39;</span>
+url = <span style="color: #CD5555">&#39;http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz&#39;</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">urllib</span>
+urllib.urlretrieve(url, filename)
+h_data = np.loadtxt(filename)     <span style="color: #228B22"># read numpy array from file</span>
+
+x = h_data[<span style="color: #B452CD">0</span>,:]                <span style="color: #228B22"># 1st column: x coordinates</span>
+h_data = h_data[<span style="color: #B452CD">1</span>:,:]          <span style="color: #228B22"># other columns: h shapes</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec16">Computing the force from the road profile </h2>
+
+<p>&nbsp;<br>
+$$ F(t) \sim  h''(t) $$
+<p>&nbsp;<br>
+
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">acceleration</span>(h, x, v):
+    <span style="color: #CD5555">&quot;&quot;&quot;Compute 2nd-order derivative of h.&quot;&quot;&quot;</span>
+    <span style="color: #228B22"># Method: standard finite difference aproximation</span>
+    d2h = np.zeros(h.size)
+    dx = x[<span style="color: #B452CD">1</span>] - x[<span style="color: #B452CD">0</span>]
+    <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">1</span>, h.size-<span style="color: #B452CD">1</span>, <span style="color: #B452CD">1</span>):
+        d2h[i] = (h[i-<span style="color: #B452CD">1</span>] - <span style="color: #B452CD">2</span>*h[i] + h[i+<span style="color: #B452CD">1</span>])/dx**<span style="color: #B452CD">2</span>
+    <span style="color: #228B22"># Extraplolate end values from first interior value</span>
+    d2h[<span style="color: #B452CD">0</span>] = d2h[<span style="color: #B452CD">1</span>]
+    d2h[-<span style="color: #B452CD">1</span>] = d2h[-<span style="color: #B452CD">2</span>]
+    a = d2h*v**<span style="color: #B452CD">2</span>
+    <span style="color: #8B008B; font-weight: bold">return</span> a
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec17">Vectorized version of the previous function </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">acceleration_vectorized</span>(h, x, v):
+    <span style="color: #CD5555">&quot;&quot;&quot;Compute 2nd-order derivative of h. Vectorized version.&quot;&quot;&quot;</span>
+    d2h = np.zeros(h.size)
+    dx = x[<span style="color: #B452CD">1</span>] - x[<span style="color: #B452CD">0</span>]
+    d2h[<span style="color: #B452CD">1</span>:-<span style="color: #B452CD">1</span>] = (h[:-<span style="color: #B452CD">2</span>] - <span style="color: #B452CD">2</span>*h[<span style="color: #B452CD">1</span>:-<span style="color: #B452CD">1</span>] + h[<span style="color: #B452CD">2</span>:])/dx**<span style="color: #B452CD">2</span>
+    <span style="color: #228B22"># Extraplolate end values from first interior value</span>
+    d2h[<span style="color: #B452CD">0</span>] = d2h[<span style="color: #B452CD">1</span>]
+    d2h[-<span style="color: #B452CD">1</span>] = d2h[-<span style="color: #B452CD">2</span>]
+    a = d2h*v**<span style="color: #B452CD">2</span>
+    <span style="color: #8B008B; font-weight: bold">return</span> a
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec18">Performing the simulation of vibrations </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">data = [x, t]      <span style="color: #228B22"># key input and output data (arrays)</span>
+<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(h_data.shape[<span style="color: #B452CD">0</span>]):
+    h = h_data[i,:]            <span style="color: #228B22"># extract a column</span>
+    a = acceleration(h, x, v)
+    u = forced_vibrations(t=t, I=<span style="color: #B452CD">0</span>, m=m, b=b, f=f, F=-m*a)
+    data.append([h, a, u])
+</pre></div>
+<p>
+Parameters for bicycle conditions: \( m=60 \) kg, \( v=5 \) m/s, \( k=60 \) N/m,
+\( b=80 \) Ns/m
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec19">A high-level solve function (part I) </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">solve</span>(url=<span style="color: #658b00">None</span>, m=<span style="color: #B452CD">60</span>, b=<span style="color: #B452CD">80</span>, k=<span style="color: #B452CD">60</span>, v=<span style="color: #B452CD">5</span>):
+    <span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">    Solve model for verticle vehicle vibrations.</span>
+
+<span style="color: #CD5555">    =========   ==============================================</span>
+<span style="color: #CD5555">    variable    description</span>
+<span style="color: #CD5555">    =========   ==============================================</span>
+<span style="color: #CD5555">    url         either URL of file with excitation force data,</span>
+<span style="color: #CD5555">                or name of a local file</span>
+<span style="color: #CD5555">    m           mass of system</span>
+<span style="color: #CD5555">    b           friction parameter</span>
+<span style="color: #CD5555">    k           spring parameter</span>
+<span style="color: #CD5555">    v           (constant) velocity of vehicle</span>
+<span style="color: #CD5555">    Return      data (list) holding input and output data</span>
+<span style="color: #CD5555">                [x, t, [h,a,u], [h,a,u], ...]</span>
+<span style="color: #CD5555">    =========   ==============================================</span>
+<span style="color: #CD5555">    &quot;&quot;&quot;</span>
+    <span style="color: #228B22"># Download file (if url is not the name of a local file)</span>
+    <span style="color: #8B008B; font-weight: bold">if</span> url.startswith(<span style="color: #CD5555">&#39;http://&#39;</span>) <span style="color: #8B008B">or</span> url.startswith(<span style="color: #CD5555">&#39;file://&#39;</span>):
+        <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">urllib</span>
+        filename = os.path.basename(url)  <span style="color: #228B22"># strip off path</span>
+        urllib.urlretrieve(url, filename)
+    <span style="color: #8B008B; font-weight: bold">else</span>:
+        <span style="color: #228B22"># Check if url is the name of a local file</span>
+        <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #8B008B">not</span> os.path.isfile(url):
+            <span style="color: #8B008B; font-weight: bold">print</span> url, <span style="color: #CD5555">&#39;must be a URL or a filename&#39;</span>; sys.exit(<span style="color: #B452CD">1</span>)
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec20">A high-level solve function (part II) </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">solve</span>(url=<span style="color: #658b00">None</span>, m=<span style="color: #B452CD">60</span>, b=<span style="color: #B452CD">80</span>, k=<span style="color: #B452CD">60</span>, v=<span style="color: #B452CD">5</span>):
+    ...
+    h_data = np.loadtxt(filename)  <span style="color: #228B22"># read numpy array from file</span>
+
+    x = h_data[<span style="color: #B452CD">0</span>,:]                <span style="color: #228B22"># 1st column: x coordinates</span>
+    h_data = h_data[<span style="color: #B452CD">1</span>:,:]          <span style="color: #228B22"># other columns: h shapes</span>
+
+    t = x/v                        <span style="color: #228B22"># time corresponding to x</span>
+    dt = t[<span style="color: #B452CD">1</span>] - t[<span style="color: #B452CD">0</span>]
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(u):
+        <span style="color: #8B008B; font-weight: bold">return</span> k*u
+
+    data = [x, t]      <span style="color: #228B22"># key input and output data (arrays)</span>
+    <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(h_data.shape[<span style="color: #B452CD">0</span>]):
+        h = h_data[i,:]            <span style="color: #228B22"># extract a column</span>
+        a = acceleration(h, x, v)
+
+        u = forced_vibrations(t=t, I=<span style="color: #B452CD">0.2</span>, m=m, b=b, f=f, F=-m*a)
+        data.append([h, a, u])
+    <span style="color: #8B008B; font-weight: bold">return</span> data
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec21">Computing an expression for the noise level of the vibrations </h2>
+
+<p>&nbsp;<br>
+$$ \mbox{RMS} = \sqrt{\int_0^T u^2dt} \approx \sqrt{\frac{1}{N+1}\sum_{i=0}^N (u^n)^2}$$
+<p>&nbsp;<br>
+
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">rms</span>(data):
+    u_rms = np.zeros(t.size)  <span style="color: #228B22"># for accumulating the rms value</span>
+    <span style="color: #8B008B; font-weight: bold">for</span> h, a, u <span style="color: #8B008B">in</span> data[<span style="color: #B452CD">2</span>:]:  <span style="color: #228B22"># loop over results</span>
+        u_rms += u**<span style="color: #B452CD">2</span>
+    u_rms = np.sqrt(u_rms/u_rms.size)
+    data.append(u_rms)
+    <span style="color: #8B008B; font-weight: bold">return</span> data
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec22">Pickling objects to file </h2>
+
+<p>
+After calling
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">road_url = <span style="color: #CD5555">&#39;http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz&#39;</span>
+data = solve(url=road_url,
+             m=<span style="color: #B452CD">60</span>, b=<span style="color: #B452CD">200</span>, k=<span style="color: #B452CD">60</span>, v=<span style="color: #B452CD">6</span>)
+data = rms(data)
+</pre></div>
+<p>
+the <code>data</code> array contains single arrays and triplets of arrays,
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">[x, t, [h,a,u], [h,a,u], ..., [h,a,u], u_rms]
+</pre></div>
+<p>
+This list, or any Python object, can be stored on file for later
+retrieval of the results, using <em>pickling</em>:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">cPickle</span>
+outfile = <span style="color: #658b00">open</span>(<span style="color: #CD5555">&#39;bumpy.res&#39;</span>, <span style="color: #CD5555">&#39;w&#39;</span>)
+cPickle.dump(data, outfile)
+outfile.close()
+</pre></div>
+<p>
+See <a href="https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/bumpy.py" target="_blank"><tt>bumpy.py</tt></a>.
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h1 id="___sec23">User input </h1>
+
+<p>
+<center><p><img src="fig-bumpy/input2.jpg" align="bottom" width=500></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec24">Positional command-line arguments </h2>
+
+<p>
+Suppose \( b \) is given on the command line:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; python bumpy.py 10
+</pre></div>
+<p>
+Code:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">try</span>:
+    b = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">1</span>])
+<span style="color: #8B008B; font-weight: bold">except</span> <span style="color: #008b45; font-weight: bold">IndexError</span>:
+    b = <span style="color: #B452CD">80</span>  <span style="color: #228B22"># default</span>
+</pre></div>
+<p>
+Note: 1st command-line arg in <code>sys.argv[1]</code>, but that is a string
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec25">Option-value pairs on the command line </h2>
+
+<p>
+Now we want to use option-value pairs on the command line:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; python bumpy.py --m 40 --b 280
+</pre></div>
+<p>
+Note:
+
+<ul>
+ <p><li> All parameters have default values</li>
+ <p><li> The default value can be overridden on the command line with
+   <code>--option value</code></li>
+ <p><li> We use the <code>argparse</code> module for defining, reading, and accessing
+   option-value pairs</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec26">Example on using <code>argparse</code> </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">command_line_options</span>():
+    <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">argparse</span>
+    parser = argparse.ArgumentParser()
+    parser.add_argument(<span style="color: #CD5555">&#39;--m&#39;</span>, <span style="color: #CD5555">&#39;--mass&#39;</span>, <span style="color: #658b00">type</span>=<span style="color: #658b00">float</span>,
+                        default=<span style="color: #B452CD">60</span>, help=<span style="color: #CD5555">&#39;mass of vehicle&#39;</span>)
+    parser.add_argument(<span style="color: #CD5555">&#39;--k&#39;</span>, <span style="color: #CD5555">&#39;--spring&#39;</span>, <span style="color: #658b00">type</span>=<span style="color: #658b00">float</span>,
+                        default=<span style="color: #B452CD">60</span>, help=<span style="color: #CD5555">&#39;spring parameter&#39;</span>)
+    parser.add_argument(<span style="color: #CD5555">&#39;--b&#39;</span>, <span style="color: #CD5555">&#39;--damping&#39;</span>, <span style="color: #658b00">type</span>=<span style="color: #658b00">float</span>,
+                        default=<span style="color: #B452CD">80</span>, help=<span style="color: #CD5555">&#39;damping parameter&#39;</span>)
+    parser.add_argument(<span style="color: #CD5555">&#39;--v&#39;</span>, <span style="color: #CD5555">&#39;--velocity&#39;</span>, <span style="color: #658b00">type</span>=<span style="color: #658b00">float</span>,
+                        default=<span style="color: #B452CD">5</span>, help=<span style="color: #CD5555">&#39;velocity of vehicle&#39;</span>)
+    url = <span style="color: #CD5555">&#39;http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz&#39;</span>
+    parser.add_argument(<span style="color: #CD5555">&#39;--roadfile&#39;</span>, <span style="color: #658b00">type</span>=<span style="color: #658b00">str</span>,
+              default=url, help=<span style="color: #CD5555">&#39;filename/URL with road data&#39;</span>)
+    args = parser.parse_args()
+    <span style="color: #228B22"># Extract input parameters</span>
+    m = args.m; k = args.k; b = args.b; v = args.v
+    url = args.roadfile
+    <span style="color: #8B008B; font-weight: bold">return</span> url, m, b, k, v
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h1 id="___sec27">Visual exploration </h1>
+
+<p>
+Plot
+
+<ul>
+ <p><li> the root mean square value of \( u(t) \), to see the typical amplitudes</li>
+ <p><li> the spectrum of \( u(t) \), for \( t>t_s \) (using FFT) to see which frequencies
+   that dominate in the signal</li>
+ <p><li> for each road shape, a plot of \( h(x) \), \( a(t) \), and \( u(t) \), for
+   \( t\geq t_s \)</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec28">Code (part I) </h2>
+
+<p>
+For convenience:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+</pre></div>
+<p>
+Loading results from file:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">cPickle</span>
+outfile = <span style="color: #658b00">open</span>(<span style="color: #CD5555">&#39;bumpy.res&#39;</span>, <span style="color: #CD5555">&#39;r&#39;</span>)
+data = cPickle.load(outfile)
+outfile.close()
+
+x, t = data[<span style="color: #B452CD">0</span>:<span style="color: #B452CD">2</span>]
+u_rms = data[-<span style="color: #B452CD">1</span>]
+</pre></div>
+<p>
+Recall list <code>data</code>:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">[x, t, [h,a,u], [h,a,u], ..., [h,a,u], u_rms]
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec29">Code (part II) </h2>
+
+<p>
+Display only the last portion of time series:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">indices = t &gt;= t_s   <span style="color: #228B22"># True/False boolean array</span>
+t = t[indices]       <span style="color: #228B22"># fetch the part of t for which t &gt; t_s</span>
+x = x[indices]       <span style="color: #228B22"># fetch the part of x for which t &gt; t_s</span>
+</pre></div>
+<p>
+Plotting the root mean square value array <code>u_rms</code> for <code>t &gt;= t_s</code> is now done by
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">figure()
+u_rms = u_rms[indices]
+plot(t, u_rms)
+legend([<span style="color: #CD5555">&#39;u&#39;</span>])
+xlabel(<span style="color: #CD5555">&#39;t&#39;</span>)
+title(<span style="color: #CD5555">&#39;Root mean square value of u(t) functions&#39;</span>)
+show()
+</pre></div>
+<p>
+<center><p><img src="fig-bumpy/u_rms.png" align="bottom" width=300></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec30">Code (part III) </h2>
+
+<p>
+The spectrum of a discrete function \( u(t) \):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">frequency_analysis</span>(u, t):
+    A = fft(u)
+    A = <span style="color: #B452CD">2</span>*A
+    dt = t[<span style="color: #B452CD">1</span>] - t[<span style="color: #B452CD">0</span>]
+    N = t.size
+    freq = arange(N/<span style="color: #B452CD">2</span>, dtype=<span style="color: #658b00">float</span>)/N/dt
+    A = <span style="color: #658b00">abs</span>(A[<span style="color: #B452CD">0</span>:freq.size])/N
+    <span style="color: #228B22"># Remove small high frequency part</span>
+    tol = <span style="color: #B452CD">0.05</span>*A.max()
+    <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">xrange</span>(<span style="color: #658b00">len</span>(A)-<span style="color: #B452CD">1</span>, <span style="color: #B452CD">0</span>, -<span style="color: #B452CD">1</span>):
+        <span style="color: #8B008B; font-weight: bold">if</span> A[i] &gt; tol:
+            <span style="color: #8B008B; font-weight: bold">break</span>
+    <span style="color: #8B008B; font-weight: bold">return</span> freq[:i+<span style="color: #B452CD">1</span>], A[:i+<span style="color: #B452CD">1</span>]
+
+figure()
+u = data[<span style="color: #B452CD">3</span>][<span style="color: #B452CD">2</span>][indices]  <span style="color: #228B22"># 2nd realization of u</span>
+f, A = frequency_analysis(u, t)
+plot(f, A)
+title(<span style="color: #CD5555">&#39;Spectrum of u&#39;</span>)
+show()
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec31">Plot of the spectrum </h2>
+
+<p>
+<center><p><img src="fig-bumpy/u_spectrum.png" align="bottom" width=600></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec32">Code (part IV) </h2>
+
+<p>
+Run through all the 3-lists <code>[h, a, u]</code> and plot
+these arrays:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">case_counter = <span style="color: #B452CD">0</span>
+<span style="color: #8B008B; font-weight: bold">for</span> h, a, u <span style="color: #8B008B">in</span> data[<span style="color: #B452CD">2</span>:-<span style="color: #B452CD">1</span>]:
+    h = h[indices]
+    a = a[indices]
+    u = u[indices]
+
+    figure()
+    subplot(<span style="color: #B452CD">3</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">1</span>)
+    plot(x, h, <span style="color: #CD5555">&#39;g-&#39;</span>)
+    legend([<span style="color: #CD5555">&#39;h %d&#39;</span> % case_counter])
+    hmax = (<span style="color: #658b00">abs</span>(h.max()) + <span style="color: #658b00">abs</span>(h.min()))/<span style="color: #B452CD">2</span>
+    axis([x[<span style="color: #B452CD">0</span>], x[-<span style="color: #B452CD">1</span>], -hmax*<span style="color: #B452CD">5</span>, hmax*<span style="color: #B452CD">5</span>])
+    xlabel(<span style="color: #CD5555">&#39;distance&#39;</span>); ylabel(<span style="color: #CD5555">&#39;height&#39;</span>)
+
+    subplot(<span style="color: #B452CD">3</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">2</span>)
+    plot(t, a)
+    legend([<span style="color: #CD5555">&#39;a %d&#39;</span> % case_counter])
+    xlabel(<span style="color: #CD5555">&#39;t&#39;</span>); ylabel(<span style="color: #CD5555">&#39;acceleration&#39;</span>)
+
+    subplot(<span style="color: #B452CD">3</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">3</span>)
+    plot(t, u, <span style="color: #CD5555">&#39;r-&#39;</span>)
+    legend([<span style="color: #CD5555">&#39;u %d&#39;</span> % case_counter])
+    xlabel(<span style="color: #CD5555">&#39;t&#39;</span>); ylabel(<span style="color: #CD5555">&#39;displacement&#39;</span>)
+    savefig(<span style="color: #CD5555">&#39;tmp%d.png&#39;</span> % case_counter)
+    case_counter += <span style="color: #B452CD">1</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec33">Plot </h2>
+
+<p>
+<center><p><img src="fig-bumpy/hau0.png" align="bottom" width=700></p></center>
+
+<p>
+See <a href="https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/explore.py" target="_blank"><tt>explore.py</tt></a>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h1 id="___sec34">Advanced topics </h1>
+
+<p>
+<center><p><img src="fig-bumpy/rocket_science1.gif" align="bottom" width=400></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec35">Symbolic computing via SymPy </h2>
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sympy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">sp</span>
+&gt;&gt;&gt; x, a = sp.symbols(<span style="color: #CD5555">&#39;x a&#39;</span>)        <span style="color: #228B22"># Define mathematical symbols</span>
+&gt;&gt;&gt; Q = a*x**<span style="color: #B452CD">2</span> - <span style="color: #B452CD">1</span>                  <span style="color: #228B22"># Quadratic function</span>
+&gt;&gt;&gt; dQdx = sp.diff(Q, x)            <span style="color: #228B22"># Differentiate wrt x</span>
+&gt;&gt;&gt; dQdx
+<span style="color: #B452CD">2</span>*a*x
+&gt;&gt;&gt; Q2 = sp.integrate(dQdx, x)      <span style="color: #228B22"># Integrate (no constant)</span>
+&gt;&gt;&gt; Q2
+a*x**<span style="color: #B452CD">2</span>
+&gt;&gt;&gt; Q2 = sp.integrate(Q, (x, <span style="color: #B452CD">0</span>, a)) <span style="color: #228B22"># Definite integral</span>
+&gt;&gt;&gt; Q2
+a**<span style="color: #B452CD">4</span>/<span style="color: #B452CD">3</span> - a
+&gt;&gt;&gt; roots = sp.solve(Q, x)          <span style="color: #228B22"># Solve Q = 0 wrt x</span>
+&gt;&gt;&gt; roots
+[-sqrt(<span style="color: #B452CD">1</span>/a), sqrt(<span style="color: #B452CD">1</span>/a)]
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec36">Go seamlessly from symbolic expression to Python function </h2>
+
+<p>
+Convert a SymPy expression <code>Q</code> into
+a Python function <code>Q(x, a)</code>:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; Q = sp.lambdify([x, a], Q)      <span style="color: #228B22"># Turn Q into Py func.</span>
+&gt;&gt;&gt; Q(x=<span style="color: #B452CD">2</span>, a=<span style="color: #B452CD">3</span>)                     <span style="color: #228B22"># 3*2**2 - 1 = 11</span>
+<span style="color: #B452CD">11</span>
+</pre></div>
+<p>
+This <code>Q(x, a)</code> function can be used for numerical computing
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec37">Testing via test functions and test frameworks </h2>
+
+<p>
+Modern test frameworks:
+
+<ul>
+ <p><li> <a href="https://nose.readthedocs.org/" target="_blank">nose</a></li>
+ <p><li> <a href="http://pytest.org/latest/" target="_blank">pytest</a></li>
+</ul>
+<p>
+
+Recommendation: use pytest, stay away from <code>unittest</code>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec38">Example on a test function </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">halve</span>(x):
+    <span style="color: #CD5555">&quot;&quot;&quot;Return half of x.&quot;&quot;&quot;</span>
+    <span style="color: #8B008B; font-weight: bold">return</span> x/<span style="color: #B452CD">2.0</span>
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">test_halve</span>():
+    x = <span style="color: #B452CD">4</span>
+    expected = <span style="color: #B452CD">2</span>
+    computed = halve(x)
+    <span style="color: #228B22"># Compare real numbers using tolerance</span>
+    tol = <span style="color: #B452CD">1E-14</span>
+    diff = <span style="color: #658b00">abs</span>(computed - expected)
+    <span style="color: #8B008B; font-weight: bold">assert</span> diff &lt; tol
+</pre></div>
+<p>
+Note:
+
+<ul>
+ <p><li> Name starts with <code>test_*</code></li>
+ <p><li> No arguments</li>
+ <p><li> Must have <code>assert</code> on a boolean expression for passed test</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec39">Test function for the numerical solver (part I) </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">lhs_eq</span>(t, m, b, s, u, damping=<span style="color: #CD5555">&#39;linear&#39;</span>):
+    <span style="color: #CD5555">&quot;&quot;&quot;Return lhs of differential equation as sympy expression.&quot;&quot;&quot;</span>
+    v = sm.diff(u, t)
+    d = b*v <span style="color: #8B008B; font-weight: bold">if</span> damping == <span style="color: #CD5555">&#39;linear&#39;</span> <span style="color: #8B008B; font-weight: bold">else</span> b*v*sm.Abs(v)
+    <span style="color: #8B008B; font-weight: bold">return</span> m*sm.diff(u, t, t) + d + s(u)
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">test_solver</span>():
+    <span style="color: #CD5555">&quot;&quot;&quot;Verify linear/quadratic solution.&quot;&quot;&quot;</span>
+    <span style="color: #228B22"># Set input data for the test</span>
+    I = <span style="color: #B452CD">1.2</span>; V = <span style="color: #B452CD">3</span>; m = <span style="color: #B452CD">2</span>; b = <span style="color: #B452CD">0.9</span>; k = <span style="color: #B452CD">4</span>
+    s = <span style="color: #8B008B; font-weight: bold">lambda</span> u: k*u
+    T = <span style="color: #B452CD">2</span>
+    dt = <span style="color: #B452CD">0.2</span>
+    N = <span style="color: #658b00">int</span>(<span style="color: #658b00">round</span>(T/dt))
+    time_points = np.linspace(<span style="color: #B452CD">0</span>, T, N+<span style="color: #B452CD">1</span>)
+
+    <span style="color: #228B22"># Test linear damping</span>
+    t = sm.Symbol(<span style="color: #CD5555">&#39;t&#39;</span>)
+    q = <span style="color: #B452CD">2</span>  <span style="color: #228B22"># arbitrary constant</span>
+    u_exact = I + V*t + q*t**<span style="color: #B452CD">2</span>   <span style="color: #228B22"># sympy expression</span>
+    F_term = lhs_eq(t, m, b, s, u_exact, <span style="color: #CD5555">&#39;linear&#39;</span>)
+    <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Fitted source term, linear case:&#39;</span>, F_term
+    F = sm.lambdify([t], F_term)
+    u, t_ = solver(I, V, m, b, s, F, time_points, <span style="color: #CD5555">&#39;linear&#39;</span>)
+    u_e = sm.lambdify([t], u_exact, modules=<span style="color: #CD5555">&#39;numpy&#39;</span>)
+    error = <span style="color: #658b00">abs</span>(u_e(t_) - u).max()
+    tol = <span style="color: #B452CD">1E-13</span>
+    <span style="color: #8B008B; font-weight: bold">assert</span> error &lt; tol
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec40">Test function for the numerical solver (part II) </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">test_solver</span>():
+    ...
+    <span style="color: #228B22"># Test quadratic damping: u_exact must be linear</span>
+    u_exact = I + V*t
+    F_term = lhs_eq(t, m, b, s, u_exact, <span style="color: #CD5555">&#39;quadratic&#39;</span>)
+    <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Fitted source term, quadratic case:&#39;</span>, F_term
+    F = sm.lambdify([t], F_term)
+    u, t_ = solver(I, V, m, b, s, F, time_points, <span style="color: #CD5555">&#39;quadratic&#39;</span>)
+    u_e = sm.lambdify([t], u_exact, modules=<span style="color: #CD5555">&#39;numpy&#39;</span>)
+    error = <span style="color: #658b00">abs</span>(u_e(t_) - u).max()
+    <span style="color: #8B008B; font-weight: bold">assert</span> error &lt; tol
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec41">Using a test framework </h2>
+
+<p>
+Examine all subdirectories <code>test*</code> for <code>test_*.py</code> files:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; py.test -s
+====================== test session starts =======================
+...
+collected 3 items
+
+tests/test_bumpy.py .
+Fitted source term, linear case: 8*t**2 + 15.6*t + 15.5
+Fitted source term, quadratic case: 12*t + 12.9
+testing solver
+testing solver_linear_damping_wrapper
+
+==================== 3 passed in 0.40 seconds ====================
+</pre></div>
+<p>
+Test a single file:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; py.test -s tests/test_bumpy.py
+...
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec42">Modules </h2>
+
+<ul>
+ <p><li> Put functions in a file - that is a module</li>
+ <p><li> Move main program to a function</li>
+ <p><li> Use a test block for executable code (call to main function)</li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">if</span> __name__ == <span style="color: #CD5555">&#39;__main__&#39;</span>:
+    &lt;statements <span style="color: #8B008B">in</span> the main program&gt;
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec43">Example on a module file </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">module1</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">module2</span> <span style="color: #8B008B; font-weight: bold">import</span> somefunc1, somefunc2
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">myfunc1</span>(...):
+    ...
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">myfunc2</span>(...):
+    ...
+
+<span style="color: #8B008B; font-weight: bold">if</span> __name__ == <span style="color: #CD5555">&#39;__main__&#39;</span>:
+    &lt;statements <span style="color: #8B008B">in</span> the main program&gt;
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec44">What gets imported? </h2>
+
+<p>
+Import everything from the previous module:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">mymod</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+</pre></div>
+<p>
+This imports
+
+<ul>
+ <p><li> <code>module1</code>, <code>somefunc1</code>, <code>somefunc2</code> (global names in <code>mymod</code>)</li>
+ <p><li> <code>myfunc1</code>, <code>myfunc2</code> (global functions in <code>mymod</code>)</li>
+</ul>
+<p>
+
+
+
+</section>
+
+
+
+
+<footer>
+<!-- Here goes a footer -->
+</footer>
+
+<!-- Begin extension snippets. Add or remove as needed. -->
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+-->
+
+<!-- deck.goto snippet
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+-->
+
+<!-- deck.hash snippet
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+-->
+
+<!-- End extension snippets. -->
+
+
+<!-- Required JS files. -->
+<script src="deck.js/jquery.min.js"></script>
+<script src="deck.js/core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="deck.js/core/deck.core.js"></script>
+<script src="deck.js/extensions/hash/deck.hash.js"></script>
+<script src="deck.js/extensions/menu/deck.menu.js"></script>
+<script src="deck.js/extensions/goto/deck.goto.js"></script>
+<script src="deck.js/extensions/status/deck.status.js"></script>
+<script src="deck.js/extensions/navigation/deck.navigation.js"></script>
+<script src="deck.js/extensions/scale/deck.scale.js"></script>
+<script src="deck.js/extensions/notes/deck.notes.js"></script>
+
+<!-- From https://github.com/mikeharris100/deck.pointer.js -->
+<script src="deck.js/extensions/pointer/deck.pointer.js"></script>
+
+<!-- From https://github.com/stvnwrgs/presenterview
+<script type="text/javascript" src="deck.js/extensions/presenterview/deck.presenterview.js"></script> -->
+
+<!-- From https://github.com/nemec/deck.annotate.js
+<script type="text/javascript" src="deck.js/extensions/deck.annotate.js/deck.annotate.js"></script>
+-->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+
+
+</body>
+</html>

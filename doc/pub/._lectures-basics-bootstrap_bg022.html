@@ -1,0 +1,335 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Intro to scientific Python programming">
+<meta name="keywords" content="text editor,program file,assignment statement,print statement,variable,objects,format string syntax,while loop,boolean expression,Python Online Tutor,list,for loop,array,mathematical functions,import of modules,plotting,graphics,visualization,global variables,keyword arguments,vectorization,vectorized functions,multiple return values,branching,if test,boolean expression,vectorizing if tests">
+
+<title>Intro to scientific Python programming</title>
+
+<!-- Bootstrap style: bootstrap_bluegray -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/bootstrap_bluegray.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' This is a very quick intro to Python programming ',
+               2,
+               None,
+               '___sec0'),
+              (' Variables, loops, lists, and arrays ',
+               1,
+               'basics:basic:objects',
+               'basics:basic:objects'),
+              (' Do you have access to Python? ',
+               2,
+               'basics:accesspy',
+               'basics:accesspy'),
+              (' Mathematical example ', 2, None, '___sec3'),
+              (' A program for evaluating a formula ',
+               2,
+               'basics:formula:eval',
+               'basics:formula:eval'),
+              (' Assignment statements assign a name to an object ',
+               2,
+               None,
+               '___sec5'),
+              (' Formatted output with text and numbers ',
+               2,
+               'basics:printf',
+               'basics:printf'),
+              (' Programming with a while loop ',
+               2,
+               'basics:while',
+               'basics:while'),
+              (' Output of the previous program ', 2, None, '___sec8'),
+              (' Structure of a while loop ', 2, None, '___sec9'),
+              (' The Python Online Tutor can help you understand the program flow ',
+               2,
+               None,
+               '___sec10'),
+              (' Lists ', 2, 'basics:list', 'basics:list'),
+              (' Store our table in two lists, one for each column ',
+               2,
+               None,
+               '___sec12'),
+              (' For loops ', 2, 'basics:for', 'basics:for'),
+              (' For loops used traditionally an integer counter over list/array indices ',
+               2,
+               None,
+               '___sec14'),
+              (" Let's replace our while loop by a for loop ",
+               2,
+               None,
+               '___sec15'),
+              (' Traversal of multiple lists at the same time with `zip` ',
+               2,
+               None,
+               '___sec16'),
+              (' Arrays ', 2, 'basics:numpy', 'basics:numpy'),
+              (' `numpy` functions creates entire arrays at once ',
+               2,
+               None,
+               '___sec18'),
+              (" Let's use arrays in our previous program ",
+               2,
+               None,
+               '___sec19'),
+              (' Standard mathematical functions are found in the `math` module ',
+               2,
+               'basics:math',
+               'basics:math'),
+              (' Use the `numpy` module for standard mathematical functions applied to arrays ',
+               2,
+               None,
+               '___sec21'),
+              (' Plotting ', 2, 'basics:plot', 'basics:plot'),
+              (' Plotting of multiple curves ', 2, None, '___sec23'),
+              (' Functions and branching ',
+               1,
+               'basics:func:branching',
+               'basics:func:branching'),
+              (' Functions ', 2, 'basics:func', 'basics:func'),
+              (' Functions can have multiple arguments ',
+               2,
+               None,
+               '___sec26'),
+              (' Keyword arguments are arguments with default values ',
+               2,
+               None,
+               '___sec27'),
+              (' Vectorization speeds up the code ', 2, None, '___sec28'),
+              (' Python functions written for scalars normally work for arrays too! ',
+               2,
+               None,
+               '___sec29'),
+              (' Python functions can return multiple values ',
+               2,
+               None,
+               '___sec30'),
+              (' A more general mathematical formula ',
+               2,
+               'basics:formula:piecewise',
+               'basics:formula:piecewise'),
+              (' Basic if-else tests ', 2, 'basics:if', 'basics:if'),
+              (' Multi-branch if tests ', 2, None, '___sec33'),
+              (' Implementation of a piecewisely defined function with if ',
+               2,
+               None,
+               '___sec34'),
+              (' Python functions containing if will not accept array arguments ',
+               2,
+               None,
+               '___sec35'),
+              (' Remedy 1: Call the function with scalar arguments ',
+               2,
+               None,
+               '___sec36'),
+              (' Remedy 2: Vectorize the if test with `where` ',
+               2,
+               None,
+               '___sec37'),
+              (' Remedy 3: Vectorize the if test with array indexing ',
+               2,
+               None,
+               '___sec38'),
+              (' Files ', 1, 'basics:files', 'basics:files'),
+              (' File reading ', 2, None, '___sec40'),
+              (' Code for reading files with lines `variable = value` ',
+               2,
+               None,
+               '___sec41'),
+              (' Splitting lines into words is a frequent operation ',
+               2,
+               None,
+               '___sec42'),
+              (' Modern Python often applies the `with` statement for file handling ',
+               2,
+               None,
+               '___sec43'),
+              (' File writing ', 2, None, '___sec44'),
+              (' Simplified writing of tabular data to file via `numpy.savetxt` ',
+               2,
+               None,
+               '___sec45'),
+              (' Simplified reading of tabular data from file via `numpy.savetxt` ',
+               2,
+               None,
+               '___sec46'),
+              (' Classes ', 1, 'basics:class', 'basics:class'),
+              (' A very simple class ', 2, None, '___sec48'),
+              (' How can we use this class? ', 2, None, '___sec49'),
+              (' The `self` argument is a difficult thing for newcomers... ',
+               2,
+               None,
+               '___sec50'),
+              (' A class for representing a mathematical function ',
+               2,
+               None,
+               '___sec51'),
+              (' The class code ', 2, None, '___sec52'),
+              (' Class implementation of $f(x,y,z; p_1,p_2,\\ldots,p_n)$ ',
+               2,
+               None,
+               '___sec53')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="lectures-basics-bootstrap_bg.html">Intro to scientific Python programming</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg003.html#basics:basic:objects" style="font-size: 80%;">Variables, loops, lists, and arrays</a></li>
+     <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg026.html#basics:func:branching" style="font-size: 80%;">Functions and branching</a></li>
+     <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg041.html#basics:files" style="font-size: 80%;">Files</a></li>
+     <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg049.html#basics:class" style="font-size: 80%;">Classes</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0022"></a>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pagination">
+<li><a href="._lectures-basics-bootstrap_bg021.html">&laquo;</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg000.html">1</a></li>
+  <li><a href="">...</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg014.html">15</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg015.html">16</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg016.html">17</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg017.html">18</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg018.html">19</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg019.html">20</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg020.html">21</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg021.html">22</a></li>
+  <li class="active"><a href="._lectures-basics-bootstrap_bg022.html">23</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg023.html">24</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg024.html">25</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg025.html">26</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg026.html">27</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg027.html">28</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg028.html">29</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg029.html">30</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg030.html">31</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg031.html">32</a></li>
+  <li><a href="">...</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg055.html">56</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg023.html">&raquo;</a></li>
+</ul>
+<!-- !split -->
+
+<h2 id="basics:math">Standard mathematical functions are found in the <code>math</code> module</h2>
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">math</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> math<span style="color: #666666">.</span>sin(math<span style="color: #666666">.</span>pi)
+<span style="color: #666666">1.2246467991473532e-16</span>         <span style="color: #408080; font-style: italic"># Note: only approximate value</span>
+</pre></div>
+<p>
+Get rid of the <code>math</code> prefix:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, pi
+<span style="color: #008000; font-weight: bold">print</span> sin(pi)
+
+<span style="color: #408080; font-style: italic"># Or import everything from math</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #008000; font-weight: bold">print</span> sin(pi), log(e), tanh(<span style="color: #666666">0.5</span>)
+</pre></div>
+<p>
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pagination">
+<li><a href="._lectures-basics-bootstrap_bg021.html">&laquo;</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg000.html">1</a></li>
+  <li><a href="">...</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg014.html">15</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg015.html">16</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg016.html">17</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg017.html">18</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg018.html">19</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg019.html">20</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg020.html">21</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg021.html">22</a></li>
+  <li class="active"><a href="._lectures-basics-bootstrap_bg022.html">23</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg023.html">24</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg024.html">25</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg025.html">26</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg026.html">27</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg027.html">28</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg028.html">29</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg029.html">30</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg030.html">31</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg031.html">32</a></li>
+  <li><a href="">...</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg055.html">56</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg023.html">&raquo;</a></li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

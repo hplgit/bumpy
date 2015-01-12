@@ -52,17 +52,22 @@ The following programming topics are illustrated:
 All files can be forked at URL: "https://github.com/hplgit/bumpy".
 
 !split
-=== Optimal backround for reading this note ===
+=== Optimal background for reading this note ===
 
   * some interest in exploring physics through numerical simulation
-  * some very basic knowledge of differential equations
-  * some very basic knowledge of finite difference approximations
+  * some very basic knowledge of
+    * differential equations
+    * finite difference approximations
+    * Python or Matlab
   * significant interest in exploring Python for scientific computations
+    to solve a real-world physical problem (with low mathematical complexity)
 
 !bblock
-No background in Python is assumed - the aim is to give an impression of
-how Python can be used in a Matlab-like fashion to solve a real-world
-physical problem (with low mathematical complexity).
+You can read in two ways: either as a detailed example on using Python
+for solving differential equations (some "very basic Python knowledge":
+"http://hplgit.github.io/bumpy/doc/web/index.html" is preferred)
+or just to get an impression of
+how Python can be used in a Matlab-like fashion.
 !eblock
 
 If you need motivation for using Python as programming language,
@@ -133,7 +138,7 @@ compression of the spring.
 
 #wing, riser
 
-Our task is to compute and analyse the vertical $u(t)$ vibrations
+Our task is to compute and analyze the vertical $u(t)$ vibrations
 of a vehicle, given the shape $h(x)$ of the road and some velocity $v$.
 
 !split
@@ -238,11 +243,9 @@ Array functionality is enabled by the `numpy` package, which offers
 functions such as `zeros` and `linspace`, as known from Matlab.
 Here we import all objects in the `numpy` package by the statement
 
-!bc pycod
+!bc pycod-t
 from numpy import *
 !ec
-Only the `zeros` function is used to create the correct
-size of the output array `u`.
 
 Comments start with the character `#` and the rest of the line
 is then ignored by Python.
@@ -304,7 +307,7 @@ $\sin (\pi x)$ must be written `np.sin(np.pi*x)`. We can always perform
 an explicit import of some names, like `sin` and `pi`, to write
 the formula as `sin(pi*x)`:
 
-!bc pycod
+!bc pycod-t
 import numpy as np
 from numpy import sin, pi
 
@@ -333,7 +336,7 @@ This is not strictly necessary, but if we supply `b=2` and `m=4`,
 a computation like `b/m` will give zero as result because both `b` and `m`
 are then integers and `b/m` implies *integer division*, not the
 mathematical division of real numbers (this is not a special
-feature of Python - all languges with a strong heritage from C
+feature of Python - all languages with a strong heritage from C
 invoke integer division if both operands in a division are integers).
 We need to make
 sure that at least one of the operands in a division is a real
@@ -370,19 +373,19 @@ list)` we may test `type(F) == list` or even `type(F) in
 
 We could simplify the `if-else` test involving `F` to just the two lines
 
-!bc pycod
+!bc pycod-t
 if callable(F):
     F = F(t)
 !ec
 if we are sure that `F` is either a function or a `numpy` array.
 Should the user send in something else for `F`, Python will encounter
-a run-time error when trying to index `F` as in `F[0]` in the
-statement computating `u[1]`.
+a run-time error when trying to index `F` as in `F[0]` (in the
+statement computing `u[1]`).
 
 To be absolutely safe, we should test that the other arguments are
 of right type as well. For example,
 
-!bc pycod
+!bc pycod-t
 if not isinstance(I, (float,int)):
     raise TypeError('V must be float or int, not %s' % type(V))
 !ec
@@ -418,7 +421,8 @@ plt.show()
 
 __Local and global variables.__
 We use in this example a linear spring function $s(u)$,
-!bc cod
+
+!bc pycod-t
 def f(u):
     return k*u
 !ec
@@ -438,7 +442,7 @@ knowledge of classes and special methods like `__call__`.
 
 As an example, the `f(u)` function above can be implemented as
 
-!bc pycod
+!bc pycod-t
 class Spring:
     def __init__(self, k):
         self.k = k
@@ -462,7 +466,7 @@ available as a file with web address "URL":"http://hplbit.bitbucket.org/data/bum
 compressed file as a local file `bumpy.dat.gz`
 and reading it into a `numpy` array goes as follows:
 
-!bc pycod
+!bc pycod-t
 filename = 'bumpy.dat.gz'
 url = 'http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz'
 import urllib
@@ -479,7 +483,7 @@ column contains the $x$ coordinates along the road and the next columns
 contain various road shapes $h(x)$. We can extract the $x$ data and
 redefine `h_data` to contain solely the $h(x)$ shapes:
 
-!bc pycod
+!bc pycod-t
 x = h_data[0,:]                # 1st column: x coordinates
 h_data = h_data[1:,:]          # other columns: h shapes
 !ec
@@ -491,7 +495,7 @@ legal values of this index.
 
 Given $h(x)$, the corresponding acceleration $a(t)$ needed in the
 force $F(t)=-ma(t)$, follows from $a(t)=h''(vt)v^2$, where $v$ is
-the velocity of the vehicle. The compuation may utilize a finite
+the velocity of the vehicle. The computation may utilize a finite
 difference approximation for the second-order derivative $h''$ and
 be encapsulated in a Python function:
 
@@ -505,7 +509,7 @@ $h''(x)$ at the closest interior point.
 The computations of `d2h` above was done array element by array element.
 This loop can be a slow process in Python for long arrays. To speed
 up computations dramatically, we can invoke a *vectorization* of
-the above alogrithm. This means that we get rid of the loops and
+the above algorithm. This means that we get rid of the loops and
 perform arithmetics on complete (or almost complete) arrays.
 The vectorized form of the
 `acceleration` function goes like
@@ -618,7 +622,7 @@ It may be useful to compute the root mean square value of the various
 realizations of $u(t)$ and add this array to the `data` list of input
 and output data in the problem:
 
-!bc cod
+!bc pycod
 def rms(data):
     t = data[1]
     u_rms = np.zeros(t.size)  # for accumulating the rms value
@@ -634,7 +638,8 @@ are set equal to the three arrays in each element of the sublist
 `data[2:]`. We only need the `u` array for the computation. An alternative
 loop would be to have one loop variable for each list element and
 get `u` as the 3rd element of each list element:
-!bc cod
+
+!bc pycod-t
     for res in data[2:]:
         u = res[2]         # res is [h,a,u]
         ...
@@ -644,14 +649,16 @@ get `u` as the 3rd element of each list element:
 idx{pickling}
 
 After calling
-!bc cod
+
+!bc pycod
 road_url = 'http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz'
 data = solve(url=road_url,
              m=60, b=200, k=60, v=6)
 data = rms(data)
 !ec
 the `data` array contains single arrays and triplets of arrays,
-!bc cod
+
+!bc pycod-t
 [x, t, [h,a,u], [h,a,u], ..., [h,a,u], u_rms]
 !ec
 This list, or any Python object, can be stored on file for later
@@ -798,7 +805,7 @@ outfile.close()
 x, t = data[0:2]
 u_rms = data[-1]
 !ec
-Note that `data` first contains `x` and `t` and then
+Note that `data` first contains `x` and `t`, thereafter
 a sequence of 3-lists `[h, a, u]`, before the final element,
 the array `u_rms`. With `data[0:2]` we extract
 the sublist with elements `data[0]` and `data[1]` (`0:2` means
@@ -828,6 +835,7 @@ plot(t, u_rms)
 legend(['u'])
 xlabel('t')
 title('Root mean square value of u(t) functions')
+show()
 !ec
 % if FORMAT != 'ipynb':
 Figure ref{bumpy:fig3} shows the result.
@@ -865,6 +873,7 @@ u = data[3][2][indices]  # 2nd realization of u
 f, A = frequency_analysis(u, t)
 plot(f, A)
 title('Spectrum of u')
+show()
 !ec
 Note the list look-up `data[3][2][indices]`: the element with index
 3 contains the 2nd 3-list `[h, a, u]`, and the element with index 2
@@ -908,9 +917,6 @@ for h, a, u in data[2:-1]:
     case_counter += 1
 !ec
 
-#A word about what happens to the `h` (or `a` or `u`) variable might
-#illustrate much about dynamic typing in Python. In the loop, `h` is
-#set equal to an
 
 FIGURE: [fig-bumpy/hau0, width=700] First realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations. label{bumpy:fig4}
 
@@ -980,7 +986,10 @@ a*x**2*sqrt(1/a) + O(x**4)
 ===== Testing =====
 
 Software testing in Python is best done with a *unit test framework*
-such as `nose` or `pytest`. These frameworks can automatically
+such as
+"nose": "https://nose.readthedocs.org/" or
+"pytest": "http://pytest.org/latest/".
+These frameworks can automatically
 run all functions starting with `test_` recursively in files in a
 directory tree. Each `test_*` function is called a *test function*
 and must take no arguments and apply `assert` to a boolean expression
@@ -1025,10 +1034,28 @@ fits the equation and initial conditions. With quadratic damping,
 only a linear $u$ will solve the discrete equation so in this case
 we choose $u=I+Vt$.
 
-We embed the SymPy calculations and the numerical calcuations
+We embed the SymPy calculations and the numerical calculations
 in a *test function*:
 
-@@@CODE src-bumpy/tests/tests.py def lhs@def test_all
+@@@CODE src-bumpy/tests/test_bumpy.py def lhs@def test_all
+
+=== Using a test framework ===
+
+We recommend to use `pytest` as test framework. Subdirectories `test*`
+are examined for files `test_*.py` that have test functions `test_*()`,
+and all such tests are executed by the following command:
+
+!bc sys-t
+Terminal> py.test -s
+!ec
+The `-s` option makes all output from the tests appear in the terminal
+window.
+
+To run the tests in a specific file `tests/test_bumpy.py`, do
+
+!bc sys-t
+Terminal> py.test -s tests/test_bumpy.py
+!ec
 
 ===== Modules =====
 
@@ -1044,13 +1071,13 @@ import the module in other programs, which is not what you want.
 Therefore, move the main program to a so-called *test block* at the
 end of the module:
 
-!bc pycod
+!bc pycod-t
 if __name__ == '__main__':
     <statements in the main program>
 !ec
 The module file, say its name is `mymod.py`, now typically looks like
 
-!bc pycod
+!bc pycod-t
 import module1
 from module2 import func1, func2
 
@@ -1072,11 +1099,12 @@ in the main program will not be executed. However, if you run
 the main program will be executed. In this way, you can have a single
 file that both acts as a library and that is an executable program.
 
-[[[
+A `from mymod import *` will import the global functions
+`myfunc1` and `myfunc2`, plus
+the global names `module1`, `somefunc1`, and `somefunc2`.
 
 
-
-#===== Installation =====
+#===== Installation via setup.py scripts =====
 
 #Install the `solver` module using a very simple `setup.py` script.
 

@@ -20,9 +20,15 @@ fi
 
 opt="COURSE=$COURSE"
 
-#names="basics bumpy"
-#names="basics"
-names="lectures"
+# Spellcheck must be performed in the dir where the file resides
+cd lec-bumpy
+system doconce spellcheck -d ../.dict4spell.txt basics.do.txt
+cd ..
+
+#names="lecture-basics lecture-bumpy"
+names="lectures-basics"
+names="lectures-bumpy"
+#names="lectures_tkt4140"
 for name in $names; do
 
 # Note: can be smart to run beamer slides first since latex finds
@@ -110,5 +116,5 @@ system doconce format ipynb $name $opt
 
 # Publish
 dest=../pub
-cp -r reveal.js deck.js ${name}-*.html .${name}-*_html_file_collection ${name}-*.pdf $dest/
+cp -r reveal.js deck.js ${name}-*.html ._${name}-*.html  ${name}-*.pdf *.ipynb $dest/
 done

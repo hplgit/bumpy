@@ -60,14 +60,17 @@ Automatically generated HTML file from DocOnce source
               (' If tests ', 2, 'basics:if', 'basics:if'),
               (' Using the `where` function ', 3, None, '___sec18'),
               (' Using array indexing ', 3, None, '___sec19'),
+              (' Files ', 1, 'basics:files', 'basics:files'),
+              (' File reading ', 2, None, '___sec21'),
+              (' File writing ', 2, None, '___sec22'),
               (' Classes ', 1, 'basics:class', 'basics:class'),
-              (' A very simple class ', 2, None, '___sec21'),
+              (' A very simple class ', 2, None, '___sec24'),
               (' A class for representing a mathematical function ',
                2,
                None,
-               '___sec22'),
-              (' The class code ', 3, None, '___sec23'),
-              (' Dissection ', 3, None, '___sec24'),
+               '___sec25'),
+              (' The class code ', 3, None, '___sec26'),
+              (' Dissection ', 3, None, '___sec27'),
               (' Exercises ', 1, 'basics:exer', 'basics:exer'),
               (' Exercise 1: Program a formula ',
                2,
@@ -147,8 +150,9 @@ MathJax.Hub.Config({
         <ul class="dropdown-menu">
      <!-- navigation toc: --> <li><a href="._basics001.html#basics:basic:objects" style="font-size: 80%;">Variables, loops, lists, and arrays</a></li>
      <!-- navigation toc: --> <li><a href="._basics002.html#basics:func:branching" style="font-size: 80%;">Functions and branching</a></li>
-     <!-- navigation toc: --> <li><a href="._basics003.html#basics:class" style="font-size: 80%;">Classes</a></li>
-     <!-- navigation toc: --> <li><a href="#basics:exer" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._basics003.html#basics:files" style="font-size: 80%;">Files</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:class" style="font-size: 80%;">Classes</a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer" style="font-size: 80%;">Exercises</a></li>
 
         </ul>
       </li>
@@ -164,192 +168,181 @@ MathJax.Hub.Config({
 <a name="part0004"></a>
 <!-- !split -->
 
-<h1 id="basics:exer">Exercises</h1>
+<h1 id="basics:class">Classes</h1>
 
 <p>
-<!-- --- begin exercise --- -->
+All objects in Python are in fact implemented as classes, but you can
+program with objects without knowing about classes. Nevertheless,
+the class concept is a powerful tool and some basic knowledge will
+make it easier to understand much useful Python information that is
+floating around.
 
-<h2 id="basics:exer:formula1">Exercise 1: Program a formula</h2>
-
-<p>
-Make a Python program that calculates and prints the value of the
-formula
-
-$$ y = 6x^2 + 3x + 2,\]
-for $x=2$.
-$$
-
+<h2 id="___sec24">A very simple class </h2>
 
 <p>
-<!-- --- end exercise --- -->
+A class packs together a set of variables and a set of functions. All
+functions can access all variables. <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="In classes, the functions are called methods and the variables are called attributes."><a href="#def_footnote_1" id="link_footnote_1" style="color: white">1</a></button> The idea is
+to encapsulate variables and functions in logical units such that a
+larger program can be composed by combing such units (classes).
+
+<p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> In classes, the functions are called
+<em>methods</em> and the variables are called <em>attributes</em>.</p>
 
 <p>
-<!-- --- begin exercise --- -->
-
-<h2 id="basics:exer:printf1">Exercise 2: Combine text and numbers in output</h2>
-
-<p>
-Let \( y=x^2 \). Make a program that writes the text
+Here is a trivial class that has one variable <code>a</code> and one
+function <code>dump</code> that writes the contents of <code>a</code>:
 
 <p>
 
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">y(2.550)=6.502
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Trivial</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, a):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>a <span style="color: #666666">=</span> a
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">dump</span>(<span style="color: #008000">self</span>):
+        <span style="color: #008000; font-weight: bold">print</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>a
 </pre></div>
 <p>
-if \( x=2.55 \). The values of \( x \) and \( y \) should be written with three
-decimals. Run the program for \( x=\pi \) (the value if \( \pi \) is available
-as the variable <code>pi</code> in the <code>math</code> module).
-
-<p>
-<!-- --- end exercise --- -->
-
-<p>
-<!-- --- begin exercise --- -->
-
-<h2 id="basics:exer:while1">Exercise 3: Program a while loop</h2>
-
-<p>
-Define a sequence of numbers,
-
-$$ x_n = n^2 + 1,$$
-
-for integers \( n=0,1,2,\ldots,N \).
-Write a program that prints out \( x_n \) for \( n=0,1,\ldots,20 \) using
-a while loop.
-
-<p>
-<!-- --- end exercise --- -->
-
-<p>
-<!-- --- begin exercise --- -->
-
-<h2 id="basics:exer:while2">Exercise 4: Create a list with a while loop</h2>
-
-<p>
-Store all the \( x_n \) values computed in <a href="#basics:exer:while1">Exercise 3: Program a while loop</a>
-in a list (using a while loop). Print the entire list (as one object).
-
-<p>
-<!-- --- end exercise --- -->
-
-<p>
-<!-- --- begin exercise --- -->
-
-<h2 id="basics:exer:for1">Exercise 5: Program a for loop</h2>
-
-<p>
-Do <a href="#basics:exer:while1">Exercise 3: Program a while loop</a>, but use a for loop.
-
-<p>
-<!-- --- end exercise --- -->
-
-<p>
-<!-- --- begin exercise --- -->
-
-<h2 id="basics:exer:for2">Exercise 6: Create a list with a for loop</h2>
-
-<p>
-Do <a href="#basics:exer:while2">Exercise 4: Create a list with a while loop</a>, but use a for loop.
-
-<p>
-<!-- --- end exercise --- -->
-
-<p>
-<!-- --- begin exercise --- -->
-
-<h2 id="basics:exer:func1">Exercise 7: Write a Python function</h2>
-
-<p>
-Write a function <code>x(n)</code> for computing an element in the
-sequence \( x_n=n^2+1 \). Call the function for \( n=4 \) and write
-out the result.
-
-<p>
-<!-- --- end exercise --- -->
-
-<p>
-<!-- --- begin exercise --- -->
-
-<h2 id="basics:exer:func3">Exercise 8: Return three values from a Python function</h2>
-
-<p>
-Write a Python function that evaluates the mathematical function
-\( f(x)=\cos x \), \( f'(x)=-\sin x \), and \( f''(x)=-\cos x \). Return
-these three values. Write out the results of these values for \( x=\pi \).
-
-<p>
-<!-- --- end exercise --- -->
-
-<p>
-<!-- --- begin exercise --- -->
-
-<h2 id="basics:exer:plot1">Exercise 9: Plot a function</h2>
-
-<p>
-Make a program that plots the function \( g(y)=e^{-y}\sin (4y) \) for
-\( y\in [0,4] \). Use 501 points along the curve and store these
-points in arrays.
-
-<p>
-<!-- --- end exercise --- -->
-
-<p>
-<!-- --- begin exercise --- -->
-
-<h2 id="basics:exer:timeit">Exercise 10: Measure the efficiency of vectorization</h2>
-
-<p>
-<a href="http://ipython.org/" target="_self">IPython</a> an enhanced interactive shell
-for doing computing with Python. IPython has some user-friendly functionality
-for quick testing of the efficiency of different Python constructions.
-Start IPython by writing <code>ipython</code> in a terminal window.
-The interactive session below demonstrates how we can use the
-timer feature <code>%timeit</code> to measure the CPU time required by
-computing \( \sin (x) \), where \( x \) is an array of 1M elements, using
-scalar computing with a loop (function <code>sin_func</code>) and vectorized
-computing using the <code>sin</code> function from <code>numpy</code>.
+How can we use this class? First, we must make an <em>instance</em> (object)
+of the class:
 
 <p>
 
-<!-- code=ipy (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
-
-<span style="color: #000080; font-weight: bold">In [2]: </span>n <span style="color: #666666">=</span> <span style="color: #666666">1000000</span>
-
-<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, n<span style="color: #666666">+1</span>)
-
-<span style="color: #000080; font-weight: bold">In [4]: </span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">sin_func</span>(x):
-<span style="color: #000080; font-weight: bold">   ...: </span>    r <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros_like(x)  <span style="color: #408080; font-style: italic"># result</span>
-<span style="color: #000080; font-weight: bold">   ...: </span>    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(x)):
-<span style="color: #000080; font-weight: bold">   ...: </span>        r[i] <span style="color: #666666">=</span> np<span style="color: #666666">.</span>sin(x[i])
-<span style="color: #000080; font-weight: bold">   ...: </span>    <span style="color: #008000; font-weight: bold">return</span> r
-<span style="color: #000080; font-weight: bold">   ...:</span>
-
-<span style="color: #000080; font-weight: bold">In [5]: </span><span style="color: #666666">%</span><span style="color: #008000; font-weight: bold">timeit</span> y <span style="color: #666666">=</span> sin_func(x)
-<span style="color: #888888">1 loops, best of 3: 2.68 s per loop</span>
-
-<span style="color: #000080; font-weight: bold">In [6]: </span><span style="color: #666666">%</span><span style="color: #008000; font-weight: bold">timeit</span> y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>sin(x)
-<span style="color: #888888">10 loops, best of 3: 40.1 ms per loop</span>
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">t <span style="color: #666666">=</span> Trivial(a<span style="color: #666666">=4</span>)
 </pre></div>
 <p>
-Here, <code>%timeit</code> ran our function once, but the vectorized function
-10 times. The most relevant CPU times measured are listed, and we
-realize that
-the vectorized code is \( 2.68/(40.1/1000)\approx 67 \) times faster
-than the loop-based scalar code.
+The syntax <code>Trivial(a=4)</code> implies a call to the <code>__init__</code> method (function)
+with <code>4</code> as the value of the argument <code>a</code>. Inside <code>__init__</code>,
+we store the value of <code>a</code> as an attribute in the class: <code>self.a</code>.
+If there were several methods in the class, all of them could then
+access <code>self.a</code> (as if <code>a</code> were some global variable in the class).
+The <code>__init__</code> function is called a <em>constructor</em> since it is used
+to construct an instance (object) of the class.
 
 <p>
-Use the recipe above to investigate the speed up of the
-vectorized computation of the \( s(t) \) function in
-the section <a href="._basics002.html#basics:func">Functions</a>.
+Having an instance <code>t</code> of class <code>Trivial</code>, we can call the <code>dump</code> method
+as follows:
 
 <p>
-<!-- factor 134 -->
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">t<span style="color: #666666">.</span>dump()
+</pre></div>
+<p>
+Even though both <code>__init__</code> and <code>dump</code> have <code>self</code> as first argument,
+this argument <em>is not used in a call</em>.
 
 <p>
-<!-- --- end exercise --- -->
+<div class="alert alert-block alert-success alert-text-normal"><b>The <code>self</code> argument.</b>
+It takes time and experience to understand the <code>self</code> argument in
+class methods.
 
+<ol>
+<li> <code>self</code> must always be the first argument.</li>
+<li> <code>self</code> is never used in calls.</li>
+<li> <code>self</code> is used to access attributes and methods inside methods.</li>
+</ol>
+
+We refer to a <a href="http://hplgit.github.io/primer.html/doc/pub/class/index.html" target="_self">more comprehensive text on classes</a>
+for better explanation of <code>self</code>.
+</div>
+
+
+<h2 id="___sec25">A class for representing a mathematical function </h2>
+
+<p>
+The Python implementation of the mathematical function
+
+$$ s(t; v_0, a) = v_0t + \frac{1}{2}at^2$$
+
+can benefit from being implemented as a class. The reason is that
+\( s \) is a function of one variable, \( t \), so it should be called as
+\( s(t) \), but the function also contains two parameters, \( v_0 \) and \( a \).
+Using a class, we can pack \( v_0 \) and \( a \) together with a function
+computing \( s(t) \) and that can be called with one argument.
+
+<h3 id="___sec26">The class code </h3>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Distance</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, v0, a):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>v0 <span style="color: #666666">=</span> v0
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>a <span style="color: #666666">=</span> a
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, t):
+        v0, a <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>v0, <span style="color: #008000">self</span><span style="color: #666666">.</span>a  <span style="color: #408080; font-style: italic"># make local variables</span>
+        <span style="color: #008000; font-weight: bold">return</span> v0<span style="color: #666666">*</span>t <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>a<span style="color: #666666">*</span>t<span style="color: #666666">**2</span>
+</pre></div>
+
+<h3 id="___sec27">Dissection </h3>
+
+<p>
+The class has two methods (functions). The name of a method can
+be freely chosen by the programmer, say <code>dump</code> as we used above,
+but here we have used three
+special names, starting and
+ending with double underscores, which allows us to use special
+attractive syntax in the calls (such methods are actually known as
+<em>special methods</em>).
+
+<p>
+The constructor <code>__init__</code> has one purpose: storing data in
+class attributes, here <code>self.v0</code> and <code>self.a</code>. We can then access
+these data in class methods.
+
+<p>
+The <code>__call__</code> method is used to evaluate \( s(t) \). It has one
+argument (<code>self</code> does not count since it is never used in calls).
+This special methods allows us to view a class instance as if
+were a function. Let us illustrate by some code:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">s <span style="color: #666666">=</span> Distance(v0<span style="color: #666666">=2</span>, a<span style="color: #666666">=0.5</span>)  <span style="color: #408080; font-style: italic"># create instance</span>
+v <span style="color: #666666">=</span> s(t<span style="color: #666666">=0.2</span>)               <span style="color: #408080; font-style: italic"># runs s.__call__(t=0.2)</span>
+</pre></div>
+<p>
+The last line has some magic: <code>s</code> is a class instance, not a function,
+but still we can write <code>s(t=0.2)</code> or <code>s(0.2)</code> as if <code>s</code> were
+a function. This is the purpose of the special method <code>__call__</code>:
+to allow such syntax. Actually, <code>s(0.2)</code> means
+<code>s.__call__(0.2)</code>. The nice result is that <code>s</code> looks like a
+function, it takes one argument <code>t</code>, as the mathematical function \( s(t) \),
+but it also contains values of the two parameters \( v_0 \) and \( a \).
+
+<p>
+In general, for a function \( f(x,y,z; p_1,p_2,\ldots,p_n) \), here with
+three independent variables and \( n \) parameters \( p_1,p_2,\ldots,p_n \),
+we can pack the function and the parameters together in a class:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">F</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, p1, p2, <span style="color: #666666">...</span>):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>p1 <span style="color: #666666">=</span> p1
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>p2 <span style="color: #666666">=</span> p2
+        <span style="color: #666666">...</span>
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x, y, z):
+        <span style="color: #408080; font-style: italic"># return formula involving x, y, z and self.p1, self.p2 ...</span>
+</pre></div>
+<p>
+The \( f \) function is initialized by
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">f <span style="color: #666666">=</span> F(p1<span style="color: #666666">=...</span>, p2<span style="color: #666666">=...</span>, <span style="color: #666666">...</span>)
+</pre></div>
+<p>
+and later called as <code>f(x, y, z)</code>.
+
+<p>
 <p>
 <!-- navigation buttons at the bottom of the page -->
 <ul class="pagination">
@@ -359,6 +352,8 @@ the section <a href="._basics002.html#basics:func">Functions</a>.
   <li><a href="._basics002.html">3</a></li>
   <li><a href="._basics003.html">4</a></li>
   <li class="active"><a href="._basics004.html">5</a></li>
+  <li><a href="._basics005.html">6</a></li>
+  <li><a href="._basics005.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->
 

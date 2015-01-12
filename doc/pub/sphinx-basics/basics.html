@@ -15,7 +15,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
+        URL_ROOT:    '',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -27,26 +27,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/sidebar.js"></script>
-
-        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
-        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
-
-        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
-
-        <style type="text/css">
-                .sagecell .CodeMirror-scroll {
-                        overflow-y: hidden;
-                        overflow-x: auto;
-                }
-                .sagecell .CodeMirror {
-                        height: auto;
-                }
-        </style>
-
-    
     <link rel="top" title="A very basic introduction to scientific Python programming" href="index.html" />
-    <link rel="prev" title="A very basic introduction to scientific Python programming" href="index.html" />
- 
+    <link rel="prev" title="A very basic introduction to scientific Python programming" href="index.html" /> 
   
    <style type="text/css">
      div.admonition {
@@ -83,7 +65,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen (hpl at simula.no)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 11, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 12, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -624,7 +606,7 @@ code:</p>
 </div>
 <p>The plotfile <tt class="docutils literal"><span class="pre">myplot.png</span></tt> looks like</p>
 <div class="figure">
-<a class="reference internal image-reference" href="_images/plot1_s.png"><img alt="_images/plot1_s.png" src="_images/plot1_s.png" style="width: 500px;" /></a>
+<img alt="_images/plot1_s.png" src="_images/plot1_s.png" style="width: 500px;" />
 </div>
 <p>Matlab users may prefer to do</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
@@ -651,7 +633,7 @@ axis and a box with legends such that we can distinguish the two curves:</p>
 </pre></div>
 </div>
 <div class="figure">
-<a class="reference internal image-reference" href="_images/plot2_s.png"><img alt="_images/plot2_s.png" src="_images/plot2_s.png" style="width: 500px;" /></a>
+<img alt="_images/plot2_s.png" src="_images/plot2_s.png" style="width: 500px;" />
 </div>
 </div>
 </div>
@@ -906,6 +888,116 @@ as <tt class="docutils literal"><span class="pre">s[b]</span></tt>:</p>
 </div>
 </div>
 </div>
+<div class="section" id="files">
+<span id="basics-files"></span><h2>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h2>
+<p>This section outlines basic file handling in Python, including file
+utilities in the <tt class="docutils literal"><span class="pre">numpy</span></tt> package.</p>
+<div class="section" id="file-reading">
+<h3>File reading<a class="headerlink" href="#file-reading" title="Permalink to this headline">¶</a></h3>
+<p>Suppose we create a file with typical input data to our little
+demo program for evaluating the formula <span class="math">\(s(t)=v_0t + \frac{1}{2}at^2\)</span>:</p>
+<div class="highlight-text"><div class="highlight"><pre>v0 = 2
+a = 0.2
+dt = 0.1
+interval = [0, 2]
+</pre></div>
+</div>
+<p>We want to read the parameters in the file into Python variables and
+create a table with columns of <span class="math">\(t\)</span> and <span class="math">\(S(t)\)</span> for <span class="math">\(t\in [0,2]\)</span> with
+steps of <span class="math">\(\Delta t=0.1\)</span> (as specified by <tt class="docutils literal"><span class="pre">dt</span></tt> and <tt class="docutils literal"><span class="pre">interval</span></tt> in the file).</p>
+<p>The code for reading the lines in the file, interpreting them, and
+assigning values to variables is given next.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;.input.dat&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">infile</span><span class="p">:</span>
+    <span class="c"># Typical line: variable = value</span>
+    <span class="n">variable</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;=&#39;</span><span class="p">)</span>
+    <span class="n">variable</span> <span class="o">=</span> <span class="n">variable</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>  <span class="c"># remove leading/traling blanks</span>
+    <span class="k">if</span> <span class="n">variable</span> <span class="o">==</span> <span class="s">&#39;v0&#39;</span><span class="p">:</span>
+        <span class="n">v0</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">variable</span> <span class="o">==</span> <span class="s">&#39;a&#39;</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">variable</span> <span class="o">==</span> <span class="s">&#39;dt&#39;</span><span class="p">:</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">variable</span> <span class="o">==</span> <span class="s">&#39;interval&#39;</span><span class="p">:</span>
+        <span class="n">interval</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="n">infile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The name of the file is here <tt class="docutils literal"><span class="pre">.input.dat</span></tt>, and it is opened with the
+parameter <tt class="docutils literal"><span class="pre">'r'</span></tt> for reading. The for loop <tt class="docutils literal"><span class="pre">for</span> <span class="pre">line</span> <span class="pre">in</span> <span class="pre">infile</span></tt> will
+read the lines from the file, one by one, and in the current line
+is available in the string <tt class="docutils literal"><span class="pre">line</span></tt>. To split a line into words separated
+by a character &#8216;=&#8217;, we use <tt class="docutils literal"><span class="pre">line.split('=')</span></tt>, resulting in a list of
+the words. For example,</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">line</span> <span class="o">=</span> <span class="s">&#39;v0 = 5.3&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">variable</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;=&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">variable</span>
+<span class="go">&#39;v0 &#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">value</span>
+<span class="go">&#39; 5.3&#39;</span>
+</pre></div>
+</div>
+<p>Note that there are blanks in the strings. Leading and trailing blanks
+can be removed by <tt class="docutils literal"><span class="pre">variable.strip()</span></tt>. We do this before comparing
+the variable name with <tt class="docutils literal"><span class="pre">v0</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, etc.</p>
+<p>It is important to note that <tt class="docutils literal"><span class="pre">value</span></tt> (the text to the right of <tt class="docutils literal"><span class="pre">=</span></tt> on
+each line) is a string variable. We need to convert to <tt class="docutils literal"><span class="pre">float</span></tt> to
+get a variable that we can compute with.
+The assignment <tt class="docutils literal"><span class="pre">interval</span> <span class="pre">=</span> <span class="pre">eval(value)</span></tt> does some magic and deserve
+an explanation: <tt class="docutils literal"><span class="pre">eval(s)</span></tt> interprets the text in the string <tt class="docutils literal"><span class="pre">s</span></tt> as
+Python code. In the present example, <tt class="docutils literal"><span class="pre">value</span></tt> is <tt class="docutils literal"><span class="pre">[0,</span> <span class="pre">2]</span></tt> and this
+is interpreted as Python code, i.e., as a list, and <tt class="docutils literal"><span class="pre">interval</span></tt> becomes
+a name for a list object with content <tt class="docutils literal"><span class="pre">[0,</span> <span class="pre">2]</span></tt>.</p>
+<p>A more modern Python way of opening files is</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;.input.dat&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">infile</span><span class="p">:</span>
+        <span class="o">...</span>
+</pre></div>
+</div>
+<p>Now it is not necessary to close the file as it will be automatically done
+after the <tt class="docutils literal"><span class="pre">with</span></tt> block.</p>
+</div>
+<div class="section" id="file-writing">
+<h3>File writing<a class="headerlink" href="#file-writing" title="Permalink to this headline">¶</a></h3>
+<p>Suppose we generate <span class="math">\(t\)</span> and <span class="math">\(s(t)\)</span> values in two lists, <tt class="docutils literal"><span class="pre">t_values</span></tt> and
+<tt class="docutils literal"><span class="pre">s_values</span></tt> and want to write these as a nicely formatted table to file.
+The following code does the work:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">outfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;table1.dat&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;# t    s(t)</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>  <span class="c"># write header</span>
+<span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">t_values</span><span class="p">,</span> <span class="n">s_values</span><span class="p">):</span>
+    <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%.2f</span><span class="s">  </span><span class="si">%.4f</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Files intended for writing must be opened with a <tt class="docutils literal"><span class="pre">'w'</span></tt> parameter.
+The key statement is <tt class="docutils literal"><span class="pre">outfile.write(s)</span></tt> for writing a string to
+a file (recall that while <tt class="docutils literal"><span class="pre">print</span></tt> automatically adds a newline
+at the end of the string to be printed, <tt class="docutils literal"><span class="pre">outfile.write(s)</span></tt> does not
+append a newline so <tt class="docutils literal"><span class="pre">s</span></tt> must contain the newline).</p>
+<p>The <tt class="docutils literal"><span class="pre">numpy</span></tt> package contains a convenient function <tt class="docutils literal"><span class="pre">savetxt</span></tt> for saving
+tabular data. The data must be stored in a two-dimensional <tt class="docutils literal"><span class="pre">numpy</span></tt> array.
+The <tt class="docutils literal"><span class="pre">savetxt</span></tt> function enables control of the format of the numbers
+in each column (<tt class="docutils literal"><span class="pre">fmt</span></tt>) through the printf syntax, a header can be
+added (<tt class="docutils literal"><span class="pre">header</span></tt>) and the header lines begin with a comment character
+(<tt class="docutils literal"><span class="pre">comment</span></tt>). The code reads</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="c"># Make two-dimensional array of [t, s(t)] values in each row</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">t_values</span><span class="p">,</span> <span class="n">s_values</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s">&#39;table2.dat&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;</span><span class="si">%.2f</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;</span><span class="si">%.4f</span><span class="s">&#39;</span><span class="p">],</span>
+           <span class="n">header</span><span class="o">=</span><span class="s">&#39;t   s(t)&#39;</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s">&#39;# &#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The tabular data in the file can be read back into a
+<tt class="docutils literal"><span class="pre">numpy</span></tt> array by the <tt class="docutils literal"><span class="pre">loadtxt</span></tt> function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s">&#39;table2.dat&#39;</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s">&#39;#&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Lines beginning with the comment character are skipped in the reading.
+The resulting object <tt class="docutils literal"><span class="pre">data</span></tt> is a two-dimensional array: <tt class="docutils literal"><span class="pre">data[i,j]</span></tt> contains
+row number <tt class="docutils literal"><span class="pre">i</span></tt> and column number <tt class="docutils literal"><span class="pre">j</span></tt> in the table, i.e., <tt class="docutils literal"><span class="pre">data[i,0]</span></tt>
+holds the <span class="math">\(t\)</span> value and <tt class="docutils literal"><span class="pre">data[i,1]</span></tt> the <span class="math">\(s(t)\)</span> value in the <tt class="docutils literal"><span class="pre">i</span></tt>-th
+row.</p>
+</div>
+</div>
 <div class="section" id="classes">
 <span id="basics-class"></span><h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
 <p>All objects in Python are in fact implemented as classes, but you can
@@ -1110,24 +1202,24 @@ timer feature <tt class="docutils literal"><span class="pre">%timeit</span></tt>
 computing <span class="math">\(\sin (x)\)</span>, where <span class="math">\(x\)</span> is an array of 1M elements, using
 scalar computing with a loop (function <tt class="docutils literal"><span class="pre">sin_func</span></tt>) and vectorized
 computing using the <tt class="docutils literal"><span class="pre">sin</span></tt> function from <tt class="docutils literal"><span class="pre">numpy</span></tt>.</p>
-<div class="highlight-ipy"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
-<span class="gp">In [2]: </span><span class="n">n</span> <span class="o">=</span> <span class="mi">1000000</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1000000</span>
 
-<span class="gp">In [3]: </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="gp">In [4]: </span><span class="k">def</span> <span class="nf">sin_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="gp">   ...: </span>    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c"># result</span>
-<span class="gp">   ...: </span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
-<span class="gp">   ...: </span>        <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-<span class="gp">   ...: </span>    <span class="k">return</span> <span class="n">r</span>
-<span class="gp">   ...:</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="k">def</span> <span class="nf">sin_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+   <span class="o">...</span><span class="p">:</span>     <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c"># result</span>
+   <span class="o">...</span><span class="p">:</span>     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+   <span class="o">...</span><span class="p">:</span>         <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+   <span class="o">...</span><span class="p">:</span>     <span class="k">return</span> <span class="n">r</span>
+   <span class="o">...</span><span class="p">:</span>
 
-<span class="gp">In [5]: </span><span class="o">%</span><span class="k">timeit</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sin_func</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="go">1 loops, best of 3: 2.68 s per loop</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="o">%</span><span class="n">timeit</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sin_func</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="mi">1</span> <span class="n">loops</span><span class="p">,</span> <span class="n">best</span> <span class="n">of</span> <span class="mi">3</span><span class="p">:</span> <span class="mf">2.68</span> <span class="n">s</span> <span class="n">per</span> <span class="n">loop</span>
 
-<span class="gp">In [6]: </span><span class="o">%</span><span class="k">timeit</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="go">10 loops, best of 3: 40.1 ms per loop</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="o">%</span><span class="n">timeit</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="mi">10</span> <span class="n">loops</span><span class="p">,</span> <span class="n">best</span> <span class="n">of</span> <span class="mi">3</span><span class="p">:</span> <span class="mf">40.1</span> <span class="n">ms</span> <span class="n">per</span> <span class="n">loop</span>
 </pre></div>
 </div>
 <p>Here, <tt class="docutils literal"><span class="pre">%timeit</span></tt> ran our function once, but the vectorized function
@@ -1178,6 +1270,11 @@ the section <a class="reference internal" href="#basics-func"><em>Functions</em>
 <li><a class="reference internal" href="#functions">Functions</a></li>
 <li><a class="reference internal" href="#a-more-general-mathematical-formula">A more general mathematical formula</a></li>
 <li><a class="reference internal" href="#if-tests">If tests</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#files">Files</a><ul>
+<li><a class="reference internal" href="#file-reading">File reading</a></li>
+<li><a class="reference internal" href="#file-writing">File writing</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#classes">Classes</a><ul>

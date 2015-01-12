@@ -24,6 +24,8 @@ names="basics bumpy"
 #names="basics"
 for name in $names; do
 
+system doconce spellcheck -d .dict4spell.txt $name.do.txt
+
 system doconce format pdflatex $name --device=paper --minted_latex_style=trac $opt
 system doconce ptex2tex $name envir=minted
 pdflatex -shell-escape $name

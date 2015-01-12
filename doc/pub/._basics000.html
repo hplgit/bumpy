@@ -60,14 +60,17 @@ Automatically generated HTML file from DocOnce source
               (' If tests ', 2, 'basics:if', 'basics:if'),
               (' Using the `where` function ', 3, None, '___sec18'),
               (' Using array indexing ', 3, None, '___sec19'),
+              (' Files ', 1, 'basics:files', 'basics:files'),
+              (' File reading ', 2, None, '___sec21'),
+              (' File writing ', 2, None, '___sec22'),
               (' Classes ', 1, 'basics:class', 'basics:class'),
-              (' A very simple class ', 2, None, '___sec21'),
+              (' A very simple class ', 2, None, '___sec24'),
               (' A class for representing a mathematical function ',
                2,
                None,
-               '___sec22'),
-              (' The class code ', 3, None, '___sec23'),
-              (' Dissection ', 3, None, '___sec24'),
+               '___sec25'),
+              (' The class code ', 3, None, '___sec26'),
+              (' Dissection ', 3, None, '___sec27'),
               (' Exercises ', 1, 'basics:exer', 'basics:exer'),
               (' Exercise 1: Program a formula ',
                2,
@@ -147,8 +150,9 @@ MathJax.Hub.Config({
         <ul class="dropdown-menu">
      <!-- navigation toc: --> <li><a href="._basics001.html#basics:basic:objects" style="font-size: 80%;">Variables, loops, lists, and arrays</a></li>
      <!-- navigation toc: --> <li><a href="._basics002.html#basics:func:branching" style="font-size: 80%;">Functions and branching</a></li>
-     <!-- navigation toc: --> <li><a href="._basics003.html#basics:class" style="font-size: 80%;">Classes</a></li>
-     <!-- navigation toc: --> <li><a href="._basics004.html#basics:exer" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._basics003.html#basics:files" style="font-size: 80%;">Files</a></li>
+     <!-- navigation toc: --> <li><a href="._basics004.html#basics:class" style="font-size: 80%;">Classes</a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer" style="font-size: 80%;">Exercises</a></li>
 
         </ul>
       </li>
@@ -183,7 +187,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo</b></center>
 <p>
-<center><h4>Jan 11, 2015</h4></center> <!-- date -->
+<center><h4>Jan 12, 2015</h4></center> <!-- date -->
 <p>
 <div class="alert alert-block alert-warning alert-text-normal"><b>Contents.</b>
 This note introduces very basic programming elements, such as
@@ -224,22 +228,25 @@ vectorization of code is also given.
 &nbsp; &nbsp; &nbsp; <a href="._basics002.html#basics:if"> If tests </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._basics002.html#___sec18"> Using the <code>where</code> function </a><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._basics002.html#___sec19"> Using array indexing </a><br>
-<a href="._basics003.html#basics:class"> Classes </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._basics003.html#___sec21"> A very simple class </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._basics003.html#___sec22"> A class for representing a mathematical function </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._basics003.html#___sec23"> The class code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._basics003.html#___sec24"> Dissection </a><br>
-<a href="._basics004.html#basics:exer"> Exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._basics004.html#basics:exer:formula1"> Exercise 1: Program a formula </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._basics004.html#basics:exer:printf1"> Exercise 2: Combine text and numbers in output </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._basics004.html#basics:exer:while1"> Exercise 3: Program a while loop </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._basics004.html#basics:exer:while2"> Exercise 4: Create a list with a while loop </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._basics004.html#basics:exer:for1"> Exercise 5: Program a for loop </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._basics004.html#basics:exer:for2"> Exercise 6: Create a list with a for loop </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._basics004.html#basics:exer:func1"> Exercise 7: Write a Python function </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._basics004.html#basics:exer:func3"> Exercise 8: Return three values from a Python function </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._basics004.html#basics:exer:plot1"> Exercise 9: Plot a function </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._basics004.html#basics:exer:timeit"> Exercise 10: Measure the efficiency of vectorization </a><br>
+<a href="._basics003.html#basics:files"> Files </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._basics003.html#___sec21"> File reading </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._basics003.html#___sec22"> File writing </a><br>
+<a href="._basics004.html#basics:class"> Classes </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._basics004.html#___sec24"> A very simple class </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._basics004.html#___sec25"> A class for representing a mathematical function </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._basics004.html#___sec26"> The class code </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._basics004.html#___sec27"> Dissection </a><br>
+<a href="._basics005.html#basics:exer"> Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._basics005.html#basics:exer:formula1"> Exercise 1: Program a formula </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._basics005.html#basics:exer:printf1"> Exercise 2: Combine text and numbers in output </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._basics005.html#basics:exer:while1"> Exercise 3: Program a while loop </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._basics005.html#basics:exer:while2"> Exercise 4: Create a list with a while loop </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._basics005.html#basics:exer:for1"> Exercise 5: Program a for loop </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._basics005.html#basics:exer:for2"> Exercise 6: Create a list with a for loop </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._basics005.html#basics:exer:func1"> Exercise 7: Write a Python function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._basics005.html#basics:exer:func3"> Exercise 8: Return three values from a Python function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._basics005.html#basics:exer:plot1"> Exercise 9: Plot a function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._basics005.html#basics:exer:timeit"> Exercise 10: Measure the efficiency of vectorization </a><br>
 </p>
 <p>
 
@@ -257,6 +264,7 @@ vectorization of code is also given.
   <li><a href="._basics002.html">3</a></li>
   <li><a href="._basics003.html">4</a></li>
   <li><a href="._basics004.html">5</a></li>
+  <li><a href="._basics005.html">6</a></li>
   <li><a href="._basics001.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->

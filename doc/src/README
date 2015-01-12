@@ -1,0 +1,20 @@
+This directory tree contains the source code of two documents:
+
+ * A very basic introduction to scientific programming in Python (basics)
+ * Demonstration of Python for a real scientific application (bumpy)
+
+There are two versions of the documents:
+
+ * Text
+ * Slides
+
+The source is written in DocOnce. The text versions are in
+basics.do.txt and bumpy.do.txt. The slides are in the subdirectory
+lec-bumpy with wrapper files for title, author,
+etc. in lectures-basics.do.txt ad lectures-bumpy.do.txt.
+
+A script make.sh compiles the two texts, while make_lec.sh makes the
+two slides collections.
+
+All compiled documents in HTML, PDF, and Sphinx format are copied to
+../pub for publishing on the web.
