@@ -761,7 +761,7 @@ def command_line_options():
 !ec
 We may offer two options for each parameter, one reflecting the
 mathematical symbol (like `--v`) and one more descriptive text
-(like `--velocity-`).
+(like `--velocity`).
 
 ## Flask!
 
