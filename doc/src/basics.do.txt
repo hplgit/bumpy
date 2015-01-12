@@ -912,6 +912,27 @@ s[t > t1]  = (v0*t + 0.5*a0*t1**2 + a0*t1*(t-t1))[t > t1]
 !enotice
 
 !split
+======= Files =======
+label{basics:files}
+
+This section outlines basic file handling in Python, including file
+utilities in the `numpy` package.
+
+===== File reading =====
+
+Suppose we create a file with typical input data to our little
+demo program for evaluating the formula $s(t)=v_0t + \frac{1}{2}at^2$:
+
+!bc dat
+v0 = 2
+a = 0.2
+dt = 0.1
+t in [0, 2]
+!ec
+We want to read the parameters in the file into Python variables and
+create a table with columns of $t$ and $S(t)$ for $t\in [0,2]$ with
+steps of $\Delta t=0.1$ (as specified by `dt` and `t in [0,2]` in the file).
+!split
 ======= Classes =======
 label{basics:class}
 

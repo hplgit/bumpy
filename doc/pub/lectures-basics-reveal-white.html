@@ -140,7 +140,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo</b></center>
 <p>&nbsp;<br>
-<center><h4>Jan 9, 2015</h4></center> <!-- date -->
+<center><h4>Jan 12, 2015</h4></center> <!-- date -->
 <p>
 
 </section>
@@ -205,7 +205,7 @@ MathJax.Hub.Config({
 
 <section>
 
-<h2>This is a very quick intro to Python programming  <a name="___sec0"></a></h2>
+<h2 id="___sec0">This is a very quick intro to Python programming </h2>
 
 <ul>
  <p><li> variables for numbers, lists, and arrays</li>
@@ -225,7 +225,7 @@ Method: show program code through math examples
 
 <section>
 
-<h1 style="text-align: center;">Variables, loops, lists, and arrays <a name="basics:basic:objects"></a></h1>
+<h1 id="basics:basic:objects">Variables, loops, lists, and arrays</h1>
 
 <p>
 <center><p><img src="fig-bumpy/implementation5.jpg" align="bottom" width=500></p></center>
@@ -237,7 +237,7 @@ Method: show program code through math examples
 
 <section>
 
-<h2>Do you have access to Python? <a name="basics:accesspy"></a></h2>
+<h2 id="basics:accesspy">Do you have access to Python?</h2>
 
 <p>
 Many methods:
@@ -245,7 +245,7 @@ Many methods:
 <ul>
  <p><li> Mac and Windows: <a href="https://store.continuum.io/cshop/anaconda/" target="_blank">Anaconda</a></li>
  <p><li> Ubuntu: <code>sudo apt-get install</code></li>
- <p><li> Web browser</li>
+ <p><li> Web browser (<a href="https://wakari.io/" target="_blank">Wakari</a> or <a href="https://cloud.sagemath.com/" target="_blank">SageMathCloud</a>)</li>
 </ul>
 <p>
 
@@ -258,14 +258,17 @@ See <a href="http://hplgit.github.io/edu/accesspy/accesspy.html" target="_blank"
 
 <section>
 
-<h2>Mathematical example  <a name="___sec3"></a></h2>
+<h2 id="___sec3">Mathematical example </h2>
 
 <p>
 Most examples will involve this formula:
 
 <p>&nbsp;<br>
 $$
+\begin{equation}
+\tag{1}
 s = v_0t + \frac{1}{2}at^2
+\end{equation}
 $$
 <p>&nbsp;<br>
 
@@ -279,7 +282,7 @@ parameters in the notation: \( s(t;v_0,a) \).
 
 <section>
 
-<h2>A program for evaluating a formula <a name="basics:formula:eval"></a></h2>
+<h2 id="basics:formula:eval">A program for evaluating a formula</h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -327,7 +330,7 @@ s <span style="color: #666666">=</span> v0<span style="color: #666666">*</span>t
 
 <section>
 
-<h2>Assignment statements assign a name to an object  <a name="___sec5"></a></h2>
+<h2 id="___sec5">Assignment statements assign a name to an object </h2>
 
 <p>
 
@@ -348,7 +351,7 @@ that object
 
 <section>
 
-<h2>Formatted output with text and numbers <a name="basics:printf"></a></h2>
+<h2 id="basics:printf">Formatted output with text and numbers</h2>
 
 <ul>
  <p><li> Task: write out <code>s=1.025</code></li>
@@ -377,7 +380,7 @@ Modern alternative: format string syntax
 
 <section>
 
-<h2>Programming with a while loop <a name="basics:while"></a></h2>
+<h2 id="basics:while">Programming with a while loop</h2>
 
 <ul>
  <p><li> Task: write out a table of \( t \) and \( s(t) \) values (two columns),
@@ -405,7 +408,7 @@ t <span style="color: #666666">=</span> <span style="color: #666666">0</span>   
 
 <section>
 
-<h2>Output of the previous program  <a name="___sec8"></a></h2>
+<h2 id="___sec8">Output of the previous program </h2>
 
 <p>
 
@@ -439,7 +442,7 @@ t <span style="color: #666666">=</span> <span style="color: #666666">0</span>   
 
 <section>
 
-<h2>Structure of a while loop  <a name="___sec9"></a></h2>
+<h2 id="___sec9">Structure of a while loop </h2>
 
 <p>
 
@@ -465,7 +468,7 @@ Note:
 
 <section>
 
-<h2>The Python Online Tutor can help you understand the program flow  <a name="___sec10"></a></h2>
+<h2 id="___sec10">The Python Online Tutor can help you understand the program flow </h2>
 
 <p>
 <a href="http://pythontutor.com/visualize.html#mode=edit" target="_blank">Python Online Tutor</a>
@@ -483,7 +486,7 @@ lets you step through the program and examine variables.
 
 <section>
 
-<h2>Lists <a name="basics:list"></a></h2>
+<h2 id="basics:list">Lists</h2>
 
 <p>
 A list collects several variables (objects) in a given sequence:
@@ -528,30 +531,11 @@ mydata<span style="color: #666666">.</span>txt
 
 <section>
 
-<h2>Store our table in two lists, one for each column  <a name="___sec12"></a></h2>
+<h2 id="___sec12">Store our table in two lists, one for each column </h2>
 
 <p>
+<!-- @@@CODE src-bumpy/while_list.py -->
 
-<!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">v0 <span style="color: #666666">=</span> <span style="color: #666666">2</span>
-a <span style="color: #666666">=</span> <span style="color: #666666">0.2</span>
-dt <span style="color: #666666">=</span> <span style="color: #666666">0.1</span>  <span style="color: #408080; font-style: italic"># Increment</span>
-t <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-t_values <span style="color: #666666">=</span> []
-s_values <span style="color: #666666">=</span> []
-<span style="color: #008000; font-weight: bold">while</span> t <span style="color: #666666">&lt;=</span> <span style="color: #666666">2</span>:
-    s <span style="color: #666666">=</span> v0<span style="color: #666666">*</span>t <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>a<span style="color: #666666">*</span>t<span style="color: #666666">**2</span>
-    t_values<span style="color: #666666">.</span>append(t)
-    s_values<span style="color: #666666">.</span>append(s)
-    t <span style="color: #666666">=</span> t <span style="color: #666666">+</span> dt
-<span style="color: #008000; font-weight: bold">print</span> s_values  <span style="color: #408080; font-style: italic"># Just take a look at a created list</span>
-
-<span style="color: #408080; font-style: italic"># Print a nicely formatted table</span>
-i <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-<span style="color: #008000; font-weight: bold">while</span> i <span style="color: #666666">&lt;=</span> <span style="color: #008000">len</span>(t_values)<span style="color: #666666">-1</span>:
-    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">  </span><span style="color: #BB6688; font-weight: bold">%.4f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (t_values[i], s_values[i])
-    i <span style="color: #666666">+=</span> <span style="color: #666666">1</span>   <span style="color: #408080; font-style: italic"># Same as i = i + 1</span>
-</pre></div>
 <p>
 
 </section>
@@ -559,7 +543,7 @@ i <span style="color: #666666">=</span> <span style="color: #666666">0</span>
 
 <section>
 
-<h2>For loops <a name="basics:for"></a></h2>
+<h2 id="basics:for">For loops</h2>
 
 <p>
 A for loop is used for visiting elements in a list, one by one:
@@ -582,7 +566,7 @@ Demo in the Python Online Tutor:
 <p>
 
 <iframe width="950" height="500" frameborder="0"
-        src="http://pythontutor.com/iframe-embed.html#code=list1+%3D+%5B0%2C+0.1%2C+0.2%5D%0Alist2+%3D+%5B%5D%0Afor+element+in+somelist%3A%0A++++p+%3D+element+%2B+2%0A++++list2.append%28p%29%0Aprint+list2&curInstr=0&py=2&cumulative=false">
+        src="http://pythontutor.com/iframe-embed.html#code=list1+%3D+%5B0%2C+0.1%2C+0.2%5D%0Alist2+%3D+%5B%5D%0Afor+element+in+list1%3A%0A++++p+%3D+element+%2B+2%0A++++list2.append%28p%29%0Aprint+list2&curInstr=0&py=2&cumulative=false">
 </iframe>
 <p>
 
@@ -591,7 +575,7 @@ Demo in the Python Online Tutor:
 
 <section>
 
-<h2>For loops used traditionally an integer counter over list/array indices  <a name="___sec14"></a></h2>
+<h2 id="___sec14">For loops used traditionally an integer counter over list/array indices </h2>
 
 <p>
 
@@ -617,7 +601,7 @@ Note:
 
 <section>
 
-<h2>Let's replace our while loop by a for loop  <a name="___sec15"></a></h2>
+<h2 id="___sec15">Let's replace our while loop by a for loop </h2>
 
 <p>
 
@@ -650,7 +634,7 @@ n <span style="color: #666666">=</span> <span style="color: #008000">int</span>(
 
 <section>
 
-<h2>Traversal of multiple lists at the same time with <code>zip</code>  <a name="___sec16"></a></h2>
+<h2 id="___sec16">Traversal of multiple lists at the same time with <code>zip</code> </h2>
 
 <p>
 
@@ -675,7 +659,7 @@ Alternative: loop over a common index for the lists
 
 <section>
 
-<h2>Arrays <a name="basics:numpy"></a></h2>
+<h2 id="basics:numpy">Arrays</h2>
 
 <ul>
  <p><li> List: collect a set of numbers or other objects
@@ -711,7 +695,7 @@ float64
 
 <section>
 
-<h2><code>numpy</code> functions creates entire arrays at once  <a name="___sec18"></a></h2>
+<h2 id="___sec18"><code>numpy</code> functions creates entire arrays at once </h2>
 
 <p>
 
@@ -735,7 +719,7 @@ Create \( n+1 \) uniformly distributed coordinates in \( [a,b] \):
 
 <section>
 
-<h2>Let's use arrays in our previous program  <a name="___sec19"></a></h2>
+<h2 id="___sec19">Let's use arrays in our previous program </h2>
 
 <p>
 
@@ -760,7 +744,7 @@ s_values <span style="color: #666666">=</span> v0<span style="color: #666666">*<
 
 <section>
 
-<h2>Standard mathematical functions are found in the <code>math</code> module <a name="basics:math"></a></h2>
+<h2 id="basics:math">Standard mathematical functions are found in the <code>math</code> module</h2>
 
 <p>
 
@@ -789,7 +773,7 @@ Get rid of the <code>math</code> prefix:
 
 <section>
 
-<h2>Use the <code>numpy</code> module for standard mathematical functions applied to arrays  <a name="___sec21"></a></h2>
+<h2 id="___sec21">Use the <code>numpy</code> module for standard mathematical functions applied to arrays </h2>
 
 <p>
 Matlab users can do
@@ -827,29 +811,13 @@ p <span style="color: #666666">=</span> exp(<span style="color: #666666">-</span
 
 <section>
 
-<h2>Plotting <a name="basics:plot"></a></h2>
+<h2 id="basics:plot">Plotting</h2>
 
 <p>
 Plotting is done with <code>matplotlib</code>:
 
 <p>
-
-<!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
-
-v0 <span style="color: #666666">=</span> <span style="color: #666666">0.2</span>
-a <span style="color: #666666">=</span> <span style="color: #666666">2</span>
-n <span style="color: #666666">=</span> <span style="color: #666666">21</span>  <span style="color: #408080; font-style: italic"># No of t values for plotting</span>
-
-t <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">2</span>, n<span style="color: #666666">+1</span>)
-s <span style="color: #666666">=</span> v0<span style="color: #666666">*</span>t <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>a<span style="color: #666666">*</span>t<span style="color: #666666">**2</span>
-
-plt<span style="color: #666666">.</span>plot(t, s)
-plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&#39;myplot.png&#39;</span>)
-plt<span style="color: #666666">.</span>show()
-</pre></div>
-<p>
+<!-- @@@CODE src-bumpy/plot1.py -->
 The plotfile <code>myplot.png</code> looks like
 
 <p>
@@ -862,25 +830,11 @@ The plotfile <code>myplot.png</code> looks like
 
 <section>
 
-<h2>Plotting of multiple curves  <a name="___sec23"></a></h2>
+<h2 id="___sec23">Plotting of multiple curves </h2>
 
 <p>
+<!-- @@@CODE src-bumpy/plot1.py -->
 
-<!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
-
-v0 <span style="color: #666666">=</span> <span style="color: #666666">0.2</span>
-a <span style="color: #666666">=</span> <span style="color: #666666">2</span>
-n <span style="color: #666666">=</span> <span style="color: #666666">21</span>  <span style="color: #408080; font-style: italic"># No of t values for plotting</span>
-
-t <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">2</span>, n<span style="color: #666666">+1</span>)
-s <span style="color: #666666">=</span> v0<span style="color: #666666">*</span>t <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>a<span style="color: #666666">*</span>t<span style="color: #666666">**2</span>
-
-plt<span style="color: #666666">.</span>plot(t, s)
-plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&#39;myplot.png&#39;</span>)
-plt<span style="color: #666666">.</span>show()
-</pre></div>
 <p>
 <center><p><img src="fig-bumpy/plot2_s.png" align="bottom" width=500></p></center>
 
@@ -891,7 +845,7 @@ plt<span style="color: #666666">.</span>show()
 
 <section>
 
-<h1 style="text-align: center;">Functions and branching <a name="basics:func:branching"></a></h1>
+<h1 id="basics:func:branching">Functions and branching</h1>
 
 <p>
 <center><p><img src="fig-bumpy/branching3.jpg" align="bottom" width=500></p></center>
@@ -903,7 +857,7 @@ plt<span style="color: #666666">.</span>show()
 
 <section>
 
-<h2>Functions <a name="basics:func"></a></h2>
+<h2 id="basics:func">Functions</h2>
 
 <ul>
  <p><li> \( s(t)=v_0t + \frac{1}{2}at^2 \) is a mathematical function</li>
@@ -941,7 +895,7 @@ Note:
 
 <section>
 
-<h2>Functions can have multiple arguments  <a name="___sec26"></a></h2>
+<h2 id="___sec26">Functions can have multiple arguments </h2>
 
 <p>
 <code>v0</code> and <code>a</code> as function arguments instead of global variables:
@@ -964,7 +918,7 @@ value <span style="color: #666666">=</span> s(t<span style="color: #666666">=3</
 
 <section>
 
-<h2>Keyword arguments are arguments with default values  <a name="___sec27"></a></h2>
+<h2 id="___sec27">Keyword arguments are arguments with default values </h2>
 
 <p>
 
@@ -993,7 +947,7 @@ value <span style="color: #666666">=</span> s(a<span style="color: #666666">=2</
 
 <section>
 
-<h2>Vectorization speeds up the code  <a name="___sec28"></a></h2>
+<h2 id="___sec28">Vectorization speeds up the code </h2>
 
 <p>
 Scalar code (work with one number at a time):
@@ -1034,7 +988,7 @@ How can this work?
 
 <section>
 
-<h2>Python functions written for scalars normally work for arrays too!  <a name="___sec29"></a></h2>
+<h2 id="___sec29">Python functions written for scalars normally work for arrays too! </h2>
 
 <p>
 True if computations involve arithmetic operations and math functions:
@@ -1073,7 +1027,7 @@ v <span style="color: #666666">=</span> f(x)  <span style="color: #408080; font-
 
 <section>
 
-<h2>Python functions can return multiple values  <a name="___sec30"></a></h2>
+<h2 id="___sec30">Python functions can return multiple values </h2>
 
 <p>
 Return \( s(t)=v_0t+\frac{1}{2}at^2 \) and \( s'(t)=v_0 + at \):
@@ -1115,7 +1069,7 @@ Tuples are constant lists (cannot be changed)
 
 <section>
 
-<h2>A more general mathematical formula <a name="basics:formula:piecewise"></a></h2>
+<h2 id="basics:formula:piecewise">A more general mathematical formula</h2>
 
 <p>
 Equations from basic kinematics:
@@ -1175,7 +1129,7 @@ Need <em>if test</em> to implement this!
 
 <section>
 
-<h2>Basic if-else tests <a name="basics:if"></a></h2>
+<h2 id="basics:if">Basic if-else tests</h2>
 
 <p>
 An if test has the structure
@@ -1212,7 +1166,7 @@ Here,
 
 <section>
 
-<h2>Multi-branch if tests  <a name="___sec33"></a></h2>
+<h2 id="___sec33">Multi-branch if tests </h2>
 
 <p>
 
@@ -1243,11 +1197,10 @@ Just if, no else:
 
 <section>
 
-<h2>Implementation of a piecewisely defined function with if  <a name="___sec34"></a></h2>
+<h2 id="___sec34">Implementation of a piecewisely defined function with if </h2>
 
 <p>
-A Python function implementing the mathematical function \eqref{basics:seq2}
-reads
+A Python function implementing the mathematical function
 
 <p>&nbsp;<br>
 $$
@@ -1258,6 +1211,9 @@ s_0 + v_0t_1 + \frac{1}{2}a_0 t_1^2 + a_0t_1(t-t_1),& t> t_1
 $$
 <p>&nbsp;<br>
 
+
+<p>
+reads
 
 <p>
 
@@ -1276,7 +1232,7 @@ $$
 
 <section>
 
-<h2>Python functions containing if will not accept array arguments  <a name="___sec35"></a></h2>
+<h2 id="___sec35">Python functions containing if will not accept array arguments </h2>
 
 <p>
 
@@ -1301,7 +1257,7 @@ Problem: <code>x &lt; 1</code> evaluates to a boolean array, not just a boolean
 
 <section>
 
-<h2>Remedy 1: Call the function with scalar arguments  <a name="___sec36"></a></h2>
+<h2 id="___sec36">Remedy 1: Call the function with scalar arguments </h2>
 
 <p>
 
@@ -1334,7 +1290,7 @@ plt<span style="color: #666666">.</span>show()
 
 <section>
 
-<h2>Remedy 2: Vectorize the if test with <code>where</code>  <a name="___sec37"></a></h2>
+<h2 id="___sec37">Remedy 2: Vectorize the if test with <code>where</code> </h2>
 
 <p>
 Functions with if tests require a complete rewrite to work with
@@ -1375,7 +1331,7 @@ array <code>b</code> where <code>b[i] = t[i] &lt;= t1</code>.
 
 <section>
 
-<h2>Remedy 3: Vectorize the if test with array indexing  <a name="___sec38"></a></h2>
+<h2 id="___sec38">Remedy 3: Vectorize the if test with array indexing </h2>
 
 <ul>
  <p><li> Let <code>b</code> be a boolean array (e.g., <code>b = t &lt;= t1</code>)</li>
@@ -1395,7 +1351,7 @@ s[t <span style="color: #666666">&lt;=</span> t1] <span style="color: #666666">=
 s[t <span style="color: #666666">&gt;</span> t1]  <span style="color: #666666">=</span> (v0<span style="color: #666666">*</span>t <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>a0<span style="color: #666666">*</span>t1<span style="color: #666666">**2</span> <span style="color: #666666">+</span> a0<span style="color: #666666">*</span>t1<span style="color: #666666">*</span>(t<span style="color: #666666">-</span>t1))[t <span style="color: #666666">&gt;</span> t1]
 </pre></div>
 
-<h1 style="text-align: center;">Classes <a name="basics:class"></a></h1>
+<h1 id="basics:class">Classes</h1>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1430,7 +1386,7 @@ s[t <span style="color: #666666">&gt;</span> t1]  <span style="color: #666666">=
 
 <section>
 
-<h2>A very simple class  <a name="___sec40"></a></h2>
+<h2 id="___sec40">A very simple class </h2>
 
 <ul>
  <p><li> One variable: <code>a</code></li>
@@ -1459,7 +1415,7 @@ Class terminology: Functions are called
 
 <section>
 
-<h2>How can we use this class?  <a name="___sec41"></a></h2>
+<h2 id="___sec41">How can we use this class? </h2>
 
 <p>
 First, make an <em>instance</em> (object) of the class:
@@ -1487,7 +1443,7 @@ Note:
 
 <section>
 
-<h2>The <code>self</code> argument is a difficult thing for newcomers...  <a name="___sec42"></a></h2>
+<h2 id="___sec42">The <code>self</code> argument is a difficult thing for newcomers... </h2>
 
 <p>
 It takes time and experience to understand the <code>self</code> argument in
@@ -1519,7 +1475,7 @@ the understanding of how classes work!
 
 <section>
 
-<h2>A class for representing a mathematical function  <a name="___sec43"></a></h2>
+<h2 id="___sec43">A class for representing a mathematical function </h2>
 
 <p>
 Function with one independent variable \( t \) and two parameters
@@ -1554,7 +1510,7 @@ v <span style="color: #666666">=</span> s(t<span style="color: #666666">=0.2</sp
 
 <section>
 
-<h2>The class code  <a name="___sec44"></a></h2>
+<h2 id="___sec44">The class code </h2>
 
 <p>
 
@@ -1578,7 +1534,7 @@ v <span style="color: #666666">=</span> s(t<span style="color: #666666">=0.2</sp
 
 <section>
 
-<h2>Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \)  <a name="___sec45"></a></h2>
+<h2 id="___sec45">Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \) </h2>
 
 <ul>
  <p><li> The \( n \) parameters \( p_1,p_2,\ldots,p_n \) are attributes</li>

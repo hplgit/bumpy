@@ -164,7 +164,7 @@ MathJax.Hub.Config({
 <a name="part0003"></a>
 <!-- !split -->
 
-<h1 id="basics:class">Classes<a name="basics:class"></a></h1>
+<h1 id="basics:class">Classes</h1>
 
 <p>
 All objects in Python are in fact implemented as classes, but you can
@@ -173,16 +173,16 @@ the class concept is a powerful tool and some basic knowledge will
 make it easier to understand much useful Python information that is
 floating around.
 
-<h2 id="___sec21">A very simple class <a name="___sec21"></a></h2>
+<h2 id="___sec21">A very simple class </h2>
 
 <p>
 A class packs together a set of variables and a set of functions. All
-functions can access all variables. <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="In classes, the functions are called methods and the variables are called attributes."><a name="link_footnote_1"><a><a href="#def_footnote_1" style="color: white">1</a></button> The idea is
+functions can access all variables. <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="In classes, the functions are called methods and the variables are called attributes."><a href="#def_footnote_1" id="link_footnote_1" style="color: white">1</a></button> The idea is
 to encapsulate variables and functions in logical units such that a
 larger program can be composed by combing such units (classes).
 
-<p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> In classes, the functions are called
-<em>methods</em> and the variables are called <em>attributes</em>.
+<p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> In classes, the functions are called
+<em>methods</em> and the variables are called <em>attributes</em>.</p>
 
 <p>
 Here is a trivial class that has one variable <code>a</code> and one
@@ -245,7 +245,7 @@ for better explanation of <code>self</code>.
 </div>
 
 
-<h2 id="___sec22">A class for representing a mathematical function <a name="___sec22"></a></h2>
+<h2 id="___sec22">A class for representing a mathematical function </h2>
 
 <p>
 The Python implementation of the mathematical function
@@ -258,7 +258,7 @@ can benefit from being implemented as a class. The reason is that
 Using a class, we can pack \( v_0 \) and \( a \) together with a function
 computing \( s(t) \) and that can be called with one argument.
 
-<h3 id="___sec23">The class code <a name="___sec23"></a></h3>
+<h3 id="___sec23">The class code </h3>
 
 <p>
 
@@ -273,7 +273,7 @@ computing \( s(t) \) and that can be called with one argument.
         <span style="color: #008000; font-weight: bold">return</span> v0<span style="color: #666666">*</span>t <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>a<span style="color: #666666">*</span>t<span style="color: #666666">**2</span>
 </pre></div>
 
-<h3 id="___sec24">Dissection <a name="___sec24"></a></h3>
+<h3 id="___sec24">Dissection </h3>
 
 <p>
 The class has two methods (functions). The name of a method can

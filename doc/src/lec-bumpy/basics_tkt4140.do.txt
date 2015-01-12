@@ -17,17 +17,6 @@ label{basics:basic:objects}
 
 FIGURE: [fig-bumpy/implementation5, width=500 frac=0.7]
 
-!split
-===== Do you have access to Python? =====
-label{basics:accesspy}
-
-See "TKT4140 Course specific installation guidelines": "https://www.ntnu.no/wiki/display/kt/Python"
-
-Other methods:
- * Mac and Windows: "Anaconda": "https://store.continuum.io/cshop/anaconda/"
- * Web browser
-
-!split
 ===== Mathematical example =====
 
 Most examples will involve this formula:
@@ -244,7 +233,7 @@ Demo in the Python Online Tutor:
 !bc pyoptpro
 list1 = [0, 0.1, 0.2]
 list2 = []
-for element in somelist:
+for element in list1:
     p = element + 2
     list2.append(p)
 print list2
@@ -588,48 +577,8 @@ s_value, v_value = movement(t=0.2, v0=2, a=4)
 
 Tuples are constant lists (cannot be changed)
 
-!split
-===== A more general mathematical formula =====
-label{basics:formula:piecewise}
 
-Equations from basic kinematics:
-
-!bt
-\begin{align*}
-v = \frac{ds}{dt},\quad s(0)=s_0\\
-a = \frac{dv}{dt},\quad v(0)=v_0
-\end{align*}
-!et
-
-Integrate to find $v(t)$:
-
-!bt
-\[ \int_0^t a(t)dt = \int_0^t \frac{dv}{dt} dt\]
-!et
-which gives
-
-!bt
-\[ v(t) = v_0 + \int_0^t a(t)dt \]
-!et
-
-Integrate again over $[0,t]$ to find $s(t)$:
-
-!bt
-\[ s(t) = s_0 + v_0t + \int_0^t\left( \int_0^t a(t)dt \right) dt\]
-!et
-
-$a(t)=a_0$ for $t\in[0,t_1]$, else $a(t)=0$:
-
-!bt
-\[
-s(t) = \left\lbrace\begin{array}{ll}
-s_0 + v_0 t + \frac{1}{2}a_0 t^2,& t\leq t_1\\
-s_0 + v_0t_1 + \frac{1}{2}a_0 t_1^2 + a_0t_1(t-t_1),& t> t_1
-\end{array}\right.
-\]
-!et
-
-Need *if test* to implement this!
+# Need *if test* to implement this!
 
 !split
 ===== Basic if-else tests =====
@@ -897,5 +846,3 @@ s[t > t1]  = (v0*t + 0.5*a0*t1**2 + a0*t1*(t-t1))[t > t1]
 # f = F(p1=..., p2=..., ...)   # create instance with parameters
 # print f(1, 4, -1)            # evaluate f(x,y,z) function
 # !ec
-
-

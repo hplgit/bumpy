@@ -164,12 +164,12 @@ MathJax.Hub.Config({
 <a name="part0004"></a>
 <!-- !split -->
 
-<h1 id="basics:exer">Exercises<a name="basics:exer"></a></h1>
+<h1 id="basics:exer">Exercises</h1>
 
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="basics:exer:formula1">Exercise 1: Program a formula<a name="basics:exer:formula1"></a></h2>
+<h2 id="basics:exer:formula1">Exercise 1: Program a formula</h2>
 
 <p>
 Make a Python program that calculates and prints the value of the
@@ -186,7 +186,7 @@ $$
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="basics:exer:printf1">Exercise 2: Combine text and numbers in output<a name="basics:exer:printf1"></a></h2>
+<h2 id="basics:exer:printf1">Exercise 2: Combine text and numbers in output</h2>
 
 <p>
 Let \( y=x^2 \). Make a program that writes the text
@@ -207,7 +207,7 @@ as the variable <code>pi</code> in the <code>math</code> module).
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="basics:exer:while1">Exercise 3: Program a while loop<a name="basics:exer:while1"></a></h2>
+<h2 id="basics:exer:while1">Exercise 3: Program a while loop</h2>
 
 <p>
 Define a sequence of numbers,
@@ -224,7 +224,7 @@ a while loop.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="basics:exer:while2">Exercise 4: Create a list with a while loop<a name="basics:exer:while2"></a></h2>
+<h2 id="basics:exer:while2">Exercise 4: Create a list with a while loop</h2>
 
 <p>
 Store all the \( x_n \) values computed in <a href="#basics:exer:while1">Exercise 3: Program a while loop</a>
@@ -236,7 +236,7 @@ in a list (using a while loop). Print the entire list (as one object).
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="basics:exer:for1">Exercise 5: Program a for loop<a name="basics:exer:for1"></a></h2>
+<h2 id="basics:exer:for1">Exercise 5: Program a for loop</h2>
 
 <p>
 Do <a href="#basics:exer:while1">Exercise 3: Program a while loop</a>, but use a for loop.
@@ -247,7 +247,7 @@ Do <a href="#basics:exer:while1">Exercise 3: Program a while loop</a>, but use a
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="basics:exer:for2">Exercise 6: Create a list with a for loop<a name="basics:exer:for2"></a></h2>
+<h2 id="basics:exer:for2">Exercise 6: Create a list with a for loop</h2>
 
 <p>
 Do <a href="#basics:exer:while2">Exercise 4: Create a list with a while loop</a>, but use a for loop.
@@ -258,7 +258,7 @@ Do <a href="#basics:exer:while2">Exercise 4: Create a list with a while loop</a>
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="basics:exer:func1">Exercise 7: Write a Python function<a name="basics:exer:func1"></a></h2>
+<h2 id="basics:exer:func1">Exercise 7: Write a Python function</h2>
 
 <p>
 Write a function <code>x(n)</code> for computing an element in the
@@ -271,7 +271,7 @@ out the result.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="basics:exer:func3">Exercise 8: Return three values from a Python function<a name="basics:exer:func3"></a></h2>
+<h2 id="basics:exer:func3">Exercise 8: Return three values from a Python function</h2>
 
 <p>
 Write a Python function that evaluates the mathematical function
@@ -284,7 +284,7 @@ these three values. Write out the results of these values for \( x=\pi \).
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="basics:exer:plot1">Exercise 9: Plot a function<a name="basics:exer:plot1"></a></h2>
+<h2 id="basics:exer:plot1">Exercise 9: Plot a function</h2>
 
 <p>
 Make a program that plots the function \( g(y)=e^{-y}\sin (4y) \) for
@@ -297,7 +297,7 @@ points in arrays.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="basics:exer:timeit">Exercise 10: Measure the efficiency of vectorization<a name="basics:exer:timeit"></a></h2>
+<h2 id="basics:exer:timeit">Exercise 10: Measure the efficiency of vectorization</h2>
 
 <p>
 <a href="http://ipython.org/" target="_self">IPython</a> an enhanced interactive shell
@@ -312,25 +312,25 @@ computing using the <code>sin</code> function from <code>numpy</code>.
 
 <p>
 
-<!-- code=python (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]: <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<!-- code=ipy (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 
-In [<span style="color: #666666">2</span>]: n <span style="color: #666666">=</span> <span style="color: #666666">1000000</span>
+<span style="color: #000080; font-weight: bold">In [2]: </span>n <span style="color: #666666">=</span> <span style="color: #666666">1000000</span>
 
-In [<span style="color: #666666">3</span>]: x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, n<span style="color: #666666">+1</span>)
+<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, n<span style="color: #666666">+1</span>)
 
-In [<span style="color: #666666">4</span>]: <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">sin_func</span>(x):
-   <span style="color: #666666">...</span>:     r <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros_like(x)  <span style="color: #408080; font-style: italic"># result</span>
-   <span style="color: #666666">...</span>:     <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(x)):
-   <span style="color: #666666">...</span>:         r[i] <span style="color: #666666">=</span> np<span style="color: #666666">.</span>sin(x[i])
-   <span style="color: #666666">...</span>:     <span style="color: #008000; font-weight: bold">return</span> r
-   <span style="color: #666666">...</span>:
+<span style="color: #000080; font-weight: bold">In [4]: </span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">sin_func</span>(x):
+<span style="color: #000080; font-weight: bold">   ...: </span>    r <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros_like(x)  <span style="color: #408080; font-style: italic"># result</span>
+<span style="color: #000080; font-weight: bold">   ...: </span>    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(x)):
+<span style="color: #000080; font-weight: bold">   ...: </span>        r[i] <span style="color: #666666">=</span> np<span style="color: #666666">.</span>sin(x[i])
+<span style="color: #000080; font-weight: bold">   ...: </span>    <span style="color: #008000; font-weight: bold">return</span> r
+<span style="color: #000080; font-weight: bold">   ...:</span>
 
-In [<span style="color: #666666">5</span>]: <span style="color: #666666">%</span>timeit y <span style="color: #666666">=</span> sin_func(x)
-<span style="color: #666666">1</span> loops, best of <span style="color: #666666">3</span>: <span style="color: #666666">2.68</span> s per loop
+<span style="color: #000080; font-weight: bold">In [5]: </span><span style="color: #666666">%</span><span style="color: #008000; font-weight: bold">timeit</span> y <span style="color: #666666">=</span> sin_func(x)
+<span style="color: #888888">1 loops, best of 3: 2.68 s per loop</span>
 
-In [<span style="color: #666666">6</span>]: <span style="color: #666666">%</span>timeit y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>sin(x)
-<span style="color: #666666">10</span> loops, best of <span style="color: #666666">3</span>: <span style="color: #666666">40.1</span> ms per loop
+<span style="color: #000080; font-weight: bold">In [6]: </span><span style="color: #666666">%</span><span style="color: #008000; font-weight: bold">timeit</span> y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>sin(x)
+<span style="color: #888888">10 loops, best of 3: 40.1 ms per loop</span>
 </pre></div>
 <p>
 Here, <code>%timeit</code> ran our function once, but the vectorized function

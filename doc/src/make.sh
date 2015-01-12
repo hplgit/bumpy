@@ -12,11 +12,19 @@ function system {
   fi
 }
 
+if [ $# -ge 1 ]; then
+  COURSE=$1
+else
+  COURSE=any
+fi
+
+opt="COURSE=$COURSE"
+
 names="basics bumpy"
 #names="basics"
 for name in $names; do
 
-system doconce format pdflatex $name --device=paper --minted_latex_style=trac
+system doconce format pdflatex $name --device=paper --minted_latex_style=trac $opt
 system doconce ptex2tex $name envir=minted
 pdflatex -shell-escape $name
 makeindex $name
@@ -24,12 +32,12 @@ pdflatex -shell-escape $name
 pdflatex -shell-escape $name
 
 # Plain HTML
-system doconce format html $name --html_style=bootstrap
+system doconce format html $name --html_style=bootstrap $opt
 if [ $? -ne 0 ]; then echo "doconce could not compile document"; exit; fi
 system doconce split_html $name.html --pagination
 
 # Sphinx
-system doconce format sphinx $name  # always generate new
+system doconce format sphinx $name $opt # always generate new
 system doconce sphinx_dir theme=cbc author="H. P. Langtangen" $name
 system python automake_sphinx.py
 
