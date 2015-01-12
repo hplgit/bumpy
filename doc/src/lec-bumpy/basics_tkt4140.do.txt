@@ -21,23 +21,11 @@ FIGURE: [fig-bumpy/implementation5, width=500 frac=0.7]
 ===== Do you have access to Python? =====
 label{basics:accesspy}
 
-% if COURSE == 'TKT4140':
 See "TKT4140 Course specific installation guidelines": "https://www.ntnu.no/wiki/display/kt/Python"
 
 Other methods:
-
  * Mac and Windows: "Anaconda": "https://store.continuum.io/cshop/anaconda/"
- * Web browser ("Wakari": "https://wakari.io/" or "SageMathCloud": "https://cloud.sagemath.com/")
-
-% else:
-Many methods:
-
- * Mac and Windows: "Anaconda": "https://store.continuum.io/cshop/anaconda/"
- * Ubuntu: `sudo apt-get install`
- * Web browser ("Wakari": "https://wakari.io/" or "SageMathCloud": "https://cloud.sagemath.com/")
-
-See "How to access Python for doing scientific computing": "http://hplgit.github.io/edu/accesspy/accesspy.html" for more details!
-% endif
+ * Web browser
 
 !split
 ===== Mathematical example =====
@@ -45,10 +33,9 @@ See "How to access Python for doing scientific computing": "http://hplgit.github
 Most examples will involve this formula:
 
 !bt
-\begin{equation}
-label{basics:seq}
+\[
 s = v_0t + \frac{1}{2}at^2
-\end{equation}
+\]
 !et
 We may view $s$ as a function of $t$: $s(t)$, and also include the
 parameters in the notation: $s(t;v_0,a)$.
@@ -231,7 +218,7 @@ mydata.txt
 !split
 ===== Store our table in two lists, one for each column =====
 
-# @@@CODE src-bumpy/while_list.py
+@@@CODE src-bumpy/while_list.py
 
 !split
 ===== For loops =====
@@ -421,7 +408,7 @@ idx{`matplotlib`}
 
 Plotting is done with `matplotlib`:
 
-# @@@CODE src-bumpy/plot1.py
+@@@CODE src-bumpy/plot1.py
 % if FORMAT != 'ipynb':
 The plotfile `myplot.png` looks like
 
@@ -431,7 +418,7 @@ FIGURE: [fig-bumpy/plot1_s, width=500 frac=0.5]
 !split
 ===== Plotting of multiple curves =====
 
-# @@@CODE src-bumpy/plot1.py
+@@@CODE src-bumpy/plot1.py
 
 % if FORMAT != 'ipynb':
 FIGURE: [fig-bumpy/plot2_s, width=500 frac=0.5]
@@ -601,48 +588,8 @@ s_value, v_value = movement(t=0.2, v0=2, a=4)
 
 Tuples are constant lists (cannot be changed)
 
-!split
-===== A more general mathematical formula =====
-label{basics:formula:piecewise}
 
-Equations from basic kinematics:
-
-!bt
-\begin{align*}
-v = \frac{ds}{dt},\quad s(0)=s_0\\
-a = \frac{dv}{dt},\quad v(0)=v_0
-\end{align*}
-!et
-
-Integrate to find $v(t)$:
-
-!bt
-\[ \int_0^t a(t)dt = \int_0^t \frac{dv}{dt} dt\]
-!et
-which gives
-
-!bt
-\[ v(t) = v_0 + \int_0^t a(t)dt \]
-!et
-
-Integrate again over $[0,t]$ to find $s(t)$:
-
-!bt
-\[ s(t) = s_0 + v_0t + \int_0^t\left( \int_0^t a(t)dt \right) dt\]
-!et
-
-$a(t)=a_0$ for $t\in[0,t_1]$, else $a(t)=0$:
-
-!bt
-\[
-s(t) = \left\lbrace\begin{array}{ll}
-s_0 + v_0 t + \frac{1}{2}a_0 t^2,& t\leq t_1\\
-s_0 + v_0t_1 + \frac{1}{2}a_0 t_1^2 + a_0t_1(t-t_1),& t> t_1
-\end{array}\right.
-\]
-!et
-
-Need *if test* to implement this!
+# Need *if test* to implement this!
 
 !split
 ===== Basic if-else tests =====
@@ -697,7 +644,8 @@ if condition:
 !split
 ===== Implementation of a piecewisely defined function with if =====
 
-A Python function implementing the mathematical function
+A Python function implementing the mathematical function $s = v_0t + \frac{1}{2}at^2$
+reads
 
 !bt
 \[
@@ -707,8 +655,6 @@ s_0 + v_0t_1 + \frac{1}{2}a_0 t_1^2 + a_0t_1(t-t_1),& t> t_1
 \end{array}\right.
 \]
 !et
-
-reads
 
 @@@CODE src-bumpy/plot3.py fromto: def s_func@n = 201
 
@@ -783,133 +729,131 @@ s[t <= t1] = (v0*t + 0.5*a0*t**2)[t <= t1]
 s[t > t1]  = (v0*t + 0.5*a0*t1**2 + a0*t1*(t-t1))[t > t1]
 !ec
 
-% if COURSE == 'any':
 
-======= Classes =======
-label{basics:class}
+# ======= Classes =======
+# label{basics:class}
 
-!bblock
- * All objects in Python are made from a class
- * You don't need to know about classes to use Python
- * But class programming is powerful
-!eblock
+# !bblock
+#  * All objects in Python are made from a class
+#  * You don't need to know about classes to use Python
+#  * But class programming is powerful
+# !eblock
 
-!bblock
- * Class = functions + variables packed together
- * A class is a logical unit in a program
- * A large program as a combination of appropriate units
-!eblock
+# !bblock
+#  * Class = functions + variables packed together
+#  * A class is a logical unit in a program
+#  * A large program as a combination of appropriate units
+# !eblock
 
-!split
-===== A very simple class =====
+# !split
+# ===== A very simple class =====
 
- * One variable: `a`
- * One function: `dump` for printing `a`
+#  * One variable: `a`
+#  * One function: `dump` for printing `a`
 
-!bc pycod
-class Trivial:
-    def __init__(self, a):
-        self.a = a
+# !bc pycod
+# class Trivial:
+#     def __init__(self, a):
+#         self.a = a
 
-    def dump(self):
-        print self.a
-!ec
+#     def dump(self):
+#         print self.a
+# !ec
 
-Class terminology: Functions are called
-*methods* and variables are called *attributes*.
+# Class terminology: Functions are called
+# *methods* and variables are called *attributes*.
 
-!split
-===== How can we use this class? =====
+# !split
+# ===== How can we use this class? =====
 
-First, make an *instance* (object) of the class:
+# First, make an *instance* (object) of the class:
 
-!bc pycod
-t = Trivial(a=4)
-t.dump()
-!ec
+# !bc pycod
+# t = Trivial(a=4)
+# t.dump()
+# !ec
 
-Note:
+# Note:
 
- * The syntax `Trivial(a=4)` actually means `Trivial.__init__(t, 4)`
- * `self` is an argument in `__init__` and `dump`, but not used in the calls
- * `__init__` is called *constructor* and is used to construct an object
-   (instance) if the class
+#  * The syntax `Trivial(a=4)` actually means `Trivial.__init__(t, 4)`
+#  * `self` is an argument in `__init__` and `dump`, but not used in the calls
+#  * `__init__` is called *constructor* and is used to construct an object
+#    (instance) if the class
 
-!split
-===== The `self` argument is a difficult thing for newcomers... =====
+# !split
+# ===== The `self` argument is a difficult thing for newcomers... =====
 
-It takes time and experience to understand the `self` argument in
-class methods!
+# It takes time and experience to understand the `self` argument in
+# class methods!
 
- o `self` must always be the first argument
- o `self` is never used in calls
- o `self` is used to access attributes and methods inside methods
+#  o `self` must always be the first argument
+#  o `self` is never used in calls
+#  o `self` is used to access attributes and methods inside methods
 
-We refer to a "more comprehensive text on classes":
-"http://hplgit.github.io/primer.html/doc/pub/class/index.html"
-for better explanation of `self`.
+# We refer to a "more comprehensive text on classes":
+# "http://hplgit.github.io/primer.html/doc/pub/class/index.html"
+# for better explanation of `self`.
 
-!bblock
-`self` is confusing in the beginning, but later it greatly helps
-the understanding of how classes work!
-!eblock
+# !bblock
+# `self` is confusing in the beginning, but later it greatly helps
+# the understanding of how classes work!
+# !eblock
 
-!split
-===== A class for representing a mathematical function =====
+# !split
+# ===== A class for representing a mathematical function =====
 
-Function with one independent variable $t$ and two parameters
-$v_0$ and $a$:
+# Function with one independent variable $t$ and two parameters
+# $v_0$ and $a$:
 
-!bt
-\[ s(t; v_0, a) = v_0t + \frac{1}{2}at^2\]
-!et
+# !bt
+# \[ s(t; v_0, a) = v_0t + \frac{1}{2}at^2\]
+# !et
 
-Class representation of this function:
+# Class representation of this function:
 
- * `v0` and `a` are variables (data)
- * A method to evaluate $s(t)$, but just function of `t`
+#  * `v0` and `a` are variables (data)
+#  * A method to evaluate $s(t)$, but just function of `t`
 
-Usage:
+# Usage:
 
-!bc pycod
-s = Distance(v0=2, a=0.5)  # create instance
-v = s(t=0.2)               # compute formula
-!ec
+# !bc pycod
+# s = Distance(v0=2, a=0.5)  # create instance
+# v = s(t=0.2)               # compute formula
+# !ec
 
-!split
-===== The class code =====
+# !split
+# ===== The class code =====
 
-!bc pycod
-class Distance:
-    def __init__(self, v0, a):
-        self.v0 = v0
-        self.a = a
+# !bc pycod
+# class Distance:
+#     def __init__(self, v0, a):
+#         self.v0 = v0
+#         self.a = a
 
-    def __call__(self, t):
-        v0, a = self.v0, self.a  # make local variables
-        return v0*t + 0.5*a*t**2
+#     def __call__(self, t):
+#         v0, a = self.v0, self.a  # make local variables
+#         return v0*t + 0.5*a*t**2
 
-s = Distance(v0=2, a=0.5)  # create instance
-v = s(t=0.2)               # actually s.__call__(t=0.2)
-!ec
+# s = Distance(v0=2, a=0.5)  # create instance
+# v = s(t=0.2)               # actually s.__call__(t=0.2)
+# !ec
 
-!split
-===== Class implementation of $f(x,y,z; p_1,p_2,\ldots,p_n)$ =====
+# !split
+# ===== Class implementation of $f(x,y,z; p_1,p_2,\ldots,p_n)$ =====
 
- * The $n$ parameters $p_1,p_2,\ldots,p_n$ are attributes
- * `__call__(self, x, y, z)` is used to compute $f(x, y, z)$
+#  * The $n$ parameters $p_1,p_2,\ldots,p_n$ are attributes
+#  * `__call__(self, x, y, z)` is used to compute $f(x, y, z)$
 
-!bc pycod
-class F:
-    def __init__(self, p1, p2, ...):
-        self.p1 = p1
-        self.p2 = p2
-        ...
+# !bc pycod
+# class F:
+#     def __init__(self, p1, p2, ...):
+#         self.p1 = p1
+#         self.p2 = p2
+#         ...
 
-    def __call__(self, x, y, z):
-        # return formula involving x, y, z and self.p1, self.p2 ...
+#     def __call__(self, x, y, z):
+#         # return formula involving x, y, z and self.p1, self.p2 ...
 
-f = F(p1=..., p2=..., ...)   # create instance with parameters
-print f(1, 4, -1)            # evaluate f(x,y,z) function
-!ec
-% endif
+# f = F(p1=..., p2=..., ...)   # create instance with parameters
+# print f(1, 4, -1)            # evaluate f(x,y,z) function
+# !ec

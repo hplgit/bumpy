@@ -15,7 +15,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -27,8 +27,26 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/sidebar.js"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
     <link rel="top" title="A very basic introduction to scientific Python programming" href="index.html" />
-    <link rel="prev" title="A very basic introduction to scientific Python programming" href="index.html" /> 
+    <link rel="prev" title="A very basic introduction to scientific Python programming" href="index.html" />
+ 
   
    <style type="text/css">
      div.admonition {
@@ -65,7 +83,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen (hpl at simula.no)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 9, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 11, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -606,7 +624,7 @@ code:</p>
 </div>
 <p>The plotfile <tt class="docutils literal"><span class="pre">myplot.png</span></tt> looks like</p>
 <div class="figure">
-<img alt="_images/plot1_s.png" src="_images/plot1_s.png" style="width: 500px;" />
+<a class="reference internal image-reference" href="_images/plot1_s.png"><img alt="_images/plot1_s.png" src="_images/plot1_s.png" style="width: 500px;" /></a>
 </div>
 <p>Matlab users may prefer to do</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
@@ -633,7 +651,7 @@ axis and a box with legends such that we can distinguish the two curves:</p>
 </pre></div>
 </div>
 <div class="figure">
-<img alt="_images/plot2_s.png" src="_images/plot2_s.png" style="width: 500px;" />
+<a class="reference internal image-reference" href="_images/plot2_s.png"><img alt="_images/plot2_s.png" src="_images/plot2_s.png" style="width: 500px;" /></a>
 </div>
 </div>
 </div>
@@ -1092,24 +1110,24 @@ timer feature <tt class="docutils literal"><span class="pre">%timeit</span></tt>
 computing <span class="math">\(\sin (x)\)</span>, where <span class="math">\(x\)</span> is an array of 1M elements, using
 scalar computing with a loop (function <tt class="docutils literal"><span class="pre">sin_func</span></tt>) and vectorized
 computing using the <tt class="docutils literal"><span class="pre">sin</span></tt> function from <tt class="docutils literal"><span class="pre">numpy</span></tt>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-ipy"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1000000</span>
+<span class="gp">In [2]: </span><span class="n">n</span> <span class="o">=</span> <span class="mi">1000000</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">In [3]: </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="k">def</span> <span class="nf">sin_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-   <span class="o">...</span><span class="p">:</span>     <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c"># result</span>
-   <span class="o">...</span><span class="p">:</span>     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
-   <span class="o">...</span><span class="p">:</span>         <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-   <span class="o">...</span><span class="p">:</span>     <span class="k">return</span> <span class="n">r</span>
-   <span class="o">...</span><span class="p">:</span>
+<span class="gp">In [4]: </span><span class="k">def</span> <span class="nf">sin_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">   ...: </span>    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c"># result</span>
+<span class="gp">   ...: </span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+<span class="gp">   ...: </span>        <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="gp">   ...: </span>    <span class="k">return</span> <span class="n">r</span>
+<span class="gp">   ...:</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="o">%</span><span class="n">timeit</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sin_func</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="mi">1</span> <span class="n">loops</span><span class="p">,</span> <span class="n">best</span> <span class="n">of</span> <span class="mi">3</span><span class="p">:</span> <span class="mf">2.68</span> <span class="n">s</span> <span class="n">per</span> <span class="n">loop</span>
+<span class="gp">In [5]: </span><span class="o">%</span><span class="k">timeit</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sin_func</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">1 loops, best of 3: 2.68 s per loop</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="o">%</span><span class="n">timeit</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="mi">10</span> <span class="n">loops</span><span class="p">,</span> <span class="n">best</span> <span class="n">of</span> <span class="mi">3</span><span class="p">:</span> <span class="mf">40.1</span> <span class="n">ms</span> <span class="n">per</span> <span class="n">loop</span>
+<span class="gp">In [6]: </span><span class="o">%</span><span class="k">timeit</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">10 loops, best of 3: 40.1 ms per loop</span>
 </pre></div>
 </div>
 <p>Here, <tt class="docutils literal"><span class="pre">%timeit</span></tt> ran our function once, but the vectorized function

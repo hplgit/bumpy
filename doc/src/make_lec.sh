@@ -12,9 +12,18 @@ function system {
   fi
 }
 
+if [ $# -ge 1 ]; then
+  COURSE=$1
+else
+  COURSE=any
+fi
+
+opt="COURSE=$COURSE"
+
 #names="basics bumpy"
 #names="basics"
-names="lectures"
+#names="lectures"
+names="lectures_tkt4140"
 for name in $names; do
 
 # Note: can be smart to run beamer slides first since latex finds
@@ -40,6 +49,11 @@ html=${name}-deck
 system doconce format html $name --pygments_html_style=perldoc --keep_pygments_html_bg --html_links_in_new_window --html_output=$html $opt
 system doconce slides_html $html deck --html_slide_theme=sandstone.default
 
+# Bootstrap-gray
+html=${name}-bootstrap_bg
+doconce format html $name --html_style=bootstrap_bluegray --html_links_in_new_window --html_output=$html $opt
+doconce split_html $html.html --pagination --nav_button=top+bottom
+
 # Plain HTML slides, 1 big file in solarized style
 html=${name}-solarized
 system doconce format html $name --pygments_html_style=perldoc --html_style=solarized3 --html_links_in_new_window --html_output=$html $opt
@@ -47,6 +61,7 @@ system doconce format html $name --pygments_html_style=perldoc --html_style=sola
 # font in the browser (must often be redone for each page)
 system doconce split_html $html.html --method=space8
 #system doconce slides_html $html doconce --nav_button=text
+
 
 # One big HTML file with space between the slides (good for browsing)
 html=${name}-1
@@ -96,5 +111,5 @@ system doconce format ipynb $name $opt
 
 # Publish
 dest=../pub
-cp -r reveal.js deck.js ${name}-*.html ${name}-*.pdf $dest/
+cp -r reveal.js deck.js ${name}-*.html .${name}-*_html_file_collection ${name}-*.pdf $dest/
 done

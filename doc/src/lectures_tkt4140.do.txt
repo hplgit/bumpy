@@ -1,0 +1,11 @@
+TITLE: Introduction to 
+TITLE: Scientific Python programming 
+TITLE: Apdapted to TKT4140 Numerical Methods with Computer Laboratory
+AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Simula Research Laboratory & University of Oslo
+AUTHOR: Leif Rune Hellevik Email:leif.r.hellevik@ntnu.no at Biomechanichs Group, Departement of Structural Engineering NTNU 
+DATE: today
+
+!split
+TOC: on
+
+# #include "lec-bumpy/basics_tkt4140.do.txt"
