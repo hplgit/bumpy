@@ -52,7 +52,7 @@ The following programming topics are illustrated:
 All files can be forked at URL: "https://github.com/hplgit/bumpy".
 
 !split
-=== Optimal backround for reading this note ===
+=== Optimal background for reading this note ===
 
   * some interest in exploring physics through numerical simulation
   * some very basic knowledge of differential equations
@@ -133,7 +133,7 @@ compression of the spring.
 
 #wing, riser
 
-Our task is to compute and analyse the vertical $u(t)$ vibrations
+Our task is to compute and analyze the vertical $u(t)$ vibrations
 of a vehicle, given the shape $h(x)$ of the road and some velocity $v$.
 
 !split
@@ -333,7 +333,7 @@ This is not strictly necessary, but if we supply `b=2` and `m=4`,
 a computation like `b/m` will give zero as result because both `b` and `m`
 are then integers and `b/m` implies *integer division*, not the
 mathematical division of real numbers (this is not a special
-feature of Python - all languges with a strong heritage from C
+feature of Python - all languages with a strong heritage from C
 invoke integer division if both operands in a division are integers).
 We need to make
 sure that at least one of the operands in a division is a real
@@ -376,8 +376,8 @@ if callable(F):
 !ec
 if we are sure that `F` is either a function or a `numpy` array.
 Should the user send in something else for `F`, Python will encounter
-a run-time error when trying to index `F` as in `F[0]` in the
-statement computating `u[1]`.
+a run-time error when trying to index `F` as in `F[0]` (in the
+statement computing `u[1]`).
 
 To be absolutely safe, we should test that the other arguments are
 of right type as well. For example,
@@ -491,7 +491,7 @@ legal values of this index.
 
 Given $h(x)$, the corresponding acceleration $a(t)$ needed in the
 force $F(t)=-ma(t)$, follows from $a(t)=h''(vt)v^2$, where $v$ is
-the velocity of the vehicle. The compuation may utilize a finite
+the velocity of the vehicle. The computation may utilize a finite
 difference approximation for the second-order derivative $h''$ and
 be encapsulated in a Python function:
 
@@ -505,7 +505,7 @@ $h''(x)$ at the closest interior point.
 The computations of `d2h` above was done array element by array element.
 This loop can be a slow process in Python for long arrays. To speed
 up computations dramatically, we can invoke a *vectorization* of
-the above alogrithm. This means that we get rid of the loops and
+the above algorithm. This means that we get rid of the loops and
 perform arithmetics on complete (or almost complete) arrays.
 The vectorized form of the
 `acceleration` function goes like
@@ -798,7 +798,7 @@ outfile.close()
 x, t = data[0:2]
 u_rms = data[-1]
 !ec
-Note that `data` first contains `x` and `t` and then
+Note that `data` first contains `x` and `t`, thereafter
 a sequence of 3-lists `[h, a, u]`, before the final element,
 the array `u_rms`. With `data[0:2]` we extract
 the sublist with elements `data[0]` and `data[1]` (`0:2` means
@@ -908,9 +908,6 @@ for h, a, u in data[2:-1]:
     case_counter += 1
 !ec
 
-#A word about what happens to the `h` (or `a` or `u`) variable might
-#illustrate much about dynamic typing in Python. In the loop, `h` is
-#set equal to an
 
 FIGURE: [fig-bumpy/hau0, width=700] First realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations. label{bumpy:fig4}
 
@@ -1025,7 +1022,7 @@ fits the equation and initial conditions. With quadratic damping,
 only a linear $u$ will solve the discrete equation so in this case
 we choose $u=I+Vt$.
 
-We embed the SymPy calculations and the numerical calcuations
+We embed the SymPy calculations and the numerical calculations
 in a *test function*:
 
 @@@CODE src-bumpy/tests/tests.py def lhs@def test_all

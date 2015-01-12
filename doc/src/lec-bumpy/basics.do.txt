@@ -470,7 +470,7 @@ Note:
    (separated by comma if more than one)
  * function output is returned to the calling code
  * `v0` and `a` are *global variables*
- * `v0` and `a` must be initialzed before `s` is called
+ * `v0` and `a` must be initialized before `s` is called
 
 !split
 ===== Functions can have multiple arguments =====
@@ -505,7 +505,7 @@ value = s(a=2, t=3, v0=2)    # any sequence allowed
 !ec
 
  * Arguments without the argument name are called *positional arguments*
- * Positional arguments mustalways be listed before the keyword arguments
+ * Positional arguments must always be listed before the keyword arguments
    in the function and in any call
  * The sequence of the keyword arguments can be arbitrary
 
@@ -783,8 +783,93 @@ s[t <= t1] = (v0*t + 0.5*a0*t**2)[t <= t1]
 s[t > t1]  = (v0*t + 0.5*a0*t1**2 + a0*t1*(t-t1))[t > t1]
 !ec
 
+!split
+======= Files =======
+label{basics:files}
+
+FIGURE: [fig-bumpy/files1, width=400 frac=0.7]
+
+!split
+===== File reading =====
+
+Put input data in a text file:
+
+!bc dat
+v0 = 2
+a = 0.2
+dt = 0.1
+interval = [0, 2]
+!ec
+
+!bbox
+How can we read this file into variables `v0`, `a`, `dt`, and `interval`?
+!ebox
+
+!split
+===== Code for reading files with lines `variable = value` =====
+
+@@@CODE src-bumpy/for_file_read_input.py fromto: infile = @t_values =
+
+!split
+===== Splitting lines into words is a frequent operation =====
+
+!bc pyshell
+>>> line = 'v0 = 5.3'
+>>> variable, value = line.split('=')
+>>> variable
+'v0 '
+>>> value
+' 5.3'
+>>> variable.strip()  # strip away blanks
+'v0'
+!ec
+
+Note: must convert `value` to `float` before we can compute with
+the value!
+
+
+!split
+===== Modern Python often applies the `with` statement for file handling =====
+
+!bc pycod
+with open('.input.dat', 'r') as infile:
+    for line in infile:
+        ...
+!ec
+
+No need to close the file when using `with`
+
+!split
+===== File writing =====
+
+ * We have $t$ and $s(t)$ values in two lists, `t_values` and
+   `s_values`
+ * Task: write these lists as a nicely formatted table in a file
+
+Code:
+
+@@@CODE src-bumpy/for_file_read_input.py fromto: outfile =@# Alternative
+
+!split
+===== Simplified writing of tabular data to file via `numpy.savetxt` =====
+
+@@@CODE src-bumpy/for_file_read_input.py fromto: import numpy as@# Read the file back
+
+!split
+===== Simplified reading of tabular data from file via `numpy.savetxt` =====
+
+@@@CODE src-bumpy/for_file_read_input.py fromto: data = np\.loadtxt@
+
+Note:
+
+ * Lines beginning with the comment character `#` are skipped in the reading
+ * `data` is a two-dimensional array: `data[i,0]`
+   holds the $t$ value and `data[i,1]` the $s(t)$ value in the `i`-th
+   row
+
 % if COURSE == 'any':
 
+!split
 ======= Classes =======
 label{basics:class}
 

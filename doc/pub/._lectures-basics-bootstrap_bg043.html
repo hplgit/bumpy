@@ -143,22 +143,45 @@ Automatically generated HTML file from DocOnce source
                2,
                None,
                '___sec38'),
-              (' Classes ', 1, 'basics:class', 'basics:class'),
-              (' A very simple class ', 2, None, '___sec40'),
-              (' How can we use this class? ', 2, None, '___sec41'),
-              (' The `self` argument is a difficult thing for newcomers... ',
+              (' Files ', 1, 'basics:files', 'basics:files'),
+              (' File reading ', 2, None, '___sec40'),
+              (' Code for reading files with lines `variable = value` ',
+               2,
+               None,
+               '___sec41'),
+              (' Splitting lines into words is a frequent operation ',
                2,
                None,
                '___sec42'),
-              (' A class for representing a mathematical function ',
+              (' Modern Python often applies the `with` statement for file handling ',
                2,
                None,
                '___sec43'),
-              (' The class code ', 2, None, '___sec44'),
+              (' File writing ', 2, None, '___sec44'),
+              (' Simplified writing of tabular data to file via `numpy.savetxt` ',
+               2,
+               None,
+               '___sec45'),
+              (' Simplified reading of tabular data from file via `numpy.savetxt` ',
+               2,
+               None,
+               '___sec46'),
+              (' Classes ', 1, 'basics:class', 'basics:class'),
+              (' A very simple class ', 2, None, '___sec48'),
+              (' How can we use this class? ', 2, None, '___sec49'),
+              (' The `self` argument is a difficult thing for newcomers... ',
+               2,
+               None,
+               '___sec50'),
+              (' A class for representing a mathematical function ',
+               2,
+               None,
+               '___sec51'),
+              (' The class code ', 2, None, '___sec52'),
               (' Class implementation of $f(x,y,z; p_1,p_2,\\ldots,p_n)$ ',
                2,
                None,
-               '___sec45')]}
+               '___sec53')]}
 end of tocinfo -->
 
 <body>
@@ -197,7 +220,8 @@ MathJax.Hub.Config({
         <ul class="dropdown-menu">
      <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg003.html#basics:basic:objects" style="font-size: 80%;">Variables, loops, lists, and arrays</a></li>
      <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg026.html#basics:func:branching" style="font-size: 80%;">Functions and branching</a></li>
-     <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg040.html#basics:class" style="font-size: 80%;">Classes</a></li>
+     <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg041.html#basics:files" style="font-size: 80%;">Files</a></li>
+     <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg049.html#basics:class" style="font-size: 80%;">Classes</a></li>
 
         </ul>
       </li>
@@ -228,32 +252,38 @@ MathJax.Hub.Config({
   <li><a href="._lectures-basics-bootstrap_bg044.html">45</a></li>
   <li><a href="._lectures-basics-bootstrap_bg045.html">46</a></li>
   <li><a href="._lectures-basics-bootstrap_bg046.html">47</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg047.html">48</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg048.html">49</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg049.html">50</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg050.html">51</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg051.html">52</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg052.html">53</a></li>
+  <li><a href="">...</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg055.html">56</a></li>
   <li><a href="._lectures-basics-bootstrap_bg044.html">&raquo;</a></li>
 </ul>
 <!-- !split -->
 
-<h2 id="___sec42">The <code>self</code> argument is a difficult thing for newcomers... </h2>
+<h2 id="___sec41">Code for reading files with lines <code>variable = value</code> </h2>
 
 <p>
-It takes time and experience to understand the <code>self</code> argument in
-class methods!
 
-<ol>
-<li> <code>self</code> must always be the first argument</li>
-<li> <code>self</code> is never used in calls</li>
-<li> <code>self</code> is used to access attributes and methods inside methods</li>
-</ol>
-
-We refer to a <a href="http://hplgit.github.io/primer.html/doc/pub/class/index.html" target="_blank">more comprehensive text on classes</a>
-for better explanation of <code>self</code>.
-
-<p>
-<div class="alert alert-block alert-success alert-text-normal"><b></b>
-<code>self</code> is confusing in the beginning, but later it greatly helps
-the understanding of how classes work!
-</div>
-
-
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">infile <span style="color: #666666">=</span> <span style="color: #008000">open</span>(<span style="color: #BA2121">&#39;.input.dat&#39;</span>, <span style="color: #BA2121">&#39;r&#39;</span>)
+<span style="color: #008000; font-weight: bold">for</span> line <span style="color: #AA22FF; font-weight: bold">in</span> infile:
+    <span style="color: #408080; font-style: italic"># Typical line: variable = value</span>
+    variable, value <span style="color: #666666">=</span> line<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;=&#39;</span>)
+    variable <span style="color: #666666">=</span> variable<span style="color: #666666">.</span>strip()  <span style="color: #408080; font-style: italic"># remove leading/traling blanks</span>
+    <span style="color: #008000; font-weight: bold">if</span> variable <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;v0&#39;</span>:
+        v0 <span style="color: #666666">=</span> <span style="color: #008000">float</span>(value)
+    <span style="color: #008000; font-weight: bold">elif</span> variable <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;a&#39;</span>:
+        a <span style="color: #666666">=</span> <span style="color: #008000">float</span>(value)
+    <span style="color: #008000; font-weight: bold">elif</span> variable <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;dt&#39;</span>:
+        dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(value)
+    <span style="color: #008000; font-weight: bold">elif</span> variable <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;interval&#39;</span>:
+        interval <span style="color: #666666">=</span> <span style="color: #008000">eval</span>(value)
+infile<span style="color: #666666">.</span>close()
+</pre></div>
 <p>
 <p>
 <!-- navigation buttons at the bottom of the page -->
@@ -273,6 +303,14 @@ the understanding of how classes work!
   <li><a href="._lectures-basics-bootstrap_bg044.html">45</a></li>
   <li><a href="._lectures-basics-bootstrap_bg045.html">46</a></li>
   <li><a href="._lectures-basics-bootstrap_bg046.html">47</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg047.html">48</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg048.html">49</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg049.html">50</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg050.html">51</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg051.html">52</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg052.html">53</a></li>
+  <li><a href="">...</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg055.html">56</a></li>
   <li><a href="._lectures-basics-bootstrap_bg044.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->

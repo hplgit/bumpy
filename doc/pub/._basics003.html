@@ -60,14 +60,17 @@ Automatically generated HTML file from DocOnce source
               (' If tests ', 2, 'basics:if', 'basics:if'),
               (' Using the `where` function ', 3, None, '___sec18'),
               (' Using array indexing ', 3, None, '___sec19'),
+              (' Files ', 1, 'basics:files', 'basics:files'),
+              (' File reading ', 2, None, '___sec21'),
+              (' File writing ', 2, None, '___sec22'),
               (' Classes ', 1, 'basics:class', 'basics:class'),
-              (' A very simple class ', 2, None, '___sec21'),
+              (' A very simple class ', 2, None, '___sec24'),
               (' A class for representing a mathematical function ',
                2,
                None,
-               '___sec22'),
-              (' The class code ', 3, None, '___sec23'),
-              (' Dissection ', 3, None, '___sec24'),
+               '___sec25'),
+              (' The class code ', 3, None, '___sec26'),
+              (' Dissection ', 3, None, '___sec27'),
               (' Exercises ', 1, 'basics:exer', 'basics:exer'),
               (' Exercise 1: Program a formula ',
                2,
@@ -147,8 +150,9 @@ MathJax.Hub.Config({
         <ul class="dropdown-menu">
      <!-- navigation toc: --> <li><a href="._basics001.html#basics:basic:objects" style="font-size: 80%;">Variables, loops, lists, and arrays</a></li>
      <!-- navigation toc: --> <li><a href="._basics002.html#basics:func:branching" style="font-size: 80%;">Functions and branching</a></li>
-     <!-- navigation toc: --> <li><a href="#basics:class" style="font-size: 80%;">Classes</a></li>
-     <!-- navigation toc: --> <li><a href="._basics004.html#basics:exer" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:files" style="font-size: 80%;">Files</a></li>
+     <!-- navigation toc: --> <li><a href="._basics004.html#basics:class" style="font-size: 80%;">Classes</a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer" style="font-size: 80%;">Exercises</a></li>
 
         </ul>
       </li>
@@ -164,179 +168,154 @@ MathJax.Hub.Config({
 <a name="part0003"></a>
 <!-- !split -->
 
-<h1 id="basics:class">Classes</h1>
+<h1 id="basics:files">Files</h1>
 
 <p>
-All objects in Python are in fact implemented as classes, but you can
-program with objects without knowing about classes. Nevertheless,
-the class concept is a powerful tool and some basic knowledge will
-make it easier to understand much useful Python information that is
-floating around.
+This section outlines basic file handling in Python, including file
+utilities in the <code>numpy</code> package.
 
-<h2 id="___sec21">A very simple class </h2>
+<h2 id="___sec21">File reading </h2>
 
 <p>
-A class packs together a set of variables and a set of functions. All
-functions can access all variables. <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="In classes, the functions are called methods and the variables are called attributes."><a href="#def_footnote_1" id="link_footnote_1" style="color: white">1</a></button> The idea is
-to encapsulate variables and functions in logical units such that a
-larger program can be composed by combing such units (classes).
-
-<p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> In classes, the functions are called
-<em>methods</em> and the variables are called <em>attributes</em>.</p>
-
-<p>
-Here is a trivial class that has one variable <code>a</code> and one
-function <code>dump</code> that writes the contents of <code>a</code>:
+Suppose we create a file with typical input data to our little
+demo program for evaluating the formula \( s(t)=v_0t + \frac{1}{2}at^2 \):
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Trivial</span>:
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, a):
-        <span style="color: #008000">self</span><span style="color: #666666">.</span>a <span style="color: #666666">=</span> a
-
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">dump</span>(<span style="color: #008000">self</span>):
-        <span style="color: #008000; font-weight: bold">print</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>a
+<!-- code=text (!bc dat) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">v0 = 2
+a = 0.2
+dt = 0.1
+interval = [0, 2]
 </pre></div>
 <p>
-How can we use this class? First, we must make an <em>instance</em> (object)
-of the class:
+We want to read the parameters in the file into Python variables and
+create a table with columns of \( t \) and \( S(t) \) for \( t\in [0,2] \) with
+steps of \( \Delta t=0.1 \) (as specified by <code>dt</code> and <code>interval</code> in the file).
+
+<p>
+The code for reading the lines in the file, interpreting them, and
+assigning values to variables is given next.
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">t <span style="color: #666666">=</span> Trivial(a<span style="color: #666666">=4</span>)
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">infile <span style="color: #666666">=</span> <span style="color: #008000">open</span>(<span style="color: #BA2121">&#39;.input.dat&#39;</span>, <span style="color: #BA2121">&#39;r&#39;</span>)
+<span style="color: #008000; font-weight: bold">for</span> line <span style="color: #AA22FF; font-weight: bold">in</span> infile:
+    <span style="color: #408080; font-style: italic"># Typical line: variable = value</span>
+    variable, value <span style="color: #666666">=</span> line<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;=&#39;</span>)
+    variable <span style="color: #666666">=</span> variable<span style="color: #666666">.</span>strip()  <span style="color: #408080; font-style: italic"># remove leading/traling blanks</span>
+    <span style="color: #008000; font-weight: bold">if</span> variable <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;v0&#39;</span>:
+        v0 <span style="color: #666666">=</span> <span style="color: #008000">float</span>(value)
+    <span style="color: #008000; font-weight: bold">elif</span> variable <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;a&#39;</span>:
+        a <span style="color: #666666">=</span> <span style="color: #008000">float</span>(value)
+    <span style="color: #008000; font-weight: bold">elif</span> variable <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;dt&#39;</span>:
+        dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(value)
+    <span style="color: #008000; font-weight: bold">elif</span> variable <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;interval&#39;</span>:
+        interval <span style="color: #666666">=</span> <span style="color: #008000">eval</span>(value)
+infile<span style="color: #666666">.</span>close()
 </pre></div>
 <p>
-The syntax <code>Trivial(a=4)</code> implies a call to the <code>__init__</code> method (function)
-with <code>4</code> as the value of the argument <code>a</code>. Inside <code>__init__</code>,
-we store the value of <code>a</code> as an attribute in the class: <code>self.a</code>.
-If there were several methods in the class, all of them could then
-access <code>self.a</code> (as if <code>a</code> were some global variable in the class).
-The <code>__init__</code> function is called a <em>constructor</em> since it is used
-to construct an instance (object) of the class.
-
-<p>
-Having an instance <code>t</code> of class <code>Trivial</code>, we can call the <code>dump</code> method
-as follows:
+The name of the file is here <code>.input.dat</code>, and it is opened with the
+parameter <code>'r'</code> for reading. The for loop <code>for line in infile</code> will
+read the lines from the file, one by one, and in the current line
+is available in the string <code>line</code>. To split a line into words separated
+by a character '=', we use <code>line.split('=')</code>, resulting in a list of
+the words. For example,
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">t<span style="color: #666666">.</span>dump()
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> line <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;v0 = 5.3&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> variable, value <span style="color: #666666">=</span> line<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;=&#39;</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> variable
+<span style="color: #BA2121">&#39;v0 &#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> value
+<span style="color: #BA2121">&#39; 5.3&#39;</span>
 </pre></div>
 <p>
-Even though both <code>__init__</code> and <code>dump</code> have <code>self</code> as first argument,
-this argument <em>is not used in a call</em>.
+Note that there are blanks in the strings. Leading and trailing blanks
+can be removed by <code>variable.strip()</code>. We do this before comparing
+the variable name with <code>v0</code>, <code>a</code>, etc.
 
 <p>
-<div class="alert alert-block alert-success alert-text-normal"><b>The <code>self</code> argument.</b>
-It takes time and experience to understand the <code>self</code> argument in
-class methods.
-
-<ol>
-<li> <code>self</code> must always be the first argument.</li>
-<li> <code>self</code> is never used in calls.</li>
-<li> <code>self</code> is used to access attributes and methods inside methods.</li>
-</ol>
-
-We refer to a <a href="http://hplgit.github.io/primer.html/doc/pub/class/index.html" target="_self">more comprehensive text on classes</a>
-for better explanation of <code>self</code>.
-</div>
-
-
-<h2 id="___sec22">A class for representing a mathematical function </h2>
+It is important to note that <code>value</code> (the text to the right of <code>=</code> on
+each line) is a string variable. We need to convert to <code>float</code> to
+get a variable that we can compute with.
+The assignment <code>interval = eval(value)</code> does some magic and deserve
+an explanation: <code>eval(s)</code> interprets the text in the string <code>s</code> as
+Python code. In the present example, <code>value</code> is <code>[0, 2]</code> and this
+is interpreted as Python code, i.e., as a list, and <code>interval</code> becomes
+a name for a list object with content <code>[0, 2]</code>.
 
 <p>
-The Python implementation of the mathematical function
-
-$$ s(t; v_0, a) = v_0t + \frac{1}{2}at^2$$
-
-can benefit from being implemented as a class. The reason is that
-\( s \) is a function of one variable, \( t \), so it should be called as
-\( s(t) \), but the function also contains two parameters, \( v_0 \) and \( a \).
-Using a class, we can pack \( v_0 \) and \( a \) together with a function
-computing \( s(t) \) and that can be called with one argument.
-
-<h3 id="___sec23">The class code </h3>
+A more modern Python way of opening files is
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Distance</span>:
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, v0, a):
-        <span style="color: #008000">self</span><span style="color: #666666">.</span>v0 <span style="color: #666666">=</span> v0
-        <span style="color: #008000">self</span><span style="color: #666666">.</span>a <span style="color: #666666">=</span> a
-
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, t):
-        v0, a <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>v0, <span style="color: #008000">self</span><span style="color: #666666">.</span>a  <span style="color: #408080; font-style: italic"># make local variables</span>
-        <span style="color: #008000; font-weight: bold">return</span> v0<span style="color: #666666">*</span>t <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>a<span style="color: #666666">*</span>t<span style="color: #666666">**2</span>
-</pre></div>
-
-<h3 id="___sec24">Dissection </h3>
-
-<p>
-The class has two methods (functions). The name of a method can
-be freely chosen by the programmer, say <code>dump</code> as we used above,
-but here we have used three
-special names, starting and
-ending with double underscores, which allows us to use special
-attractive syntax in the calls (such methods are actually known as
-<em>special methods</em>).
-
-<p>
-The constructor <code>__init__</code> has one purpose: storing data in
-class attributes, here <code>self.v0</code> and <code>self.a</code>. We can then access
-these data in class methods.
-
-<p>
-The <code>__call__</code> method is used to evaluate \( s(t) \). It has one
-argument (<code>self</code> does not count since it is never used in calls).
-This special methods allows us to view a class instance as if
-were a function. Let us illustrate by some code:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">s <span style="color: #666666">=</span> Distance(v0<span style="color: #666666">=2</span>, a<span style="color: #666666">=0.5</span>)  <span style="color: #408080; font-style: italic"># create instance</span>
-v <span style="color: #666666">=</span> s(t<span style="color: #666666">=0.2</span>)               <span style="color: #408080; font-style: italic"># runs s.__call__(t=0.2)</span>
-</pre></div>
-<p>
-The last line has some magic: <code>s</code> is a class instance, not a function,
-but still we can write <code>s(t=0.2)</code> or <code>s(0.2)</code> as if <code>s</code> were
-a function. This is the purpose of the special method <code>__call__</code>:
-to allow such syntax. Actually, <code>s(0.2)</code> means
-<code>s.__call__(0.2)</code>. The nice result is that <code>s</code> looks like a
-function, it takes one argument <code>t</code>, as the mathematical function \( s(t) \),
-but it also contains values of the two parameters \( v_0 \) and \( a \).
-
-<p>
-In general, for a function \( f(x,y,z; p_1,p_2,\ldots,p_n) \), here with
-three independent variables and \( n \) parameters \( p_1,p_2,\ldots,p_n \),
-we can pack the function and the parameters together in a class:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">F</span>:
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, p1, p2, <span style="color: #666666">...</span>):
-        <span style="color: #008000">self</span><span style="color: #666666">.</span>p1 <span style="color: #666666">=</span> p1
-        <span style="color: #008000">self</span><span style="color: #666666">.</span>p2 <span style="color: #666666">=</span> p2
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">with</span> <span style="color: #008000">open</span>(<span style="color: #BA2121">&#39;.input.dat&#39;</span>, <span style="color: #BA2121">&#39;r&#39;</span>) <span style="color: #008000; font-weight: bold">as</span> infile:
+    <span style="color: #008000; font-weight: bold">for</span> line <span style="color: #AA22FF; font-weight: bold">in</span> infile:
         <span style="color: #666666">...</span>
-
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x, y, z):
-        <span style="color: #408080; font-style: italic"># return formula involving x, y, z and self.p1, self.p2 ...</span>
 </pre></div>
 <p>
-The \( f \) function is initialized by
+Now it is not necessary to close the file as it will be automatically done
+after the <code>with</code> block.
+
+<h2 id="___sec22">File writing </h2>
+
+<p>
+Suppose we generate \( t \) and \( s(t) \) values in two lists, <code>t_values</code> and
+<code>s_values</code> and want to write these as a nicely formatted table to file.
+The following code does the work:
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">f <span style="color: #666666">=</span> F(p1<span style="color: #666666">=...</span>, p2<span style="color: #666666">=...</span>, <span style="color: #666666">...</span>)
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">outfile <span style="color: #666666">=</span> <span style="color: #008000">open</span>(<span style="color: #BA2121">&#39;table1.dat&#39;</span>, <span style="color: #BA2121">&#39;w&#39;</span>)
+outfile<span style="color: #666666">.</span>write(<span style="color: #BA2121">&#39;# t    s(t)</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span>)  <span style="color: #408080; font-style: italic"># write header</span>
+<span style="color: #008000; font-weight: bold">for</span> t, s <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">zip</span>(t_values, s_values):
+    outfile<span style="color: #666666">.</span>write(<span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">  </span><span style="color: #BB6688; font-weight: bold">%.4f</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (t, s))
 </pre></div>
 <p>
-and later called as <code>f(x, y, z)</code>.
+Files intended for writing must be opened with a <code>'w'</code> parameter.
+The key statement is <code>outfile.write(s)</code> for writing a string to
+a file (recall that while <code>print</code> automatically adds a newline
+at the end of the string to be printed, <code>outfile.write(s)</code> does not
+append a newline so <code>s</code> must contain the newline).
+
+<p>
+The <code>numpy</code> package contains a convenient function <code>savetxt</code> for saving
+tabular data. The data must be stored in a two-dimensional <code>numpy</code> array.
+The <code>savetxt</code> function enables control of the format of the numbers
+in each column (<code>fmt</code>) through the printf syntax, a header can be
+added (<code>header</code>) and the header lines begin with a comment character
+(<code>comment</code>). The code reads
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #408080; font-style: italic"># Make two-dimensional array of [t, s(t)] values in each row</span>
+data <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array([t_values, s_values])<span style="color: #666666">.</span>transpose()
+np<span style="color: #666666">.</span>savetxt(<span style="color: #BA2121">&#39;table2.dat&#39;</span>, data, fmt<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">&#39;</span>, <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%.4f</span><span style="color: #BA2121">&#39;</span>],
+           header<span style="color: #666666">=</span><span style="color: #BA2121">&#39;t   s(t)&#39;</span>, comments<span style="color: #666666">=</span><span style="color: #BA2121">&#39;# &#39;</span>)
+</pre></div>
+<p>
+The tabular data in the file can be read back into a
+<code>numpy</code> array by the <code>loadtxt</code> function:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">data <span style="color: #666666">=</span> np<span style="color: #666666">.</span>loadtxt(<span style="color: #BA2121">&#39;table2.dat&#39;</span>, comments<span style="color: #666666">=</span><span style="color: #BA2121">&#39;#&#39;</span>)
+</pre></div>
+<p>
+Lines beginning with the comment character are skipped in the reading.
+The resulting object <code>data</code> is a two-dimensional array: <code>data[i,j]</code> contains
+row number <code>i</code> and column number <code>j</code> in the table, i.e., <code>data[i,0]</code>
+holds the \( t \) value and <code>data[i,1]</code> the \( s(t) \) value in the <code>i</code>-th
+row.
 
 <p>
 <p>
@@ -348,6 +327,7 @@ and later called as <code>f(x, y, z)</code>.
   <li><a href="._basics002.html">3</a></li>
   <li class="active"><a href="._basics003.html">4</a></li>
   <li><a href="._basics004.html">5</a></li>
+  <li><a href="._basics005.html">6</a></li>
   <li><a href="._basics004.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->

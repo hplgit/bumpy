@@ -287,7 +287,7 @@ sequence. For example,
 !bc pycod
 L = [-1, 1, 8.0]
 !ec
-is a list of three numbers. Lists are encolsed in square brackets
+is a list of three numbers. Lists are enclosed in square brackets
 and may contain any type of objects separated by commas. Here
 we mix a filename (string), a real number, and an integer:
 
@@ -680,7 +680,7 @@ value = s(a=2, t=3, v0=2)    # any sequence allowed
 
 !bnotice Notice
  * Arguments without the argument name are called *positional arguments*.
- * Positional arguments mustalways be listed before the keyword arguments
+ * Positional arguments must always be listed before the keyword arguments
    in the function and in any call.
  * The sequence of the keyword arguments can be arbitrary.
  * If argument names are used for all arguments (as in the last line above)
@@ -816,7 +816,7 @@ else:
     <statements when condition is False>
 !ec
 Here, `condition` is a boolean expression that evaluates to `True` or
-`False`. For the picewisely defined function (ref{basics:seq2})
+`False`. For the piecewisely defined function (ref{basics:seq2})
 we would use an if test in the implementation:
 
 !bc pycod
@@ -927,11 +927,88 @@ demo program for evaluating the formula $s(t)=v_0t + \frac{1}{2}at^2$:
 v0 = 2
 a = 0.2
 dt = 0.1
-t in [0, 2]
+interval = [0, 2]
 !ec
 We want to read the parameters in the file into Python variables and
 create a table with columns of $t$ and $S(t)$ for $t\in [0,2]$ with
-steps of $\Delta t=0.1$ (as specified by `dt` and `t in [0,2]` in the file).
+steps of $\Delta t=0.1$ (as specified by `dt` and `interval` in the file).
+
+The code for reading the lines in the file, interpreting them, and
+assigning values to variables is given next.
+
+@@@CODE src-bumpy/for_file_read_input.py fromto: infile = @t_values =
+The name of the file is here `.input.dat`, and it is opened with the
+parameter `'r'` for reading. The for loop `for line in infile` will
+read the lines from the file, one by one, and in the current line
+is available in the string `line`. To split a line into words separated
+by a character '=', we use `line.split('=')`, resulting in a list of
+the words. For example,
+
+!bc pyshell
+>>> line = 'v0 = 5.3'
+>>> variable, value = line.split('=')
+>>> variable
+'v0 '
+>>> value
+' 5.3'
+!ec
+Note that there are blanks in the strings. Leading and trailing blanks
+can be removed by `variable.strip()`. We do this before comparing
+the variable name with `v0`, `a`, etc.
+
+It is important to note that `value` (the text to the right of `=` on
+each line) is a string variable. We need to convert to a `float` object to
+get a variable that we can compute with.
+The assignment `interval = eval(value)` does some magic and deserve
+an explanation: `eval(s)` interprets the text in the string `s` as
+Python code. In the present example, `value` is `[0, 2]` and this
+is interpreted as Python code, i.e., as a list, and `interval` becomes
+a name for a list object with content `[0, 2]`.
+
+A more modern Python way of opening files is
+
+!bc pycod
+with open('.input.dat', 'r') as infile:
+    for line in infile:
+        ...
+!ec
+Now it is not necessary to close the file as it will be automatically done
+after the `with` block.
+
+===== File writing =====
+
+Suppose we generate $t$ and $s(t)$ values in two lists, `t_values` and
+`s_values`, and want to write these as a nicely formatted table to file.
+The following code does the work:
+
+@@@CODE src-bumpy/for_file_read_input.py fromto: outfile =@# Alternative
+
+Files intended for writing must be opened with a `'w'` parameter.
+The key statement is `outfile.write(s)` for writing a string to
+a file (recall that while `print` automatically adds a newline
+at the end of the string to be printed, `outfile.write(s)` does not
+append a newline so `s` must contain the newline).
+
+The `numpy` package contains a convenient function `savetxt` for saving
+tabular data. The data must be stored in a two-dimensional `numpy` array.
+The `savetxt` function enables control of the format of the numbers
+in each column (`fmt`) through the printf syntax, a header can be
+added (`header`) and the header lines begin with a comment character
+(`comment`). The code reads
+
+@@@CODE src-bumpy/for_file_read_input.py fromto: import numpy as@# Read the file back
+
+The tabular data in the file can be read back into a
+`numpy` array by the `loadtxt` function:
+
+@@@CODE src-bumpy/for_file_read_input.py fromto: data = np\.loadtxt@
+Lines beginning with the comment character are skipped in the reading.
+The resulting object `data` is a two-dimensional array: `data[i,j]` contains
+row number `i` and column number `j` in the table, i.e., `data[i,0]`
+holds the $t$ value and `data[i,1]` the $s(t)$ value in the `i`-th
+row.
+
+
 !split
 ======= Classes =======
 label{basics:class}

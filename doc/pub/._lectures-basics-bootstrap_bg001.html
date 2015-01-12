@@ -143,22 +143,45 @@ Automatically generated HTML file from DocOnce source
                2,
                None,
                '___sec38'),
-              (' Classes ', 1, 'basics:class', 'basics:class'),
-              (' A very simple class ', 2, None, '___sec40'),
-              (' How can we use this class? ', 2, None, '___sec41'),
-              (' The `self` argument is a difficult thing for newcomers... ',
+              (' Files ', 1, 'basics:files', 'basics:files'),
+              (' File reading ', 2, None, '___sec40'),
+              (' Code for reading files with lines `variable = value` ',
+               2,
+               None,
+               '___sec41'),
+              (' Splitting lines into words is a frequent operation ',
                2,
                None,
                '___sec42'),
-              (' A class for representing a mathematical function ',
+              (' Modern Python often applies the `with` statement for file handling ',
                2,
                None,
                '___sec43'),
-              (' The class code ', 2, None, '___sec44'),
+              (' File writing ', 2, None, '___sec44'),
+              (' Simplified writing of tabular data to file via `numpy.savetxt` ',
+               2,
+               None,
+               '___sec45'),
+              (' Simplified reading of tabular data from file via `numpy.savetxt` ',
+               2,
+               None,
+               '___sec46'),
+              (' Classes ', 1, 'basics:class', 'basics:class'),
+              (' A very simple class ', 2, None, '___sec48'),
+              (' How can we use this class? ', 2, None, '___sec49'),
+              (' The `self` argument is a difficult thing for newcomers... ',
+               2,
+               None,
+               '___sec50'),
+              (' A class for representing a mathematical function ',
+               2,
+               None,
+               '___sec51'),
+              (' The class code ', 2, None, '___sec52'),
               (' Class implementation of $f(x,y,z; p_1,p_2,\\ldots,p_n)$ ',
                2,
                None,
-               '___sec45')]}
+               '___sec53')]}
 end of tocinfo -->
 
 <body>
@@ -197,7 +220,8 @@ MathJax.Hub.Config({
         <ul class="dropdown-menu">
      <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg003.html#basics:basic:objects" style="font-size: 80%;">Variables, loops, lists, and arrays</a></li>
      <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg026.html#basics:func:branching" style="font-size: 80%;">Functions and branching</a></li>
-     <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg040.html#basics:class" style="font-size: 80%;">Classes</a></li>
+     <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg041.html#basics:files" style="font-size: 80%;">Files</a></li>
+     <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg049.html#basics:class" style="font-size: 80%;">Classes</a></li>
 
         </ul>
       </li>
@@ -226,7 +250,7 @@ MathJax.Hub.Config({
   <li><a href="._lectures-basics-bootstrap_bg009.html">10</a></li>
   <li><a href="._lectures-basics-bootstrap_bg010.html">11</a></li>
   <li><a href="">...</a></li>
-  <li><a href="._lectures-basics-bootstrap_bg046.html">47</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg055.html">56</a></li>
   <li><a href="._lectures-basics-bootstrap_bg002.html">&raquo;</a></li>
 </ul>
 <!-- !split -->
@@ -273,13 +297,21 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; <a href="._lectures-basics-bootstrap_bg038.html#___sec36"> Remedy 1: Call the function with scalar arguments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._lectures-basics-bootstrap_bg039.html#___sec37"> Remedy 2: Vectorize the if test with <code>where</code> </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._lectures-basics-bootstrap_bg040.html#___sec38"> Remedy 3: Vectorize the if test with array indexing </a><br>
-<a href="._lectures-basics-bootstrap_bg040.html#basics:class"> Classes </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._lectures-basics-bootstrap_bg041.html#___sec40"> A very simple class </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._lectures-basics-bootstrap_bg042.html#___sec41"> How can we use this class? </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._lectures-basics-bootstrap_bg043.html#___sec42"> The <code>self</code> argument is a difficult thing for newcomers... </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._lectures-basics-bootstrap_bg044.html#___sec43"> A class for representing a mathematical function </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._lectures-basics-bootstrap_bg045.html#___sec44"> The class code </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._lectures-basics-bootstrap_bg046.html#___sec45"> Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \) </a><br>
+<a href="._lectures-basics-bootstrap_bg041.html#basics:files"> Files </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._lectures-basics-bootstrap_bg042.html#___sec40"> File reading </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._lectures-basics-bootstrap_bg043.html#___sec41"> Code for reading files with lines <code>variable = value</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._lectures-basics-bootstrap_bg044.html#___sec42"> Splitting lines into words is a frequent operation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._lectures-basics-bootstrap_bg045.html#___sec43"> Modern Python often applies the <code>with</code> statement for file handling </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._lectures-basics-bootstrap_bg046.html#___sec44"> File writing </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._lectures-basics-bootstrap_bg047.html#___sec45"> Simplified writing of tabular data to file via <code>numpy.savetxt</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._lectures-basics-bootstrap_bg048.html#___sec46"> Simplified reading of tabular data from file via <code>numpy.savetxt</code> </a><br>
+<a href="._lectures-basics-bootstrap_bg049.html#basics:class"> Classes </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._lectures-basics-bootstrap_bg050.html#___sec48"> A very simple class </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._lectures-basics-bootstrap_bg051.html#___sec49"> How can we use this class? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._lectures-basics-bootstrap_bg052.html#___sec50"> The <code>self</code> argument is a difficult thing for newcomers... </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._lectures-basics-bootstrap_bg053.html#___sec51"> A class for representing a mathematical function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._lectures-basics-bootstrap_bg054.html#___sec52"> The class code </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._lectures-basics-bootstrap_bg055.html#___sec53"> Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \) </a><br>
 </p>
 <p>
 <p>
@@ -298,7 +330,7 @@ MathJax.Hub.Config({
   <li><a href="._lectures-basics-bootstrap_bg009.html">10</a></li>
   <li><a href="._lectures-basics-bootstrap_bg010.html">11</a></li>
   <li><a href="">...</a></li>
-  <li><a href="._lectures-basics-bootstrap_bg046.html">47</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg055.html">56</a></li>
   <li><a href="._lectures-basics-bootstrap_bg002.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->

@@ -143,22 +143,45 @@ Automatically generated HTML file from DocOnce source
                2,
                None,
                '___sec38'),
-              (' Classes ', 1, 'basics:class', 'basics:class'),
-              (' A very simple class ', 2, None, '___sec40'),
-              (' How can we use this class? ', 2, None, '___sec41'),
-              (' The `self` argument is a difficult thing for newcomers... ',
+              (' Files ', 1, 'basics:files', 'basics:files'),
+              (' File reading ', 2, None, '___sec40'),
+              (' Code for reading files with lines `variable = value` ',
+               2,
+               None,
+               '___sec41'),
+              (' Splitting lines into words is a frequent operation ',
                2,
                None,
                '___sec42'),
-              (' A class for representing a mathematical function ',
+              (' Modern Python often applies the `with` statement for file handling ',
                2,
                None,
                '___sec43'),
-              (' The class code ', 2, None, '___sec44'),
+              (' File writing ', 2, None, '___sec44'),
+              (' Simplified writing of tabular data to file via `numpy.savetxt` ',
+               2,
+               None,
+               '___sec45'),
+              (' Simplified reading of tabular data from file via `numpy.savetxt` ',
+               2,
+               None,
+               '___sec46'),
+              (' Classes ', 1, 'basics:class', 'basics:class'),
+              (' A very simple class ', 2, None, '___sec48'),
+              (' How can we use this class? ', 2, None, '___sec49'),
+              (' The `self` argument is a difficult thing for newcomers... ',
+               2,
+               None,
+               '___sec50'),
+              (' A class for representing a mathematical function ',
+               2,
+               None,
+               '___sec51'),
+              (' The class code ', 2, None, '___sec52'),
               (' Class implementation of $f(x,y,z; p_1,p_2,\\ldots,p_n)$ ',
                2,
                None,
-               '___sec45')]}
+               '___sec53')]}
 end of tocinfo -->
 
 <body>
@@ -197,7 +220,8 @@ MathJax.Hub.Config({
         <ul class="dropdown-menu">
      <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg003.html#basics:basic:objects" style="font-size: 80%;">Variables, loops, lists, and arrays</a></li>
      <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg026.html#basics:func:branching" style="font-size: 80%;">Functions and branching</a></li>
-     <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg040.html#basics:class" style="font-size: 80%;">Classes</a></li>
+     <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg041.html#basics:files" style="font-size: 80%;">Files</a></li>
+     <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg049.html#basics:class" style="font-size: 80%;">Classes</a></li>
 
         </ul>
       </li>
@@ -229,31 +253,40 @@ MathJax.Hub.Config({
   <li><a href="._lectures-basics-bootstrap_bg044.html">45</a></li>
   <li><a href="._lectures-basics-bootstrap_bg045.html">46</a></li>
   <li><a href="._lectures-basics-bootstrap_bg046.html">47</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg047.html">48</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg048.html">49</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg049.html">50</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg050.html">51</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg051.html">52</a></li>
+  <li><a href="">...</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg055.html">56</a></li>
   <li><a href="._lectures-basics-bootstrap_bg043.html">&raquo;</a></li>
 </ul>
 <!-- !split -->
 
-<h2 id="___sec41">How can we use this class? </h2>
+<h2 id="___sec40">File reading </h2>
 
 <p>
-First, make an <em>instance</em> (object) of the class:
+Put input data in a text file:
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">t <span style="color: #666666">=</span> Trivial(a<span style="color: #666666">=4</span>)
-t<span style="color: #666666">.</span>dump()
+<!-- code=text (!bc dat) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">v0 = 2
+a = 0.2
+dt = 0.1
+interval = [0, 2]
 </pre></div>
 <p>
-Note:
 
-<ul>
- <li> The syntax <code>Trivial(a=4)</code> actually means <code>Trivial.__init__(t, 4)</code></li>
- <li> <code>self</code> is an argument in <code>__init__</code> and <code>dump</code>, but not used in the calls</li>
- <li> <code>__init__</code> is called <em>constructor</em> and is used to construct an object
-   (instance) if the class</li>
-</ul>
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+How can we read this file into variables <code>v0</code>, <code>a</code>, <code>dt</code>, and <code>interval</code>?
+</div>
+<!-- end box -->
 
+
+<p>
 <p>
 <!-- navigation buttons at the bottom of the page -->
 <ul class="pagination">
@@ -273,6 +306,13 @@ Note:
   <li><a href="._lectures-basics-bootstrap_bg044.html">45</a></li>
   <li><a href="._lectures-basics-bootstrap_bg045.html">46</a></li>
   <li><a href="._lectures-basics-bootstrap_bg046.html">47</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg047.html">48</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg048.html">49</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg049.html">50</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg050.html">51</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg051.html">52</a></li>
+  <li><a href="">...</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg055.html">56</a></li>
   <li><a href="._lectures-basics-bootstrap_bg043.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->

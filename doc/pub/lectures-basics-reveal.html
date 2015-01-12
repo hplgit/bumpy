@@ -190,13 +190,21 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; <a href="#___sec36"> Remedy 1: Call the function with scalar arguments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec37"> Remedy 2: Vectorize the if test with <code>where</code> </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec38"> Remedy 3: Vectorize the if test with array indexing </a><br>
+<a href="#basics:files"> Files </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec40"> File reading </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec41"> Code for reading files with lines <code>variable = value</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec42"> Splitting lines into words is a frequent operation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec43"> Modern Python often applies the <code>with</code> statement for file handling </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec44"> File writing </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec45"> Simplified writing of tabular data to file via <code>numpy.savetxt</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec46"> Simplified reading of tabular data from file via <code>numpy.savetxt</code> </a><br>
 <a href="#basics:class"> Classes </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec40"> A very simple class </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec41"> How can we use this class? </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec42"> The <code>self</code> argument is a difficult thing for newcomers... </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec43"> A class for representing a mathematical function </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec44"> The class code </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec45"> Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec48"> A very simple class </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec49"> How can we use this class? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec50"> The <code>self</code> argument is a difficult thing for newcomers... </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec51"> A class for representing a mathematical function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec52"> The class code </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec53"> Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \) </a><br>
 </p>
 <p>
 
@@ -885,7 +893,7 @@ Note:
    (separated by comma if more than one)</li>
  <p><li> function output is returned to the calling code</li>
  <p><li> <code>v0</code> and <code>a</code> are <em>global variables</em></li>
- <p><li> <code>v0</code> and <code>a</code> must be initialzed before <code>s</code> is called</li>
+ <p><li> <code>v0</code> and <code>a</code> must be initialized before <code>s</code> is called</li>
 </ul>
 <p>
 
@@ -935,7 +943,7 @@ Note:
 </pre></div>
 <ul>
  <p><li> Arguments without the argument name are called <em>positional arguments</em></li>
- <p><li> Positional arguments mustalways be listed before the keyword arguments
+ <p><li> Positional arguments must always be listed before the keyword arguments
    in the function and in any call</li>
  <p><li> The sequence of the keyword arguments can be arbitrary</li>
 </ul>
@@ -1350,6 +1358,192 @@ Our example can utilize this technique with <code>b</code> as <code>t &lt;= t1</
 <span style="color: #d0d0d0">s[t</span> <span style="color: #d0d0d0">&lt;=</span> <span style="color: #d0d0d0">t1]</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">(v0*t</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">0.5</span><span style="color: #d0d0d0">*a0*t**</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">)[t</span> <span style="color: #d0d0d0">&lt;=</span> <span style="color: #d0d0d0">t1]</span>
 <span style="color: #d0d0d0">s[t</span> <span style="color: #d0d0d0">&gt;</span> <span style="color: #d0d0d0">t1]</span>  <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">(v0*t</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">0.5</span><span style="color: #d0d0d0">*a0*t1**</span><span style="color: #3677a9">2</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">a0*t1*(t-t1))[t</span> <span style="color: #d0d0d0">&gt;</span> <span style="color: #d0d0d0">t1]</span>
 </pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h1 id="basics:files">Files</h1>
+
+<p>
+<center><p><img src="fig-bumpy/files1.jpg" align="bottom" width=400></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec40">File reading </h2>
+
+<p>
+Put input data in a text file:
+
+<p>
+
+<!-- code=text (!bc dat) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%">v0 = 2
+a = 0.2
+dt = 0.1
+interval = [0, 2]
+</pre></div>
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+How can we read this file into variables <code>v0</code>, <code>a</code>, <code>dt</code>, and <code>interval</code>?
+</div>
+<!-- end box -->
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec41">Code for reading files with lines <code>variable = value</code> </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">infile</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">open</span><span style="color: #d0d0d0">(</span><span style="color: #ed9d13">&#39;.input.dat&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #ed9d13">&#39;r&#39;</span><span style="color: #d0d0d0">)</span>
+<span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">line</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #d0d0d0">infile:</span>
+    <span style="color: #999999; font-style: italic"># Typical line: variable = value</span>
+    <span style="color: #d0d0d0">variable,</span> <span style="color: #d0d0d0">value</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">line.split(</span><span style="color: #ed9d13">&#39;=&#39;</span><span style="color: #d0d0d0">)</span>
+    <span style="color: #d0d0d0">variable</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">variable.strip()</span>  <span style="color: #999999; font-style: italic"># remove leading/traling blanks</span>
+    <span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">variable</span> <span style="color: #d0d0d0">==</span> <span style="color: #ed9d13">&#39;v0&#39;</span><span style="color: #d0d0d0">:</span>
+        <span style="color: #d0d0d0">v0</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">float</span><span style="color: #d0d0d0">(value)</span>
+    <span style="color: #6ab825; font-weight: bold">elif</span> <span style="color: #d0d0d0">variable</span> <span style="color: #d0d0d0">==</span> <span style="color: #ed9d13">&#39;a&#39;</span><span style="color: #d0d0d0">:</span>
+        <span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">float</span><span style="color: #d0d0d0">(value)</span>
+    <span style="color: #6ab825; font-weight: bold">elif</span> <span style="color: #d0d0d0">variable</span> <span style="color: #d0d0d0">==</span> <span style="color: #ed9d13">&#39;dt&#39;</span><span style="color: #d0d0d0">:</span>
+        <span style="color: #d0d0d0">dt</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">float</span><span style="color: #d0d0d0">(value)</span>
+    <span style="color: #6ab825; font-weight: bold">elif</span> <span style="color: #d0d0d0">variable</span> <span style="color: #d0d0d0">==</span> <span style="color: #ed9d13">&#39;interval&#39;</span><span style="color: #d0d0d0">:</span>
+        <span style="color: #d0d0d0">interval</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">eval</span><span style="color: #d0d0d0">(value)</span>
+<span style="color: #d0d0d0">infile.close()</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec42">Splitting lines into words is a frequent operation </h2>
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">line</span> <span style="color: #d0d0d0">=</span> <span style="color: #ed9d13">&#39;v0 = 5.3&#39;</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">variable,</span> <span style="color: #d0d0d0">value</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">line.split(</span><span style="color: #ed9d13">&#39;=&#39;</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">variable</span>
+<span style="color: #ed9d13">&#39;v0 &#39;</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">value</span>
+<span style="color: #ed9d13">&#39; 5.3&#39;</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">variable.strip()</span>  <span style="color: #999999; font-style: italic"># strip away blanks</span>
+<span style="color: #ed9d13">&#39;v0&#39;</span>
+</pre></div>
+<p>
+Note: must convert <code>value</code> to <code>float</code> before we can compute with
+the value!
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec43">Modern Python often applies the <code>with</code> statement for file handling </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">with</span> <span style="color: #24909d">open</span><span style="color: #d0d0d0">(</span><span style="color: #ed9d13">&#39;.input.dat&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #ed9d13">&#39;r&#39;</span><span style="color: #d0d0d0">)</span> <span style="color: #6ab825; font-weight: bold">as</span> <span style="color: #d0d0d0">infile:</span>
+    <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">line</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #d0d0d0">infile:</span>
+        <span style="color: #d0d0d0">...</span>
+</pre></div>
+<p>
+No need to close the file when using <code>with</code>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec44">File writing </h2>
+
+<ul>
+ <p><li> We have \( t \) and \( s(t) \) values in two lists, <code>t_values</code> and
+   <code>s_values</code></li>
+ <p><li> Task: write these lists as a nicely formatted table in a file</li>
+</ul>
+<p>
+
+Code:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">outfile</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">open</span><span style="color: #d0d0d0">(</span><span style="color: #ed9d13">&#39;table1.dat&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #ed9d13">&#39;w&#39;</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">outfile.write(</span><span style="color: #ed9d13">&#39;# t    s(t)\n&#39;</span><span style="color: #d0d0d0">)</span>  <span style="color: #999999; font-style: italic"># write header</span>
+<span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">t,</span> <span style="color: #d0d0d0">s</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #24909d">zip</span><span style="color: #d0d0d0">(t_values,</span> <span style="color: #d0d0d0">s_values):</span>
+    <span style="color: #d0d0d0">outfile.write(</span><span style="color: #ed9d13">&#39;%.2f  %.4f\n&#39;</span> <span style="color: #d0d0d0">%</span> <span style="color: #d0d0d0">(t,</span> <span style="color: #d0d0d0">s))</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec45">Simplified writing of tabular data to file via <code>numpy.savetxt</code> </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #447fcf; text-decoration: underline">numpy</span> <span style="color: #6ab825; font-weight: bold">as</span> <span style="color: #447fcf; text-decoration: underline">np</span>
+<span style="color: #999999; font-style: italic"># Make two-dimensional array of [t, s(t)] values in each row</span>
+<span style="color: #d0d0d0">data</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">np.array([t_values,</span> <span style="color: #d0d0d0">s_values]).transpose()</span>
+<span style="color: #d0d0d0">np.savetxt(</span><span style="color: #ed9d13">&#39;table2.dat&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">data,</span> <span style="color: #d0d0d0">fmt=[</span><span style="color: #ed9d13">&#39;%.2f&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #ed9d13">&#39;%.4f&#39;</span><span style="color: #d0d0d0">],</span>
+           <span style="color: #d0d0d0">header=</span><span style="color: #ed9d13">&#39;t   s(t)&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">comments=</span><span style="color: #ed9d13">&#39;# &#39;</span><span style="color: #d0d0d0">)</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec46">Simplified reading of tabular data from file via <code>numpy.savetxt</code> </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">data</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">np.loadtxt(</span><span style="color: #ed9d13">&#39;table2.dat&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">comments=</span><span style="color: #ed9d13">&#39;#&#39;</span><span style="color: #d0d0d0">)</span>
+</pre></div>
+<p>
+Note:
+
+<ul>
+ <p><li> Lines beginning with the comment character <code>#</code> are skipped in the reading</li>
+ <p><li> <code>data</code> is a two-dimensional array: <code>data[i,0]</code>
+   holds the \( t \) value and <code>data[i,1]</code> the \( s(t) \) value in the <code>i</code>-th
+   row</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section>
 
 <h1 id="basics:class">Classes</h1>
 
@@ -1386,7 +1580,7 @@ Our example can utilize this technique with <code>b</code> as <code>t &lt;= t1</
 
 <section>
 
-<h2 id="___sec40">A very simple class </h2>
+<h2 id="___sec48">A very simple class </h2>
 
 <ul>
  <p><li> One variable: <code>a</code></li>
@@ -1415,7 +1609,7 @@ Class terminology: Functions are called
 
 <section>
 
-<h2 id="___sec41">How can we use this class? </h2>
+<h2 id="___sec49">How can we use this class? </h2>
 
 <p>
 First, make an <em>instance</em> (object) of the class:
@@ -1443,7 +1637,7 @@ Note:
 
 <section>
 
-<h2 id="___sec42">The <code>self</code> argument is a difficult thing for newcomers... </h2>
+<h2 id="___sec50">The <code>self</code> argument is a difficult thing for newcomers... </h2>
 
 <p>
 It takes time and experience to understand the <code>self</code> argument in
@@ -1475,7 +1669,7 @@ the understanding of how classes work!
 
 <section>
 
-<h2 id="___sec43">A class for representing a mathematical function </h2>
+<h2 id="___sec51">A class for representing a mathematical function </h2>
 
 <p>
 Function with one independent variable \( t \) and two parameters
@@ -1510,7 +1704,7 @@ Usage:
 
 <section>
 
-<h2 id="___sec44">The class code </h2>
+<h2 id="___sec52">The class code </h2>
 
 <p>
 
@@ -1534,7 +1728,7 @@ Usage:
 
 <section>
 
-<h2 id="___sec45">Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \) </h2>
+<h2 id="___sec53">Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \) </h2>
 
 <ul>
  <p><li> The \( n \) parameters \( p_1,p_2,\ldots,p_n \) are attributes</li>

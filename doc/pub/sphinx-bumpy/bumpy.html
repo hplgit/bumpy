@@ -15,7 +15,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
+        URL_ROOT:    '',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -27,26 +27,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/sidebar.js"></script>
-
-        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
-        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
-
-        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
-
-        <style type="text/css">
-                .sagecell .CodeMirror-scroll {
-                        overflow-y: hidden;
-                        overflow-x: auto;
-                }
-                .sagecell .CodeMirror {
-                        height: auto;
-                }
-        </style>
-
-    
     <link rel="top" title="A worked example on scientific computing with Python" href="index.html" />
-    <link rel="prev" title="A worked example on scientific computing with Python" href="index.html" />
- 
+    <link rel="prev" title="A worked example on scientific computing with Python" href="index.html" /> 
   
    <style type="text/css">
      div.admonition {
@@ -83,7 +65,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen (hpl at simula.no)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 11, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 12, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -174,7 +156,7 @@ spring constant <span class="math">\(k\)</span>. The unknown <span class="math">
 of the vehicle relative to the road. Figure <a class="reference internal" href="#bumpy-fig1"><em>Vehicle on a bumpy road</em></a>
 illustrates the situation.</p>
 <div class="figure" id="bumpy-fig1">
-<a class="reference internal image-reference" href="_images/vehicle2.png"><img alt="_images/vehicle2.png" src="_images/vehicle2.png" style="width: 600px;" /></a>
+<img alt="_images/vehicle2.png" src="_images/vehicle2.png" style="width: 600px;" />
 <p class="caption"><em>Vehicle on a bumpy road</em></p>
 </div>
 <p>Another example regards the vertical shaking of a building due to
@@ -331,7 +313,7 @@ computed curve makes use of the <tt class="docutils literal"><span class="pre">m
 its <tt class="docutils literal"><span class="pre">plot</span></tt>, <tt class="docutils literal"><span class="pre">savefig</span></tt>, and <tt class="docutils literal"><span class="pre">show</span></tt> functions. Figure <a class="reference internal" href="#bumpy-fig0"><em>Plot of computed curve</em></a>
 shows the result.</p>
 <div class="figure" id="bumpy-fig0">
-<a class="reference internal image-reference" href="_images/solver_linear_damping.png"><img alt="_images/solver_linear_damping.png" src="_images/solver_linear_damping.png" style="width: 500px;" /></a>
+<img alt="_images/solver_linear_damping.png" src="_images/solver_linear_damping.png" style="width: 500px;" />
 <p class="caption"><em>Plot of computed curve</em></p>
 </div>
 </div>
@@ -888,7 +870,7 @@ the <tt class="docutils literal"><span class="pre">True</span></tt> elements in 
 </div>
 <p>Figure <a class="reference internal" href="#bumpy-fig3"><em>Root mean square of displacement</em></a> shows the result.</p>
 <div class="figure" id="bumpy-fig3">
-<a class="reference internal image-reference" href="_images/u_rms.png"><img alt="_images/u_rms.png" src="_images/u_rms.png" style="width: 600px;" /></a>
+<img alt="_images/u_rms.png" src="_images/u_rms.png" style="width: 600px;" />
 <p class="caption"><em>Root mean square of displacement</em></p>
 </div>
 <p>The spectrum of a <span class="math">\(u(t)\)</span> function (represented through the arrays <tt class="docutils literal"><span class="pre">u</span></tt>
@@ -926,7 +908,7 @@ array <tt class="docutils literal"><span class="pre">indices</span></tt>.</p>
 <p>Figure <a class="reference internal" href="#bumpy-fig2"><em>Spectrum of displacement</em></a> shows the amplitudes and that the
 dominating frequency is 1 Hz.</p>
 <div class="figure" id="bumpy-fig2">
-<a class="reference internal image-reference" href="_images/u_spectrum.png"><img alt="_images/u_spectrum.png" src="_images/u_spectrum.png" style="width: 600px;" /></a>
+<img alt="_images/u_spectrum.png" src="_images/u_spectrum.png" style="width: 600px;" />
 <p class="caption"><em>Spectrum of displacement</em></p>
 </div>
 <p>Finally, we can run through all the 3-lists <tt class="docutils literal"><span class="pre">[h,</span> <span class="pre">a,</span> <span class="pre">u]</span></tt> and plot
@@ -959,15 +941,15 @@ these arrays:</p>
 </pre></div>
 </div>
 <div class="figure" id="bumpy-fig4">
-<a class="reference internal image-reference" href="_images/hau0.png"><img alt="_images/hau0.png" src="_images/hau0.png" style="width: 700px;" /></a>
+<img alt="_images/hau0.png" src="_images/hau0.png" style="width: 700px;" />
 <p class="caption"><em>First realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations</em></p>
 </div>
 <div class="figure" id="bumpy-fig5">
-<a class="reference internal image-reference" href="_images/hau1.png"><img alt="_images/hau1.png" src="_images/hau1.png" style="width: 700px;" /></a>
+<img alt="_images/hau1.png" src="_images/hau1.png" style="width: 700px;" />
 <p class="caption"><em>Second realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations</em></p>
 </div>
 <div class="figure" id="bumpy-fig6">
-<a class="reference internal image-reference" href="_images/hau2.png"><img alt="_images/hau2.png" src="_images/hau2.png" style="width: 700px;" /></a>
+<img alt="_images/hau2.png" src="_images/hau2.png" style="width: 700px;" />
 <p class="caption"><em>Third realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations</em></p>
 </div>
 <p>If all the plot commands above are placed in a file, as in

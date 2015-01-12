@@ -20,6 +20,11 @@ fi
 
 opt="COURSE=$COURSE"
 
+# Spellcheck must be performed in the dir where the file resides
+cd lec-bumpy
+system doconce spellcheck -d ../.dict4spell.txt basics.do.txt
+cd ..
+
 #names="lecture-basics lecture-bumpy"
 names="lectures-basics"
 #names="lectures_tkt4140"

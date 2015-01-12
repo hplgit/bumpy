@@ -143,22 +143,45 @@ Automatically generated HTML file from DocOnce source
                2,
                None,
                '___sec38'),
-              (' Classes ', 1, 'basics:class', 'basics:class'),
-              (' A very simple class ', 2, None, '___sec40'),
-              (' How can we use this class? ', 2, None, '___sec41'),
-              (' The `self` argument is a difficult thing for newcomers... ',
+              (' Files ', 1, 'basics:files', 'basics:files'),
+              (' File reading ', 2, None, '___sec40'),
+              (' Code for reading files with lines `variable = value` ',
+               2,
+               None,
+               '___sec41'),
+              (' Splitting lines into words is a frequent operation ',
                2,
                None,
                '___sec42'),
-              (' A class for representing a mathematical function ',
+              (' Modern Python often applies the `with` statement for file handling ',
                2,
                None,
                '___sec43'),
-              (' The class code ', 2, None, '___sec44'),
+              (' File writing ', 2, None, '___sec44'),
+              (' Simplified writing of tabular data to file via `numpy.savetxt` ',
+               2,
+               None,
+               '___sec45'),
+              (' Simplified reading of tabular data from file via `numpy.savetxt` ',
+               2,
+               None,
+               '___sec46'),
+              (' Classes ', 1, 'basics:class', 'basics:class'),
+              (' A very simple class ', 2, None, '___sec48'),
+              (' How can we use this class? ', 2, None, '___sec49'),
+              (' The `self` argument is a difficult thing for newcomers... ',
+               2,
+               None,
+               '___sec50'),
+              (' A class for representing a mathematical function ',
+               2,
+               None,
+               '___sec51'),
+              (' The class code ', 2, None, '___sec52'),
               (' Class implementation of $f(x,y,z; p_1,p_2,\\ldots,p_n)$ ',
                2,
                None,
-               '___sec45')]}
+               '___sec53')]}
 end of tocinfo -->
 
 <body>
@@ -197,7 +220,8 @@ MathJax.Hub.Config({
         <ul class="dropdown-menu">
      <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg003.html#basics:basic:objects" style="font-size: 80%;">Variables, loops, lists, and arrays</a></li>
      <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg026.html#basics:func:branching" style="font-size: 80%;">Functions and branching</a></li>
-     <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg040.html#basics:class" style="font-size: 80%;">Classes</a></li>
+     <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg041.html#basics:files" style="font-size: 80%;">Files</a></li>
+     <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg049.html#basics:class" style="font-size: 80%;">Classes</a></li>
 
         </ul>
       </li>
@@ -227,35 +251,37 @@ MathJax.Hub.Config({
   <li class="active"><a href="._lectures-basics-bootstrap_bg044.html">45</a></li>
   <li><a href="._lectures-basics-bootstrap_bg045.html">46</a></li>
   <li><a href="._lectures-basics-bootstrap_bg046.html">47</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg047.html">48</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg048.html">49</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg049.html">50</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg050.html">51</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg051.html">52</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg052.html">53</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg053.html">54</a></li>
+  <li><a href="">...</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg055.html">56</a></li>
   <li><a href="._lectures-basics-bootstrap_bg045.html">&raquo;</a></li>
 </ul>
 <!-- !split -->
 
-<h2 id="___sec43">A class for representing a mathematical function </h2>
-
-<p>
-Function with one independent variable \( t \) and two parameters
-\( v_0 \) and \( a \):
-
-$$ s(t; v_0, a) = v_0t + \frac{1}{2}at^2$$
-
-
-<p>
-Class representation of this function:
-
-<ul>
- <li> <code>v0</code> and <code>a</code> are variables (data)</li>
- <li> A method to evaluate \( s(t) \), but just function of <code>t</code></li>
-</ul>
-
-Usage:
+<h2 id="___sec42">Splitting lines into words is a frequent operation </h2>
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">s <span style="color: #666666">=</span> Distance(v0<span style="color: #666666">=2</span>, a<span style="color: #666666">=0.5</span>)  <span style="color: #408080; font-style: italic"># create instance</span>
-v <span style="color: #666666">=</span> s(t<span style="color: #666666">=0.2</span>)               <span style="color: #408080; font-style: italic"># compute formula</span>
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> line <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;v0 = 5.3&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> variable, value <span style="color: #666666">=</span> line<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;=&#39;</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> variable
+<span style="color: #BA2121">&#39;v0 &#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> value
+<span style="color: #BA2121">&#39; 5.3&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> variable<span style="color: #666666">.</span>strip()  <span style="color: #408080; font-style: italic"># strip away blanks</span>
+<span style="color: #BA2121">&#39;v0&#39;</span>
 </pre></div>
+<p>
+Note: must convert <code>value</code> to <code>float</code> before we can compute with
+the value!
+
 <p>
 <p>
 <!-- navigation buttons at the bottom of the page -->
@@ -274,6 +300,15 @@ v <span style="color: #666666">=</span> s(t<span style="color: #666666">=0.2</sp
   <li class="active"><a href="._lectures-basics-bootstrap_bg044.html">45</a></li>
   <li><a href="._lectures-basics-bootstrap_bg045.html">46</a></li>
   <li><a href="._lectures-basics-bootstrap_bg046.html">47</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg047.html">48</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg048.html">49</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg049.html">50</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg050.html">51</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg051.html">52</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg052.html">53</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg053.html">54</a></li>
+  <li><a href="">...</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg055.html">56</a></li>
   <li><a href="._lectures-basics-bootstrap_bg045.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->

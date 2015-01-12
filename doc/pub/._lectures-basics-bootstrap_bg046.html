@@ -143,22 +143,45 @@ Automatically generated HTML file from DocOnce source
                2,
                None,
                '___sec38'),
-              (' Classes ', 1, 'basics:class', 'basics:class'),
-              (' A very simple class ', 2, None, '___sec40'),
-              (' How can we use this class? ', 2, None, '___sec41'),
-              (' The `self` argument is a difficult thing for newcomers... ',
+              (' Files ', 1, 'basics:files', 'basics:files'),
+              (' File reading ', 2, None, '___sec40'),
+              (' Code for reading files with lines `variable = value` ',
+               2,
+               None,
+               '___sec41'),
+              (' Splitting lines into words is a frequent operation ',
                2,
                None,
                '___sec42'),
-              (' A class for representing a mathematical function ',
+              (' Modern Python often applies the `with` statement for file handling ',
                2,
                None,
                '___sec43'),
-              (' The class code ', 2, None, '___sec44'),
+              (' File writing ', 2, None, '___sec44'),
+              (' Simplified writing of tabular data to file via `numpy.savetxt` ',
+               2,
+               None,
+               '___sec45'),
+              (' Simplified reading of tabular data from file via `numpy.savetxt` ',
+               2,
+               None,
+               '___sec46'),
+              (' Classes ', 1, 'basics:class', 'basics:class'),
+              (' A very simple class ', 2, None, '___sec48'),
+              (' How can we use this class? ', 2, None, '___sec49'),
+              (' The `self` argument is a difficult thing for newcomers... ',
+               2,
+               None,
+               '___sec50'),
+              (' A class for representing a mathematical function ',
+               2,
+               None,
+               '___sec51'),
+              (' The class code ', 2, None, '___sec52'),
               (' Class implementation of $f(x,y,z; p_1,p_2,\\ldots,p_n)$ ',
                2,
                None,
-               '___sec45')]}
+               '___sec53')]}
 end of tocinfo -->
 
 <body>
@@ -197,7 +220,8 @@ MathJax.Hub.Config({
         <ul class="dropdown-menu">
      <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg003.html#basics:basic:objects" style="font-size: 80%;">Variables, loops, lists, and arrays</a></li>
      <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg026.html#basics:func:branching" style="font-size: 80%;">Functions and branching</a></li>
-     <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg040.html#basics:class" style="font-size: 80%;">Classes</a></li>
+     <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg041.html#basics:files" style="font-size: 80%;">Files</a></li>
+     <!-- navigation toc: --> <li><a href="._lectures-basics-bootstrap_bg049.html#basics:class" style="font-size: 80%;">Classes</a></li>
 
         </ul>
       </li>
@@ -225,33 +249,38 @@ MathJax.Hub.Config({
   <li><a href="._lectures-basics-bootstrap_bg044.html">45</a></li>
   <li><a href="._lectures-basics-bootstrap_bg045.html">46</a></li>
   <li class="active"><a href="._lectures-basics-bootstrap_bg046.html">47</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg047.html">48</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg048.html">49</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg049.html">50</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg050.html">51</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg051.html">52</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg052.html">53</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg053.html">54</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg054.html">55</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg055.html">56</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg047.html">&raquo;</a></li>
 </ul>
 <!-- !split -->
 
-<h2 id="___sec45">Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \) </h2>
+<h2 id="___sec44">File writing </h2>
 
 <ul>
- <li> The \( n \) parameters \( p_1,p_2,\ldots,p_n \) are attributes</li>
- <li> <code>__call__(self, x, y, z)</code> is used to compute \( f(x, y, z) \)</li>
+ <li> We have \( t \) and \( s(t) \) values in two lists, <code>t_values</code> and
+   <code>s_values</code></li>
+ <li> Task: write these lists as a nicely formatted table in a file</li>
 </ul>
+
+Code:
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">F</span>:
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, p1, p2, <span style="color: #666666">...</span>):
-        <span style="color: #008000">self</span><span style="color: #666666">.</span>p1 <span style="color: #666666">=</span> p1
-        <span style="color: #008000">self</span><span style="color: #666666">.</span>p2 <span style="color: #666666">=</span> p2
-        <span style="color: #666666">...</span>
-
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x, y, z):
-        <span style="color: #408080; font-style: italic"># return formula involving x, y, z and self.p1, self.p2 ...</span>
-
-f <span style="color: #666666">=</span> F(p1<span style="color: #666666">=...</span>, p2<span style="color: #666666">=...</span>, <span style="color: #666666">...</span>)   <span style="color: #408080; font-style: italic"># create instance with parameters</span>
-<span style="color: #008000; font-weight: bold">print</span> f(<span style="color: #666666">1</span>, <span style="color: #666666">4</span>, <span style="color: #666666">-1</span>)            <span style="color: #408080; font-style: italic"># evaluate f(x,y,z) function</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">outfile <span style="color: #666666">=</span> <span style="color: #008000">open</span>(<span style="color: #BA2121">&#39;table1.dat&#39;</span>, <span style="color: #BA2121">&#39;w&#39;</span>)
+outfile<span style="color: #666666">.</span>write(<span style="color: #BA2121">&#39;# t    s(t)</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span>)  <span style="color: #408080; font-style: italic"># write header</span>
+<span style="color: #008000; font-weight: bold">for</span> t, s <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">zip</span>(t_values, s_values):
+    outfile<span style="color: #666666">.</span>write(<span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">  </span><span style="color: #BB6688; font-weight: bold">%.4f</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (t, s))
 </pre></div>
 <p>
-
 <p>
 <!-- navigation buttons at the bottom of the page -->
 <ul class="pagination">
@@ -267,6 +296,16 @@ f <span style="color: #666666">=</span> F(p1<span style="color: #666666">=...</s
   <li><a href="._lectures-basics-bootstrap_bg044.html">45</a></li>
   <li><a href="._lectures-basics-bootstrap_bg045.html">46</a></li>
   <li class="active"><a href="._lectures-basics-bootstrap_bg046.html">47</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg047.html">48</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg048.html">49</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg049.html">50</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg050.html">51</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg051.html">52</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg052.html">53</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg053.html">54</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg054.html">55</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg055.html">56</a></li>
+  <li><a href="._lectures-basics-bootstrap_bg047.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->
 

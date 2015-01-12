@@ -446,7 +446,7 @@ Note:
    (separated by comma if more than one)
  * function output is returned to the calling code
  * `v0` and `a` are *global variables*
- * `v0` and `a` must be initialzed before `s` is called
+ * `v0` and `a` must be initialized before `s` is called
 
 !split
 ===== Functions can have multiple arguments =====
@@ -481,7 +481,7 @@ value = s(a=2, t=3, v0=2)    # any sequence allowed
 !ec
 
  * Arguments without the argument name are called *positional arguments*
- * Positional arguments mustalways be listed before the keyword arguments
+ * Positional arguments must always be listed before the keyword arguments
    in the function and in any call
  * The sequence of the keyword arguments can be arbitrary
 
