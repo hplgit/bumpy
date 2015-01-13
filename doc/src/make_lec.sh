@@ -26,7 +26,7 @@ system doconce spellcheck -d ../.dict4spell.txt basics.do.txt
 cd ..
 
 #names="lecture-basics lecture-bumpy"
-names="lectures-basics"
+#names="lectures-basics"
 names="lectures-bumpy"
 #names="lectures_tkt4140"
 for name in $names; do
@@ -54,10 +54,6 @@ html=${name}-deck
 system doconce format html $name --pygments_html_style=perldoc --keep_pygments_html_bg --html_links_in_new_window --html_output=$html $opt
 system doconce slides_html $html deck --html_slide_theme=sandstone.default
 
-# Bootstrap-gray
-html=${name}-bootstrap_bg
-doconce format html $name --html_style=bootstrap_bluegray --html_links_in_new_window --html_output=$html $opt
-doconce split_html $html.html --pagination --nav_button=top+bottom
 
 # Plain HTML slides, 1 big file in solarized style
 html=${name}-solarized
@@ -73,6 +69,13 @@ html=${name}-1
 system doconce format html $name --html_style=bloodish --html_links_in_new_window --html_output=$html $opt
 # Add space between splits
 system doconce split_html $html.html --method=space8
+
+
+# One bit HTML file with space between the slides (as above) with Bootstrap-gray
+html=${name}-bootstrap_bg
+doconce format html $name --html_style=bootstrap_bluegray --html_links_in_new_window --html_output=$html $opt
+doconce split_html $html.html --method=space8
+
 
 # LaTeX Beamer slides
 
