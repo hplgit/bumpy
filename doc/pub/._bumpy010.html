@@ -22,7 +22,7 @@ Automatically generated HTML file from DocOnce source
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Optimal backround for reading this note ',
+ 'sections': [(' Optimal background for reading this note ',
                3,
                None,
                '___sec0'),
@@ -53,7 +53,8 @@ Automatically generated HTML file from DocOnce source
                3,
                None,
                '___sec18'),
-              (' Modules ', 2, None, '___sec19'),
+              (' Using a test framework ', 3, None, '___sec19'),
+              (' Modules ', 2, None, '___sec20'),
               (' Appendix: Quick motivation for programming with Python ',
                1,
                'app:motivation',
@@ -65,14 +66,14 @@ Automatically generated HTML file from DocOnce source
               (' Full tutorials on scientific programming with Python ',
                3,
                None,
-               '___sec22'),
-              (' NumPy resources ', 3, None, '___sec23'),
-              (' Useful resources ', 3, None, '___sec24'),
-              (' Some relevant Python books ', 3, None, '___sec25'),
+               '___sec23'),
+              (' NumPy resources ', 3, None, '___sec24'),
+              (' Useful resources ', 3, None, '___sec25'),
+              (' Some relevant Python books ', 3, None, '___sec26'),
               (' Course material on Python programming in general ',
                3,
                None,
-               '___sec26')]}
+               '___sec27')]}
 end of tocinfo -->
 
 <body>
@@ -188,7 +189,10 @@ a<span style="color: #666666">*</span>x<span style="color: #666666">**2*</span>s
 
 <p>
 Software testing in Python is best done with a <em>unit test framework</em>
-such as <code>nose</code> or <code>pytest</code>. These frameworks can automatically
+such as
+<a href="https://nose.readthedocs.org/" target="_self">nose</a> or
+<a href="http://pytest.org/latest/" target="_self">pytest</a>.
+These frameworks can automatically
 run all functions starting with <code>test_</code> recursively in files in a
 directory tree. Each <code>test_*</code> function is called a <em>test function</em>
 and must take no arguments and apply <code>assert</code> to a boolean expression
@@ -239,7 +243,7 @@ only a linear \( u \) will solve the discrete equation so in this case
 we choose \( u=I+Vt \).
 
 <p>
-We embed the SymPy calculations and the numerical calcuations
+We embed the SymPy calculations and the numerical calculations
 in a <em>test function</em>:
 
 <p>
@@ -285,7 +289,32 @@ in a <em>test function</em>:
     <span style="color: #008000; font-weight: bold">assert</span> error <span style="color: #666666">&lt;</span> tol
 </pre></div>
 
-<h2 id="___sec19">Modules </h2>
+<h3 id="___sec19">Using a test framework </h3>
+
+<p>
+We recommend to use <code>pytest</code> as test framework. Subdirectories <code>test*</code>
+are examined for files <code>test_*.py</code> that have test functions <code>test_*()</code>,
+and all such tests are executed by the following command:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; py.test -s
+</pre></div>
+<p>
+The <code>-s</code> option makes all output from the tests appear in the terminal
+window.
+
+<p>
+To run the tests in a specific file <code>tests/test_bumpy.py</code>, do
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; py.test -s tests/test_bumpy.py
+</pre></div>
+
+<h2 id="___sec20">Modules </h2>
 
 <p>
 Python software is frequently organized as modules, or in collection
@@ -336,10 +365,12 @@ the main program will be executed. In this way, you can have a single
 file that both acts as a library and that is an executable program.
 
 <p>
-[[[
+A <code>from mymod import *</code> will import the global functions
+<code>myfunc1</code> and <code>myfunc2</code>, plus
+the global names <code>module1</code>, <code>somefunc1</code>, and <code>somefunc2</code>.
 
 <p>
-<!-- ===== Installation ===== -->
+<!-- ===== Installation via setup.py scripts ===== -->
 
 <p>
 <!-- Install the <code>solver</code> module using a very simple <code>setup.py</code> script. -->
@@ -363,7 +394,7 @@ file that both acts as a library and that is an executable program.
 
 <h1 id="app:resources">Appendix: Scientific Python resources</h1>
 
-<h3 id="___sec22">Full tutorials on scientific programming with Python </h3>
+<h3 id="___sec23">Full tutorials on scientific programming with Python </h3>
 
 <ul>
   <li> <a href="http://scipy-lectures.github.com/" target="_self">Python Scientific Lecture Notes</a> (from EuroSciPy tutorials, based on <a href="http://web.phys.ntnu.no/~ingves/Teaching/TFY4240/Assignments/PythonScientific.pdf" target="_self">Python Scientific</a>)</li>
@@ -371,7 +402,7 @@ file that both acts as a library and that is an executable program.
   <li> <a href="https://github.com/stefanv/teaching" target="_self">Stefan van der Walt's lectures</a></li>
 </ul>
 
-<h3 id="___sec23">NumPy resources </h3>
+<h3 id="___sec24">NumPy resources </h3>
 
 <ul>
   <li> <a href="http://www.scipy.org/Tentative_NumPy_Tutorial" target="_self">NumPy Tutorial</a></li>
@@ -385,7 +416,7 @@ file that both acts as a library and that is an executable program.
   <li> <a href="http://mathesaurus.sf.net" target="_self">NumPy for Matlab/R/IDL Users</a></li>
 </ul>
 
-<h3 id="___sec24">Useful resources </h3>
+<h3 id="___sec25">Useful resources </h3>
 
 <ul>
   <li> <a href="http://www.astropython.org/" target="_self">AstroPython</a></li>
@@ -399,7 +430,7 @@ file that both acts as a library and that is an executable program.
 <!-- and animation - check it out --></li>
 </ul>
 
-<h3 id="___sec25">Some relevant Python books </h3>
+<h3 id="___sec26">Some relevant Python books </h3>
 
 <ul>
   <li> <a href="http://www.greenteapress.com/thinkpython/" target="_self">Think Python</a></li>
@@ -412,7 +443,7 @@ file that both acts as a library and that is an executable program.
   <li> <a href="http://goo.gl/q8tM7D" target="_self">Python Scripting for Computational Science</a></li>
 </ul>
 
-<h3 id="___sec26">Course material on Python programming in general </h3>
+<h3 id="___sec27">Course material on Python programming in general </h3>
 
 <ul>
   <li> <a href="http://docs.python.org/2/tutorial/" target="_self">The Official Python Tutorial</a></li>

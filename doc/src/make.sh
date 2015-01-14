@@ -17,11 +17,13 @@ if [ $# -ge 1 ]; then
 else
   COURSE=any
 fi
-
 opt="COURSE=$COURSE"
 
 names="basics bumpy"
-#names="basics"
+if [ $# -ge 2 ]; then
+  names="$1"
+fi
+
 for name in $names; do
 
 system doconce spellcheck -d .dict4spell.txt $name.do.txt

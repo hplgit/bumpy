@@ -15,7 +15,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -27,8 +27,26 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/sidebar.js"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
     <link rel="top" title="A worked example on scientific computing with Python" href="index.html" />
-    <link rel="prev" title="A worked example on scientific computing with Python" href="index.html" /> 
+    <link rel="prev" title="A worked example on scientific computing with Python" href="index.html" />
+ 
   
    <style type="text/css">
      div.admonition {
@@ -65,7 +83,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen (hpl at simula.no)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 12, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 13, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -96,21 +114,27 @@
 </ul>
 </div></blockquote>
 <p>All files can be forked at <a class="reference external" href="https://github.com/hplgit/bumpy">https://github.com/hplgit/bumpy</a>.</p>
-<div class="section" id="optimal-backround-for-reading-this-note">
-<h2>Optimal backround for reading this note<a class="headerlink" href="#optimal-backround-for-reading-this-note" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="optimal-background-for-reading-this-note">
+<h2>Optimal background for reading this note<a class="headerlink" href="#optimal-background-for-reading-this-note" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>some interest in exploring physics through numerical simulation</li>
-<li>some very basic knowledge of differential equations</li>
-<li>some very basic knowledge of finite difference approximations</li>
-<li>significant interest in exploring Python for scientific computations</li>
+<li>some very basic knowledge of<ul>
+<li>differential equations</li>
+<li>finite difference approximations</li>
+<li>Python or Matlab</li>
+</ul>
+</li>
+<li>significant interest in exploring Python for scientific computations
+to solve a real-world physical problem (with low mathematical complexity)</li>
 </ul>
 </div></blockquote>
 <div class="admonition-notice admonition">
 <p class="first admonition-title">Notice</p>
-<p class="last">No background in Python is assumed - the aim is to give an impression of
-how Python can be used in a Matlab-like fashion to solve a real-world
-physical problem (with low mathematical complexity).</p>
+<p class="last">You can read in two ways: either as a detailed example on using Python
+for solving differential equations (some <a class="reference external" href="http://hplgit.github.io/bumpy/doc/web/index.html">very basic Python knowledge</a> is preferred)
+or just to get an impression of
+how Python can be used in a Matlab-like fashion.</p>
 </div>
 <p>If you need motivation for using Python as programming language,
 see Appendix <a class="reference internal" href="#app-motivation"><em>Appendix: Quick motivation for programming with Python</em></a>. Lists of many useful tutorials
@@ -156,7 +180,7 @@ spring constant <span class="math">\(k\)</span>. The unknown <span class="math">
 of the vehicle relative to the road. Figure <a class="reference internal" href="#bumpy-fig1"><em>Vehicle on a bumpy road</em></a>
 illustrates the situation.</p>
 <div class="figure" id="bumpy-fig1">
-<img alt="_images/vehicle2.png" src="_images/vehicle2.png" style="width: 600px;" />
+<a class="reference internal image-reference" href="_images/vehicle2.png"><img alt="_images/vehicle2.png" src="_images/vehicle2.png" style="width: 600px;" /></a>
 <p class="caption"><em>Vehicle on a bumpy road</em></p>
 </div>
 <p>Another example regards the vertical shaking of a building due to
@@ -167,7 +191,7 @@ spring and damper on the building, modeled through the damping parameter
 <span class="math">\(b\)</span> and normally a linear spring term <span class="math">\(s(u)=ku\)</span>.</p>
 <p>In both cases we drop the effect of gravity, which is just a constant
 compression of the spring.</p>
-<p>Our task is to compute and analyse the vertical <span class="math">\(u(t)\)</span> vibrations
+<p>Our task is to compute and analyze the vertical <span class="math">\(u(t)\)</span> vibrations
 of a vehicle, given the shape <span class="math">\(h(x)\)</span> of the road and some velocity <span class="math">\(v\)</span>.</p>
 </div>
 <div class="section" id="numerical-model">
@@ -262,8 +286,6 @@ Here we import all objects in the <tt class="docutils literal"><span class="pre"
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 </div>
-<p>Only the <tt class="docutils literal"><span class="pre">zeros</span></tt> function is used to create the correct
-size of the output array <tt class="docutils literal"><span class="pre">u</span></tt>.</p>
 <p>Comments start with the character <tt class="docutils literal"><span class="pre">#</span></tt> and the rest of the line
 is then ignored by Python.</p>
 <p>Every variable in Python is an object. In particular, the <tt class="docutils literal"><span class="pre">s</span></tt> function
@@ -313,7 +335,7 @@ computed curve makes use of the <tt class="docutils literal"><span class="pre">m
 its <tt class="docutils literal"><span class="pre">plot</span></tt>, <tt class="docutils literal"><span class="pre">savefig</span></tt>, and <tt class="docutils literal"><span class="pre">show</span></tt> functions. Figure <a class="reference internal" href="#bumpy-fig0"><em>Plot of computed curve</em></a>
 shows the result.</p>
 <div class="figure" id="bumpy-fig0">
-<img alt="_images/solver_linear_damping.png" src="_images/solver_linear_damping.png" style="width: 500px;" />
+<a class="reference internal image-reference" href="_images/solver_linear_damping.png"><img alt="_images/solver_linear_damping.png" src="_images/solver_linear_damping.png" style="width: 500px;" /></a>
 <p class="caption"><em>Plot of computed curve</em></p>
 </div>
 </div>
@@ -407,7 +429,7 @@ This is not strictly necessary, but if we supply <tt class="docutils literal"><s
 a computation like <tt class="docutils literal"><span class="pre">b/m</span></tt> will give zero as result because both <tt class="docutils literal"><span class="pre">b</span></tt> and <tt class="docutils literal"><span class="pre">m</span></tt>
 are then integers and <tt class="docutils literal"><span class="pre">b/m</span></tt> implies <em>integer division</em>, not the
 mathematical division of real numbers (this is not a special
-feature of Python - all languges with a strong heritage from C
+feature of Python - all languages with a strong heritage from C
 invoke integer division if both operands in a division are integers).
 We need to make
 sure that at least one of the operands in a division is a real
@@ -446,8 +468,8 @@ of <tt class="docutils literal"><span class="pre">F</span></tt> as obtained from
 </div>
 <p>if we are sure that <tt class="docutils literal"><span class="pre">F</span></tt> is either a function or a <tt class="docutils literal"><span class="pre">numpy</span></tt> array.
 Should the user send in something else for <tt class="docutils literal"><span class="pre">F</span></tt>, Python will encounter
-a run-time error when trying to index <tt class="docutils literal"><span class="pre">F</span></tt> as in <tt class="docutils literal"><span class="pre">F[0]</span></tt> in the
-statement computating <tt class="docutils literal"><span class="pre">u[1]</span></tt>.</p>
+a run-time error when trying to index <tt class="docutils literal"><span class="pre">F</span></tt> as in <tt class="docutils literal"><span class="pre">F[0]</span></tt> (in the
+statement computing <tt class="docutils literal"><span class="pre">u[1]</span></tt>).</p>
 <p>To be absolutely safe, we should test that the other arguments are
 of right type as well. For example,</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span><span class="nb">int</span><span class="p">)):</span>
@@ -545,7 +567,7 @@ second index is fixed at 2. Just writing <tt class="docutils literal"><span clas
 legal values of this index.</p>
 <p>Given <span class="math">\(h(x)\)</span>, the corresponding acceleration <span class="math">\(a(t)\)</span> needed in the
 force <span class="math">\(F(t)=-ma(t)\)</span>, follows from <span class="math">\(a(t)=h''(vt)v^2\)</span>, where <span class="math">\(v\)</span> is
-the velocity of the vehicle. The compuation may utilize a finite
+the velocity of the vehicle. The computation may utilize a finite
 difference approximation for the second-order derivative <span class="math">\(h''\)</span> and
 be encapsulated in a Python function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">acceleration</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
@@ -569,7 +591,7 @@ we for mathematical simplicity set <span class="math">\(h''(x)\)</span> at the e
 <p>The computations of <tt class="docutils literal"><span class="pre">d2h</span></tt> above was done array element by array element.
 This loop can be a slow process in Python for long arrays. To speed
 up computations dramatically, we can invoke a <em>vectorization</em> of
-the above alogrithm. This means that we get rid of the loops and
+the above algorithm. This means that we get rid of the loops and
 perform arithmetics on complete (or almost complete) arrays.
 The vectorized form of the
 <tt class="docutils literal"><span class="pre">acceleration</span></tt> function goes like</p>
@@ -841,7 +863,7 @@ by</p>
 <span class="n">u_rms</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Note that <tt class="docutils literal"><span class="pre">data</span></tt> first contains <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">t</span></tt> and then
+<p>Note that <tt class="docutils literal"><span class="pre">data</span></tt> first contains <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">t</span></tt>, thereafter
 a sequence of 3-lists <tt class="docutils literal"><span class="pre">[h,</span> <span class="pre">a,</span> <span class="pre">u]</span></tt>, before the final element,
 the array <tt class="docutils literal"><span class="pre">u_rms</span></tt>. With <tt class="docutils literal"><span class="pre">data[0:2]</span></tt> we extract
 the sublist with elements <tt class="docutils literal"><span class="pre">data[0]</span></tt> and <tt class="docutils literal"><span class="pre">data[1]</span></tt> (<tt class="docutils literal"><span class="pre">0:2</span></tt> means
@@ -866,11 +888,12 @@ the <tt class="docutils literal"><span class="pre">True</span></tt> elements in 
 <span class="n">legend</span><span class="p">([</span><span class="s">&#39;u&#39;</span><span class="p">])</span>
 <span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;t&#39;</span><span class="p">)</span>
 <span class="n">title</span><span class="p">(</span><span class="s">&#39;Root mean square value of u(t) functions&#39;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Figure <a class="reference internal" href="#bumpy-fig3"><em>Root mean square of displacement</em></a> shows the result.</p>
 <div class="figure" id="bumpy-fig3">
-<img alt="_images/u_rms.png" src="_images/u_rms.png" style="width: 600px;" />
+<a class="reference internal image-reference" href="_images/u_rms.png"><img alt="_images/u_rms.png" src="_images/u_rms.png" style="width: 600px;" /></a>
 <p class="caption"><em>Root mean square of displacement</em></p>
 </div>
 <p>The spectrum of a <span class="math">\(u(t)\)</span> function (represented through the arrays <tt class="docutils literal"><span class="pre">u</span></tt>
@@ -898,6 +921,7 @@ amplitudes are small (this usually gives a plot that is easier to inspect).</p>
 <span class="n">f</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="n">frequency_analysis</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
 <span class="n">title</span><span class="p">(</span><span class="s">&#39;Spectrum of u&#39;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Note the list look-up <tt class="docutils literal"><span class="pre">data[3][2][indices]</span></tt>: the element with index
@@ -908,7 +932,7 @@ array <tt class="docutils literal"><span class="pre">indices</span></tt>.</p>
 <p>Figure <a class="reference internal" href="#bumpy-fig2"><em>Spectrum of displacement</em></a> shows the amplitudes and that the
 dominating frequency is 1 Hz.</p>
 <div class="figure" id="bumpy-fig2">
-<img alt="_images/u_spectrum.png" src="_images/u_spectrum.png" style="width: 600px;" />
+<a class="reference internal image-reference" href="_images/u_spectrum.png"><img alt="_images/u_spectrum.png" src="_images/u_spectrum.png" style="width: 600px;" /></a>
 <p class="caption"><em>Spectrum of displacement</em></p>
 </div>
 <p>Finally, we can run through all the 3-lists <tt class="docutils literal"><span class="pre">[h,</span> <span class="pre">a,</span> <span class="pre">u]</span></tt> and plot
@@ -941,15 +965,15 @@ these arrays:</p>
 </pre></div>
 </div>
 <div class="figure" id="bumpy-fig4">
-<img alt="_images/hau0.png" src="_images/hau0.png" style="width: 700px;" />
+<a class="reference internal image-reference" href="_images/hau0.png"><img alt="_images/hau0.png" src="_images/hau0.png" style="width: 700px;" /></a>
 <p class="caption"><em>First realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations</em></p>
 </div>
 <div class="figure" id="bumpy-fig5">
-<img alt="_images/hau1.png" src="_images/hau1.png" style="width: 700px;" />
+<a class="reference internal image-reference" href="_images/hau1.png"><img alt="_images/hau1.png" src="_images/hau1.png" style="width: 700px;" /></a>
 <p class="caption"><em>Second realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations</em></p>
 </div>
 <div class="figure" id="bumpy-fig6">
-<img alt="_images/hau2.png" src="_images/hau2.png" style="width: 700px;" />
+<a class="reference internal image-reference" href="_images/hau2.png"><img alt="_images/hau2.png" src="_images/hau2.png" style="width: 700px;" /></a>
 <p class="caption"><em>Third realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations</em></p>
 </div>
 <p>If all the plot commands above are placed in a file, as in
@@ -1003,7 +1027,10 @@ is the smallest root of <span class="math">\(Q=ax^2-1=0\)</span> as computed abo
 <div class="section" id="testing">
 <h4>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h4>
 <p>Software testing in Python is best done with a <em>unit test framework</em>
-such as <tt class="docutils literal"><span class="pre">nose</span></tt> or <tt class="docutils literal"><span class="pre">pytest</span></tt>. These frameworks can automatically
+such as
+<a class="reference external" href="https://nose.readthedocs.org/">nose</a> or
+<a class="reference external" href="http://pytest.org/latest/">pytest</a>.
+These frameworks can automatically
 run all functions starting with <tt class="docutils literal"><span class="pre">test_</span></tt> recursively in files in a
 directory tree. Each <tt class="docutils literal"><span class="pre">test_*</span></tt> function is called a <em>test function</em>
 and must take no arguments and apply <tt class="docutils literal"><span class="pre">assert</span></tt> to a boolean expression
@@ -1047,7 +1074,7 @@ differential equation such that a specified solution <span class="math">\(u(t)=I
 fits the equation and initial conditions. With quadratic damping,
 only a linear <span class="math">\(u\)</span> will solve the discrete equation so in this case
 we choose <span class="math">\(u=I+Vt\)</span>.</p>
-<p>We embed the SymPy calculations and the numerical calcuations
+<p>We embed the SymPy calculations and the numerical calculations
 in a <em>test function</em>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">lhs_eq</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">damping</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return lhs of differential equation as sympy expression.&quot;&quot;&quot;</span>
@@ -1089,6 +1116,21 @@ in a <em>test function</em>:</p>
     <span class="k">assert</span> <span class="n">error</span> <span class="o">&lt;</span> <span class="n">tol</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="using-a-test-framework">
+<h2>Using a test framework<a class="headerlink" href="#using-a-test-framework" title="Permalink to this headline">¶</a></h2>
+<p>We recommend to use <tt class="docutils literal"><span class="pre">pytest</span></tt> as test framework. Subdirectories <tt class="docutils literal"><span class="pre">test*</span></tt>
+are examined for files <tt class="docutils literal"><span class="pre">test_*.py</span></tt> that have test functions <tt class="docutils literal"><span class="pre">test_*()</span></tt>,
+and all such tests are executed by the following command:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; py.test -s
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">-s</span></tt> option makes all output from the tests appear in the terminal
+window.</p>
+<p>To run the tests in a specific file <tt class="docutils literal"><span class="pre">tests/test_bumpy.py</span></tt>, do</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; py.test -s tests/test_bumpy.py
+</pre></div>
+</div>
 <p>Python software is frequently organized as modules, or in collection
 of modules, called packages. A module enables sharing
 functions, variables, and classes between programs and other modules.</p>
@@ -1125,7 +1167,9 @@ in the main program will not be executed. However, if you run
 <tt class="docutils literal"><span class="pre">mymod.py</span></tt> as a program, <tt class="docutils literal"><span class="pre">__name__</span></tt> equals <tt class="docutils literal"><span class="pre">__main__</span></tt> and
 the main program will be executed. In this way, you can have a single
 file that both acts as a library and that is an executable program.</p>
-<p>[[[</p>
+<p>A <tt class="docutils literal"><span class="pre">from</span> <span class="pre">mymod</span> <span class="pre">import</span> <span class="pre">*</span></tt> will import the global functions
+<tt class="docutils literal"><span class="pre">myfunc1</span></tt> and <tt class="docutils literal"><span class="pre">myfunc2</span></tt>, plus
+the global names <tt class="docutils literal"><span class="pre">module1</span></tt>, <tt class="docutils literal"><span class="pre">somefunc1</span></tt>, and <tt class="docutils literal"><span class="pre">somefunc2</span></tt>.</p>
 <div class="section" id="appendix-quick-motivation-for-programming-with-python">
 <span id="app-motivation"></span><h3>Appendix: Quick motivation for programming with Python<a class="headerlink" href="#appendix-quick-motivation-for-programming-with-python" title="Permalink to this headline">¶</a></h3>
 <blockquote>
@@ -1229,7 +1273,7 @@ file that both acts as a library and that is an executable program.</p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">A worked example on scientific computing with Python</a><ul>
-<li><a class="reference internal" href="#optimal-backround-for-reading-this-note">Optimal backround for reading this note</a><ul>
+<li><a class="reference internal" href="#optimal-background-for-reading-this-note">Optimal background for reading this note</a><ul>
 <li><a class="reference internal" href="#a-scientific-application">A scientific application</a><ul>
 <li><a class="reference internal" href="#physical-problem-and-mathematical-model">Physical problem and mathematical model</a></li>
 <li><a class="reference internal" href="#numerical-model">Numerical model</a></li>
@@ -1255,7 +1299,8 @@ file that both acts as a library and that is an executable program.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#example-on-a-test-function">Example on a test function</a></li>
-<li><a class="reference internal" href="#test-function-for-the-numerical-solver">Test function for the numerical solver</a><ul>
+<li><a class="reference internal" href="#test-function-for-the-numerical-solver">Test function for the numerical solver</a></li>
+<li><a class="reference internal" href="#using-a-test-framework">Using a test framework</a><ul>
 <li><a class="reference internal" href="#appendix-quick-motivation-for-programming-with-python">Appendix: Quick motivation for programming with Python</a></li>
 <li><a class="reference internal" href="#appendix-scientific-python-resources">Appendix: Scientific Python resources</a></li>
 </ul>

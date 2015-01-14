@@ -7,7 +7,7 @@ A very basic introduction to scientific Python programming
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen (hpl at simula.no)
-:Date: Jan 12, 2015
+:Date: Jan 13, 2015
 
 
 .. admonition:: Contents
@@ -349,7 +349,7 @@ sequence. For example,
 
         L = [-1, 1, 8.0]
 
-is a list of three numbers. Lists are encolsed in square brackets
+is a list of three numbers. Lists are enclosed in square brackets
 and may contain any type of objects separated by commas. Here
 we mix a filename (string), a real number, and an integer:
 
@@ -859,7 +859,7 @@ is appropriate. Such arguments are called *keyword arguments* or
 .. note::
     * Arguments without the argument name are called *positional arguments*.
    
-    * Positional arguments mustalways be listed before the keyword arguments
+    * Positional arguments must always be listed before the keyword arguments
       in the function and in any call.
    
     * The sequence of the keyword arguments can be arbitrary.
@@ -1024,7 +1024,7 @@ An if test has the structure
             <statements when condition is False>
 
 Here, ``condition`` is a boolean expression that evaluates to ``True`` or
-``False``. For the picewisely defined function :eq:`basics:seq2`
+``False``. For the piecewisely defined function :eq:`basics:seq2`
 we would use an if test in the implementation:
 
 .. code-block:: python
@@ -1216,7 +1216,7 @@ can be removed by ``variable.strip()``. We do this before comparing
 the variable name with ``v0``, ``a``, etc.
 
 It is important to note that ``value`` (the text to the right of ``=`` on
-each line) is a string variable. We need to convert to ``float`` to
+each line) is a string variable. We need to convert to a ``float`` object to
 get a variable that we can compute with.
 The assignment ``interval = eval(value)`` does some magic and deserve
 an explanation: ``eval(s)`` interprets the text in the string ``s`` as
@@ -1239,7 +1239,7 @@ File writing
 ------------
 
 Suppose we generate :math:`t` and :math:`s(t)` values in two lists, ``t_values`` and
-``s_values`` and want to write these as a nicely formatted table to file.
+``s_values``, and want to write these as a nicely formatted table to file.
 The following code does the work:
 
 .. code-block:: python
@@ -1592,7 +1592,7 @@ computing :math:`\sin (x)`, where :math:`x` is an array of 1M elements, using
 scalar computing with a loop (function ``sin_func``) and vectorized
 computing using the ``sin`` function from ``numpy``.
 
-.. code-block:: python
+.. code-block:: ipy
 
         In [1]: import numpy as np
         

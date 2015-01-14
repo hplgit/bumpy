@@ -240,7 +240,7 @@ the variable name with <code>v0</code>, <code>a</code>, etc.
 
 <p>
 It is important to note that <code>value</code> (the text to the right of <code>=</code> on
-each line) is a string variable. We need to convert to <code>float</code> to
+each line) is a string variable. We need to convert to a <code>float</code> object to
 get a variable that we can compute with.
 The assignment <code>interval = eval(value)</code> does some magic and deserve
 an explanation: <code>eval(s)</code> interprets the text in the string <code>s</code> as
@@ -266,7 +266,7 @@ after the <code>with</code> block.
 
 <p>
 Suppose we generate \( t \) and \( s(t) \) values in two lists, <code>t_values</code> and
-<code>s_values</code> and want to write these as a nicely formatted table to file.
+<code>s_values</code>, and want to write these as a nicely formatted table to file.
 The following code does the work:
 
 <p>

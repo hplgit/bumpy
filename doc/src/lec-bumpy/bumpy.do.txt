@@ -251,7 +251,7 @@ f = Spring(k)
  * "URL":"http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz"
  * File contains various road profiles
 
-Dowload road profile data from the Internet:
+Download road profile data from the Internet:
 
 !bc pycod-t
 filename = 'bumpy.dat.gz'
@@ -423,7 +423,7 @@ except IndexError:
     b = 80  # default
 !ec
 
-Note: 1st command-line arg in `sys.argv[1]`, but that is a string
+Note: 1st command-line argument in `sys.argv[1]`, but that is a string
 
 !split
 ===== Option-value pairs on the command line =====

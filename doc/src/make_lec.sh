@@ -17,18 +17,21 @@ if [ $# -ge 1 ]; then
 else
   COURSE=any
 fi
-
 opt="COURSE=$COURSE"
 
 # Spellcheck must be performed in the dir where the file resides
 cd lec-bumpy
 system doconce spellcheck -d ../.dict4spell.txt basics.do.txt
+system doconce spellcheck -d ../.dict4spell.txt bumpy.do.txt
 cd ..
 
 #names="lecture-basics lecture-bumpy"
-names="lectures-basics"
-names="lectures-bumpy"
+names="lectures-basics lectures-bumpy"
 #names="lectures_tkt4140"
+if [ $# -ge 2 ]; then
+  names="$1"
+fi
+
 for name in $names; do
 
 # Note: can be smart to run beamer slides first since latex finds

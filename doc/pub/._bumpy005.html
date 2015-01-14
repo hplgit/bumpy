@@ -22,7 +22,7 @@ Automatically generated HTML file from DocOnce source
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Optimal backround for reading this note ',
+ 'sections': [(' Optimal background for reading this note ',
                3,
                None,
                '___sec0'),
@@ -53,7 +53,8 @@ Automatically generated HTML file from DocOnce source
                3,
                None,
                '___sec18'),
-              (' Modules ', 2, None, '___sec19'),
+              (' Using a test framework ', 3, None, '___sec19'),
+              (' Modules ', 2, None, '___sec20'),
               (' Appendix: Quick motivation for programming with Python ',
                1,
                'app:motivation',
@@ -65,14 +66,14 @@ Automatically generated HTML file from DocOnce source
               (' Full tutorials on scientific programming with Python ',
                3,
                None,
-               '___sec22'),
-              (' NumPy resources ', 3, None, '___sec23'),
-              (' Useful resources ', 3, None, '___sec24'),
-              (' Some relevant Python books ', 3, None, '___sec25'),
+               '___sec23'),
+              (' NumPy resources ', 3, None, '___sec24'),
+              (' Useful resources ', 3, None, '___sec25'),
+              (' Some relevant Python books ', 3, None, '___sec26'),
               (' Course material on Python programming in general ',
                3,
                None,
-               '___sec26')]}
+               '___sec27')]}
 end of tocinfo -->
 
 <body>
@@ -236,7 +237,7 @@ This is not strictly necessary, but if we supply <code>b=2</code> and <code>m=4<
 a computation like <code>b/m</code> will give zero as result because both <code>b</code> and <code>m</code>
 are then integers and <code>b/m</code> implies <em>integer division</em>, not the
 mathematical division of real numbers (this is not a special
-feature of Python - all languges with a strong heritage from C
+feature of Python - all languages with a strong heritage from C
 invoke integer division if both operands in a division are integers).
 We need to make
 sure that at least one of the operands in a division is a real
@@ -285,8 +286,8 @@ We could simplify the <code>if-else</code> test involving <code>F</code> to just
 <p>
 if we are sure that <code>F</code> is either a function or a <code>numpy</code> array.
 Should the user send in something else for <code>F</code>, Python will encounter
-a run-time error when trying to index <code>F</code> as in <code>F[0]</code> in the
-statement computating <code>u[1]</code>.
+a run-time error when trying to index <code>F</code> as in <code>F[0]</code> (in the
+statement computing <code>u[1]</code>).
 
 <p>
 To be absolutely safe, we should test that the other arguments are
@@ -334,11 +335,12 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <b>Local and global variables.</b>
 We use in this example a linear spring function \( s(u) \),
+
 <p>
 
-<!-- code=text (!bc cod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">def f(u):
-    return k*u
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(u):
+    <span style="color: #008000; font-weight: bold">return</span> k<span style="color: #666666">*</span>u
 </pre></div>
 <p>
 Here, <code>u</code> is a <em>local variable</em>,

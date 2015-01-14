@@ -22,7 +22,7 @@ Automatically generated HTML file from DocOnce source
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Optimal backround for reading this note ',
+ 'sections': [(' Optimal background for reading this note ',
                3,
                None,
                '___sec0'),
@@ -53,7 +53,8 @@ Automatically generated HTML file from DocOnce source
                3,
                None,
                '___sec18'),
-              (' Modules ', 2, None, '___sec19'),
+              (' Using a test framework ', 3, None, '___sec19'),
+              (' Modules ', 2, None, '___sec20'),
               (' Appendix: Quick motivation for programming with Python ',
                1,
                'app:motivation',
@@ -65,14 +66,14 @@ Automatically generated HTML file from DocOnce source
               (' Full tutorials on scientific programming with Python ',
                3,
                None,
-               '___sec22'),
-              (' NumPy resources ', 3, None, '___sec23'),
-              (' Useful resources ', 3, None, '___sec24'),
-              (' Some relevant Python books ', 3, None, '___sec25'),
+               '___sec23'),
+              (' NumPy resources ', 3, None, '___sec24'),
+              (' Useful resources ', 3, None, '___sec25'),
+              (' Some relevant Python books ', 3, None, '___sec26'),
               (' Course material on Python programming in general ',
                3,
                None,
-               '___sec26')]}
+               '___sec27')]}
 end of tocinfo -->
 
 <body>
@@ -210,15 +211,15 @@ and output data in the problem:
 
 <p>
 
-<!-- code=text (!bc cod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">def rms(data):
-    t = data[1]
-    u_rms = np.zeros(t.size)  # for accumulating the rms value
-    for h, a, u in data[2:]:  # loop over results
-        u_rms += u**2
-    u_rms = np.sqrt(u_rms/u_rms.size)
-    data.append(u_rms)
-    return data
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">rms</span>(data):
+    t <span style="color: #666666">=</span> data[<span style="color: #666666">1</span>]
+    u_rms <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(t<span style="color: #666666">.</span>size)  <span style="color: #408080; font-style: italic"># for accumulating the rms value</span>
+    <span style="color: #008000; font-weight: bold">for</span> h, a, u <span style="color: #AA22FF; font-weight: bold">in</span> data[<span style="color: #666666">2</span>:]:  <span style="color: #408080; font-style: italic"># loop over results</span>
+        u_rms <span style="color: #666666">+=</span> u<span style="color: #666666">**2</span>
+    u_rms <span style="color: #666666">=</span> np<span style="color: #666666">.</span>sqrt(u_rms<span style="color: #666666">/</span>u_rms<span style="color: #666666">.</span>size)
+    data<span style="color: #666666">.</span>append(u_rms)
+    <span style="color: #008000; font-weight: bold">return</span> data
 </pre></div>
 <p>
 Observe here the <code>for</code> loop where three variables (<code>h</code>, <code>a</code>, and <code>u</code>)
@@ -226,29 +227,32 @@ are set equal to the three arrays in each element of the sublist
 <code>data[2:]</code>. We only need the <code>u</code> array for the computation. An alternative
 loop would be to have one loop variable for each list element and
 get <code>u</code> as the 3rd element of each list element:
+
 <p>
 
-<!-- code=text (!bc cod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">    for res in data[2:]:
-        u = res[2]         # res is [h,a,u]
-        ...
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">    <span style="color: #008000; font-weight: bold">for</span> res <span style="color: #AA22FF; font-weight: bold">in</span> data[<span style="color: #666666">2</span>:]:
+        u <span style="color: #666666">=</span> res[<span style="color: #666666">2</span>]         <span style="color: #408080; font-style: italic"># res is [h,a,u]</span>
+        <span style="color: #666666">...</span>
 </pre></div>
 <p>
 After calling
+
 <p>
 
-<!-- code=text (!bc cod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">road_url = &#39;http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz&#39;
-data = solve(url=road_url,
-             m=60, b=200, k=60, v=6)
-data = rms(data)
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">road_url <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz&#39;</span>
+data <span style="color: #666666">=</span> solve(url<span style="color: #666666">=</span>road_url,
+             m<span style="color: #666666">=60</span>, b<span style="color: #666666">=200</span>, k<span style="color: #666666">=60</span>, v<span style="color: #666666">=6</span>)
+data <span style="color: #666666">=</span> rms(data)
 </pre></div>
 <p>
 the <code>data</code> array contains single arrays and triplets of arrays,
+
 <p>
 
-<!-- code=text (!bc cod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[x, t, [h,a,u], [h,a,u], ..., [h,a,u], u_rms]
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[x, t, [h,a,u], [h,a,u], <span style="color: #666666">...</span>, [h,a,u], u_rms]
 </pre></div>
 <p>
 This list, or any Python object, can be stored on file for later

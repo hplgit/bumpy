@@ -256,6 +256,11 @@ object, and called as any other function. Transferring a function as
 argument to another function is therefore simpler and cleaner in Python
 than in, e.g., C, C++, Java, C#, and Matlab.
 
+!bc pyhid
+import sys
+sys.path.insert(0, 'src-bumpy')
+!ec
+
 How can we use the `solver_linear_damping` function? We need to *call* it
 with relevant values for the arguments. Suppose we want to solve
 a vibration problem with $I=1$, $V=0$,
