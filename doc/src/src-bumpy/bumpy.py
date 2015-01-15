@@ -93,6 +93,7 @@ def acceleration_vectorized(h, x, v):
 def rms(data):
     """Compute root mean square of displacement."""
     u_rms = np.zeros(t.size)
+    # recall: data = [x,t,[h,a,u],[h,a,u],...]
     for h, a, u in data[2:]:
         u_rms += u**2
     u_rms = np.sqrt(u_rms/u_rms.size)
