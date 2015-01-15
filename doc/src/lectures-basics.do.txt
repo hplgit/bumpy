@@ -1,5 +1,11 @@
+% if COURSE == 'TKT4140':
+TITLE: Introduction to Scientific Python programming - Apdapted to TKT4140 Numerical Methods with Computer Laboratory
+AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Simula Research Laboratory & University of Oslo
+AUTHOR: Leif Rune Hellevik Email:leif.r.hellevik@ntnu.no at Biomechanichs Group, Departement of Structural Engineering NTNU
+% else:
 TITLE: Intro to scientific Python programming
 AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Simula Research Laboratory & University of Oslo
+% endif
 DATE: today
 
 !split
