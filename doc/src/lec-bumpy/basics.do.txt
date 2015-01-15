@@ -208,7 +208,7 @@ while a <= 1.2:
 !ec
 
 !split
-===== Ooops, why is `a <= 1.2` when `a` is `2`? Round-off errors! =====
+===== Ooops, why is `a <= 1.2` when `a` is `1.2`? Round-off errors! =====
 
 !bc pyoptpro
 a = 0
