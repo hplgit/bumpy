@@ -294,6 +294,7 @@ da = 0.4
 while a <= 1.2:
     print a
     a = a + da
+    # Inspect all decimals in da and a
     print '%.16E, %.16E' % (da, a), a <= 1.2
 !ec
 % if FORMAT in ('latex', 'pdflatex'):

@@ -216,10 +216,13 @@ da = 0.4
 while a <= 1.2:
     print a
     a = a + da
+    # Inspect all decimals in da and a
     print '%.16E, %.16E' % (da, a), a <= 1.2
 !ec
 
+!bbox
 Small round-off error in `da` makes `a = 1.2000000000000002`
+!ebox
 
 !split
 ===== Rule: never `a == b` for real `a` and `b`! Always use a tolerance! =====
@@ -233,7 +236,6 @@ boolean_condition1 = a == b              # may be False
 tol = 1E-14
 boolean_condition2 = abs(a - b) < tol    # True
 !ec
-!ewarning
 
 
 !split

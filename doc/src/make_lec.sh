@@ -123,5 +123,6 @@ system doconce format ipynb $name $opt
 
 # Publish
 dest=../pub
-cp -r reveal.js deck.js ${name}-*.html ._${name}-*.html  ${name}-*.pdf *.ipynb $dest/
+cp -r reveal.js deck.js ${name}-*.html ${name}-*.pdf *.ipynb $dest/
+#cp ._${name}-*.html $dest
 done
