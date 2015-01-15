@@ -177,19 +177,63 @@ Note:
  * `condition` is a boolean expression (e.g., `t <= 2`)
 
 !split
-===== The Python Online Tutor can help you understand the program flow =====
+===== Let's take a closer look at the output of our program =====
+
+!bc sys
+Terminal> python while.py
+0 0.0
+0.1 0.201
+0.2 0.404
+...
+1.8 3.924
+1.9 4.161
+!ec
+
+The last line contains 1.9, but the while loop should run also when
+$t=2$ since the test is `t <= 2`. Why is this test `False`?
+
+!split
+===== Let's examine the program in the Python Online Tutor =====
 idx{Python Online Tutor}
 
-"Python Online Tutor": "http://pythontutor.com/visualize.html#mode=edit"
-lets you step through the program and examine variables.
+"Python Online Tutor": "http://pythontutor.com/visualize.html#mode=edit":
+step through the program and examine variables
 
 !bc pyoptpro
-a = 1
-da = 0.5
-while a <= 3:
+a = 0
+da = 0.4
+while a <= 1.2:
     print a
     a = a + da
 !ec
+
+!split
+===== Ooops, why is `a <= 1.2` when `a` is `2`? Round-off errors! =====
+
+!bc pyoptpro
+a = 0
+da = 0.4
+while a <= 1.2:
+    print a
+    a = a + da
+    print '%.16E, %.16E' % (da, a), a <= 1.2
+!ec
+
+Small round-off error in `da` makes `a = 1.2000000000000002`
+
+!split
+===== Rule: never `a == b` for real `a` and `b`! Always use a tolerance! =====
+
+!bc pycod
+a = 1.2
+b = 0.4 + 0.4 + 0.4
+boolean_condition1 = a == b              # may be False
+
+# This is the way to do it
+tol = 1E-14
+boolean_condition2 = abs(a - b) < tol    # True
+!ec
+!ewarning
 
 
 !split
@@ -231,7 +275,7 @@ mydata.txt
 !split
 ===== Store our table in two lists, one for each column =====
 
-# @@@CODE src-bumpy/while_list.py
+@@@CODE src-bumpy/while_list.py
 
 !split
 ===== For loops =====
@@ -391,13 +435,16 @@ Matlab users can do
 
 !bc pycod
 from numpy import *
+x = linspace(0, 1, 101)
+y = exp(-x)*sin(pi*x)
 !ec
 
 The Python community likes
 
 !bc pycod
 import numpy as np
-print np.sin(np.pi)
+x = np.linspace(0, 1, 101)
+y = np.exp(-x)*np.sin(np.pi*x)
 !ec
 
 Our convention: use `np` prefix, but not in formulas involving
@@ -405,9 +452,10 @@ math functions
 
 !bc pycod
 import numpy as np
-from numpy import sin, exp
-t = np.linspace(0, 4, 1001)
-p = exp(-t)*sin(2*t)
+x = np.linspace(0, 1, 101)
+
+from numpy import sin, exp, pi
+y = exp(-x)*sin(pi*x)
 !ec
 
 !split
@@ -421,7 +469,8 @@ idx{`matplotlib`}
 
 Plotting is done with `matplotlib`:
 
-# @@@CODE src-bumpy/plot1.py
+@@@CODE src-bumpy/plot1.py
+
 % if FORMAT != 'ipynb':
 The plotfile `myplot.png` looks like
 
@@ -431,7 +480,7 @@ FIGURE: [fig-bumpy/plot1_s, width=500 frac=0.5]
 !split
 ===== Plotting of multiple curves =====
 
-# @@@CODE src-bumpy/plot1.py
+@@@CODE src-bumpy/plot2.py
 
 % if FORMAT != 'ipynb':
 FIGURE: [fig-bumpy/plot2_s, width=500 frac=0.5]

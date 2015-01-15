@@ -257,6 +257,15 @@ is the *boolean expression* `t <= 2`, so as long as the value is less
 than or equal to 2,
 `t <= 2` evaluates to `True`, otherwise it evaluates to `False`.
 
+!bwarning Error in the code
+According to the code, the last pass in the while loop should correspond
+to $t=2$, but looking at the output, we see that the last print
+statement has $t=1.9$. The next test in the while condition involves
+$t=2$ and the boolean condition is expected to be `2 == 2`. However,
+it seems that the condition is `False` since the computations for
+$t=2$ are not printed. Why do we experience this behavior?
+!ewarning
+
 idx{Python Online Tutor}
 
 The "Python Online Tutor": "http://pythontutor.com/visualize.html#mode=edit"
@@ -264,15 +273,62 @@ is a great tool to examine the program flow. Consider this little loop
 run in the Python Online Tutor:
 
 !bc pyoptpro
-a = 1
-da = 0.5
-while a <= 3:
+a = 0
+da = 0.4
+while a <= 1.2:
     print a
     a = a + da
 !ec
-In the Python Online Tutor you can execute each statement, follow the program
-flow, and always see the contents of the various variables.
+The Python Online Tutor executes each statement and displays the contents
+of variables such that you can track the program flow and the evolution
+of variables.
 
+So, why is not `a` printed for 1.2? That is, why does `a == 1.2` evaluate to
+`True` when `a` is (expected to be) 2? We must look at the accuracy of
+`a` to investigate this question and write it out with 16 decimals in
+scientific notation (printf specification `%.16E`):
+
+!bc pyoptpro
+a = 0
+da = 0.4
+while a <= 1.2:
+    print a
+    a = a + da
+    print '%.16E, %.16E' % (da, a), a <= 1.2
+!ec
+% if FORMAT in ('latex', 'pdflatex'):
+The output becomes
+
+!bc
+0
+4.0000000000000002E-01, 4.0000000000000002E-01 True
+0.4
+4.0000000000000002E-01, 8.0000000000000004E-01 True
+0.8
+4.0000000000000002E-01, 1.2000000000000002E+00 False
+!ec
+% endif
+The problem is that `da` is not exactly 0.4, but contains a small round-off
+error. Doing `a = a + da` then results in a slightly inaccurate `a`.
+When the exact `a` should reach 1.2, the `a` in the program has a
+an error and equals `1.2000000000000002`. Obviously the test for
+exact equality, `a == 1.2`, becomes `False`, and the loop is terminated.
+
+!bwarning Rule: use exact equality `==` when comparing real numbers
+Always compare real numbers using the difference and a tolerance:
+
+!bc pycod
+a = 1.2
+b = 0.4 + 0.4 + 0.4
+boolean_condition1 = a == b              # False
+tol = 1E-14
+boolean_condition2 = abs(a - b) < tol    # True
+!ec
+!ewarning
+
+The Python Online Tutor is ideal for demonstrating program flow and
+contents of variables in small and simple programs. However, you should
+use a real debugger instead when searching for errors in real programs.
 
 ===== Lists =====
 label{basics:list}
@@ -543,29 +599,32 @@ idx{import of modules}
 
 !bnotice Import of `numpy`
 To get Python code that is as similar to Matlab as possible, one would
-do
+do a ``start import'' of everything,
 
 !bc pycod
 from numpy import *
+x = linspace(0, 1, 101)
+y = exp(-x)*sin(pi*x)
 !ec
 However, in the Python community it has been a culture to use
 a prefix `np` as abbreviation for `numpy`:
 
 !bc pycod
 import numpy as np
-print np.sin(np.pi)
+x = np.linspace(0, 1, 101)
+y = np.exp(-x)*np.sin(np.pi*x)
 !ec
 
 Our convention is to use the `np` prefix for typical Matlab functions,
 but skip the prefix when working with mathematical functions like
-the sine and cosine to get a one-to-one correspondence between formulas
+`exp(x)*sin(pi*x)`to get a one-to-one correspondence between formulas
 in the program and in the mathematical description of the problem.
 
 !bc pycod
 import numpy as np
-from numpy import sin, exp
-t = np.linspace(0, 4, 1001)
-p = exp(-t)*sin(2*t)
+from numpy import sin, exp, pi
+x = np.linspace(0, 1, 101)
+y = exp(-x)*sin(pi*x)
 !ec
 !enotice
 

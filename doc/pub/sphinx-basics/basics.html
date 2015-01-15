@@ -83,7 +83,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen (hpl at simula.no)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 13, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 14, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -304,13 +304,48 @@ variable <tt class="docutils literal"><span class="pre">condition</span></tt> ev
 is the <em>boolean expression</em> <tt class="docutils literal"><span class="pre">t</span> <span class="pre">&lt;=</span> <span class="pre">2</span></tt>, so as long as the value is less
 than or equal to 2,
 <tt class="docutils literal"><span class="pre">t</span> <span class="pre">&lt;=</span> <span class="pre">2</span></tt> evaluates to <tt class="docutils literal"><span class="pre">True</span></tt>, otherwise it evaluates to <tt class="docutils literal"><span class="pre">False</span></tt>.</p>
+<div class="admonition-error-in-the-code admonition">
+<p class="first admonition-title">Error in the code</p>
+<p class="last">According to the code, the last pass in the while loop should correspond
+to <span class="math">\(t=2\)</span>, but looking at the output, we see that the last print
+statement has <span class="math">\(t=1.9\)</span>. The next test in the while condition involves
+<span class="math">\(t=2\)</span> and the boolean condition is expected to be <tt class="docutils literal"><span class="pre">2</span> <span class="pre">==</span> <span class="pre">2</span></tt>. However,
+it seems that the condition is <tt class="docutils literal"><span class="pre">False</span></tt> since the computations for
+<span class="math">\(t=2\)</span> are not printed. Why do we experience this behavior?</p>
+</div>
 <p id="index-15">The <a class="reference external" href="http://pythontutor.com/visualize.html#mode=edit">Python Online Tutor</a>
 is a great tool to examine the program flow. Consider this little loop
 run in the Python Online Tutor:</p>
 <iframe width="950" height="500" frameborder="0"
-        src="http://pythontutor.com/iframe-embed.html#code=a+%3D+1%0Ada+%3D+0.5%0Awhile+a+%3C%3D+3%3A%0A++++print+a%0A++++a+%3D+a+%2B+da&curInstr=0&py=2&cumulative=false">
-</iframe><p>In the Python Online Tutor you can execute each statement, follow the program
-flow, and always see the contents of the various variables.</p>
+        src="http://pythontutor.com/iframe-embed.html#code=a+%3D+0%0Ada+%3D+0.4%0Awhile+a+%3C%3D+1.2%3A%0A++++print+a%0A++++a+%3D+a+%2B+da&curInstr=0&py=2&cumulative=false">
+</iframe><p>The Python Online Tutor executes each statement and displays the contents
+of variables such that you can track the program flow and the evolution
+of variables.</p>
+<p>So, why is not <tt class="docutils literal"><span class="pre">a</span></tt> printed for 1.2? That is, why does <tt class="docutils literal"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">1.2</span></tt> evaluate to
+<tt class="docutils literal"><span class="pre">True</span></tt> when <tt class="docutils literal"><span class="pre">a</span></tt> is (expected to be) 2? We must look at the accuracy of
+<tt class="docutils literal"><span class="pre">a</span></tt> to investigate this question and write it out with 16 decimals in
+scientific notation (printf specification <tt class="docutils literal"><span class="pre">%.16E</span></tt>):</p>
+<iframe width="950" height="500" frameborder="0"
+        src="http://pythontutor.com/iframe-embed.html#code=a+%3D+0%0Ada+%3D+0.4%0Awhile+a+%3C%3D+1.2%3A%0A++++print+a%0A++++a+%3D+a+%2B+da%0A++++print+%27%25.16E%2C+%25.16E%27+%25+%28da%2C+a%29%2C+a+%3C%3D+1.2&curInstr=0&py=2&cumulative=false">
+</iframe><p>The problem is that <tt class="docutils literal"><span class="pre">da</span></tt> is not exactly 0.4, but contains a small round-off
+error. Doing <tt class="docutils literal"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">da</span></tt> then results in a slightly inaccurate <tt class="docutils literal"><span class="pre">a</span></tt>.
+When the exact <tt class="docutils literal"><span class="pre">a</span></tt> should reach 1.2, the <tt class="docutils literal"><span class="pre">a</span></tt> in the program has a
+an error and equals <tt class="docutils literal"><span class="pre">1.2000000000000002</span></tt>. Obviously the test for
+exact equality, <tt class="docutils literal"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">1.2</span></tt>, becomes <tt class="docutils literal"><span class="pre">False</span></tt>, and the loop is terminated.</p>
+<div class="admonition-rule-use-exact-equality-when-comparing-real-numbers admonition">
+<p class="first admonition-title">Rule: use exact equality <tt class="docutils literal"><span class="pre">==</span></tt> when comparing real numbers</p>
+<p>Always compare real numbers using the difference and a tolerance:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="mf">1.2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">0.4</span> <span class="o">+</span> <span class="mf">0.4</span> <span class="o">+</span> <span class="mf">0.4</span>
+<span class="n">boolean_condition1</span> <span class="o">=</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span>              <span class="c"># False</span>
+<span class="n">tol</span> <span class="o">=</span> <span class="mf">1E-14</span>
+<span class="n">boolean_condition2</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span>    <span class="c"># True</span>
+</pre></div>
+</div>
+</div>
+<p>The Python Online Tutor is ideal for demonstrating program flow and
+contents of variables in small and simple programs. However, you should
+use a real debugger instead when searching for errors in real programs.</p>
 </div>
 <div class="section" id="lists">
 <span id="basics-list"></span><h3>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h3>
@@ -576,24 +611,27 @@ that work on scalars as well as arrays.</p>
 <div class="admonition-import-of-numpy admonition" id="index-26">
 <p class="first admonition-title">Import of <tt class="docutils literal"><span class="pre">numpy</span></tt></p>
 <p>To get Python code that is as similar to Matlab as possible, one would
-do</p>
+do a &#8220;start import&#8221; of everything,</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>However, in the Python community it has been a culture to use
 a prefix <tt class="docutils literal"><span class="pre">np</span></tt> as abbreviation for <tt class="docutils literal"><span class="pre">numpy</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="k">print</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Our convention is to use the <tt class="docutils literal"><span class="pre">np</span></tt> prefix for typical Matlab functions,
 but skip the prefix when working with mathematical functions like
-the sine and cosine to get a one-to-one correspondence between formulas
+<a href="#id1"><span class="problematic" id="id2">`</span></a>exp(x)*sin(pi*x)`to get a one-to-one correspondence between formulas
 in the program and in the mathematical description of the problem.</p>
 <div class="last highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">exp</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1001</span><span class="p">)</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">exp</span><span class="p">,</span> <span class="n">pi</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1026,13 +1064,13 @@ floating around.</p>
 <div class="section" id="a-very-simple-class">
 <h3>A very simple class<a class="headerlink" href="#a-very-simple-class" title="Permalink to this headline">¶</a></h3>
 <p>A class packs together a set of variables and a set of functions. All
-functions can access all variables. <a class="footnote-reference" href="#class-terminology" id="id1">[1]</a> The idea is
+functions can access all variables. <a class="footnote-reference" href="#class-terminology" id="id3">[1]</a> The idea is
 to encapsulate variables and functions in logical units such that a
 larger program can be composed by combing such units (classes).</p>
 <table class="docutils footnote" frame="void" id="class-terminology" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>In classes, the functions are called
+<tr><td class="label"><a class="fn-backref" href="#id3">[1]</a></td><td>In classes, the functions are called
 <em>methods</em> and the variables are called <em>attributes</em>.</td></tr>
 </tbody>
 </table>

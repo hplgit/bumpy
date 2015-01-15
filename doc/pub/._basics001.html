@@ -442,6 +442,17 @@ than or equal to 2,
 <code>t &lt;= 2</code> evaluates to <code>True</code>, otherwise it evaluates to <code>False</code>.
 
 <p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Error in the code.</b>
+According to the code, the last pass in the while loop should correspond
+to \( t=2 \), but looking at the output, we see that the last print
+statement has \( t=1.9 \). The next test in the while condition involves
+\( t=2 \) and the boolean condition is expected to be <code>2 == 2</code>. However,
+it seems that the condition is <code>False</code> since the computations for
+\( t=2 \) are not printed. Why do we experience this behavior?
+</div>
+
+
+<p>
 The <a href="http://pythontutor.com/visualize.html#mode=edit" target="_self">Python Online Tutor</a>
 is a great tool to examine the program flow. Consider this little loop
 run in the Python Online Tutor:
@@ -449,11 +460,52 @@ run in the Python Online Tutor:
 <p>
 
 <iframe width="950" height="500" frameborder="0"
-        src="http://pythontutor.com/iframe-embed.html#code=a+%3D+1%0Ada+%3D+0.5%0Awhile+a+%3C%3D+3%3A%0A++++print+a%0A++++a+%3D+a+%2B+da&curInstr=0&py=2&cumulative=false">
+        src="http://pythontutor.com/iframe-embed.html#code=a+%3D+0%0Ada+%3D+0.4%0Awhile+a+%3C%3D+1.2%3A%0A++++print+a%0A++++a+%3D+a+%2B+da&curInstr=0&py=2&cumulative=false">
 </iframe>
 <p>
-In the Python Online Tutor you can execute each statement, follow the program
-flow, and always see the contents of the various variables.
+The Python Online Tutor executes each statement and displays the contents
+of variables such that you can track the program flow and the evolution
+of variables.
+
+<p>
+So, why is not <code>a</code> printed for 1.2? That is, why does <code>a == 1.2</code> evaluate to
+<code>True</code> when <code>a</code> is (expected to be) 2? We must look at the accuracy of
+<code>a</code> to investigate this question and write it out with 16 decimals in
+scientific notation (printf specification <code>%.16E</code>):
+
+<p>
+
+<iframe width="950" height="500" frameborder="0"
+        src="http://pythontutor.com/iframe-embed.html#code=a+%3D+0%0Ada+%3D+0.4%0Awhile+a+%3C%3D+1.2%3A%0A++++print+a%0A++++a+%3D+a+%2B+da%0A++++print+%27%25.16E%2C+%25.16E%27+%25+%28da%2C+a%29%2C+a+%3C%3D+1.2&curInstr=0&py=2&cumulative=false">
+</iframe>
+<p>
+The problem is that <code>da</code> is not exactly 0.4, but contains a small round-off
+error. Doing <code>a = a + da</code> then results in a slightly inaccurate <code>a</code>.
+When the exact <code>a</code> should reach 1.2, the <code>a</code> in the program has a
+an error and equals <code>1.2000000000000002</code>. Obviously the test for
+exact equality, <code>a == 1.2</code>, becomes <code>False</code>, and the loop is terminated.
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Rule: use exact equality <code>==</code> when comparing real numbers.</b>
+Always compare real numbers using the difference and a tolerance:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">1.2</span>
+b <span style="color: #666666">=</span> <span style="color: #666666">0.4</span> <span style="color: #666666">+</span> <span style="color: #666666">0.4</span> <span style="color: #666666">+</span> <span style="color: #666666">0.4</span>
+boolean_condition1 <span style="color: #666666">=</span> a <span style="color: #666666">==</span> b              <span style="color: #408080; font-style: italic"># False</span>
+tol <span style="color: #666666">=</span> <span style="color: #666666">1E-14</span>
+boolean_condition2 <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(a <span style="color: #666666">-</span> b) <span style="color: #666666">&lt;</span> tol    <span style="color: #408080; font-style: italic"># True</span>
+</pre></div>
+<p>
+</div>
+
+
+<p>
+The Python Online Tutor is ideal for demonstrating program flow and
+contents of variables in small and simple programs. However, you should
+use a real debugger instead when searching for errors in real programs.
 
 <h2 id="basics:list">Lists</h2>
 
@@ -805,12 +857,14 @@ that work on scalars as well as arrays.
 <p>
 <div class="alert alert-block alert-success alert-text-normal"><b>Import of <code>numpy</code>.</b>
 To get Python code that is as similar to Matlab as possible, one would
-do
+do a &quot;start import&quot; of everything,
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, <span style="color: #666666">101</span>)
+y <span style="color: #666666">=</span> exp(<span style="color: #666666">-</span>x)<span style="color: #666666">*</span>sin(pi<span style="color: #666666">*</span>x)
 </pre></div>
 <p>
 However, in the Python community it has been a culture to use
@@ -820,21 +874,22 @@ a prefix <code>np</code> as abbreviation for <code>numpy</code>:
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
-<span style="color: #008000; font-weight: bold">print</span> np<span style="color: #666666">.</span>sin(np<span style="color: #666666">.</span>pi)
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, <span style="color: #666666">101</span>)
+y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>x)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>x)
 </pre></div>
 <p>
 Our convention is to use the <code>np</code> prefix for typical Matlab functions,
 but skip the prefix when working with mathematical functions like
-the sine and cosine to get a one-to-one correspondence between formulas
+`exp(x)*sin(pi*x)`to get a one-to-one correspondence between formulas
 in the program and in the mathematical description of the problem.
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin, exp
-t <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4</span>, <span style="color: #666666">1001</span>)
-p <span style="color: #666666">=</span> exp(<span style="color: #666666">-</span>t)<span style="color: #666666">*</span>sin(<span style="color: #666666">2*</span>t)
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin, exp, pi
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, <span style="color: #666666">101</span>)
+y <span style="color: #666666">=</span> exp(<span style="color: #666666">-</span>x)<span style="color: #666666">*</span>sin(pi<span style="color: #666666">*</span>x)
 </pre></div>
 <p>
 </div>
