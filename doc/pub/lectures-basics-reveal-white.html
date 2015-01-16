@@ -140,7 +140,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo</b></center>
 <p>&nbsp;<br>
-<center><h4>Jan 15, 2015</h4></center> <!-- date -->
+<center><h4>Jan 16, 2015</h4></center> <!-- date -->
 <p>
 
 </section>
@@ -163,44 +163,55 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; <a href="#___sec9"> Structure of a while loop </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec10"> Let's take a closer look at the output of our program </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec11"> Let's examine the program in the Python Online Tutor </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec12"> Ooops, why is <code>a &lt;= 1.2</code> when <code>a</code> is <code>2</code>? Round-off errors! </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec12"> Ooops, why is <code>a &lt;= 1.2</code> when <code>a</code> is <code>1.2</code>? Round-off errors! </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec13"> Rule: never <code>a == b</code> for real <code>a</code> and <code>b</code>! Always use a tolerance! </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#basics:list"> Lists </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#basics:list"> A list collects several objects in a given sequence </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec15"> Store our table in two lists, one for each column </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#basics:for"> For loops </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec17"> For loops used traditionally an integer counter over list/array indices </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec17"> Traditional for loop: integer counter over list/array indices </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec18"> Let's replace our while loop by a for loop </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec19"> Traversal of multiple lists at the same time with <code>zip</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#basics:numpy"> Arrays </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec21"> <code>numpy</code> functions creates entire arrays at once </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec22"> Let's use arrays in our previous program </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#basics:numpy"> Arrays are computationally efficient lists of numbers </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec21"> Examples on using arrays </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec22"> <code>numpy</code> functions creates entire arrays at once </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec23"> Let's use arrays in our previous program </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#basics:math"> Standard mathematical functions are found in the <code>math</code> module </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec24"> Use the <code>numpy</code> module for standard mathematical functions applied to arrays </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec25"> Use the <code>numpy</code> module for standard mathematical functions applied to arrays </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#basics:plot"> Plotting </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec26"> Plotting of multiple curves </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec27"> Plotting of multiple curves </a><br>
 <a href="#basics:func:branching"> Functions and branching </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#basics:func"> Functions </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec29"> Functions can have multiple arguments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec30"> Keyword arguments are arguments with default values </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec31"> Vectorization speeds up the code </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec32"> Python functions written for scalars normally work for arrays too! </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec33"> Python functions can return multiple values </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#basics:formula:piecewise"> A more general mathematical formula </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec30"> Functions can have multiple arguments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec31"> Keyword arguments are arguments with default values </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec32"> Vectorization speeds up the code </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec33"> Python functions written for scalars normally work for arrays too! </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec34"> Python functions can return multiple values </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#basics:formula:piecewise"> A more general mathematical formula (part I) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec36"> A more general mathematical formula (part II) </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#basics:if"> Basic if-else tests </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec36"> Multi-branch if tests </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec37"> Implementation of a piecewisely defined function with if </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec38"> Python functions containing if will not accept array arguments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec39"> Remedy 1: Call the function with scalar arguments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec40"> Remedy 2: Vectorize the if test with <code>where</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec41"> Remedy 3: Vectorize the if test with array indexing </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec38"> Multi-branch if tests </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec39"> Implementation of a piecewisely defined function with if </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec40"> Python functions containing if will not accept array arguments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec41"> Remedy 1: Call the function with scalar arguments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec42"> Remedy 2: Vectorize the if test with <code>where</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec43"> Remedy 3: Vectorize the if test with array indexing </a><br>
 <a href="#basics:files"> Files </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec43"> File reading </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec44"> Code for reading files with lines <code>variable = value</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec45"> Splitting lines into words is a frequent operation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec46"> Modern Python often applies the <code>with</code> statement for file handling </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec47"> File writing </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec48"> Simplified writing of tabular data to file via <code>numpy.savetxt</code> </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec49"> Simplified reading of tabular data from file via <code>numpy.savetxt</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec45"> File reading </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec46"> Code for reading files with lines <code>variable = value</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec47"> Splitting lines into words is a frequent operation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec48"> The magic <code>eval</code> function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec49"> Implementing a calculator in Python </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec50"> Modern Python often applies the <code>with</code> statement for file handling </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec51"> File writing </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec52"> Simplified writing of tabular data to file via <code>numpy.savetxt</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec53"> Simplified reading of tabular data from file via <code>numpy.loadtxt</code> </a><br>
+<a href="#basics:class"> Classes </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec55"> A very simple class </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec56"> How can we use this class? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec57"> The <code>self</code> argument is a difficult thing for newcomers... </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec58"> A class for representing a mathematical function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec59"> The class code </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec60"> Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \) </a><br>
 </p>
 <p>
 
@@ -244,17 +255,18 @@ Method: show program code through math examples
 <h2 id="basics:accesspy">Do you have access to Python?</h2>
 
 <p>
-See <a href="https://www.ntnu.no/wiki/display/kt/Python" target="_blank">TKT4140 Course specific installation guidelines</a>
-
-<p>
-Other methods:
+Many methods:
 
 <ul>
  <p><li> Mac and Windows: <a href="https://store.continuum.io/cshop/anaconda/" target="_blank">Anaconda</a></li>
+ <p><li> Ubuntu: <code>sudo apt-get install</code></li>
  <p><li> Web browser (<a href="https://wakari.io/" target="_blank">Wakari</a> or <a href="https://cloud.sagemath.com/" target="_blank">SageMathCloud</a>)</li>
 </ul>
 <p>
 
+See <a href="http://hplgit.github.io/edu/accesspy/accesspy.html" target="_blank">How to access Python for doing scientific computing</a> for more details!
+
+<p>
 
 </section>
 
@@ -297,7 +309,7 @@ Compute \( s \) for \( t=0.5 \), \( v_0=2 \), and \( a=0.2 \).
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
-<b>Code.</b>
+<b>Python code.</b>
 <p>
 <p>
 
@@ -344,10 +356,14 @@ a <span style="color: #666666">=</span> <span style="color: #666666">0.2</span> 
 s <span style="color: #666666">=</span> v0<span style="color: #666666">*</span>t <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>a<span style="color: #666666">*</span>t<span style="color: #666666">**2</span>     <span style="color: #408080; font-style: italic"># float object</span>
 </pre></div>
 <p>
-Rule: evaluate right-hand side object, left-hand side is a name for
-that object
+Rule:
 
+<ul>
+ <p><li> evaluate right-hand side; it results in an <em>object</em></li>
+ <p><li> left-hand side is a name for that object</li>
+</ul>
 <p>
+
 
 </section>
 
@@ -357,7 +373,7 @@ that object
 <h2 id="basics:printf">Formatted output with text and numbers</h2>
 
 <ul>
- <p><li> Task: write out <code>s=1.025</code></li>
+ <p><li> Task: write out text with a number (3 decimals): <code>s=1.025</code></li>
  <p><li> Method: printf syntax</li>
 </ul>
 <p>
@@ -460,7 +476,8 @@ Note:
 
 <ul>
  <p><li> the colon in the first line</li>
- <p><li> all statements in the loop must be indented</li>
+ <p><li> all statements in the loop <em>must be indented</em> <br />
+   (no braces as in C, C++, Java, ...)</li>
  <p><li> <code>condition</code> is a boolean expression (e.g., <code>t &lt;= 2</code>)</li>
 </ul>
 <p>
@@ -513,7 +530,7 @@ step through the program and examine variables
 
 <section>
 
-<h2 id="___sec12">Ooops, why is <code>a &lt;= 1.2</code> when <code>a</code> is <code>2</code>? Round-off errors! </h2>
+<h2 id="___sec12">Ooops, why is <code>a &lt;= 1.2</code> when <code>a</code> is <code>1.2</code>? Round-off errors! </h2>
 
 <p>
 
@@ -556,10 +573,10 @@ boolean_condition2 <span style="color: #666666">=</span> <span style="color: #00
 
 <section>
 
-<h2 id="basics:list">Lists</h2>
+<h2 id="basics:list">A list collects several objects in a given sequence</h2>
 
 <p>
-A list collects several variables (objects) in a given sequence:
+A list of numbers:
 
 <p>
 
@@ -572,7 +589,7 @@ A list can contain any type of objects, e.g.,
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">L <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;mydata.txt&#39;</span>, <span style="color: #666666">3.14</span>, <span style="color: #666666">10</span>]
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">L <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;mydata.txt&#39;</span>, <span style="color: #666666">3.14</span>, <span style="color: #666666">10</span>]   <span style="color: #408080; font-style: italic"># string, float, int</span>
 </pre></div>
 <p>
 Some basic list operations:
@@ -581,11 +598,11 @@ Some basic list operations:
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> L <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;mydata.txt&#39;</span>, <span style="color: #666666">3.14</span>, <span style="color: #666666">10</span>]
-<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> L[<span style="color: #666666">0</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> L[<span style="color: #666666">0</span>]    <span style="color: #408080; font-style: italic"># print first element (index 0)</span>
 mydata<span style="color: #666666">.</span>txt
-<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> L[<span style="color: #666666">1</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> L[<span style="color: #666666">1</span>]    <span style="color: #408080; font-style: italic"># print second element (index 1)</span>
 <span style="color: #666666">3.14</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">del</span> L[<span style="color: #666666">0</span>]  <span style="color: #408080; font-style: italic"># delete the first element</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">del</span> L[<span style="color: #666666">0</span>]      <span style="color: #408080; font-style: italic"># delete the first element</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> L
 [<span style="color: #666666">3.14</span>, <span style="color: #666666">10</span>]
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> <span style="color: #008000">len</span>(L)  <span style="color: #408080; font-style: italic"># length of L</span>
@@ -664,13 +681,16 @@ Demo in the Python Online Tutor:
 
 <section>
 
-<h2 id="___sec17">For loops used traditionally an integer counter over list/array indices </h2>
+<h2 id="___sec17">Traditional for loop: integer counter over list/array indices </h2>
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(somelist)):
-    <span style="color: #408080; font-style: italic"># Work with somelist[i]</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">somelist <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;file1.dat&#39;</span>, <span style="color: #666666">22</span>, <span style="color: #666666">-1.5</span>]
+
+<span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(somelist)):
+    <span style="color: #408080; font-style: italic"># access list element through index</span>
+    <span style="color: #008000; font-weight: bold">print</span> somelist[i]
 </pre></div>
 <p>
 Note:
@@ -712,7 +732,7 @@ n <span style="color: #666666">=</span> <span style="color: #008000">int</span>(
 <span style="color: #008000; font-weight: bold">for</span> t, s <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">zip</span>(t_values, s_values):
     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">  </span><span style="color: #BB6688; font-weight: bold">%.4f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (t, s)
 
-<span style="color: #408080; font-style: italic"># Alternative</span>
+<span style="color: #408080; font-style: italic"># Alternative implementation</span>
 <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(t_values)):
     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">  </span><span style="color: #BB6688; font-weight: bold">%.4f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (t_values[i], s_values[i])
 </pre></div>
@@ -739,6 +759,7 @@ Alternative: loop over a common index for the lists
 <div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(list1)):
     e1 <span style="color: #666666">=</span> list1[i]
     e2 <span style="color: #666666">=</span> list2[i]
+    e3 <span style="color: #666666">=</span> list3[i]
     <span style="color: #666666">...</span>
 </pre></div>
 <p>
@@ -748,11 +769,10 @@ Alternative: loop over a common index for the lists
 
 <section>
 
-<h2 id="basics:numpy">Arrays</h2>
+<h2 id="basics:numpy">Arrays are computationally efficient lists of numbers</h2>
 
 <ul>
- <p><li> List: collect a set of numbers or other objects
-   in a single variable</li>
+ <p><li> Lists collect a set of objects in a single variable</li>
  <p><li> Lists are very flexible (can grow, can contain &quot;anything&quot;)</li>
  <p><li> Array: computationally efficient and convenient list</li>
  <p><li> Arrays must have fixed length and can only contain numbers of
@@ -761,19 +781,29 @@ Alternative: loop over a common index for the lists
 </ul>
 <p>
 
+
+</section>
+
+
+<section>
+
+<h2 id="___sec21">Examples on using arrays </h2>
+
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> L <span style="color: #666666">=</span> [<span style="color: #666666">1</span>, <span style="color: #666666">4</span>, <span style="color: #666666">10.0</span>]    <span style="color: #408080; font-style: italic"># List of numbers</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> a <span style="color: #666666">=</span> numpy<span style="color: #666666">.</span>array(L)  <span style="color: #408080; font-style: italic"># Make corresponding array</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> a <span style="color: #666666">=</span> numpy<span style="color: #666666">.</span>array(L)  <span style="color: #408080; font-style: italic"># Convert to array</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> a
 [  <span style="color: #666666">1.</span>   <span style="color: #666666">4.</span>  <span style="color: #666666">10.</span>]
-<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> a[<span style="color: #666666">1</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> a[<span style="color: #666666">1</span>]          <span style="color: #408080; font-style: italic"># Access element through indexing</span>
 <span style="color: #666666">4.0</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> a[<span style="color: #666666">0</span>:<span style="color: #666666">2</span>]        <span style="color: #408080; font-style: italic"># Extract slice (index 2 not included!)</span>
+[  <span style="color: #666666">1.</span>   <span style="color: #666666">4.</span>]
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> a<span style="color: #666666">.</span>dtype       <span style="color: #408080; font-style: italic"># Data type of an element</span>
 float64
-<span style="color: #666666">&gt;&gt;&gt;</span> b <span style="color: #666666">=</span> <span style="color: #666666">2*</span>a <span style="color: #666666">+</span> <span style="color: #666666">1</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> b <span style="color: #666666">=</span> <span style="color: #666666">2*</span>a <span style="color: #666666">+</span> <span style="color: #666666">1</span>         <span style="color: #408080; font-style: italic"># Can do arithmetics on arrays</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> b
 [  <span style="color: #666666">3.</span>   <span style="color: #666666">9.</span>  <span style="color: #666666">21.</span>]
 </pre></div>
@@ -784,12 +814,15 @@ float64
 
 <section>
 
-<h2 id="___sec21"><code>numpy</code> functions creates entire arrays at once </h2>
+<h2 id="___sec22"><code>numpy</code> functions creates entire arrays at once </h2>
+
+<p>
+Apply \( \ln \) to all elements in array <code>a</code>:
 
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> c <span style="color: #666666">=</span> numpy<span style="color: #666666">.</span>log(a)  <span style="color: #408080; font-style: italic"># Take ln of all elements in a</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> c <span style="color: #666666">=</span> numpy<span style="color: #666666">.</span>log(a)
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> c
 [ <span style="color: #666666">0.</span>          <span style="color: #666666">1.38629436</span>  <span style="color: #666666">2.30258509</span>]
 </pre></div>
@@ -802,13 +835,22 @@ Create \( n+1 \) uniformly distributed coordinates in \( [a,b] \):
 <div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">t <span style="color: #666666">=</span> numpy<span style="color: #666666">.</span>linspace(a, b, n<span style="color: #666666">+1</span>)
 </pre></div>
 <p>
+Create array of length \( n \) filled with zeros:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">t <span style="color: #666666">=</span> numpy<span style="color: #666666">.</span>zeros(n)
+s <span style="color: #666666">=</span> numpy<span style="color: #666666">.</span>zeros_like(t)  <span style="color: #408080; font-style: italic"># zeros with t&#39;s size and data type</span>
+</pre></div>
+<p>
 
 </section>
 
 
 <section>
 
-<h2 id="___sec22">Let's use arrays in our previous program </h2>
+<h2 id="___sec23">Let's use arrays in our previous program </h2>
 
 <p>
 
@@ -826,6 +868,9 @@ s_values <span style="color: #666666">=</span> v0<span style="color: #666666">*<
 <span style="color: #008000; font-weight: bold">for</span> t, s <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">zip</span>(t_values, s_values):
     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">  </span><span style="color: #BB6688; font-weight: bold">%.4f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (t, s)
 </pre></div>
+<p>
+Note: no explicit loop for computing <code>s_values</code>!
+
 <p>
 
 </section>
@@ -862,7 +907,7 @@ Get rid of the <code>math</code> prefix:
 
 <section>
 
-<h2 id="___sec24">Use the <code>numpy</code> module for standard mathematical functions applied to arrays </h2>
+<h2 id="___sec25">Use the <code>numpy</code> module for standard mathematical functions applied to arrays </h2>
 
 <p>
 Matlab users can do
@@ -939,7 +984,7 @@ The plotfile <code>myplot.png</code> looks like
 
 <section>
 
-<h2 id="___sec26">Plotting of multiple curves </h2>
+<h2 id="___sec27">Plotting of multiple curves </h2>
 
 <p>
 
@@ -1015,8 +1060,8 @@ Note:
  <p><li> function input is represented by arguments
    (separated by comma if more than one)</li>
  <p><li> function output is returned to the calling code</li>
- <p><li> <code>v0</code> and <code>a</code> are <em>global variables</em></li>
- <p><li> <code>v0</code> and <code>a</code> must be initialized before <code>s</code> is called</li>
+ <p><li> <code>v0</code> and <code>a</code> are <em>global variables</em>, which
+   must be initialized before <code>s(t)</code> is called</li>
 </ul>
 <p>
 
@@ -1026,7 +1071,7 @@ Note:
 
 <section>
 
-<h2 id="___sec29">Functions can have multiple arguments </h2>
+<h2 id="___sec30">Functions can have multiple arguments </h2>
 
 <p>
 <code>v0</code> and <code>a</code> as function arguments instead of global variables:
@@ -1049,7 +1094,7 @@ value <span style="color: #666666">=</span> s(t<span style="color: #666666">=3</
 
 <section>
 
-<h2 id="___sec30">Keyword arguments are arguments with default values </h2>
+<h2 id="___sec31">Keyword arguments are arguments with default values </h2>
 
 <p>
 
@@ -1066,7 +1111,7 @@ value <span style="color: #666666">=</span> s(a<span style="color: #666666">=2</
 </pre></div>
 <ul>
  <p><li> Arguments without the argument name are called <em>positional arguments</em></li>
- <p><li> Positional arguments must always be listed before the keyword arguments
+ <p><li> Positional arguments must always be listed before the <em>keyword arguments</em>
    in the function and in any call</li>
  <p><li> The sequence of the keyword arguments can be arbitrary</li>
 </ul>
@@ -1078,7 +1123,7 @@ value <span style="color: #666666">=</span> s(a<span style="color: #666666">=2</
 
 <section>
 
-<h2 id="___sec31">Vectorization speeds up the code </h2>
+<h2 id="___sec32">Vectorization speeds up the code </h2>
 
 <p>
 Scalar code (work with one number at a time):
@@ -1104,8 +1149,7 @@ Vectorized code: apply <code>s</code> to the entire array
 How can this work?
 
 <ul>
- <p><li> Array: <code>t</code></li>
- <p><li> Expression: v0*t + 0.5*a*t**2</li>
+ <p><li> Expression: v0*t + 0.5*a*t**2 with array <code>t</code></li>
  <p><li> <code>r1 = v0*t</code>  (scalar times array)</li>
  <p><li> <code>r2 = t**2</code>  (square each element)</li>
  <p><li> <code>r3 = 0.5*a*r2</code> (scalar times array)</li>
@@ -1119,7 +1163,7 @@ How can this work?
 
 <section>
 
-<h2 id="___sec32">Python functions written for scalars normally work for arrays too! </h2>
+<h2 id="___sec33">Python functions written for scalars normally work for arrays too! </h2>
 
 <p>
 True if computations involve arithmetic operations and math functions:
@@ -1140,25 +1184,13 @@ x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0<
 v <span style="color: #666666">=</span> f(x)  <span style="color: #408080; font-style: italic"># f(x) works with array x</span>
 </pre></div>
 <p>
-However, if tests are not allowed:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
-    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">-1</span> <span style="color: #008000; font-weight: bold">if</span> x <span style="color: #666666">&lt;</span> <span style="color: #666666">0</span> <span style="color: #008000; font-weight: bold">else</span> x<span style="color: #666666">**4*</span>exp(<span style="color: #666666">-</span>x)<span style="color: #666666">*</span>sin(x)
-
-x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4</span>, <span style="color: #666666">100001</span>)
-v <span style="color: #666666">=</span> f(x)  <span style="color: #408080; font-style: italic"># will not work</span>
-</pre></div>
-<p>
 
 </section>
 
 
 <section>
 
-<h2 id="___sec33">Python functions can return multiple values </h2>
+<h2 id="___sec34">Python functions can return multiple values </h2>
 
 <p>
 Return \( s(t)=v_0t+\frac{1}{2}at^2 \) and \( s'(t)=v_0 + at \):
@@ -1200,7 +1232,7 @@ Tuples are constant lists (cannot be changed)
 
 <section>
 
-<h2 id="basics:formula:piecewise">A more general mathematical formula</h2>
+<h2 id="basics:formula:piecewise">A more general mathematical formula (part I)</h2>
 
 <p>
 Equations from basic kinematics:
@@ -1230,6 +1262,15 @@ $$ v(t) = v_0 + \int_0^t a(t)dt $$
 
 
 <p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec36">A more general mathematical formula (part II) </h2>
+
+<p>
 Integrate again over \( [0,t] \) to find \( s(t) \):
 
 <p>&nbsp;<br>
@@ -1238,7 +1279,7 @@ $$ s(t) = s_0 + v_0t + \int_0^t\left( \int_0^t a(t)dt \right) dt$$
 
 
 <p>
-\( a(t)=a_0 \) for \( t\in[0,t_1] \), else \( a(t)=0 \):
+Example: \( a(t)=a_0 \) for \( t\in[0,t_1] \), then \( a(t)=0 \) for \( t>t_1 \):
 
 <p>&nbsp;<br>
 $$
@@ -1297,7 +1338,7 @@ Here,
 
 <section>
 
-<h2 id="___sec36">Multi-branch if tests </h2>
+<h2 id="___sec38">Multi-branch if tests </h2>
 
 <p>
 
@@ -1328,7 +1369,7 @@ Just if, no else:
 
 <section>
 
-<h2 id="___sec37">Implementation of a piecewisely defined function with if </h2>
+<h2 id="___sec39">Implementation of a piecewisely defined function with if </h2>
 
 <p>
 A Python function implementing the mathematical function
@@ -1363,7 +1404,7 @@ reads
 
 <section>
 
-<h2 id="___sec38">Python functions containing if will not accept array arguments </h2>
+<h2 id="___sec40">Python functions containing if will not accept array arguments </h2>
 
 <p>
 
@@ -1388,7 +1429,7 @@ Problem: <code>x &lt; 1</code> evaluates to a boolean array, not just a boolean
 
 <section>
 
-<h2 id="___sec39">Remedy 1: Call the function with scalar arguments </h2>
+<h2 id="___sec41">Remedy 1: Call the function with scalar arguments </h2>
 
 <p>
 
@@ -1421,7 +1462,7 @@ plt<span style="color: #666666">.</span>show()
 
 <section>
 
-<h2 id="___sec40">Remedy 2: Vectorize the if test with <code>where</code> </h2>
+<h2 id="___sec42">Remedy 2: Vectorize the if test with <code>where</code> </h2>
 
 <p>
 Functions with if tests require a complete rewrite to work with
@@ -1462,7 +1503,7 @@ array <code>b</code> where <code>b[i] = t[i] &lt;= t1</code>.
 
 <section>
 
-<h2 id="___sec41">Remedy 3: Vectorize the if test with array indexing </h2>
+<h2 id="___sec43">Remedy 3: Vectorize the if test with array indexing </h2>
 
 <ul>
  <p><li> Let <code>b</code> be a boolean array (e.g., <code>b = t &lt;= t1</code>)</li>
@@ -1500,7 +1541,7 @@ s[t <span style="color: #666666">&gt;</span> t1]  <span style="color: #666666">=
 
 <section>
 
-<h2 id="___sec43">File reading </h2>
+<h2 id="___sec45">File reading </h2>
 
 <p>
 Put input data in a text file:
@@ -1529,7 +1570,7 @@ How can we read this file into variables <code>v0</code>, <code>a</code>, <code>
 
 <section>
 
-<h2 id="___sec44">Code for reading files with lines <code>variable = value</code> </h2>
+<h2 id="___sec46">Code for reading files with lines <code>variable = value</code> </h2>
 
 <p>
 
@@ -1556,7 +1597,7 @@ infile<span style="color: #666666">.</span>close()
 
 <section>
 
-<h2 id="___sec45">Splitting lines into words is a frequent operation </h2>
+<h2 id="___sec47">Splitting lines into words is a frequent operation </h2>
 
 <p>
 
@@ -1581,7 +1622,71 @@ the value!
 
 <section>
 
-<h2 id="___sec46">Modern Python often applies the <code>with</code> statement for file handling </h2>
+<h2 id="___sec48">The magic <code>eval</code> function </h2>
+
+<p>
+<code>eval(s)</code> executes a string <code>s</code> as a Python expression and creates the
+corresponding Python object
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> obj1 <span style="color: #666666">=</span> <span style="color: #008000">eval</span>(<span style="color: #BA2121">&#39;1+2&#39;</span>)   <span style="color: #408080; font-style: italic"># Same as obj1 = 1+2</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> obj1, <span style="color: #008000">type</span>(obj1)
+(<span style="color: #666666">3</span>, <span style="color: #666666">&lt;</span><span style="color: #008000">type</span> <span style="color: #BA2121">&#39;int&#39;</span><span style="color: #666666">&gt;</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> obj2 <span style="color: #666666">=</span> <span style="color: #008000">eval</span>(<span style="color: #BA2121">&#39;[-1, 8, 10, 11]&#39;</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> obj2, <span style="color: #008000">type</span>(obj2)
+([<span style="color: #666666">-1</span>, <span style="color: #666666">8</span>, <span style="color: #666666">10</span>, <span style="color: #666666">11</span>], <span style="color: #666666">&lt;</span><span style="color: #008000">type</span> <span style="color: #BA2121">&#39;list&#39;</span><span style="color: #666666">&gt;</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, pi
+<span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> obj3 <span style="color: #666666">=</span> <span style="color: #008000">eval</span>(<span style="color: #BA2121">&#39;sin(pi*x)&#39;</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> obj3, <span style="color: #008000">type</span>(obj3)
+(<span style="color: #666666">1.2246467991473532e-16</span>, <span style="color: #666666">&lt;</span><span style="color: #008000">type</span> <span style="color: #BA2121">&#39;float&#39;</span><span style="color: #666666">&gt;</span>)
+</pre></div>
+<p>
+Why is this so great? We can read formulas, lists, expressions as
+text from file and with <code>eval</code> turn them into live Python objects!
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec49">Implementing a calculator in Python </h2>
+
+<p>
+Demo:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python calc.py &quot;1 + 0.5*2&quot;
+2.0
+Terminal&gt; python calc.py &quot;sin(pi*2.5) + exp(-4)&quot;
+1.0183156388887342
+</pre></div>
+<p>
+Just 5 lines of code:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sys</span>
+command_line_expression <span style="color: #666666">=</span> sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>]
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>   <span style="color: #408080; font-style: italic"># Define sin, cos, exp, pi, etc.</span>
+result <span style="color: #666666">=</span> <span style="color: #008000">eval</span>(command_line_expression)
+<span style="color: #008000; font-weight: bold">print</span> result
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec50">Modern Python often applies the <code>with</code> statement for file handling </h2>
 
 <p>
 
@@ -1600,7 +1705,7 @@ No need to close the file when using <code>with</code>
 
 <section>
 
-<h2 id="___sec47">File writing </h2>
+<h2 id="___sec51">File writing </h2>
 
 <ul>
  <p><li> We have \( t \) and \( s(t) \) values in two lists, <code>t_values</code> and
@@ -1615,7 +1720,7 @@ Code:
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">outfile <span style="color: #666666">=</span> <span style="color: #008000">open</span>(<span style="color: #BA2121">&#39;table1.dat&#39;</span>, <span style="color: #BA2121">&#39;w&#39;</span>)
-outfile<span style="color: #666666">.</span>write(<span style="color: #BA2121">&#39;# t    s(t)</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span>)  <span style="color: #408080; font-style: italic"># write header</span>
+outfile<span style="color: #666666">.</span>write(<span style="color: #BA2121">&#39;# t    s(t)</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span>)  <span style="color: #408080; font-style: italic"># write table header</span>
 <span style="color: #008000; font-weight: bold">for</span> t, s <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">zip</span>(t_values, s_values):
     outfile<span style="color: #666666">.</span>write(<span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">  </span><span style="color: #BB6688; font-weight: bold">%.4f</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (t, s))
 </pre></div>
@@ -1626,7 +1731,7 @@ outfile<span style="color: #666666">.</span>write(<span style="color: #BA2121">&
 
 <section>
 
-<h2 id="___sec48">Simplified writing of tabular data to file via <code>numpy.savetxt</code> </h2>
+<h2 id="___sec52">Simplified writing of tabular data to file via <code>numpy.savetxt</code> </h2>
 
 <p>
 
@@ -1634,8 +1739,28 @@ outfile<span style="color: #666666">.</span>write(<span style="color: #BA2121">&
 <div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #408080; font-style: italic"># Make two-dimensional array of [t, s(t)] values in each row</span>
 data <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array([t_values, s_values])<span style="color: #666666">.</span>transpose()
+
+<span style="color: #408080; font-style: italic"># Write data array to file in table format</span>
 np<span style="color: #666666">.</span>savetxt(<span style="color: #BA2121">&#39;table2.dat&#39;</span>, data, fmt<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">&#39;</span>, <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%.4f</span><span style="color: #BA2121">&#39;</span>],
            header<span style="color: #666666">=</span><span style="color: #BA2121">&#39;t   s(t)&#39;</span>, comments<span style="color: #666666">=</span><span style="color: #BA2121">&#39;# &#39;</span>)
+</pre></div>
+<p>
+<code>table2.dat</code>:
+
+<p>
+
+<!-- code=text (!bc dat) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"># t   s(t)
+0.00 0.0000
+0.10 0.2010
+0.20 0.4040
+0.30 0.6090
+0.40 0.8160
+0.50 1.0250
+0.60 1.2360
+...
+1.90 4.1610
+2.00 4.4000
 </pre></div>
 <p>
 
@@ -1644,7 +1769,7 @@ np<span style="color: #666666">.</span>savetxt(<span style="color: #BA2121">&#39
 
 <section>
 
-<h2 id="___sec49">Simplified reading of tabular data from file via <code>numpy.savetxt</code> </h2>
+<h2 id="___sec53">Simplified reading of tabular data from file via <code>numpy.loadtxt</code> </h2>
 
 <p>
 
@@ -1662,6 +1787,220 @@ Note:
 </ul>
 <p>
 
+
+</section>
+
+
+<section>
+
+<h1 id="basics:class">Classes</h1>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+ <p><li> All objects in Python are made from a class</li>
+ <p><li> You don't need to know about classes to use Python</li>
+ <p><li> But class programming is powerful</li>
+</ul>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+ <p><li> Class = functions + variables packed together</li>
+ <p><li> A class is a logical unit in a program</li>
+ <p><li> A large program as a combination of appropriate units</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec55">A very simple class </h2>
+
+<ul>
+ <p><li> One variable: <code>a</code></li>
+ <p><li> One function: <code>dump</code> for printing <code>a</code></li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Trivial</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, a):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>a <span style="color: #666666">=</span> a
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">dump</span>(<span style="color: #008000">self</span>):
+        <span style="color: #008000; font-weight: bold">print</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>a
+</pre></div>
+<p>
+Class terminology: Functions are called
+<em>methods</em> and variables are called <em>attributes</em>.
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec56">How can we use this class? </h2>
+
+<p>
+First, make an <em>instance</em> (object) of the class:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">t <span style="color: #666666">=</span> Trivial(a<span style="color: #666666">=4</span>)
+t<span style="color: #666666">.</span>dump()
+</pre></div>
+<p>
+Note:
+
+<ul>
+ <p><li> The syntax <code>Trivial(a=4)</code> actually means <code>Trivial.__init__(t, 4)</code></li>
+ <p><li> <code>self</code> is an argument in <code>__init__</code> and <code>dump</code>, but not used in the calls</li>
+ <p><li> <code>__init__</code> is called <em>constructor</em> and is used to construct an object
+   (instance) if the class</li>
+ <p><li> <code>t.dump()</code> actually means <code>Trivial.dump(t)</code> (<code>self</code> is <code>t</code>)</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h2 id="___sec57">The <code>self</code> argument is a difficult thing for newcomers... </h2>
+
+<p>
+It takes time and experience to understand the <code>self</code> argument in
+class methods!
+
+<ol>
+<p><li> <code>self</code> must always be the first argument</li>
+<p><li> <code>self</code> is never used in calls</li>
+<p><li> <code>self</code> is used to access attributes and methods inside methods</li>
+</ol>
+<p>
+
+We refer to a <a href="http://hplgit.github.io/primer.html/doc/pub/class/index.html" target="_blank">more comprehensive text on classes</a>
+for better explanation of <code>self</code>.
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<code>self</code> is confusing in the beginning, but later it greatly helps
+the understanding of how classes work!
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec58">A class for representing a mathematical function </h2>
+
+<p>
+Function with one independent variable \( t \) and two parameters
+\( v_0 \) and \( a \):
+
+<p>&nbsp;<br>
+$$ s(t; v_0, a) = v_0t + \frac{1}{2}at^2$$
+<p>&nbsp;<br>
+
+
+<p>
+Class representation of this function:
+
+<ul>
+ <p><li> <code>v0</code> and <code>a</code> are variables (data)</li>
+ <p><li> A method to evaluate \( s(t) \), but just as a function of <code>t</code></li>
+</ul>
+<p>
+
+Usage:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">s <span style="color: #666666">=</span> Distance(v0<span style="color: #666666">=2</span>, a<span style="color: #666666">=0.5</span>)  <span style="color: #408080; font-style: italic"># create instance</span>
+v <span style="color: #666666">=</span> s(t<span style="color: #666666">=0.2</span>)               <span style="color: #408080; font-style: italic"># compute formula</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec59">The class code </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Distance</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, v0, a):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>v0 <span style="color: #666666">=</span> v0
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>a <span style="color: #666666">=</span> a
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, t):
+        v0, a <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>v0, <span style="color: #008000">self</span><span style="color: #666666">.</span>a  <span style="color: #408080; font-style: italic"># make local variables</span>
+        <span style="color: #008000; font-weight: bold">return</span> v0<span style="color: #666666">*</span>t <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>a<span style="color: #666666">*</span>t<span style="color: #666666">**2</span>
+
+s <span style="color: #666666">=</span> Distance(v0<span style="color: #666666">=2</span>, a<span style="color: #666666">=0.5</span>)  <span style="color: #408080; font-style: italic"># create instance</span>
+v <span style="color: #666666">=</span> s(t<span style="color: #666666">=0.2</span>)               <span style="color: #408080; font-style: italic"># actually s.__call__(t=0.2)</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec60">Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \) </h2>
+
+<ul>
+ <p><li> The \( n \) parameters \( p_1,p_2,\ldots,p_n \) are attributes</li>
+ <p><li> <code>__call__(self, x, y, z)</code> is used to compute \( f(x, y, z) \)</li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">F</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, p1, p2, <span style="color: #666666">...</span>):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>p1 <span style="color: #666666">=</span> p1
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>p2 <span style="color: #666666">=</span> p2
+        <span style="color: #666666">...</span>
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x, y, z):
+        <span style="color: #408080; font-style: italic"># return formula involving x, y, z and self.p1, self.p2 ...</span>
+
+f <span style="color: #666666">=</span> F(p1<span style="color: #666666">=...</span>, p2<span style="color: #666666">=...</span>, <span style="color: #666666">...</span>)   <span style="color: #408080; font-style: italic"># create instance with parameters</span>
+<span style="color: #008000; font-weight: bold">print</span> f(<span style="color: #666666">1</span>, <span style="color: #666666">4</span>, <span style="color: #666666">-1</span>)            <span style="color: #408080; font-style: italic"># evaluate f(x,y,z) function</span>
+</pre></div>
+<p>
 
 
 </section>

@@ -24,7 +24,7 @@ for i in range(n):
 
 # Write nicely formatted table to file
 outfile = open('table1.dat', 'w')
-outfile.write('# t    s(t)\n')  # write header
+outfile.write('# t    s(t)\n')  # write table header
 for t, s in zip(t_values, s_values):
     outfile.write('%.2f  %.4f\n' % (t, s))
 
@@ -32,6 +32,8 @@ for t, s in zip(t_values, s_values):
 import numpy as np
 # Make two-dimensional array of [t, s(t)] values in each row
 data = np.array([t_values, s_values]).transpose()
+
+# Write data array to file in table format
 np.savetxt('table2.dat', data, fmt=['%.2f', '%.4f'],
            header='t   s(t)', comments='# ')
 

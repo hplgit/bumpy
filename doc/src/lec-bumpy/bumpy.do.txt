@@ -4,7 +4,7 @@
 This worked example
 
   * fetches a data file from a web site,
-  * applies that file as input data for a differential equation modeling a vibrating system,
+  * applies that file as input data for a differential equation modeling a vibrating mechanical system,
   * solves the equation by a finite difference method,
   * visualizes various properties of the solution and the input data.
 
@@ -28,7 +28,7 @@ TOC: on
 
 
 !split
-======= A scientific application =======
+======= Scientific application =======
 
 FIGURE: [fig-bumpy/bumpy_road1, width=400 frac=0.7]
 
@@ -55,7 +55,7 @@ FIGURE: [fig-bumpy/vehicle2, width=500 frac=0.8]
  * Finite difference method
  * Centered differences
  * $u^n$: approximation to exact $u$ at $t=t_n=n\Delta t$
- * First: linear damping
+ * First: linear damping $f(u')=bu'$
 
 !bt
 \begin{equation*}
@@ -75,7 +75,7 @@ u^1 = u^0 + \Delta t\, V
 !et
 
 !split
-===== Extension to quadratic damping =====
+===== Extension to quadratic damping: $f(u')=b|u'|u'$ =====
 
 Linearization via geometric mean:
 
@@ -104,25 +104,49 @@ u^{n+1} = & \left( m + b|u^n-u^{n-1}|\right)^{-1}\times \\
 
 
 !split
-===== Using the function =====
+===== Using the solver function to solve a problem =====
 
 @@@CODE src-bumpy/session.py fromto: from solver@# End solver_linear
 
 % if FORMAT != 'ipynb':
 !split
-===== Plot =====
+===== The resulting plot =====
 
-FIGURE: [fig-bumpy/solver_linear_damping, width=500]
+FIGURE: [fig-bumpy/solver_linear_damping, width=700]
 % endif
+
+!split
+===== More advanced implementation =====
+
+Improvements:
+
+ * Treat linear *and* quadratic damping
+ * Allow $F(t)$ to be either a function or an array of measurements
+ * Use doc strings for documentation
+ * Report errors through raising exceptions
+ * Watch out for integer division
+
+!bc pyshell
+>>> 2/3
+0
+>>> 2.0/3
+0.6666666666666666
+>>> 2/3.0
+0.6666666666666666
+!ec
+
+At least one of the operands in division must be `float`
+to get correct real division!
+
 
 % if FORMAT == 'ipynb':
 !split
-===== More advanced implementation =====
+===== The code =====
 
 @@@CODE src-bumpy/solver.py fromto: import numpy@# Simplified i
 % else:
 !split
-===== More advanced implementation (part I) =====
+===== The code (part I) =====
 
 !bc pycod
 def solver(I, V, m, b, s, F, t, damping='linear'):
@@ -151,7 +175,7 @@ def solver(I, V, m, b, s, F, t, damping='linear'):
 !ec
 
 !split
-===== More advanced implementation (part II) =====
+===== The code (part II) =====
 
 !bc pycod
 def solver(I, V, m, b, s, F, t, damping='linear'):
@@ -178,16 +202,7 @@ def solver(I, V, m, b, s, F, t, damping='linear'):
 % endif
 
 !split
-===== Important features =====
-
- * Two types of import: `import module` vs `from module import function`
- * Doc strings for documentation
- * Avoiding integer division
- * Flexible variable type: `F` can be function or array
- * Checking correct variable type
-
-!split
-===== Using the solver function =====
+===== Using the solver function to solve a problem =====
 
 !bc pycod
 import numpy as np
@@ -199,18 +214,28 @@ def F(t):
     return A*sin(pi*t)
 
 def s(u):
-    return k*u
+    return k*(0.2*u + 1.5*u**3)
 
 A = 0.25
 k = 2
-t = np.linspace(0, 20, 2001)
-u, t = solver(I=0.1, V=0, m=2, b=0.05, s=s, F=F, t=t)
+t = np.linspace(0, 100, 10001)
+u, t = solver(I=0.1, V=0, m=2, b=0.5, s=s, F=F, t=t,
+              damping='quadratic')
 
 # Show u(t) as a curve plot
 import matplotlib.pyplot as plt
 plt.plot(t, u)
 plt.show()
 !ec
+
+% if FORMAT != 'ipynb':
+!split
+===== The resulting plot =====
+
+# Produced by session.py
+
+FIGURE: [fig-bumpy/solver_quadratic_damping_forcing, width=700]
+% endif
 
 !split
 ===== Local vs global variables =====
@@ -238,20 +263,23 @@ Here,
 class Spring:
     def __init__(self, k):
         self.k = k
+
     def __call__(self, u):
         return self.k*u
 
 f = Spring(k)
+
+# f looks like a function: can call f(0.2)
 !ec
 
 !split
 ===== The excitation force =====
 
- * Bumpy road gives an excitation
+ * A bumpy road gives an excitation $F(t)$
+ * File `bumpy.dat.gz` contains various road profiles $h(x)$
  * "URL":"http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz"
- * File contains various road profiles
 
-Download road profile data from the Internet:
+Download road profile data $h(x)$ from the Internet:
 
 !bc pycod-t
 filename = 'bumpy.dat.gz'
@@ -265,10 +293,36 @@ h_data = h_data[1:,:]          # other columns: h shapes
 !ec
 
 !split
+===== The very basics of two-dimensional arrays =====
+
+!bc dat
+0     0.2   0.25  0.15
+-0.1  0.15  0.2   0.15
+!ec
+
+!bc pyshell
+>>> import numpy as np
+>>> h_data = np.array([[0, 0.2, 0.25, 0.15],
+                       [-0.1, 0.15, 0.2, 0.15]])
+>>> h_data.shape  # size of each dimension
+(2, 4)
+>>> h_data[0,:]
+array([ 0.  ,  0.2 ,  0.25,  0.15])
+>>> h_data[:,0]
+array([ 0. , -0.1])
+>>> profile1 = h_data[1,:]
+>>> profile1
+array([-0.1 ,  0.15,  0.2 ,  0.15])
+>>> h_data[1,1:3]                   # elements [1,1] [1,2]
+array([ 0.15,  0.2 ])
+!ec
+
+!split
 ===== Computing the force from the road profile =====
 
 !bt
-\[ F(t) \sim  h''(t) \]
+\[ F(t) \sim \frac{d^2}{dt^2}h(x),\ \ v=xt,\quad\Rightarrow\quad
+F(t) \sim v^2 h''(x) \]
 !et
 
 @@@CODE src-bumpy/bumpy.py fromto: def acceleration\(@def acceleration_vectorized
@@ -281,12 +335,14 @@ h_data = h_data[1:,:]          # other columns: h shapes
 !split
 ===== Performing the simulation of vibrations =====
 
+Use a list `data` to hold all input and output data
+
 !bc pycod
-data = [x, t]      # key input and output data (arrays)
+data = [x, t]
 for i in range(h_data.shape[0]):
     h = h_data[i,:]            # extract a column
     a = acceleration(h, x, v)
-    u = forced_vibrations(t=t, I=0, m=m, b=b, f=f, F=-m*a)
+    u = solver(t=t, I=0, m=m, b=b, f=f, F=-m*a)
     data.append([h, a, u])
 !ec
 
@@ -347,7 +403,7 @@ def solve(url=None, m=60, b=80, k=60, v=5):
         h = h_data[i,:]            # extract a column
         a = acceleration(h, x, v)
 
-        u = forced_vibrations(t=t, I=0.2, m=m, b=b, f=f, F=-m*a)
+        u = solver(t=t, I=0.2, m=m, b=b, f=f, F=-m*a)
         data.append([h, a, u])
     return data
 !ec
@@ -370,7 +426,7 @@ def rms(data):
 !ec
 
 !split
-===== Pickling objects to file =====
+===== Pickling: storing Python objects in files =====
 
 After calling
 

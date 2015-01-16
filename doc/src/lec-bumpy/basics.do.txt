@@ -64,7 +64,7 @@ idx{program file}
 Compute $s$ for $t=0.5$, $v_0=2$, and $a=0.2$.
 !eblock
 
-!bblock Code
+!bblock Python code
 @@@CODE src-bumpy/distance.py
 !eblock
 
@@ -94,15 +94,17 @@ a = 0.2                   # float object
 s = v0*t + 0.5*a*t**2     # float object
 !ec
 
-Rule: evaluate right-hand side object, left-hand side is a name for
-that object
+Rule:
+
+ * evaluate right-hand side; it results in an *object*
+ * left-hand side is a name for that object
 
 
 !split
 ===== Formatted output with text and numbers =====
 label{basics:printf}
 
- * Task: write out `s=1.025`
+ * Task: write out text with a number (3 decimals): `s=1.025`
  * Method: printf syntax
 
 !bc pycod
@@ -173,7 +175,8 @@ while condition:
 Note:
 
  * the colon in the first line
- * all statements in the loop must be indented
+ * all statements in the loop *must be indented* <linebreak>
+   (no braces as in C, C++, Java, ...)
  * `condition` is a boolean expression (e.g., `t <= 2`)
 
 !split
@@ -239,12 +242,12 @@ boolean_condition2 = abs(a - b) < tol    # True
 
 
 !split
-===== Lists =====
+===== A list collects several objects in a given sequence =====
 label{basics:list}
 
 idx{list}
 
-A list collects several variables (objects) in a given sequence:
+A list of numbers:
 
 !bc pycod
 L = [-1, 1, 8.0]
@@ -253,18 +256,18 @@ L = [-1, 1, 8.0]
 A list can contain any type of objects, e.g.,
 
 !bc pycod
-L = ['mydata.txt', 3.14, 10]
+L = ['mydata.txt', 3.14, 10]   # string, float, int
 !ec
 
 Some basic list operations:
 
 !bc pyshell
 >>> L = ['mydata.txt', 3.14, 10]
->>> print L[0]
+>>> print L[0]    # print first element (index 0)
 mydata.txt
->>> print L[1]
+>>> print L[1]    # print second element (index 1)
 3.14
->>> del L[0]  # delete the first element
+>>> del L[0]      # delete the first element
 >>> print L
 [3.14, 10]
 >>> print len(L)  # length of L
@@ -310,11 +313,14 @@ print list2
 !ec
 
 !split
-===== For loops used traditionally an integer counter over list/array indices =====
+===== Traditional for loop: integer counter over list/array indices =====
 
 !bc pycod
+somelist = ['file1.dat', 22, -1.5]
+
 for i in range(len(somelist)):
-    # Work with somelist[i]
+    # access list element through index
+    print somelist[i]
 !ec
 
 Note:
@@ -347,36 +353,41 @@ Alternative: loop over a common index for the lists
 for i in range(len(list1)):
     e1 = list1[i]
     e2 = list2[i]
+    e3 = list3[i]
     ...
 !ec
 
 
 !split
-===== Arrays =====
+===== Arrays are computationally efficient lists of numbers =====
 label{basics:numpy}
 
 idx{array}
 idx{`numpy`}
 
- * List: collect a set of numbers or other objects
-   in a single variable
+ * Lists collect a set of objects in a single variable
  * Lists are very flexible (can grow, can contain ``anything'')
  * Array: computationally efficient and convenient list
  * Arrays must have fixed length and can only contain numbers of
    the same type (integers, real numbers, complex numbers)
  * Arrays require the `numpy` module
 
+!split
+===== Examples on using arrays =====
+
 !bc pyshell
 >>> import numpy
 >>> L = [1, 4, 10.0]    # List of numbers
->>> a = numpy.array(L)  # Make corresponding array
+>>> a = numpy.array(L)  # Convert to array
 >>> print a
 [  1.   4.  10.]
->>> print a[1]
+>>> print a[1]          # Access element through indexing
 4.0
+>>> print a[0:2]        # Extract slice (index 2 not included!)
+[  1.   4.]
 >>> print a.dtype       # Data type of an element
 float64
->>> b = 2*a + 1
+>>> b = 2*a + 1         # Can do arithmetics on arrays
 >>> print b
 [  3.   9.  21.]
 !ec
@@ -384,8 +395,10 @@ float64
 !split
 ===== `numpy` functions creates entire arrays at once =====
 
+Apply $\ln$ to all elements in array `a`:
+
 !bc pyshell
->>> c = numpy.log(a)  # Take ln of all elements in a
+>>> c = numpy.log(a)
 >>> print c
 [ 0.          1.38629436  2.30258509]
 !ec
@@ -398,11 +411,19 @@ Create $n+1$ uniformly distributed coordinates in $[a,b]$:
 t = numpy.linspace(a, b, n+1)
 !ec
 
+Create array of length $n$ filled with zeros:
+
+!bc pycod
+t = numpy.zeros(n)
+s = numpy.zeros_like(t)  # zeros with t's size and data type
+!ec
+
 !split
 ===== Let's use arrays in our previous program =====
 
 @@@CODE src-bumpy/for_array.py
 
+Note: no explicit loop for computing `s_values`!
 
 !split
 ===== Standard mathematical functions are found in the `math` module =====
@@ -520,8 +541,8 @@ Note:
  * function input is represented by arguments
    (separated by comma if more than one)
  * function output is returned to the calling code
- * `v0` and `a` are *global variables*
- * `v0` and `a` must be initialized before `s` is called
+ * `v0` and `a` are *global variables*, which
+   must be initialized before `s(t)` is called
 
 !split
 ===== Functions can have multiple arguments =====
@@ -556,7 +577,7 @@ value = s(a=2, t=3, v0=2)    # any sequence allowed
 !ec
 
  * Arguments without the argument name are called *positional arguments*
- * Positional arguments must always be listed before the keyword arguments
+ * Positional arguments must always be listed before the *keyword arguments*
    in the function and in any call
  * The sequence of the keyword arguments can be arbitrary
 
@@ -584,8 +605,7 @@ s_values = s(t_values, v0, a)
 
 How can this work?
 
- * Array: `t`
- * Expression: v0*t + 0.5*a*t**2
+ * Expression: v0*t + 0.5*a*t**2 with array `t`
  * `r1 = v0*t`  (scalar times array)
  * `r2 = t**2`  (square each element)
  * `r3 = 0.5*a*r2` (scalar times array)
@@ -610,15 +630,6 @@ x = linspace(0, 4, 100001)
 v = f(x)  # f(x) works with array x
 !ec
 
-However, if tests are not allowed:
-
-!bc pycod
-def f(x):
-    return -1 if x < 0 else x**4*exp(-x)*sin(x)
-
-x = linspace(0, 4, 100001)
-v = f(x)  # will not work
-!ec
 
 !split
 ===== Python functions can return multiple values =====
@@ -653,7 +664,7 @@ s_value, v_value = movement(t=0.2, v0=2, a=4)
 Tuples are constant lists (cannot be changed)
 
 !split
-===== A more general mathematical formula =====
+===== A more general mathematical formula (part I) =====
 label{basics:formula:piecewise}
 
 Equations from basic kinematics:
@@ -676,13 +687,16 @@ which gives
 \[ v(t) = v_0 + \int_0^t a(t)dt \]
 !et
 
+!split
+===== A more general mathematical formula (part II) =====
+
 Integrate again over $[0,t]$ to find $s(t)$:
 
 !bt
 \[ s(t) = s_0 + v_0t + \int_0^t\left( \int_0^t a(t)dt \right) dt\]
 !et
 
-$a(t)=a_0$ for $t\in[0,t_1]$, else $a(t)=0$:
+Example: $a(t)=a_0$ for $t\in[0,t_1]$, then $a(t)=0$ for $t>t_1$:
 
 !bt
 \[
@@ -878,6 +892,50 @@ How can we read this file into variables `v0`, `a`, `dt`, and `interval`?
 Note: must convert `value` to `float` before we can compute with
 the value!
 
+!split
+===== The magic `eval` function =====
+
+`eval(s)` executes a string `s` as a Python expression and creates the
+corresponding Python object
+
+!bc pyshell
+>>> obj1 = eval('1+2')   # Same as obj1 = 1+2
+>>> obj1, type(obj1)
+(3, <type 'int'>)
+>>> obj2 = eval('[-1, 8, 10, 11]')
+>>> obj2, type(obj2)
+([-1, 8, 10, 11], <type 'list'>)
+>>> from math import sin, pi
+>>> x = 1
+>>> obj3 = eval('sin(pi*x)')
+>>> obj3, type(obj3)
+(1.2246467991473532e-16, <type 'float'>)
+!ec
+
+Why is this so great? We can read formulas, lists, expressions as
+text from file and with `eval` turn them into live Python objects!
+
+!split
+===== Implementing a calculator in Python =====
+
+Demo:
+
+!bc sys
+Terminal> python calc.py "1 + 0.5*2"
+2.0
+Terminal> python calc.py "sin(pi*2.5) + exp(-4)"
+1.0183156388887342
+!ec
+
+Just 5 lines of code:
+
+!bc pypro
+import sys
+command_line_expression = sys.argv[1]
+from math import *   # Define sin, cos, exp, pi, etc.
+result = eval(command_line_expression)
+print result
+!ec
 
 !split
 ===== Modern Python often applies the `with` statement for file handling =====
@@ -906,8 +964,25 @@ Code:
 
 @@@CODE src-bumpy/for_file_read_input.py fromto: import numpy as@# Read the file back
 
+`table2.dat`:
+
+!bc dat
+# t   s(t)
+0.00 0.0000
+0.10 0.2010
+0.20 0.4040
+0.30 0.6090
+0.40 0.8160
+0.50 1.0250
+0.60 1.2360
+...
+1.90 4.1610
+2.00 4.4000
+!ec
+
+
 !split
-===== Simplified reading of tabular data from file via `numpy.savetxt` =====
+===== Simplified reading of tabular data from file via `numpy.loadtxt` =====
 
 @@@CODE src-bumpy/for_file_read_input.py fromto: data = np\.loadtxt@
 
@@ -970,6 +1045,7 @@ Note:
  * `self` is an argument in `__init__` and `dump`, but not used in the calls
  * `__init__` is called *constructor* and is used to construct an object
    (instance) if the class
+ * `t.dump()` actually means `Trivial.dump(t)` (`self` is `t`)
 
 !split
 ===== The `self` argument is a difficult thing for newcomers... =====
@@ -1003,7 +1079,7 @@ $v_0$ and $a$:
 Class representation of this function:
 
  * `v0` and `a` are variables (data)
- * A method to evaluate $s(t)$, but just function of `t`
+ * A method to evaluate $s(t)$, but just as a function of `t`
 
 Usage:
 

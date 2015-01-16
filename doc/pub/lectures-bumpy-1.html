@@ -44,88 +44,102 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec1'),
-              (' A scientific application ', 1, None, '___sec2'),
+              (' Scientific application ', 1, None, '___sec2'),
               (' Physical problem and mathematical model ',
                2,
                None,
                '___sec3'),
               (' Numerical model ', 2, None, '___sec4'),
-              (' Extension to quadratic damping ', 2, None, '___sec5'),
-              (' Simple implementation ', 2, None, '___sec6'),
-              (' Using the function ', 2, None, '___sec7'),
-              (' Plot ', 2, None, '___sec8'),
-              (' More advanced implementation (part I) ', 2, None, '___sec9'),
-              (' More advanced implementation (part II) ',
+              (" Extension to quadratic damping: $f(u')=b|u'|u'$ ",
                2,
                None,
-               '___sec10'),
-              (' Important features ', 2, None, '___sec11'),
-              (' Using the solver function ', 2, None, '___sec12'),
-              (' Local vs global variables ', 2, None, '___sec13'),
+               '___sec5'),
+              (' Simple implementation ', 2, None, '___sec6'),
+              (' Using the solver function to solve a problem ',
+               2,
+               None,
+               '___sec7'),
+              (' The resulting plot ', 2, None, '___sec8'),
+              (' More advanced implementation ', 2, None, '___sec9'),
+              (' The code (part I) ', 2, None, '___sec10'),
+              (' The code (part II) ', 2, None, '___sec11'),
+              (' Using the solver function to solve a problem ',
+               2,
+               None,
+               '___sec12'),
+              (' The resulting plot ', 2, None, '___sec13'),
+              (' Local vs global variables ', 2, None, '___sec14'),
               (' Advanced programming of functions with parameters ',
                2,
                None,
-               '___sec14'),
-              (' The excitation force ', 2, None, '___sec15'),
-              (' Computing the force from the road profile ',
-               2,
-               None,
-               '___sec16'),
-              (' Vectorized version of the previous function ',
+               '___sec15'),
+              (' The excitation force ', 2, None, '___sec16'),
+              (' The very basics of two-dimensional arrays ',
                2,
                None,
                '___sec17'),
-              (' Performing the simulation of vibrations ',
+              (' Computing the force from the road profile ',
                2,
                None,
                '___sec18'),
-              (' A high-level solve function (part I) ', 2, None, '___sec19'),
-              (' A high-level solve function (part II) ',
+              (' Vectorized version of the previous function ',
+               2,
+               None,
+               '___sec19'),
+              (' Performing the simulation of vibrations ',
                2,
                None,
                '___sec20'),
+              (' A high-level solve function (part I) ', 2, None, '___sec21'),
+              (' A high-level solve function (part II) ',
+               2,
+               None,
+               '___sec22'),
               (' Computing an expression for the noise level of the vibrations ',
                2,
                None,
-               '___sec21'),
-              (' Pickling objects to file ', 2, None, '___sec22'),
-              (' User input ', 1, None, '___sec23'),
-              (' Positional command-line arguments ', 2, None, '___sec24'),
+               '___sec23'),
+              (' Pickling: storing Python objects in files ',
+               2,
+               None,
+               '___sec24'),
+              (' User input ', 1, None, '___sec25'),
+              (' Positional command-line arguments ', 2, None, '___sec26'),
               (' Option-value pairs on the command line ',
                2,
                None,
-               '___sec25'),
-              (' Example on using `argparse` ', 2, None, '___sec26'),
-              (' Visual exploration ', 1, None, '___sec27'),
-              (' Code (part I) ', 2, None, '___sec28'),
-              (' Code (part II) ', 2, None, '___sec29'),
-              (' Code (part III) ', 2, None, '___sec30'),
-              (' Plot of the spectrum ', 2, None, '___sec31'),
-              (' Code (part IV) ', 2, None, '___sec32'),
-              (' Plot ', 2, None, '___sec33'),
-              (' Advanced topics ', 1, None, '___sec34'),
-              (' Symbolic computing via SymPy ', 2, None, '___sec35'),
+               '___sec27'),
+              (' Example on using `argparse` ', 2, None, '___sec28'),
+              (' Visual exploration ', 1, None, '___sec29'),
+              (' Code (part I) ', 2, None, '___sec30'),
+              (' Code (part II) ', 2, None, '___sec31'),
+              (' Code (part III) ', 2, None, '___sec32'),
+              (' Plot of the spectrum ', 2, None, '___sec33'),
+              (' Code (part IV) ', 2, None, '___sec34'),
+              (' Plot ', 2, None, '___sec35'),
+              (' Advanced topics ', 1, None, '___sec36'),
+              (' Symbolic computing via SymPy ', 2, None, '___sec37'),
               (' Go seamlessly from symbolic expression to Python function ',
                2,
                None,
-               '___sec36'),
+               '___sec38'),
               (' Testing via test functions and test frameworks ',
                2,
                None,
-               '___sec37'),
-              (' Example on a test function ', 2, None, '___sec38'),
+               '___sec39'),
+              (' Example on a test function ', 2, None, '___sec40'),
               (' Test function for the numerical solver (part I) ',
                2,
                None,
-               '___sec39'),
+               '___sec41'),
               (' Test function for the numerical solver (part II) ',
                2,
                None,
-               '___sec40'),
-              (' Using a test framework ', 2, None, '___sec41'),
-              (' Modules ', 2, None, '___sec42'),
-              (' Example on a module file ', 2, None, '___sec43'),
-              (' What gets imported? ', 2, None, '___sec44')]}
+               '___sec42'),
+              (' Using a test framework ', 2, None, '___sec43'),
+              (' Modules ', 2, None, '___sec44'),
+              (' Example on a module file ', 2, None, '___sec45'),
+              (' What gets imported? ', 2, None, '___sec46')]}
 end of tocinfo -->
 
 <body>
@@ -167,7 +181,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo</b></center>
 <p>
-<center><h4>Jan 15, 2015</h4></center> <!-- date -->
+<center><h4>Jan 16, 2015</h4></center> <!-- date -->
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
@@ -176,49 +190,51 @@ MathJax.Hub.Config({
 <p>
 &nbsp; &nbsp; &nbsp; <a href="#___sec0"> Contents </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec1"> The following programming topics are illustrated </a><br>
-<a href="#___sec2"> A scientific application </a><br>
+<a href="#___sec2"> Scientific application </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Physical problem and mathematical model </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Numerical model </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec5"> Extension to quadratic damping </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec5"> Extension to quadratic damping: \( f(u')=b|u'|u' \) </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec6"> Simple implementation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec7"> Using the function </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec8"> Plot </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec9"> More advanced implementation (part I) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec10"> More advanced implementation (part II) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec11"> Important features </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec12"> Using the solver function </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec13"> Local vs global variables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec14"> Advanced programming of functions with parameters </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec15"> The excitation force </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec16"> Computing the force from the road profile </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec17"> Vectorized version of the previous function </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec18"> Performing the simulation of vibrations </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec19"> A high-level solve function (part I) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec20"> A high-level solve function (part II) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec21"> Computing an expression for the noise level of the vibrations </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec22"> Pickling objects to file </a><br>
-<a href="#___sec23"> User input </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec24"> Positional command-line arguments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec25"> Option-value pairs on the command line </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec26"> Example on using <code>argparse</code> </a><br>
-<a href="#___sec27"> Visual exploration </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec28"> Code (part I) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec29"> Code (part II) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec30"> Code (part III) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec31"> Plot of the spectrum </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec32"> Code (part IV) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec33"> Plot </a><br>
-<a href="#___sec34"> Advanced topics </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec35"> Symbolic computing via SymPy </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec36"> Go seamlessly from symbolic expression to Python function </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec37"> Testing via test functions and test frameworks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec38"> Example on a test function </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec39"> Test function for the numerical solver (part I) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec40"> Test function for the numerical solver (part II) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec41"> Using a test framework </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec42"> Modules </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec43"> Example on a module file </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec44"> What gets imported? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec7"> Using the solver function to solve a problem </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec8"> The resulting plot </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec9"> More advanced implementation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec10"> The code (part I) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec11"> The code (part II) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec12"> Using the solver function to solve a problem </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec13"> The resulting plot </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec14"> Local vs global variables </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec15"> Advanced programming of functions with parameters </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec16"> The excitation force </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec17"> The very basics of two-dimensional arrays </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec18"> Computing the force from the road profile </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec19"> Vectorized version of the previous function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec20"> Performing the simulation of vibrations </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec21"> A high-level solve function (part I) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec22"> A high-level solve function (part II) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec23"> Computing an expression for the noise level of the vibrations </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec24"> Pickling: storing Python objects in files </a><br>
+<a href="#___sec25"> User input </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec26"> Positional command-line arguments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec27"> Option-value pairs on the command line </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec28"> Example on using <code>argparse</code> </a><br>
+<a href="#___sec29"> Visual exploration </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec30"> Code (part I) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec31"> Code (part II) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec32"> Code (part III) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec33"> Plot of the spectrum </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec34"> Code (part IV) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec35"> Plot </a><br>
+<a href="#___sec36"> Advanced topics </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec37"> Symbolic computing via SymPy </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec38"> Go seamlessly from symbolic expression to Python function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec39"> Testing via test functions and test frameworks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec40"> Example on a test function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec41"> Test function for the numerical solver (part I) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec42"> Test function for the numerical solver (part II) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec43"> Using a test framework </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec44"> Modules </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec45"> Example on a module file </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec46"> What gets imported? </a><br>
 </p>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
@@ -230,7 +246,7 @@ This worked example
 
 <ul>
   <li> fetches a data file from a web site,</li>
-  <li> applies that file as input data for a differential equation modeling a vibrating system,</li>
+  <li> applies that file as input data for a differential equation modeling a vibrating mechanical system,</li>
   <li> solves the equation by a finite difference method,</li>
   <li> visualizes various properties of the solution and the input data.</li>
 </ul>
@@ -261,54 +277,56 @@ All files can be forked at <a href="https://github.com/hplgit/bumpy" target="_bl
 <p>
 &nbsp; &nbsp; &nbsp; <a href="#___sec0"> Contents </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec1"> The following programming topics are illustrated </a><br>
-<a href="#___sec2"> A scientific application </a><br>
+<a href="#___sec2"> Scientific application </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Physical problem and mathematical model </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Numerical model </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec5"> Extension to quadratic damping </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec5"> Extension to quadratic damping: \( f(u')=b|u'|u' \) </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec6"> Simple implementation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec7"> Using the function </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec8"> Plot </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec9"> More advanced implementation (part I) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec10"> More advanced implementation (part II) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec11"> Important features </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec12"> Using the solver function </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec13"> Local vs global variables </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec14"> Advanced programming of functions with parameters </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec15"> The excitation force </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec16"> Computing the force from the road profile </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec17"> Vectorized version of the previous function </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec18"> Performing the simulation of vibrations </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec19"> A high-level solve function (part I) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec20"> A high-level solve function (part II) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec21"> Computing an expression for the noise level of the vibrations </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec22"> Pickling objects to file </a><br>
-<a href="#___sec23"> User input </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec24"> Positional command-line arguments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec25"> Option-value pairs on the command line </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec26"> Example on using <code>argparse</code> </a><br>
-<a href="#___sec27"> Visual exploration </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec28"> Code (part I) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec29"> Code (part II) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec30"> Code (part III) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec31"> Plot of the spectrum </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec32"> Code (part IV) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec33"> Plot </a><br>
-<a href="#___sec34"> Advanced topics </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec35"> Symbolic computing via SymPy </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec36"> Go seamlessly from symbolic expression to Python function </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec37"> Testing via test functions and test frameworks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec38"> Example on a test function </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec39"> Test function for the numerical solver (part I) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec40"> Test function for the numerical solver (part II) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec41"> Using a test framework </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec42"> Modules </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec43"> Example on a module file </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec44"> What gets imported? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec7"> Using the solver function to solve a problem </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec8"> The resulting plot </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec9"> More advanced implementation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec10"> The code (part I) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec11"> The code (part II) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec12"> Using the solver function to solve a problem </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec13"> The resulting plot </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec14"> Local vs global variables </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec15"> Advanced programming of functions with parameters </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec16"> The excitation force </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec17"> The very basics of two-dimensional arrays </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec18"> Computing the force from the road profile </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec19"> Vectorized version of the previous function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec20"> Performing the simulation of vibrations </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec21"> A high-level solve function (part I) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec22"> A high-level solve function (part II) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec23"> Computing an expression for the noise level of the vibrations </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec24"> Pickling: storing Python objects in files </a><br>
+<a href="#___sec25"> User input </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec26"> Positional command-line arguments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec27"> Option-value pairs on the command line </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec28"> Example on using <code>argparse</code> </a><br>
+<a href="#___sec29"> Visual exploration </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec30"> Code (part I) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec31"> Code (part II) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec32"> Code (part III) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec33"> Plot of the spectrum </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec34"> Code (part IV) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec35"> Plot </a><br>
+<a href="#___sec36"> Advanced topics </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec37"> Symbolic computing via SymPy </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec38"> Go seamlessly from symbolic expression to Python function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec39"> Testing via test functions and test frameworks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec40"> Example on a test function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec41"> Test function for the numerical solver (part I) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec42"> Test function for the numerical solver (part II) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec43"> Using a test framework </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec44"> Modules </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec45"> Example on a module file </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec46"> What gets imported? </a><br>
 </p>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h1 id="___sec2">A scientific application </h1>
+<h1 id="___sec2">Scientific application </h1>
 
 <p>
 <center><p><img src="fig-bumpy/bumpy_road1.jpg" align="bottom" width=400></p></center>
@@ -343,7 +361,7 @@ $$
  <li> Finite difference method</li>
  <li> Centered differences</li>
  <li> \( u^n \): approximation to exact \( u \) at \( t=t_n=n\Delta t \)</li>
- <li> First: linear damping</li>
+ <li> First: linear damping \( f(u')=bu' \)</li>
 </ul>
 
 $$
@@ -369,7 +387,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec5">Extension to quadratic damping </h2>
+<h2 id="___sec5">Extension to quadratic damping: \( f(u')=b|u'|u' \) </h2>
 
 <p>
 Linearization via geometric mean:
@@ -417,7 +435,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec7">Using the function </h2>
+<h2 id="___sec7">Using the solver function to solve a problem </h2>
 
 <p>
 
@@ -446,15 +464,45 @@ show()
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec8">Plot </h2>
+<h2 id="___sec8">The resulting plot </h2>
 
 <p>
-<center><p><img src="fig-bumpy/solver_linear_damping.png" align="bottom" width=500></p></center>
+<center><p><img src="fig-bumpy/solver_linear_damping.png" align="bottom" width=700></p></center>
 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec9">More advanced implementation (part I) </h2>
+<h2 id="___sec9">More advanced implementation </h2>
+
+<p>
+Improvements:
+
+<ul>
+ <li> Treat linear <em>and</em> quadratic damping</li>
+ <li> Allow \( F(t) \) to be either a function or an array of measurements</li>
+ <li> Use doc strings for documentation</li>
+ <li> Report errors through raising exceptions</li>
+ <li> Watch out for integer division</li>
+</ul>
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #666666">2/3</span>
+<span style="color: #666666">0</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #666666">2.0/3</span>
+<span style="color: #666666">0.6666666666666666</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #666666">2/3.0</span>
+<span style="color: #666666">0.6666666666666666</span>
+</pre></div>
+<p>
+At least one of the operands in division must be <code>float</code>
+to get correct real division!
+
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec10">The code (part I) </h2>
 
 <p>
 
@@ -486,7 +534,7 @@ show()
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec10">More advanced implementation (part II) </h2>
+<h2 id="___sec11">The code (part II) </h2>
 
 <p>
 
@@ -515,19 +563,7 @@ show()
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec11">Important features </h2>
-
-<ul>
- <li> Two types of import: <code>import module</code> vs <code>from module import function</code></li>
- <li> Doc strings for documentation</li>
- <li> Avoiding integer division</li>
- <li> Flexible variable type: <code>F</code> can be function or array</li>
- <li> Checking correct variable type</li>
-</ul>
-
-<!-- !split --><br><br><br><br><br><br><br><br>
-
-<h2 id="___sec12">Using the solver function </h2>
+<h2 id="___sec12">Using the solver function to solve a problem </h2>
 
 <p>
 
@@ -541,12 +577,13 @@ show()
     <span style="color: #008000; font-weight: bold">return</span> A<span style="color: #666666">*</span>sin(pi<span style="color: #666666">*</span>t)
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">s</span>(u):
-    <span style="color: #008000; font-weight: bold">return</span> k<span style="color: #666666">*</span>u
+    <span style="color: #008000; font-weight: bold">return</span> k<span style="color: #666666">*</span>(<span style="color: #666666">0.2*</span>u <span style="color: #666666">+</span> <span style="color: #666666">1.5*</span>u<span style="color: #666666">**3</span>)
 
 A <span style="color: #666666">=</span> <span style="color: #666666">0.25</span>
 k <span style="color: #666666">=</span> <span style="color: #666666">2</span>
-t <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">20</span>, <span style="color: #666666">2001</span>)
-u, t <span style="color: #666666">=</span> solver(I<span style="color: #666666">=0.1</span>, V<span style="color: #666666">=0</span>, m<span style="color: #666666">=2</span>, b<span style="color: #666666">=0.05</span>, s<span style="color: #666666">=</span>s, F<span style="color: #666666">=</span>F, t<span style="color: #666666">=</span>t)
+t <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">100</span>, <span style="color: #666666">10001</span>)
+u, t <span style="color: #666666">=</span> solver(I<span style="color: #666666">=0.1</span>, V<span style="color: #666666">=0</span>, m<span style="color: #666666">=2</span>, b<span style="color: #666666">=0.5</span>, s<span style="color: #666666">=</span>s, F<span style="color: #666666">=</span>F, t<span style="color: #666666">=</span>t,
+              damping<span style="color: #666666">=</span><span style="color: #BA2121">&#39;quadratic&#39;</span>)
 
 <span style="color: #408080; font-style: italic"># Show u(t) as a curve plot</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
@@ -556,7 +593,18 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec13">Local vs global variables </h2>
+<h2 id="___sec13">The resulting plot </h2>
+
+<p>
+<!-- Produced by session.py -->
+
+<p>
+<center><p><img src="fig-bumpy/solver_quadratic_damping_forcing.png" align="bottom" width=700></p></center>
+
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec14">Local vs global variables </h2>
 
 <p>
 
@@ -576,7 +624,7 @@ Here,
 
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec14">Advanced programming of functions with parameters </h2>
+<h2 id="___sec15">Advanced programming of functions with parameters </h2>
 
 <ul>
  <li> \( f(u)=ku \) needs parameter \( k \)</li>
@@ -590,23 +638,26 @@ Here,
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Spring</span>:
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, k):
         <span style="color: #008000">self</span><span style="color: #666666">.</span>k <span style="color: #666666">=</span> k
+
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, u):
         <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>k<span style="color: #666666">*</span>u
 
 f <span style="color: #666666">=</span> Spring(k)
+
+<span style="color: #408080; font-style: italic"># f looks like a function: can call f(0.2)</span>
 </pre></div>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec15">The excitation force </h2>
+<h2 id="___sec16">The excitation force </h2>
 
 <ul>
- <li> Bumpy road gives an excitation</li>
+ <li> A bumpy road gives an excitation \( F(t) \)</li>
+ <li> File <code>bumpy.dat.gz</code> contains various road profiles \( h(x) \)</li>
  <li> <a href="http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz" target="_blank"><tt>http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz</tt></a></li>
- <li> File contains various road profiles</li>
 </ul>
 
-Download road profile data from the Internet:
+Download road profile data \( h(x) \) from the Internet:
 
 <p>
 
@@ -623,9 +674,39 @@ h_data <span style="color: #666666">=</span> h_data[<span style="color: #666666"
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec16">Computing the force from the road profile </h2>
+<h2 id="___sec17">The very basics of two-dimensional arrays </h2>
 
-$$ F(t) \sim  h''(t) $$
+<p>
+
+<!-- code=text (!bc dat) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">0     0.2   0.25  0.15
+-0.1  0.15  0.2   0.15
+</pre></div>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> h_data <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array([[<span style="color: #666666">0</span>, <span style="color: #666666">0.2</span>, <span style="color: #666666">0.25</span>, <span style="color: #666666">0.15</span>],
+                       [<span style="color: #666666">-0.1</span>, <span style="color: #666666">0.15</span>, <span style="color: #666666">0.2</span>, <span style="color: #666666">0.15</span>]])
+<span style="color: #666666">&gt;&gt;&gt;</span> h_data<span style="color: #666666">.</span>shape  <span style="color: #408080; font-style: italic"># size of each dimension</span>
+(<span style="color: #666666">2</span>, <span style="color: #666666">4</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> h_data[<span style="color: #666666">0</span>,:]
+array([ <span style="color: #666666">0.</span>  ,  <span style="color: #666666">0.2</span> ,  <span style="color: #666666">0.25</span>,  <span style="color: #666666">0.15</span>])
+<span style="color: #666666">&gt;&gt;&gt;</span> h_data[:,<span style="color: #666666">0</span>]
+array([ <span style="color: #666666">0.</span> , <span style="color: #666666">-0.1</span>])
+<span style="color: #666666">&gt;&gt;&gt;</span> profile1 <span style="color: #666666">=</span> h_data[<span style="color: #666666">1</span>,:]
+<span style="color: #666666">&gt;&gt;&gt;</span> profile1
+array([<span style="color: #666666">-0.1</span> ,  <span style="color: #666666">0.15</span>,  <span style="color: #666666">0.2</span> ,  <span style="color: #666666">0.15</span>])
+<span style="color: #666666">&gt;&gt;&gt;</span> h_data[<span style="color: #666666">1</span>,<span style="color: #666666">1</span>:<span style="color: #666666">3</span>]                   <span style="color: #408080; font-style: italic"># elements [1,1] [1,2]</span>
+array([ <span style="color: #666666">0.15</span>,  <span style="color: #666666">0.2</span> ])
+</pre></div>
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec18">Computing the force from the road profile </h2>
+
+$$ F(t) \sim \frac{d^2}{dt^2}h(x),\ \ v=xt,\quad\Rightarrow\quad
+F(t) \sim v^2 h''(x) $$
 
 
 <p>
@@ -647,7 +728,7 @@ $$ F(t) \sim  h''(t) $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec17">Vectorized version of the previous function </h2>
+<h2 id="___sec19">Vectorized version of the previous function </h2>
 
 <p>
 
@@ -666,16 +747,19 @@ $$ F(t) \sim  h''(t) $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec18">Performing the simulation of vibrations </h2>
+<h2 id="___sec20">Performing the simulation of vibrations </h2>
+
+<p>
+Use a list <code>data</code> to hold all input and output data
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">data <span style="color: #666666">=</span> [x, t]      <span style="color: #408080; font-style: italic"># key input and output data (arrays)</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">data <span style="color: #666666">=</span> [x, t]
 <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(h_data<span style="color: #666666">.</span>shape[<span style="color: #666666">0</span>]):
     h <span style="color: #666666">=</span> h_data[i,:]            <span style="color: #408080; font-style: italic"># extract a column</span>
     a <span style="color: #666666">=</span> acceleration(h, x, v)
-    u <span style="color: #666666">=</span> forced_vibrations(t<span style="color: #666666">=</span>t, I<span style="color: #666666">=0</span>, m<span style="color: #666666">=</span>m, b<span style="color: #666666">=</span>b, f<span style="color: #666666">=</span>f, F<span style="color: #666666">=-</span>m<span style="color: #666666">*</span>a)
+    u <span style="color: #666666">=</span> solver(t<span style="color: #666666">=</span>t, I<span style="color: #666666">=0</span>, m<span style="color: #666666">=</span>m, b<span style="color: #666666">=</span>b, f<span style="color: #666666">=</span>f, F<span style="color: #666666">=-</span>m<span style="color: #666666">*</span>a)
     data<span style="color: #666666">.</span>append([h, a, u])
 </pre></div>
 <p>
@@ -685,7 +769,7 @@ Parameters for bicycle conditions: \( m=60 \) kg, \( v=5 \) m/s, \( k=60 \) N/m,
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec19">A high-level solve function (part I) </h2>
+<h2 id="___sec21">A high-level solve function (part I) </h2>
 
 <p>
 
@@ -720,7 +804,7 @@ Parameters for bicycle conditions: \( m=60 \) kg, \( v=5 \) m/s, \( k=60 \) N/m,
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec20">A high-level solve function (part II) </h2>
+<h2 id="___sec22">A high-level solve function (part II) </h2>
 
 <p>
 
@@ -743,14 +827,14 @@ Parameters for bicycle conditions: \( m=60 \) kg, \( v=5 \) m/s, \( k=60 \) N/m,
         h <span style="color: #666666">=</span> h_data[i,:]            <span style="color: #408080; font-style: italic"># extract a column</span>
         a <span style="color: #666666">=</span> acceleration(h, x, v)
 
-        u <span style="color: #666666">=</span> forced_vibrations(t<span style="color: #666666">=</span>t, I<span style="color: #666666">=0.2</span>, m<span style="color: #666666">=</span>m, b<span style="color: #666666">=</span>b, f<span style="color: #666666">=</span>f, F<span style="color: #666666">=-</span>m<span style="color: #666666">*</span>a)
+        u <span style="color: #666666">=</span> solver(t<span style="color: #666666">=</span>t, I<span style="color: #666666">=0.2</span>, m<span style="color: #666666">=</span>m, b<span style="color: #666666">=</span>b, f<span style="color: #666666">=</span>f, F<span style="color: #666666">=-</span>m<span style="color: #666666">*</span>a)
         data<span style="color: #666666">.</span>append([h, a, u])
     <span style="color: #008000; font-weight: bold">return</span> data
 </pre></div>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec21">Computing an expression for the noise level of the vibrations </h2>
+<h2 id="___sec23">Computing an expression for the noise level of the vibrations </h2>
 
 $$ \mbox{RMS} = \sqrt{\int_0^T u^2dt} \approx \sqrt{\frac{1}{N+1}\sum_{i=0}^N (u^n)^2}$$
 
@@ -769,7 +853,7 @@ $$ \mbox{RMS} = \sqrt{\int_0^T u^2dt} \approx \sqrt{\frac{1}{N+1}\sum_{i=0}^N (u
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec22">Pickling objects to file </h2>
+<h2 id="___sec24">Pickling: storing Python objects in files </h2>
 
 <p>
 After calling
@@ -808,7 +892,7 @@ See <a href="https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/bumpy
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h1 id="___sec23">User input </h1>
+<h1 id="___sec25">User input </h1>
 
 <p>
 <center><p><img src="fig-bumpy/input2.jpg" align="bottom" width=500></p></center>
@@ -816,7 +900,7 @@ See <a href="https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/bumpy
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec24">Positional command-line arguments </h2>
+<h2 id="___sec26">Positional command-line arguments </h2>
 
 <p>
 Suppose \( b \) is given on the command line:
@@ -843,7 +927,7 @@ Note: 1st command-line argument in <code>sys.argv[1]</code>, but that is a strin
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec25">Option-value pairs on the command line </h2>
+<h2 id="___sec27">Option-value pairs on the command line </h2>
 
 <p>
 Now we want to use option-value pairs on the command line:
@@ -866,7 +950,7 @@ Note:
 
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec26">Example on using <code>argparse</code> </h2>
+<h2 id="___sec28">Example on using <code>argparse</code> </h2>
 
 <p>
 
@@ -894,7 +978,7 @@ Note:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h1 id="___sec27">Visual exploration </h1>
+<h1 id="___sec29">Visual exploration </h1>
 
 <p>
 Plot
@@ -909,7 +993,7 @@ Plot
 
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec28">Code (part I) </h2>
+<h2 id="___sec30">Code (part I) </h2>
 
 <p>
 For convenience:
@@ -945,7 +1029,7 @@ Recall list <code>data</code>:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec29">Code (part II) </h2>
+<h2 id="___sec31">Code (part II) </h2>
 
 <p>
 Display only the last portion of time series:
@@ -977,7 +1061,7 @@ show()
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec30">Code (part III) </h2>
+<h2 id="___sec32">Code (part III) </h2>
 
 <p>
 The spectrum of a discrete function \( u(t) \):
@@ -1009,7 +1093,7 @@ show()
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec31">Plot of the spectrum </h2>
+<h2 id="___sec33">Plot of the spectrum </h2>
 
 <p>
 <center><p><img src="fig-bumpy/u_spectrum.png" align="bottom" width=600></p></center>
@@ -1017,7 +1101,7 @@ show()
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec32">Code (part IV) </h2>
+<h2 id="___sec34">Code (part IV) </h2>
 
 <p>
 Run through all the 3-lists <code>[h, a, u]</code> and plot
@@ -1055,7 +1139,7 @@ these arrays:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec33">Plot </h2>
+<h2 id="___sec35">Plot </h2>
 
 <p>
 <center><p><img src="fig-bumpy/hau0.png" align="bottom" width=700></p></center>
@@ -1066,7 +1150,7 @@ See <a href="https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/explo
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h1 id="___sec34">Advanced topics </h1>
+<h1 id="___sec36">Advanced topics </h1>
 
 <p>
 <center><p><img src="fig-bumpy/rocket_science1.gif" align="bottom" width=400></p></center>
@@ -1074,7 +1158,7 @@ See <a href="https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/explo
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec35">Symbolic computing via SymPy </h2>
+<h2 id="___sec37">Symbolic computing via SymPy </h2>
 
 <p>
 
@@ -1098,7 +1182,7 @@ a<span style="color: #666666">**4/3</span> <span style="color: #666666">-</span>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec36">Go seamlessly from symbolic expression to Python function </h2>
+<h2 id="___sec38">Go seamlessly from symbolic expression to Python function </h2>
 
 <p>
 Convert a SymPy expression <code>Q</code> into
@@ -1117,7 +1201,7 @@ This <code>Q(x, a)</code> function can be used for numerical computing
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec37">Testing via test functions and test frameworks </h2>
+<h2 id="___sec39">Testing via test functions and test frameworks </h2>
 
 <p>
 Modern test frameworks:
@@ -1132,7 +1216,7 @@ Recommendation: use pytest, stay away from <code>unittest</code>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec38">Example on a test function </h2>
+<h2 id="___sec40">Example on a test function </h2>
 
 <p>
 
@@ -1161,7 +1245,7 @@ Note:
 
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec39">Test function for the numerical solver (part I) </h2>
+<h2 id="___sec41">Test function for the numerical solver (part I) </h2>
 
 <p>
 
@@ -1198,7 +1282,7 @@ Note:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec40">Test function for the numerical solver (part II) </h2>
+<h2 id="___sec42">Test function for the numerical solver (part II) </h2>
 
 <p>
 
@@ -1218,7 +1302,7 @@ Note:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec41">Using a test framework </h2>
+<h2 id="___sec43">Using a test framework </h2>
 
 <p>
 Examine all subdirectories <code>test*</code> for <code>test_*.py</code> files:
@@ -1251,7 +1335,7 @@ Test a single file:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec42">Modules </h2>
+<h2 id="___sec44">Modules </h2>
 
 <ul>
  <li> Put functions in a file - that is a module</li>
@@ -1268,7 +1352,7 @@ Test a single file:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec43">Example on a module file </h2>
+<h2 id="___sec45">Example on a module file </h2>
 
 <p>
 
@@ -1288,7 +1372,7 @@ Test a single file:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec44">What gets imported? </h2>
+<h2 id="___sec46">What gets imported? </h2>
 
 <p>
 Import everything from the previous module:

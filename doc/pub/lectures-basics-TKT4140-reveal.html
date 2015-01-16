@@ -2,10 +2,10 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="Intro to scientific Python programming">
+<meta name="description" content="Introduction to Scientific Python programming - Apdapted to TKT4140 Numerical Methods with Computer Laboratory">
 <meta name="keywords" content="text editor,program file,assignment statement,print statement,variable,objects,format string syntax,while loop,boolean expression,Python Online Tutor,list,for loop,array,mathematical functions,import of modules,plotting,graphics,visualization,global variables,keyword arguments,vectorization,vectorized functions,multiple return values,branching,if test,boolean expression,vectorizing if tests">
 
-<title>Intro to scientific Python programming</title>
+<title>Introduction to Scientific Python programming - Apdapted to TKT4140 Numerical Methods with Computer Laboratory</title>
 
 
 
@@ -124,13 +124,17 @@ MathJax.Hub.Config({
 
 
 
-<center><h1 style="text-align: center;">Intro to scientific Python programming</h1></center>  <!-- document title -->
+<center><h1 style="text-align: center;">Introduction to Scientific Python programming - Apdapted to TKT4140 Numerical Methods with Computer Laboratory</h1></center>  <!-- document title -->
 
 <p>
-<!-- author(s): Hans Petter Langtangen -->
+<!-- author(s): Hans Petter Langtangen, and Leif Rune Hellevik -->
 
 <center>
 <b>Hans Petter Langtangen</b> [1, 2] (<tt>hpl at simula.no</tt>)
+</center>
+
+<center>
+<b>Leif Rune Hellevik</b> [3] (<tt>leif.r.hellevik at ntnu.no</tt>)
 </center>
 
 
@@ -139,6 +143,7 @@ MathJax.Hub.Config({
 
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo</b></center>
+<center>[3] <b>Biomechanichs Group, Departement of Structural Engineering NTNU</b></center>
 <p>&nbsp;<br>
 <center><h4>Jan 16, 2015</h4></center> <!-- date -->
 <p>
@@ -205,13 +210,6 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; <a href="#___sec51"> File writing </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec52"> Simplified writing of tabular data to file via <code>numpy.savetxt</code> </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec53"> Simplified reading of tabular data from file via <code>numpy.loadtxt</code> </a><br>
-<a href="#basics:class"> Classes </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec55"> A very simple class </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec56"> How can we use this class? </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec57"> The <code>self</code> argument is a difficult thing for newcomers... </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec58"> A class for representing a mathematical function </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec59"> The class code </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec60"> Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \) </a><br>
 </p>
 <p>
 
@@ -255,18 +253,17 @@ Method: show program code through math examples
 <h2 id="basics:accesspy">Do you have access to Python?</h2>
 
 <p>
-Many methods:
+See <a href="https://www.ntnu.no/wiki/display/kt/Python" target="_blank">TKT4140 Course specific installation guidelines</a>
+
+<p>
+Other methods:
 
 <ul>
  <p><li> Mac and Windows: <a href="https://store.continuum.io/cshop/anaconda/" target="_blank">Anaconda</a></li>
- <p><li> Ubuntu: <code>sudo apt-get install</code></li>
  <p><li> Web browser (<a href="https://wakari.io/" target="_blank">Wakari</a> or <a href="https://cloud.sagemath.com/" target="_blank">SageMathCloud</a>)</li>
 </ul>
 <p>
 
-See <a href="http://hplgit.github.io/edu/accesspy/accesspy.html" target="_blank">How to access Python for doing scientific computing</a> for more details!
-
-<p>
 
 </section>
 
@@ -1787,220 +1784,6 @@ Note:
 </ul>
 <p>
 
-
-</section>
-
-
-<section>
-
-<h1 id="basics:class">Classes</h1>
-
-<p>
-<div class="alert alert-block alert-block alert-text-normal">
-<b></b>
-<p>
-
-<ul>
- <p><li> All objects in Python are made from a class</li>
- <p><li> You don't need to know about classes to use Python</li>
- <p><li> But class programming is powerful</li>
-</ul>
-</div>
-
-
-<p>
-<div class="alert alert-block alert-block alert-text-normal">
-<b></b>
-<p>
-
-<ul>
- <p><li> Class = functions + variables packed together</li>
- <p><li> A class is a logical unit in a program</li>
- <p><li> A large program as a combination of appropriate units</li>
-</ul>
-</div>
-
-
-<p>
-
-</section>
-
-
-<section>
-
-<h2 id="___sec55">A very simple class </h2>
-
-<ul>
- <p><li> One variable: <code>a</code></li>
- <p><li> One function: <code>dump</code> for printing <code>a</code></li>
-</ul>
-<p>
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">Trivial</span><span style="color: #d0d0d0">:</span>
-    <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">__init__</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">a):</span>
-        <span style="color: #24909d">self</span><span style="color: #d0d0d0">.a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">a</span>
-
-    <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">dump</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">):</span>
-        <span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #24909d">self</span><span style="color: #d0d0d0">.a</span>
-</pre></div>
-<p>
-Class terminology: Functions are called
-<em>methods</em> and variables are called <em>attributes</em>.
-
-<p>
-
-</section>
-
-
-<section>
-
-<h2 id="___sec56">How can we use this class? </h2>
-
-<p>
-First, make an <em>instance</em> (object) of the class:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">t</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">Trivial(a=</span><span style="color: #3677a9">4</span><span style="color: #d0d0d0">)</span>
-<span style="color: #d0d0d0">t.dump()</span>
-</pre></div>
-<p>
-Note:
-
-<ul>
- <p><li> The syntax <code>Trivial(a=4)</code> actually means <code>Trivial.__init__(t, 4)</code></li>
- <p><li> <code>self</code> is an argument in <code>__init__</code> and <code>dump</code>, but not used in the calls</li>
- <p><li> <code>__init__</code> is called <em>constructor</em> and is used to construct an object
-   (instance) if the class</li>
- <p><li> <code>t.dump()</code> actually means <code>Trivial.dump(t)</code> (<code>self</code> is <code>t</code>)</li>
-</ul>
-<p>
-
-
-</section>
-
-
-<section>
-
-<h2 id="___sec57">The <code>self</code> argument is a difficult thing for newcomers... </h2>
-
-<p>
-It takes time and experience to understand the <code>self</code> argument in
-class methods!
-
-<ol>
-<p><li> <code>self</code> must always be the first argument</li>
-<p><li> <code>self</code> is never used in calls</li>
-<p><li> <code>self</code> is used to access attributes and methods inside methods</li>
-</ol>
-<p>
-
-We refer to a <a href="http://hplgit.github.io/primer.html/doc/pub/class/index.html" target="_blank">more comprehensive text on classes</a>
-for better explanation of <code>self</code>.
-
-<p>
-<div class="alert alert-block alert-block alert-text-normal">
-<b></b>
-<p>
-<code>self</code> is confusing in the beginning, but later it greatly helps
-the understanding of how classes work!
-</div>
-
-
-<p>
-
-</section>
-
-
-<section>
-
-<h2 id="___sec58">A class for representing a mathematical function </h2>
-
-<p>
-Function with one independent variable \( t \) and two parameters
-\( v_0 \) and \( a \):
-
-<p>&nbsp;<br>
-$$ s(t; v_0, a) = v_0t + \frac{1}{2}at^2$$
-<p>&nbsp;<br>
-
-
-<p>
-Class representation of this function:
-
-<ul>
- <p><li> <code>v0</code> and <code>a</code> are variables (data)</li>
- <p><li> A method to evaluate \( s(t) \), but just as a function of <code>t</code></li>
-</ul>
-<p>
-
-Usage:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">s</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">Distance(v0=</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">a=</span><span style="color: #3677a9">0.5</span><span style="color: #d0d0d0">)</span>  <span style="color: #999999; font-style: italic"># create instance</span>
-<span style="color: #d0d0d0">v</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">s(t=</span><span style="color: #3677a9">0.2</span><span style="color: #d0d0d0">)</span>               <span style="color: #999999; font-style: italic"># compute formula</span>
-</pre></div>
-<p>
-
-</section>
-
-
-<section>
-
-<h2 id="___sec59">The class code </h2>
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">Distance</span><span style="color: #d0d0d0">:</span>
-    <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">__init__</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">v0,</span> <span style="color: #d0d0d0">a):</span>
-        <span style="color: #24909d">self</span><span style="color: #d0d0d0">.v0</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">v0</span>
-        <span style="color: #24909d">self</span><span style="color: #d0d0d0">.a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">a</span>
-
-    <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">__call__</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">t):</span>
-        <span style="color: #d0d0d0">v0,</span> <span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">self</span><span style="color: #d0d0d0">.v0,</span> <span style="color: #24909d">self</span><span style="color: #d0d0d0">.a</span>  <span style="color: #999999; font-style: italic"># make local variables</span>
-        <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">v0*t</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">0.5</span><span style="color: #d0d0d0">*a*t**</span><span style="color: #3677a9">2</span>
-
-<span style="color: #d0d0d0">s</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">Distance(v0=</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">a=</span><span style="color: #3677a9">0.5</span><span style="color: #d0d0d0">)</span>  <span style="color: #999999; font-style: italic"># create instance</span>
-<span style="color: #d0d0d0">v</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">s(t=</span><span style="color: #3677a9">0.2</span><span style="color: #d0d0d0">)</span>               <span style="color: #999999; font-style: italic"># actually s.__call__(t=0.2)</span>
-</pre></div>
-<p>
-
-</section>
-
-
-<section>
-
-<h2 id="___sec60">Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \) </h2>
-
-<ul>
- <p><li> The \( n \) parameters \( p_1,p_2,\ldots,p_n \) are attributes</li>
- <p><li> <code>__call__(self, x, y, z)</code> is used to compute \( f(x, y, z) \)</li>
-</ul>
-<p>
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">F</span><span style="color: #d0d0d0">:</span>
-    <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">__init__</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">p1,</span> <span style="color: #d0d0d0">p2,</span> <span style="color: #d0d0d0">...):</span>
-        <span style="color: #24909d">self</span><span style="color: #d0d0d0">.p1</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">p1</span>
-        <span style="color: #24909d">self</span><span style="color: #d0d0d0">.p2</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">p2</span>
-        <span style="color: #d0d0d0">...</span>
-
-    <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">__call__</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">x,</span> <span style="color: #d0d0d0">y,</span> <span style="color: #d0d0d0">z):</span>
-        <span style="color: #999999; font-style: italic"># return formula involving x, y, z and self.p1, self.p2 ...</span>
-
-<span style="color: #d0d0d0">f</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">F(p1=...,</span> <span style="color: #d0d0d0">p2=...,</span> <span style="color: #d0d0d0">...)</span>   <span style="color: #999999; font-style: italic"># create instance with parameters</span>
-<span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">f(</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">4</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">-</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">)</span>            <span style="color: #999999; font-style: italic"># evaluate f(x,y,z) function</span>
-</pre></div>
-<p>
 
 
 </section>

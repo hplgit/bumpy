@@ -1,7 +1,8 @@
 #!/bin/sh
 # Create slides from lectures.do.txt in a variety of formats
 
-# bash make.sh TKT4140
+# bash make.sh
+# bash make.sh TKT4140 lectures-basics
 
 set -x  # show all commands in output
 
@@ -30,10 +31,16 @@ cd ..
 names="lectures-basics lectures-bumpy"
 #names="lectures_tkt4140"
 if [ $# -ge 2 ]; then
-  names="$1"
+  names="$2"
 fi
 
 for name in $names; do
+
+if [ $COURSE != "any" ]; then
+   oldname=$name
+   name="${name}-${COURSE}"
+   cp ${oldname}.do.txt ${name}.do.txt
+fi
 
 # Note: can be smart to run beamer slides first since latex finds
 # more errors in the slides than the doconce HTML translation
@@ -123,6 +130,7 @@ system doconce format ipynb $name $opt
 
 # Publish
 dest=../pub
+
 cp -r reveal.js deck.js ${name}-*.html ${name}-*.pdf *.ipynb $dest/
 #cp ._${name}-*.html $dest
 done

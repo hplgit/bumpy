@@ -15,6 +15,6 @@ print s_values  # Just take a look at a created list
 for t, s in zip(t_values, s_values):
     print '%.2f  %.4f' % (t, s)
 
-# Alternative
+# Alternative implementation
 for i in range(len(t_values)):
     print '%.2f  %.4f' % (t_values[i], s_values[i])

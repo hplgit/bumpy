@@ -525,7 +525,7 @@ The vectorized form of the
 For each shape $h(x)$ we want to compute the corresponding
 vertical displacement $u(t)$ using the mathematical model (ref{bumpy:eq1}).
 This can be accomplished by looping over the columns of `h_data` and
-calling `forced_vibrations` for each column, i.e., each realization of
+calling `solver` for each column, i.e., each realization of
 the force $F$.
 The major arrays from the computations
 are collected in a list `data`. The two first elements in
@@ -542,7 +542,7 @@ data = [x, t]      # key input and output data (arrays)
 for i in range(h_data.shape[0]):
     h = h_data[i,:]            # extract a column
     a = acceleration(h, x, v)
-    u = forced_vibrations(t=t, I=0, m=m, b=b, f=f, F=-m*a)
+    u = solver(t=t, I=0, m=m, b=b, f=f, F=-m*a)
     data.append([h, a, u])
 !ec
 
@@ -607,7 +607,7 @@ def solve(url=None, m=60, b=80, k=60, v=5):
         h = h_data[i,:]            # extract a column
         a = acceleration(h, x, v)
 
-        u = forced_vibrations(t=t, I=0.2, m=m, b=b, f=f, F=-m*a)
+        u = solver(t=t, I=0.2, m=m, b=b, f=f, F=-m*a)
         data.append([h, a, u])
     return data
 !ec

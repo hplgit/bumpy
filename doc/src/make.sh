@@ -21,10 +21,16 @@ opt="COURSE=$COURSE"
 
 names="basics bumpy"
 if [ $# -ge 2 ]; then
-  names="$1"
+  names="$2"
 fi
 
 for name in $names; do
+
+if [ $COURSE != "any" ]; then
+   oldname=$name
+   name="${name}-${COURSE}"
+   cp ${oldname}.do.txt ${name}.do.txt
+fi
 
 system doconce spellcheck -d .dict4spell.txt $name.do.txt
 
