@@ -50,6 +50,27 @@ FIGURE: [fig-bumpy/vehicle2, width=500 frac=0.8]
 
 
 !split
+===== Relatively stiff spring $k=5$ =====
+
+% if FORMAT == 'html':
+MOVIE: [../src/mov-bumpy/m2_k5_b0_2/tmp_frame*]
+% else:
+# animation in acroread did not work well in latex
+# avconv didn't manage to make full movies...
+"Go to movie on github.com": "http://hplgit.github.io/bumpy/doc/src/mov-bumpy/m2_k5_b0_2/index.html"
+% endif
+
+!split
+===== Softer spring $k=1$ =====
+
+% if FORMAT == 'html':
+MOVIE: [../src/mov-bumpy/m2_k1_5_b0_2/tmp_frame*]
+% else:
+"Go to movie on github.com": "http://hplgit.github.io/bumpy/doc/src/mov-bumpy/m2_k1_5_b0_2/index.html"
+% endif
+
+
+!split
 ===== Numerical model =====
 
  * Finite difference method

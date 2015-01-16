@@ -2,8 +2,4 @@ TITLE: A worked example on scientific computing with Python
 AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Simula Research Laboratory & University of Oslo
 DATE: today
 
-!split
-TOC: on
-
-
 # #include "lec-bumpy/bumpy.do.txt"
