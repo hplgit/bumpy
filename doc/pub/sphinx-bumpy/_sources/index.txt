@@ -9,7 +9,8 @@ Contents:
 .. toctree::
    :maxdepth: 3
 
-   bumpy
+   ._bumpy000
+   ._bumpy001
 
 
 Indices and tables

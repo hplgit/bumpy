@@ -48,6 +48,7 @@ system doconce split_html $name.html --pagination
 
 # Sphinx
 system doconce format sphinx $name $opt # always generate new
+system doconce split_rst $name
 system doconce sphinx_dir theme=cbc author="H. P. Langtangen" $name
 system python automake_sphinx.py
 
