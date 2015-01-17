@@ -189,7 +189,7 @@ or a local file.
         h <span style="color: #666666">=</span> h_data[i,:]            <span style="color: #408080; font-style: italic"># extract a column</span>
         a <span style="color: #666666">=</span> acceleration(h, x, v)
 
-        u <span style="color: #666666">=</span> forced_vibrations(t<span style="color: #666666">=</span>t, I<span style="color: #666666">=0.2</span>, m<span style="color: #666666">=</span>m, b<span style="color: #666666">=</span>b, f<span style="color: #666666">=</span>f, F<span style="color: #666666">=-</span>m<span style="color: #666666">*</span>a)
+        u <span style="color: #666666">=</span> solver(t<span style="color: #666666">=</span>t, I<span style="color: #666666">=0.2</span>, m<span style="color: #666666">=</span>m, b<span style="color: #666666">=</span>b, f<span style="color: #666666">=</span>f, F<span style="color: #666666">=-</span>m<span style="color: #666666">*</span>a)
         data<span style="color: #666666">.</span>append([h, a, u])
     <span style="color: #008000; font-weight: bold">return</span> data
 </pre></div>

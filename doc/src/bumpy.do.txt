@@ -46,7 +46,8 @@ The following programming topics are illustrated:
   * user input via the command line,
   * signal processing and FFT,
   * curve plotting of data,
-  * testing,
+  * unit testing,
+  * symbolic mathematics,
   * modules.
 
 All files can be forked at URL: "https://github.com/hplgit/bumpy".
@@ -122,7 +123,8 @@ vehicle has springs and dampers that here are modeled as $bu'$
 (damper) and $s(s)=ku$ (spring), with given damping parameter $b$ and
 spring constant $k$. The unknown $u(t)$ is the vertical displacement
 of the vehicle relative to the road. Figure ref{bumpy:fig1}
-illustrates the situation.
+illustrates the situation. You may "view an animation": "http://hplgit.github.io/bumpy/doc/src/mov-bumpy/m2_k1_5_b0_2/index.html" of such a motion
+on the web.
 
 FIGURE: [fig-bumpy/vehicle2, width=600] Vehicle on a bumpy road. label{bumpy:fig1}
 

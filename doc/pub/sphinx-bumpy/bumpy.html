@@ -27,26 +27,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/sidebar.js"></script>
-
-        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
-        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
-
-        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
-
-        <style type="text/css">
-                .sagecell .CodeMirror-scroll {
-                        overflow-y: hidden;
-                        overflow-x: auto;
-                }
-                .sagecell .CodeMirror {
-                        height: auto;
-                }
-        </style>
-
-    
     <link rel="top" title="A worked example on scientific computing with Python" href="index.html" />
-    <link rel="prev" title="A worked example on scientific computing with Python" href="index.html" />
- 
+    <link rel="prev" title="A worked example on scientific computing with Python" href="index.html" /> 
   
    <style type="text/css">
      div.admonition {
@@ -83,7 +65,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen (hpl at simula.no)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 14, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 17, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -109,7 +91,8 @@
 <li>user input via the command line,</li>
 <li>signal processing and FFT,</li>
 <li>curve plotting of data,</li>
-<li>testing,</li>
+<li>unit testing,</li>
+<li>symbolic mathematics,</li>
 <li>modules.</li>
 </ul>
 </div></blockquote>
@@ -178,7 +161,8 @@ vehicle has springs and dampers that here are modeled as <span class="math">\(bu
 (damper) and <span class="math">\(s(s)=ku\)</span> (spring), with given damping parameter <span class="math">\(b\)</span> and
 spring constant <span class="math">\(k\)</span>. The unknown <span class="math">\(u(t)\)</span> is the vertical displacement
 of the vehicle relative to the road. Figure <a class="reference internal" href="#bumpy-fig1"><em>Vehicle on a bumpy road</em></a>
-illustrates the situation.</p>
+illustrates the situation. You may <a class="reference external" href="http://hplgit.github.io/bumpy/doc/src/mov-bumpy/m2_k1_5_b0_2/index.html">view an animation</a> of such a motion
+on the web.</p>
 <div class="figure" id="bumpy-fig1">
 <a class="reference internal image-reference" href="_images/vehicle2.png"><img alt="_images/vehicle2.png" src="_images/vehicle2.png" style="width: 600px;" /></a>
 <p class="caption"><em>Vehicle on a bumpy road</em></p>
@@ -610,7 +594,7 @@ The vectorized form of the
 <p>For each shape <span class="math">\(h(x)\)</span> we want to compute the corresponding
 vertical displacement <span class="math">\(u(t)\)</span> using the mathematical model <a href="#equation-bumpy:eq1">(1)</a>.
 This can be accomplished by looping over the columns of <tt class="docutils literal"><span class="pre">h_data</span></tt> and
-calling <tt class="docutils literal"><span class="pre">forced_vibrations</span></tt> for each column, i.e., each realization of
+calling <tt class="docutils literal"><span class="pre">solver</span></tt> for each column, i.e., each realization of
 the force <span class="math">\(F\)</span>.
 The major arrays from the computations
 are collected in a list <tt class="docutils literal"><span class="pre">data</span></tt>. The two first elements in
@@ -624,7 +608,7 @@ key quantities in the problem.</p>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">h_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
     <span class="n">h</span> <span class="o">=</span> <span class="n">h_data</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span>            <span class="c"># extract a column</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">acceleration</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-    <span class="n">u</span> <span class="o">=</span> <span class="n">forced_vibrations</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">I</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">F</span><span class="o">=-</span><span class="n">m</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">solver</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">I</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">F</span><span class="o">=-</span><span class="n">m</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
     <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">h</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">u</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -686,7 +670,7 @@ or a local file.</p>
         <span class="n">h</span> <span class="o">=</span> <span class="n">h_data</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span>            <span class="c"># extract a column</span>
         <span class="n">a</span> <span class="o">=</span> <span class="n">acceleration</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
 
-        <span class="n">u</span> <span class="o">=</span> <span class="n">forced_vibrations</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">I</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">F</span><span class="o">=-</span><span class="n">m</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">solver</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">I</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">F</span><span class="o">=-</span><span class="n">m</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
         <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">h</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">u</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">data</span>
 </pre></div>

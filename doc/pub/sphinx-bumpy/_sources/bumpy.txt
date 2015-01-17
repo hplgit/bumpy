@@ -13,7 +13,7 @@ A worked example on scientific computing with Python
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen (hpl at simula.no)
-:Date: Jan 14, 2015
+:Date: Jan 17, 2015
 
 .. Make corresponding slides
 
@@ -53,7 +53,9 @@ The following programming topics are illustrated:
 
   * curve plotting of data,
 
-  * testing,
+  * unit testing,
+
+  * symbolic mathematics,
 
   * modules.
 
@@ -139,7 +141,8 @@ vehicle has springs and dampers that here are modeled as :math:`bu'`
 (damper) and :math:`s(s)=ku` (spring), with given damping parameter :math:`b` and
 spring constant :math:`k`. The unknown :math:`u(t)` is the vertical displacement
 of the vehicle relative to the road. Figure :ref:`bumpy:fig1`
-illustrates the situation.
+illustrates the situation. You may `view an animation <http://hplgit.github.io/bumpy/doc/src/mov-bumpy/m2_k1_5_b0_2/index.html>`__ of such a motion
+on the web.
 
 .. _bumpy:fig1:
 
@@ -674,7 +677,7 @@ The vectorized form of the
 For each shape :math:`h(x)` we want to compute the corresponding
 vertical displacement :math:`u(t)` using the mathematical model :eq:`bumpy:eq1`.
 This can be accomplished by looping over the columns of ``h_data`` and
-calling ``forced_vibrations`` for each column, i.e., each realization of
+calling ``solver`` for each column, i.e., each realization of
 the force :math:`F`.
 The major arrays from the computations
 are collected in a list ``data``. The two first elements in
@@ -692,7 +695,7 @@ The computations of ``u`` for each road shape can be done as follows:
         for i in range(h_data.shape[0]):
             h = h_data[i,:]            # extract a column
             a = acceleration(h, x, v)
-            u = forced_vibrations(t=t, I=0, m=m, b=b, f=f, F=-m*a)
+            u = solver(t=t, I=0, m=m, b=b, f=f, F=-m*a)
             data.append([h, a, u])
 
 A parameter choice :math:`m=60` kg, :math:`v=5` m/s, :math:`k=60` N/m,
@@ -757,7 +760,7 @@ or a local file.
                 h = h_data[i,:]            # extract a column
                 a = acceleration(h, x, v)
         
-                u = forced_vibrations(t=t, I=0.2, m=m, b=b, f=f, F=-m*a)
+                u = solver(t=t, I=0.2, m=m, b=b, f=f, F=-m*a)
                 data.append([h, a, u])
             return data
 

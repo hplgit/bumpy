@@ -231,7 +231,7 @@ The vectorized form of the
 For each shape \( h(x) \) we want to compute the corresponding
 vertical displacement \( u(t) \) using the mathematical model <a href="._bumpy002.html#mjx-eqn-1">(1)</a>.
 This can be accomplished by looping over the columns of <code>h_data</code> and
-calling <code>forced_vibrations</code> for each column, i.e., each realization of
+calling <code>solver</code> for each column, i.e., each realization of
 the force \( F \).
 The major arrays from the computations
 are collected in a list <code>data</code>. The two first elements in
@@ -251,7 +251,7 @@ The computations of <code>u</code> for each road shape can be done as follows:
 <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(h_data<span style="color: #666666">.</span>shape[<span style="color: #666666">0</span>]):
     h <span style="color: #666666">=</span> h_data[i,:]            <span style="color: #408080; font-style: italic"># extract a column</span>
     a <span style="color: #666666">=</span> acceleration(h, x, v)
-    u <span style="color: #666666">=</span> forced_vibrations(t<span style="color: #666666">=</span>t, I<span style="color: #666666">=0</span>, m<span style="color: #666666">=</span>m, b<span style="color: #666666">=</span>b, f<span style="color: #666666">=</span>f, F<span style="color: #666666">=-</span>m<span style="color: #666666">*</span>a)
+    u <span style="color: #666666">=</span> solver(t<span style="color: #666666">=</span>t, I<span style="color: #666666">=0</span>, m<span style="color: #666666">=</span>m, b<span style="color: #666666">=</span>b, f<span style="color: #666666">=</span>f, F<span style="color: #666666">=-</span>m<span style="color: #666666">*</span>a)
     data<span style="color: #666666">.</span>append([h, a, u])
 </pre></div>
 <p>

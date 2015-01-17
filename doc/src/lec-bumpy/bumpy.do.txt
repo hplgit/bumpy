@@ -18,7 +18,8 @@ This worked example
   * user input via the command line
   * signal processing and FFT
   * curve plotting of data
-  * testing
+  * unit testing
+  * symbolic mathematics
   * modules
 
 All files can be forked at URL: "https://github.com/hplgit/bumpy"
