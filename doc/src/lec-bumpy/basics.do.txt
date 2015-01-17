@@ -7,6 +7,10 @@
  * functions
  * if tests
  * plotting
+ * files
+% if COURSE == 'any':
+ * classes
+% endif
 
 Method: show program code through math examples
 
@@ -201,6 +205,9 @@ idx{Python Online Tutor}
 
 "Python Online Tutor": "http://pythontutor.com/visualize.html#mode=edit":
 step through the program and examine variables
+% if FORMAT == 'html':
+(view in Chrome)
+% endif
 
 !bc pyoptpro
 a = 0
@@ -220,7 +227,8 @@ while a <= 1.2:
     print a
     a = a + da
     # Inspect all decimals in da and a
-    print '%.16E, %.16E' % (da, a), a <= 1.2
+    print 'da=%.16E\na=%.16E' % (da, a)
+    print 'a <= 1.2: %g' %  (a <= 1.2)
 !ec
 
 !bbox
