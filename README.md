@@ -19,9 +19,9 @@ using examples from basic physics.
 
 The goal of the tutorials is to bring the reader quickly up to speed
 with how Matlab-style programming (with functions of one variable)
-can be done in Python. Wich such basic background, it is easier to
+can be done in Python. With such basic background, it is easier to
 follow scientific courses and teaching material that apply Python as
-programming language. The tutorials are application driven and short.
+programming language. The tutorials are application-driven and brief.
 For further and more detailed information on scientific computing
 with Python we have compiled
 a [list of much more detailed tutorials and books](http://hplgit.github.io/bumpy/doc/pub/._bumpy010.html#app:resources).
