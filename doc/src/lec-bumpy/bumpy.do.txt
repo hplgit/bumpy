@@ -241,7 +241,7 @@ def s(u):
 A = 0.25
 k = 2
 t = np.linspace(0, 100, 10001)
-u, t = solver(I=0.1, V=0, m=2, b=0.5, s=s, F=F, t=t,
+u, t = solver(I=0, V=0, m=2, b=0.5, s=s, F=F, t=t,
               damping='quadratic')
 
 # Show u(t) as a curve plot
@@ -352,10 +352,10 @@ F(t) \sim v^2 h''(x) \]
 !split
 ===== Vectorized version of the previous function =====
 
-@@@CODE src-bumpy/bumpy.py fromto: def acceleration_vectorized@def rms
+@@@CODE src-bumpy/bumpy.py fromto: def acceleration_vectorized@def prepare_input
 
 !split
-===== Performing the simulation of vibrations =====
+===== Performing the simulation =====
 
 Use a list `data` to hold all input and output data
 
@@ -364,8 +364,9 @@ data = [x, t]
 for i in range(h_data.shape[0]):
     h = h_data[i,:]            # extract a column
     a = acceleration(h, x, v)
-    u = solver(t=t, I=0, m=m, b=b, f=f, F=-m*a)
-    data.append([h, a, u])
+    F = -m*a
+    u = solver(t=t, I=0, m=m, b=b, f=f, F=F)
+    data.append([h, F, u])
 !ec
 
 Parameters for bicycle conditions: $m=60$ kg, $v=5$ m/s, $k=60$ N/m,
@@ -375,9 +376,9 @@ $b=80$ Ns/m
 ===== A high-level solve function (part I) =====
 
 !bc pycod
-def solve(url=None, m=60, b=80, k=60, v=5):
+def bumpy_road(url=None, m=60, b=80, k=60, v=5):
     """
-    Solve model for verticle vehicle vibrations.
+    Simulate verticle vehicle vibrations.
 
     =========   ==============================================
     variable    description
@@ -389,7 +390,7 @@ def solve(url=None, m=60, b=80, k=60, v=5):
     k           spring parameter
     v           (constant) velocity of vehicle
     Return      data (list) holding input and output data
-                [x, t, [h,a,u], [h,a,u], ...]
+                [x, t, [h,F,u], [h,F,u], ...]
     =========   ==============================================
     """
     # Download file (if url is not the name of a local file)
@@ -407,7 +408,7 @@ def solve(url=None, m=60, b=80, k=60, v=5):
 ===== A high-level solve function (part II) =====
 
 !bc pycod
-def solve(url=None, m=60, b=80, k=60, v=5):
+def bumpy_road(url=None, m=60, b=80, k=60, v=5):
     ...
     h_data = np.loadtxt(filename)  # read numpy array from file
 
@@ -424,26 +425,11 @@ def solve(url=None, m=60, b=80, k=60, v=5):
     for i in range(h_data.shape[0]):
         h = h_data[i,:]            # extract a column
         a = acceleration(h, x, v)
+	F = -m*a
 
-        u = solver(t=t, I=0.2, m=m, b=b, f=f, F=-m*a)
-        data.append([h, a, u])
-    return data
-!ec
+        u = solver(t=t, I=0.2, m=m, b=b, f=f, F=F)
 
-!split
-===== Computing an expression for the noise level of the vibrations =====
-
-!bt
-\[ \mbox{RMS} = \sqrt{\int_0^T u^2dt} \approx \sqrt{\frac{1}{N+1}\sum_{i=0}^N (u^n)^2}\]
-!et
-
-!bc pycod
-def rms(data):
-    u_rms = np.zeros(t.size)  # for accumulating the rms value
-    for h, a, u in data[2:]:  # loop over results
-        u_rms += u**2
-    u_rms = np.sqrt(u_rms/u_rms.size)
-    data.append(u_rms)
+        data.append([h, F, u])
     return data
 !ec
 
@@ -462,7 +448,7 @@ data = rms(data)
 the `data` array contains single arrays and triplets of arrays,
 
 !bc pycod-t
-[x, t, [h,a,u], [h,a,u], ..., [h,a,u], u_rms]
+[x, t, [h,F,u], [h,F,u], ..., [h,F,u]]
 !ec
 
 This list, or any Python object, can be stored on file for later
@@ -475,8 +461,27 @@ cPickle.dump(data, outfile)
 outfile.close()
 !ec
 
-See "`bumpy.py`": "https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/bumpy.py".
 
+!split
+===== Computing an expression for the noise level of the vibrations =====
+
+!bt
+\[ u_{\mbox{rms}} = \sqrt{T^{-1}\int_0^T u^2dt}
+\approx \sqrt{\frac{1}{N+1}\sum_{i=0}^N (u^n)^2}\]
+!et
+
+!bc pycod
+u_rms = []
+for h, F, u in data[2:]:
+    u_rms.append(np.sqrt((1./len(u))*np.sum(u**2))
+!ec
+
+Or by the more compact list comprehension:
+
+!bc pycod
+u_rms = [np.sqrt((1./len(u))*np.sum(u**2))
+         for h, F, u in data[2:]]
+!ec
 
 !split
 ======= User input =======
@@ -501,12 +506,16 @@ except IndexError:
     b = 80  # default
 !ec
 
-Note: 1st command-line argument in `sys.argv[1]`, but that is a string
+Note:
+
+ * Command-line arguments are in the list `sys.argv[1:]`
+ * `sys.argv[i]` is a string, so float conversion is necessary
+   before calculations
 
 !split
 ===== Option-value pairs on the command line =====
 
-Now we want to use option-value pairs on the command line:
+We can alternatively use option-value pairs on the command line:
 
 !bc sys-t
 Terminal> python bumpy.py --m 40 --b 280
@@ -517,7 +526,7 @@ Note:
  * All parameters have default values
  * The default value can be overridden on the command line with
    `--option value`
- * We use the `argparse` module for defining, reading, and accessing
+ * We can use the `argparse` module for defining, reading, and accessing
    option-value pairs
 
 !split
@@ -538,7 +547,9 @@ def command_line_options():
     url = 'http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz'
     parser.add_argument('--roadfile', type=str,
               default=url, help='filename/URL with road data')
+
     args = parser.parse_args()
+
     # Extract input parameters
     m = args.m; k = args.k; b = args.b; v = args.v
     url = args.roadfile
@@ -546,27 +557,31 @@ def command_line_options():
 !ec
 
 !split
+===== Running a simulation =====
+
+!bc sys
+Terminal> python bumpy.py --velocity 10
+!ec
+
+The rest of the parameters have their default values
+
+FIGURE: [fig-bumpy/u1, width=600 frac=0.8]
+
+!split
 ======= Visual exploration =======
 
 Plot
 
- * the root mean square value of $u(t)$, to see the typical amplitudes
- * the spectrum of $u(t)$, for $t>t_s$ (using FFT) to see which frequencies
+ * $u(t)$ and $u'(t)$ for $t\geq t_s$
+ * the spectrum of $u(t)$, for $t\geq t_s$ (using FFT) to see which frequencies
    that dominate in the signal
  * for each road shape, a plot of $h(x)$, $a(t)$, and $u(t)$, for
-   $t\geq t_s$
+   $t \geq t_s$
 
 !split
-===== Code (part I) =====
+===== Code for loading data from file =====
 
-For convenience:
-
-!bc pycod
-from numpy import *
-from matplotlib.pyplot import *
-!ec
-
-Loading results from file:
+Loading pickeld results in file:
 
 !bc pycod
 import cPickle
@@ -575,17 +590,24 @@ data = cPickle.load(outfile)
 outfile.close()
 
 x, t = data[0:2]
-u_rms = data[-1]
 !ec
 
 Recall list `data`:
 
 !bc pycod-t
-[x, t, [h,a,u], [h,a,u], ..., [h,a,u], u_rms]
+[x, t, [h,F,u], [h,F,u], ..., [h,F,u]]
 !ec
 
+Further, for convenience (and Matlab-like code):
+
+!bc pycod
+from numpy import *
+from matplotlib.pyplot import *
+!ec
+
+
 !split
-===== Code (part II) =====
+===== Plotting the last part of $u$ =====
 
 Display only the last portion of time series:
 
@@ -595,23 +617,88 @@ t = t[indices]       # fetch the part of t for which t > t_s
 x = x[indices]       # fetch the part of x for which t > t_s
 !ec
 
-Plotting the root mean square value array `u_rms` for `t >= t_s` is now done by
+Plotting $u$:
 
 !bc pycod
 figure()
-u_rms = u_rms[indices]
-plot(t, u_rms)
-legend(['u'])
-xlabel('t')
-title('Root mean square value of u(t) functions')
-show()
+realization = 1
+u = data[2+realization][2][indices]
+plot(t, u)
+title('Displacement')
 !ec
+
+Note: `data[2+realization]` is a triplet `[h,F,u]`
+
 % if FORMAT != 'ipynb':
-FIGURE: [fig-bumpy/u_rms, width=300 frac=0.4]
+Figure ref{bumpy:fig3} shows the result.
+
+FIGURE: [fig-bumpy/u1, width=400 frac=0.5]
 % endif
 
 !split
-===== Code (part III) =====
+===== Computing the derivative of $u$ =====
+
+!bt
+\begin{equation*}
+v^n = \frac{u^{n+1}-u^{n-1}}{2\Delta t},\quad n=1,\ldots,N-1\thinspace .
+\end{equation*}
+!et
+
+!bt
+\[ v^0 = \frac{u^1-u^0}{\Delta t},\quad v^{N} = \frac{u^N-u^{N-1}}{\Delta t}\]
+!et
+
+!split
+===== Code for the derivative =====
+
+!bc pycod
+v = zeros_like(u)           # same length and data type as u
+dt = t[1] - t[0]            # time step
+for i in range(1,u.size-1):
+    v[i] = (u[i+1] - u[i-1])/(2*dt)
+v[0] = (u[1] - u[0])/dt
+v[N] = (u[N] - u[N-1])/dt
+!ec
+
+Vectorized version:
+
+!bc pycod
+v = zeros_like(u)
+
+v[1:-1] = (u[2:] - u[:-2])/(2*dt)
+
+v[0] = (u[1] - u[0])/dt
+v[-1] = (u[-1] - u[-2])/dt
+!ec
+
+!split
+===== How much faster is the vectorized version? =====
+
+IPython has the convenient `%timeit` feature for measuring CPU time:
+
+!bc ipy
+In [1]: from numpy import zeros
+
+In [2]: N = 1000000
+
+In [3]: u = zeros(N)
+
+In [4]: %timeit v = u[2:] - u[:-2]
+1 loops, best of 3: 5.76 ms per loop
+
+In [5]: v = zeros(N)
+
+In [6]: %timeit for i in range(1,N-1): v[i] = u[i+1] - u[i-1]
+1 loops, best of 3: 836 ms per loop
+
+In [7]: 836/5.76
+Out[20]: 145.13888888888889
+!ec
+
+145 times faster!
+
+!split
+===== Computing the spectrum of signals =====
 
 The spectrum of a discrete function $u(t)$:
 
@@ -635,54 +722,53 @@ u = data[3][2][indices]  # 2nd realization of u
 f, A = frequency_analysis(u, t)
 plot(f, A)
 title('Spectrum of u')
-show()
 !ec
 
+% if FORMAT != 'ipynb':
 !split
 ===== Plot of the spectrum =====
 
 FIGURE: [fig-bumpy/u_spectrum, width=600]
+% endif
 
 !split
-===== Code (part IV) =====
+===== Multiple plots in the same figure =====
 
-Run through all the 3-lists `[h, a, u]` and plot
+Run through all the 3-lists `[h, F, u]` and plot
 these arrays:
 
 !bc pycod
-case_counter = 0
-for h, a, u in data[2:-1]:
-    h = h[indices]
-    a = a[indices]
-    u = u[indices]
+for realization in range(len(data[2:])):
+    h, F, u = data[2+realization]
+    h = h[indices];  F = F[indices];  u = u[indices]
 
     figure()
     subplot(3, 1, 1)
     plot(x, h, 'g-')
-    legend(['h %d' % case_counter])
+    legend(['h %d' % realization])
     hmax = (abs(h.max()) + abs(h.min()))/2
     axis([x[0], x[-1], -hmax*5, hmax*5])
     xlabel('distance'); ylabel('height')
 
     subplot(3, 1, 2)
-    plot(t, a)
-    legend(['a %d' % case_counter])
+    plot(t, F)
+    legend(['F %d' % realization])
     xlabel('t'); ylabel('acceleration')
 
     subplot(3, 1, 3)
     plot(t, u, 'r-')
-    legend(['u %d' % case_counter])
+    legend(['u %d' % realization])
     xlabel('t'); ylabel('displacement')
-    savefig('tmp%d.png' % case_counter)
-    case_counter += 1
 !ec
 
+% if FORMAT != 'ipynb':
 !split
-===== Plot =====
+===== Plot of the first realization =====
 
 FIGURE: [fig-bumpy/hau0, width=700]
 
 See "`explore.py`": "https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/explore.py"
+%endif
 
 !split
 ======= Advanced topics =======

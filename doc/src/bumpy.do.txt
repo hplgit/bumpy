@@ -418,7 +418,7 @@ def s(u):
 A = 0.25
 k = 2
 t = np.linspace(0, 20, 2001)
-u, t = solver(I=0.1, V=0, m=2, b=0.05, s=s, F=F, t=t)
+u, t = solver(I=0, V=0, m=2, b=0.05, s=s, F=F, t=t)
 
 # Show u(t) as a curve plot
 import matplotlib.pyplot as plt
@@ -521,7 +521,7 @@ perform arithmetics on complete (or almost complete) arrays.
 The vectorized form of the
 `acceleration` function goes like
 
-@@@CODE src-bumpy/bumpy.py fromto: def acceleration_vectorized@def rms
+@@@CODE src-bumpy/bumpy.py fromto: def acceleration_vectorized@def prepare_input
 
 
 For each shape $h(x)$ we want to compute the corresponding
@@ -544,8 +544,11 @@ data = [x, t]      # key input and output data (arrays)
 for i in range(h_data.shape[0]):
     h = h_data[i,:]            # extract a column
     a = acceleration(h, x, v)
-    u = solver(t=t, I=0, m=m, b=b, f=f, F=-m*a)
-    data.append([h, a, u])
+    F = -m*a
+
+    u = solver(t=t, I=0, m=m, b=b, f=f, F=F)
+
+    data.append([h, F, u])
 !ec
 
 A parameter choice $m=60$ kg, $v=5$ m/s, $k=60$ N/m,
@@ -556,16 +559,17 @@ bicycle conditions.
 !split
 ===== A high-level solve function =====
 
-The code above is naturally implemented as a Python function.
+The code above for simulating verticle vibrations in a vehicle
+is naturally implemented as a Python function.
 This function can take the most important physical parameters of the problem
 as input, along with information about the file with road shapes.
 We allow for defining road shapes either through a file on a web site
 or a local file.
 
 !bc pycod
-def solve(url=None, m=60, b=80, k=60, v=5):
+def bumpy_road(url=None, m=60, b=80, k=60, v=5):
     """
-    Solve model for verticle vehicle vibrations.
+    Simulate for verticle vehicle vibrations.
 
     =========   ==============================================
     variable    description
@@ -577,7 +581,7 @@ def solve(url=None, m=60, b=80, k=60, v=5):
     k           spring parameter
     v           (constant) velocity of vehicle
     Return      data (list) holding input and output data
-                [x, t, [h,a,u], [h,a,u], ...]
+                [x, t, [h,F,u], [h,F,u], ...]
     =========   ==============================================
     """
     # Download file (if url is not the name of a local file)
@@ -608,9 +612,11 @@ def solve(url=None, m=60, b=80, k=60, v=5):
     for i in range(h_data.shape[0]):
         h = h_data[i,:]            # extract a column
         a = acceleration(h, x, v)
+	F = -m*a
 
-        u = solver(t=t, I=0.2, m=m, b=b, f=f, F=-m*a)
-        data.append([h, a, u])
+        u = solver(t=t, I=0, m=m, b=b, f=f, F=F)
+
+        data.append([h, F, u])
     return data
 !ec
 # #ifndef BOOK
@@ -621,37 +627,10 @@ checking if a file, directory, or link exist, creating or
 removing files and directories, running stand-alone applications, etc.
 # #endif
 
-Since the roads have a quite noise shape, the force $F=-ma$ looks
-very noisy, while the response $u(t)$ to this excitation is
-significantly less noisy,
-see Figure ref{bumpy:fig4} for an example.
-It may be useful to compute the root mean square value of the various
-realizations of $u(t)$ and add this array to the `data` list of input
-and output data in the problem:
 
-!bc pycod
-def rms(data):
-    t = data[1]
-    u_rms = np.zeros(t.size)  # for accumulating the rms value
-    for h, a, u in data[2:]:  # loop over results
-        u_rms += u**2
-    u_rms = np.sqrt(u_rms/u_rms.size)
-    data.append(u_rms)
-    return data
-!ec
-# #ifndef BOOK
-Observe here the `for` loop where three variables (`h`, `a`, and `u`)
-are set equal to the three arrays in each element of the sublist
-`data[2:]`. We only need the `u` array for the computation. An alternative
-loop would be to have one loop variable for each list element and
-get `u` as the 3rd element of each list element:
 
-!bc pycod-t
-    for res in data[2:]:
-        u = res[2]         # res is [h,a,u]
-        ...
-!ec
-# #endif
+
+===== Storing Python objects in files =====
 
 idx{pickling}
 
@@ -659,28 +638,75 @@ After calling
 
 !bc pycod
 road_url = 'http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz'
-data = solve(url=road_url,
-             m=60, b=200, k=60, v=6)
-data = rms(data)
+data = solve(url=road_url, m=60, b=200, k=60, v=6)
 !ec
 the `data` array contains single arrays and triplets of arrays,
 
 !bc pycod-t
-[x, t, [h,a,u], [h,a,u], ..., [h,a,u], u_rms]
+[x, t, [h,F,u], [h,F,u], ..., [h,F,u]]
 !ec
 This list, or any Python object, can be stored on file for later
 retrieval of the results, using the *pickling* functionality
 in Python:
-!bc
+
+!bc pycod
 import cPickle
 outfile = open('bumpy.res', 'w')
 cPickle.dump(data, outfile)
 outfile.close()
 !ec
 
-The complete code containing the functions above is found in the
+The code above and the `bumpy_road` function are found in the
 file
 "`bumpy.py`": "https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/bumpy.py".
+
+===== Computing the root mean square value =====
+
+Since the roads have a quite noise shape, the force $F=-ma$ looks
+very noisy, while the response $u(t)$ to this excitation is
+significantly less noisy,
+see the bottom plot in Figure ref{bumpy:fig4} for an example.
+It may be useful to compute the "root mean square value":
+"http://en.wikipedia.org/wiki/Root_mean_square" of $u$ to get
+a number for the typical amplitude of the vibrations:
+
+!bt
+\[ u_{\mbox{rms}} =
+\sqrt{T^{-1}\int_0^T u^2dt} \approx \sqrt{\frac{1}{N+1}\sum_{i=0}^N (u^n)^2}
+\thinspace .
+\]
+!et
+The last expression can be computed as follows using a vectorized
+sum (`np.sum(u**2)`):
+
+!bc pycod
+u_rms = []
+for h, F, u in data[2:]:
+    u_rms.append(np.sqrt((1./len(u))*np.sum(u**2))
+!ec
+
+idx{list comprehensions}
+Very often in numerical computing we have some list/array and want
+to compute a new list/array where each element is some expression
+involving an element of the first list/array, typically
+
+!bc pycod
+v = []
+for element in u:
+    v.append(expression(element))
+!ec
+This code can more compactly be written as a *list comprehension*:
+
+!bc pycod
+v = [expression(element) for element in u]
+!ec
+We may use the list comprehension construction for computing the `u_rms`
+values:
+
+!bc pycod
+u_rms = [np.sqrt((1./len(u))*np.sum(u**2))
+         for h, F, u in data[2:]]
+!ec
 
 # joblib!!
 
@@ -786,11 +812,23 @@ This section explains how to load the data from the computation, stored
 as a pickled list in the file `bumpy.res`, into various arrays, and how
 to visualize these arrays. We want to produce the following plots:
 
- * the root mean square value of $u(t)$, to see the typical amplitudes
- * the spectrum of $u(t)$, for $t>t_s$ (using FFT) to see which frequencies
+ * $u(t)$ and $u'(t)$ for $t\geq t_s$
+ * the spectrum of $u(t)$, for $t\geq t_s$ (using FFT) to see which frequencies
    that dominate in the signal
  * for each road shape, a plot of $h(x)$, $a(t)$, and $u(t)$, for
-   $t\geq t_s$
+   $t \geq t_s$
+
+=== Test case ===
+
+The simulation is run as
+
+!bc sys
+Terminal> python bumpy.py --v 10
+!ec
+meaning that all other parameters have their default values as
+specified in the `command_line_arguments` function.
+
+=== Importing array and plot functionality ===
 
 The following two imports give access to Matlab-style functions for
 plotting and computing with arrays:
@@ -800,8 +838,20 @@ from numpy import *
 from matplotlib.pyplot import *
 !ec
 
-Loading the computational data from file back to a list `data` is done
-by
+The Python community often prefers to prefix `numpy` by `np` and
+`matplotlib` by `plt` or `mpl`:
+
+!bc pycod
+import numpy as np
+import matplotlib.pyplot as plt
+!ec
+However, we shall stick to the former import to make the code as close
+as possible to the Matlab equivalent.
+
+=== Reading results from file ===
+
+Loading the computational data from file back to a list `data` must
+use the same module (`cPickle`) as we used for writing the data:
 
 !bc pycod
 import cPickle
@@ -810,16 +860,12 @@ data = cPickle.load(outfile)
 outfile.close()
 
 x, t = data[0:2]
-u_rms = data[-1]
 !ec
 Note that `data` first contains `x` and `t`, thereafter
-a sequence of 3-lists `[h, a, u]`, before the final element,
-the array `u_rms`. With `data[0:2]` we extract
+a sequence of 3-lists `[h, F, u]`. With `data[0:2]` we extract
 the sublist with elements `data[0]` and `data[1]` (`0:2` means
-up to, but not including `2`). The index `-1` means the last
-element, so `data[-1]` extracts the `u_rms` array.
-All the 3-lists `[h, a, u]` are extracted as `data[2:-1]` (up to,
-but not including, the last element `u_rms`).
+up to, but not including `2`).
+All the remaining 3-lists `[h, F, u]` can be extracted as `data[2:]`.
 
 Since now we concentrate on the part $t\geq t_s$ of the data, we
 can grab the corresponding parts of the arrays in the following way,
@@ -827,32 +873,135 @@ using boolean arrays as indices:
 
 !bc pycod
 indices = t >= t_s   # True/False boolean array
-t = t[indices]       # fetch the part of t for which t > t_s
-x = x[indices]       # fetch the part of x for which t > t_s
+t = t[indices]       # fetch the part of t for which t >= t_s
+x = x[indices]       # fetch the part of x for which t >= t_s
 !ec
 Indexing by a boolean array extracts all the elements corresponding to
 the `True` elements in the index array.
 
-Plotting the root mean square value array `u_rms` for `t >= t_s` is now done by
+=== Plotting $u$ ===
+
+A plot of $u$, corresponding to the second realization of the bumpy road,
+is easy to create:
 
 !bc pycod
 figure()
-u_rms = u_rms[indices]
-plot(t, u_rms)
-legend(['u'])
-xlabel('t')
-title('Root mean square value of u(t) functions')
-show()
+realization = 1
+u = data[2+realization][2][indices]
+plot(t, u)
+title('Displacement')
 !ec
+Note that `data[2:]` holds the triplets `[h,F,u]`, so the second
+realization is `data[3]`. The `u` part of the triplet is then `data[3][2]`,
+and the part of `u` where $t\geq t_s$ is then `data[3][2][indices]`.
+
 % if FORMAT != 'ipynb':
 Figure ref{bumpy:fig3} shows the result.
 
-FIGURE: [fig-bumpy/u_rms, width=600] Root mean square of displacement. label{bumpy:fig3}
+FIGURE: [fig-bumpy/uv1, width=600] Displacement (left) and velocity (right) for $t\geq t_s=180$. label{bumpy:fig3}
 % endif
 
+=== Computing and plotting $u'$ ===
 
-The spectrum of a $u(t)$ function (represented through the arrays `u`
-and `t`) can be computed by the Python function
+Given a discrete function $u^n$, $n=0,\ldots,N$, the corresponding
+discrete derivative can be computed by
+
+!bt
+\begin{equation}
+v^n = \frac{u^{n+1}-u^{n-1}}{2\Delta t},\quad n=1,\ldots,N-1\thinspace .
+label{bumpy:fdm:centered}
+\end{equation}
+!et
+The values at the end points, $v^0$ and $v^N$, must be computed
+with less accurate one-sided differences:
+
+!bt
+\[ v^0 = \frac{u^1-u^0}{\Delta t},\quad v^{N} = \frac{u^N-u^{N-1}}{\Delta t}\]
+!et
+
+Computing $v=u'$ by (ref{bumpy:fdm:centered}) for the part $t\geq t_s$
+is done by
+
+!bc pycod
+v = zeros_like(u)           # same length and data type as u
+dt = t[1] - t[0]            # time step
+for i in range(1,u.size-1):
+    v[i] = (u[i+1] - u[i-1])/(2*dt)
+v[0] = (u[1] - u[0])/dt
+v[N] = (u[N] - u[N-1])/dt
+!ec
+
+Plotting of `v` is done by
+
+!bc pycod
+figure()
+plot(t, v)
+legend(['velocity'])
+xlabel('t')
+title('Velocity')
+!ec
+% if FORMAT != 'ipynb':
+Figure ref{bumpy:fig3} (right) shows that the velocity is much more
+``noisy'' than the displacement.
+
+FIGURE: [fig-bumpy/uv1, width=600] Displacement (left) and velocity (right) for $t\geq t_s=180$. label{bumpy:fig3}
+% endif
+
+=== Vectorized computation of $u'$ ===
+
+For large arrays, finite difference formulas like (ref{bumpy:fdm:centered})
+can be heavy to compute. A vectorized expression where the loop is
+avoided is much more efficient:
+
+!bc pycod
+v = zeros_like(u)
+v[1:-1] = (u[2:] - u[:-2])/(2*dt)
+v[0] = (u[1] - u[0])/dt
+v[-1] = (u[-1] - u[-2])/dt
+!ec
+The challenging expression here is `u[2:] - u[:-2]`.
+The array slice `u[2:]` starts at index `2` and goes to the very end of
+the array, i.e., the slice contains `u[2], u[3], ..., u[N]`.
+The slice `u[:-2]` starts from the beginning of `u` and goes up to,
+*but not including* the second last element, i.e.,
+`u[0], u[1], ..., u[N-2]`. The expression `u[2:] - u[:-2]` is then
+an array of length `N-2` with elements
+`u[2]-u[0]`, `u[3]-u[1]`, and so on, and with `u[N]-u[N-2]` as final
+element. After dividing this array by `2*dt` we have evaluated formula
+(ref{bumpy:fdm:centered}) for all indices from `1` to `N-2`, which
+is the same as the slice `1:-1` (used on the left-hand side).
+Rather than using `N` (equal to `u.size-1`) in the last line above,
+we use the `-1` index for the last element and `-2` for the second
+last element.
+
+How efficient is this vectorization? The interactive IPython shell has
+a convenient feature to test the efficiency of Python constructions:
+
+!bc ipy
+In [1]: from numpy import zeros
+
+In [2]: N = 1000000
+
+In [3]: u = zeros(N)
+
+In [4]: %timeit v = u[2:] - u[:-2]
+1 loops, best of 3: 5.76 ms per loop
+
+In [5]: v = zeros(N)
+
+In [6]: %timeit for i in range(1,N-1): v[i] = u[i+1] - u[i-1]
+1 loops, best of 3: 836 ms per loop
+
+In [7]: 836/5.76
+Out[20]: 145.13888888888889
+!ec
+This session show that the vectorized expression is 145 times faster
+than the explicit loop!
+
+===== Computing the spectrum of signals =====
+
+The spectrum of a $u(t)$ function, here represented by discrete values in
+the arrays `u` and `t`, can be computed by the Python function
 
 !bc pycod
 def frequency_analysis(u, t):
@@ -876,66 +1025,61 @@ In the present case, we utilize the `frequency_analysis` through
 
 !bc pycod
 figure()
-u = data[3][2][indices]  # 2nd realization of u
+u = data[3][2][indices]  # second realization of u
 f, A = frequency_analysis(u, t)
 plot(f, A)
 title('Spectrum of u')
-show()
 !ec
-Note the list look-up `data[3][2][indices]`: the element with index
-3 contains the 2nd 3-list `[h, a, u]`, and the element with index 2
-in this 3-list is the `u` array, in which we seek the part where
-$t\geq t_s$, here corresponding to the `True` indices in the boolean
-array `indices`.
 
+% if FORMAT != 'ipynb':
 Figure ref{bumpy:fig2} shows the amplitudes and that the
 dominating frequency is 1 Hz.
 
 FIGURE: [fig-bumpy/u_spectrum, width=600] Spectrum of displacement. label{bumpy:fig2}
+% endif
 
-Finally, we can run through all the 3-lists `[h, a, u]` and plot
-these arrays:
+===== Multiple plots in the same figure =====
+
+Finally, we can run through all the 3-lists `[h, a, u]` and visualize
+these curves in the same plot figure:
 
 !bc pycod
-case_counter = 0
-for h, a, u in data[2:-1]:
+for realization in range(len(data[2:])):
+    h, F, u = data[2+realization]
     h = h[indices]
-    a = a[indices]
+    F = F[indices]
     u = u[indices]
 
     figure()
     subplot(3, 1, 1)
     plot(x, h, 'g-')
-    legend(['h %d' % case_counter])
+    legend(['h %d' % realization])
     hmax = (abs(h.max()) + abs(h.min()))/2
     axis([x[0], x[-1], -hmax*5, hmax*5])
     xlabel('distance'); ylabel('height')
 
     subplot(3, 1, 2)
-    plot(t, a)
-    legend(['a %d' % case_counter])
+    plot(t, F)
+    legend(['F %d' % realization])
     xlabel('t'); ylabel('acceleration')
 
     subplot(3, 1, 3)
     plot(t, u, 'r-')
-    legend(['u %d' % case_counter])
+    legend(['u %d' % realization])
     xlabel('t'); ylabel('displacement')
-    savefig('tmp%d.png' % case_counter)
-    case_counter += 1
+    savefig('hFu%d.png' % realization)
 !ec
 
 
-FIGURE: [fig-bumpy/hau0, width=700] First realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations. label{bumpy:fig4}
+FIGURE: [fig-bumpy/hFu0, width=700] First realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations. label{bumpy:fig4}
 
-FIGURE: [fig-bumpy/hau1, width=700] Second realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations. label{bumpy:fig5}
-
-FIGURE: [fig-bumpy/hau2, width=700] Third realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations. label{bumpy:fig6}
-
+% if FORMAT != 'ipynb':
 If all the plot commands above are placed in a file, as in
 "`explore.py`": "https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/explore.py", a final `show()` call is needed to show the
 plots on the screen. On the other hand, the commands are usually
 more conveniently performed in an interactive Python shell, preferably
-IPython.
+IPython or IPython notebook.
+% endif
 
 # include something about Cython, software engineering (classes, testing,
 # modules)

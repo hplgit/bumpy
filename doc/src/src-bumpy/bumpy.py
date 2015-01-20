@@ -30,7 +30,6 @@ def bumpy_road(url=None, m=60, b=80, k=60, v=5, cy=False):
         if not os.path.isfile(filename):
             print url, 'must be a URL or a filename'
             sys.exit(1)
-        # else: ok
 
     # Load file data into array h_data
     try:
@@ -60,10 +59,11 @@ def bumpy_road(url=None, m=60, b=80, k=60, v=5, cy=False):
     for i in range(h_data.shape[0]):
         h = h_data[i,:]            # extract a column
         a = acceleration(h, x, v)
+        F = -m*a
 
-        u, t = solver(I=0.2, V=0, m=m, b=b, s=s, F=-m*a,
-                      t=t, damping='linear')
-        data.append([h, a, u])
+        u, t = solver(I=0, V=0, m=m, b=b, s=s, F=F, t=t,
+                      damping='linear')
+        data.append([h, F, u])
     return data
 
 def acceleration(h, x, v):
@@ -89,16 +89,6 @@ def acceleration_vectorized(h, x, v):
     d2h[-1] = d2h[-2]
     a = d2h*v**2
     return a
-
-def rms(data):
-    """Compute root mean square of displacement."""
-    u_rms = np.zeros(t.size)
-    # recall: data = [x,t,[h,a,u],[h,a,u],...]
-    for h, a, u in data[2:]:
-        u_rms += u**2
-    u_rms = np.sqrt(u_rms/u_rms.size)
-    data.append(u_rms)
-    return data
 
 def prepare_input():
     url = 'http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz'
@@ -135,10 +125,14 @@ def command_line_options():
 if __name__ == '__main__':
     #url, m, b, k, v = prepare_input()
     url, m, b, k, v, cy = command_line_options()
-    print 'cy', cy
 
-    data = bumpy_road(url=url, m=60, b=b, k=60, v=10, cy=cy)
-    data = rms(data)
+    data = bumpy_road(url=url, m=m, b=b, k=m, v=v, cy=cy)
+
+    # Root mean square values
+    u_rms = [np.sqrt((1./len(u))*np.sum(u**2))
+             for h, F, u in data[2:]]
+    print 'u_rms:', u_rms
+    print 'Simulated for t in [0,%g]' % data[1][-1]
 
     # Save data list to file
     import cPickle
