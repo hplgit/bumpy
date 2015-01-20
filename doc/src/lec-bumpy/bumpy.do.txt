@@ -778,6 +778,8 @@ FIGURE: [fig-bumpy/rocket_science1, width=400 frac=0.6]
 !split
 ===== Symbolic computing via SymPy =====
 
+SymPy can do exact differentiation, integration, equation solving, ...
+
 !bc pyshell
 >>> import sympy as sp
 >>> x, a = sp.symbols('x a')        # Define mathematical symbols
@@ -818,7 +820,9 @@ Modern test frameworks:
  * "nose": "https://nose.readthedocs.org/"
  * "pytest": "http://pytest.org/latest/"
 
-Recommendation: use pytest, stay away from `unittest`
+!bnotice Recommendation
+Use pytest, stay away from classical `unittest`
+!enotice
 
 
 !split
@@ -850,11 +854,21 @@ Note:
 !split
 ===== Test function for the numerical solver =====
 
+!bnotice Idea
+Show that $u=I + Vt + qt^2$ solves the discrete equations exactly
+for linear damping and with $q=0$ for quadratic damping
+!enotice
+
 @@@CODE src-bumpy/tests/test_bumpy.py def lhs@def test_all
 
 % else:
 !split
 ===== Test function for the numerical solver (part I) =====
+
+!bnotice Idea
+Show that $u=I + Vt + qt^2$ solves the discrete equations exactly
+for linear damping and with $q=0$ for quadratic damping
+!enotice
 
 !bc pycod
 def lhs_eq(t, m, b, s, u, damping='linear'):
@@ -862,6 +876,21 @@ def lhs_eq(t, m, b, s, u, damping='linear'):
     v = sm.diff(u, t)
     d = b*v if damping == 'linear' else b*v*sm.Abs(v)
     return m*sm.diff(u, t, t) + d + s(u)
+!ec
+
+Fit source term in differential equation to any chosen $u(t)$:
+
+!bc pycod
+t = sm.Symbol('t')
+q = 2  # arbitrary constant
+u_chosen = I + V*t + q*t**2   # sympy expression
+F_term = lhs_eq(t, m, b, s, u_chosen, 'linear')
+!ec
+
+!split
+===== Test function for the numerical solver (part II) =====
+
+import sympy as sm
 
 def test_solver():
     """Verify linear/quadratic solution."""
@@ -888,7 +917,7 @@ def test_solver():
 !ec
 
 !split
-===== Test function for the numerical solver (part II) =====
+===== Test function for the numerical solver (part III) =====
 
 !bc pycod
 def test_solver():
