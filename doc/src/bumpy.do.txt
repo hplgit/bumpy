@@ -559,7 +559,7 @@ bicycle conditions.
 !split
 ===== A high-level solve function =====
 
-The code above for simulating verticle vibrations in a vehicle
+The code above for simulating vertical vibrations in a vehicle
 is naturally implemented as a Python function.
 This function can take the most important physical parameters of the problem
 as input, along with information about the file with road shapes.
@@ -569,7 +569,7 @@ or a local file.
 !bc pycod
 def bumpy_road(url=None, m=60, b=80, k=60, v=5):
     """
-    Simulate for verticle vehicle vibrations.
+    Simulate vertical vehicle vibrations.
 
     =========   ==============================================
     variable    description
@@ -1033,9 +1033,9 @@ title('Spectrum of u')
 
 % if FORMAT != 'ipynb':
 Figure ref{bumpy:fig2} shows the amplitudes and that the
-dominating frequency is 1 Hz.
+dominating frequencies lie around 0.5 and 1 Hz.
 
-FIGURE: [fig-bumpy/u_spectrum, width=600] Spectrum of displacement. label{bumpy:fig2}
+FIGURE: [fig-bumpy/spectra1, width=600] Spectra of displacement and excitation. label{bumpy:fig2}
 % endif
 
 ===== Multiple plots in the same figure =====

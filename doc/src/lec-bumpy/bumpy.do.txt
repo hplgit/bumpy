@@ -581,7 +581,7 @@ Plot
 !split
 ===== Code for loading data from file =====
 
-Loading pickeld results in file:
+Loading pickled results in file:
 
 !bc pycod
 import cPickle
@@ -627,11 +627,9 @@ plot(t, u)
 title('Displacement')
 !ec
 
-Note: `data[2+realization]` is a triplet `[h,F,u]`
+Note: `data[2+realization]` is a triplet `[h, F, u]`
 
 % if FORMAT != 'ipynb':
-Figure ref{bumpy:fig3} shows the result.
-
 FIGURE: [fig-bumpy/u1, width=400 frac=0.5]
 % endif
 
@@ -726,9 +724,9 @@ title('Spectrum of u')
 
 % if FORMAT != 'ipynb':
 !split
-===== Plot of the spectrum =====
+===== Plot of the spectra =====
 
-FIGURE: [fig-bumpy/u_spectrum, width=600]
+FIGURE: [fig-bumpy/spectra1, width=600]
 % endif
 
 !split
@@ -765,10 +763,10 @@ for realization in range(len(data[2:])):
 !split
 ===== Plot of the first realization =====
 
-FIGURE: [fig-bumpy/hau0, width=700]
+FIGURE: [fig-bumpy/hFu0, width=700]
 
 See "`explore.py`": "https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/explore.py"
-%endif
+% endif
 
 !split
 ======= Advanced topics =======
@@ -890,6 +888,7 @@ F_term = lhs_eq(t, m, b, s, u_chosen, 'linear')
 !split
 ===== Test function for the numerical solver (part II) =====
 
+!bc pycod
 import sympy as sm
 
 def test_solver():

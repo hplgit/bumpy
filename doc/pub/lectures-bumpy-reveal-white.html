@@ -139,7 +139,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo</b></center>
 <p>&nbsp;<br>
-<center><h4>Jan 17, 2015</h4></center> <!-- date -->
+<center><h4>Jan 20, 2015</h4></center> <!-- date -->
 <p>
 
 </section>
@@ -216,33 +216,38 @@ All files can be forked at <a href="https://github.com/hplgit/bumpy" target="_bl
 &nbsp; &nbsp; &nbsp; <a href="#___sec19"> The very basics of two-dimensional arrays </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec20"> Computing the force from the road profile </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec21"> Vectorized version of the previous function </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec22"> Performing the simulation of vibrations </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec22"> Performing the simulation </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec23"> A high-level solve function (part I) </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec24"> A high-level solve function (part II) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec25"> Computing an expression for the noise level of the vibrations </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec26"> Pickling: storing Python objects in files </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec25"> Pickling: storing Python objects in files </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec26"> Computing an expression for the noise level of the vibrations </a><br>
 <a href="#___sec27"> User input </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec28"> Positional command-line arguments </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec29"> Option-value pairs on the command line </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec30"> Example on using <code>argparse</code> </a><br>
-<a href="#___sec31"> Visual exploration </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec32"> Code (part I) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec33"> Code (part II) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec34"> Code (part III) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec35"> Plot of the spectrum </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec36"> Code (part IV) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec37"> Plot </a><br>
-<a href="#___sec38"> Advanced topics </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec39"> Symbolic computing via SymPy </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec40"> Go seamlessly from symbolic expression to Python function </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec41"> Testing via test functions and test frameworks </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec42"> Example on a test function </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec43"> Test function for the numerical solver (part I) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec44"> Test function for the numerical solver (part II) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec45"> Using a test framework </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec46"> Modules </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec47"> Example on a module file </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec48"> What gets imported? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec31"> Running a simulation </a><br>
+<a href="#___sec32"> Visual exploration </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec33"> Code for loading data from file </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec34"> Plotting the last part of \( u \) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec35"> Computing the derivative of \( u \) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec36"> Code for the derivative </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec37"> How much faster is the vectorized version? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec38"> Computing the spectrum of signals </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec39"> Plot of the spectra </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec40"> Multiple plots in the same figure </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec41"> Plot of the first realization </a><br>
+<a href="#___sec42"> Advanced topics </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec43"> Symbolic computing via SymPy </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec44"> Go seamlessly from symbolic expression to Python function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec45"> Testing via test functions and test frameworks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec46"> Example on a test function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec47"> Test function for the numerical solver (part I) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec48"> Test function for the numerical solver (part II) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec49"> Test function for the numerical solver (part III) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec50"> Using a test framework </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec51"> Modules </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec52"> Example on a module file </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec53"> What gets imported? </a><br>
 </p>
 <p>
 
@@ -7004,7 +7009,7 @@ to get correct real division!
 A <span style="color: #666666">=</span> <span style="color: #666666">0.25</span>
 k <span style="color: #666666">=</span> <span style="color: #666666">2</span>
 t <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">100</span>, <span style="color: #666666">10001</span>)
-u, t <span style="color: #666666">=</span> solver(I<span style="color: #666666">=0.1</span>, V<span style="color: #666666">=0</span>, m<span style="color: #666666">=2</span>, b<span style="color: #666666">=0.5</span>, s<span style="color: #666666">=</span>s, F<span style="color: #666666">=</span>F, t<span style="color: #666666">=</span>t,
+u, t <span style="color: #666666">=</span> solver(I<span style="color: #666666">=0</span>, V<span style="color: #666666">=0</span>, m<span style="color: #666666">=2</span>, b<span style="color: #666666">=0.5</span>, s<span style="color: #666666">=</span>s, F<span style="color: #666666">=</span>F, t<span style="color: #666666">=</span>t,
               damping<span style="color: #666666">=</span><span style="color: #BA2121">&#39;quadratic&#39;</span>)
 
 <span style="color: #408080; font-style: italic"># Show u(t) as a curve plot</span>
@@ -7206,7 +7211,7 @@ F(t) \sim v^2 h''(x) $$
 
 <section>
 
-<h2 id="___sec22">Performing the simulation of vibrations </h2>
+<h2 id="___sec22">Performing the simulation </h2>
 
 <p>
 Use a list <code>data</code> to hold all input and output data
@@ -7218,8 +7223,9 @@ Use a list <code>data</code> to hold all input and output data
 <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(h_data<span style="color: #666666">.</span>shape[<span style="color: #666666">0</span>]):
     h <span style="color: #666666">=</span> h_data[i,:]            <span style="color: #408080; font-style: italic"># extract a column</span>
     a <span style="color: #666666">=</span> acceleration(h, x, v)
-    u <span style="color: #666666">=</span> solver(t<span style="color: #666666">=</span>t, I<span style="color: #666666">=0</span>, m<span style="color: #666666">=</span>m, b<span style="color: #666666">=</span>b, f<span style="color: #666666">=</span>f, F<span style="color: #666666">=-</span>m<span style="color: #666666">*</span>a)
-    data<span style="color: #666666">.</span>append([h, a, u])
+    F <span style="color: #666666">=</span> <span style="color: #666666">-</span>m<span style="color: #666666">*</span>a
+    u <span style="color: #666666">=</span> solver(t<span style="color: #666666">=</span>t, I<span style="color: #666666">=0</span>, m<span style="color: #666666">=</span>m, b<span style="color: #666666">=</span>b, f<span style="color: #666666">=</span>f, F<span style="color: #666666">=</span>F)
+    data<span style="color: #666666">.</span>append([h, F, u])
 </pre></div>
 <p>
 Parameters for bicycle conditions: \( m=60 \) kg, \( v=5 \) m/s, \( k=60 \) N/m,
@@ -7237,9 +7243,9 @@ Parameters for bicycle conditions: \( m=60 \) kg, \( v=5 \) m/s, \( k=60 \) N/m,
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solve</span>(url<span style="color: #666666">=</span><span style="color: #008000">None</span>, m<span style="color: #666666">=60</span>, b<span style="color: #666666">=80</span>, k<span style="color: #666666">=60</span>, v<span style="color: #666666">=5</span>):
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">bumpy_road</span>(url<span style="color: #666666">=</span><span style="color: #008000">None</span>, m<span style="color: #666666">=60</span>, b<span style="color: #666666">=80</span>, k<span style="color: #666666">=60</span>, v<span style="color: #666666">=5</span>):
     <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
-<span style="color: #BA2121; font-style: italic">    Solve model for verticle vehicle vibrations.</span>
+<span style="color: #BA2121; font-style: italic">    Simulate verticle vehicle vibrations.</span>
 
 <span style="color: #BA2121; font-style: italic">    =========   ==============================================</span>
 <span style="color: #BA2121; font-style: italic">    variable    description</span>
@@ -7251,7 +7257,7 @@ Parameters for bicycle conditions: \( m=60 \) kg, \( v=5 \) m/s, \( k=60 \) N/m,
 <span style="color: #BA2121; font-style: italic">    k           spring parameter</span>
 <span style="color: #BA2121; font-style: italic">    v           (constant) velocity of vehicle</span>
 <span style="color: #BA2121; font-style: italic">    Return      data (list) holding input and output data</span>
-<span style="color: #BA2121; font-style: italic">                [x, t, [h,a,u], [h,a,u], ...]</span>
+<span style="color: #BA2121; font-style: italic">                [x, t, [h,F,u], [h,F,u], ...]</span>
 <span style="color: #BA2121; font-style: italic">    =========   ==============================================</span>
 <span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
     <span style="color: #408080; font-style: italic"># Download file (if url is not the name of a local file)</span>
@@ -7276,7 +7282,7 @@ Parameters for bicycle conditions: \( m=60 \) kg, \( v=5 \) m/s, \( k=60 \) N/m,
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solve</span>(url<span style="color: #666666">=</span><span style="color: #008000">None</span>, m<span style="color: #666666">=60</span>, b<span style="color: #666666">=80</span>, k<span style="color: #666666">=60</span>, v<span style="color: #666666">=5</span>):
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">bumpy_road</span>(url<span style="color: #666666">=</span><span style="color: #008000">None</span>, m<span style="color: #666666">=60</span>, b<span style="color: #666666">=80</span>, k<span style="color: #666666">=60</span>, v<span style="color: #666666">=5</span>):
     <span style="color: #666666">...</span>
     h_data <span style="color: #666666">=</span> np<span style="color: #666666">.</span>loadtxt(filename)  <span style="color: #408080; font-style: italic"># read numpy array from file</span>
 
@@ -7293,9 +7299,11 @@ Parameters for bicycle conditions: \( m=60 \) kg, \( v=5 \) m/s, \( k=60 \) N/m,
     <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(h_data<span style="color: #666666">.</span>shape[<span style="color: #666666">0</span>]):
         h <span style="color: #666666">=</span> h_data[i,:]            <span style="color: #408080; font-style: italic"># extract a column</span>
         a <span style="color: #666666">=</span> acceleration(h, x, v)
+	F <span style="color: #666666">=</span> <span style="color: #666666">-</span>m<span style="color: #666666">*</span>a
 
-        u <span style="color: #666666">=</span> solver(t<span style="color: #666666">=</span>t, I<span style="color: #666666">=0.2</span>, m<span style="color: #666666">=</span>m, b<span style="color: #666666">=</span>b, f<span style="color: #666666">=</span>f, F<span style="color: #666666">=-</span>m<span style="color: #666666">*</span>a)
-        data<span style="color: #666666">.</span>append([h, a, u])
+        u <span style="color: #666666">=</span> solver(t<span style="color: #666666">=</span>t, I<span style="color: #666666">=0.2</span>, m<span style="color: #666666">=</span>m, b<span style="color: #666666">=</span>b, f<span style="color: #666666">=</span>f, F<span style="color: #666666">=</span>F)
+
+        data<span style="color: #666666">.</span>append([h, F, u])
     <span style="color: #008000; font-weight: bold">return</span> data
 </pre></div>
 <p>
@@ -7305,32 +7313,7 @@ Parameters for bicycle conditions: \( m=60 \) kg, \( v=5 \) m/s, \( k=60 \) N/m,
 
 <section>
 
-<h2 id="___sec25">Computing an expression for the noise level of the vibrations </h2>
-
-<p>&nbsp;<br>
-$$ \mbox{RMS} = \sqrt{\int_0^T u^2dt} \approx \sqrt{\frac{1}{N+1}\sum_{i=0}^N (u^n)^2}$$
-<p>&nbsp;<br>
-
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">rms</span>(data):
-    u_rms <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(t<span style="color: #666666">.</span>size)  <span style="color: #408080; font-style: italic"># for accumulating the rms value</span>
-    <span style="color: #008000; font-weight: bold">for</span> h, a, u <span style="color: #AA22FF; font-weight: bold">in</span> data[<span style="color: #666666">2</span>:]:  <span style="color: #408080; font-style: italic"># loop over results</span>
-        u_rms <span style="color: #666666">+=</span> u<span style="color: #666666">**2</span>
-    u_rms <span style="color: #666666">=</span> np<span style="color: #666666">.</span>sqrt(u_rms<span style="color: #666666">/</span>u_rms<span style="color: #666666">.</span>size)
-    data<span style="color: #666666">.</span>append(u_rms)
-    <span style="color: #008000; font-weight: bold">return</span> data
-</pre></div>
-<p>
-
-</section>
-
-
-<section>
-
-<h2 id="___sec26">Pickling: storing Python objects in files </h2>
+<h2 id="___sec25">Pickling: storing Python objects in files </h2>
 
 <p>
 After calling
@@ -7349,7 +7332,7 @@ the <code>data</code> array contains single arrays and triplets of arrays,
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">[x, t, [h,a,u], [h,a,u], <span style="color: #666666">...</span>, [h,a,u], u_rms]
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">[x, t, [h,F,u], [h,F,u], <span style="color: #666666">...</span>, [h,F,u]]
 </pre></div>
 <p>
 This list, or any Python object, can be stored on file for later
@@ -7364,8 +7347,36 @@ cPickle<span style="color: #666666">.</span>dump(data, outfile)
 outfile<span style="color: #666666">.</span>close()
 </pre></div>
 <p>
-See <a href="https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/bumpy.py" target="_blank"><tt>bumpy.py</tt></a>.
 
+</section>
+
+
+<section>
+
+<h2 id="___sec26">Computing an expression for the noise level of the vibrations </h2>
+
+<p>&nbsp;<br>
+$$ u_{\mbox{rms}} = \sqrt{T^{-1}\int_0^T u^2dt}
+\approx \sqrt{\frac{1}{N+1}\sum_{i=0}^N (u^n)^2}$$
+<p>&nbsp;<br>
+
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">u_rms <span style="color: #666666">=</span> []
+<span style="color: #008000; font-weight: bold">for</span> h, F, u <span style="color: #AA22FF; font-weight: bold">in</span> data[<span style="color: #666666">2</span>:]:
+    u_rms<span style="color: #666666">.</span>append(np<span style="color: #666666">.</span>sqrt((<span style="color: #666666">1./</span><span style="color: #008000">len</span>(u))<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sum(u<span style="color: #666666">**2</span>))
+</pre></div>
+<p>
+Or by the more compact list comprehension:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">u_rms <span style="color: #666666">=</span> [np<span style="color: #666666">.</span>sqrt((<span style="color: #666666">1./</span><span style="color: #008000">len</span>(u))<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sum(u<span style="color: #666666">**2</span>))
+         <span style="color: #008000; font-weight: bold">for</span> h, F, u <span style="color: #AA22FF; font-weight: bold">in</span> data[<span style="color: #666666">2</span>:]]
+</pre></div>
 <p>
 
 </section>
@@ -7407,9 +7418,15 @@ Code:
     b <span style="color: #666666">=</span> <span style="color: #666666">80</span>  <span style="color: #408080; font-style: italic"># default</span>
 </pre></div>
 <p>
-Note: 1st command-line argument in <code>sys.argv[1]</code>, but that is a string
+Note:
 
+<ul>
+ <p><li> Command-line arguments are in the list <code>sys.argv[1:]</code></li>
+ <p><li> <code>sys.argv[i]</code> is a string, so float conversion is necessary
+   before calculations</li>
+</ul>
 <p>
+
 
 </section>
 
@@ -7419,7 +7436,7 @@ Note: 1st command-line argument in <code>sys.argv[1]</code>, but that is a strin
 <h2 id="___sec29">Option-value pairs on the command line </h2>
 
 <p>
-Now we want to use option-value pairs on the command line:
+We can alternatively use option-value pairs on the command line:
 
 <p>
 
@@ -7433,7 +7450,7 @@ Note:
  <p><li> All parameters have default values</li>
  <p><li> The default value can be overridden on the command line with
    <code>--option value</code></li>
- <p><li> We use the <code>argparse</code> module for defining, reading, and accessing
+ <p><li> We can use the <code>argparse</code> module for defining, reading, and accessing
    option-value pairs</li>
 </ul>
 <p>
@@ -7463,7 +7480,9 @@ Note:
     url <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz&#39;</span>
     parser<span style="color: #666666">.</span>add_argument(<span style="color: #BA2121">&#39;--roadfile&#39;</span>, <span style="color: #008000">type</span><span style="color: #666666">=</span><span style="color: #008000">str</span>,
               default<span style="color: #666666">=</span>url, help<span style="color: #666666">=</span><span style="color: #BA2121">&#39;filename/URL with road data&#39;</span>)
+
     args <span style="color: #666666">=</span> parser<span style="color: #666666">.</span>parse_args()
+
     <span style="color: #408080; font-style: italic"># Extract input parameters</span>
     m <span style="color: #666666">=</span> args<span style="color: #666666">.</span>m; k <span style="color: #666666">=</span> args<span style="color: #666666">.</span>k; b <span style="color: #666666">=</span> args<span style="color: #666666">.</span>b; v <span style="color: #666666">=</span> args<span style="color: #666666">.</span>v
     url <span style="color: #666666">=</span> args<span style="color: #666666">.</span>roadfile
@@ -7476,17 +7495,37 @@ Note:
 
 <section>
 
-<h1 id="___sec31">Visual exploration </h1>
+<h2 id="___sec31">Running a simulation </h2>
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python bumpy.py --velocity 10
+</pre></div>
+<p>
+The rest of the parameters have their default values
+
+<p>
+<center><p><img src="fig-bumpy/u1.png" align="bottom" width=600></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h1 id="___sec32">Visual exploration </h1>
 
 <p>
 Plot
 
 <ul>
- <p><li> the root mean square value of \( u(t) \), to see the typical amplitudes</li>
- <p><li> the spectrum of \( u(t) \), for \( t>t_s \) (using FFT) to see which frequencies
+ <p><li> \( u(t) \) and \( u'(t) \) for \( t\geq t_s \)</li>
+ <p><li> the spectrum of \( u(t) \), for \( t\geq t_s \) (using FFT) to see which frequencies
    that dominate in the signal</li>
  <p><li> for each road shape, a plot of \( h(x) \), \( a(t) \), and \( u(t) \), for
-   \( t\geq t_s \)</li>
+   \( t \geq t_s \)</li>
 </ul>
 <p>
 
@@ -7496,19 +7535,10 @@ Plot
 
 <section>
 
-<h2 id="___sec32">Code (part I) </h2>
+<h2 id="___sec33">Code for loading data from file </h2>
 
 <p>
-For convenience:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-</pre></div>
-<p>
-Loading results from file:
+Loading pickled results in file:
 
 <p>
 
@@ -7519,7 +7549,6 @@ data <span style="color: #666666">=</span> cPickle<span style="color: #666666">.
 outfile<span style="color: #666666">.</span>close()
 
 x, t <span style="color: #666666">=</span> data[<span style="color: #666666">0</span>:<span style="color: #666666">2</span>]
-u_rms <span style="color: #666666">=</span> data[<span style="color: #666666">-1</span>]
 </pre></div>
 <p>
 Recall list <code>data</code>:
@@ -7527,7 +7556,16 @@ Recall list <code>data</code>:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">[x, t, [h,a,u], [h,a,u], <span style="color: #666666">...</span>, [h,a,u], u_rms]
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">[x, t, [h,F,u], [h,F,u], <span style="color: #666666">...</span>, [h,F,u]]
+</pre></div>
+<p>
+Further, for convenience (and Matlab-like code):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
 </pre></div>
 <p>
 
@@ -7536,7 +7574,7 @@ Recall list <code>data</code>:
 
 <section>
 
-<h2 id="___sec33">Code (part II) </h2>
+<h2 id="___sec34">Plotting the last part of \( u \) </h2>
 
 <p>
 Display only the last portion of time series:
@@ -7549,21 +7587,22 @@ t <span style="color: #666666">=</span> t[indices]       <span style="color: #40
 x <span style="color: #666666">=</span> x[indices]       <span style="color: #408080; font-style: italic"># fetch the part of x for which t &gt; t_s</span>
 </pre></div>
 <p>
-Plotting the root mean square value array <code>u_rms</code> for <code>t &gt;= t_s</code> is now done by
+Plotting \( u \):
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">figure()
-u_rms <span style="color: #666666">=</span> u_rms[indices]
-plot(t, u_rms)
-legend([<span style="color: #BA2121">&#39;u&#39;</span>])
-xlabel(<span style="color: #BA2121">&#39;t&#39;</span>)
-title(<span style="color: #BA2121">&#39;Root mean square value of u(t) functions&#39;</span>)
-show()
+realization <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+u <span style="color: #666666">=</span> data[<span style="color: #666666">2+</span>realization][<span style="color: #666666">2</span>][indices]
+plot(t, u)
+title(<span style="color: #BA2121">&#39;Displacement&#39;</span>)
 </pre></div>
 <p>
-<center><p><img src="fig-bumpy/u_rms.png" align="bottom" width=300></p></center>
+Note: <code>data[2+realization]</code> is a triplet <code>[h,F,u]</code>
+
+<p>
+<center><p><img src="fig-bumpy/u1.png" align="bottom" width=400></p></center>
 
 <p>
 
@@ -7572,7 +7611,97 @@ show()
 
 <section>
 
-<h2 id="___sec34">Code (part III) </h2>
+<h2 id="___sec35">Computing the derivative of \( u \) </h2>
+
+<p>&nbsp;<br>
+$$
+\begin{equation*}
+v^n = \frac{u^{n+1}-u^{n-1}}{2\Delta t},\quad n=1,\ldots,N-1\thinspace .
+\end{equation*}
+$$
+<p>&nbsp;<br>
+
+
+<p>&nbsp;<br>
+$$ v^0 = \frac{u^1-u^0}{\Delta t},\quad v^{N} = \frac{u^N-u^{N-1}}{\Delta t}$$
+<p>&nbsp;<br>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec36">Code for the derivative </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">v <span style="color: #666666">=</span> zeros_like(u)           <span style="color: #408080; font-style: italic"># same length and data type as u</span>
+dt <span style="color: #666666">=</span> t[<span style="color: #666666">1</span>] <span style="color: #666666">-</span> t[<span style="color: #666666">0</span>]            <span style="color: #408080; font-style: italic"># time step</span>
+<span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>,u<span style="color: #666666">.</span>size<span style="color: #666666">-1</span>):
+    v[i] <span style="color: #666666">=</span> (u[i<span style="color: #666666">+1</span>] <span style="color: #666666">-</span> u[i<span style="color: #666666">-1</span>])<span style="color: #666666">/</span>(<span style="color: #666666">2*</span>dt)
+v[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> (u[<span style="color: #666666">1</span>] <span style="color: #666666">-</span> u[<span style="color: #666666">0</span>])<span style="color: #666666">/</span>dt
+v[N] <span style="color: #666666">=</span> (u[N] <span style="color: #666666">-</span> u[N<span style="color: #666666">-1</span>])<span style="color: #666666">/</span>dt
+</pre></div>
+<p>
+Vectorized version:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">v <span style="color: #666666">=</span> zeros_like(u)
+
+v[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> (u[<span style="color: #666666">2</span>:] <span style="color: #666666">-</span> u[:<span style="color: #666666">-2</span>])<span style="color: #666666">/</span>(<span style="color: #666666">2*</span>dt)
+
+v[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> (u[<span style="color: #666666">1</span>] <span style="color: #666666">-</span> u[<span style="color: #666666">0</span>])<span style="color: #666666">/</span>dt
+v[<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> (u[<span style="color: #666666">-1</span>] <span style="color: #666666">-</span> u[<span style="color: #666666">-2</span>])<span style="color: #666666">/</span>dt
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec37">How much faster is the vectorized version? </h2>
+
+<p>
+IPython has the convenient <code>%timeit</code> feature for measuring CPU time:
+
+<p>
+
+<!-- code=ipy (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> zeros
+
+<span style="color: #000080; font-weight: bold">In [2]: </span>N <span style="color: #666666">=</span> <span style="color: #666666">1000000</span>
+
+<span style="color: #000080; font-weight: bold">In [3]: </span>u <span style="color: #666666">=</span> zeros(N)
+
+<span style="color: #000080; font-weight: bold">In [4]: </span><span style="color: #666666">%</span><span style="color: #008000; font-weight: bold">timeit</span> v <span style="color: #666666">=</span> u[<span style="color: #666666">2</span>:] <span style="color: #666666">-</span> u[:<span style="color: #666666">-2</span>]
+<span style="color: #888888">1 loops, best of 3: 5.76 ms per loop</span>
+
+<span style="color: #000080; font-weight: bold">In [5]: </span>v <span style="color: #666666">=</span> zeros(N)
+
+<span style="color: #000080; font-weight: bold">In [6]: </span><span style="color: #666666">%</span><span style="color: #008000; font-weight: bold">timeit</span> <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>,N<span style="color: #666666">-1</span>): v[i] <span style="color: #666666">=</span> u[i<span style="color: #666666">+1</span>] <span style="color: #666666">-</span> u[i<span style="color: #666666">-1</span>]
+<span style="color: #888888">1 loops, best of 3: 836 ms per loop</span>
+
+<span style="color: #000080; font-weight: bold">In [7]: </span><span style="color: #666666">836/5.76</span>
+<span style="color: #000080; font-weight: bold">Out[20]: </span><span style="color: #888888">145.13888888888889</span>
+</pre></div>
+<p>
+145 times faster!
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec38">Computing the spectrum of signals </h2>
 
 <p>
 The spectrum of a discrete function \( u(t) \):
@@ -7599,7 +7728,6 @@ u <span style="color: #666666">=</span> data[<span style="color: #666666">3</spa
 f, A <span style="color: #666666">=</span> frequency_analysis(u, t)
 plot(f, A)
 title(<span style="color: #BA2121">&#39;Spectrum of u&#39;</span>)
-show()
 </pre></div>
 <p>
 
@@ -7608,10 +7736,10 @@ show()
 
 <section>
 
-<h2 id="___sec35">Plot of the spectrum </h2>
+<h2 id="___sec39">Plot of the spectra </h2>
 
 <p>
-<center><p><img src="fig-bumpy/u_spectrum.png" align="bottom" width=600></p></center>
+<center><p><img src="fig-bumpy/spectra1.png" align="bottom" width=600></p></center>
 
 <p>
 
@@ -7620,40 +7748,36 @@ show()
 
 <section>
 
-<h2 id="___sec36">Code (part IV) </h2>
+<h2 id="___sec40">Multiple plots in the same figure </h2>
 
 <p>
-Run through all the 3-lists <code>[h, a, u]</code> and plot
+Run through all the 3-lists <code>[h, F, u]</code> and plot
 these arrays:
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">case_counter <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-<span style="color: #008000; font-weight: bold">for</span> h, a, u <span style="color: #AA22FF; font-weight: bold">in</span> data[<span style="color: #666666">2</span>:<span style="color: #666666">-1</span>]:
-    h <span style="color: #666666">=</span> h[indices]
-    a <span style="color: #666666">=</span> a[indices]
-    u <span style="color: #666666">=</span> u[indices]
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> realization <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(data[<span style="color: #666666">2</span>:])):
+    h, F, u <span style="color: #666666">=</span> data[<span style="color: #666666">2+</span>realization]
+    h <span style="color: #666666">=</span> h[indices];  F <span style="color: #666666">=</span> F[indices];  u <span style="color: #666666">=</span> u[indices]
 
     figure()
     subplot(<span style="color: #666666">3</span>, <span style="color: #666666">1</span>, <span style="color: #666666">1</span>)
     plot(x, h, <span style="color: #BA2121">&#39;g-&#39;</span>)
-    legend([<span style="color: #BA2121">&#39;h </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> case_counter])
+    legend([<span style="color: #BA2121">&#39;h </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> realization])
     hmax <span style="color: #666666">=</span> (<span style="color: #008000">abs</span>(h<span style="color: #666666">.</span>max()) <span style="color: #666666">+</span> <span style="color: #008000">abs</span>(h<span style="color: #666666">.</span>min()))<span style="color: #666666">/2</span>
     axis([x[<span style="color: #666666">0</span>], x[<span style="color: #666666">-1</span>], <span style="color: #666666">-</span>hmax<span style="color: #666666">*5</span>, hmax<span style="color: #666666">*5</span>])
     xlabel(<span style="color: #BA2121">&#39;distance&#39;</span>); ylabel(<span style="color: #BA2121">&#39;height&#39;</span>)
 
     subplot(<span style="color: #666666">3</span>, <span style="color: #666666">1</span>, <span style="color: #666666">2</span>)
-    plot(t, a)
-    legend([<span style="color: #BA2121">&#39;a </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> case_counter])
+    plot(t, F)
+    legend([<span style="color: #BA2121">&#39;F </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> realization])
     xlabel(<span style="color: #BA2121">&#39;t&#39;</span>); ylabel(<span style="color: #BA2121">&#39;acceleration&#39;</span>)
 
     subplot(<span style="color: #666666">3</span>, <span style="color: #666666">1</span>, <span style="color: #666666">3</span>)
     plot(t, u, <span style="color: #BA2121">&#39;r-&#39;</span>)
-    legend([<span style="color: #BA2121">&#39;u </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> case_counter])
+    legend([<span style="color: #BA2121">&#39;u </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> realization])
     xlabel(<span style="color: #BA2121">&#39;t&#39;</span>); ylabel(<span style="color: #BA2121">&#39;displacement&#39;</span>)
-    savefig(<span style="color: #BA2121">&#39;tmp</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">.png&#39;</span> <span style="color: #666666">%</span> case_counter)
-    case_counter <span style="color: #666666">+=</span> <span style="color: #666666">1</span>
 </pre></div>
 <p>
 
@@ -7662,10 +7786,10 @@ these arrays:
 
 <section>
 
-<h2 id="___sec37">Plot </h2>
+<h2 id="___sec41">Plot of the first realization </h2>
 
 <p>
-<center><p><img src="fig-bumpy/hau0.png" align="bottom" width=700></p></center>
+<center><p><img src="fig-bumpy/hFu0.png" align="bottom" width=700></p></center>
 
 <p>
 See <a href="https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/explore.py" target="_blank"><tt>explore.py</tt></a>
@@ -7677,7 +7801,7 @@ See <a href="https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/explo
 
 <section>
 
-<h1 id="___sec38">Advanced topics </h1>
+<h1 id="___sec42">Advanced topics </h1>
 
 <p>
 <center><p><img src="fig-bumpy/rocket_science1.gif" align="bottom" width=400></p></center>
@@ -7689,7 +7813,10 @@ See <a href="https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/explo
 
 <section>
 
-<h2 id="___sec39">Symbolic computing via SymPy </h2>
+<h2 id="___sec43">Symbolic computing via SymPy </h2>
+
+<p>
+SymPy can do exact differentiation, integration, equation solving, ...
 
 <p>
 
@@ -7717,7 +7844,7 @@ a<span style="color: #666666">**4/3</span> <span style="color: #666666">-</span>
 
 <section>
 
-<h2 id="___sec40">Go seamlessly from symbolic expression to Python function </h2>
+<h2 id="___sec44">Go seamlessly from symbolic expression to Python function </h2>
 
 <p>
 Convert a SymPy expression <code>Q</code> into
@@ -7740,7 +7867,7 @@ This <code>Q(x, a)</code> function can be used for numerical computing
 
 <section>
 
-<h2 id="___sec41">Testing via test functions and test frameworks </h2>
+<h2 id="___sec45">Testing via test functions and test frameworks </h2>
 
 <p>
 Modern test frameworks:
@@ -7751,7 +7878,12 @@ Modern test frameworks:
 </ul>
 <p>
 
-Recommendation: use pytest, stay away from <code>unittest</code>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Recommendation.</b>
+<p>
+Use pytest, stay away from classical <code>unittest</code>
+</div>
+
 
 <p>
 
@@ -7760,7 +7892,7 @@ Recommendation: use pytest, stay away from <code>unittest</code>
 
 <section>
 
-<h2 id="___sec42">Example on a test function </h2>
+<h2 id="___sec46">Example on a test function </h2>
 
 <p>
 
@@ -7794,7 +7926,16 @@ Note:
 
 <section>
 
-<h2 id="___sec43">Test function for the numerical solver (part I) </h2>
+<h2 id="___sec47">Test function for the numerical solver (part I) </h2>
+
+<p>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Idea.</b>
+<p>
+Show that \( u=I + Vt + qt^2 \) solves the discrete equations exactly
+for linear damping and with \( q=0 \) for quadratic damping
+</div>
+
 
 <p>
 
@@ -7804,6 +7945,31 @@ Note:
     v <span style="color: #666666">=</span> sm<span style="color: #666666">.</span>diff(u, t)
     d <span style="color: #666666">=</span> b<span style="color: #666666">*</span>v <span style="color: #008000; font-weight: bold">if</span> damping <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;linear&#39;</span> <span style="color: #008000; font-weight: bold">else</span> b<span style="color: #666666">*</span>v<span style="color: #666666">*</span>sm<span style="color: #666666">.</span>Abs(v)
     <span style="color: #008000; font-weight: bold">return</span> m<span style="color: #666666">*</span>sm<span style="color: #666666">.</span>diff(u, t, t) <span style="color: #666666">+</span> d <span style="color: #666666">+</span> s(u)
+</pre></div>
+<p>
+Fit source term in differential equation to any chosen \( u(t) \):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">t <span style="color: #666666">=</span> sm<span style="color: #666666">.</span>Symbol(<span style="color: #BA2121">&#39;t&#39;</span>)
+q <span style="color: #666666">=</span> <span style="color: #666666">2</span>  <span style="color: #408080; font-style: italic"># arbitrary constant</span>
+u_chosen <span style="color: #666666">=</span> I <span style="color: #666666">+</span> V<span style="color: #666666">*</span>t <span style="color: #666666">+</span> q<span style="color: #666666">*</span>t<span style="color: #666666">**2</span>   <span style="color: #408080; font-style: italic"># sympy expression</span>
+F_term <span style="color: #666666">=</span> lhs_eq(t, m, b, s, u_chosen, <span style="color: #BA2121">&#39;linear&#39;</span>)
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec48">Test function for the numerical solver (part II) </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sympy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">sm</span>
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_solver</span>():
     <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Verify linear/quadratic solution.&quot;&quot;&quot;</span>
@@ -7835,7 +8001,7 @@ Note:
 
 <section>
 
-<h2 id="___sec44">Test function for the numerical solver (part II) </h2>
+<h2 id="___sec49">Test function for the numerical solver (part III) </h2>
 
 <p>
 
@@ -7859,7 +8025,7 @@ Note:
 
 <section>
 
-<h2 id="___sec45">Using a test framework </h2>
+<h2 id="___sec50">Using a test framework </h2>
 
 <p>
 Examine all subdirectories <code>test*</code> for <code>test_*.py</code> files:
@@ -7896,7 +8062,7 @@ Test a single file:
 
 <section>
 
-<h2 id="___sec46">Modules </h2>
+<h2 id="___sec51">Modules </h2>
 
 <ul>
  <p><li> Put functions in a file - that is a module</li>
@@ -7918,7 +8084,7 @@ Test a single file:
 
 <section>
 
-<h2 id="___sec47">Example on a module file </h2>
+<h2 id="___sec52">Example on a module file </h2>
 
 <p>
 
@@ -7942,7 +8108,7 @@ Test a single file:
 
 <section>
 
-<h2 id="___sec48">What gets imported? </h2>
+<h2 id="___sec53">What gets imported? </h2>
 
 <p>
 Import everything from the previous module:
