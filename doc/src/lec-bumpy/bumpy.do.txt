@@ -455,9 +455,11 @@ This list, or any Python object, can be stored on file for later
 retrieval of the results, using *pickling*:
 
 !bc pycod-t
-import cPickle
+import cPickle as pickle
+# Or using a more advanced pickle module
+import dill as pickle
 outfile = open('bumpy.res', 'w')
-cPickle.dump(data, outfile)
+pickle.dump(data, outfile)
 outfile.close()
 !ec
 
@@ -584,9 +586,10 @@ Plot
 Loading pickled results in file:
 
 !bc pycod
-import cPickle
+#import cPickle as pickle
+import dill as pickle               # more advanced
 outfile = open('bumpy.res', 'r')
-data = cPickle.load(outfile)
+data = pickle.load(outfile)
 outfile.close()
 
 x, t = data[0:2]
