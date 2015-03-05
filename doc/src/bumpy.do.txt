@@ -650,11 +650,15 @@ retrieval of the results, using the *pickling* functionality
 in Python:
 
 !bc pycod
-import cPickle
+import cPickle as pickle
+# Or using a more advanced module
+import dill as pickle
 outfile = open('bumpy.res', 'w')
-cPickle.dump(data, outfile)
+pickle.dump(data, outfile)
 outfile.close()
 !ec
+The advantage of the `dill` module over `cPickle` is that it can
+store a wider range of Python objects (e.g., lambda functions).
 
 The code above and the `bumpy_road` function are found in the
 file
@@ -851,12 +855,14 @@ as possible to the Matlab equivalent.
 === Reading results from file ===
 
 Loading the computational data from file back to a list `data` must
-use the same module (`cPickle`) as we used for writing the data:
+use the same module (`cPickle` or `dill`) as we used for writing the data:
 
 !bc pycod
-import cPickle
+import cPickle as pickle
+# or
+import dill as pickle
 outfile = open('bumpy.res', 'r')
-data = cPickle.load(outfile)
+data = pickle.load(outfile)
 outfile.close()
 
 x, t = data[0:2]
