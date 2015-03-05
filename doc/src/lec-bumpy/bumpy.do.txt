@@ -776,7 +776,7 @@ FIGURE: [fig-bumpy/rocket_science1, width=400 frac=0.6]
 !split
 ===== Symbolic computing via SymPy =====
 
-SymPy can do exact differentiation, integration, equation solving, ...
+SymPy can do *exact* differentiation, integration, equation solving, ...
 
 !bc pyshell
 >>> import sympy as sp

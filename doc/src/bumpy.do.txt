@@ -1071,7 +1071,7 @@ for realization in range(len(data[2:])):
 !ec
 
 
-FIGURE: [fig-bumpy/hFu0, width=700] First realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations. label{bumpy:fig4}
+FIGURE: [fig-bumpy/hFu0, width=700] First realization of a bumpy road, with corresponding excitation of the wheel and resulting vertical vibrations. label{bumpy:fig4}
 
 % if FORMAT != 'ipynb':
 If all the plot commands above are placed in a file, as in
