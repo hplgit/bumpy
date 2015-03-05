@@ -1,5 +1,5 @@
 import nose.tools as nt
-import sympy as sm
+import sympy as sp
 import numpy as np
 from solver import solver, solver_linear_damping
 from bumpy import acceleration, acceleration_vectorized
@@ -17,9 +17,9 @@ def test_acceleration():
 
 def lhs_eq(t, m, b, s, u, damping='linear'):
     """Return lhs of differential equation as sympy expression."""
-    v = sm.diff(u, t)
-    d = b*v if damping == 'linear' else b*v*sm.Abs(v)
-    return m*sm.diff(u, t, t) + d + s(u)
+    v = sp.diff(u, t)
+    d = b*v if damping == 'linear' else b*v*sp.Abs(v)
+    return m*sp.diff(u, t, t) + d + s(u)
 
 def test_solver():
     """Verify linear/quadratic solution."""
@@ -32,14 +32,14 @@ def test_solver():
     time_points = np.linspace(0, T, N+1)
 
     # Test linear damping
-    t = sm.Symbol('t')
+    t = sp.Symbol('t')
     q = 2  # arbitrary constant
     u_exact = I + V*t + q*t**2   # sympy expression
     F_term = lhs_eq(t, m, b, s, u_exact, 'linear')
     print 'Fitted source term, linear case:', F_term
-    F = sm.lambdify([t], F_term)
+    F = sp.lambdify([t], F_term)
     u, t_ = solver(I, V, m, b, s, F, time_points, 'linear')
-    u_e = sm.lambdify([t], u_exact, modules='numpy')
+    u_e = sp.lambdify([t], u_exact, modules='numpy')
     error = abs(u_e(t_) - u).max()
     tol = 1E-13
     assert error < tol
@@ -48,9 +48,9 @@ def test_solver():
     u_exact = I + V*t
     F_term = lhs_eq(t, m, b, s, u_exact, 'quadratic')
     print 'Fitted source term, quadratic case:', F_term
-    F = sm.lambdify([t], F_term)
+    F = sp.lambdify([t], F_term)
     u, t_ = solver(I, V, m, b, s, F, time_points, 'quadratic')
-    u_e = sm.lambdify([t], u_exact, modules='numpy')
+    u_e = sp.lambdify([t], u_exact, modules='numpy')
     error = abs(u_e(t_) - u).max()
     assert error < tol
 
@@ -58,7 +58,7 @@ def test_all_functions():
     """Verify a linear/quadratic solution."""
     I = 1.2; V = 3; m = 2; b = 0.9
     s = lambda u: 4*u
-    t = sm.Symbol('t')
+    t = sp.Symbol('t')
     T = 2
     dt = 0.2
     N = int(round(T/dt))
@@ -84,8 +84,8 @@ def test_all_functions():
         # Test linear damping
         q = 2  # arbitrary constant
         u_exact = I + V*t + q*t**2
-        u_e = sm.lambdify(t, u_exact, modules='numpy')
-        F = sm.lambdify(t, lhs_eq(t, m, b, s, u_exact, 'linear'))
+        u_e = sp.lambdify(t, u_exact, modules='numpy')
+        F = sp.lambdify(t, lhs_eq(t, m, b, s, u_exact, 'linear'))
         u, t_ = solver(I, V, m, b, s, F, time_points, 'linear')
         error = abs(u_e(t_) - u).max()
         nt.assert_almost_equal(error, 0, places=13)
@@ -96,8 +96,8 @@ def test_all_functions():
             # In the quadratic damping case, u_exact must be linear
             # in order exactly recover this solution
             u_exact = I + V*t
-            u_e = sm.lambdify(t, u_exact, modules='numpy')
-            F = sm.lambdify(t, lhs_eq(t, m, b, s, u_exact, 'quadratic'))
+            u_e = sp.lambdify(t, u_exact, modules='numpy')
+            F = sp.lambdify(t, lhs_eq(t, m, b, s, u_exact, 'quadratic'))
             u, t_ = solver(I, V, m, b, s, F, time_points, 'quadratic')
             error = abs(u_e(t_) - u).max()
             nt.assert_almost_equal(error, 0, places=13)
