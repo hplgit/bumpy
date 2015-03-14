@@ -902,9 +902,7 @@ realization is `data[3]`. The `u` part of the triplet is then `data[3][2]`,
 and the part of `u` where $t\geq t_s$ is then `data[3][2][indices]`.
 
 % if FORMAT != 'ipynb':
-Figure ref{bumpy:fig3} shows the result.
-
-FIGURE: [fig-bumpy/uv1, width=600] Displacement (left) and velocity (right) for $t\geq t_s=180$. label{bumpy:fig3}
+Figure ref{bumpy:fig3} (left) shows the result.
 % endif
 
 === Computing and plotting $u'$ ===
@@ -950,7 +948,7 @@ title('Velocity')
 Figure ref{bumpy:fig3} (right) shows that the velocity is much more
 ``noisy'' than the displacement.
 
-FIGURE: [fig-bumpy/uv1, width=600] Displacement (left) and velocity (right) for $t\geq t_s=180$. label{bumpy:fig3}
+FIGURE: [fig-bumpy/uv1, width=800] Displacement (left) and velocity (right) for $t\geq t_s=180$. label{bumpy:fig3}
 % endif
 
 === Vectorized computation of $u'$ ===
@@ -1041,7 +1039,7 @@ title('Spectrum of u')
 Figure ref{bumpy:fig2} shows the amplitudes and that the
 dominating frequencies lie around 0.5 and 1 Hz.
 
-FIGURE: [fig-bumpy/spectra1, width=600] Spectra of displacement and excitation. label{bumpy:fig2}
+FIGURE: [fig-bumpy/spectra1, width=700] Spectra of displacement and excitation. label{bumpy:fig2}
 % endif
 
 ===== Multiple plots in the same figure =====

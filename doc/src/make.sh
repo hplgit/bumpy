@@ -42,7 +42,7 @@ pdflatex -shell-escape $name
 pdflatex -shell-escape $name
 
 # Plain HTML
-system doconce format html $name --html_style=bootstrap $opt
+system doconce format html $name --html_style=bootstrap $opt --html_code_style=inherit
 if [ $? -ne 0 ]; then echo "doconce could not compile document"; exit; fi
 system doconce split_html $name.html --pagination
 
