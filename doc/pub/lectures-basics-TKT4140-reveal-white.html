@@ -145,7 +145,7 @@ MathJax.Hub.Config({
 <center>[2] <b>University of Oslo</b></center>
 <center>[3] <b>Biomechanichs Group, Departement of Structural Engineering NTNU</b></center>
 <p>&nbsp;<br>
-<center><h4>Jan 17, 2015</h4></center> <!-- date -->
+<center><h4>Mar 15, 2015</h4></center> <!-- date -->
 <p>
 
 </section>
@@ -210,6 +210,14 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; <a href="#___sec51"> File writing </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec52"> Simplified writing of tabular data to file via <code>numpy.savetxt</code> </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec53"> Simplified reading of tabular data from file via <code>numpy.loadtxt</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec54"> Tridiagonal and sparse matrices </a><br>
+<a href="#basics:class"> Classes </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec56"> A very simple class </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec57"> How can we use this class? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec58"> The <code>self</code> argument is a difficult thing for newcomers... </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec59"> A class for representing a mathematical function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec60"> The class code </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec61"> Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \) </a><br>
 </p>
 <p>
 
@@ -1786,6 +1794,260 @@ Note:
 </ul>
 <p>
 
+
+</section>
+
+
+<section>
+
+<h2 id="___sec54">Tridiagonal and sparse matrices </h2>
+
+<ul>
+ <p><li> SciPy offers a 2-D sparse matrix package for numeric data.</li>
+ <p><li> The 'spdiags' function <a href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.spdiags.html" target="_blank">scipy.sparse.spdiags</a> may be used to  construct a sparse matrix</li>
+ <p><li> Note that all the diagonals may have the same length as the dimension of their sparse matrix</li>
+ <p><li> Consequently some elements of the diagonals are not used</li>
+ <p><li> The first k elements are not used of the k super-diagonal</li> 
+ <p><li> The last  k elements are not used of the -k sub-diagonal</li> 
+</ul>
+<p>
+
+An example are given below for a tri-diagonal matrix:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> N<span style="color: #666666">=4</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> diagonals<span style="color: #666666">=</span>np<span style="color: #666666">.</span>zeros((<span style="color: #666666">3</span>,N))
+<span style="color: #666666">&gt;&gt;&gt;</span> diagonals[<span style="color: #666666">0</span>,:]<span style="color: #666666">=</span>np<span style="color: #666666">.</span>linspace(<span style="color: #666666">1</span>,N,N)
+<span style="color: #666666">&gt;&gt;&gt;</span> diagonals[<span style="color: #666666">1</span>,:]<span style="color: #666666">=</span>np<span style="color: #666666">.</span>linspace(<span style="color: #666666">1</span>,N,N)
+<span style="color: #666666">&gt;&gt;&gt;</span> diagonals[<span style="color: #666666">2</span>,:]<span style="color: #666666">=</span>np<span style="color: #666666">.</span>linspace(<span style="color: #666666">1</span>,N,N)
+<span style="color: #666666">&gt;&gt;&gt;</span> diagonals
+array([[ <span style="color: #666666">1.</span>,  <span style="color: #666666">2.</span>,  <span style="color: #666666">3.</span>,  <span style="color: #666666">4.</span>],
+       [ <span style="color: #666666">1.</span>,  <span style="color: #666666">2.</span>,  <span style="color: #666666">3.</span>,  <span style="color: #666666">4.</span>],
+       [ <span style="color: #666666">1.</span>,  <span style="color: #666666">2.</span>,  <span style="color: #666666">3.</span>,  <span style="color: #666666">4.</span>]])
+<span style="color: #666666">&gt;&gt;&gt;</span> A<span style="color: #666666">=</span>sc<span style="color: #666666">.</span>sparse<span style="color: #666666">.</span>spdiags(diagonals, [<span style="color: #666666">-1</span>,<span style="color: #666666">0</span>,<span style="color: #666666">1</span>], N, N,format<span style="color: #666666">=</span><span style="color: #BA2121">&#39;csc&#39;</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> A<span style="color: #666666">.</span>toarray()
+array([[ <span style="color: #666666">1.</span>,  <span style="color: #666666">2.</span>,  <span style="color: #666666">0.</span>,  <span style="color: #666666">0.</span>],
+       [ <span style="color: #666666">1.</span>,  <span style="color: #666666">2.</span>,  <span style="color: #666666">3.</span>,  <span style="color: #666666">0.</span>],
+       [ <span style="color: #666666">0.</span>,  <span style="color: #666666">2.</span>,  <span style="color: #666666">3.</span>,  <span style="color: #666666">4.</span>],
+       [ <span style="color: #666666">0.</span>,  <span style="color: #666666">0.</span>,  <span style="color: #666666">3.</span>,  <span style="color: #666666">4.</span>]])
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h1 id="basics:class">Classes</h1>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+ <p><li> All objects in Python are made from a class</li>
+ <p><li> You don't need to know about classes to use Python</li>
+ <p><li> But class programming is powerful</li>
+</ul>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+ <p><li> Class = functions + variables packed together</li>
+ <p><li> A class is a logical unit in a program</li>
+ <p><li> A large program as a combination of appropriate units</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec56">A very simple class </h2>
+
+<ul>
+ <p><li> One variable: <code>a</code></li>
+ <p><li> One function: <code>dump</code> for printing <code>a</code></li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Trivial</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, a):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>a <span style="color: #666666">=</span> a
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">dump</span>(<span style="color: #008000">self</span>):
+        <span style="color: #008000; font-weight: bold">print</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>a
+</pre></div>
+<p>
+Class terminology: Functions are called
+<em>methods</em> and variables are called <em>attributes</em>.
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec57">How can we use this class? </h2>
+
+<p>
+First, make an <em>instance</em> (object) of the class:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">t <span style="color: #666666">=</span> Trivial(a<span style="color: #666666">=4</span>)
+t<span style="color: #666666">.</span>dump()
+</pre></div>
+<p>
+Note:
+
+<ul>
+ <p><li> The syntax <code>Trivial(a=4)</code> actually means <code>Trivial.__init__(t, 4)</code></li>
+ <p><li> <code>self</code> is an argument in <code>__init__</code> and <code>dump</code>, but not used in the calls</li>
+ <p><li> <code>__init__</code> is called <em>constructor</em> and is used to construct an object
+   (instance) if the class</li>
+ <p><li> <code>t.dump()</code> actually means <code>Trivial.dump(t)</code> (<code>self</code> is <code>t</code>)</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h2 id="___sec58">The <code>self</code> argument is a difficult thing for newcomers... </h2>
+
+<p>
+It takes time and experience to understand the <code>self</code> argument in
+class methods!
+
+<ol>
+<p><li> <code>self</code> must always be the first argument</li>
+<p><li> <code>self</code> is never used in calls</li>
+<p><li> <code>self</code> is used to access attributes and methods inside methods</li>
+</ol>
+<p>
+
+We refer to a <a href="http://hplgit.github.io/primer.html/doc/pub/class/index.html" target="_blank">more comprehensive text on classes</a>
+for better explanation of <code>self</code>.
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<code>self</code> is confusing in the beginning, but later it greatly helps
+the understanding of how classes work!
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec59">A class for representing a mathematical function </h2>
+
+<p>
+Function with one independent variable \( t \) and two parameters
+\( v_0 \) and \( a \):
+
+<p>&nbsp;<br>
+$$ s(t; v_0, a) = v_0t + \frac{1}{2}at^2$$
+<p>&nbsp;<br>
+
+
+<p>
+Class representation of this function:
+
+<ul>
+ <p><li> <code>v0</code> and <code>a</code> are variables (data)</li>
+ <p><li> A method to evaluate \( s(t) \), but just as a function of <code>t</code></li>
+</ul>
+<p>
+
+Usage:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">s <span style="color: #666666">=</span> Distance(v0<span style="color: #666666">=2</span>, a<span style="color: #666666">=0.5</span>)  <span style="color: #408080; font-style: italic"># create instance</span>
+v <span style="color: #666666">=</span> s(t<span style="color: #666666">=0.2</span>)               <span style="color: #408080; font-style: italic"># compute formula</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec60">The class code </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Distance</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, v0, a):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>v0 <span style="color: #666666">=</span> v0
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>a <span style="color: #666666">=</span> a
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, t):
+        v0, a <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>v0, <span style="color: #008000">self</span><span style="color: #666666">.</span>a  <span style="color: #408080; font-style: italic"># make local variables</span>
+        <span style="color: #008000; font-weight: bold">return</span> v0<span style="color: #666666">*</span>t <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>a<span style="color: #666666">*</span>t<span style="color: #666666">**2</span>
+
+s <span style="color: #666666">=</span> Distance(v0<span style="color: #666666">=2</span>, a<span style="color: #666666">=0.5</span>)  <span style="color: #408080; font-style: italic"># create instance</span>
+v <span style="color: #666666">=</span> s(t<span style="color: #666666">=0.2</span>)               <span style="color: #408080; font-style: italic"># actually s.__call__(t=0.2)</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec61">Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \) </h2>
+
+<ul>
+ <p><li> The \( n \) parameters \( p_1,p_2,\ldots,p_n \) are attributes</li>
+ <p><li> <code>__call__(self, x, y, z)</code> is used to compute \( f(x, y, z) \)</li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">F</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, p1, p2, <span style="color: #666666">...</span>):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>p1 <span style="color: #666666">=</span> p1
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>p2 <span style="color: #666666">=</span> p2
+        <span style="color: #666666">...</span>
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x, y, z):
+        <span style="color: #408080; font-style: italic"># return formula involving x, y, z and self.p1, self.p2 ...</span>
+
+f <span style="color: #666666">=</span> F(p1<span style="color: #666666">=...</span>, p2<span style="color: #666666">=...</span>, <span style="color: #666666">...</span>)   <span style="color: #408080; font-style: italic"># create instance with parameters</span>
+<span style="color: #008000; font-weight: bold">print</span> f(<span style="color: #666666">1</span>, <span style="color: #666666">4</span>, <span style="color: #666666">-1</span>)            <span style="color: #408080; font-style: italic"># evaluate f(x,y,z) function</span>
+</pre></div>
+<p>
 
 
 </section>

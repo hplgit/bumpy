@@ -28,7 +28,8 @@ system doconce spellcheck -d ../.dict4spell.txt basics.do.txt
 system doconce spellcheck -d ../.dict4spell.txt bumpy.do.txt
 cd ..
 
-names="lectures-basics lectures-bumpy"
+#names="lectures-basics lectures-bumpy"
+names="lectures-basics"
 #names="lectures_tkt4140"
 if [ $# -ge 2 ]; then
   names="$2"

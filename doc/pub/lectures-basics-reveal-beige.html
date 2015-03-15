@@ -140,7 +140,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo</b></center>
 <p>&nbsp;<br>
-<center><h4>Jan 16, 2015</h4></center> <!-- date -->
+<center><h4>Mar 15, 2015</h4></center> <!-- date -->
 <p>
 
 </section>
@@ -205,13 +205,14 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; <a href="#___sec51"> File writing </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec52"> Simplified writing of tabular data to file via <code>numpy.savetxt</code> </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec53"> Simplified reading of tabular data from file via <code>numpy.loadtxt</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec54"> Tridiagonal and sparse matrices </a><br>
 <a href="#basics:class"> Classes </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec55"> A very simple class </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec56"> How can we use this class? </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec57"> The <code>self</code> argument is a difficult thing for newcomers... </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec58"> A class for representing a mathematical function </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec59"> The class code </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec60"> Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec56"> A very simple class </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec57"> How can we use this class? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec58"> The <code>self</code> argument is a difficult thing for newcomers... </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec59"> A class for representing a mathematical function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec60"> The class code </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec61"> Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \) </a><br>
 </p>
 <p>
 
@@ -228,6 +229,8 @@ MathJax.Hub.Config({
  <p><li> functions</li>
  <p><li> if tests</li>
  <p><li> plotting</li>
+ <p><li> files</li>
+ <p><li> classes</li>
 </ul>
 <p>
 
@@ -517,6 +520,7 @@ The last line contains 1.9, but the while loop should run also when
 <p>
 <a href="http://pythontutor.com/visualize.html#mode=edit" target="_blank">Python Online Tutor</a>:
 step through the program and examine variables
+(view in Chrome)
 
 <p>
 
@@ -535,7 +539,7 @@ step through the program and examine variables
 <p>
 
 <iframe width="950" height="500" frameborder="0"
-        src="http://pythontutor.com/iframe-embed.html#code=a+%3D+0%0Ada+%3D+0.4%0Awhile+a+%3C%3D+1.2%3A%0A++++print+a%0A++++a+%3D+a+%2B+da%0A++++%23+Inspect+all+decimals+in+da+and+a%0A++++print+%27%25.16E%2C+%25.16E%27+%25+%28da%2C+a%29%2C+a+%3C%3D+1.2&curInstr=0&py=2&cumulative=false">
+        src="http://pythontutor.com/iframe-embed.html#code=a+%3D+0%0Ada+%3D+0.4%0Awhile+a+%3C%3D+1.2%3A%0A++++print+a%0A++++a+%3D+a+%2B+da%0A++++%23+Inspect+all+decimals+in+da+and+a%0A++++print+%27da%3D%25.16E%5Cna%3D%25.16E%27+%25+%28da%2C+a%29%0A++++print+%27a+%3C%3D+1.2%3A+%25g%27+%25++%28a+%3C%3D+1.2%29&curInstr=0&py=2&cumulative=false">
 </iframe>
 <p>
 
@@ -1793,6 +1797,37 @@ Note:
 
 <section>
 
+<h2 id="___sec54">Tridiagonal and sparse matrices </h2>
+
+<p>
+<a href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.spdiags.html" target="_blank">scipy.sparse.spdiags</a>: is a useful SciPy 2-D sparse matrix package for numeric data.
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; N=<span style="color: #B452CD">4</span>
+&gt;&gt;&gt; diagonals=np.zeros((<span style="color: #B452CD">3</span>,N))
+&gt;&gt;&gt; diagonals[<span style="color: #B452CD">0</span>,:]=np.linspace(<span style="color: #B452CD">1</span>,N,N)
+&gt;&gt;&gt; diagonals[<span style="color: #B452CD">1</span>,:]=np.linspace(<span style="color: #B452CD">1</span>,N,N)
+&gt;&gt;&gt; diagonals[<span style="color: #B452CD">2</span>,:]=np.linspace(<span style="color: #B452CD">1</span>,N,N)
+&gt;&gt;&gt; diagonals
+array([[ <span style="color: #B452CD">1.</span>,  <span style="color: #B452CD">2.</span>,  <span style="color: #B452CD">3.</span>,  <span style="color: #B452CD">4.</span>],
+       [ <span style="color: #B452CD">1.</span>,  <span style="color: #B452CD">2.</span>,  <span style="color: #B452CD">3.</span>,  <span style="color: #B452CD">4.</span>],
+       [ <span style="color: #B452CD">1.</span>,  <span style="color: #B452CD">2.</span>,  <span style="color: #B452CD">3.</span>,  <span style="color: #B452CD">4.</span>]])
+&gt;&gt;&gt; A=sc.sparse.spdiags(diagonals, [-<span style="color: #B452CD">1</span>,<span style="color: #B452CD">0</span>,<span style="color: #B452CD">1</span>], N, N,format=<span style="color: #CD5555">&#39;csc&#39;</span>)
+&gt;&gt;&gt; A.toarray()
+array([[ <span style="color: #B452CD">1.</span>,  <span style="color: #B452CD">2.</span>,  <span style="color: #B452CD">0.</span>,  <span style="color: #B452CD">0.</span>],
+       [ <span style="color: #B452CD">1.</span>,  <span style="color: #B452CD">2.</span>,  <span style="color: #B452CD">3.</span>,  <span style="color: #B452CD">0.</span>],
+       [ <span style="color: #B452CD">0.</span>,  <span style="color: #B452CD">2.</span>,  <span style="color: #B452CD">3.</span>,  <span style="color: #B452CD">4.</span>],
+       [ <span style="color: #B452CD">0.</span>,  <span style="color: #B452CD">0.</span>,  <span style="color: #B452CD">3.</span>,  <span style="color: #B452CD">4.</span>]])
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
 <h1 id="basics:class">Classes</h1>
 
 <p>
@@ -1828,7 +1863,7 @@ Note:
 
 <section>
 
-<h2 id="___sec55">A very simple class </h2>
+<h2 id="___sec56">A very simple class </h2>
 
 <ul>
  <p><li> One variable: <code>a</code></li>
@@ -1857,7 +1892,7 @@ Class terminology: Functions are called
 
 <section>
 
-<h2 id="___sec56">How can we use this class? </h2>
+<h2 id="___sec57">How can we use this class? </h2>
 
 <p>
 First, make an <em>instance</em> (object) of the class:
@@ -1886,7 +1921,7 @@ Note:
 
 <section>
 
-<h2 id="___sec57">The <code>self</code> argument is a difficult thing for newcomers... </h2>
+<h2 id="___sec58">The <code>self</code> argument is a difficult thing for newcomers... </h2>
 
 <p>
 It takes time and experience to understand the <code>self</code> argument in
@@ -1918,7 +1953,7 @@ the understanding of how classes work!
 
 <section>
 
-<h2 id="___sec58">A class for representing a mathematical function </h2>
+<h2 id="___sec59">A class for representing a mathematical function </h2>
 
 <p>
 Function with one independent variable \( t \) and two parameters
@@ -1953,7 +1988,7 @@ v = s(t=<span style="color: #B452CD">0.2</span>)               <span style="colo
 
 <section>
 
-<h2 id="___sec59">The class code </h2>
+<h2 id="___sec60">The class code </h2>
 
 <p>
 
@@ -1977,7 +2012,7 @@ v = s(t=<span style="color: #B452CD">0.2</span>)               <span style="colo
 
 <section>
 
-<h2 id="___sec60">Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \) </h2>
+<h2 id="___sec61">Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \) </h2>
 
 <ul>
  <p><li> The \( n \) parameters \( p_1,p_2,\ldots,p_n \) are attributes</li>

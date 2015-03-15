@@ -1,6 +1,7 @@
-Ooops
+tri
 Ns
 Nano
+spdiags
 TextWrangler
 Gedit
 SciPy
@@ -32,5 +33,6 @@ Simula
 Matlab
 der
 SymPy
+Ooops
 OpenCourseWare
 printf
