@@ -488,6 +488,42 @@ x = np.linspace(0, 1, 101)
 from numpy import sin, exp, pi
 y = exp(-x)*sin(pi*x)
 !ec
+!split 
+===== Copies and views of numpy arrays =====
+ * Given numpy array `a=np.linspace(1,10,10)`
+ * The assignment `b=a` creates a `view` or a pointer to the data of `a`
+ * The original array is not copied in memory
+
+See the following example how changes in `b` inflict changes in `a`
+!bc pycod
+>>> a=np.linspace(1,5,5)
+>>> a
+array([ 1.,  2.,  3.,  4.,  5.])
+>>> b=a
+>>> b[0]=5
+>>> a
+array([ 5.,  2.,  3.,  4.,  5.])
+>>> b
+array([ 5.,  2.,  3.,  4.,  5.])
+>>> 
+!ec
+
+To make a deep copy which also copies the data in memory use `a.copy()` as in the following example
+!bc pycod
+>>> a=np.linspace(1,5,5)
+>>> c=a.copy()
+>>> c[0]=6
+>>> a
+array([ 1.,  2.,  3.,  4.,  5.])
+>>> c
+array([ 6.,  2.,  3.,  4.,  5.])
+>>> b
+array([ 5.,  2.,  3.,  4.,  5.])
+!ec
+
+Note that `b` has still the values from the previous example even though `a` was reassigned. 
+
+
 
 !split
 ===== Plotting =====
