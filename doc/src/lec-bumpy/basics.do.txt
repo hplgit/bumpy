@@ -488,6 +488,7 @@ x = np.linspace(0, 1, 101)
 from numpy import sin, exp, pi
 y = exp(-x)*sin(pi*x)
 !ec
+% if COURSE == 'TKT4140':
 !split 
 ===== Copies and views of numpy arrays =====
  * Given numpy array `a=np.linspace(1,10,10)`
@@ -523,6 +524,36 @@ array([ 5.,  2.,  3.,  4.,  5.])
 
 Note that `b` has still the values from the previous example even though `a` was reassigned. 
 
+
+!split 
+===== Tridiagonal and sparse matrices =====
+ * SciPy offers a 2-D sparse matrix package for numeric data.
+ * The 'spdiags' function "scipy.sparse.spdiags": "http://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.spdiags.html" may be used to  construct a sparse matrix
+ * Note that all the diagonals may have the same length as the dimension of their sparse matrix
+ * Consequently some elements of the diagonals are not used
+ * The first k elements are not used of the k super-diagonal 
+ * The last  k elements are not used of the -k sub-diagonal 
+
+An example are given below for a tri-diagonal matrix:
+
+!bc pyshell
+>>> N=4
+>>> diagonals=np.zeros((3,N))
+>>> diagonals[0,:]=np.linspace(1,N,N)
+>>> diagonals[1,:]=np.linspace(1,N,N)
+>>> diagonals[2,:]=np.linspace(1,N,N)
+>>> diagonals
+array([[ 1.,  2.,  3.,  4.],
+       [ 1.,  2.,  3.,  4.],
+       [ 1.,  2.,  3.,  4.]])
+>>> A=sc.sparse.spdiags(diagonals, [-1,0,1], N, N,format='csc')
+>>> A.toarray()
+array([[ 1.,  2.,  0.,  0.],
+       [ 1.,  2.,  3.,  0.],
+       [ 0.,  2.,  3.,  4.],
+       [ 0.,  0.,  3.,  4.]])
+!ec
+% endif 
 
 
 !split
@@ -1037,36 +1068,6 @@ Note:
    holds the $t$ value and `data[i,1]` the $s(t)$ value in the `i`-th
    row
 
-% if COURSE == 'TKT4140':
-!split 
-===== Tridiagonal and sparse matrices =====
- * SciPy offers a 2-D sparse matrix package for numeric data.
- * The 'spdiags' function "scipy.sparse.spdiags": "http://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.spdiags.html" may be used to  construct a sparse matrix
- * Note that all the diagonals may have the same length as the dimension of their sparse matrix
- * Consequently some elements of the diagonals are not used
- * The first k elements are not used of the k super-diagonal 
- * The last  k elements are not used of the -k sub-diagonal 
-
-An example are given below for a tri-diagonal matrix:
-
-!bc pyshell
->>> N=4
->>> diagonals=np.zeros((3,N))
->>> diagonals[0,:]=np.linspace(1,N,N)
->>> diagonals[1,:]=np.linspace(1,N,N)
->>> diagonals[2,:]=np.linspace(1,N,N)
->>> diagonals
-array([[ 1.,  2.,  3.,  4.],
-       [ 1.,  2.,  3.,  4.],
-       [ 1.,  2.,  3.,  4.]])
->>> A=sc.sparse.spdiags(diagonals, [-1,0,1], N, N,format='csc')
->>> A.toarray()
-array([[ 1.,  2.,  0.,  0.],
-       [ 1.,  2.,  3.,  0.],
-       [ 0.,  2.,  3.,  4.],
-       [ 0.,  0.,  3.,  4.]])
-!ec
-% endif 
 
 
 
