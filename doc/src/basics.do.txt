@@ -1,5 +1,6 @@
 TITLE: A very basic introduction to scientific Python programming
-AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Simula Research Laboratory & University of Oslo
+AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
+AUTHOR: Leif Rune Hellevik Email:leif.r.hellevik@ntnu.no at Biomechanichs Group, Department of Structural Engineering NTNU & Center for Biomedical Computing, Simula Research Laboratory
 DATE: today
 
 !bsummary Contents
@@ -976,6 +977,142 @@ s[t <= t1] = (v0*t + 0.5*a0*t**2)[t <= t1]
 s[t > t1]  = (v0*t + 0.5*a0*t1**2 + a0*t1*(t-t1))[t > t1]
 !ec
 !enotice
+
+===== Array view versus array copying =====
+
+Arrays are usually large and most array libraries have carefully designed
+functionality for avoiding unnecessary copying of large of amounts of data.
+If you do a simple assignment,
+
+!bc pycod
+a = np.linspace(1, 5, 5)
+b = a
+!ec
+`b` becomes a just *view* of `a`: the variables `b` and `a` point
+to the same data. In other languages one may say that `b` is a
+pointer or reference to the array. This means that changing `a` changes
+`b` and vice versa:
+
+!bc pycod
+array([ 1.,  2.,  3.,  4.,  5.])
+>>> b[0] = 5                       # changes a[0] to 5
+>>> a
+array([ 5.,  2.,  3.,  4.,  5.])
+>>> a[1] = 9                       # changes b[1] to 9
+>>> b
+array([ 5.,  9.,  3.,  4.,  5.])
+!ec
+
+Similarly, `b[1:-1]` gives a view to a subset of `a` and no copy of data.
+If we want to change `b` without affecting `a`, a copy of the array
+is required:
+
+!bc pycod
+>>> c = a.copy()       # copy all elements to new array c
+>>> c[0] = 6           # a is not changed
+>>> a
+array([ 1.,  2.,  3.,  4.,  5.])
+>>> c
+array([ 6.,  2.,  3.,  4.,  5.])
+>>> b
+array([ 5.,  2.,  3.,  4.,  5.])
+!ec
+Note that `b` remains unchanged by the change in `c` since the `b` and `c`
+variables now refer to different data. Copying of the elements of a sub-array
+is also done by the `copy()` method: `b = a[1:-1].copy()`.
+
+!bwarning Understand the difference between view and copy!
+Mathematical errors and/or inefficient code may easily arise from
+confusion between array view and array copying. Make sure you
+understand the implication of any variable assignment to arrays!
+
+!bc pycod
+a = np.array([-1, 4.5, 8, 9])
+b = a[1:-2]            # view: changes in a are reflected in b
+b = a[1:-2].copy()     # copy: changes in a are not reflected in b
+!ec
+!ewarning
+
+===== Linear systems =====
+
+idx{linear systems}
+idx{sparse matrix}
+idx{tridigonal matrix}
+
+Solving linear systems of the form $Ax=b$ with a matrix $A$ and vectors
+$x$ and $b$ is a frequently encountered task. A sample $2\times 2$ system
+can be coded as
+
+!bc pypro
+import numpy as np
+A = np.array([[1., 2],
+              [4,  2]])
+b = np.array([1., -2])
+x = np.linalg.solve(A, b)
+!ec
+
+Many scientific computing problems involves large matrices with special
+*sparse* structures. Significant memory and computing time can be
+saved by utilizing *sparse matrix* data structures and associated
+algorithms.
+Python has sparse matrix package "scipy.sparse": "http://docs.scipy.org/doc/scipy/reference/sparse.html" that can be used to construct
+various types of sparse matrices. The particular
+function `scipy.sparse.spdiags` can construct a sparse matrix from
+a few vectors representing the diagonals in the matrix
+(all the diagonals must have the same length as the dimension of their
+sparse matrix, consequently some elements of the diagonals are not used:
+the first $k$ elements are not used of the $k$ super-diagonal, and
+the last  $k$ elements are not used of the $-k$ sub-diagonal).
+Here is an example of constructing a *tridiagonal* matrix:
+
+!bc pyshell
+>>> import numpy as np
+>>> N = 6
+>>> diagonals = np.zeros((3, N))   # 3 diagonals
+diagonals[0,:] = np.linspace(-1, -N, N)
+diagonals[1,:] = -2
+diagonals[2,:] = np.linspace(1, N, N)
+>>> import scipy.sparse
+>>> A = scipy.sparse.spdiags(diagonals, [-1,0,1], N, N, format='csc')
+>>> A.toarray()    # look at corresponding dense matrix
+[[-2.  2.  0.  0.  0.  0.]
+ [-1. -2.  3.  0.  0.  0.]
+ [ 0. -2. -2.  4.  0.  0.]
+ [ 0.  0. -3. -2.  5.  0.]
+ [ 0.  0.  0. -4. -2.  6.]
+ [ 0.  0.  0.  0. -5. -2.]]
+!ec
+
+Solving a linear system with a tridiagonal coefficient matrix requires
+a special function with a special algorithm to take advantage of
+the matrix' structure. The next example chooses a solution `x`,
+computes the corresponding right-hand side $b=Ax$ using the
+sparse matrix vector product associated with the sparse matrix $A$,
+and then solves $Ax=b$:
+
+!bc pyshell
+>>> x = np.linspace(-1, 1, N)  # choose solution
+>>> b = A.dot(x)               # sparse matrix vector product
+>>> import scipy.sparse.linalg
+>>> x = scipy.sparse.linalg.spsolve(A, b)
+>>> print x
+[-1.  -0.6 -0.2  0.2  0.6  1. ]
+!ec
+
+Although we can easily check that `x` is correctly computed, we can
+do another check by converting the linear system to its dense
+counterpart:
+
+!bc pyshell
+>>> A_d = A.toarray()            # corresponding dense matrix
+>>> b = np.dot(A_d, x)           # standard matrix vector product
+>>> x = np.linalg.solve(A_d, b)  # standard Ax=b algorithm
+>>> print x
+[-1.  -0.6 -0.2  0.2  0.6  1. ]
+!ec
+
+
+
 
 !split
 ======= Files =======

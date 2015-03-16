@@ -488,32 +488,38 @@ x = np.linspace(0, 1, 101)
 from numpy import sin, exp, pi
 y = exp(-x)*sin(pi*x)
 !ec
-% if COURSE == 'TKT4140':
-!split 
-===== Copies and views of numpy arrays =====
- * Given numpy array `a=np.linspace(1,10,10)`
- * The assignment `b=a` creates a `view` or a pointer to the data of `a`
- * The original array is not copied in memory
+
+
+!split
+===== Array assignment gives view (no copy!) of array data =====
+
+Consider *array assignment* `b=a`:
+
+!bc pycod
+a = np.linspace(1, 5, 5)
+b = a
+!ec
+Here, `b` is a just *view* or a pointer to the data of `a` - no copying of
+data!
 
 See the following example how changes in `b` inflict changes in `a`
 !bc pycod
->>> a=np.linspace(1,5,5)
 >>> a
 array([ 1.,  2.,  3.,  4.,  5.])
->>> b=a
->>> b[0]=5
+>>> b[0] = 5                          # changes a[0] to 5
 >>> a
 array([ 5.,  2.,  3.,  4.,  5.])
+>>> a[1] = 9                          # changes b[1] to 9
 >>> b
-array([ 5.,  2.,  3.,  4.,  5.])
->>> 
+array([ 5.,  9.,  3.,  4.,  5.])
 !ec
 
-To make a deep copy which also copies the data in memory use `a.copy()` as in the following example
+!split
+===== Copying array data requires special action via the `copy` method =====
+
 !bc pycod
->>> a=np.linspace(1,5,5)
->>> c=a.copy()
->>> c[0]=6
+>>> c = a.copy()       # copy all elements to new array c
+>>> c[0] = 6           # a is not changed
 >>> a
 array([ 1.,  2.,  3.,  4.,  5.])
 >>> c
@@ -522,39 +528,64 @@ array([ 6.,  2.,  3.,  4.,  5.])
 array([ 5.,  2.,  3.,  4.,  5.])
 !ec
 
-Note that `b` has still the values from the previous example even though `a` was reassigned. 
+Note: `b` has still the values from the previous example
 
 
-!split 
-===== Tridiagonal and sparse matrices =====
- * SciPy offers a 2-D sparse matrix package for numeric data.
- * The 'spdiags' function "scipy.sparse.spdiags": "http://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.spdiags.html" may be used to  construct a sparse matrix
- * Note that all the diagonals may have the same length as the dimension of their sparse matrix
- * Consequently some elements of the diagonals are not used
- * The first k elements are not used of the k super-diagonal 
- * The last  k elements are not used of the -k sub-diagonal 
+!split
+===== Construction of tridiagonal and sparse matrices =====
 
-An example are given below for a tri-diagonal matrix:
+ * SciPy offers a sparse matrix package "scipy.sparse": "http://docs.scipy.org/doc/scipy/reference/sparse.html"
+ * The `spdiags` function may be used to  construct a sparse matrix from diagonals
+ * Note that all the diagonals must have the same length as the dimension of their sparse matrix - consequently some elements of the diagonals are not used
+ * The first $k$ elements are not used of the $k$ super-diagonal
+ * The last  $k$ elements are not used of the $-k$ sub-diagonal
+
+!split
+===== Example on constructing a tridiagonal matrix =====
 
 !bc pyshell
->>> N=4
->>> diagonals=np.zeros((3,N))
->>> diagonals[0,:]=np.linspace(1,N,N)
->>> diagonals[1,:]=np.linspace(1,N,N)
->>> diagonals[2,:]=np.linspace(1,N,N)
->>> diagonals
-array([[ 1.,  2.,  3.,  4.],
-       [ 1.,  2.,  3.,  4.],
-       [ 1.,  2.,  3.,  4.]])
->>> A=sc.sparse.spdiags(diagonals, [-1,0,1], N, N,format='csc')
->>> A.toarray()
-array([[ 1.,  2.,  0.,  0.],
-       [ 1.,  2.,  3.,  0.],
-       [ 0.,  2.,  3.,  4.],
-       [ 0.,  0.,  3.,  4.]])
+>>> import numpy as np
+>>> N = 6
+>>> diagonals = np.zeros((3, N))   # 3 diagonals
+diagonals[0,:] = np.linspace(-1, -N, N)
+diagonals[1,:] = -2
+diagonals[2,:] = np.linspace(1, N, N)
+>>> import scipy.sparse
+>>> A = scipy.sparse.spdiags(diagonals, [-1,0,1], N, N, format='csc')
+>>> A.toarray()    # look at corresponding dense matrix
+[[-2.  2.  0.  0.  0.  0.]
+ [-1. -2.  3.  0.  0.  0.]
+ [ 0. -2. -2.  4.  0.  0.]
+ [ 0.  0. -3. -2.  5.  0.]
+ [ 0.  0.  0. -4. -2.  6.]
+ [ 0.  0.  0.  0. -5. -2.]]
 !ec
-% endif 
 
+!split
+===== Example on solving a tridiagonal system =====
+
+We can solve $Ax=b$ with tridiagonal matrix $A$: choose some $x$,
+compute $b=Ax$ (sparse/tridiagonal matrix product!), solve $Ax=b$,
+and check that $x$ is the desired solution:
+
+!bc pyshell
+>>> x = np.linspace(-1, 1, N)  # choose solution
+>>> b = A.dot(x)               # sparse matrix vector product
+>>> import scipy.sparse.linalg
+>>> x = scipy.sparse.linalg.spsolve(A, b)
+>>> print x
+[-1.  -0.6 -0.2  0.2  0.6  1. ]
+!ec
+
+Check against dense matrix computations:
+
+!bc pyshell
+>>> A_d = A.toarray()            # corresponding dense matrix
+>>> b = np.dot(A_d, x)           # standard matrix vector product
+>>> x = np.linalg.solve(A_d, b)  # standard Ax=b algorithm
+>>> print x
+[-1.  -0.6 -0.2  0.2  0.6  1. ]
+!ec
 
 !split
 ===== Plotting =====
@@ -1200,4 +1231,3 @@ class F:
 f = F(p1=..., p2=..., ...)   # create instance with parameters
 print f(1, 4, -1)            # evaluate f(x,y,z) function
 !ec
-
