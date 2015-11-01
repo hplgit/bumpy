@@ -216,10 +216,6 @@ A ``from mymod import *`` will import the global functions
 ``myfunc1`` and ``myfunc2``, plus
 the global names ``module1``, ``somefunc1``, and ``somefunc2``.
 
-.. ===== Installation via setup.py scripts =====
-
-.. Install the ``solver`` module using a very simple ``setup.py`` script.
-
 .. Comment on usefulness even for those without phys/math background,
 
 .. but with extensive programming background: being a programmer

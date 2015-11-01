@@ -1,9 +1,0 @@
-.. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
-   (https://github.com/hplgit/doconce/)
-
-.. NOTE: This document is written in DocOnce syntax and automatically
-
-.. compiled to HTML, Sphinx, LaTeX, Markdown, MediaWiki, IPython notebooks, ...
-
-.. See `<https://github.com/hplgit/doconce>`_
-

@@ -764,13 +764,18 @@ all elements must be of the same type. This is usually no important
 restriction in scientific computations.
 
 <p>
-To use arrays, you must import the <code>numpy</code> module:
+Much of Python's functionality are coded in <em>modules</em>. To use such
+functionality, one must <em>import</em> the relevant modules. Arrays, for
+example, are available in the <code>numpy</code> module, which must be imported.
+Functions or variables in the module must be prefixed by <code>numpy</code>.
+This will be demonstrated below.
+Here is an example involving basic operations with arrays:
 
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> L <span style="color: #666666">=</span> [<span style="color: #666666">1</span>, <span style="color: #666666">4</span>, <span style="color: #666666">10.0</span>]    <span style="color: #408080; font-style: italic"># List of numbers</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> L <span style="color: #666666">=</span> [<span style="color: #666666">1</span>, <span style="color: #666666">4</span>, <span style="color: #666666">10.0</span>]    <span style="color: #408080; font-style: italic"># List of numbers</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> a <span style="color: #666666">=</span> numpy<span style="color: #666666">.</span>array(L)  <span style="color: #408080; font-style: italic"># Make corresponding array</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> a
 [  <span style="color: #666666">1.</span>   <span style="color: #666666">4.</span>  <span style="color: #666666">10.</span>]
