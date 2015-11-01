@@ -1,13 +1,10 @@
-.. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
-   (https://github.com/hplgit/doconce/)
-
 .. !split
 
 A very basic introduction to scientific Python programming
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:Authors: Hans Petter Langtangen (hpl at simula.no)
-:Date: Jan 14, 2015
+:Authors: Hans Petter Langtangen (hpl at simula.no), Leif Rune Hellevik (leif.r.hellevik at ntnu.no)
+:Date: Mar 16, 2015
 
 
 .. admonition:: Contents
@@ -96,6 +93,8 @@ forthcoming programming examples.
 The formula tells how long distance :math:`s` an object has moved in
 a time interval :math:`[0,t]` if it starts
 out with a velocity :math:`v_0` and undergoes constant acceleration :math:`a`:
+
+.. _Eq:basics:seq:
 
 .. math::
    :label: basics:seq
@@ -335,7 +334,8 @@ than or equal to 2,
 
 The `Python Online Tutor <http://pythontutor.com/visualize.html#mode=edit>`__
 is a great tool to examine the program flow. Consider this little loop
-run in the Python Online Tutor:
+run in the Python Online
+Tutor:
 
 .. raw:: html
 
@@ -355,7 +355,7 @@ scientific notation (printf specification ``%.16E``):
 .. raw:: html
 
         <iframe width="950" height="500" frameborder="0"
-                src="http://pythontutor.com/iframe-embed.html#code=a+%3D+0%0Ada+%3D+0.4%0Awhile+a+%3C%3D+1.2%3A%0A++++print+a%0A++++a+%3D+a+%2B+da%0A++++print+%27%25.16E%2C+%25.16E%27+%25+%28da%2C+a%29%2C+a+%3C%3D+1.2&curInstr=0&py=2&cumulative=false">
+                src="http://pythontutor.com/iframe-embed.html#code=a+%3D+0%0Ada+%3D+0.4%0Awhile+a+%3C%3D+1.2%3A%0A++++print+a%0A++++a+%3D+a+%2B+da%0A++++%23+Inspect+all+decimals+in+da+and+a%0A++++print+%27da%3D%25.16E%5Cna%3D%25.16E%27+%25+%28da%2C+a%29%0A++++print+%27a+%3C%3D+1.2%3A+%25g%27+%25++%28a+%3C%3D+1.2%29&curInstr=0&py=2&cumulative=false">
         </iframe>
 
 The problem is that ``da`` is not exactly 0.4, but contains a small round-off
@@ -576,7 +576,7 @@ for loops instead:
         for t, s in zip(t_values, s_values):
             print '%.2f  %.4f' % (t, s)
         
-        # Alternative
+        # Alternative implementation
         for i in range(len(t_values)):
             print '%.2f  %.4f' % (t_values[i], s_values[i])
 
@@ -1005,12 +1005,16 @@ A more general mathematical formula
 The formula :eq:`basics:seq` arises from the basic differential
 equations in kinematics:
 
+.. _Eq:basics:vdef:
+
 .. math::
    :label: basics:vdef
         
         v = \frac{ds}{dt},\quad s(0)=s_0,
         
         
+
+.. _Eq:basics:adef:
 
 .. math::
    :label: basics:adef
@@ -1032,6 +1036,8 @@ which gives
 
 Then we integrate again over :math:`[0,t]` to find :math:`s(t)`:
 
+.. _Eq:basics:s:at:
+
 .. math::
    :label: basics:s:at
         
@@ -1041,6 +1047,8 @@ Then we integrate again over :math:`[0,t]` to find :math:`s(t)`:
 
 Suppose we have some constant acceleration :math:`a_0` in :math:`[0,t_1]` and no
 acceleration thereafter. We find
+
+.. _Eq:basics:seq2:
 
 .. math::
    :label: basics:seq2
@@ -1204,6 +1212,149 @@ Relevant statements for plotting are now
 
 
 
+Array view versus array copying
+-------------------------------
+
+Arrays are usually large and most array libraries have carefully designed
+functionality for avoiding unnecessary copying of large of amounts of data.
+If you do a simple assignment,
+
+.. code-block:: python
+
+        a = np.linspace(1, 5, 5)
+        b = a
+
+``b`` becomes a just *view* of ``a``: the variables ``b`` and ``a`` point
+to the same data. In other languages one may say that ``b`` is a
+pointer or reference to the array. This means that changing ``a`` changes
+``b`` and vice versa:
+
+.. code-block:: python
+
+        array([ 1.,  2.,  3.,  4.,  5.])
+        >>> b[0] = 5                       # changes a[0] to 5
+        >>> a
+        array([ 5.,  2.,  3.,  4.,  5.])
+        >>> a[1] = 9                       # changes b[1] to 9
+        >>> b
+        array([ 5.,  9.,  3.,  4.,  5.])
+
+Similarly, ``b[1:-1]`` gives a view to a subset of ``a`` and no copy of data.
+If we want to change ``b`` without affecting ``a``, a copy of the array
+is required:
+
+.. code-block:: python
+
+        >>> c = a.copy()       # copy all elements to new array c
+        >>> c[0] = 6           # a is not changed
+        >>> a
+        array([ 1.,  2.,  3.,  4.,  5.])
+        >>> c
+        array([ 6.,  2.,  3.,  4.,  5.])
+        >>> b
+        array([ 5.,  2.,  3.,  4.,  5.])
+
+Note that ``b`` remains unchanged by the change in ``c`` since the ``b`` and ``c``
+variables now refer to different data. Copying of the elements of a sub-array
+is also done by the ``copy()`` method: ``b = a[1:-1].copy()``.
+
+
+.. admonition:: Understand the difference between view and copy
+
+   Mathematical errors and/or inefficient code may easily arise from
+   confusion between array view and array copying. Make sure you
+   understand the implication of any variable assignment to arrays!
+   
+   .. code-block:: python
+   
+           a = np.array([-1, 4.5, 8, 9])
+           b = a[1:-2]            # view: changes in a are reflected in b
+           b = a[1:-2].copy()     # copy: changes in a are not reflected in b
+
+
+
+
+Linear systems
+--------------
+
+.. index:: linear systems
+
+.. index:: sparse matrix
+
+.. index:: tridigonal matrix
+
+Solving linear systems of the form :math:`Ax=b` with a matrix :math:`A` and vectors
+:math:`x` and :math:`b` is a frequently encountered task. A sample :math:`2\times 2` system
+can be coded as
+
+.. code-block:: python
+
+        import numpy as np
+        A = np.array([[1., 2],
+                      [4,  2]])
+        b = np.array([1., -2])
+        x = np.linalg.solve(A, b)
+
+Many scientific computing problems involves large matrices with special
+*sparse* structures. Significant memory and computing time can be
+saved by utilizing *sparse matrix* data structures and associated
+algorithms.
+Python has sparse matrix package `scipy.sparse <http://docs.scipy.org/doc/scipy/reference/sparse.html>`__ that can be used to construct
+various types of sparse matrices. The particular
+function ``scipy.sparse.spdiags`` can construct a sparse matrix from
+a few vectors representing the diagonals in the matrix
+(all the diagonals must have the same length as the dimension of their
+sparse matrix, consequently some elements of the diagonals are not used:
+the first :math:`k` elements are not used of the :math:`k` super-diagonal, and
+the last  :math:`k` elements are not used of the :math:`-k` sub-diagonal).
+Here is an example of constructing a *tridiagonal* matrix:
+
+.. code-block:: python
+
+        >>> import numpy as np
+        >>> N = 6
+        >>> diagonals = np.zeros((3, N))   # 3 diagonals
+        diagonals[0,:] = np.linspace(-1, -N, N)
+        diagonals[1,:] = -2
+        diagonals[2,:] = np.linspace(1, N, N)
+        >>> import scipy.sparse
+        >>> A = scipy.sparse.spdiags(diagonals, [-1,0,1], N, N, format='csc')
+        >>> A.toarray()    # look at corresponding dense matrix
+        [[-2.  2.  0.  0.  0.  0.]
+         [-1. -2.  3.  0.  0.  0.]
+         [ 0. -2. -2.  4.  0.  0.]
+         [ 0.  0. -3. -2.  5.  0.]
+         [ 0.  0.  0. -4. -2.  6.]
+         [ 0.  0.  0.  0. -5. -2.]]
+
+Solving a linear system with a tridiagonal coefficient matrix requires
+a special function with a special algorithm to take advantage of
+the matrix' structure. The next example chooses a solution ``x``,
+computes the corresponding right-hand side :math:`b=Ax` using the
+sparse matrix vector product associated with the sparse matrix :math:`A`,
+and then solves :math:`Ax=b`:
+
+.. code-block:: python
+
+        >>> x = np.linspace(-1, 1, N)  # choose solution
+        >>> b = A.dot(x)               # sparse matrix vector product
+        >>> import scipy.sparse.linalg
+        >>> x = scipy.sparse.linalg.spsolve(A, b)
+        >>> print x
+        [-1.  -0.6 -0.2  0.2  0.6  1. ]
+
+Although we can easily check that ``x`` is correctly computed, we can
+do another check by converting the linear system to its dense
+counterpart:
+
+.. code-block:: python
+
+        >>> A_d = A.toarray()            # corresponding dense matrix
+        >>> b = np.dot(A_d, x)           # standard matrix vector product
+        >>> x = np.linalg.solve(A_d, b)  # standard Ax=b algorithm
+        >>> print x
+        [-1.  -0.6 -0.2  0.2  0.6  1. ]
+
 .. _basics:files:
 
 Files
@@ -1299,7 +1450,7 @@ The following code does the work:
 .. code-block:: python
 
         outfile = open('table1.dat', 'w')
-        outfile.write('# t    s(t)\n')  # write header
+        outfile.write('# t    s(t)\n')  # write table header
         for t, s in zip(t_values, s_values):
             outfile.write('%.2f  %.4f\n' % (t, s))
 
@@ -1321,6 +1472,8 @@ added (``header``) and the header lines begin with a comment character
         import numpy as np
         # Make two-dimensional array of [t, s(t)] values in each row
         data = np.array([t_values, s_values]).transpose()
+        
+        # Write data array to file in table format
         np.savetxt('table2.dat', data, fmt=['%.2f', '%.4f'],
                    header='t   s(t)', comments='# ')
 

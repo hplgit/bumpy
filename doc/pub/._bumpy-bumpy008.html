@@ -1,0 +1,285 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="A worked example on scientific computing with Python">
+<meta name="keywords" content="doc strings,pickling,list comprehensions">
+
+<title>A worked example on scientific computing with Python</title>
+
+<!-- Bootstrap style: bootstrap -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Optimal background for reading this note ',
+               3,
+               None,
+               '___sec0'),
+              (' A scientific application ', 1, None, '___sec1'),
+              (' Physical problem and mathematical model ',
+               2,
+               None,
+               '___sec2'),
+              (' Numerical model ', 2, None, '___sec3'),
+              (' Simple implementation ', 2, None, '___sec4'),
+              (' Dissection of the code ', 2, None, '___sec5'),
+              (' More advanced implementation ', 2, None, '___sec6'),
+              (' Dissection of the code ', 2, None, '___sec7'),
+              (' The excitation force ', 2, None, '___sec8'),
+              (' A high-level solve function ', 2, None, '___sec9'),
+              (' Storing Python objects in files ', 2, None, '___sec10'),
+              (' Computing the root mean square value ', 2, None, '___sec11'),
+              (' User input ', 1, None, '___sec12'),
+              (' Positional command-line arguments ', 2, None, '___sec13'),
+              (' Option-value pairs on the command line ',
+               2,
+               None,
+               '___sec14'),
+              (' Visual exploration ', 1, None, '___sec15'),
+              (' Test case ', 3, None, '___sec16'),
+              (' Importing array and plot functionality ',
+               3,
+               None,
+               '___sec17'),
+              (' Reading results from file ', 3, None, '___sec18'),
+              (' Plotting $u$ ', 3, None, '___sec19'),
+              (" Computing and plotting $u'$ ", 3, None, '___sec20'),
+              (" Vectorized computation of $u'$ ", 3, None, '___sec21'),
+              (' Computing the spectrum of signals ', 2, None, '___sec22'),
+              (' Multiple plots in the same figure ', 2, None, '___sec23'),
+              (' Advanced topics ', 1, None, '___sec24'),
+              (' Symbolic computing via SymPy ', 2, None, '___sec25'),
+              (' Testing ', 2, None, '___sec26'),
+              (' Example on a test function ', 3, None, '___sec27'),
+              (' Test function for the numerical solver ',
+               3,
+               None,
+               '___sec28'),
+              (' Using a test framework ', 3, None, '___sec29'),
+              (' Modules ', 2, None, '___sec30'),
+              (' Appendix: Quick motivation for programming with Python ',
+               1,
+               'app:motivation',
+               'app:motivation'),
+              (' Appendix: Scientific Python resources ',
+               1,
+               'app:resources',
+               'app:resources'),
+              (' Full tutorials on scientific programming with Python ',
+               3,
+               None,
+               '___sec33'),
+              (' NumPy resources ', 3, None, '___sec34'),
+              (' Useful resources ', 3, None, '___sec35'),
+              (' Some relevant Python books ', 3, None, '___sec36'),
+              (' Course material on Python programming in general ',
+               3,
+               None,
+               '___sec37')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="bumpy-bumpy.html">A worked example on scientific computing with Python</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._bumpy-bumpy002.html#___sec1" style="font-size: 80%;">A scientific application</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;">User input</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy-bumpy009.html#___sec15" style="font-size: 80%;">Visual exploration</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy-bumpy010.html#___sec24" style="font-size: 80%;">Advanced topics</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy-bumpy010.html#app:motivation" style="font-size: 80%;">Appendix: Quick motivation for programming with Python</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy-bumpy010.html#app:resources" style="font-size: 80%;">Appendix: Scientific Python resources</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0008"></a>
+<!-- !split -->
+
+<h1 id="___sec12">User input </h1>
+
+<p>
+We can in this example easily set the input data directly in
+the program, e.g., in the call to the <code>solve</code> function, as
+demonstrated above. However, most users will find it more
+convenient to set parameters through a user interface rather
+than editing the source code directly.
+
+<h2 id="___sec13">Positional command-line arguments </h2>
+
+<p>
+The simplest, and often also the most effective type of
+user interface is to use the command line. Suppose \( m \), \( k \),
+and \( v \), as well as the URL or filename for the road shapes,
+are fixed parameters and that the user is allowed to vary
+\( b \) only. Then it is convenient, both for the user and
+the programmer, to specify \( b \) as the first command-line
+argument to the program. If the name of the program file
+is <code>bumpy.py</code> and \( b=10 \) is desired, we can write
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python bumpy.py 10
+</pre></div>
+<p>
+The corresponding code in the program for setting input data
+and extract the user-given value of \( b \) reads
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">prepare_input</span>():
+    url <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz&#39;</span>
+    m <span style="color: #666666">=</span> <span style="color: #666666">60</span>
+    k <span style="color: #666666">=</span> <span style="color: #666666">60</span>
+    v <span style="color: #666666">=</span> <span style="color: #666666">5</span>
+    <span style="color: #008000; font-weight: bold">try</span>:
+        b <span style="color: #666666">=</span> <span style="color: #008000">float</span>(sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>])
+    <span style="color: #008000; font-weight: bold">except</span> <span style="color: #D2413A; font-weight: bold">IndexError</span>:
+        b <span style="color: #666666">=</span> <span style="color: #666666">80</span>  <span style="color: #408080; font-style: italic"># default</span>
+    <span style="color: #008000; font-weight: bold">return</span> url, m, b, k, v
+</pre></div>
+<p>
+The command-line arguments are available as strings in the
+list <code>sys.argv</code>, from the element with index 1 and onward.
+The first command-line argument <code>sys.argv[1]</code> is a string
+so it must be converted to a <code>float</code> object (representing
+real number) prior to computations. If the command-line
+argument is missing, <code>sys.argv[1]</code> is illegal indexing
+and the <code>IndexError</code> exception is raised. We can test for this
+error and provide a default value. Without the <code>try-except</code>
+construction, the program will abort with an error message
+if no command-line argument is given.
+
+<h2 id="___sec14">Option-value pairs on the command line </h2>
+
+<p>
+Letting the user set many parameters on the command line is most
+conveniently done by allowing option-value pairs, e.g.,
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python bumpy.py --m 40 --b 280
+</pre></div>
+<p>
+All parameters have a default value which can be overridden on
+the command line by providing the string (option) <code>--name</code>, where
+<code>name</code> is the name of the parameter, followed by the desired value of
+the parameter. Implementation of option-value input is
+most easily carried out using Python's <code>argparse</code> module.
+The recipe goes as follows.
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">command_line_options</span>():
+    <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">argparse</span>
+    parser <span style="color: #666666">=</span> argparse<span style="color: #666666">.</span>ArgumentParser()
+    parser<span style="color: #666666">.</span>add_argument(<span style="color: #BA2121">&#39;--m&#39;</span>, <span style="color: #BA2121">&#39;--mass&#39;</span>, <span style="color: #008000">type</span><span style="color: #666666">=</span><span style="color: #008000">float</span>,
+                        default<span style="color: #666666">=60</span>, help<span style="color: #666666">=</span><span style="color: #BA2121">&#39;mass of vehicle&#39;</span>)
+    parser<span style="color: #666666">.</span>add_argument(<span style="color: #BA2121">&#39;--k&#39;</span>, <span style="color: #BA2121">&#39;--spring&#39;</span>, <span style="color: #008000">type</span><span style="color: #666666">=</span><span style="color: #008000">float</span>,
+                        default<span style="color: #666666">=60</span>, help<span style="color: #666666">=</span><span style="color: #BA2121">&#39;spring parameter&#39;</span>)
+    parser<span style="color: #666666">.</span>add_argument(<span style="color: #BA2121">&#39;--b&#39;</span>, <span style="color: #BA2121">&#39;--damping&#39;</span>, <span style="color: #008000">type</span><span style="color: #666666">=</span><span style="color: #008000">float</span>,
+                        default<span style="color: #666666">=80</span>, help<span style="color: #666666">=</span><span style="color: #BA2121">&#39;damping parameter&#39;</span>)
+    parser<span style="color: #666666">.</span>add_argument(<span style="color: #BA2121">&#39;--v&#39;</span>, <span style="color: #BA2121">&#39;--velocity&#39;</span>, <span style="color: #008000">type</span><span style="color: #666666">=</span><span style="color: #008000">float</span>,
+                        default<span style="color: #666666">=5</span>, help<span style="color: #666666">=</span><span style="color: #BA2121">&#39;velocity of vehicle&#39;</span>)
+    url <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz&#39;</span>
+    parser<span style="color: #666666">.</span>add_argument(<span style="color: #BA2121">&#39;--roadfile&#39;</span>, <span style="color: #008000">type</span><span style="color: #666666">=</span><span style="color: #008000">str</span>,
+              default<span style="color: #666666">=</span>url, help<span style="color: #666666">=</span><span style="color: #BA2121">&#39;filename/URL with road data&#39;</span>)
+    args <span style="color: #666666">=</span> parser<span style="color: #666666">.</span>parse_args()
+    <span style="color: #408080; font-style: italic"># Extract input parameters</span>
+    m <span style="color: #666666">=</span> args<span style="color: #666666">.</span>m; k <span style="color: #666666">=</span> args<span style="color: #666666">.</span>k; b <span style="color: #666666">=</span> args<span style="color: #666666">.</span>b; v <span style="color: #666666">=</span> args<span style="color: #666666">.</span>v
+    url <span style="color: #666666">=</span> args<span style="color: #666666">.</span>roadfile
+    <span style="color: #008000; font-weight: bold">return</span> url, m, b, k, v
+</pre></div>
+<p>
+We may offer two options for each parameter, one reflecting the
+mathematical symbol (like <code>--v</code>) and one more descriptive text
+(like <code>--velocity</code>).
+
+<p>
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pagination">
+<li><a href="._bumpy-bumpy007.html">&laquo;</a></li>
+  <li><a href="._bumpy-bumpy000.html">1</a></li>
+  <li><a href="._bumpy-bumpy001.html">2</a></li>
+  <li><a href="._bumpy-bumpy002.html">3</a></li>
+  <li><a href="._bumpy-bumpy003.html">4</a></li>
+  <li><a href="._bumpy-bumpy004.html">5</a></li>
+  <li><a href="._bumpy-bumpy005.html">6</a></li>
+  <li><a href="._bumpy-bumpy006.html">7</a></li>
+  <li><a href="._bumpy-bumpy007.html">8</a></li>
+  <li class="active"><a href="._bumpy-bumpy008.html">9</a></li>
+  <li><a href="._bumpy-bumpy009.html">10</a></li>
+  <li><a href="._bumpy-bumpy010.html">11</a></li>
+  <li><a href="._bumpy-bumpy009.html">&raquo;</a></li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="A very basic introduction to scientific Python programming">
-<meta name="keywords" content="text editor,program file,assignment statement,print statement,variable,objects,formatting of numbers,printf syntax,format string syntax,while loop,boolean expression,Python Online Tutor,list,for loop,list comprehension,array,mathematical functions,import of modules,plotting,graphics,visualization,function (in Python),global variables,keyword arguments,default arguments,vectorization,vectorized functions,multiple return values,branching,if test,boolean expression,vectorizing if tests">
+<meta name="keywords" content="text editor,program file,assignment statement,print statement,variable,objects,formatting of numbers,printf syntax,format string syntax,while loop,boolean expression,Python Online Tutor,list,for loop,list comprehension,array,mathematical functions,import of modules,plotting,graphics,visualization,function (in Python),global variables,keyword arguments,default arguments,vectorization,vectorized functions,multiple return values,branching,if test,boolean expression,vectorizing if tests,linear systems,sparse matrix,tridigonal matrix">
 
 <title>A very basic introduction to scientific Python programming</title>
 
@@ -17,98 +17,105 @@ Automatically generated HTML file from DocOnce source
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
+<style type="text/css">
+/* Let inline verbatim have the same color as the surroundings */
+code { color: inherit; background-color: transparent; }
+</style>
+
 
 </head>
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Variables, loops, lists, and arrays ',
+ 'sections': [('Variables, loops, lists, and arrays',
                1,
                'basics:basic:objects',
                'basics:basic:objects'),
-              (' Getting access to Python ',
+              ('Getting access to Python',
                2,
                'basics:accesspy',
                'basics:accesspy'),
-              (' Mac and Windows ', 3, None, '___sec2'),
-              (' Ubuntu ', 3, None, '___sec3'),
-              (' Web access ', 3, None, '___sec4'),
-              (' Mathematical example ', 2, None, '___sec5'),
-              (' A program for evaluating a formula ',
+              ('Mac and Windows', 3, None, '___sec2'),
+              ('Ubuntu', 3, None, '___sec3'),
+              ('Web access', 3, None, '___sec4'),
+              ('Mathematical example', 2, None, '___sec5'),
+              ('A program for evaluating a formula',
                2,
                'basics:formula:eval',
                'basics:formula:eval'),
-              (' Formatted output with text and numbers ',
+              ('Formatted output with text and numbers',
                2,
                'basics:printf',
                'basics:printf'),
-              (' While loops ', 2, 'basics:while', 'basics:while'),
-              (' Lists ', 2, 'basics:list', 'basics:list'),
-              (' For loops ', 2, 'basics:for', 'basics:for'),
-              (' Arrays ', 2, 'basics:numpy', 'basics:numpy'),
-              (' Mathematical functions ', 2, 'basics:math', 'basics:math'),
-              (' Plotting ', 2, 'basics:plot', 'basics:plot'),
-              (' Functions and branching ',
+              ('While loops', 2, 'basics:while', 'basics:while'),
+              ('Lists', 2, 'basics:list', 'basics:list'),
+              ('For loops', 2, 'basics:for', 'basics:for'),
+              ('Arrays', 2, 'basics:numpy', 'basics:numpy'),
+              ('Mathematical functions', 2, 'basics:math', 'basics:math'),
+              ('Plotting', 2, 'basics:plot', 'basics:plot'),
+              ('Functions and branching',
                1,
                'basics:func:branching',
                'basics:func:branching'),
-              (' Functions ', 2, 'basics:func', 'basics:func'),
-              (' A more general mathematical formula ',
+              ('Functions', 2, 'basics:func', 'basics:func'),
+              ('A more general mathematical formula',
                2,
                'basics:formula:piecewise',
                'basics:formula:piecewise'),
-              (' If tests ', 2, 'basics:if', 'basics:if'),
-              (' Using the `where` function ', 3, None, '___sec18'),
-              (' Using array indexing ', 3, None, '___sec19'),
-              (' Files ', 1, 'basics:files', 'basics:files'),
-              (' File reading ', 2, None, '___sec21'),
-              (' File writing ', 2, None, '___sec22'),
-              (' Classes ', 1, 'basics:class', 'basics:class'),
-              (' A very simple class ', 2, None, '___sec24'),
-              (' A class for representing a mathematical function ',
+              ('If tests', 2, 'basics:if', 'basics:if'),
+              ('Using the `where` function', 3, None, '___sec18'),
+              ('Using array indexing', 3, None, '___sec19'),
+              ('Array view versus array copying', 2, None, '___sec20'),
+              ('Linear systems', 2, None, '___sec21'),
+              ('Files', 1, 'basics:files', 'basics:files'),
+              ('File reading', 2, None, '___sec23'),
+              ('File writing', 2, None, '___sec24'),
+              ('Classes', 1, 'basics:class', 'basics:class'),
+              ('A very simple class', 2, None, '___sec26'),
+              ('A class for representing a mathematical function',
                2,
                None,
-               '___sec25'),
-              (' The class code ', 3, None, '___sec26'),
-              (' Dissection ', 3, None, '___sec27'),
-              (' Exercises ', 1, 'basics:exer', 'basics:exer'),
-              (' Exercise 1: Program a formula ',
+               '___sec27'),
+              ('The class code', 3, None, '___sec28'),
+              ('Dissection', 3, None, '___sec29'),
+              ('Exercises', 1, 'basics:exer', 'basics:exer'),
+              ('Exercise 1: Program a formula',
                2,
                'basics:exer:formula1',
                'basics:exer:formula1'),
-              (' Exercise 2: Combine text and numbers in output ',
+              ('Exercise 2: Combine text and numbers in output',
                2,
                'basics:exer:printf1',
                'basics:exer:printf1'),
-              (' Exercise 3: Program a while loop ',
+              ('Exercise 3: Program a while loop',
                2,
                'basics:exer:while1',
                'basics:exer:while1'),
-              (' Exercise 4: Create a list with a while loop ',
+              ('Exercise 4: Create a list with a while loop',
                2,
                'basics:exer:while2',
                'basics:exer:while2'),
-              (' Exercise 5: Program a for loop ',
+              ('Exercise 5: Program a for loop',
                2,
                'basics:exer:for1',
                'basics:exer:for1'),
-              (' Exercise 6: Create a list with a for loop ',
-               2,
-               'basics:exer:for2',
-               'basics:exer:for2'),
-              (' Exercise 7: Write a Python function ',
+              ('Exercise 6: Write a Python function',
                2,
                'basics:exer:func1',
                'basics:exer:func1'),
-              (' Exercise 8: Return three values from a Python function ',
+              ('Exercise 7: Return three values from a Python function',
                2,
                'basics:exer:func3',
                'basics:exer:func3'),
-              (' Exercise 9: Plot a function ',
+              ('Exercise 8: Plot a function',
                2,
                'basics:exer:plot1',
                'basics:exer:plot1'),
-              (' Exercise 10: Measure the efficiency of vectorization ',
+              ('Exercise 9: Plot two functions',
+               2,
+               'basics:exer:plot2',
+               'basics:exer:plot2'),
+              ('Exercise 10: Measure the efficiency of vectorization',
                2,
                'basics:exer:timeit',
                'basics:exer:timeit')]}
@@ -455,7 +462,8 @@ it seems that the condition is <code>False</code> since the computations for
 <p>
 The <a href="http://pythontutor.com/visualize.html#mode=edit" target="_self">Python Online Tutor</a>
 is a great tool to examine the program flow. Consider this little loop
-run in the Python Online Tutor:
+run in the Python Online
+Tutor (view in Chrome):
 
 <p>
 
@@ -476,7 +484,7 @@ scientific notation (printf specification <code>%.16E</code>):
 <p>
 
 <iframe width="950" height="500" frameborder="0"
-        src="http://pythontutor.com/iframe-embed.html#code=a+%3D+0%0Ada+%3D+0.4%0Awhile+a+%3C%3D+1.2%3A%0A++++print+a%0A++++a+%3D+a+%2B+da%0A++++print+%27%25.16E%2C+%25.16E%27+%25+%28da%2C+a%29%2C+a+%3C%3D+1.2&curInstr=0&py=2&cumulative=false">
+        src="http://pythontutor.com/iframe-embed.html#code=a+%3D+0%0Ada+%3D+0.4%0Awhile+a+%3C%3D+1.2%3A%0A++++print+a%0A++++a+%3D+a+%2B+da%0A++++%23+Inspect+all+decimals+in+da+and+a%0A++++print+%27da%3D%25.16E%5Cna%3D%25.16E%27+%25+%28da%2C+a%29%0A++++print+%27a+%3C%3D+1.2%3A+%25g%27+%25++%28a+%3C%3D+1.2%29&curInstr=0&py=2&cumulative=false">
 </iframe>
 <p>
 The problem is that <code>da</code> is not exactly 0.4, but contains a small round-off
@@ -707,7 +715,7 @@ n <span style="color: #666666">=</span> <span style="color: #008000">int</span>(
 <span style="color: #008000; font-weight: bold">for</span> t, s <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">zip</span>(t_values, s_values):
     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">  </span><span style="color: #BB6688; font-weight: bold">%.4f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (t, s)
 
-<span style="color: #408080; font-style: italic"># Alternative</span>
+<span style="color: #408080; font-style: italic"># Alternative implementation</span>
 <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(t_values)):
     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">  </span><span style="color: #BB6688; font-weight: bold">%.4f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (t_values[i], s_values[i])
 </pre></div>

@@ -1,0 +1,359 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="A very basic introduction to scientific Python programming">
+<meta name="keywords" content="text editor,program file,assignment statement,print statement,variable,objects,formatting of numbers,printf syntax,format string syntax,while loop,boolean expression,Python Online Tutor,list,for loop,list comprehension,array,mathematical functions,import of modules,plotting,graphics,visualization,function (in Python),global variables,keyword arguments,default arguments,vectorization,vectorized functions,multiple return values,branching,if test,boolean expression,vectorizing if tests,linear systems,sparse matrix,tridigonal matrix">
+
+<title>A very basic introduction to scientific Python programming</title>
+
+<!-- Bootstrap style: bootstrap -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+/* Let inline verbatim have the same color as the surroundings */
+code { color: inherit; background-color: transparent; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Variables, loops, lists, and arrays ',
+               1,
+               'basics:basic:objects',
+               'basics:basic:objects'),
+              (' Getting access to Python ',
+               2,
+               'basics:accesspy',
+               'basics:accesspy'),
+              (' Mac and Windows ', 3, None, '___sec2'),
+              (' Ubuntu ', 3, None, '___sec3'),
+              (' Web access ', 3, None, '___sec4'),
+              (' Mathematical example ', 2, None, '___sec5'),
+              (' A program for evaluating a formula ',
+               2,
+               'basics:formula:eval',
+               'basics:formula:eval'),
+              (' Formatted output with text and numbers ',
+               2,
+               'basics:printf',
+               'basics:printf'),
+              (' While loops ', 2, 'basics:while', 'basics:while'),
+              (' Lists ', 2, 'basics:list', 'basics:list'),
+              (' For loops ', 2, 'basics:for', 'basics:for'),
+              (' Arrays ', 2, 'basics:numpy', 'basics:numpy'),
+              (' Mathematical functions ', 2, 'basics:math', 'basics:math'),
+              (' Plotting ', 2, 'basics:plot', 'basics:plot'),
+              (' Functions and branching ',
+               1,
+               'basics:func:branching',
+               'basics:func:branching'),
+              (' Functions ', 2, 'basics:func', 'basics:func'),
+              (' A more general mathematical formula ',
+               2,
+               'basics:formula:piecewise',
+               'basics:formula:piecewise'),
+              (' If tests ', 2, 'basics:if', 'basics:if'),
+              (' Using the `where` function ', 3, None, '___sec18'),
+              (' Using array indexing ', 3, None, '___sec19'),
+              (' Array view versus array copying ', 2, None, '___sec20'),
+              (' Linear systems ', 2, None, '___sec21'),
+              (' Files ', 1, 'basics:files', 'basics:files'),
+              (' File reading ', 2, None, '___sec23'),
+              (' File writing ', 2, None, '___sec24'),
+              (' Classes ', 1, 'basics:class', 'basics:class'),
+              (' A very simple class ', 2, None, '___sec26'),
+              (' A class for representing a mathematical function ',
+               2,
+               None,
+               '___sec27'),
+              (' The class code ', 3, None, '___sec28'),
+              (' Dissection ', 3, None, '___sec29'),
+              (' Exercises ', 1, 'basics:exer', 'basics:exer'),
+              (' Exercise 1: Program a formula ',
+               2,
+               'basics:exer:formula1',
+               'basics:exer:formula1'),
+              (' Exercise 2: Combine text and numbers in output ',
+               2,
+               'basics:exer:printf1',
+               'basics:exer:printf1'),
+              (' Exercise 3: Program a while loop ',
+               2,
+               'basics:exer:while1',
+               'basics:exer:while1'),
+              (' Exercise 4: Create a list with a while loop ',
+               2,
+               'basics:exer:while2',
+               'basics:exer:while2'),
+              (' Exercise 5: Program a for loop ',
+               2,
+               'basics:exer:for1',
+               'basics:exer:for1'),
+              (' Exercise 6: Create a list with a for loop ',
+               2,
+               'basics:exer:for2',
+               'basics:exer:for2'),
+              (' Exercise 7: Write a Python function ',
+               2,
+               'basics:exer:func1',
+               'basics:exer:func1'),
+              (' Exercise 8: Return three values from a Python function ',
+               2,
+               'basics:exer:func3',
+               'basics:exer:func3'),
+              (' Exercise 9: Plot a function ',
+               2,
+               'basics:exer:plot1',
+               'basics:exer:plot1'),
+              (' Exercise 10: Measure the efficiency of vectorization ',
+               2,
+               'basics:exer:timeit',
+               'basics:exer:timeit')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="basics-basic.html">A very basic introduction to scientific Python programming</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._basics-basic001.html#basics:basic:objects" style="font-size: 80%;">Variables, loops, lists, and arrays</a></li>
+     <!-- navigation toc: --> <li><a href="._basics-basic002.html#basics:func:branching" style="font-size: 80%;">Functions and branching</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:files" style="font-size: 80%;">Files</a></li>
+     <!-- navigation toc: --> <li><a href="._basics-basic004.html#basics:class" style="font-size: 80%;">Classes</a></li>
+     <!-- navigation toc: --> <li><a href="._basics-basic005.html#basics:exer" style="font-size: 80%;">Exercises</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0003"></a>
+<!-- !split -->
+
+<h1 id="basics:files">Files</h1>
+
+<p>
+This section outlines basic file handling in Python, including file
+utilities in the <code>numpy</code> package.
+
+<h2 id="___sec23">File reading </h2>
+
+<p>
+Suppose we create a file with typical input data to our little
+demo program for evaluating the formula \( s(t)=v_0t + \frac{1}{2}at^2 \):
+
+<p>
+
+<!-- code=text (!bc dat) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">v0 = 2
+a = 0.2
+dt = 0.1
+interval = [0, 2]
+</pre></div>
+<p>
+We want to read the parameters in the file into Python variables and
+create a table with columns of \( t \) and \( S(t) \) for \( t\in [0,2] \) with
+steps of \( \Delta t=0.1 \) (as specified by <code>dt</code> and <code>interval</code> in the file).
+
+<p>
+The code for reading the lines in the file, interpreting them, and
+assigning values to variables is given next.
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">infile <span style="color: #666666">=</span> <span style="color: #008000">open</span>(<span style="color: #BA2121">&#39;.input.dat&#39;</span>, <span style="color: #BA2121">&#39;r&#39;</span>)
+<span style="color: #008000; font-weight: bold">for</span> line <span style="color: #AA22FF; font-weight: bold">in</span> infile:
+    <span style="color: #408080; font-style: italic"># Typical line: variable = value</span>
+    variable, value <span style="color: #666666">=</span> line<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;=&#39;</span>)
+    variable <span style="color: #666666">=</span> variable<span style="color: #666666">.</span>strip()  <span style="color: #408080; font-style: italic"># remove leading/traling blanks</span>
+    <span style="color: #008000; font-weight: bold">if</span> variable <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;v0&#39;</span>:
+        v0 <span style="color: #666666">=</span> <span style="color: #008000">float</span>(value)
+    <span style="color: #008000; font-weight: bold">elif</span> variable <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;a&#39;</span>:
+        a <span style="color: #666666">=</span> <span style="color: #008000">float</span>(value)
+    <span style="color: #008000; font-weight: bold">elif</span> variable <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;dt&#39;</span>:
+        dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(value)
+    <span style="color: #008000; font-weight: bold">elif</span> variable <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;interval&#39;</span>:
+        interval <span style="color: #666666">=</span> <span style="color: #008000">eval</span>(value)
+infile<span style="color: #666666">.</span>close()
+</pre></div>
+<p>
+The name of the file is here <code>.input.dat</code>, and it is opened with the
+parameter <code>'r'</code> for reading. The for loop <code>for line in infile</code> will
+read the lines from the file, one by one, and in the current line
+is available in the string <code>line</code>. To split a line into words separated
+by a character '=', we use <code>line.split('=')</code>, resulting in a list of
+the words. For example,
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> line <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;v0 = 5.3&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> variable, value <span style="color: #666666">=</span> line<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;=&#39;</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> variable
+<span style="color: #BA2121">&#39;v0 &#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> value
+<span style="color: #BA2121">&#39; 5.3&#39;</span>
+</pre></div>
+<p>
+Note that there are blanks in the strings. Leading and trailing blanks
+can be removed by <code>variable.strip()</code>. We do this before comparing
+the variable name with <code>v0</code>, <code>a</code>, etc.
+
+<p>
+It is important to note that <code>value</code> (the text to the right of <code>=</code> on
+each line) is a string variable. We need to convert to a <code>float</code> object to
+get a variable that we can compute with.
+The assignment <code>interval = eval(value)</code> does some magic and deserve
+an explanation: <code>eval(s)</code> interprets the text in the string <code>s</code> as
+Python code. In the present example, <code>value</code> is <code>[0, 2]</code> and this
+is interpreted as Python code, i.e., as a list, and <code>interval</code> becomes
+a name for a list object with content <code>[0, 2]</code>.
+
+<p>
+A more modern Python way of opening files is
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">with</span> <span style="color: #008000">open</span>(<span style="color: #BA2121">&#39;.input.dat&#39;</span>, <span style="color: #BA2121">&#39;r&#39;</span>) <span style="color: #008000; font-weight: bold">as</span> infile:
+    <span style="color: #008000; font-weight: bold">for</span> line <span style="color: #AA22FF; font-weight: bold">in</span> infile:
+        <span style="color: #666666">...</span>
+</pre></div>
+<p>
+Now it is not necessary to close the file as it will be automatically done
+after the <code>with</code> block.
+
+<h2 id="___sec24">File writing </h2>
+
+<p>
+Suppose we generate \( t \) and \( s(t) \) values in two lists, <code>t_values</code> and
+<code>s_values</code>, and want to write these as a nicely formatted table to file.
+The following code does the work:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">outfile <span style="color: #666666">=</span> <span style="color: #008000">open</span>(<span style="color: #BA2121">&#39;table1.dat&#39;</span>, <span style="color: #BA2121">&#39;w&#39;</span>)
+outfile<span style="color: #666666">.</span>write(<span style="color: #BA2121">&#39;# t    s(t)</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span>)  <span style="color: #408080; font-style: italic"># write table header</span>
+<span style="color: #008000; font-weight: bold">for</span> t, s <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">zip</span>(t_values, s_values):
+    outfile<span style="color: #666666">.</span>write(<span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">  </span><span style="color: #BB6688; font-weight: bold">%.4f</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (t, s))
+</pre></div>
+<p>
+Files intended for writing must be opened with a <code>'w'</code> parameter.
+The key statement is <code>outfile.write(s)</code> for writing a string to
+a file (recall that while <code>print</code> automatically adds a newline
+at the end of the string to be printed, <code>outfile.write(s)</code> does not
+append a newline so <code>s</code> must contain the newline).
+
+<p>
+The <code>numpy</code> package contains a convenient function <code>savetxt</code> for saving
+tabular data. The data must be stored in a two-dimensional <code>numpy</code> array.
+The <code>savetxt</code> function enables control of the format of the numbers
+in each column (<code>fmt</code>) through the printf syntax, a header can be
+added (<code>header</code>) and the header lines begin with a comment character
+(<code>comment</code>). The code reads
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #408080; font-style: italic"># Make two-dimensional array of [t, s(t)] values in each row</span>
+data <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array([t_values, s_values])<span style="color: #666666">.</span>transpose()
+
+<span style="color: #408080; font-style: italic"># Write data array to file in table format</span>
+np<span style="color: #666666">.</span>savetxt(<span style="color: #BA2121">&#39;table2.dat&#39;</span>, data, fmt<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">&#39;</span>, <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%.4f</span><span style="color: #BA2121">&#39;</span>],
+           header<span style="color: #666666">=</span><span style="color: #BA2121">&#39;t   s(t)&#39;</span>, comments<span style="color: #666666">=</span><span style="color: #BA2121">&#39;# &#39;</span>)
+</pre></div>
+<p>
+The tabular data in the file can be read back into a
+<code>numpy</code> array by the <code>loadtxt</code> function:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">data <span style="color: #666666">=</span> np<span style="color: #666666">.</span>loadtxt(<span style="color: #BA2121">&#39;table2.dat&#39;</span>, comments<span style="color: #666666">=</span><span style="color: #BA2121">&#39;#&#39;</span>)
+</pre></div>
+<p>
+Lines beginning with the comment character are skipped in the reading.
+The resulting object <code>data</code> is a two-dimensional array: <code>data[i,j]</code> contains
+row number <code>i</code> and column number <code>j</code> in the table, i.e., <code>data[i,0]</code>
+holds the \( t \) value and <code>data[i,1]</code> the \( s(t) \) value in the <code>i</code>-th
+row.
+
+<p>
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pagination">
+<li><a href="._basics-basic002.html">&laquo;</a></li>
+  <li><a href="._basics-basic000.html">1</a></li>
+  <li><a href="._basics-basic001.html">2</a></li>
+  <li><a href="._basics-basic002.html">3</a></li>
+  <li class="active"><a href="._basics-basic003.html">4</a></li>
+  <li><a href="._basics-basic004.html">5</a></li>
+  <li><a href="._basics-basic005.html">6</a></li>
+  <li><a href="._basics-basic004.html">&raquo;</a></li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

@@ -45,7 +45,7 @@
 
     
     <link rel="top" title="A very basic introduction to scientific Python programming" href="index.html" />
-    <link rel="prev" title="A very basic introduction to scientific Python programming" href="index.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="._basics-basic000.html" />
  
   
    <style type="text/css">
@@ -64,7 +64,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="index.html" title="A very basic introduction to scientific Python programming"
+          <a href="._basics-basic000.html" title="&lt;no title&gt;"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">A very basic introduction to scientific Python programming</a> &raquo;</li> 
       </ul>
@@ -81,9 +81,9 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen (hpl at simula.no)</td>
+<tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen (hpl at simula.no), Leif Rune Hellevik (leif.r.hellevik at ntnu.no)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 14, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 16, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -156,7 +156,7 @@ The formula tells how long distance <span class="math">\(s\)</span> an object ha
 a time interval <span class="math">\([0,t]\)</span> if it starts
 out with a velocity <span class="math">\(v_0\)</span> and undergoes constant acceleration <span class="math">\(a\)</span>:</p>
 <div class="math" id="equation-basics:seq">
-<span class="eqno">(1)</span>\[     s = v_0t + \frac{1}{2}at^2\thinspace .\]</div>
+<span id="eq-basics-seq"></span><span class="eqno">(1)</span>\[     s = v_0t + \frac{1}{2}at^2\thinspace .\]</div>
 <p>We may view <span class="math">\(s\)</span> as a function of <span class="math">\(t\)</span>: <span class="math">\(s(t)\)</span>, and also include the
 parameters in the notation: <span class="math">\(s(t;v_0,a)\)</span>.</p>
 </div>
@@ -315,7 +315,8 @@ it seems that the condition is <tt class="docutils literal"><span class="pre">Fa
 </div>
 <p id="index-15">The <a class="reference external" href="http://pythontutor.com/visualize.html#mode=edit">Python Online Tutor</a>
 is a great tool to examine the program flow. Consider this little loop
-run in the Python Online Tutor:</p>
+run in the Python Online
+Tutor:</p>
 <iframe width="950" height="500" frameborder="0"
         src="http://pythontutor.com/iframe-embed.html#code=a+%3D+0%0Ada+%3D+0.4%0Awhile+a+%3C%3D+1.2%3A%0A++++print+a%0A++++a+%3D+a+%2B+da&curInstr=0&py=2&cumulative=false">
 </iframe><p>The Python Online Tutor executes each statement and displays the contents
@@ -326,7 +327,7 @@ of variables.</p>
 <tt class="docutils literal"><span class="pre">a</span></tt> to investigate this question and write it out with 16 decimals in
 scientific notation (printf specification <tt class="docutils literal"><span class="pre">%.16E</span></tt>):</p>
 <iframe width="950" height="500" frameborder="0"
-        src="http://pythontutor.com/iframe-embed.html#code=a+%3D+0%0Ada+%3D+0.4%0Awhile+a+%3C%3D+1.2%3A%0A++++print+a%0A++++a+%3D+a+%2B+da%0A++++print+%27%25.16E%2C+%25.16E%27+%25+%28da%2C+a%29%2C+a+%3C%3D+1.2&curInstr=0&py=2&cumulative=false">
+        src="http://pythontutor.com/iframe-embed.html#code=a+%3D+0%0Ada+%3D+0.4%0Awhile+a+%3C%3D+1.2%3A%0A++++print+a%0A++++a+%3D+a+%2B+da%0A++++%23+Inspect+all+decimals+in+da+and+a%0A++++print+%27da%3D%25.16E%5Cna%3D%25.16E%27+%25+%28da%2C+a%29%0A++++print+%27a+%3C%3D+1.2%3A+%25g%27+%25++%28a+%3C%3D+1.2%29&curInstr=0&py=2&cumulative=false">
 </iframe><p>The problem is that <tt class="docutils literal"><span class="pre">da</span></tt> is not exactly 0.4, but contains a small round-off
 error. Doing <tt class="docutils literal"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">da</span></tt> then results in a slightly inaccurate <tt class="docutils literal"><span class="pre">a</span></tt>.
 When the exact <tt class="docutils literal"><span class="pre">a</span></tt> should reach 1.2, the <tt class="docutils literal"><span class="pre">a</span></tt> in the program has a
@@ -498,7 +499,7 @@ for loops instead:</p>
 <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">t_values</span><span class="p">,</span> <span class="n">s_values</span><span class="p">):</span>
     <span class="k">print</span> <span class="s">&#39;</span><span class="si">%.2f</span><span class="s">  </span><span class="si">%.4f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
 
-<span class="c"># Alternative</span>
+<span class="c"># Alternative implementation</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t_values</span><span class="p">)):</span>
     <span class="k">print</span> <span class="s">&#39;</span><span class="si">%.2f</span><span class="s">  </span><span class="si">%.4f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t_values</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">s_values</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 </pre></div>
@@ -814,9 +815,9 @@ change the contents (<tt class="docutils literal"><span class="pre">append</span
 <p>The formula <a href="#equation-basics:seq">(1)</a> arises from the basic differential
 equations in kinematics:</p>
 <div class="math" id="equation-basics:vdef">
-<span class="eqno">(2)</span>\[     v = \frac{ds}{dt},\quad s(0)=s_0,\]</div>
+<span id="eq-basics-vdef"></span><span class="eqno">(2)</span>\[     v = \frac{ds}{dt},\quad s(0)=s_0,\]</div>
 <div class="math" id="equation-basics:adef">
-<span class="eqno">(3)</span>\[     a = \frac{dv}{dt},\quad v(0)=v_0\thinspace .\]</div>
+<span id="eq-basics-adef"></span><span class="eqno">(3)</span>\[     a = \frac{dv}{dt},\quad v(0)=v_0\thinspace .\]</div>
 <p>Given any acceleration <span class="math">\(a(t)\)</span>, we can solve for <span class="math">\(s(t)\)</span> through integration.
 First, we integrate to find <span class="math">\(v(t)\)</span>:</p>
 <div class="math">
@@ -826,11 +827,11 @@ First, we integrate to find <span class="math">\(v(t)\)</span>:</p>
 \[v(t) = v_0 + \int_0^t a(t)dt\thinspace .\]</div>
 <p>Then we integrate again over <span class="math">\([0,t]\)</span> to find <span class="math">\(s(t)\)</span>:</p>
 <div class="math" id="equation-basics:s:at">
-<span class="eqno">(4)</span>\[     s(t) = s_0 + v_0t + \int_0^t\left( \int_0^t a(t)dt \right) dt\thinspace .\]</div>
+<span id="eq-basics-s-at"></span><span class="eqno">(4)</span>\[     s(t) = s_0 + v_0t + \int_0^t\left( \int_0^t a(t)dt \right) dt\thinspace .\]</div>
 <p>Suppose we have some constant acceleration <span class="math">\(a_0\)</span> in <span class="math">\([0,t_1]\)</span> and no
 acceleration thereafter. We find</p>
 <div class="math" id="equation-basics:seq2">
-<span class="eqno">(5)</span>\[\begin{split}     s(t) = \left\lbrace\begin{array}{ll}
+<span id="eq-basics-seq2"></span><span class="eqno">(5)</span>\[\begin{split}     s(t) = \left\lbrace\begin{array}{ll}
      s_0 + v_0 t + \frac{1}{2}a_0 t^2,&amp; t\leq t_1\\
      s_0 + v_0t_1 + \frac{1}{2}a_0 t_1^2 + a_0t_1(t-t_1),&amp; t&gt; t_1
      \end{array}\right.\end{split}\]</div>
@@ -943,6 +944,123 @@ as <tt class="docutils literal"><span class="pre">s[b]</span></tt>:</p>
 </div>
 </div>
 </div>
+<div class="section" id="array-view-versus-array-copying">
+<h3>Array view versus array copying<a class="headerlink" href="#array-view-versus-array-copying" title="Permalink to this headline">¶</a></h3>
+<p>Arrays are usually large and most array libraries have carefully designed
+functionality for avoiding unnecessary copying of large of amounts of data.
+If you do a simple assignment,</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">b</span></tt> becomes a just <em>view</em> of <tt class="docutils literal"><span class="pre">a</span></tt>: the variables <tt class="docutils literal"><span class="pre">b</span></tt> and <tt class="docutils literal"><span class="pre">a</span></tt> point
+to the same data. In other languages one may say that <tt class="docutils literal"><span class="pre">b</span></tt> is a
+pointer or reference to the array. This means that changing <tt class="docutils literal"><span class="pre">a</span></tt> changes
+<tt class="docutils literal"><span class="pre">b</span></tt> and vice versa:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">array</span><span class="p">([</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">,</span>  <span class="mf">5.</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>                       <span class="c"># changes a[0] to 5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="n">array</span><span class="p">([</span> <span class="mf">5.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">,</span>  <span class="mf">5.</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span>                       <span class="c"># changes b[1] to 9</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
+<span class="n">array</span><span class="p">([</span> <span class="mf">5.</span><span class="p">,</span>  <span class="mf">9.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">,</span>  <span class="mf">5.</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Similarly, <tt class="docutils literal"><span class="pre">b[1:-1]</span></tt> gives a view to a subset of <tt class="docutils literal"><span class="pre">a</span></tt> and no copy of data.
+If we want to change <tt class="docutils literal"><span class="pre">b</span></tt> without affecting <tt class="docutils literal"><span class="pre">a</span></tt>, a copy of the array
+is required:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>       <span class="c"># copy all elements to new array c</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span>           <span class="c"># a is not changed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([ 1.,  2.,  3.,  4.,  5.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
+<span class="go">array([ 6.,  2.,  3.,  4.,  5.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<span class="go">array([ 5.,  2.,  3.,  4.,  5.])</span>
+</pre></div>
+</div>
+<p>Note that <tt class="docutils literal"><span class="pre">b</span></tt> remains unchanged by the change in <tt class="docutils literal"><span class="pre">c</span></tt> since the <tt class="docutils literal"><span class="pre">b</span></tt> and <tt class="docutils literal"><span class="pre">c</span></tt>
+variables now refer to different data. Copying of the elements of a sub-array
+is also done by the <tt class="docutils literal"><span class="pre">copy()</span></tt> method: <tt class="docutils literal"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">a[1:-1].copy()</span></tt>.</p>
+<div class="admonition-understand-the-difference-between-view-and-copy admonition">
+<p class="first admonition-title">Understand the difference between view and copy</p>
+<p>Mathematical errors and/or inefficient code may easily arise from
+confusion between array view and array copying. Make sure you
+understand the implication of any variable assignment to arrays!</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>            <span class="c"># view: changes in a are reflected in b</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>     <span class="c"># copy: changes in a are not reflected in b</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="linear-systems">
+<h3>Linear systems<a class="headerlink" href="#linear-systems" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="index-42"></span><span class="target" id="index-43"></span><p id="index-44">Solving linear systems of the form <span class="math">\(Ax=b\)</span> with a matrix <span class="math">\(A\)</span> and vectors
+<span class="math">\(x\)</span> and <span class="math">\(b\)</span> is a frequently encountered task. A sample <span class="math">\(2\times 2\)</span> system
+can be coded as</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">4</span><span class="p">,</span>  <span class="mi">2</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Many scientific computing problems involves large matrices with special
+<em>sparse</em> structures. Significant memory and computing time can be
+saved by utilizing <em>sparse matrix</em> data structures and associated
+algorithms.
+Python has sparse matrix package <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/sparse.html">scipy.sparse</a> that can be used to construct
+various types of sparse matrices. The particular
+function <tt class="docutils literal"><span class="pre">scipy.sparse.spdiags</span></tt> can construct a sparse matrix from
+a few vectors representing the diagonals in the matrix
+(all the diagonals must have the same length as the dimension of their
+sparse matrix, consequently some elements of the diagonals are not used:
+the first <span class="math">\(k\)</span> elements are not used of the <span class="math">\(k\)</span> super-diagonal, and
+the last  <span class="math">\(k\)</span> elements are not used of the <span class="math">\(-k\)</span> sub-diagonal).
+Here is an example of constructing a <em>tridiagonal</em> matrix:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">N</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">diagonals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>   <span class="c"># 3 diagonals</span>
+<span class="go">diagonals[0,:] = np.linspace(-1, -N, N)</span>
+<span class="go">diagonals[1,:] = -2</span>
+<span class="go">diagonals[2,:] = np.linspace(1, N, N)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scipy.sparse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">spdiags</span><span class="p">(</span><span class="n">diagonals</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s">&#39;csc&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>    <span class="c"># look at corresponding dense matrix</span>
+<span class="go">[[-2.  2.  0.  0.  0.  0.]</span>
+<span class="go"> [-1. -2.  3.  0.  0.  0.]</span>
+<span class="go"> [ 0. -2. -2.  4.  0.  0.]</span>
+<span class="go"> [ 0.  0. -3. -2.  5.  0.]</span>
+<span class="go"> [ 0.  0.  0. -4. -2.  6.]</span>
+<span class="go"> [ 0.  0.  0.  0. -5. -2.]]</span>
+</pre></div>
+</div>
+<p>Solving a linear system with a tridiagonal coefficient matrix requires
+a special function with a special algorithm to take advantage of
+the matrix&#8217; structure. The next example chooses a solution <tt class="docutils literal"><span class="pre">x</span></tt>,
+computes the corresponding right-hand side <span class="math">\(b=Ax\)</span> using the
+sparse matrix vector product associated with the sparse matrix <span class="math">\(A\)</span>,
+and then solves <span class="math">\(Ax=b\)</span>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>  <span class="c"># choose solution</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>               <span class="c"># sparse matrix vector product</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scipy.sparse.linalg</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">spsolve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">x</span>
+<span class="go">[-1.  -0.6 -0.2  0.2  0.6  1. ]</span>
+</pre></div>
+</div>
+<p>Although we can easily check that <tt class="docutils literal"><span class="pre">x</span></tt> is correctly computed, we can
+do another check by converting the linear system to its dense
+counterpart:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">A_d</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>            <span class="c"># corresponding dense matrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A_d</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>           <span class="c"># standard matrix vector product</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A_d</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>  <span class="c"># standard Ax=b algorithm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">x</span>
+<span class="go">[-1.  -0.6 -0.2  0.2  0.6  1. ]</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="files">
 <span id="basics-files"></span><h2>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h2>
@@ -1019,7 +1137,7 @@ after the <tt class="docutils literal"><span class="pre">with</span></tt> block.
 <tt class="docutils literal"><span class="pre">s_values</span></tt>, and want to write these as a nicely formatted table to file.
 The following code does the work:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">outfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;table1.dat&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
-<span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;# t    s(t)</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>  <span class="c"># write header</span>
+<span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;# t    s(t)</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>  <span class="c"># write table header</span>
 <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">t_values</span><span class="p">,</span> <span class="n">s_values</span><span class="p">):</span>
     <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%.2f</span><span class="s">  </span><span class="si">%.4f</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
 </pre></div>
@@ -1038,6 +1156,8 @@ added (<tt class="docutils literal"><span class="pre">header</span></tt>) and th
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="c"># Make two-dimensional array of [t, s(t)] values in each row</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">t_values</span><span class="p">,</span> <span class="n">s_values</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+
+<span class="c"># Write data array to file in table format</span>
 <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s">&#39;table2.dat&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;</span><span class="si">%.2f</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;</span><span class="si">%.4f</span><span class="s">&#39;</span><span class="p">],</span>
            <span class="n">header</span><span class="o">=</span><span class="s">&#39;t   s(t)&#39;</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s">&#39;# &#39;</span><span class="p">)</span>
 </pre></div>
@@ -1326,6 +1446,8 @@ the section <a class="reference internal" href="#basics-func"><em>Functions</em>
 <li><a class="reference internal" href="#functions">Functions</a></li>
 <li><a class="reference internal" href="#a-more-general-mathematical-formula">A more general mathematical formula</a></li>
 <li><a class="reference internal" href="#if-tests">If tests</a></li>
+<li><a class="reference internal" href="#array-view-versus-array-copying">Array view versus array copying</a></li>
+<li><a class="reference internal" href="#linear-systems">Linear systems</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#files">Files</a><ul>
@@ -1360,11 +1482,11 @@ the section <a class="reference internal" href="#basics-func"><em>Functions</em>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">A very basic introduction to scientific Python programming</a></p>
+  <p class="topless"><a href="._basics-basic000.html"
+                        title="previous chapter">&lt;no title&gt;</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/basics.txt"
+    <li><a href="_sources/._basics-basic001.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -1391,7 +1513,7 @@ the section <a class="reference internal" href="#basics-func"><em>Functions</em>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="index.html" title="A very basic introduction to scientific Python programming"
+          <a href="._basics-basic000.html" title="&lt;no title&gt;"
              >previous</a> |</li>
         <li><a href="index.html">A very basic introduction to scientific Python programming</a> &raquo;</li> 
       </ul>

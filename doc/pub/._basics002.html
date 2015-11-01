@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="A very basic introduction to scientific Python programming">
-<meta name="keywords" content="text editor,program file,assignment statement,print statement,variable,objects,formatting of numbers,printf syntax,format string syntax,while loop,boolean expression,Python Online Tutor,list,for loop,list comprehension,array,mathematical functions,import of modules,plotting,graphics,visualization,function (in Python),global variables,keyword arguments,default arguments,vectorization,vectorized functions,multiple return values,branching,if test,boolean expression,vectorizing if tests">
+<meta name="keywords" content="text editor,program file,assignment statement,print statement,variable,objects,formatting of numbers,printf syntax,format string syntax,while loop,boolean expression,Python Online Tutor,list,for loop,list comprehension,array,mathematical functions,import of modules,plotting,graphics,visualization,function (in Python),global variables,keyword arguments,default arguments,vectorization,vectorized functions,multiple return values,branching,if test,boolean expression,vectorizing if tests,linear systems,sparse matrix,tridigonal matrix">
 
 <title>A very basic introduction to scientific Python programming</title>
 
@@ -17,98 +17,105 @@ Automatically generated HTML file from DocOnce source
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
+<style type="text/css">
+/* Let inline verbatim have the same color as the surroundings */
+code { color: inherit; background-color: transparent; }
+</style>
+
 
 </head>
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Variables, loops, lists, and arrays ',
+ 'sections': [('Variables, loops, lists, and arrays',
                1,
                'basics:basic:objects',
                'basics:basic:objects'),
-              (' Getting access to Python ',
+              ('Getting access to Python',
                2,
                'basics:accesspy',
                'basics:accesspy'),
-              (' Mac and Windows ', 3, None, '___sec2'),
-              (' Ubuntu ', 3, None, '___sec3'),
-              (' Web access ', 3, None, '___sec4'),
-              (' Mathematical example ', 2, None, '___sec5'),
-              (' A program for evaluating a formula ',
+              ('Mac and Windows', 3, None, '___sec2'),
+              ('Ubuntu', 3, None, '___sec3'),
+              ('Web access', 3, None, '___sec4'),
+              ('Mathematical example', 2, None, '___sec5'),
+              ('A program for evaluating a formula',
                2,
                'basics:formula:eval',
                'basics:formula:eval'),
-              (' Formatted output with text and numbers ',
+              ('Formatted output with text and numbers',
                2,
                'basics:printf',
                'basics:printf'),
-              (' While loops ', 2, 'basics:while', 'basics:while'),
-              (' Lists ', 2, 'basics:list', 'basics:list'),
-              (' For loops ', 2, 'basics:for', 'basics:for'),
-              (' Arrays ', 2, 'basics:numpy', 'basics:numpy'),
-              (' Mathematical functions ', 2, 'basics:math', 'basics:math'),
-              (' Plotting ', 2, 'basics:plot', 'basics:plot'),
-              (' Functions and branching ',
+              ('While loops', 2, 'basics:while', 'basics:while'),
+              ('Lists', 2, 'basics:list', 'basics:list'),
+              ('For loops', 2, 'basics:for', 'basics:for'),
+              ('Arrays', 2, 'basics:numpy', 'basics:numpy'),
+              ('Mathematical functions', 2, 'basics:math', 'basics:math'),
+              ('Plotting', 2, 'basics:plot', 'basics:plot'),
+              ('Functions and branching',
                1,
                'basics:func:branching',
                'basics:func:branching'),
-              (' Functions ', 2, 'basics:func', 'basics:func'),
-              (' A more general mathematical formula ',
+              ('Functions', 2, 'basics:func', 'basics:func'),
+              ('A more general mathematical formula',
                2,
                'basics:formula:piecewise',
                'basics:formula:piecewise'),
-              (' If tests ', 2, 'basics:if', 'basics:if'),
-              (' Using the `where` function ', 3, None, '___sec18'),
-              (' Using array indexing ', 3, None, '___sec19'),
-              (' Files ', 1, 'basics:files', 'basics:files'),
-              (' File reading ', 2, None, '___sec21'),
-              (' File writing ', 2, None, '___sec22'),
-              (' Classes ', 1, 'basics:class', 'basics:class'),
-              (' A very simple class ', 2, None, '___sec24'),
-              (' A class for representing a mathematical function ',
+              ('If tests', 2, 'basics:if', 'basics:if'),
+              ('Using the `where` function', 3, None, '___sec18'),
+              ('Using array indexing', 3, None, '___sec19'),
+              ('Array view versus array copying', 2, None, '___sec20'),
+              ('Linear systems', 2, None, '___sec21'),
+              ('Files', 1, 'basics:files', 'basics:files'),
+              ('File reading', 2, None, '___sec23'),
+              ('File writing', 2, None, '___sec24'),
+              ('Classes', 1, 'basics:class', 'basics:class'),
+              ('A very simple class', 2, None, '___sec26'),
+              ('A class for representing a mathematical function',
                2,
                None,
-               '___sec25'),
-              (' The class code ', 3, None, '___sec26'),
-              (' Dissection ', 3, None, '___sec27'),
-              (' Exercises ', 1, 'basics:exer', 'basics:exer'),
-              (' Exercise 1: Program a formula ',
+               '___sec27'),
+              ('The class code', 3, None, '___sec28'),
+              ('Dissection', 3, None, '___sec29'),
+              ('Exercises', 1, 'basics:exer', 'basics:exer'),
+              ('Exercise 1: Program a formula',
                2,
                'basics:exer:formula1',
                'basics:exer:formula1'),
-              (' Exercise 2: Combine text and numbers in output ',
+              ('Exercise 2: Combine text and numbers in output',
                2,
                'basics:exer:printf1',
                'basics:exer:printf1'),
-              (' Exercise 3: Program a while loop ',
+              ('Exercise 3: Program a while loop',
                2,
                'basics:exer:while1',
                'basics:exer:while1'),
-              (' Exercise 4: Create a list with a while loop ',
+              ('Exercise 4: Create a list with a while loop',
                2,
                'basics:exer:while2',
                'basics:exer:while2'),
-              (' Exercise 5: Program a for loop ',
+              ('Exercise 5: Program a for loop',
                2,
                'basics:exer:for1',
                'basics:exer:for1'),
-              (' Exercise 6: Create a list with a for loop ',
-               2,
-               'basics:exer:for2',
-               'basics:exer:for2'),
-              (' Exercise 7: Write a Python function ',
+              ('Exercise 6: Write a Python function',
                2,
                'basics:exer:func1',
                'basics:exer:func1'),
-              (' Exercise 8: Return three values from a Python function ',
+              ('Exercise 7: Return three values from a Python function',
                2,
                'basics:exer:func3',
                'basics:exer:func3'),
-              (' Exercise 9: Plot a function ',
+              ('Exercise 8: Plot a function',
                2,
                'basics:exer:plot1',
                'basics:exer:plot1'),
-              (' Exercise 10: Measure the efficiency of vectorization ',
+              ('Exercise 9: Plot two functions',
+               2,
+               'basics:exer:plot2',
+               'basics:exer:plot2'),
+              ('Exercise 10: Measure the efficiency of vectorization',
                2,
                'basics:exer:timeit',
                'basics:exer:timeit')]}
@@ -353,7 +360,6 @@ s(t) = s_0 + v_0t + \int_0^t\left( \int_0^t a(t)dt \right) dt\thinspace .
 \end{equation}
 $$
 
-
 <p>
 Suppose we have some constant acceleration \( a_0 \) in \( [0,t_1] \) and no
 acceleration thereafter. We find
@@ -367,7 +373,6 @@ s_0 + v_0t_1 + \frac{1}{2}a_0 t_1^2 + a_0t_1(t-t_1),& t> t_1
 \tag{5}
 \end{equation}
 $$
-
 
 <p>
 To implement a function like <a href="#mjx-eqn-5">(5)</a>, we need to
@@ -532,6 +537,157 @@ s[t <span style="color: #666666">&gt;</span> t1]  <span style="color: #666666">=
 </div>
 
 
+<h2 id="___sec20">Array view versus array copying </h2>
+
+<p>
+Arrays are usually large and most array libraries have carefully designed
+functionality for avoiding unnecessary copying of large of amounts of data.
+If you do a simple assignment,
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">1</span>, <span style="color: #666666">5</span>, <span style="color: #666666">5</span>)
+b <span style="color: #666666">=</span> a
+</pre></div>
+<p>
+<code>b</code> becomes a just <em>view</em> of <code>a</code>: the variables <code>b</code> and <code>a</code> point
+to the same data. In other languages one may say that <code>b</code> is a
+pointer or reference to the array. This means that changing <code>a</code> changes
+<code>b</code> and vice versa:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">array([ <span style="color: #666666">1.</span>,  <span style="color: #666666">2.</span>,  <span style="color: #666666">3.</span>,  <span style="color: #666666">4.</span>,  <span style="color: #666666">5.</span>])
+<span style="color: #666666">&gt;&gt;&gt;</span> b[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #666666">5</span>                       <span style="color: #408080; font-style: italic"># changes a[0] to 5</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+array([ <span style="color: #666666">5.</span>,  <span style="color: #666666">2.</span>,  <span style="color: #666666">3.</span>,  <span style="color: #666666">4.</span>,  <span style="color: #666666">5.</span>])
+<span style="color: #666666">&gt;&gt;&gt;</span> a[<span style="color: #666666">1</span>] <span style="color: #666666">=</span> <span style="color: #666666">9</span>                       <span style="color: #408080; font-style: italic"># changes b[1] to 9</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> b
+array([ <span style="color: #666666">5.</span>,  <span style="color: #666666">9.</span>,  <span style="color: #666666">3.</span>,  <span style="color: #666666">4.</span>,  <span style="color: #666666">5.</span>])
+</pre></div>
+<p>
+Similarly, <code>b[1:-1]</code> gives a view to a subset of <code>a</code> and no copy of data.
+If we want to change <code>b</code> without affecting <code>a</code>, a copy of the array
+is required:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> c <span style="color: #666666">=</span> a<span style="color: #666666">.</span>copy()       <span style="color: #408080; font-style: italic"># copy all elements to new array c</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> c[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #666666">6</span>           <span style="color: #408080; font-style: italic"># a is not changed</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> a
+array([ <span style="color: #666666">1.</span>,  <span style="color: #666666">2.</span>,  <span style="color: #666666">3.</span>,  <span style="color: #666666">4.</span>,  <span style="color: #666666">5.</span>])
+<span style="color: #666666">&gt;&gt;&gt;</span> c
+array([ <span style="color: #666666">6.</span>,  <span style="color: #666666">2.</span>,  <span style="color: #666666">3.</span>,  <span style="color: #666666">4.</span>,  <span style="color: #666666">5.</span>])
+<span style="color: #666666">&gt;&gt;&gt;</span> b
+array([ <span style="color: #666666">5.</span>,  <span style="color: #666666">2.</span>,  <span style="color: #666666">3.</span>,  <span style="color: #666666">4.</span>,  <span style="color: #666666">5.</span>])
+</pre></div>
+<p>
+Note that <code>b</code> remains unchanged by the change in <code>c</code> since the <code>b</code> and <code>c</code>
+variables now refer to different data. Copying of the elements of a sub-array
+is also done by the <code>copy()</code> method: <code>b = a[1:-1].copy()</code>.
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Understand the difference between view and copy!</b>
+Mathematical errors and/or inefficient code may easily arise from
+confusion between array view and array copying. Make sure you
+understand the implication of any variable assignment to arrays!
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">a <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array([<span style="color: #666666">-1</span>, <span style="color: #666666">4.5</span>, <span style="color: #666666">8</span>, <span style="color: #666666">9</span>])
+b <span style="color: #666666">=</span> a[<span style="color: #666666">1</span>:<span style="color: #666666">-2</span>]            <span style="color: #408080; font-style: italic"># view: changes in a are reflected in b</span>
+b <span style="color: #666666">=</span> a[<span style="color: #666666">1</span>:<span style="color: #666666">-2</span>]<span style="color: #666666">.</span>copy()     <span style="color: #408080; font-style: italic"># copy: changes in a are not reflected in b</span>
+</pre></div>
+<p>
+</div>
+
+
+<h2 id="___sec21">Linear systems </h2>
+
+<p>
+Solving linear systems of the form \( Ax=b \) with a matrix \( A \) and vectors
+\( x \) and \( b \) is a frequently encountered task. A sample \( 2\times 2 \) system
+can be coded as
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+A <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array([[<span style="color: #666666">1.</span>, <span style="color: #666666">2</span>],
+              [<span style="color: #666666">4</span>,  <span style="color: #666666">2</span>]])
+b <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array([<span style="color: #666666">1.</span>, <span style="color: #666666">-2</span>])
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linalg<span style="color: #666666">.</span>solve(A, b)
+</pre></div>
+<p>
+Many scientific computing problems involves large matrices with special
+<em>sparse</em> structures. Significant memory and computing time can be
+saved by utilizing <em>sparse matrix</em> data structures and associated
+algorithms.
+Python has sparse matrix package <a href="http://docs.scipy.org/doc/scipy/reference/sparse.html" target="_self">scipy.sparse</a> that can be used to construct
+various types of sparse matrices. The particular
+function <code>scipy.sparse.spdiags</code> can construct a sparse matrix from
+a few vectors representing the diagonals in the matrix
+(all the diagonals must have the same length as the dimension of their
+sparse matrix, consequently some elements of the diagonals are not used:
+the first \( k \) elements are not used of the \( k \) super-diagonal, and
+the last  \( k \) elements are not used of the \( -k \) sub-diagonal).
+Here is an example of constructing a <em>tridiagonal</em> matrix:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> N <span style="color: #666666">=</span> <span style="color: #666666">6</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> diagonals <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros((<span style="color: #666666">3</span>, N))   <span style="color: #408080; font-style: italic"># 3 diagonals</span>
+diagonals[<span style="color: #666666">0</span>,:] <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">-1</span>, <span style="color: #666666">-</span>N, N)
+diagonals[<span style="color: #666666">1</span>,:] <span style="color: #666666">=</span> <span style="color: #666666">-2</span>
+diagonals[<span style="color: #666666">2</span>,:] <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">1</span>, N, N)
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">scipy.sparse</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> A <span style="color: #666666">=</span> scipy<span style="color: #666666">.</span>sparse<span style="color: #666666">.</span>spdiags(diagonals, [<span style="color: #666666">-1</span>,<span style="color: #666666">0</span>,<span style="color: #666666">1</span>], N, N, format<span style="color: #666666">=</span><span style="color: #BA2121">&#39;csc&#39;</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> A<span style="color: #666666">.</span>toarray()    <span style="color: #408080; font-style: italic"># look at corresponding dense matrix</span>
+[[<span style="color: #666666">-2.</span>  <span style="color: #666666">2.</span>  <span style="color: #666666">0.</span>  <span style="color: #666666">0.</span>  <span style="color: #666666">0.</span>  <span style="color: #666666">0.</span>]
+ [<span style="color: #666666">-1.</span> <span style="color: #666666">-2.</span>  <span style="color: #666666">3.</span>  <span style="color: #666666">0.</span>  <span style="color: #666666">0.</span>  <span style="color: #666666">0.</span>]
+ [ <span style="color: #666666">0.</span> <span style="color: #666666">-2.</span> <span style="color: #666666">-2.</span>  <span style="color: #666666">4.</span>  <span style="color: #666666">0.</span>  <span style="color: #666666">0.</span>]
+ [ <span style="color: #666666">0.</span>  <span style="color: #666666">0.</span> <span style="color: #666666">-3.</span> <span style="color: #666666">-2.</span>  <span style="color: #666666">5.</span>  <span style="color: #666666">0.</span>]
+ [ <span style="color: #666666">0.</span>  <span style="color: #666666">0.</span>  <span style="color: #666666">0.</span> <span style="color: #666666">-4.</span> <span style="color: #666666">-2.</span>  <span style="color: #666666">6.</span>]
+ [ <span style="color: #666666">0.</span>  <span style="color: #666666">0.</span>  <span style="color: #666666">0.</span>  <span style="color: #666666">0.</span> <span style="color: #666666">-5.</span> <span style="color: #666666">-2.</span>]]
+</pre></div>
+<p>
+Solving a linear system with a tridiagonal coefficient matrix requires
+a special function with a special algorithm to take advantage of
+the matrix' structure. The next example chooses a solution <code>x</code>,
+computes the corresponding right-hand side \( b=Ax \) using the
+sparse matrix vector product associated with the sparse matrix \( A \),
+and then solves \( Ax=b \):
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">-1</span>, <span style="color: #666666">1</span>, N)  <span style="color: #408080; font-style: italic"># choose solution</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> b <span style="color: #666666">=</span> A<span style="color: #666666">.</span>dot(x)               <span style="color: #408080; font-style: italic"># sparse matrix vector product</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">scipy.sparse.linalg</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> scipy<span style="color: #666666">.</span>sparse<span style="color: #666666">.</span>linalg<span style="color: #666666">.</span>spsolve(A, b)
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> x
+[<span style="color: #666666">-1.</span>  <span style="color: #666666">-0.6</span> <span style="color: #666666">-0.2</span>  <span style="color: #666666">0.2</span>  <span style="color: #666666">0.6</span>  <span style="color: #666666">1.</span> ]
+</pre></div>
+<p>
+Although we can easily check that <code>x</code> is correctly computed, we can
+do another check by converting the linear system to its dense
+counterpart:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> A_d <span style="color: #666666">=</span> A<span style="color: #666666">.</span>toarray()            <span style="color: #408080; font-style: italic"># corresponding dense matrix</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> b <span style="color: #666666">=</span> np<span style="color: #666666">.</span>dot(A_d, x)           <span style="color: #408080; font-style: italic"># standard matrix vector product</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linalg<span style="color: #666666">.</span>solve(A_d, b)  <span style="color: #408080; font-style: italic"># standard Ax=b algorithm</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> x
+[<span style="color: #666666">-1.</span>  <span style="color: #666666">-0.6</span> <span style="color: #666666">-0.2</span>  <span style="color: #666666">0.2</span>  <span style="color: #666666">0.6</span>  <span style="color: #666666">1.</span> ]
+</pre></div>
 <p>
 <p>
 <!-- navigation buttons at the bottom of the page -->

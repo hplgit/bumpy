@@ -1,0 +1,294 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Classes</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
+    <link rel="top" title="A very basic introduction to scientific Python programming" href="index.html" />
+    <link rel="next" title="Exercises" href="._basics005.html" />
+    <link rel="prev" title="Files" href="._basics003.html" />
+ 
+  
+       <style type="text/css">
+         div.admonition {
+           background-color: whiteSmoke;
+           border: 1px solid #bababa;
+         }
+       </style>
+      </head>
+    
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="._basics005.html" title="Exercises"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="._basics003.html" title="Files"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">A very basic introduction to scientific Python programming</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="classes">
+<span id="basics-class"></span><h1>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h1>
+<p>All objects in Python are in fact implemented as classes, but you can
+program with objects without knowing about classes. Nevertheless,
+the class concept is a powerful tool and some basic knowledge will
+make it easier to understand much useful Python information that is
+floating around.</p>
+<div class="section" id="a-very-simple-class">
+<h2>A very simple class<a class="headerlink" href="#a-very-simple-class" title="Permalink to this headline">¶</a></h2>
+<p>A class packs together a set of variables and a set of functions. All
+functions can access all variables. <a class="footnote-reference" href="#class-terminology" id="id1">[1]</a> The idea is
+to encapsulate variables and functions in logical units such that a
+larger program can be composed by combing such units (classes).</p>
+<table class="docutils footnote" frame="void" id="class-terminology" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>In classes, the functions are called
+<em>methods</em> and the variables are called <em>attributes</em>.</td></tr>
+</tbody>
+</table>
+<p>Here is a trivial class that has one variable <code class="docutils literal"><span class="pre">a</span></code> and one
+function <code class="docutils literal"><span class="pre">dump</span></code> that writes the contents of <code class="docutils literal"><span class="pre">a</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Trivial</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span>
+
+    <span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span>
+</pre></div>
+</div>
+<p>How can we use this class? First, we must make an <em>instance</em> (object)
+of the class:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">t</span> <span class="o">=</span> <span class="n">Trivial</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The syntax <code class="docutils literal"><span class="pre">Trivial(a=4)</span></code> implies a call to the <code class="docutils literal"><span class="pre">__init__</span></code> method (function)
+with <code class="docutils literal"><span class="pre">4</span></code> as the value of the argument <code class="docutils literal"><span class="pre">a</span></code>. Inside <code class="docutils literal"><span class="pre">__init__</span></code>,
+we store the value of <code class="docutils literal"><span class="pre">a</span></code> as an attribute in the class: <code class="docutils literal"><span class="pre">self.a</span></code>.
+If there were several methods in the class, all of them could then
+access <code class="docutils literal"><span class="pre">self.a</span></code> (as if <code class="docutils literal"><span class="pre">a</span></code> were some global variable in the class).
+The <code class="docutils literal"><span class="pre">__init__</span></code> function is called a <em>constructor</em> since it is used
+to construct an instance (object) of the class.</p>
+<p>Having an instance <code class="docutils literal"><span class="pre">t</span></code> of class <code class="docutils literal"><span class="pre">Trivial</span></code>, we can call the <code class="docutils literal"><span class="pre">dump</span></code> method
+as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">t</span><span class="o">.</span><span class="n">dump</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Even though both <code class="docutils literal"><span class="pre">__init__</span></code> and <code class="docutils literal"><span class="pre">dump</span></code> have <code class="docutils literal"><span class="pre">self</span></code> as first argument,
+this argument <em>is not used in a call</em>.</p>
+<div class="admonition-the-self-argument admonition">
+<p class="first admonition-title">The <code class="docutils literal"><span class="pre">self</span></code> argument</p>
+<p>It takes time and experience to understand the <code class="docutils literal"><span class="pre">self</span></code> argument in
+class methods.</p>
+<ol class="arabic simple">
+<li><code class="docutils literal"><span class="pre">self</span></code> must always be the first argument.</li>
+<li><code class="docutils literal"><span class="pre">self</span></code> is never used in calls.</li>
+<li><code class="docutils literal"><span class="pre">self</span></code> is used to access attributes and methods inside methods.</li>
+</ol>
+<p class="last">We refer to a <a class="reference external" href="http://hplgit.github.io/primer.html/doc/pub/class/index.html">more comprehensive text on classes</a>
+for better explanation of <code class="docutils literal"><span class="pre">self</span></code>.</p>
+</div>
+</div>
+<div class="section" id="a-class-for-representing-a-mathematical-function">
+<h2>A class for representing a mathematical function<a class="headerlink" href="#a-class-for-representing-a-mathematical-function" title="Permalink to this headline">¶</a></h2>
+<p>The Python implementation of the mathematical function</p>
+<div class="math">
+\[s(t; v_0, a) = v_0t + \frac{1}{2}at^2\]</div>
+<p>can benefit from being implemented as a class. The reason is that
+<span class="math">\(s\)</span> is a function of one variable, <span class="math">\(t\)</span>, so it should be called as
+<span class="math">\(s(t)\)</span>, but the function also contains two parameters, <span class="math">\(v_0\)</span> and <span class="math">\(a\)</span>.
+Using a class, we can pack <span class="math">\(v_0\)</span> and <span class="math">\(a\)</span> together with a function
+computing <span class="math">\(s(t)\)</span> and that can be called with one argument.</p>
+<div class="section" id="the-class-code">
+<h3>The class code<a class="headerlink" href="#the-class-code" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Distance</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v0</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v0</span> <span class="o">=</span> <span class="n">v0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="n">v0</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span>  <span class="c"># make local variables</span>
+        <span class="k">return</span> <span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dissection">
+<h3>Dissection<a class="headerlink" href="#dissection" title="Permalink to this headline">¶</a></h3>
+<p>The class has two methods (functions). The name of a method can
+be freely chosen by the programmer, say <code class="docutils literal"><span class="pre">dump</span></code> as we used above,
+but here we have used three
+special names, starting and
+ending with double underscores, which allows us to use special
+attractive syntax in the calls (such methods are actually known as
+<em>special methods</em>).</p>
+<p>The constructor <code class="docutils literal"><span class="pre">__init__</span></code> has one purpose: storing data in
+class attributes, here <code class="docutils literal"><span class="pre">self.v0</span></code> and <code class="docutils literal"><span class="pre">self.a</span></code>. We can then access
+these data in class methods.</p>
+<p>The <code class="docutils literal"><span class="pre">__call__</span></code> method is used to evaluate <span class="math">\(s(t)\)</span>. It has one
+argument (<code class="docutils literal"><span class="pre">self</span></code> does not count since it is never used in calls).
+This special methods allows us to view a class instance as if
+were a function. Let us illustrate by some code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">s</span> <span class="o">=</span> <span class="n">Distance</span><span class="p">(</span><span class="n">v0</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c"># create instance</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>               <span class="c"># runs s.__call__(t=0.2)</span>
+</pre></div>
+</div>
+<p>The last line has some magic: <code class="docutils literal"><span class="pre">s</span></code> is a class instance, not a function,
+but still we can write <code class="docutils literal"><span class="pre">s(t=0.2)</span></code> or <code class="docutils literal"><span class="pre">s(0.2)</span></code> as if <code class="docutils literal"><span class="pre">s</span></code> were
+a function. This is the purpose of the special method <code class="docutils literal"><span class="pre">__call__</span></code>:
+to allow such syntax. Actually, <code class="docutils literal"><span class="pre">s(0.2)</span></code> means
+<code class="docutils literal"><span class="pre">s.__call__(0.2)</span></code>. The nice result is that <code class="docutils literal"><span class="pre">s</span></code> looks like a
+function, it takes one argument <code class="docutils literal"><span class="pre">t</span></code>, as the mathematical function <span class="math">\(s(t)\)</span>,
+but it also contains values of the two parameters <span class="math">\(v_0\)</span> and <span class="math">\(a\)</span>.</p>
+<p>In general, for a function <span class="math">\(f(x,y,z; p_1,p_2,\ldots,p_n)\)</span>, here with
+three independent variables and <span class="math">\(n\)</span> parameters <span class="math">\(p_1,p_2,\ldots,p_n\)</span>,
+we can pack the function and the parameters together in a class:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">F</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p1</span> <span class="o">=</span> <span class="n">p1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p2</span> <span class="o">=</span> <span class="n">p2</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+        <span class="c"># return formula involving x, y, z and self.p1, self.p2 ...</span>
+</pre></div>
+</div>
+<p>The <span class="math">\(f\)</span> function is initialized by</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">p1</span><span class="o">=...</span><span class="p">,</span> <span class="n">p2</span><span class="o">=...</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and later called as <code class="docutils literal"><span class="pre">f(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code>.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <center>
+            <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
+              <img class="logo" src="_static/cbc_logo.png" alt="Logo"/>
+            </a></p>
+            </center>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Classes</a><ul>
+<li><a class="reference internal" href="#a-very-simple-class">A very simple class</a></li>
+<li><a class="reference internal" href="#a-class-for-representing-a-mathematical-function">A class for representing a mathematical function</a><ul>
+<li><a class="reference internal" href="#the-class-code">The class code</a></li>
+<li><a class="reference internal" href="#dissection">Dissection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="._basics003.html"
+                        title="previous chapter">Files</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="._basics005.html"
+                        title="next chapter">Exercises</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/._basics004.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="._basics005.html" title="Exercises"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="._basics003.html" title="Files"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">A very basic introduction to scientific Python programming</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
+    <br />
+    <br />
+      &copy;H. P. Langtangen.
+  </div>
+</div>
+
+  </body>
+</html>

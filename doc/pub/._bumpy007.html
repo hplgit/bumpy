@@ -17,73 +17,66 @@ Automatically generated HTML file from DocOnce source
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
+<style type="text/css">
+/* Let inline verbatim have the same color as the surroundings */
+code { color: inherit; background-color: transparent; }
+</style>
+
 
 </head>
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Optimal background for reading this note ',
+ 'sections': [('Optimal background for reading this note',
                3,
                None,
                '___sec0'),
-              (' A scientific application ', 1, None, '___sec1'),
-              (' Physical problem and mathematical model ',
-               2,
-               None,
-               '___sec2'),
-              (' Numerical model ', 2, None, '___sec3'),
-              (' Simple implementation ', 2, None, '___sec4'),
-              (' Dissection of the code ', 2, None, '___sec5'),
-              (' More advanced implementation ', 2, None, '___sec6'),
-              (' Dissection of the code ', 2, None, '___sec7'),
-              (' The excitation force ', 2, None, '___sec8'),
-              (' A high-level solve function ', 2, None, '___sec9'),
-              (' Storing Python objects in files ', 2, None, '___sec10'),
-              (' Computing the root mean square value ', 2, None, '___sec11'),
-              (' User input ', 1, None, '___sec12'),
-              (' Positional command-line arguments ', 2, None, '___sec13'),
-              (' Option-value pairs on the command line ',
-               2,
-               None,
-               '___sec14'),
-              (' Visual exploration ', 1, None, '___sec15'),
-              (' Test case ', 3, None, '___sec16'),
-              (' Importing array and plot functionality ',
-               3,
-               None,
-               '___sec17'),
-              (' Reading results from file ', 3, None, '___sec18'),
-              (' Plotting $u$ ', 3, None, '___sec19'),
-              (" Computing and plotting $u'$ ", 3, None, '___sec20'),
-              (" Vectorized computation of $u'$ ", 3, None, '___sec21'),
-              (' Computing the spectrum of signals ', 2, None, '___sec22'),
-              (' Multiple plots in the same figure ', 2, None, '___sec23'),
-              (' Advanced topics ', 1, None, '___sec24'),
-              (' Symbolic computing via SymPy ', 2, None, '___sec25'),
-              (' Testing ', 2, None, '___sec26'),
-              (' Example on a test function ', 3, None, '___sec27'),
-              (' Test function for the numerical solver ',
-               3,
-               None,
-               '___sec28'),
-              (' Using a test framework ', 3, None, '___sec29'),
-              (' Modules ', 2, None, '___sec30'),
-              (' Appendix: Quick motivation for programming with Python ',
+              ('A scientific application', 1, None, '___sec1'),
+              ('Physical problem and mathematical model', 2, None, '___sec2'),
+              ('Numerical model', 2, None, '___sec3'),
+              ('Simple implementation', 2, None, '___sec4'),
+              ('Dissection of the code', 2, None, '___sec5'),
+              ('More advanced implementation', 2, None, '___sec6'),
+              ('Dissection of the code', 2, None, '___sec7'),
+              ('The excitation force', 2, None, '___sec8'),
+              ('A high-level solve function', 2, None, '___sec9'),
+              ('Storing Python objects in files', 2, None, '___sec10'),
+              ('Computing the root mean square value', 2, None, '___sec11'),
+              ('User input', 1, None, '___sec12'),
+              ('Positional command-line arguments', 2, None, '___sec13'),
+              ('Option-value pairs on the command line', 2, None, '___sec14'),
+              ('Visual exploration', 1, None, '___sec15'),
+              ('Test case', 3, None, '___sec16'),
+              ('Importing array and plot functionality', 3, None, '___sec17'),
+              ('Reading results from file', 3, None, '___sec18'),
+              ('Plotting $u$', 3, None, '___sec19'),
+              ("Computing and plotting $u'$", 3, None, '___sec20'),
+              ("Vectorized computation of $u'$", 3, None, '___sec21'),
+              ('Computing the spectrum of signals', 2, None, '___sec22'),
+              ('Multiple plots in the same figure', 2, None, '___sec23'),
+              ('Advanced topics', 1, None, '___sec24'),
+              ('Symbolic computing via SymPy', 2, None, '___sec25'),
+              ('Testing', 2, None, '___sec26'),
+              ('Example on a test function', 3, None, '___sec27'),
+              ('Test function for the numerical solver', 3, None, '___sec28'),
+              ('Using a test framework', 3, None, '___sec29'),
+              ('Modules', 2, None, '___sec30'),
+              ('Appendix: Quick motivation for programming with Python',
                1,
                'app:motivation',
                'app:motivation'),
-              (' Appendix: Scientific Python resources ',
+              ('Appendix: Scientific Python resources',
                1,
                'app:resources',
                'app:resources'),
-              (' Full tutorials on scientific programming with Python ',
+              ('Full tutorials on scientific programming with Python',
                3,
                None,
                '___sec33'),
-              (' NumPy resources ', 3, None, '___sec34'),
-              (' Useful resources ', 3, None, '___sec35'),
-              (' Some relevant Python books ', 3, None, '___sec36'),
-              (' Course material on Python programming in general ',
+              ('NumPy resources', 3, None, '___sec34'),
+              ('Useful resources', 3, None, '___sec35'),
+              ('Some relevant Python books', 3, None, '___sec36'),
+              ('Course material on Python programming in general',
                3,
                None,
                '___sec37')]}
@@ -243,11 +236,17 @@ in Python:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">cPickle</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">cPickle</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pickle</span>
+<span style="color: #408080; font-style: italic"># Or using a more advanced module</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">dill</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pickle</span>
 outfile <span style="color: #666666">=</span> <span style="color: #008000">open</span>(<span style="color: #BA2121">&#39;bumpy.res&#39;</span>, <span style="color: #BA2121">&#39;w&#39;</span>)
-cPickle<span style="color: #666666">.</span>dump(data, outfile)
+pickle<span style="color: #666666">.</span>dump(data, outfile)
 outfile<span style="color: #666666">.</span>close()
 </pre></div>
+<p>
+The advantage of the <code>dill</code> module over <code>cPickle</code> is that it can
+store a wider range of Python objects (e.g., lambda functions).
+
 <p>
 The code above and the <code>bumpy_road</code> function are found in the
 file
@@ -259,7 +258,7 @@ file
 Since the roads have a quite noise shape, the force \( F=-ma \) looks
 very noisy, while the response \( u(t) \) to this excitation is
 significantly less noisy,
-see the bottom plot in Figure <a href="._bumpy009.html#bumpy:fig4">6</a> for an example.
+see the bottom plot in Figure <a href="._bumpy009.html#bumpy:fig4">5</a> for an example.
 It may be useful to compute the <a href="http://en.wikipedia.org/wiki/Root_mean_square" target="_self">root mean square value</a> of \( u \) to get
 a number for the typical amplitude of the vibrations:
 

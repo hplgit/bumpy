@@ -1,3 +1,10 @@
+"""
+Make animation of vehicle on bumpy road. Sketch the vehicle and the
+surroundings. Then solve the differential equations for the vertical
+oscillatory motion, feed the solution to the sketch, and move
+the sketch to the right.
+"""
+
 import numpy as np
 from pysketcher import *
 

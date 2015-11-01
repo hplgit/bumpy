@@ -7,14 +7,17 @@ A very basic introduction to scientific Python programming
 Contents:
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
 
-   basics
+   ._basics000
+   ._basics001
+   ._basics002
+   ._basics003
+   ._basics004
+   ._basics005
 
 
-Indices and tables
-==================
+Index
+=====
 
 * :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

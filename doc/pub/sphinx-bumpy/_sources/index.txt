@@ -11,11 +11,14 @@ Contents:
 
    ._bumpy000
    ._bumpy001
+   ._bumpy002
+   ._bumpy003
+   ._bumpy004
+   ._bumpy005
+   ._bumpy006
 
 
-Indices and tables
-==================
+Index
+=====
 
 * :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

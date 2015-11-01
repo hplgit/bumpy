@@ -17,73 +17,66 @@ Automatically generated HTML file from DocOnce source
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
+<style type="text/css">
+/* Let inline verbatim have the same color as the surroundings */
+code { color: inherit; background-color: transparent; }
+</style>
+
 
 </head>
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Optimal background for reading this note ',
+ 'sections': [('Optimal background for reading this note',
                3,
                None,
                '___sec0'),
-              (' A scientific application ', 1, None, '___sec1'),
-              (' Physical problem and mathematical model ',
-               2,
-               None,
-               '___sec2'),
-              (' Numerical model ', 2, None, '___sec3'),
-              (' Simple implementation ', 2, None, '___sec4'),
-              (' Dissection of the code ', 2, None, '___sec5'),
-              (' More advanced implementation ', 2, None, '___sec6'),
-              (' Dissection of the code ', 2, None, '___sec7'),
-              (' The excitation force ', 2, None, '___sec8'),
-              (' A high-level solve function ', 2, None, '___sec9'),
-              (' Storing Python objects in files ', 2, None, '___sec10'),
-              (' Computing the root mean square value ', 2, None, '___sec11'),
-              (' User input ', 1, None, '___sec12'),
-              (' Positional command-line arguments ', 2, None, '___sec13'),
-              (' Option-value pairs on the command line ',
-               2,
-               None,
-               '___sec14'),
-              (' Visual exploration ', 1, None, '___sec15'),
-              (' Test case ', 3, None, '___sec16'),
-              (' Importing array and plot functionality ',
-               3,
-               None,
-               '___sec17'),
-              (' Reading results from file ', 3, None, '___sec18'),
-              (' Plotting $u$ ', 3, None, '___sec19'),
-              (" Computing and plotting $u'$ ", 3, None, '___sec20'),
-              (" Vectorized computation of $u'$ ", 3, None, '___sec21'),
-              (' Computing the spectrum of signals ', 2, None, '___sec22'),
-              (' Multiple plots in the same figure ', 2, None, '___sec23'),
-              (' Advanced topics ', 1, None, '___sec24'),
-              (' Symbolic computing via SymPy ', 2, None, '___sec25'),
-              (' Testing ', 2, None, '___sec26'),
-              (' Example on a test function ', 3, None, '___sec27'),
-              (' Test function for the numerical solver ',
-               3,
-               None,
-               '___sec28'),
-              (' Using a test framework ', 3, None, '___sec29'),
-              (' Modules ', 2, None, '___sec30'),
-              (' Appendix: Quick motivation for programming with Python ',
+              ('A scientific application', 1, None, '___sec1'),
+              ('Physical problem and mathematical model', 2, None, '___sec2'),
+              ('Numerical model', 2, None, '___sec3'),
+              ('Simple implementation', 2, None, '___sec4'),
+              ('Dissection of the code', 2, None, '___sec5'),
+              ('More advanced implementation', 2, None, '___sec6'),
+              ('Dissection of the code', 2, None, '___sec7'),
+              ('The excitation force', 2, None, '___sec8'),
+              ('A high-level solve function', 2, None, '___sec9'),
+              ('Storing Python objects in files', 2, None, '___sec10'),
+              ('Computing the root mean square value', 2, None, '___sec11'),
+              ('User input', 1, None, '___sec12'),
+              ('Positional command-line arguments', 2, None, '___sec13'),
+              ('Option-value pairs on the command line', 2, None, '___sec14'),
+              ('Visual exploration', 1, None, '___sec15'),
+              ('Test case', 3, None, '___sec16'),
+              ('Importing array and plot functionality', 3, None, '___sec17'),
+              ('Reading results from file', 3, None, '___sec18'),
+              ('Plotting $u$', 3, None, '___sec19'),
+              ("Computing and plotting $u'$", 3, None, '___sec20'),
+              ("Vectorized computation of $u'$", 3, None, '___sec21'),
+              ('Computing the spectrum of signals', 2, None, '___sec22'),
+              ('Multiple plots in the same figure', 2, None, '___sec23'),
+              ('Advanced topics', 1, None, '___sec24'),
+              ('Symbolic computing via SymPy', 2, None, '___sec25'),
+              ('Testing', 2, None, '___sec26'),
+              ('Example on a test function', 3, None, '___sec27'),
+              ('Test function for the numerical solver', 3, None, '___sec28'),
+              ('Using a test framework', 3, None, '___sec29'),
+              ('Modules', 2, None, '___sec30'),
+              ('Appendix: Quick motivation for programming with Python',
                1,
                'app:motivation',
                'app:motivation'),
-              (' Appendix: Scientific Python resources ',
+              ('Appendix: Scientific Python resources',
                1,
                'app:resources',
                'app:resources'),
-              (' Full tutorials on scientific programming with Python ',
+              ('Full tutorials on scientific programming with Python',
                3,
                None,
                '___sec33'),
-              (' NumPy resources ', 3, None, '___sec34'),
-              (' Useful resources ', 3, None, '___sec35'),
-              (' Some relevant Python books ', 3, None, '___sec36'),
-              (' Course material on Python programming in general ',
+              ('NumPy resources', 3, None, '___sec34'),
+              ('Useful resources', 3, None, '___sec35'),
+              ('Some relevant Python books', 3, None, '___sec36'),
+              ('Course material on Python programming in general',
                3,
                None,
                '___sec37')]}
@@ -264,9 +257,9 @@ in a <em>test function</em>:
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">lhs_eq</span>(t, m, b, s, u, damping<span style="color: #666666">=</span><span style="color: #BA2121">&#39;linear&#39;</span>):
     <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Return lhs of differential equation as sympy expression.&quot;&quot;&quot;</span>
-    v <span style="color: #666666">=</span> sm<span style="color: #666666">.</span>diff(u, t)
-    d <span style="color: #666666">=</span> b<span style="color: #666666">*</span>v <span style="color: #008000; font-weight: bold">if</span> damping <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;linear&#39;</span> <span style="color: #008000; font-weight: bold">else</span> b<span style="color: #666666">*</span>v<span style="color: #666666">*</span>sm<span style="color: #666666">.</span>Abs(v)
-    <span style="color: #008000; font-weight: bold">return</span> m<span style="color: #666666">*</span>sm<span style="color: #666666">.</span>diff(u, t, t) <span style="color: #666666">+</span> d <span style="color: #666666">+</span> s(u)
+    v <span style="color: #666666">=</span> sp<span style="color: #666666">.</span>diff(u, t)
+    d <span style="color: #666666">=</span> b<span style="color: #666666">*</span>v <span style="color: #008000; font-weight: bold">if</span> damping <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;linear&#39;</span> <span style="color: #008000; font-weight: bold">else</span> b<span style="color: #666666">*</span>v<span style="color: #666666">*</span>sp<span style="color: #666666">.</span>Abs(v)
+    <span style="color: #008000; font-weight: bold">return</span> m<span style="color: #666666">*</span>sp<span style="color: #666666">.</span>diff(u, t, t) <span style="color: #666666">+</span> d <span style="color: #666666">+</span> s(u)
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_solver</span>():
     <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Verify linear/quadratic solution.&quot;&quot;&quot;</span>
@@ -279,14 +272,14 @@ in a <em>test function</em>:
     time_points <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, T, N<span style="color: #666666">+1</span>)
 
     <span style="color: #408080; font-style: italic"># Test linear damping</span>
-    t <span style="color: #666666">=</span> sm<span style="color: #666666">.</span>Symbol(<span style="color: #BA2121">&#39;t&#39;</span>)
+    t <span style="color: #666666">=</span> sp<span style="color: #666666">.</span>Symbol(<span style="color: #BA2121">&#39;t&#39;</span>)
     q <span style="color: #666666">=</span> <span style="color: #666666">2</span>  <span style="color: #408080; font-style: italic"># arbitrary constant</span>
     u_exact <span style="color: #666666">=</span> I <span style="color: #666666">+</span> V<span style="color: #666666">*</span>t <span style="color: #666666">+</span> q<span style="color: #666666">*</span>t<span style="color: #666666">**2</span>   <span style="color: #408080; font-style: italic"># sympy expression</span>
     F_term <span style="color: #666666">=</span> lhs_eq(t, m, b, s, u_exact, <span style="color: #BA2121">&#39;linear&#39;</span>)
     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Fitted source term, linear case:&#39;</span>, F_term
-    F <span style="color: #666666">=</span> sm<span style="color: #666666">.</span>lambdify([t], F_term)
+    F <span style="color: #666666">=</span> sp<span style="color: #666666">.</span>lambdify([t], F_term)
     u, t_ <span style="color: #666666">=</span> solver(I, V, m, b, s, F, time_points, <span style="color: #BA2121">&#39;linear&#39;</span>)
-    u_e <span style="color: #666666">=</span> sm<span style="color: #666666">.</span>lambdify([t], u_exact, modules<span style="color: #666666">=</span><span style="color: #BA2121">&#39;numpy&#39;</span>)
+    u_e <span style="color: #666666">=</span> sp<span style="color: #666666">.</span>lambdify([t], u_exact, modules<span style="color: #666666">=</span><span style="color: #BA2121">&#39;numpy&#39;</span>)
     error <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(u_e(t_) <span style="color: #666666">-</span> u)<span style="color: #666666">.</span>max()
     tol <span style="color: #666666">=</span> <span style="color: #666666">1E-13</span>
     <span style="color: #008000; font-weight: bold">assert</span> error <span style="color: #666666">&lt;</span> tol
@@ -295,9 +288,9 @@ in a <em>test function</em>:
     u_exact <span style="color: #666666">=</span> I <span style="color: #666666">+</span> V<span style="color: #666666">*</span>t
     F_term <span style="color: #666666">=</span> lhs_eq(t, m, b, s, u_exact, <span style="color: #BA2121">&#39;quadratic&#39;</span>)
     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Fitted source term, quadratic case:&#39;</span>, F_term
-    F <span style="color: #666666">=</span> sm<span style="color: #666666">.</span>lambdify([t], F_term)
+    F <span style="color: #666666">=</span> sp<span style="color: #666666">.</span>lambdify([t], F_term)
     u, t_ <span style="color: #666666">=</span> solver(I, V, m, b, s, F, time_points, <span style="color: #BA2121">&#39;quadratic&#39;</span>)
-    u_e <span style="color: #666666">=</span> sm<span style="color: #666666">.</span>lambdify([t], u_exact, modules<span style="color: #666666">=</span><span style="color: #BA2121">&#39;numpy&#39;</span>)
+    u_e <span style="color: #666666">=</span> sp<span style="color: #666666">.</span>lambdify([t], u_exact, modules<span style="color: #666666">=</span><span style="color: #BA2121">&#39;numpy&#39;</span>)
     error <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(u_e(t_) <span style="color: #666666">-</span> u)<span style="color: #666666">.</span>max()
     <span style="color: #008000; font-weight: bold">assert</span> error <span style="color: #666666">&lt;</span> tol
 </pre></div>

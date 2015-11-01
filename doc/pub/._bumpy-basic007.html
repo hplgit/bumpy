@@ -1,0 +1,360 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="A worked example on scientific computing with Python">
+<meta name="keywords" content="doc strings,pickling,list comprehensions">
+
+<title>A worked example on scientific computing with Python</title>
+
+<!-- Bootstrap style: bootstrap -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+/* Let inline verbatim have the same color as the surroundings */
+code { color: inherit; background-color: transparent; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Optimal background for reading this note ',
+               3,
+               None,
+               '___sec0'),
+              (' A scientific application ', 1, None, '___sec1'),
+              (' Physical problem and mathematical model ',
+               2,
+               None,
+               '___sec2'),
+              (' Numerical model ', 2, None, '___sec3'),
+              (' Simple implementation ', 2, None, '___sec4'),
+              (' Dissection of the code ', 2, None, '___sec5'),
+              (' More advanced implementation ', 2, None, '___sec6'),
+              (' Dissection of the code ', 2, None, '___sec7'),
+              (' The excitation force ', 2, None, '___sec8'),
+              (' A high-level solve function ', 2, None, '___sec9'),
+              (' Storing Python objects in files ', 2, None, '___sec10'),
+              (' Computing the root mean square value ', 2, None, '___sec11'),
+              (' User input ', 1, None, '___sec12'),
+              (' Positional command-line arguments ', 2, None, '___sec13'),
+              (' Option-value pairs on the command line ',
+               2,
+               None,
+               '___sec14'),
+              (' Visual exploration ', 1, None, '___sec15'),
+              (' Test case ', 3, None, '___sec16'),
+              (' Importing array and plot functionality ',
+               3,
+               None,
+               '___sec17'),
+              (' Reading results from file ', 3, None, '___sec18'),
+              (' Plotting $u$ ', 3, None, '___sec19'),
+              (" Computing and plotting $u'$ ", 3, None, '___sec20'),
+              (" Vectorized computation of $u'$ ", 3, None, '___sec21'),
+              (' Computing the spectrum of signals ', 2, None, '___sec22'),
+              (' Multiple plots in the same figure ', 2, None, '___sec23'),
+              (' Advanced topics ', 1, None, '___sec24'),
+              (' Symbolic computing via SymPy ', 2, None, '___sec25'),
+              (' Testing ', 2, None, '___sec26'),
+              (' Example on a test function ', 3, None, '___sec27'),
+              (' Test function for the numerical solver ',
+               3,
+               None,
+               '___sec28'),
+              (' Using a test framework ', 3, None, '___sec29'),
+              (' Modules ', 2, None, '___sec30'),
+              (' Appendix: Quick motivation for programming with Python ',
+               1,
+               'app:motivation',
+               'app:motivation'),
+              (' Appendix: Scientific Python resources ',
+               1,
+               'app:resources',
+               'app:resources'),
+              (' Full tutorials on scientific programming with Python ',
+               3,
+               None,
+               '___sec33'),
+              (' NumPy resources ', 3, None, '___sec34'),
+              (' Useful resources ', 3, None, '___sec35'),
+              (' Some relevant Python books ', 3, None, '___sec36'),
+              (' Course material on Python programming in general ',
+               3,
+               None,
+               '___sec37')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="bumpy-basic.html">A worked example on scientific computing with Python</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._bumpy-basic002.html#___sec1" style="font-size: 80%;">A scientific application</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy-basic008.html#___sec12" style="font-size: 80%;">User input</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy-basic009.html#___sec15" style="font-size: 80%;">Visual exploration</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy-basic010.html#___sec24" style="font-size: 80%;">Advanced topics</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy-basic010.html#app:motivation" style="font-size: 80%;">Appendix: Quick motivation for programming with Python</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy-basic010.html#app:resources" style="font-size: 80%;">Appendix: Scientific Python resources</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0007"></a>
+<!-- !split -->
+
+<h2 id="___sec9">A high-level solve function </h2>
+
+<p>
+The code above for simulating vertical vibrations in a vehicle
+is naturally implemented as a Python function.
+This function can take the most important physical parameters of the problem
+as input, along with information about the file with road shapes.
+We allow for defining road shapes either through a file on a web site
+or a local file.
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">bumpy_road</span>(url<span style="color: #666666">=</span><span style="color: #008000">None</span>, m<span style="color: #666666">=60</span>, b<span style="color: #666666">=80</span>, k<span style="color: #666666">=60</span>, v<span style="color: #666666">=5</span>):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #BA2121; font-style: italic">    Simulate vertical vehicle vibrations.</span>
+
+<span style="color: #BA2121; font-style: italic">    =========   ==============================================</span>
+<span style="color: #BA2121; font-style: italic">    variable    description</span>
+<span style="color: #BA2121; font-style: italic">    =========   ==============================================</span>
+<span style="color: #BA2121; font-style: italic">    url         either URL of file with excitation force data,</span>
+<span style="color: #BA2121; font-style: italic">                or name of a local file</span>
+<span style="color: #BA2121; font-style: italic">    m           mass of system</span>
+<span style="color: #BA2121; font-style: italic">    b           friction parameter</span>
+<span style="color: #BA2121; font-style: italic">    k           spring parameter</span>
+<span style="color: #BA2121; font-style: italic">    v           (constant) velocity of vehicle</span>
+<span style="color: #BA2121; font-style: italic">    Return      data (list) holding input and output data</span>
+<span style="color: #BA2121; font-style: italic">                [x, t, [h,F,u], [h,F,u], ...]</span>
+<span style="color: #BA2121; font-style: italic">    =========   ==============================================</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+    <span style="color: #408080; font-style: italic"># Download file (if url is not the name of a local file)</span>
+    <span style="color: #008000; font-weight: bold">if</span> url<span style="color: #666666">.</span>startswith(<span style="color: #BA2121">&#39;http://&#39;</span>) <span style="color: #AA22FF; font-weight: bold">or</span> url<span style="color: #666666">.</span>startswith(<span style="color: #BA2121">&#39;file://&#39;</span>):
+        <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
+        filename <span style="color: #666666">=</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>basename(url)  <span style="color: #408080; font-style: italic"># strip off path</span>
+        urllib<span style="color: #666666">.</span>urlretrieve(url, filename)
+    <span style="color: #008000; font-weight: bold">else</span>:
+        <span style="color: #408080; font-style: italic"># Check if url is the name of a local file</span>
+        filename <span style="color: #666666">=</span> url
+        <span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>isfile(filename):
+            <span style="color: #008000; font-weight: bold">print</span> url, <span style="color: #BA2121">&#39;must be a URL or a filename&#39;</span>
+            sys<span style="color: #666666">.</span>exit(<span style="color: #666666">1</span>)  <span style="color: #408080; font-style: italic"># abort program</span>
+        <span style="color: #408080; font-style: italic"># else: ok</span>
+
+    h_data <span style="color: #666666">=</span> np<span style="color: #666666">.</span>loadtxt(filename)  <span style="color: #408080; font-style: italic"># read numpy array from file</span>
+
+    x <span style="color: #666666">=</span> h_data[<span style="color: #666666">0</span>,:]                <span style="color: #408080; font-style: italic"># 1st column: x coordinates</span>
+    h_data <span style="color: #666666">=</span> h_data[<span style="color: #666666">1</span>:,:]          <span style="color: #408080; font-style: italic"># other columns: h shapes</span>
+
+    t <span style="color: #666666">=</span> x<span style="color: #666666">/</span>v                        <span style="color: #408080; font-style: italic"># time corresponding to x</span>
+    dt <span style="color: #666666">=</span> t[<span style="color: #666666">1</span>] <span style="color: #666666">-</span> t[<span style="color: #666666">0</span>]
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(u):
+        <span style="color: #008000; font-weight: bold">return</span> k<span style="color: #666666">*</span>u
+
+    data <span style="color: #666666">=</span> [x, t]      <span style="color: #408080; font-style: italic"># key input and output data (arrays)</span>
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(h_data<span style="color: #666666">.</span>shape[<span style="color: #666666">0</span>]):
+        h <span style="color: #666666">=</span> h_data[i,:]            <span style="color: #408080; font-style: italic"># extract a column</span>
+        a <span style="color: #666666">=</span> acceleration(h, x, v)
+	F <span style="color: #666666">=</span> <span style="color: #666666">-</span>m<span style="color: #666666">*</span>a
+
+        u <span style="color: #666666">=</span> solver(t<span style="color: #666666">=</span>t, I<span style="color: #666666">=0</span>, m<span style="color: #666666">=</span>m, b<span style="color: #666666">=</span>b, f<span style="color: #666666">=</span>f, F<span style="color: #666666">=</span>F)
+
+        data<span style="color: #666666">.</span>append([h, F, u])
+    <span style="color: #008000; font-weight: bold">return</span> data
+</pre></div>
+<p>
+Note that function arguments can be given default values (known as
+<em>keyword arguments</em> in Python). Python has a lot of operating
+system functionality, such as
+checking if a file, directory, or link exist, creating or
+removing files and directories, running stand-alone applications, etc.
+
+<h2 id="___sec10">Storing Python objects in files </h2>
+
+<p>
+After calling
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">road_url <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz&#39;</span>
+data <span style="color: #666666">=</span> solve(url<span style="color: #666666">=</span>road_url, m<span style="color: #666666">=60</span>, b<span style="color: #666666">=200</span>, k<span style="color: #666666">=60</span>, v<span style="color: #666666">=6</span>)
+</pre></div>
+<p>
+the <code>data</code> array contains single arrays and triplets of arrays,
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[x, t, [h,F,u], [h,F,u], <span style="color: #666666">...</span>, [h,F,u]]
+</pre></div>
+<p>
+This list, or any Python object, can be stored on file for later
+retrieval of the results, using the <em>pickling</em> functionality
+in Python:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">cPickle</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pickle</span>
+<span style="color: #408080; font-style: italic"># Or using a more advanced module</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">dill</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pickle</span>
+outfile <span style="color: #666666">=</span> <span style="color: #008000">open</span>(<span style="color: #BA2121">&#39;bumpy.res&#39;</span>, <span style="color: #BA2121">&#39;w&#39;</span>)
+pickle<span style="color: #666666">.</span>dump(data, outfile)
+outfile<span style="color: #666666">.</span>close()
+</pre></div>
+<p>
+The advantage of the <code>dill</code> module over <code>cPickle</code> is that it can
+store a wider range of Python objects (e.g., lambda functions).
+
+<p>
+The code above and the <code>bumpy_road</code> function are found in the
+file
+<a href="https://github.com/hplgit/bumpy/blob/master/doc/src/src-bumpy/bumpy.py" target="_self"><tt>bumpy.py</tt></a>.
+
+<h2 id="___sec11">Computing the root mean square value </h2>
+
+<p>
+Since the roads have a quite noise shape, the force \( F=-ma \) looks
+very noisy, while the response \( u(t) \) to this excitation is
+significantly less noisy,
+see the bottom plot in Figure <a href="._bumpy-basic009.html#bumpy:fig4">5</a> for an example.
+It may be useful to compute the <a href="http://en.wikipedia.org/wiki/Root_mean_square" target="_self">root mean square value</a> of \( u \) to get
+a number for the typical amplitude of the vibrations:
+
+$$ u_{\mbox{rms}} =
+\sqrt{T^{-1}\int_0^T u^2dt} \approx \sqrt{\frac{1}{N+1}\sum_{i=0}^N (u^n)^2}
+\thinspace .
+$$
+
+The last expression can be computed as follows using a vectorized
+sum (<code>np.sum(u**2)</code>):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">u_rms <span style="color: #666666">=</span> []
+<span style="color: #008000; font-weight: bold">for</span> h, F, u <span style="color: #AA22FF; font-weight: bold">in</span> data[<span style="color: #666666">2</span>:]:
+    u_rms<span style="color: #666666">.</span>append(np<span style="color: #666666">.</span>sqrt((<span style="color: #666666">1./</span><span style="color: #008000">len</span>(u))<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sum(u<span style="color: #666666">**2</span>))
+</pre></div>
+<p>
+Very often in numerical computing we have some list/array and want
+to compute a new list/array where each element is some expression
+involving an element of the first list/array, typically
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">v <span style="color: #666666">=</span> []
+<span style="color: #008000; font-weight: bold">for</span> element <span style="color: #AA22FF; font-weight: bold">in</span> u:
+    v<span style="color: #666666">.</span>append(expression(element))
+</pre></div>
+<p>
+This code can more compactly be written as a <em>list comprehension</em>:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">v <span style="color: #666666">=</span> [expression(element) <span style="color: #008000; font-weight: bold">for</span> element <span style="color: #AA22FF; font-weight: bold">in</span> u]
+</pre></div>
+<p>
+We may use the list comprehension construction for computing the <code>u_rms</code>
+values:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">u_rms <span style="color: #666666">=</span> [np<span style="color: #666666">.</span>sqrt((<span style="color: #666666">1./</span><span style="color: #008000">len</span>(u))<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sum(u<span style="color: #666666">**2</span>))
+         <span style="color: #008000; font-weight: bold">for</span> h, F, u <span style="color: #AA22FF; font-weight: bold">in</span> data[<span style="color: #666666">2</span>:]]
+</pre></div>
+<p>
+<!-- joblib!! -->
+
+<p>
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pagination">
+<li><a href="._bumpy-basic006.html">&laquo;</a></li>
+  <li><a href="._bumpy-basic000.html">1</a></li>
+  <li><a href="._bumpy-basic001.html">2</a></li>
+  <li><a href="._bumpy-basic002.html">3</a></li>
+  <li><a href="._bumpy-basic003.html">4</a></li>
+  <li><a href="._bumpy-basic004.html">5</a></li>
+  <li><a href="._bumpy-basic005.html">6</a></li>
+  <li><a href="._bumpy-basic006.html">7</a></li>
+  <li class="active"><a href="._bumpy-basic007.html">8</a></li>
+  <li><a href="._bumpy-basic008.html">9</a></li>
+  <li><a href="._bumpy-basic009.html">10</a></li>
+  <li><a href="._bumpy-basic010.html">11</a></li>
+  <li><a href="._bumpy-basic008.html">&raquo;</a></li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

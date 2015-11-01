@@ -1,0 +1,104 @@
+.. !split
+
+.. _app:resources:
+
+Appendix: Scientific Python resources
+=====================================
+
+Full tutorials on scientific programming with Python
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  * `Python Scientific Lecture Notes <http://scipy-lectures.github.com/>`__ (from EuroSciPy tutorials, based on `Python Scientific <http://web.phys.ntnu.no/~ingves/Teaching/TFY4240/Assignments/PythonScientific.pdf>`__)
+
+  * `Scientific Python Lectures as IPython notebooks <https://github.com/jrjohansson/scientific-python-lectures>`__
+
+  * `Stefan van der Walt's lectures <https://github.com/stefanv/teaching>`__
+
+NumPy resources
+~~~~~~~~~~~~~~~
+
+  * `NumPy Tutorial <http://www.scipy.org/Tentative_NumPy_Tutorial>`__
+
+  * `NumPy User Guide <http://docs.scipy.org/doc/numpy/user/>`__
+
+  * `Advanced NumPy Tutorial <https://github.com/pv/advanced-numpy-tutorial>`__
+
+  * `Advanced NumPy Course <http://scipy2010.blogspot.com/2010/06/tutorials-day-1-advanced-numpy.html>`__
+
+  * `NumPy Example List <http://www.scipy.org/Numpy_Example_List>`__
+
+  * `NumPy Medkit <http://mentat.za.net/numpy/numpy_advanced_slides/>`__
+
+  * `NumPy and SciPy Cookbook <http://www.scipy.org/Cookbook>`__
+
+  * `NumPy for Matlab Users <http://www.scipy.org/NumPy_for_Matlab_Users>`__
+
+  * `NumPy for Matlab/R/IDL Users <http://mathesaurus.sf.net>`__
+
+Useful resources
+~~~~~~~~~~~~~~~~
+
+  * `AstroPython <http://www.astropython.org/>`__
+
+  * `Talk on IPython by Fernando Perez <http://www.youtube.com/watch?feature=player_embedded&v=F4rFuIb1Ie4>`__
+
+  * `Useful software in the Scientific Python Ecosystem <http://fperez.org/py4science/starter_kit.html>`__
+
+  * `IPython <http://ipython.scipy.org/doc/manual/html>`__
+
+  * `Python(x,y) <http://code.google.com/p/pythonxy/wiki/Welcome>`__
+
+  * `Basic Motion Graphics with Python <http://www.yourmachines.org/tutorials/mgpy.html>`__
+
+.. This is now local in doc/literature since the link is broken: `Practical Scientific Computing with Python <http://www.maths.lth.se/na/help/media/Practical_Scientific_Computing_with_Python.pdf>`__
+
+.. Basic Motion Graphics with Python contains a lot about making movies
+
+.. and animation - check it out
+
+Some relevant Python books
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  * `Think Python <http://www.greenteapress.com/thinkpython/>`__
+
+  * `Learn Python The Hard Way <http://learnpythonthehardway.org/book/>`__
+
+  * `Dive Into Python <http://diveintopython.org/toc/index.html>`__
+
+  * `Think Like a Computer Scientist <http://www.freenetpages.co.uk/hp/alan.gauld/>`__
+
+  * `Introduction to Python Programming <http://femhub.com/textbook-python/python_en.pdf/>`__ (for scientists)
+
+  * `A Primer on Scientific Programming with Python <http://goo.gl/SWEQlz>`__
+    (`slides <http://hplgit.github.io/scipro-primer/slides/index.html>`__ are also available)
+
+  * `Python Scripting for Computational Science <http://goo.gl/q8tM7D>`__
+
+Course material on Python programming in general
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  * `The Official Python Tutorial <http://docs.python.org/2/tutorial/>`__
+
+  * `Python Tutorial on tutorialspoint.com <http://www.tutorialspoint.com/python/>`__
+
+  * `Interactive Python tutorial site <http://www.learnpython.org/>`__
+
+  * `A Beginner's Python Tutorial on wikibooks.org <http://en.wikibooks.org/wiki/A_Beginner's_Python_Tutorial>`__
+
+  * `Python Programming on wikibooks.org <http://en.wikibooks.org/wiki/Python_Programming/>`__
+
+  * `Non-Programmer's Tutorial for Python on wikibooks.org <http://en.wikibooks.org/wiki/Non-Programmer's_Tutorial_for_Python_2.6>`__
+
+  * `Python For Beginners <http://www.pythonforbeginners.com/>`__
+
+  * `Gentle Python introduction for high school <http://intropython.org>`__ (with `associated IPython notebooks <https://github.com/ehmatthes/intro_programming>`__)
+
+  * `A Gentle Introduction to Programming Using Python <http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-189-a-gentle-introduction-to-programming-using-python-january-iap-2008/>`__ (MIT OpenCourseWare)
+
+  * `Introduction to Computer Science and Programming <http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/>`__ (MIT OpenCourseWare with videos)
+
+  * `Learning Python Programming Language Through Video Lectures <http://www.catonmat.net/blog/learning-python-programming-language-through-video-lectures/>`__
+
+  * `Python Programming Tutorials Video Lecture Course <http://www.learnerstv.com/Free-Computers-Video-lectures-ltv163-Page1.htm>`__ (Learners TV)
+
+  * `Python Videos, Tutorials and Screencasts <http://showmedo.com/videotutorials/python>`__

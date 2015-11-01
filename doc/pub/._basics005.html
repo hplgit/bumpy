@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="A very basic introduction to scientific Python programming">
-<meta name="keywords" content="text editor,program file,assignment statement,print statement,variable,objects,formatting of numbers,printf syntax,format string syntax,while loop,boolean expression,Python Online Tutor,list,for loop,list comprehension,array,mathematical functions,import of modules,plotting,graphics,visualization,function (in Python),global variables,keyword arguments,default arguments,vectorization,vectorized functions,multiple return values,branching,if test,boolean expression,vectorizing if tests">
+<meta name="keywords" content="text editor,program file,assignment statement,print statement,variable,objects,formatting of numbers,printf syntax,format string syntax,while loop,boolean expression,Python Online Tutor,list,for loop,list comprehension,array,mathematical functions,import of modules,plotting,graphics,visualization,function (in Python),global variables,keyword arguments,default arguments,vectorization,vectorized functions,multiple return values,branching,if test,boolean expression,vectorizing if tests,linear systems,sparse matrix,tridigonal matrix">
 
 <title>A very basic introduction to scientific Python programming</title>
 
@@ -17,98 +17,105 @@ Automatically generated HTML file from DocOnce source
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
+<style type="text/css">
+/* Let inline verbatim have the same color as the surroundings */
+code { color: inherit; background-color: transparent; }
+</style>
+
 
 </head>
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Variables, loops, lists, and arrays ',
+ 'sections': [('Variables, loops, lists, and arrays',
                1,
                'basics:basic:objects',
                'basics:basic:objects'),
-              (' Getting access to Python ',
+              ('Getting access to Python',
                2,
                'basics:accesspy',
                'basics:accesspy'),
-              (' Mac and Windows ', 3, None, '___sec2'),
-              (' Ubuntu ', 3, None, '___sec3'),
-              (' Web access ', 3, None, '___sec4'),
-              (' Mathematical example ', 2, None, '___sec5'),
-              (' A program for evaluating a formula ',
+              ('Mac and Windows', 3, None, '___sec2'),
+              ('Ubuntu', 3, None, '___sec3'),
+              ('Web access', 3, None, '___sec4'),
+              ('Mathematical example', 2, None, '___sec5'),
+              ('A program for evaluating a formula',
                2,
                'basics:formula:eval',
                'basics:formula:eval'),
-              (' Formatted output with text and numbers ',
+              ('Formatted output with text and numbers',
                2,
                'basics:printf',
                'basics:printf'),
-              (' While loops ', 2, 'basics:while', 'basics:while'),
-              (' Lists ', 2, 'basics:list', 'basics:list'),
-              (' For loops ', 2, 'basics:for', 'basics:for'),
-              (' Arrays ', 2, 'basics:numpy', 'basics:numpy'),
-              (' Mathematical functions ', 2, 'basics:math', 'basics:math'),
-              (' Plotting ', 2, 'basics:plot', 'basics:plot'),
-              (' Functions and branching ',
+              ('While loops', 2, 'basics:while', 'basics:while'),
+              ('Lists', 2, 'basics:list', 'basics:list'),
+              ('For loops', 2, 'basics:for', 'basics:for'),
+              ('Arrays', 2, 'basics:numpy', 'basics:numpy'),
+              ('Mathematical functions', 2, 'basics:math', 'basics:math'),
+              ('Plotting', 2, 'basics:plot', 'basics:plot'),
+              ('Functions and branching',
                1,
                'basics:func:branching',
                'basics:func:branching'),
-              (' Functions ', 2, 'basics:func', 'basics:func'),
-              (' A more general mathematical formula ',
+              ('Functions', 2, 'basics:func', 'basics:func'),
+              ('A more general mathematical formula',
                2,
                'basics:formula:piecewise',
                'basics:formula:piecewise'),
-              (' If tests ', 2, 'basics:if', 'basics:if'),
-              (' Using the `where` function ', 3, None, '___sec18'),
-              (' Using array indexing ', 3, None, '___sec19'),
-              (' Files ', 1, 'basics:files', 'basics:files'),
-              (' File reading ', 2, None, '___sec21'),
-              (' File writing ', 2, None, '___sec22'),
-              (' Classes ', 1, 'basics:class', 'basics:class'),
-              (' A very simple class ', 2, None, '___sec24'),
-              (' A class for representing a mathematical function ',
+              ('If tests', 2, 'basics:if', 'basics:if'),
+              ('Using the `where` function', 3, None, '___sec18'),
+              ('Using array indexing', 3, None, '___sec19'),
+              ('Array view versus array copying', 2, None, '___sec20'),
+              ('Linear systems', 2, None, '___sec21'),
+              ('Files', 1, 'basics:files', 'basics:files'),
+              ('File reading', 2, None, '___sec23'),
+              ('File writing', 2, None, '___sec24'),
+              ('Classes', 1, 'basics:class', 'basics:class'),
+              ('A very simple class', 2, None, '___sec26'),
+              ('A class for representing a mathematical function',
                2,
                None,
-               '___sec25'),
-              (' The class code ', 3, None, '___sec26'),
-              (' Dissection ', 3, None, '___sec27'),
-              (' Exercises ', 1, 'basics:exer', 'basics:exer'),
-              (' Exercise 1: Program a formula ',
+               '___sec27'),
+              ('The class code', 3, None, '___sec28'),
+              ('Dissection', 3, None, '___sec29'),
+              ('Exercises', 1, 'basics:exer', 'basics:exer'),
+              ('Exercise 1: Program a formula',
                2,
                'basics:exer:formula1',
                'basics:exer:formula1'),
-              (' Exercise 2: Combine text and numbers in output ',
+              ('Exercise 2: Combine text and numbers in output',
                2,
                'basics:exer:printf1',
                'basics:exer:printf1'),
-              (' Exercise 3: Program a while loop ',
+              ('Exercise 3: Program a while loop',
                2,
                'basics:exer:while1',
                'basics:exer:while1'),
-              (' Exercise 4: Create a list with a while loop ',
+              ('Exercise 4: Create a list with a while loop',
                2,
                'basics:exer:while2',
                'basics:exer:while2'),
-              (' Exercise 5: Program a for loop ',
+              ('Exercise 5: Program a for loop',
                2,
                'basics:exer:for1',
                'basics:exer:for1'),
-              (' Exercise 6: Create a list with a for loop ',
-               2,
-               'basics:exer:for2',
-               'basics:exer:for2'),
-              (' Exercise 7: Write a Python function ',
+              ('Exercise 6: Write a Python function',
                2,
                'basics:exer:func1',
                'basics:exer:func1'),
-              (' Exercise 8: Return three values from a Python function ',
+              ('Exercise 7: Return three values from a Python function',
                2,
                'basics:exer:func3',
                'basics:exer:func3'),
-              (' Exercise 9: Plot a function ',
+              ('Exercise 8: Plot a function',
                2,
                'basics:exer:plot1',
                'basics:exer:plot1'),
-              (' Exercise 10: Measure the efficiency of vectorization ',
+              ('Exercise 9: Plot two functions',
+               2,
+               'basics:exer:plot2',
+               'basics:exer:plot2'),
+              ('Exercise 10: Measure the efficiency of vectorization',
                2,
                'basics:exer:timeit',
                'basics:exer:timeit')]}
@@ -176,13 +183,77 @@ MathJax.Hub.Config({
 <h2 id="basics:exer:formula1">Exercise 1: Program a formula</h2>
 
 <p>
-Make a Python program that calculates and prints the value of the
+<b>a)</b>
+Make a simplest possible
+Python program that calculates and prints the value of the
 formula
 
 $$ y = 6x^2 + 3x + 2,\]
 for $x=2$.
 $$
 
+<p>
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_1_1" style="font-size: 80%;"></a>
+<b>Solution.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_1_1">
+
+<p>
+The complete program reads
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">x <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+y <span style="color: #666666">=</span> <span style="color: #666666">6*</span>x<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #666666">3*</span>x <span style="color: #666666">+</span> <span style="color: #666666">2</span>
+<span style="color: #008000; font-weight: bold">print</span> y
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
+<p>
+<b>b)</b>
+Make a Python function that takes \( x \) as argument and returns \( y \).
+Call the function for \( x=2 \) and print the answer.
+
+<p>
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_1_2" style="font-size: 80%;"></a>
+<b>Solution.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_1_2">
+
+<p>
+Code:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">6*</span>x<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #666666">3*</span>x <span style="color: #666666">+</span> <span style="color: #666666">2</span>
+
+y <span style="color: #666666">=</span> f(<span style="color: #666666">2</span>)
+<span style="color: #008000; font-weight: bold">print</span> y
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
 
 <p>
 <!-- --- end exercise --- -->
@@ -202,8 +273,50 @@ Let \( y=x^2 \). Make a program that writes the text
 </pre></div>
 <p>
 if \( x=2.55 \). The values of \( x \) and \( y \) should be written with three
-decimals. Run the program for \( x=\pi \) (the value if \( \pi \) is available
+decimals. Run the program for \( x=\pi \) too (the value if \( \pi \) is available
 as the variable <code>pi</code> in the <code>math</code> module).
+
+<p>
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_2_1" style="font-size: 80%;"></a>
+<b>Solution.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_2_1">
+
+<p>
+Here is the code:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">x <span style="color: #666666">=</span> <span style="color: #666666">2.55</span>
+y <span style="color: #666666">=</span> x<span style="color: #666666">**2</span>
+<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;y(</span><span style="color: #BB6688; font-weight: bold">%.3f</span><span style="color: #BA2121">)=</span><span style="color: #BB6688; font-weight: bold">%.3f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (x, y)
+</pre></div>
+<p>
+Changing \( x=2.55 \) to \( x=\pi \),
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
+x <span style="color: #666666">=</span> pi
+y <span style="color: #666666">=</span> x<span style="color: #666666">**2</span>
+<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;y(</span><span style="color: #BB6688; font-weight: bold">%.3f</span><span style="color: #BA2121">)=</span><span style="color: #BB6688; font-weight: bold">%.3f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (x, y)
+</pre></div>
+<p>
+gives the output <code>y(3.142)=9.870</code>.
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
 
 <p>
 <!-- --- end exercise --- -->
@@ -223,6 +336,36 @@ Write a program that prints out \( x_n \) for \( n=0,1,\ldots,20 \) using
 a while loop.
 
 <p>
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_3_1" style="font-size: 80%;"></a>
+<b>Solution.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_3_1">
+
+<p>
+Complete program:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">n <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+<span style="color: #008000; font-weight: bold">while</span> n <span style="color: #666666">&lt;=</span> <span style="color: #666666">20</span>:
+    x_n <span style="color: #666666">=</span> n<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #666666">1</span>
+    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;x</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">=</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (n, x_n)
+    n <span style="color: #666666">=</span> n <span style="color: #666666">+</span> <span style="color: #666666">1</span>
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
+<p>
 <!-- --- end exercise --- -->
 
 <p>
@@ -235,6 +378,37 @@ Store all the \( x_n \) values computed in <a href="#basics:exer:while1">Exercis
 in a list (using a while loop). Print the entire list (as one object).
 
 <p>
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_4_1" style="font-size: 80%;"></a>
+<b>Solution.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_4_1">
+
+<p>
+Code:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">n <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+x <span style="color: #666666">=</span> []  <span style="color: #408080; font-style: italic"># the x_n values</span>
+<span style="color: #008000; font-weight: bold">while</span> n <span style="color: #666666">&lt;=</span> <span style="color: #666666">20</span>:
+    x<span style="color: #666666">.</span>append(n<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #666666">1</span>)
+    n <span style="color: #666666">=</span> n <span style="color: #666666">+</span> <span style="color: #666666">1</span>
+<span style="color: #008000; font-weight: bold">print</span> x
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
+<p>
 <!-- --- end exercise --- -->
 
 <p>
@@ -243,26 +417,53 @@ in a list (using a while loop). Print the entire list (as one object).
 <h2 id="basics:exer:for1">Exercise 5: Program a for loop</h2>
 
 <p>
-Do <a href="#basics:exer:while1">Exercise 3: Program a while loop</a>, but use a for loop.
-
-<p>
-<!-- --- end exercise --- -->
-
-<p>
-<!-- --- begin exercise --- -->
-
-<h2 id="basics:exer:for2">Exercise 6: Create a list with a for loop</h2>
-
-<p>
 Do <a href="#basics:exer:while2">Exercise 4: Create a list with a while loop</a>, but use a for loop.
 
 <p>
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_5_1" style="font-size: 80%;"></a>
+<b>Solution.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_5_1">
+
+<p>
+Code:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">x <span style="color: #666666">=</span> []
+<span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">21</span>):
+    x<span style="color: #666666">.</span>append(n<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #666666">1</span>)
+<span style="color: #008000; font-weight: bold">print</span> x
+</pre></div>
+<p>
+One can also make the code shorter using a list comprehension:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">x <span style="color: #666666">=</span> [n<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">21</span>)]
+<span style="color: #008000; font-weight: bold">print</span> x
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
+<p>
 <!-- --- end exercise --- -->
 
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="basics:exer:func1">Exercise 7: Write a Python function</h2>
+<h2 id="basics:exer:func1">Exercise 6: Write a Python function</h2>
 
 <p>
 Write a function <code>x(n)</code> for computing an element in the
@@ -270,30 +471,208 @@ sequence \( x_n=n^2+1 \). Call the function for \( n=4 \) and write
 out the result.
 
 <p>
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_6_1" style="font-size: 80%;"></a>
+<b>Solution.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_6_1">
+
+<p>
+Code:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">x</span>(n):
+    <span style="color: #008000; font-weight: bold">return</span> n<span style="color: #666666">^2</span> <span style="color: #666666">+</span> <span style="color: #666666">1</span>
+
+<span style="color: #008000; font-weight: bold">print</span> x(<span style="color: #666666">4</span>)
+</pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
+<p>
 <!-- --- end exercise --- -->
 
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="basics:exer:func3">Exercise 8: Return three values from a Python function</h2>
+<h2 id="basics:exer:func3">Exercise 7: Return three values from a Python function</h2>
 
 <p>
-Write a Python function that evaluates the mathematical function
-\( f(x)=\cos x \), \( f'(x)=-\sin x \), and \( f''(x)=-\cos x \). Return
+Write a Python function that evaluates the mathematical functions
+\( f(x)=\cos(2x) \), \( f'(x)=-2\sin(2x) \), and \( f''(x)=-4\cos(2x) \). Return
 these three values. Write out the results of these values for \( x=\pi \).
 
 <p>
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_7_1" style="font-size: 80%;"></a>
+<b>Solution.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_7_1">
+
+<p>
+Code:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, cos, pi
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">deriv2</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> cos(<span style="color: #666666">2*</span>x), <span style="color: #666666">-2*</span>sin(<span style="color: #666666">2*</span>x), <span style="color: #666666">-4*</span>cos(<span style="color: #666666">2*</span>x)
+
+f, df, d2f <span style="color: #666666">=</span> deriv2(x<span style="color: #666666">=</span>pi)
+<span style="color: #008000; font-weight: bold">print</span> f, df, d2f
+</pre></div>
+<p>
+Running the program gives
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python deriv2.py
+1.0 4.89858719659e-16 -4.0
+</pre></div>
+<p>
+as expected.
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
+<p>
 <!-- --- end exercise --- -->
 
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="basics:exer:plot1">Exercise 9: Plot a function</h2>
+<h2 id="basics:exer:plot1">Exercise 8: Plot a function</h2>
 
 <p>
 Make a program that plots the function \( g(y)=e^{-y}\sin (4y) \) for
-\( y\in [0,4] \). Use 501 points along the curve and store these
-points in arrays.
+\( y\in [0,4] \) using a red solid line.
+Use 500 intervals for evaluating points in \( [0,4] \).
+Store all coordinates and values in arrays. Set labels on the
+axis and use a title &quot;Damped sine wave&quot;.
+
+<p>
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_8_1" style="font-size: 80%;"></a>
+<b>Solution.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_8_1">
+
+<p>
+Appropriate code is
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin  <span style="color: #408080; font-style: italic"># avoid np. prefix in g(y) formula</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(y):
+    <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>y)<span style="color: #666666">*</span>sin(<span style="color: #666666">4*</span>y)
+
+y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4</span>, <span style="color: #666666">501</span>)
+values <span style="color: #666666">=</span> g(y)
+plt<span style="color: #666666">.</span>figure()
+plt<span style="color: #666666">.</span>plot(y, values, <span style="color: #BA2121">&#39;r-&#39;</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&#39;$y$&#39;</span>); plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&#39;$g(y)$&#39;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&#39;Damped sine wave&#39;</span>)
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&#39;tmp.png&#39;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&#39;tmp.pdf&#39;</span>)
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+<center><p><img src="fig-bumpy/plot_exer1.png" align="bottom" width=500></p></center>
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="basics:exer:plot2">Exercise 9: Plot two functions</h2>
+
+<p>
+As <a href="#basics:exer:plot2">Exercise 9: Plot two functions</a>, but add a black dashed
+curve for the function
+\( h(y)=e^{-\frac{3}{2}y}\sin (4y) \). Include a legend for each
+curve (with names <code>g</code> and <code>h</code>).
+
+<p>
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_9_1" style="font-size: 80%;"></a>
+<b>Solution.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_9_1">
+
+<p>
+Here is the program:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin  <span style="color: #408080; font-style: italic"># avoid np. prefix in g(y) and h(y)</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(y):
+    <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>y)<span style="color: #666666">*</span>sin(<span style="color: #666666">4*</span>y)
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">h</span>(y):
+    <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>(<span style="color: #666666">3./2</span>)<span style="color: #666666">*</span>y)<span style="color: #666666">*</span>sin(<span style="color: #666666">4*</span>y)
+
+y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4</span>, <span style="color: #666666">501</span>)
+plt<span style="color: #666666">.</span>figure()
+plt<span style="color: #666666">.</span>plot(y, g(y), <span style="color: #BA2121">&#39;r-&#39;</span>, y, h(y), <span style="color: #BA2121">&#39;k--&#39;</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&#39;$y$&#39;</span>); plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&#39;$g(y)$&#39;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&#39;Damped sine wave&#39;</span>)
+plt<span style="color: #666666">.</span>legend([<span style="color: #BA2121">&#39;g&#39;</span>, <span style="color: #BA2121">&#39;h&#39;</span>])
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&#39;tmp.png&#39;</span>); plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&#39;tmp.pdf&#39;</span>)
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+<center><p><img src="fig-bumpy/plot_exer2.png" align="bottom" width=500></p></center>
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
 
 <p>
 <!-- --- end exercise --- -->
@@ -330,10 +709,10 @@ computing using the <code>sin</code> function from <code>numpy</code>.
 <span style="color: #000080; font-weight: bold">   ...: </span>    <span style="color: #008000; font-weight: bold">return</span> r
 <span style="color: #000080; font-weight: bold">   ...:</span>
 
-<span style="color: #000080; font-weight: bold">In [5]: </span><span style="color: #666666">%</span><span style="color: #008000; font-weight: bold">timeit</span> y <span style="color: #666666">=</span> sin_func(x)
+<span style="color: #000080; font-weight: bold">In [5]: </span><span style="color: #666666">%</span><span style="color: #008000; font-weight: bold">timeit</span> y = sin_func(x)
 <span style="color: #888888">1 loops, best of 3: 2.68 s per loop</span>
 
-<span style="color: #000080; font-weight: bold">In [6]: </span><span style="color: #666666">%</span><span style="color: #008000; font-weight: bold">timeit</span> y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>sin(x)
+<span style="color: #000080; font-weight: bold">In [6]: </span><span style="color: #666666">%</span><span style="color: #008000; font-weight: bold">timeit</span> y = np.sin(x)
 <span style="color: #888888">10 loops, best of 3: 40.1 ms per loop</span>
 </pre></div>
 <p>
@@ -350,8 +729,6 @@ the section <a href="._basics002.html#basics:func">Functions</a>.
 
 <p>
 <!-- factor 134 -->
-
-<p>
 <!-- --- end exercise --- -->
 
 <p>

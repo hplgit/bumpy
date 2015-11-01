@@ -17,73 +17,66 @@ Automatically generated HTML file from DocOnce source
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
+<style type="text/css">
+/* Let inline verbatim have the same color as the surroundings */
+code { color: inherit; background-color: transparent; }
+</style>
+
 
 </head>
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Optimal background for reading this note ',
+ 'sections': [('Optimal background for reading this note',
                3,
                None,
                '___sec0'),
-              (' A scientific application ', 1, None, '___sec1'),
-              (' Physical problem and mathematical model ',
-               2,
-               None,
-               '___sec2'),
-              (' Numerical model ', 2, None, '___sec3'),
-              (' Simple implementation ', 2, None, '___sec4'),
-              (' Dissection of the code ', 2, None, '___sec5'),
-              (' More advanced implementation ', 2, None, '___sec6'),
-              (' Dissection of the code ', 2, None, '___sec7'),
-              (' The excitation force ', 2, None, '___sec8'),
-              (' A high-level solve function ', 2, None, '___sec9'),
-              (' Storing Python objects in files ', 2, None, '___sec10'),
-              (' Computing the root mean square value ', 2, None, '___sec11'),
-              (' User input ', 1, None, '___sec12'),
-              (' Positional command-line arguments ', 2, None, '___sec13'),
-              (' Option-value pairs on the command line ',
-               2,
-               None,
-               '___sec14'),
-              (' Visual exploration ', 1, None, '___sec15'),
-              (' Test case ', 3, None, '___sec16'),
-              (' Importing array and plot functionality ',
-               3,
-               None,
-               '___sec17'),
-              (' Reading results from file ', 3, None, '___sec18'),
-              (' Plotting $u$ ', 3, None, '___sec19'),
-              (" Computing and plotting $u'$ ", 3, None, '___sec20'),
-              (" Vectorized computation of $u'$ ", 3, None, '___sec21'),
-              (' Computing the spectrum of signals ', 2, None, '___sec22'),
-              (' Multiple plots in the same figure ', 2, None, '___sec23'),
-              (' Advanced topics ', 1, None, '___sec24'),
-              (' Symbolic computing via SymPy ', 2, None, '___sec25'),
-              (' Testing ', 2, None, '___sec26'),
-              (' Example on a test function ', 3, None, '___sec27'),
-              (' Test function for the numerical solver ',
-               3,
-               None,
-               '___sec28'),
-              (' Using a test framework ', 3, None, '___sec29'),
-              (' Modules ', 2, None, '___sec30'),
-              (' Appendix: Quick motivation for programming with Python ',
+              ('A scientific application', 1, None, '___sec1'),
+              ('Physical problem and mathematical model', 2, None, '___sec2'),
+              ('Numerical model', 2, None, '___sec3'),
+              ('Simple implementation', 2, None, '___sec4'),
+              ('Dissection of the code', 2, None, '___sec5'),
+              ('More advanced implementation', 2, None, '___sec6'),
+              ('Dissection of the code', 2, None, '___sec7'),
+              ('The excitation force', 2, None, '___sec8'),
+              ('A high-level solve function', 2, None, '___sec9'),
+              ('Storing Python objects in files', 2, None, '___sec10'),
+              ('Computing the root mean square value', 2, None, '___sec11'),
+              ('User input', 1, None, '___sec12'),
+              ('Positional command-line arguments', 2, None, '___sec13'),
+              ('Option-value pairs on the command line', 2, None, '___sec14'),
+              ('Visual exploration', 1, None, '___sec15'),
+              ('Test case', 3, None, '___sec16'),
+              ('Importing array and plot functionality', 3, None, '___sec17'),
+              ('Reading results from file', 3, None, '___sec18'),
+              ('Plotting $u$', 3, None, '___sec19'),
+              ("Computing and plotting $u'$", 3, None, '___sec20'),
+              ("Vectorized computation of $u'$", 3, None, '___sec21'),
+              ('Computing the spectrum of signals', 2, None, '___sec22'),
+              ('Multiple plots in the same figure', 2, None, '___sec23'),
+              ('Advanced topics', 1, None, '___sec24'),
+              ('Symbolic computing via SymPy', 2, None, '___sec25'),
+              ('Testing', 2, None, '___sec26'),
+              ('Example on a test function', 3, None, '___sec27'),
+              ('Test function for the numerical solver', 3, None, '___sec28'),
+              ('Using a test framework', 3, None, '___sec29'),
+              ('Modules', 2, None, '___sec30'),
+              ('Appendix: Quick motivation for programming with Python',
                1,
                'app:motivation',
                'app:motivation'),
-              (' Appendix: Scientific Python resources ',
+              ('Appendix: Scientific Python resources',
                1,
                'app:resources',
                'app:resources'),
-              (' Full tutorials on scientific programming with Python ',
+              ('Full tutorials on scientific programming with Python',
                3,
                None,
                '___sec33'),
-              (' NumPy resources ', 3, None, '___sec34'),
-              (' Useful resources ', 3, None, '___sec35'),
-              (' Some relevant Python books ', 3, None, '___sec36'),
-              (' Course material on Python programming in general ',
+              ('NumPy resources', 3, None, '___sec34'),
+              ('Useful resources', 3, None, '___sec35'),
+              ('Some relevant Python books', 3, None, '___sec36'),
+              ('Course material on Python programming in general',
                3,
                None,
                '___sec37')]}
@@ -203,14 +196,16 @@ as possible to the Matlab equivalent.
 
 <p>
 Loading the computational data from file back to a list <code>data</code> must
-use the same module (<code>cPickle</code>) as we used for writing the data:
+use the same module (<code>cPickle</code> or <code>dill</code>) as we used for writing the data:
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">cPickle</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">cPickle</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pickle</span>
+<span style="color: #408080; font-style: italic"># or</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">dill</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pickle</span>
 outfile <span style="color: #666666">=</span> <span style="color: #008000">open</span>(<span style="color: #BA2121">&#39;bumpy.res&#39;</span>, <span style="color: #BA2121">&#39;r&#39;</span>)
-data <span style="color: #666666">=</span> cPickle<span style="color: #666666">.</span>load(outfile)
+data <span style="color: #666666">=</span> pickle<span style="color: #666666">.</span>load(outfile)
 outfile<span style="color: #666666">.</span>close()
 
 x, t <span style="color: #666666">=</span> data[<span style="color: #666666">0</span>:<span style="color: #666666">2</span>]
@@ -259,14 +254,7 @@ realization is <code>data[3]</code>. The <code>u</code> part of the triplet is t
 and the part of <code>u</code> where \( t\geq t_s \) is then <code>data[3][2][indices]</code>.
 
 <p>
-Figure <a href="#bumpy:fig3">4</a> shows the result.
-
-<p>
-<center> <!-- figure -->
-<hr class="figure">
-<center><p class="caption">Figure 3:  Displacement (left) and velocity (right) for \( t\geq t_s=180 \). <div id="bumpy:fig3"></div> </p></center>
-<p><img src="fig-bumpy/uv1.png" align="bottom" width=600></p>
-</center>
+Figure <a href="#bumpy:fig3">3</a> (left) shows the result.
 
 <h3 id="___sec20">Computing and plotting \( u' \) </h3>
 
@@ -285,7 +273,6 @@ The values at the end points, \( v^0 \) and \( v^N \), must be computed
 with less accurate one-sided differences:
 
 $$ v^0 = \frac{u^1-u^0}{\Delta t},\quad v^{N} = \frac{u^N-u^{N-1}}{\Delta t}$$
-
 
 <p>
 Computing \( v=u' \) by <a href="#mjx-eqn-6">(6)</a> for the part \( t\geq t_s \)
@@ -314,14 +301,14 @@ xlabel(<span style="color: #BA2121">&#39;t&#39;</span>)
 title(<span style="color: #BA2121">&#39;Velocity&#39;</span>)
 </pre></div>
 <p>
-Figure <a href="#bumpy:fig3">4</a> (right) shows that the velocity is much more
+Figure <a href="#bumpy:fig3">3</a> (right) shows that the velocity is much more
 &quot;noisy&quot; than the displacement.
 
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 4:  Displacement (left) and velocity (right) for \( t\geq t_s=180 \). <div id="bumpy:fig3"></div> </p></center>
-<p><img src="fig-bumpy/uv1.png" align="bottom" width=600></p>
+<center><p class="caption">Figure 3:  Displacement (left) and velocity (right) for \( t\geq t_s=180 \). <div id="bumpy:fig3"></div> </p></center>
+<p><img src="fig-bumpy/uv1.png" align="bottom" width=800></p>
 </center>
 
 <h3 id="___sec21">Vectorized computation of \( u' \) </h3>
@@ -368,12 +355,12 @@ a convenient feature to test the efficiency of Python constructions:
 
 <span style="color: #000080; font-weight: bold">In [3]: </span>u <span style="color: #666666">=</span> zeros(N)
 
-<span style="color: #000080; font-weight: bold">In [4]: </span><span style="color: #666666">%</span><span style="color: #008000; font-weight: bold">timeit</span> v <span style="color: #666666">=</span> u[<span style="color: #666666">2</span>:] <span style="color: #666666">-</span> u[:<span style="color: #666666">-2</span>]
+<span style="color: #000080; font-weight: bold">In [4]: </span><span style="color: #666666">%</span><span style="color: #008000; font-weight: bold">timeit</span> v = u[2:] - u[:-2]
 <span style="color: #888888">1 loops, best of 3: 5.76 ms per loop</span>
 
 <span style="color: #000080; font-weight: bold">In [5]: </span>v <span style="color: #666666">=</span> zeros(N)
 
-<span style="color: #000080; font-weight: bold">In [6]: </span><span style="color: #666666">%</span><span style="color: #008000; font-weight: bold">timeit</span> <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>,N<span style="color: #666666">-1</span>): v[i] <span style="color: #666666">=</span> u[i<span style="color: #666666">+1</span>] <span style="color: #666666">-</span> u[i<span style="color: #666666">-1</span>]
+<span style="color: #000080; font-weight: bold">In [6]: </span><span style="color: #666666">%</span><span style="color: #008000; font-weight: bold">timeit</span> for i in range(1,N-1): v[i] = u[i+1] - u[i-1]
 <span style="color: #888888">1 loops, best of 3: 836 ms per loop</span>
 
 <span style="color: #000080; font-weight: bold">In [7]: </span><span style="color: #666666">836/5.76</span>
@@ -423,14 +410,14 @@ plot(f, A)
 title(<span style="color: #BA2121">&#39;Spectrum of u&#39;</span>)
 </pre></div>
 <p>
-Figure <a href="#bumpy:fig2">5</a> shows the amplitudes and that the
+Figure <a href="#bumpy:fig2">4</a> shows the amplitudes and that the
 dominating frequencies lie around 0.5 and 1 Hz.
 
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 5:  Spectra of displacement and excitation. <div id="bumpy:fig2"></div> </p></center>
-<p><img src="fig-bumpy/spectra1.png" align="bottom" width=600></p>
+<center><p class="caption">Figure 4:  Spectra of displacement and excitation. <div id="bumpy:fig2"></div> </p></center>
+<p><img src="fig-bumpy/spectra1.png" align="bottom" width=700></p>
 </center>
 
 <h2 id="___sec23">Multiple plots in the same figure </h2>
@@ -470,7 +457,7 @@ these curves in the same plot figure:
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 6:  First realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations. <div id="bumpy:fig4"></div> </p></center>
+<center><p class="caption">Figure 5:  First realization of a bumpy road, with corresponding excitation of the wheel and resulting vertical vibrations. <div id="bumpy:fig4"></div> </p></center>
 <p><img src="fig-bumpy/hFu0.png" align="bottom" width=700></p>
 </center>
 

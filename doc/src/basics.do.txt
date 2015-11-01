@@ -1367,13 +1367,43 @@ label{basics:exer}
 ===== Exercise: Program a formula =====
 label{basics:exer:formula1}
 
-Make a Python program that calculates and prints the value of the
+!bsubex
+Make a simplest possible
+Python program that calculates and prints the value of the
 formula
 
 !bt
 \[ y = 6x^2 + 3x + 2,\]
 for $x=2$.
 !et
+
+!bsol
+The complete program reads
+
+!bc pypro
+x = 2
+y = 6*x**2 + 3*x + 2
+print y
+!ec
+!esol
+!esubex
+
+!bsubex
+Make a Python function that takes $x$ as argument and returns $y$.
+Call the function for $x=2$ and print the answer.
+
+!bsol
+Code:
+
+!bc pypro
+def f(x):
+    return 6*x**2 + 3*x + 2
+
+y = f(2)
+print y
+!ec
+!esol
+!esubex
 
 ===== Exercise: Combine text and numbers in output =====
 label{basics:exer:printf1}
@@ -1384,8 +1414,27 @@ Let $y=x^2$. Make a program that writes the text
 y(2.550)=6.502
 !ec
 if $x=2.55$. The values of $x$ and $y$ should be written with three
-decimals. Run the program for $x=\pi$ (the value if $\pi$ is available
+decimals. Run the program for $x=\pi$ too (the value if $\pi$ is available
 as the variable `pi` in the `math` module).
+
+!bsol
+Here is the code:
+
+!bc pypro
+x = 2.55
+y = x**2
+print 'y(%.3f)=%.3f' % (x, y)
+!ec
+Changing $x=2.55$ to $x=\pi$,
+
+!bc pypro
+from math import pi
+x = pi
+y = x**2
+print 'y(%.3f)=%.3f' % (x, y)
+!ec
+gives the output `y(3.142)=9.870`.
+!esol
 
 ===== Exercise: Program a while loop =====
 label{basics:exer:while1}
@@ -1399,21 +1448,59 @@ for integers $n=0,1,2,\ldots,N$.
 Write a program that prints out $x_n$ for $n=0,1,\ldots,20$ using
 a while loop.
 
+!bsol
+Complete program:
+
+!bc pypro
+n = 0
+while n <= 20:
+    x_n = n**2 + 1
+    print 'x%d=%d' % (n, x_n)
+    n = n + 1
+!ec
+!esol
+
 ===== Exercise: Create a list with a while loop =====
 label{basics:exer:while2}
 
 Store all the $x_n$ values computed in Exercise ref{basics:exer:while1}
 in a list (using a while loop). Print the entire list (as one object).
 
+!bsol
+Code:
+
+!bc pypro
+n = 0
+x = []  # the x_n values
+while n <= 20:
+    x.append(n**2 + 1)
+    n = n + 1
+print x
+!ec
+!esol
+
 ===== Exercise: Program a for loop =====
 label{basics:exer:for1}
 
-Do Exercise ref{basics:exer:while1}, but use a for loop.
-
-===== Exercise: Create a list with a for loop =====
-label{basics:exer:for2}
-
 Do Exercise ref{basics:exer:while2}, but use a for loop.
+
+!bsol
+Code:
+
+!bc pypro
+x = []
+for n in range(21):
+    x.append(n**2 + 1)
+print x
+!ec
+One can also make the code shorter using a list comprehension:
+
+!bc pypro
+x = [n**2 + 1 for n in range(21)]
+print x
+!ec
+!esol
+
 
 ===== Exercise: Write a Python function =====
 label{basics:exer:func1}
@@ -1422,19 +1509,114 @@ Write a function `x(n)` for computing an element in the
 sequence $x_n=n^2+1$. Call the function for $n=4$ and write
 out the result.
 
+!bsol
+Code:
+
+!bc pypro
+def x(n):
+    return n^2 + 1
+
+print x(4)
+!ec
+!esol
+
 ===== Exercise: Return three values from a Python function =====
 label{basics:exer:func3}
 
-Write a Python function that evaluates the mathematical function
-$f(x)=\cos x$, $f'(x)=-\sin x$, and $f''(x)=-\cos x$. Return
+Write a Python function that evaluates the mathematical functions
+$f(x)=\cos(2x)$, $f'(x)=-2\sin(2x)$, and $f''(x)=-4\cos(2x)$. Return
 these three values. Write out the results of these values for $x=\pi$.
+
+!bsol
+Code:
+
+!bc pypro
+from math import sin, cos, pi
+
+def deriv2(x):
+    return cos(2*x), -2*sin(2*x), -4*cos(2*x)
+
+f, df, d2f = deriv2(x=pi)
+print f, df, d2f
+!ec
+Running the program gives
+
+!bc sys
+Terminal> python deriv2.py
+1.0 4.89858719659e-16 -4.0
+!ec
+as expected.
+!esol
 
 ===== Exercise: Plot a function =====
 label{basics:exer:plot1}
 
 Make a program that plots the function $g(y)=e^{-y}\sin (4y)$ for
-$y\in [0,4]$. Use 501 points along the curve and store these
-points in arrays.
+$y\in [0,4]$ using a red solid line.
+Use 500 intervals for evaluating points in $[0,4]$.
+Store all coordinates and values in arrays. Set labels on the
+axis and use a title ``Damped sine wave''.
+
+!bsol
+Appropriate code is
+
+!bc pypro
+import numpy as np
+import matplotlib.pyplot as plt
+from numpy import exp, sin  # avoid np. prefix in g(y) formula
+
+def g(y):
+    return exp(-y)*sin(4*y)
+
+y = np.linspace(0, 4, 501)
+values = g(y)
+plt.figure()
+plt.plot(y, values, 'r-')
+plt.xlabel('$y$'); plt.ylabel('$g(y)$')
+plt.title('Damped sine wave')
+plt.savefig('tmp.png'); plt.savefig('tmp.pdf')
+plt.show()
+!ec
+
+FIGURE: [fig-bumpy/plot_exer1, width=500 frac=0.8]
+
+!esol
+
+===== Exercise: Plot two functions =====
+label{basics:exer:plot2}
+
+As Exercise ref{basics:exer:plot2}, but add a black dashed
+curve for the function
+$h(y)=e^{-\frac{3}{2}y}\sin (4y)$. Include a legend for each
+curve (with names `g` and `h`).
+
+!bsol
+Here is the program:
+
+!bc pypro
+import numpy as np
+import matplotlib.pyplot as plt
+from numpy import exp, sin  # avoid np. prefix in g(y) and h(y)
+
+def g(y):
+    return exp(-y)*sin(4*y)
+
+def h(y):
+    return exp(-(3./2)*y)*sin(4*y)
+
+y = np.linspace(0, 4, 501)
+plt.figure()
+plt.plot(y, g(y), 'r-', y, h(y), 'k--')
+plt.xlabel('$y$'); plt.ylabel('$g(y)$')
+plt.title('Damped sine wave')
+plt.legend(['g', 'h'])
+plt.savefig('tmp.png'); plt.savefig('tmp.pdf')
+plt.show()
+!ec
+
+FIGURE: [fig-bumpy/plot_exer2, width=500 frac=0.8]
+
+!esol
 
 ===== Exercise: Measure the efficiency of vectorization =====
 label{basics:exer:timeit}
