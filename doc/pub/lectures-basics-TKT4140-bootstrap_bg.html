@@ -6,10 +6,10 @@ Automatically generated HTML file from DocOnce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="Introduction to Scientific Python programming - Apdapted to TKT4140 Numerical Methods with Computer Laboratory">
+<meta name="description" content="Introduction to Scientific Python programming - Adapted to TKT4140 Numerical Methods with Computer Laboratory">
 <meta name="keywords" content="text editor,program file,assignment statement,print statement,variable,objects,format string syntax,while loop,boolean expression,Python Online Tutor,list,for loop,array,mathematical functions,import of modules,plotting,graphics,visualization,global variables,keyword arguments,vectorization,vectorized functions,multiple return values,branching,if test,boolean expression,vectorizing if tests">
 
-<title>Introduction to Scientific Python programming - Apdapted to TKT4140 Numerical Methods with Computer Laboratory</title>
+<title>Introduction to Scientific Python programming - Adapted to TKT4140 Numerical Methods with Computer Laboratory</title>
 
 <!-- Bootstrap style: bootstrap_bluegray -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -17,6 +17,16 @@ Automatically generated HTML file from DocOnce source
 <!-- not necessary
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
+
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+</style>
 
 
 </head>
@@ -253,17 +263,80 @@ MathJax.Hub.Config({
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="lectures-basics-TKT4140-bootstrap_bg.html">Introduction to Scientific Python programming - Apdapted to TKT4140 Numerical Methods with Computer Laboratory</a>
+    <a class="navbar-brand" href="lectures-basics-tkt4140-bootstrap_bg.html">Introduction to Scientific Python programming - Adapted to TKT4140 Numerical Methods with Computer Laboratory</a>
   </div>
+
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="#basics:basic:objects" style="font-size: 80%;">Variables, loops, lists, and arrays</a></li>
-     <!-- navigation toc: --> <li><a href="#basics:func:branching" style="font-size: 80%;">Functions and branching</a></li>
-     <!-- navigation toc: --> <li><a href="#basics:files" style="font-size: 80%;">Files</a></li>
-     <!-- navigation toc: --> <li><a href="#basics:class" style="font-size: 80%;">Classes</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;This is a very quick intro to Python programming</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:basic:objects" style="font-size: 80%;"><b>Variables, loops, lists, and arrays</b></a></li>
+     <!-- navigation toc: --> <li><a href="#basics:accesspy" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Do you have access to Python?</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mathematical example</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:formula:eval" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A program for evaluating a formula</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Assignment statements assign a name to an object</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:printf" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Formatted output with text and numbers</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:while" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Programming with a while loop</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Output of the previous program</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Structure of a while loop</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Let's take a closer look at the output of our program</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Let's examine the program in the Python Online Tutor</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Ooops, why is <code>a &lt;= 1.2</code> when <code>a</code> is <code>1.2</code>? Round-off errors!</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Rule: never <code>a == b</code> for real <code>a</code> and <code>b</code>! Always use a tolerance!</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:list" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A list collects several objects in a given sequence</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Store our table in two lists, one for each column</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:for" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;For loops</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Traditional for loop: integer counter over list/array indices</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Let's replace our while loop by a for loop</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Traversal of multiple lists at the same time with <code>zip</code></a></li>
+     <!-- navigation toc: --> <li><a href="#basics:numpy" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Arrays are computationally efficient lists of numbers</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Examples on using arrays</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec22" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;`numpy` functions creates entire arrays at once</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec23" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Let's use arrays in our previous program</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:math" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Standard mathematical functions are found in the <code>math</code> module</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Use the <code>numpy</code> module for standard mathematical functions applied to arrays</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec26" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Array assignment gives view (no copy!) of array data</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Copying array data requires special action via the <code>copy</code> method</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec28" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Construction of tridiagonal and sparse matrices</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec29" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example on constructing a tridiagonal matrix</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec30" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example on solving a tridiagonal system</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:plot" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Plotting</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec32" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Plotting of multiple curves</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:func:branching" style="font-size: 80%;"><b>Functions and branching</b></a></li>
+     <!-- navigation toc: --> <li><a href="#basics:func" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Functions</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec35" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Functions can have multiple arguments</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Keyword arguments are arguments with default values</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec37" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vectorization speeds up the code</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec38" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Python functions written for scalars normally work for arrays too!</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Python functions can return multiple values</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:formula:piecewise" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A more general mathematical formula (part I)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A more general mathematical formula (part II)</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:if" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Basic if-else tests</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec43" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Multi-branch if tests</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec44" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Implementation of a piecewisely defined function with if</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec45" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Python functions containing if will not accept array arguments</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec46" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Remedy 1: Call the function with scalar arguments</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec47" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Remedy 2: Vectorize the if test with <code>where</code></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec48" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Remedy 3: Vectorize the if test with array indexing</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:files" style="font-size: 80%;"><b>Files</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec50" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;File reading</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec51" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Code for reading files with lines <code>variable = value</code></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec52" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Splitting lines into words is a frequent operation</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec53" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The magic <code>eval</code> function</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec54" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Implementing a calculator in Python</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec55" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Modern Python often applies the <code>with</code> statement for file handling</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec56" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;File writing</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec57" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Simplified writing of tabular data to file via <code>numpy.savetxt</code></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec58" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Simplified reading of tabular data from file via <code>numpy.loadtxt</code></a></li>
+     <!-- navigation toc: --> <li><a href="#basics:class" style="font-size: 80%;"><b>Classes</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec60" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A very simple class</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec61" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How can we use this class?</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec62" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The <code>self</code> argument is a difficult thing for newcomers...</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec63" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A class for representing a mathematical function</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec64" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The class code</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec65" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \)</a></li>
 
         </ul>
       </li>
@@ -281,7 +354,7 @@ MathJax.Hub.Config({
 
 
 <div class="jumbotron">
-<center><h1>Introduction to Scientific Python programming - Apdapted to TKT4140 Numerical Methods with Computer Laboratory</h1></center>  <!-- document title -->
+<center><h1>Introduction to Scientific Python programming - Adapted to TKT4140 Numerical Methods with Computer Laboratory</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen, and Leif Rune Hellevik -->
@@ -302,7 +375,7 @@ MathJax.Hub.Config({
 <center>[3] <b>Biomechanichs Group, Department of Structural Engineering NTNU</b></center>
 <br>
 <p>
-<center><h4>Nov 5, 2015</h4></center> <!-- date -->
+<center><h4>Dec 11, 2015</h4></center> <!-- date -->
 <br>
 <p>
 <!-- potential-jumbotron-button -->
@@ -410,16 +483,17 @@ Method: show program code through math examples
 <h2 id="basics:accesspy">Do you have access to Python?</h2>
 
 <p>
-See <a href="https://www.ntnu.no/wiki/display/kt/Python" target="_blank">TKT4140 Course specific installation guidelines</a>
-
-<p>
-Other methods:
+Many methods:
 
 <ul>
  <li> Mac and Windows: <a href="https://store.continuum.io/cshop/anaconda/" target="_blank">Anaconda</a></li>
+ <li> Ubuntu: <code>sudo apt-get install</code></li>
  <li> Web browser (<a href="https://wakari.io/" target="_blank">Wakari</a> or <a href="https://cloud.sagemath.com/" target="_blank">SageMathCloud</a>)</li>
 </ul>
 
+See <a href="http://hplgit.github.io/edu/accesspy/accesspy.html" target="_blank">How to access Python for doing scientific computing</a> for more details!
+
+<p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
 <h2 id="___sec3">Mathematical example </h2>
