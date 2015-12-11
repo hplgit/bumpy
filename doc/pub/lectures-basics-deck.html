@@ -2,10 +2,10 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="Introduction to Scientific Python programming - Apdapted to TKT4140 Numerical Methods with Computer Laboratory">
+<meta name="description" content="Introduction to Scientific Python programming - Adapted to TKT4140 Numerical Methods with Computer Laboratory">
 <meta name="keywords" content="text editor,program file,assignment statement,print statement,variable,objects,format string syntax,while loop,boolean expression,Python Online Tutor,list,for loop,array,mathematical functions,import of modules,plotting,graphics,visualization,global variables,keyword arguments,vectorization,vectorized functions,multiple return values,branching,if test,boolean expression,vectorizing if tests">
 
-<title>Introduction to Scientific Python programming - Apdapted to TKT4140 Numerical Methods with Computer Laboratory</title>
+<title>Introduction to Scientific Python programming - Adapted to TKT4140 Numerical Methods with Computer Laboratory</title>
 
 
 
@@ -180,9 +180,7 @@ MathJax.Hub.Config({
 <section class="slide">
 <!-- ------------------- main content ---------------------- -->
 
-
-
-<h2 style="text-align: center;">Introduction to Scientific Python programming - Apdapted to TKT4140 Numerical Methods with Computer Laboratory</h2>  <!-- document title -->
+<h2 style="text-align: center;">Introduction to Scientific Python programming - Adapted to TKT4140 Numerical Methods with Computer Laboratory</h2>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen, and Leif Rune Hellevik -->
@@ -195,17 +193,16 @@ MathJax.Hub.Config({
 <b style="font-weight: bold">Leif Rune Hellevik</b> [3, 1] (<tt>leif.r.hellevik at ntnu.no</tt>)
 </center>
 
-
 <p>
 <!-- institution(s) -->
 
 <center>[1] <b style="font-weight: bold">Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b style="font-weight: bold">Department of Informatics, University of Oslo</b></center>
 <center>[3] <b style="font-weight: bold">Biomechanichs Group, Department of Structural Engineering NTNU</b></center>
+<br>
 <p>
-<center><b style="font-weight: bold">Mar 17, 2015</b></center> <!-- date -->
-<p>
-
+<center><b style="font-weight: bold">Dec 11, 2015</b></center> <!-- date -->
+<br>
 </section>
 
 
@@ -281,8 +278,6 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; <a href="#___sec64"> The class code </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec65"> Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \) </a><br>
 </p>
-<p>
-
 </section>
 
 
@@ -302,9 +297,6 @@ MathJax.Hub.Config({
 <p>
 
 Method: show program code through math examples
-
-<p>
-
 </section>
 
 
@@ -314,9 +306,6 @@ Method: show program code through math examples
 
 <p>
 <center><p><img src="fig-bumpy/implementation5.jpg" align="bottom" width=500></p></center>
-
-<p>
-
 </section>
 
 
@@ -335,9 +324,6 @@ Many methods:
 <p>
 
 See <a href="http://hplgit.github.io/edu/accesspy/accesspy.html" target="_blank">How to access Python for doing scientific computing</a> for more details!
-
-<p>
-
 </section>
 
 
@@ -359,9 +345,6 @@ $$
 
 We may view \( s \) as a function of \( t \): \( s(t) \), and also include the
 parameters in the notation: \( s(t;v_0,a) \).
-
-<p>
-
 </section>
 
 
@@ -376,11 +359,9 @@ parameters in the notation: \( s(t;v_0,a) \).
 Compute \( s \) for \( t=0.5 \), \( v_0=2 \), and \( a=0.2 \).
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold">Python code.</b>
-<p>
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
@@ -393,11 +374,9 @@ s = v0*t + <span style="color: #B452CD">0.5</span>*a*t**<span style="color: #B45
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold">Execution.</b>
-<p>
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
@@ -406,10 +385,6 @@ s = v0*t + <span style="color: #B452CD">0.5</span>*a*t**<span style="color: #B45
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
@@ -432,9 +407,6 @@ Rule:
  <p><li> evaluate right-hand side; it results in an <em>object</em></li>
  <p><li> left-hand side is a name for that object</li>
 </ul>
-<p>
-
-
 </section>
 
 
@@ -446,8 +418,6 @@ Rule:
  <p><li> Task: write out text with a number (3 decimals): <code>s=1.025</code></li>
  <p><li> Method: printf syntax</li>
 </ul>
-<p>
-
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -462,8 +432,6 @@ Modern alternative: format string syntax
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;s={s:.2f}&#39;</span>.format(s=s)
 </pre></div>
-<p>
-
 </section>
 
 
@@ -478,8 +446,6 @@ Modern alternative: format string syntax
 </ul>
 <p>
 
-<p>
-
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">v0 = <span style="color: #B452CD">2</span>
 a = <span style="color: #B452CD">0.2</span>
@@ -490,8 +456,6 @@ t = <span style="color: #B452CD">0</span>     <span style="color: #228B22"># Sta
     <span style="color: #8B008B; font-weight: bold">print</span> t, s
     t = t + dt
 </pre></div>
-<p>
-
 </section>
 
 
@@ -524,8 +488,6 @@ t = <span style="color: #B452CD">0</span>     <span style="color: #228B22"># Sta
 1.8 3.924
 1.9 4.161
 </pre></div>
-<p>
-
 </section>
 
 
@@ -550,9 +512,6 @@ Note:
    (no braces as in C, C++, Java, ...)</li>
  <p><li> <code>condition</code> is a boolean expression (e.g., <code>t &lt;= 2</code>)</li>
 </ul>
-<p>
-
-
 </section>
 
 
@@ -574,9 +533,6 @@ Note:
 <p>
 The last line contains 1.9, but the while loop should run also when
 \( t=2 \) since the test is <code>t &lt;= 2</code>. Why is this test <code>False</code>?
-
-<p>
-
 </section>
 
 
@@ -594,8 +550,6 @@ step through the program and examine variables
 <iframe width="950" height="500" frameborder="0"
         src="http://pythontutor.com/iframe-embed.html#code=a+%3D+0%0Ada+%3D+0.4%0Awhile+a+%3C%3D+1.2%3A%0A++++print+a%0A++++a+%3D+a+%2B+da&curInstr=0&py=2&cumulative=false">
 </iframe>
-<p>
-
 </section>
 
 
@@ -615,10 +569,6 @@ step through the program and examine variables
 Small round-off error in <code>da</code> makes <code>a = 1.2000000000000002</code>
 </div>
 <!-- end box -->
-
-
-<p>
-
 </section>
 
 
@@ -637,8 +587,6 @@ boolean_condition1 = a == b              <span style="color: #228B22"># may be F
 tol = <span style="color: #B452CD">1E-14</span>
 boolean_condition2 = <span style="color: #658b00">abs</span>(a - b) &lt; tol    <span style="color: #228B22"># True</span>
 </pre></div>
-<p>
-
 </section>
 
 
@@ -682,8 +630,6 @@ mydata.txt
 &gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> L
 [<span style="color: #B452CD">3.14</span>, <span style="color: #B452CD">10</span>, -<span style="color: #B452CD">1</span>]
 </pre></div>
-<p>
-
 </section>
 
 
@@ -713,8 +659,6 @@ i = <span style="color: #B452CD">0</span>
     <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;%.2f  %.4f&#39;</span> % (t_values[i], s_values[i])
     i += <span style="color: #B452CD">1</span>   <span style="color: #228B22"># Same as i = i + 1</span>
 </pre></div>
-<p>
-
 </section>
 
 
@@ -745,8 +689,6 @@ Demo in the Python Online Tutor:
 <iframe width="950" height="500" frameborder="0"
         src="http://pythontutor.com/iframe-embed.html#code=list1+%3D+%5B0%2C+0.1%2C+0.2%5D%0Alist2+%3D+%5B%5D%0Afor+element+in+list1%3A%0A++++p+%3D+element+%2B+2%0A++++list2.append%28p%29%0Aprint+list2&curInstr=0&py=2&cumulative=false">
 </iframe>
-<p>
-
 </section>
 
 
@@ -773,9 +715,6 @@ Note:
  <p><li> <code>range(b)</code> implies <code>a=0</code> and <code>s=1</code></li>
  <p><li> <code>range(len(somelist))</code> returns <code>[0, 1, 2]</code></li>
 </ul>
-<p>
-
-
 </section>
 
 
@@ -807,8 +746,6 @@ n = <span style="color: #658b00">int</span>(<span style="color: #658b00">round</
 <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(t_values)):
     <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;%.2f  %.4f&#39;</span> % (t_values[i], s_values[i])
 </pre></div>
-<p>
-
 </section>
 
 
@@ -833,8 +770,6 @@ Alternative: loop over a common index for the lists
     e3 = list3[i]
     ...
 </pre></div>
-<p>
-
 </section>
 
 
@@ -850,9 +785,6 @@ Alternative: loop over a common index for the lists
    the same type (integers, real numbers, complex numbers)</li>
  <p><li> Arrays require the <code>numpy</code> module</li>
 </ul>
-<p>
-
-
 </section>
 
 
@@ -878,8 +810,6 @@ float64
 &gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> b
 [  <span style="color: #B452CD">3.</span>   <span style="color: #B452CD">9.</span>  <span style="color: #B452CD">21.</span>]
 </pre></div>
-<p>
-
 </section>
 
 
@@ -914,8 +844,6 @@ Create array of length \( n \) filled with zeros:
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">t = numpy.zeros(n)
 s = numpy.zeros_like(t)  <span style="color: #228B22"># zeros with t&#39;s size and data type</span>
 </pre></div>
-<p>
-
 </section>
 
 
@@ -941,9 +869,6 @@ s_values = v0*t + <span style="color: #B452CD">0.5</span>*a*t**<span style="colo
 </pre></div>
 <p>
 Note: no explicit loop for computing <code>s_values</code>!
-
-<p>
-
 </section>
 
 
@@ -971,8 +896,6 @@ Get rid of the <code>math</code> prefix:
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> *
 <span style="color: #8B008B; font-weight: bold">print</span> sin(pi), log(e), tanh(<span style="color: #B452CD">0.5</span>)
 </pre></div>
-<p>
-
 </section>
 
 
@@ -1013,8 +936,6 @@ x = np.linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> sin, exp, pi
 y = exp(-x)*sin(pi*x)
 </pre></div>
-<p>
-
 </section>
 
 
@@ -1049,8 +970,6 @@ array([ <span style="color: #B452CD">5.</span>,  <span style="color: #B452CD">2.
 &gt;&gt;&gt; b
 array([ <span style="color: #B452CD">5.</span>,  <span style="color: #B452CD">9.</span>,  <span style="color: #B452CD">3.</span>,  <span style="color: #B452CD">4.</span>,  <span style="color: #B452CD">5.</span>])
 </pre></div>
-<p>
-
 </section>
 
 
@@ -1072,9 +991,6 @@ array([ <span style="color: #B452CD">5.</span>,  <span style="color: #B452CD">2.
 </pre></div>
 <p>
 Note: <code>b</code> has still the values from the previous example
-
-<p>
-
 </section>
 
 
@@ -1089,9 +1005,6 @@ Note: <code>b</code> has still the values from the previous example
  <p><li> The first \( k \) elements are not used of the \( k \) super-diagonal</li>
  <p><li> The last  \( k \) elements are not used of the \( -k \) sub-diagonal</li>
 </ul>
-<p>
-
-
 </section>
 
 
@@ -1118,8 +1031,6 @@ diagonals[<span style="color: #B452CD">2</span>,:] = np.linspace(<span style="co
  [ <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span> -<span style="color: #B452CD">4.</span> -<span style="color: #B452CD">2.</span>  <span style="color: #B452CD">6.</span>]
  [ <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span> -<span style="color: #B452CD">5.</span> -<span style="color: #B452CD">2.</span>]]
 </pre></div>
-<p>
-
 </section>
 
 
@@ -1154,8 +1065,6 @@ Check against dense matrix computations:
 &gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> x
 [-<span style="color: #B452CD">1.</span>  -<span style="color: #B452CD">0.6</span> -<span style="color: #B452CD">0.2</span>  <span style="color: #B452CD">0.2</span>  <span style="color: #B452CD">0.6</span>  <span style="color: #B452CD">1.</span> ]
 </pre></div>
-<p>
-
 </section>
 
 
@@ -1188,9 +1097,6 @@ The plotfile <code>myplot.png</code> looks like
 
 <p>
 <center><p><img src="fig-bumpy/plot1_s.png" align="bottom" width=500></p></center>
-
-<p>
-
 </section>
 
 
@@ -1225,9 +1131,6 @@ plt.show()
 </pre></div>
 <p>
 <center><p><img src="fig-bumpy/plot2_s.png" align="bottom" width=500></p></center>
-
-<p>
-
 </section>
 
 
@@ -1237,9 +1140,6 @@ plt.show()
 
 <p>
 <center><p><img src="fig-bumpy/branching3.jpg" align="bottom" width=500></p></center>
-
-<p>
-
 </section>
 
 
@@ -1251,8 +1151,6 @@ plt.show()
  <p><li> \( s(t)=v_0t + \frac{1}{2}at^2 \) is a mathematical function</li>
  <p><li> Can implement \( s(t) \) as a Python function <code>s(t)</code></li>
 </ul>
-<p>
-
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
@@ -1275,9 +1173,6 @@ Note:
  <p><li> <code>v0</code> and <code>a</code> are <em>global variables</em>, which
    must be initialized before <code>s(t)</code> is called</li>
 </ul>
-<p>
-
-
 </section>
 
 
@@ -1299,8 +1194,6 @@ value = s(<span style="color: #B452CD">3</span>, <span style="color: #B452CD">0.
 <span style="color: #228B22"># More readable call</span>
 value = s(t=<span style="color: #B452CD">3</span>, v0=<span style="color: #B452CD">0.2</span>, a=<span style="color: #B452CD">4</span>)
 </pre></div>
-<p>
-
 </section>
 
 
@@ -1327,9 +1220,6 @@ value = s(a=<span style="color: #B452CD">2</span>, t=<span style="color: #B452CD
    in the function and in any call</li>
  <p><li> The sequence of the keyword arguments can be arbitrary</li>
 </ul>
-<p>
-
-
 </section>
 
 
@@ -1367,9 +1257,6 @@ How can this work?
  <p><li> <code>r3 = 0.5*a*r2</code> (scalar times array)</li>
  <p><li> <code>r1 + r3</code> (add each element)</li>
 </ul>
-<p>
-
-
 </section>
 
 
@@ -1395,8 +1282,6 @@ v = f(<span style="color: #B452CD">4</span>)  <span style="color: #228B22"># f(x
 x = linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">4</span>, <span style="color: #B452CD">100001</span>)
 v = f(x)  <span style="color: #228B22"># f(x) works with array x</span>
 </pre></div>
-<p>
-
 </section>
 
 
@@ -1436,9 +1321,6 @@ s_value, v_value = movement(t=<span style="color: #B452CD">0.2</span>, v0=<span 
 </pre></div>
 <p>
 Tuples are constant lists (cannot be changed)
-
-<p>
-
 </section>
 
 
@@ -1458,7 +1340,6 @@ a = \frac{dv}{dt},\quad v(0)=v_0
 $$
 <p>&nbsp;<br>
 
-
 <p>
 Integrate to find \( v(t) \):
 
@@ -1471,10 +1352,6 @@ which gives
 <p>&nbsp;<br>
 $$ v(t) = v_0 + \int_0^t a(t)dt $$
 <p>&nbsp;<br>
-
-
-<p>
-
 </section>
 
 
@@ -1489,7 +1366,6 @@ Integrate again over \( [0,t] \) to find \( s(t) \):
 $$ s(t) = s_0 + v_0t + \int_0^t\left( \int_0^t a(t)dt \right) dt$$
 <p>&nbsp;<br>
 
-
 <p>
 Example: \( a(t)=a_0 \) for \( t\in[0,t_1] \), then \( a(t)=0 \) for \( t>t_1 \):
 
@@ -1502,12 +1378,8 @@ s_0 + v_0t_1 + \frac{1}{2}a_0 t_1^2 + a_0t_1(t-t_1),& t> t_1
 $$
 <p>&nbsp;<br>
 
-
 <p>
 Need <em>if test</em> to implement this!
-
-<p>
-
 </section>
 
 
@@ -1535,16 +1407,12 @@ Here,
 </ul>
 <p>
 
-<p>
-
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">if</span> t &lt;= t1:
     s = v0*t + <span style="color: #B452CD">0.5</span>*a0*t**<span style="color: #B452CD">2</span>
 <span style="color: #8B008B; font-weight: bold">else</span>:
     s = v0*t + <span style="color: #B452CD">0.5</span>*a0*t1**<span style="color: #B452CD">2</span> + a0*t1*(t-t1)
 </pre></div>
-<p>
-
 </section>
 
 
@@ -1574,8 +1442,6 @@ Just if, no else:
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">if</span> condition:
     &lt;statements when condition <span style="color: #8B008B">is</span> <span style="color: #658b00">True</span>&gt;
 </pre></div>
-<p>
-
 </section>
 
 
@@ -1595,7 +1461,6 @@ s_0 + v_0t_1 + \frac{1}{2}a_0 t_1^2 + a_0t_1(t-t_1),& t> t_1
 $$
 <p>&nbsp;<br>
 
-
 <p>
 reads
 
@@ -1609,8 +1474,6 @@ reads
         s = v0*t + <span style="color: #B452CD">0.5</span>*a0*t1**<span style="color: #B452CD">2</span> + a0*t1*(t-t1)
     <span style="color: #8B008B; font-weight: bold">return</span> s
 </pre></div>
-<p>
-
 </section>
 
 
@@ -1633,9 +1496,6 @@ element <span style="color: #8B008B">is</span> ambiguous. Use a.any() <span styl
 </pre></div>
 <p>
 Problem: <code>x &lt; 1</code> evaluates to a boolean array, not just a boolean
-
-<p>
-
 </section>
 
 
@@ -1667,8 +1527,6 @@ plt.ylabel(<span style="color: #CD5555">&#39;s&#39;</span>)
 plt.savefig(<span style="color: #CD5555">&#39;myplot.png&#39;</span>)
 plt.show()
 </pre></div>
-<p>
-
 </section>
 
 
@@ -1707,9 +1565,6 @@ Our example then becomes
 <p>
 Note that <code>t &lt;= t1</code> with array <code>t</code> and scalar <code>t1</code> results in a boolean
 array <code>b</code> where <code>b[i] = t[i] &lt;= t1</code>.
-
-<p>
-
 </section>
 
 
@@ -1734,8 +1589,6 @@ Our example can utilize this technique with <code>b</code> as <code>t &lt;= t1</
 s[t &lt;= t1] = (v0*t + <span style="color: #B452CD">0.5</span>*a0*t**<span style="color: #B452CD">2</span>)[t &lt;= t1]
 s[t &gt; t1]  = (v0*t + <span style="color: #B452CD">0.5</span>*a0*t1**<span style="color: #B452CD">2</span> + a0*t1*(t-t1))[t &gt; t1]
 </pre></div>
-<p>
-
 </section>
 
 
@@ -1745,9 +1598,6 @@ s[t &gt; t1]  = (v0*t + <span style="color: #B452CD">0.5</span>*a0*t1**<span sty
 
 <p>
 <center><p><img src="fig-bumpy/files1.jpg" align="bottom" width=400></p></center>
-
-<p>
-
 </section>
 
 
@@ -1773,10 +1623,6 @@ interval = [0, 2]
 How can we read this file into variables <code>v0</code>, <code>a</code>, <code>dt</code>, and <code>interval</code>?
 </div>
 <!-- end box -->
-
-
-<p>
-
 </section>
 
 
@@ -1802,8 +1648,6 @@ How can we read this file into variables <code>v0</code>, <code>a</code>, <code>
         interval = <span style="color: #658b00">eval</span>(value)
 infile.close()
 </pre></div>
-<p>
-
 </section>
 
 
@@ -1826,9 +1670,6 @@ infile.close()
 <p>
 Note: must convert <code>value</code> to <code>float</code> before we can compute with
 the value!
-
-<p>
-
 </section>
 
 
@@ -1858,9 +1699,6 @@ corresponding Python object
 <p>
 Why is this so great? We can read formulas, lists, expressions as
 text from file and with <code>eval</code> turn them into live Python objects!
-
-<p>
-
 </section>
 
 
@@ -1891,8 +1729,6 @@ command_line_expression = sys.argv[<span style="color: #B452CD">1</span>]
 result = <span style="color: #658b00">eval</span>(command_line_expression)
 <span style="color: #8B008B; font-weight: bold">print</span> result
 </pre></div>
-<p>
-
 </section>
 
 
@@ -1909,9 +1745,6 @@ result = <span style="color: #658b00">eval</span>(command_line_expression)
 </pre></div>
 <p>
 No need to close the file when using <code>with</code>
-
-<p>
-
 </section>
 
 
@@ -1936,8 +1769,6 @@ outfile.write(<span style="color: #CD5555">&#39;# t    s(t)\n&#39;</span>)  <spa
 <span style="color: #8B008B; font-weight: bold">for</span> t, s <span style="color: #8B008B">in</span> <span style="color: #658b00">zip</span>(t_values, s_values):
     outfile.write(<span style="color: #CD5555">&#39;%.2f  %.4f\n&#39;</span> % (t, s))
 </pre></div>
-<p>
-
 </section>
 
 
@@ -1974,8 +1805,6 @@ np.savetxt(<span style="color: #CD5555">&#39;table2.dat&#39;</span>, data, fmt=[
 1.90 4.1610
 2.00 4.4000
 </pre></div>
-<p>
-
 </section>
 
 
@@ -1997,9 +1826,6 @@ Note:
    holds the \( t \) value and <code>data[i,1]</code> the \( s(t) \) value in the <code>i</code>-th
    row</li>
 </ul>
-<p>
-
-
 </section>
 
 
@@ -2010,8 +1836,6 @@ Note:
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
  <p><li> All objects in Python are made from a class</li>
  <p><li> You don't need to know about classes to use Python</li>
@@ -2019,22 +1843,15 @@ Note:
 </ul>
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
  <p><li> Class = functions + variables packed together</li>
  <p><li> A class is a logical unit in a program</li>
  <p><li> A large program as a combination of appropriate units</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
@@ -2048,8 +1865,6 @@ Note:
 </ul>
 <p>
 
-<p>
-
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Trivial</span>:
     <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, a):
@@ -2061,9 +1876,6 @@ Note:
 <p>
 Class terminology: Functions are called
 <em>methods</em> and variables are called <em>attributes</em>.
-
-<p>
-
 </section>
 
 
@@ -2090,9 +1902,6 @@ Note:
    (instance) if the class</li>
  <p><li> <code>t.dump()</code> actually means <code>Trivial.dump(t)</code> (<code>self</code> is <code>t</code>)</li>
 </ul>
-<p>
-
-
 </section>
 
 
@@ -2121,10 +1930,6 @@ for better explanation of <code>self</code>.
 <code>self</code> is confusing in the beginning, but later it greatly helps
 the understanding of how classes work!
 </div>
-
-
-<p>
-
 </section>
 
 
@@ -2139,7 +1944,6 @@ Function with one independent variable \( t \) and two parameters
 <p>&nbsp;<br>
 $$ s(t; v_0, a) = v_0t + \frac{1}{2}at^2$$
 <p>&nbsp;<br>
-
 
 <p>
 Class representation of this function:
@@ -2158,8 +1962,6 @@ Usage:
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">s = Distance(v0=<span style="color: #B452CD">2</span>, a=<span style="color: #B452CD">0.5</span>)  <span style="color: #228B22"># create instance</span>
 v = s(t=<span style="color: #B452CD">0.2</span>)               <span style="color: #228B22"># compute formula</span>
 </pre></div>
-<p>
-
 </section>
 
 
@@ -2182,8 +1984,6 @@ v = s(t=<span style="color: #B452CD">0.2</span>)               <span style="colo
 s = Distance(v0=<span style="color: #B452CD">2</span>, a=<span style="color: #B452CD">0.5</span>)  <span style="color: #228B22"># create instance</span>
 v = s(t=<span style="color: #B452CD">0.2</span>)               <span style="color: #228B22"># actually s.__call__(t=0.2)</span>
 </pre></div>
-<p>
-
 </section>
 
 
@@ -2195,8 +1995,6 @@ v = s(t=<span style="color: #B452CD">0.2</span>)               <span style="colo
  <p><li> The \( n \) parameters \( p_1,p_2,\ldots,p_n \) are attributes</li>
  <p><li> <code>__call__(self, x, y, z)</code> is used to compute \( f(x, y, z) \)</li>
 </ul>
-<p>
-
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -2212,9 +2010,6 @@ v = s(t=<span style="color: #B452CD">0.2</span>)               <span style="colo
 f = F(p1=..., p2=..., ...)   <span style="color: #228B22"># create instance with parameters</span>
 <span style="color: #8B008B; font-weight: bold">print</span> f(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">4</span>, -<span style="color: #B452CD">1</span>)            <span style="color: #228B22"># evaluate f(x,y,z) function</span>
 </pre></div>
-<p>
-
-
 </section>
 
 
