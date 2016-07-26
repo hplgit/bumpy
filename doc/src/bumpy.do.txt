@@ -1173,25 +1173,24 @@ def test_halve():
 
 === Test function for the numerical solver ===
 
-A frequently used technique to test differential equation solvers
-is to just specify a solution and fit a source term in the differential
-equation such that the specified solution solves the equation.
-The initial conditions must be set according to the specified
+A frequently used technique to test differential equation solvers is
+to just specify a solution and fit a source term in the differential
+equation such that the specified solution solves the equation.  The
+initial conditions must be set according to the specified
 solution. This technique is known as the *method of manufactured
 solutions*.
 
-Here we shall specify a solution that is quadratic or linear
-in $t$ because
-such lower-order polynomials will often be an exact solution of both
-the differential equation *and* the finite difference equations.
-This means that the polynomial should be reproduced to machine
-precision by our `solver` function.
+Here we shall specify a solution that is quadratic or linear in $t$
+because such lower-order polynomials will often be an exact solution
+of both the differential equation *and* the finite difference
+equations.  This means that the polynomial should be reproduced to
+machine precision by our `solver` function.
 
 We can use SymPy to find an appropriate $F(t)$ term in the
-differential equation such that a specified solution $u(t)=I + Vt + qt^2$
-fits the equation and initial conditions. With quadratic damping,
-only a linear $u$ will solve the discrete equation so in this case
-we choose $u=I+Vt$.
+differential equation such that a specified solution $u(t)=I + Vt +
+qt^2$ fits the equation and initial conditions. With quadratic
+damping, only a linear $u$ will solve the discrete equation so in this
+case we choose $u=I+Vt$.
 
 We embed the SymPy calculations and the numerical calculations
 in a *test function*:
@@ -1201,8 +1200,8 @@ in a *test function*:
 === Using a test framework ===
 
 We recommend to use `pytest` as test framework. Subdirectories `test*`
-are examined for files `test_*.py` that have test functions `test_*()`,
-and all such tests are executed by the following command:
+are examined for files `test_*.py` that have test functions
+`test_*()`, and all such tests are executed by the following command:
 
 !bc sys-t
 Terminal> py.test -s
@@ -1283,8 +1282,10 @@ label{app:resources}
 === Full tutorials on scientific programming with Python ===
 
   * "Python Scientific Lecture Notes": "http://scipy-lectures.github.com/" (from EuroSciPy tutorials, based on "Python Scientific": "http://web.phys.ntnu.no/~ingves/Teaching/TFY4240/Assignments/PythonScientific.pdf")
+  * "Practical Numerical Methods with Python": "https://github.com/numerical-mooc/numerical-mooc"
   * "Scientific Python Lectures as IPython notebooks": "https://github.com/jrjohansson/scientific-python-lectures"
   * "Stefan van der Walt's lectures": "https://github.com/stefanv/teaching"
+  * "Finite Difference Computing with Exponential Decay Models": " http://www.springer.com/gp/book/9783319294384" (open access)
 
 === NumPy resources ===
 
@@ -1321,6 +1322,8 @@ label{app:resources}
   * "Introduction to Python Programming": "http://femhub.com/textbook-python/python_en.pdf/" (for scientists)
   * "A Primer on Scientific Programming with Python": "http://goo.gl/SWEQlz"
     ("slides": "http://hplgit.github.io/scipro-primer/slides/index.html" are also available)
+  * "Finite Difference Computing with Exponential Decay Models": " http://www.springer.com/gp/book/9783319294384" (open access)
+  * "Programming for Computations": "http://www.springer.com/gp/book/9783319324272" (open access)
   * "Python Scripting for Computational Science": "http://goo.gl/q8tM7D"
 
 === Course material on Python programming in general ===

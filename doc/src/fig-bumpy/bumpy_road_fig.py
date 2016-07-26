@@ -90,7 +90,8 @@ def draw_vehicle(x, y, x0, y0, u):
                            })
 
     # Is the tire below or above the road? Adjust the height!
-    bumps = road(vehicle['tire']['wheel']['arc'].x)
+    #bumps = road(vehicle['tire']['wheel']['arc'].x) # should work!!
+    bumps = road.__call__(vehicle['tire']['wheel']['arc'].x)
     below = (bumps - vehicle['tire']['wheel']['arc'].y).max()
     vehicle.translate((0, below))
 
@@ -108,6 +109,7 @@ def move(t, fig):
     x = v*t
     y = h(x)
     y_1 = h(x_1)
+    # Coordinate system follows motion
     drawing_tool.set_coordinate_system(
         xmin=x-5*R, xmax=x+3*w_1, ymin=-2, ymax=7*H,
         axis=True, new_figure=False)
@@ -115,6 +117,22 @@ def move(t, fig):
     fig['vehicle'] = draw_vehicle(x, y, x_1, y_1, u_scaled[i])
     fig.draw()
     i+=1
+
+# First draw sketch with r0 vector to position the bottom point of the wheel
+x = 5.0
+drawing_tool.set_coordinate_system(
+    xmin=-3, xmax=10, ymin=-2, ymax=7*H,
+    axis=False, new_figure=True)
+rpos = Force((0,-0.5), (x, h(x)-0.15), '$\\boldsymbol{r_0}$', text_spacing=1./60,
+             text_pos='start').set_linecolor('black')
+fig = Composition({'road': road, 'r': rpos,
+                   'vehicle': draw_vehicle(x, h(x), x, h(x), 0)})
+fig.draw()
+drawing_tool.display()
+drawing_tool.savefig('tmp_bumpy')
+sys.exit(0)
+
+drawing_tool.earse()
 
 fig = Composition({'road': road, 'solution': u_solution,
                    'vehicle': draw_vehicle(0, h(0), 0, h(0), 0)})
