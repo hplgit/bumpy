@@ -101,14 +101,14 @@ advanced scientific computing.</p>
 but it is more common to use the <code class="docutils literal"><span class="pre">apt-get</span></code> command-line tool or the
 Ubuntu installer to install a set of Debian packages. Here is a
 list of the packages you need to install for this introduction:</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; sudo apt-get install python-pip python-setuptools \
+<div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; sudo apt-get install python-pip python-setuptools \
   python-scipy python-sympy python-cython python-matplotlib \
   python-dev python-profiler pydb spyder imagemagick gedit vim \
   emacs python-mode git mercurial lib-avtools gnome-terminal
 </pre></div>
 </div>
 <p>In addition, run</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; pip install nose
+<div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; pip install nose
 Terminal&gt; pip install pytest
 Terminal&gt; pip install ipython --upgrade
 Terminal&gt; pip install tornado --upgrade
@@ -141,7 +141,7 @@ parameters in the notation: <span class="math">\(s(t;v_0,a)\)</span>.</p>
 <span id="basics-formula-eval"></span><h2>A program for evaluating a formula<a class="headerlink" href="#a-program-for-evaluating-a-formula" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="index-0"></span><p id="index-1">Here is a Python program for computing <span class="math">\(s\)</span>, given <span class="math">\(t=0.5\)</span>, <span class="math">\(v_0=2\)</span>,
 and <span class="math">\(a=0.2\)</span>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">t</span> <span class="o">=</span> <span class="mf">0.5</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="n">v0</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">a</span> <span class="o">=</span> <span class="mf">0.2</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span>
@@ -156,7 +156,7 @@ Save the text to a
 program file whose name ends in <code class="docutils literal"><span class="pre">.py</span></code>, say <code class="docutils literal"><span class="pre">distance.py</span></code>.</p>
 <p>The program is run in a terminal window (Command Prompt on Windows,
 Terminal application on Mac OS X, <code class="docutils literal"><span class="pre">xterm</span></code> or <code class="docutils literal"><span class="pre">gnome-terminal</span></code> on Linux):</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; python distance.py
+<div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; python distance.py
 1.025
 </pre></div>
 </div>
@@ -197,7 +197,7 @@ dictionaries, arrays, files, ...</p>
 of <code class="docutils literal"><span class="pre">s</span></code>. However, sometimes we want to combine the content of an object
 with some text. Say we want to print <code class="docutils literal"><span class="pre">s=1.025</span></code> rather than just the number.
 This is easily accomplished using <em>printf</em> syntax:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="s">&#39;s=</span><span class="si">%g</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">s</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span> <span class="s1">&#39;s=</span><span class="si">%g</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">s</span>
 </pre></div>
 </div>
 <p>The output is specified as a string, enclosed in single or double quotes.
@@ -208,7 +208,7 @@ there is one such slot, <code class="docutils literal"><span class="pre">%g</spa
 as compactly as possible.</p>
 <p>It is easy to control the number of decimals using printf syntax.
 Printing out <code class="docutils literal"><span class="pre">s=1.03</span></code>, i.e., <code class="docutils literal"><span class="pre">s</span></code> with two decimals, is done by</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="s">&#39;s=</span><span class="si">%.2f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">s</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span> <span class="s1">&#39;s=</span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">s</span>
 </pre></div>
 </div>
 <p>where the <code class="docutils literal"><span class="pre">f</span></code> signifies a <em>decimal number</em> and the preceding <code class="docutils literal"><span class="pre">.2</span></code> means
@@ -216,7 +216,7 @@ Printing out <code class="docutils literal"><span class="pre">s=1.03</span></cod
 is specified as <code class="docutils literal"><span class="pre">%.2E</span></code> (2 decimals).</p>
 <p id="index-10">The printf syntax is available in numerous programming languages.
 Python also offers a related variant, called <em>format string syntax</em>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="s">&#39;s={s:.2f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span> <span class="s1">&#39;s={s:.2f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -229,10 +229,10 @@ done with a <em>loop</em>. There are two types of loops in Python: <em>while</em
 and <em>for</em> loops.</p>
 <p>Let the <span class="math">\(t\)</span> values go from 0 to 2 in increments of 0.1. The following
 program applies a <em>while</em> loop:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">v0</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">v0</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">a</span> <span class="o">=</span> <span class="mf">0.2</span>
-<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c"># Increment</span>
-<span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>     <span class="c"># Start value</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># Increment</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>     <span class="c1"># Start value</span>
 <span class="k">while</span> <span class="n">t</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span>
     <span class="k">print</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span>
@@ -241,7 +241,7 @@ program applies a <em>while</em> loop:</p>
 </div>
 <p>The result of running this program in a terminal window
 is</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; python while.py
+<div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; python while.py
 0 0.0
 0.1 0.201
 0.2 0.404
@@ -269,7 +269,7 @@ variables: <code class="docutils literal"><span class="pre">v0</span></code>, <c
 a line is a <em>comment</em> and does not affect what happens in the program, but
 is meant to be of help for a human reading the program.
 Then comes the while loop:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">while</span> <span class="n">condition</span><span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">condition</span><span class="p">:</span>
     <span class="o">&lt;</span><span class="n">intented</span> <span class="n">statement</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="n">intented</span> <span class="n">statement</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="n">intented</span> <span class="n">statement</span><span class="o">&gt;</span>
@@ -313,11 +313,11 @@ exact equality, <code class="docutils literal"><span class="pre">a</span> <span 
 <div class="admonition-rule-use-exact-equality-when-comparing-real-numbers admonition">
 <p class="first admonition-title">Rule: use exact equality <code class="docutils literal"><span class="pre">==</span></code> when comparing real numbers</p>
 <p>Always compare real numbers using the difference and a tolerance:</p>
-<div class="last highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="mf">1.2</span>
+<div class="last highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">1.2</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mf">0.4</span> <span class="o">+</span> <span class="mf">0.4</span> <span class="o">+</span> <span class="mf">0.4</span>
-<span class="n">boolean_condition1</span> <span class="o">=</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span>              <span class="c"># False</span>
+<span class="n">boolean_condition1</span> <span class="o">=</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span>              <span class="c1"># False</span>
 <span class="n">tol</span> <span class="o">=</span> <span class="mf">1E-14</span>
-<span class="n">boolean_condition2</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span>    <span class="c"># True</span>
+<span class="n">boolean_condition2</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span>    <span class="c1"># True</span>
 </pre></div>
 </div>
 </div>
@@ -331,30 +331,30 @@ use a real debugger instead when searching for errors in real programs.</p>
 We could store all the numbers in each column in a <em>list</em> object.
 A list is just a collection of objects, here numbers, in a given
 sequence. For example,</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>is a list of three numbers. Lists are enclosed in square brackets
 and may contain any type of objects separated by commas. Here
 we mix a filename (string), a real number, and an integer:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;mydata.txt&#39;</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mydata.txt&#39;</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>The different list <em>elements</em> can be reached via indexing: <code class="docutils literal"><span class="pre">L[0]</span></code> is
 the first element, <code class="docutils literal"><span class="pre">L[1]</span></code> is the second, and <code class="docutils literal"><span class="pre">L[-1]</span></code> is the last element.
 Here is an <em>interactive Python shell</em> where we can write Python statements
 and examine the contents of variables as we perform various operations:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;mydata.txt&#39;</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mydata.txt&#39;</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="go">mydata.txt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="go">3.14</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c"># delete the first element</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># delete the first element</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">L</span>
 <span class="go">[3.14, 10]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>  <span class="c"># length of L</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>  <span class="c1"># length of L</span>
 <span class="go">2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c"># add -1 at the end of the list</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># add -1 at the end of the list</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">L</span>
 <span class="go">[3.14, 10, -1]</span>
 </pre></div>
@@ -364,9 +364,9 @@ column. We can start with empty lists <code class="docutils literal"><span class
 add a new element to the lists in each pass of the while loop. Thereafter,
 we can run a new while loop and print the contents of the lists in a
 nice, tabular fashion:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">v0</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">v0</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">a</span> <span class="o">=</span> <span class="mf">0.2</span>
-<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c"># Increment</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># Increment</span>
 <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">t_values</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">s_values</span> <span class="o">=</span> <span class="p">[]</span>
@@ -375,17 +375,17 @@ nice, tabular fashion:</p>
     <span class="n">t_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="n">s_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
     <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="n">dt</span>
-<span class="k">print</span> <span class="n">s_values</span>  <span class="c"># Just take a look at a created list</span>
+<span class="k">print</span> <span class="n">s_values</span>  <span class="c1"># Just take a look at a created list</span>
 
-<span class="c"># Print a nicely formatted table</span>
+<span class="c1"># Print a nicely formatted table</span>
 <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_values</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s">&#39;</span><span class="si">%.2f</span><span class="s">  </span><span class="si">%.4f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t_values</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">s_values</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>   <span class="c"># Same as i = i + 1</span>
+    <span class="k">print</span> <span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">  </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t_values</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">s_values</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>   <span class="c1"># Same as i = i + 1</span>
 </pre></div>
 </div>
 <p>The output looks like</p>
-<div class="highlight-text"><div class="highlight"><pre>[0.0, 0.201, 0.404, 0.6090000000000001, 0.8160000000000001,
+<div class="highlight-text"><div class="highlight"><pre><span></span>[0.0, 0.201, 0.404, 0.6090000000000001, 0.8160000000000001,
  1.025, 1.236, 1.4489999999999998, 1.664, 1.8809999999999998,
  2.0999999999999996, 2.3209999999999997, ...]
 0.00  0.0000
@@ -410,7 +410,7 @@ for many more examples.</p>
 <div class="section" id="for-loops">
 <span id="basics-for"></span><h2>For loops<a class="headerlink" href="#for-loops" title="Permalink to this headline">¶</a></h2>
 <p id="index-17">A for loop is used for visiting elements in a list, one by one:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">L</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">print</span> <span class="n">e</span>
 <span class="gp">...</span>
@@ -430,8 +430,8 @@ Try the following code out in the Python Online Tutor:</p>
 <iframe width="950" height="500" frameborder="0"
         src="http://pythontutor.com/iframe-embed.html#code=list1+%3D+%5B0%2C+0.1%2C+0.2%5D%0Alist2+%3D+%5B%5D%0Afor+element+in+somelist%3A%0A++++p+%3D+element+%2B+2%0A++++list2.append%28p%29%0Aprint+list2&curInstr=0&py=2&cumulative=false">
 </iframe><p>A for loop over the valid indices in a list is created by</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">somelist</span><span class="p">)):</span>
-    <span class="c"># Work with somelist[i]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">somelist</span><span class="p">)):</span>
+    <span class="c1"># Work with somelist[i]</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">range</span></code> function returns a list of integers: <code class="docutils literal"><span class="pre">range(a,</span> <span class="pre">b,</span> <span class="pre">s)</span></code>
@@ -444,41 +444,41 @@ Just writing <code class="docutils literal"><span class="pre">range(b)</span></c
 If you need a loop over real values, you have to either create a list
 with the values first, or use a formula where each value is generated
 through an integer counter:</p>
-<div class="last highlight-python"><div class="highlight"><pre><span class="c"># Need loop over 0, 0.1, 0.2, ..., 1</span>
+<div class="last highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Need loop over 0, 0.1, 0.2, ..., 1</span>
 <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">):</span>
     <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="mf">0.1</span><span class="p">)</span>
 
-<span class="c"># Shorter version using list comprehension (same as the loop above)</span>
+<span class="c1"># Shorter version using list comprehension (same as the loop above)</span>
 <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="mf">0.1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">)]</span>
 
 <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
-    <span class="c"># work with value</span>
+    <span class="c1"># work with value</span>
 </pre></div>
 </div>
 </div>
 <p>We can now rewrite our program that used lists and while loops to use
 for loops instead:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">v0</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">v0</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">a</span> <span class="o">=</span> <span class="mf">0.2</span>
-<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c"># Increment</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># Increment</span>
 <span class="n">t_values</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">s_values</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="n">dt</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c"># No of t values</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="n">dt</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># No of t values</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">t</span> <span class="o">=</span> <span class="n">i</span><span class="o">*</span><span class="n">dt</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span>
     <span class="n">t_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="n">s_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">s_values</span>  <span class="c"># Just take a look at a created list</span>
+<span class="k">print</span> <span class="n">s_values</span>  <span class="c1"># Just take a look at a created list</span>
 
-<span class="c"># Make nicely formatted table</span>
+<span class="c1"># Make nicely formatted table</span>
 <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">t_values</span><span class="p">,</span> <span class="n">s_values</span><span class="p">):</span>
-    <span class="k">print</span> <span class="s">&#39;</span><span class="si">%.2f</span><span class="s">  </span><span class="si">%.4f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">  </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
 
-<span class="c"># Alternative implementation</span>
+<span class="c1"># Alternative implementation</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t_values</span><span class="p">)):</span>
-    <span class="k">print</span> <span class="s">&#39;</span><span class="si">%.2f</span><span class="s">  </span><span class="si">%.4f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t_values</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">s_values</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">print</span> <span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">  </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t_values</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">s_values</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>Observe that we have here used a slightly different technique
@@ -492,12 +492,12 @@ integer (and <code class="docutils literal"><span class="pre">int</span></code> 
 there will be <span class="math">\(1 + (b-a)/\Delta t\)</span> points in total.)</p>
 <span class="target" id="index-19"></span><p id="index-20">Running through multiple lists simultaneously is done with the <code class="docutils literal"><span class="pre">zip</span></code>
 construction:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">e1</span><span class="p">,</span> <span class="n">e2</span><span class="p">,</span> <span class="n">e3</span><span class="p">,</span> <span class="o">...</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">,</span> <span class="n">list3</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">e1</span><span class="p">,</span> <span class="n">e2</span><span class="p">,</span> <span class="n">e3</span><span class="p">,</span> <span class="o">...</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">,</span> <span class="n">list3</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
 </pre></div>
 </div>
 <p>One may instead create a for loop over all the legal index values
 instead and index each array,</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">list1</span><span class="p">)):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">list1</span><span class="p">)):</span>
     <span class="n">e1</span> <span class="o">=</span> <span class="n">list1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="n">e2</span> <span class="o">=</span> <span class="n">list2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="o">...</span>
@@ -519,14 +519,14 @@ example, are available in the <code class="docutils literal"><span class="pre">n
 Functions or variables in the module must be prefixed by <code class="docutils literal"><span class="pre">numpy</span></code>.
 This will be demonstrated below.
 Here is an example involving basic operations with arrays:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">]</span>    <span class="c"># List of numbers</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">]</span>    <span class="c1"># List of numbers</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>  <span class="c"># Make corresponding array</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>  <span class="c1"># Make corresponding array</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">a</span>
 <span class="go">[  1.   4.  10.]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="go">4.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">a</span><span class="o">.</span><span class="n">dtype</span>       <span class="c"># Data type of an element</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">a</span><span class="o">.</span><span class="n">dtype</span>       <span class="c1"># Data type of an element</span>
 <span class="go">float64</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">b</span>
@@ -537,7 +537,7 @@ Here is an example involving basic operations with arrays:</p>
 (because one element in <code class="docutils literal"><span class="pre">L</span></code> was <code class="docutils literal"><span class="pre">float</span></code>).
 Arithmetic expressions such as <code class="docutils literal"><span class="pre">2*a+1</span></code> work with <code class="docutils literal"><span class="pre">a</span></code> as array, but not
 as list. In fact, we can pass arrays to mathematical functions:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">c</span>
 <span class="go">[ 0.          1.38629436  2.30258509]</span>
 </pre></div>
@@ -546,23 +546,23 @@ as list. In fact, we can pass arrays to mathematical functions:</p>
 <span class="math">\(n+1\)</span> uniformly distributed
 coordinates in an interval <span class="math">\([a,b]\)</span>, stored in an array, one
 can use <code class="docutils literal"><span class="pre">linspace</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">t</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This construction makes it easy to create arrays for the <span class="math">\(t\)</span> and <span class="math">\(s\)</span>
 values in our tables:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
 <span class="n">v0</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">a</span> <span class="o">=</span> <span class="mf">0.2</span>
-<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c"># Increment</span>
-<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="n">dt</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c"># No of t values</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># Increment</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="n">dt</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># No of t values</span>
 
 <span class="n">t_values</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">s_values</span> <span class="o">=</span> <span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span>
 
-<span class="c"># Make nicely formatted table</span>
+<span class="c1"># Make nicely formatted table</span>
 <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">t_values</span><span class="p">,</span> <span class="n">s_values</span><span class="p">):</span>
-    <span class="k">print</span> <span class="s">&#39;</span><span class="si">%.2f</span><span class="s">  </span><span class="si">%.4f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">  </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -574,17 +574,17 @@ all their inverses (called <code class="docutils literal"><span class="pre">asin
 (<code class="docutils literal"><span class="pre">exp(x)</span></code>), <span class="math">\(\ln x\)</span> (<code class="docutils literal"><span class="pre">log(x)</span></code>), and <span class="math">\(x!\)</span> (<code class="docutils literal"><span class="pre">factorial(x)</span></code>).
 However, one has to import a module to get access to these functions.
 For scalars (single numbers) the relevant module is <code class="docutils literal"><span class="pre">math</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
 <span class="go">1.2246467991473532e-16</span>
 </pre></div>
 </div>
 <p>which shows that the sine function is only approximate (to 16 digits).
 Many prefer to write mathematical expressions without the <code class="docutils literal"><span class="pre">math</span></code> prefix:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span>
 <span class="k">print</span> <span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
 
-<span class="c"># Or import everything from math</span>
+<span class="c1"># Or import everything from math</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="k">print</span> <span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="p">),</span> <span class="n">log</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">tanh</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
@@ -595,14 +595,14 @@ that work on scalars as well as arrays.</p>
 <p class="first admonition-title">Import of <code class="docutils literal"><span class="pre">numpy</span></code></p>
 <p>To get Python code that is as similar to Matlab as possible, one would
 do a &#8220;start import&#8221; of everything,</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>However, in the Python community it has been a culture to use
 a prefix <code class="docutils literal"><span class="pre">np</span></code> as abbreviation for <code class="docutils literal"><span class="pre">numpy</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
@@ -611,7 +611,7 @@ a prefix <code class="docutils literal"><span class="pre">np</span></code> as ab
 but skip the prefix when working with mathematical functions like
 <a href="#id1"><span class="problematic" id="id2">`</span></a>exp(x)*sin(pi*x)`to get a one-to-one correspondence between formulas
 in the program and in the mathematical description of the problem.</p>
-<div class="last highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="last highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">exp</span><span class="p">,</span> <span class="n">pi</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
@@ -628,18 +628,18 @@ programs will draw straight lines between the points on the curve,
 so a sufficient number of points are needed to give the impression
 of a smooth curve. Our <span class="math">\(s(t)\)</span> function is plotted by the following
 code:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="n">v0</span> <span class="o">=</span> <span class="mf">0.2</span>
 <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">21</span>  <span class="c"># No of t values for plotting</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">21</span>  <span class="c1"># No of t values for plotting</span>
 
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&#39;myplot.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;myplot.png&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -648,7 +648,7 @@ code:</p>
 <a class="reference internal image-reference" href="_images/plot1_s.png"><img alt="_images/plot1_s.png" src="_images/plot1_s.png" style="width: 500px;" /></a>
 </div>
 <p>Matlab users may prefer to do</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 </div>
@@ -656,18 +656,18 @@ code:</p>
 in Matlab.</p>
 <p>Two curves can easily be plotted, this time also with labels on the
 axis and a box with legends such that we can distinguish the two curves:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="n">v0</span> <span class="o">=</span> <span class="mf">0.2</span>
 <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">21</span>  <span class="c"># No of t values for plotting</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">21</span>  <span class="c1"># No of t values for plotting</span>
 
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&#39;myplot.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;myplot.png&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -726,14 +726,11 @@ axis and a box with legends such that we can distinguish the two curves:</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>

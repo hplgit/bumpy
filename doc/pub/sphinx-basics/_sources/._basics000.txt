@@ -7,7 +7,7 @@ A very basic introduction to scientific Python programming
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen (hpl at simula.no), Leif Rune Hellevik (leif.r.hellevik at ntnu.no)
-:Date: Nov 1, 2015
+:Date: Jul 27, 2016
 
 
 .. admonition:: Contents

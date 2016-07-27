@@ -100,7 +100,7 @@ larger program can be composed by combing such units (classes).</p>
 </table>
 <p>Here is a trivial class that has one variable <code class="docutils literal"><span class="pre">a</span></code> and one
 function <code class="docutils literal"><span class="pre">dump</span></code> that writes the contents of <code class="docutils literal"><span class="pre">a</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Trivial</span><span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Trivial</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span>
 
@@ -110,7 +110,7 @@ function <code class="docutils literal"><span class="pre">dump</span></code> tha
 </div>
 <p>How can we use this class? First, we must make an <em>instance</em> (object)
 of the class:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">t</span> <span class="o">=</span> <span class="n">Trivial</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">Trivial</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The syntax <code class="docutils literal"><span class="pre">Trivial(a=4)</span></code> implies a call to the <code class="docutils literal"><span class="pre">__init__</span></code> method (function)
@@ -122,7 +122,7 @@ The <code class="docutils literal"><span class="pre">__init__</span></code> func
 to construct an instance (object) of the class.</p>
 <p>Having an instance <code class="docutils literal"><span class="pre">t</span></code> of class <code class="docutils literal"><span class="pre">Trivial</span></code>, we can call the <code class="docutils literal"><span class="pre">dump</span></code> method
 as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">t</span><span class="o">.</span><span class="n">dump</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">dump</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Even though both <code class="docutils literal"><span class="pre">__init__</span></code> and <code class="docutils literal"><span class="pre">dump</span></code> have <code class="docutils literal"><span class="pre">self</span></code> as first argument,
@@ -152,13 +152,13 @@ Using a class, we can pack <span class="math">\(v_0\)</span> and <span class="ma
 computing <span class="math">\(s(t)\)</span> and that can be called with one argument.</p>
 <div class="section" id="the-class-code">
 <h3>The class code<a class="headerlink" href="#the-class-code" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Distance</span><span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Distance</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v0</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">v0</span> <span class="o">=</span> <span class="n">v0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span>
 
     <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
-        <span class="n">v0</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span>  <span class="c"># make local variables</span>
+        <span class="n">v0</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span>  <span class="c1"># make local variables</span>
         <span class="k">return</span> <span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
 </div>
@@ -179,8 +179,8 @@ these data in class methods.</p>
 argument (<code class="docutils literal"><span class="pre">self</span></code> does not count since it is never used in calls).
 This special methods allows us to view a class instance as if
 were a function. Let us illustrate by some code:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">s</span> <span class="o">=</span> <span class="n">Distance</span><span class="p">(</span><span class="n">v0</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c"># create instance</span>
-<span class="n">v</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>               <span class="c"># runs s.__call__(t=0.2)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">Distance</span><span class="p">(</span><span class="n">v0</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># create instance</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>               <span class="c1"># runs s.__call__(t=0.2)</span>
 </pre></div>
 </div>
 <p>The last line has some magic: <code class="docutils literal"><span class="pre">s</span></code> is a class instance, not a function,
@@ -193,18 +193,18 @@ but it also contains values of the two parameters <span class="math">\(v_0\)</sp
 <p>In general, for a function <span class="math">\(f(x,y,z; p_1,p_2,\ldots,p_n)\)</span>, here with
 three independent variables and <span class="math">\(n\)</span> parameters <span class="math">\(p_1,p_2,\ldots,p_n\)</span>,
 we can pack the function and the parameters together in a class:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">F</span><span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">F</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">p1</span> <span class="o">=</span> <span class="n">p1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">p2</span> <span class="o">=</span> <span class="n">p2</span>
         <span class="o">...</span>
 
     <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
-        <span class="c"># return formula involving x, y, z and self.p1, self.p2 ...</span>
+        <span class="c1"># return formula involving x, y, z and self.p1, self.p2 ...</span>
 </pre></div>
 </div>
 <p>The <span class="math">\(f\)</span> function is initialized by</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">p1</span><span class="o">=...</span><span class="p">,</span> <span class="n">p2</span><span class="o">=...</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">p1</span><span class="o">=...</span><span class="p">,</span> <span class="n">p2</span><span class="o">=...</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>and later called as <code class="docutils literal"><span class="pre">f(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code>.</p>
@@ -252,14 +252,11 @@ we can pack the function and the parameters together in a class:</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>

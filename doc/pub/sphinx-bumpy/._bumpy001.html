@@ -188,12 +188,12 @@ restoring force <code class="docutils literal"><span class="pre">s(u)</span></co
 <h2>Simple implementation<a class="headerlink" href="#simple-implementation" title="Permalink to this headline">¶</a></h2>
 <p>Let us first implement the computational formulas for the linear
 damping case in a short and compact Python function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="k">def</span> <span class="nf">solver_linear_damping</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
-    <span class="n">N</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span>              <span class="c"># No of time intervals</span>
-    <span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>            <span class="c"># Time step</span>
-    <span class="n">u</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>              <span class="c"># Result array</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span>              <span class="c1"># No of time intervals</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>            <span class="c1"># Time step</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>              <span class="c1"># Result array</span>
     <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">I</span>
     <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">dt</span><span class="o">*</span><span class="n">V</span> <span class="o">+</span> <span class="n">dt</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="n">b</span><span class="o">*</span><span class="n">V</span> <span class="o">-</span> <span class="n">s</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="n">F</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
@@ -230,7 +230,7 @@ above results in a list of integers: <code class="docutils literal"><span class=
 <p>Array functionality is enabled by the <code class="docutils literal"><span class="pre">numpy</span></code> package, which offers
 functions such as <code class="docutils literal"><span class="pre">zeros</span></code> and <code class="docutils literal"><span class="pre">linspace</span></code>, as known from Matlab.
 Here we import all objects in the <code class="docutils literal"><span class="pre">numpy</span></code> package by the statement</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 </div>
 <p>Comments start with the character <code class="docutils literal"><span class="pre">#</span></code> and the rest of the line
@@ -247,13 +247,13 @@ a vibration problem with <span class="math">\(I=1\)</span>, <span class="math">\
 for <span class="math">\(t\in [0,10\pi]\)</span>. This will be a damped sinusoidal solution
 (setting <span class="math">\(b=0\)</span> will result in <span class="math">\(u(t)=\cos t\)</span>).
 The test code becomes</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">solver</span> <span class="kn">import</span> <span class="n">solver_linear_damping</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">solver</span> <span class="kn">import</span> <span class="n">solver_linear_damping</span>
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="k">def</span> <span class="nf">s</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
     <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">u</span>
 
-<span class="n">T</span> <span class="o">=</span> <span class="mi">10</span><span class="o">*</span><span class="n">pi</span>      <span class="c"># simulate for t in [0,T]</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">10</span><span class="o">*</span><span class="n">pi</span>      <span class="c1"># simulate for t in [0,T]</span>
 <span class="n">dt</span> <span class="o">=</span> <span class="mf">0.2</span>
 <span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">T</span><span class="o">/</span><span class="n">dt</span><span class="p">))</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
@@ -264,8 +264,8 @@ The test code becomes</p>
 
 <span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
-<span class="n">savefig</span><span class="p">(</span><span class="s">&#39;tmp.pdf&#39;</span><span class="p">)</span>   <span class="c"># save plot to PDF file</span>
-<span class="n">savefig</span><span class="p">(</span><span class="s">&#39;tmp.png&#39;</span><span class="p">)</span>   <span class="c"># save plot to PNG file</span>
+<span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;tmp.pdf&#39;</span><span class="p">)</span>   <span class="c1"># save plot to PDF file</span>
+<span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;tmp.png&#39;</span><span class="p">)</span>   <span class="c1"># save plot to PNG file</span>
 <span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -294,9 +294,9 @@ available as an array in the <code class="docutils literal"><span class="pre">so
 now we will allow for more flexibility: the <code class="docutils literal"><span class="pre">F</span></code> argument may either be
 a Python function <code class="docutils literal"><span class="pre">F(t)</span></code> or a Python array. In addition, we add some
 checks that variables have correct values or are of correct type.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
-<span class="k">def</span> <span class="nf">solver</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">damping</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">solver</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">damping</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Solve m*u&#39;&#39; + f(u&#39;) + s(u) = F for time points in t.</span>
 <span class="sd">    u(0)=I and u&#39;(0)=V,</span>
@@ -306,34 +306,34 @@ checks that variables have correct values or are of correct type.</p>
 <span class="sd">    s(u) is a Python function, while F may be a function</span>
 <span class="sd">    or an array (then F[i] corresponds to F at t[i]).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">N</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span>              <span class="c"># No of time intervals</span>
-    <span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>            <span class="c"># Time step</span>
-    <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>           <span class="c"># Result array</span>
-    <span class="n">b</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">);</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>  <span class="c"># Avoid integer division</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span>              <span class="c1"># No of time intervals</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>            <span class="c1"># Time step</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>           <span class="c1"># Result array</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">);</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>  <span class="c1"># Avoid integer division</span>
 
-    <span class="c"># Convert F to array</span>
+    <span class="c1"># Convert F to array</span>
     <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">F</span><span class="p">):</span>
         <span class="n">F</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span><span class="nb">tuple</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)):</span>
         <span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-            <span class="s">&#39;F must be function or array, not </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">F</span><span class="p">))</span>
+            <span class="s1">&#39;F must be function or array, not </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">F</span><span class="p">))</span>
 
     <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">I</span>
-    <span class="k">if</span> <span class="n">damping</span> <span class="o">==</span> <span class="s">&#39;linear&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">damping</span> <span class="o">==</span> <span class="s1">&#39;linear&#39;</span><span class="p">:</span>
         <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">dt</span><span class="o">*</span><span class="n">V</span> <span class="o">+</span> <span class="n">dt</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="n">b</span><span class="o">*</span><span class="n">V</span> <span class="o">-</span> <span class="n">s</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="n">F</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="k">elif</span> <span class="n">damping</span> <span class="o">==</span> <span class="s">&#39;quadratic&#39;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">damping</span> <span class="o">==</span> <span class="s1">&#39;quadratic&#39;</span><span class="p">:</span>
         <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">dt</span><span class="o">*</span><span class="n">V</span> <span class="o">+</span> \
                <span class="n">dt</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="n">b</span><span class="o">*</span><span class="n">V</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">V</span><span class="p">)</span> <span class="o">-</span> <span class="n">s</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="n">F</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Wrong value: damping=&quot;</span><span class="si">%s</span><span class="s">&quot;&#39;</span> <span class="o">%</span> <span class="n">damping</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Wrong value: damping=&quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">damping</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">damping</span> <span class="o">==</span> <span class="s">&#39;linear&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">damping</span> <span class="o">==</span> <span class="s1">&#39;linear&#39;</span><span class="p">:</span>
             <span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">dt</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span>
                       <span class="n">dt</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">F</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">s</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="p">])))</span><span class="o">/</span><span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">dt</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">damping</span> <span class="o">==</span> <span class="s">&#39;quadratic&#39;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">damping</span> <span class="o">==</span> <span class="s1">&#39;quadratic&#39;</span><span class="p">:</span>
             <span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
                       <span class="o">-</span> <span class="n">dt</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="o">-</span> <span class="n">F</span><span class="p">[</span><span class="n">n</span><span class="p">]))</span><span class="o">/</span>\
                       <span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
@@ -354,7 +354,7 @@ comes from. The disadvantage is that mathematical formulas like
 <span class="math">\(\sin (\pi x)\)</span> must be written <code class="docutils literal"><span class="pre">np.sin(np.pi*x)</span></code>. We can always perform
 an explicit import of some names, like <code class="docutils literal"><span class="pre">sin</span></code> and <code class="docutils literal"><span class="pre">pi</span></code>, to write
 the formula as <code class="docutils literal"><span class="pre">sin(pi*x)</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span>
 
 <span class="k">def</span> <span class="nf">myfunction</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -409,7 +409,7 @@ of <code class="docutils literal"><span class="pre">F</span></code> as obtained 
 <span class="pre">list)</span></code> we may test <code class="docutils literal"><span class="pre">type(F)</span> <span class="pre">==</span> <span class="pre">list</span></code> or even <code class="docutils literal"><span class="pre">type(F)</span> <span class="pre">in</span>
 <span class="pre">(list,tuple,np.ndarray)</span></code>.</p>
 <p>We could simplify the <code class="docutils literal"><span class="pre">if-else</span></code> test involving <code class="docutils literal"><span class="pre">F</span></code> to just the two lines</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">F</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">F</span><span class="p">):</span>
     <span class="n">F</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -419,8 +419,8 @@ a run-time error when trying to index <code class="docutils literal"><span class
 statement computing <code class="docutils literal"><span class="pre">u[1]</span></code>).</p>
 <p>To be absolutely safe, we should test that the other arguments are
 of right type as well. For example,</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span><span class="nb">int</span><span class="p">)):</span>
-    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&#39;V must be float or int, not </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">V</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span><span class="nb">int</span><span class="p">)):</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;V must be float or int, not </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">V</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>and similar for <code class="docutils literal"><span class="pre">V</span></code>, <code class="docutils literal"><span class="pre">m</span></code>, <code class="docutils literal"><span class="pre">b</span></code>, while <code class="docutils literal"><span class="pre">s</span></code> must be tested by <code class="docutils literal"><span class="pre">callable(s)</span></code>,
@@ -429,11 +429,11 @@ of right type as well. For example,</p>
 Below is a simple example on how the <code class="docutils literal"><span class="pre">solver</span></code> function can be called
 to solve the differential equation problem <span class="math">\(mu'' + bu' + ku = A\sin\pi t\)</span>,
 <span class="math">\(u(0)=I\)</span>, <span class="math">\(u'(0)=0\)</span>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span>  <span class="c"># for nice math</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span>  <span class="c1"># for nice math</span>
 
 <span class="k">def</span> <span class="nf">F</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-    <span class="c"># Sinusoidal bumpy road</span>
+    <span class="c1"># Sinusoidal bumpy road</span>
     <span class="k">return</span> <span class="n">A</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">s</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
@@ -444,7 +444,7 @@ to solve the differential equation problem <span class="math">\(mu'' + bu' + ku 
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2001</span><span class="p">)</span>
 <span class="n">u</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">solver</span><span class="p">(</span><span class="n">I</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">V</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">s</span><span class="p">,</span> <span class="n">F</span><span class="o">=</span><span class="n">F</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">)</span>
 
-<span class="c"># Show u(t) as a curve plot</span>
+<span class="c1"># Show u(t) as a curve plot</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -452,7 +452,7 @@ to solve the differential equation problem <span class="math">\(mu'' + bu' + ku 
 </div>
 <p><strong>Local and global variables.</strong>
 We use in this example a linear spring function <span class="math">\(s(u)\)</span>,</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">k</span><span class="o">*</span><span class="n">u</span>
 </pre></div>
 </div>
@@ -470,7 +470,7 @@ the function formula given the independent variables as arguments.
 This requires, of course,
 knowledge of classes and special methods like <code class="docutils literal"><span class="pre">__call__</span></code>.</p>
 <p>As an example, the <code class="docutils literal"><span class="pre">f(u)</span></code> function above can be implemented as</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Spring</span><span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Spring</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="n">k</span>
     <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="p">):</span>
@@ -492,19 +492,19 @@ Various shapes are
 available as a file with web address <a class="reference external" href="http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz">http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz</a>. The Python functionality for downloading this <code class="docutils literal"><span class="pre">gzip</span></code>
 compressed file as a local file <code class="docutils literal"><span class="pre">bumpy.dat.gz</span></code>
 and reading it into a <code class="docutils literal"><span class="pre">numpy</span></code> array goes as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">filename</span> <span class="o">=</span> <span class="s">&#39;bumpy.dat.gz&#39;</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz&#39;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;bumpy.dat.gz&#39;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz&#39;</span>
 <span class="kn">import</span> <span class="nn">urllib</span>
 <span class="n">urllib</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-<span class="n">h_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>     <span class="c"># read numpy array from file</span>
+<span class="n">h_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>     <span class="c1"># read numpy array from file</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">h_data</span></code> object is a rectangular <code class="docutils literal"><span class="pre">numpy</span></code> array where the first
 column contains the <span class="math">\(x\)</span> coordinates along the road and the next columns
 contain various road shapes <span class="math">\(h(x)\)</span>. We can extract the <span class="math">\(x\)</span> data and
 redefine <code class="docutils literal"><span class="pre">h_data</span></code> to contain solely the <span class="math">\(h(x)\)</span> shapes:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">h_data</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span>                <span class="c"># 1st column: x coordinates</span>
-<span class="n">h_data</span> <span class="o">=</span> <span class="n">h_data</span><span class="p">[</span><span class="mi">1</span><span class="p">:,:]</span>          <span class="c"># other columns: h shapes</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">h_data</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span>                <span class="c1"># 1st column: x coordinates</span>
+<span class="n">h_data</span> <span class="o">=</span> <span class="n">h_data</span><span class="p">[</span><span class="mi">1</span><span class="p">:,:]</span>          <span class="c1"># other columns: h shapes</span>
 </pre></div>
 </div>
 <p>In general, the syntax <code class="docutils literal"><span class="pre">a[s:t:i,2]</span></code> gives a <em>view</em> (not a copy) to the part of
@@ -517,14 +517,14 @@ force <span class="math">\(F(t)=-ma(t)\)</span>, follows from <span class="math"
 the velocity of the vehicle. The computation may utilize a finite
 difference approximation for the second-order derivative <span class="math">\(h''\)</span> and
 be encapsulated in a Python function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">acceleration</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">acceleration</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compute 2nd-order derivative of h.&quot;&quot;&quot;</span>
-    <span class="c"># Method: standard finite difference aproximation</span>
+    <span class="c1"># Method: standard finite difference aproximation</span>
     <span class="n">d2h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
     <span class="n">dx</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">size</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
         <span class="n">d2h</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span>
-    <span class="c"># Extraplolate end values from first interior value</span>
+    <span class="c1"># Extraplolate end values from first interior value</span>
     <span class="n">d2h</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">d2h</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">d2h</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">d2h</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">d2h</span><span class="o">*</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span>
@@ -542,12 +542,12 @@ the above algorithm. This means that we get rid of the loops and
 perform arithmetics on complete (or almost complete) arrays.
 The vectorized form of the
 <code class="docutils literal"><span class="pre">acceleration</span></code> function goes like</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">acceleration_vectorized</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">acceleration_vectorized</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compute 2nd-order derivative of h. Vectorized version.&quot;&quot;&quot;</span>
     <span class="n">d2h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
     <span class="n">dx</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">d2h</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">h</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span><span class="o">/</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span>
-    <span class="c"># Extraplolate end values from first interior value</span>
+    <span class="c1"># Extraplolate end values from first interior value</span>
     <span class="n">d2h</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">d2h</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">d2h</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">d2h</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">d2h</span><span class="o">*</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span>
@@ -567,9 +567,9 @@ Note that some elements in <code class="docutils literal"><span class="pre">data
 arrays. This composition is convenient when analyzing and visualizing
 key quantities in the problem.</p>
 <p>The computations of <code class="docutils literal"><span class="pre">u</span></code> for each road shape can be done as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span>      <span class="c"># key input and output data (arrays)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span>      <span class="c1"># key input and output data (arrays)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">h_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="n">h_data</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span>            <span class="c"># extract a column</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">h_data</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span>            <span class="c1"># extract a column</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">acceleration</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
     <span class="n">F</span> <span class="o">=</span> <span class="o">-</span><span class="n">m</span><span class="o">*</span><span class="n">a</span>
 
@@ -591,7 +591,7 @@ This function can take the most important physical parameters of the problem
 as input, along with information about the file with road shapes.
 We allow for defining road shapes either through a file on a web site
 or a local file.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">bumpy_road</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bumpy_road</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Simulate vertical vehicle vibrations.</span>
 
@@ -608,35 +608,35 @@ or a local file.</p>
 <span class="sd">                [x, t, [h,F,u], [h,F,u], ...]</span>
 <span class="sd">    =========   ==============================================</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c"># Download file (if url is not the name of a local file)</span>
-    <span class="k">if</span> <span class="n">url</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;http://&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">url</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;file://&#39;</span><span class="p">):</span>
+    <span class="c1"># Download file (if url is not the name of a local file)</span>
+    <span class="k">if</span> <span class="n">url</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;http://&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">url</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;file://&#39;</span><span class="p">):</span>
         <span class="kn">import</span> <span class="nn">urllib</span>
-        <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>  <span class="c"># strip off path</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>  <span class="c1"># strip off path</span>
         <span class="n">urllib</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="c"># Check if url is the name of a local file</span>
+        <span class="c1"># Check if url is the name of a local file</span>
         <span class="n">filename</span> <span class="o">=</span> <span class="n">url</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-            <span class="k">print</span> <span class="n">url</span><span class="p">,</span> <span class="s">&#39;must be a URL or a filename&#39;</span>
-            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c"># abort program</span>
-        <span class="c"># else: ok</span>
+            <span class="k">print</span> <span class="n">url</span><span class="p">,</span> <span class="s1">&#39;must be a URL or a filename&#39;</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># abort program</span>
+        <span class="c1"># else: ok</span>
 
-    <span class="n">h_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>  <span class="c"># read numpy array from file</span>
+    <span class="n">h_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>  <span class="c1"># read numpy array from file</span>
 
-    <span class="n">x</span> <span class="o">=</span> <span class="n">h_data</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span>                <span class="c"># 1st column: x coordinates</span>
-    <span class="n">h_data</span> <span class="o">=</span> <span class="n">h_data</span><span class="p">[</span><span class="mi">1</span><span class="p">:,:]</span>          <span class="c"># other columns: h shapes</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">h_data</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span>                <span class="c1"># 1st column: x coordinates</span>
+    <span class="n">h_data</span> <span class="o">=</span> <span class="n">h_data</span><span class="p">[</span><span class="mi">1</span><span class="p">:,:]</span>          <span class="c1"># other columns: h shapes</span>
 
-    <span class="n">t</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="n">v</span>                        <span class="c"># time corresponding to x</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="n">v</span>                        <span class="c1"># time corresponding to x</span>
     <span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">k</span><span class="o">*</span><span class="n">u</span>
 
-    <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span>      <span class="c"># key input and output data (arrays)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span>      <span class="c1"># key input and output data (arrays)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">h_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-        <span class="n">h</span> <span class="o">=</span> <span class="n">h_data</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span>            <span class="c"># extract a column</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">h_data</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span>            <span class="c1"># extract a column</span>
         <span class="n">a</span> <span class="o">=</span> <span class="n">acceleration</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-        <span class="n">F</span> <span class="o">=</span> <span class="o">-</span><span class="n">m</span><span class="o">*</span><span class="n">a</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="o">-</span><span class="n">m</span><span class="o">*</span><span class="n">a</span>
 
         <span class="n">u</span> <span class="o">=</span> <span class="n">solver</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">I</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">F</span><span class="o">=</span><span class="n">F</span><span class="p">)</span>
 
@@ -653,21 +653,21 @@ removing files and directories, running stand-alone applications, etc.</p>
 <div class="section" id="storing-python-objects-in-files">
 <h2>Storing Python objects in files<a class="headerlink" href="#storing-python-objects-in-files" title="Permalink to this headline">¶</a></h2>
 <p id="index-1">After calling</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">road_url</span> <span class="o">=</span> <span class="s">&#39;http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz&#39;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">road_url</span> <span class="o">=</span> <span class="s1">&#39;http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz&#39;</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">road_url</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>the <code class="docutils literal"><span class="pre">data</span></code> array contains single arrays and triplets of arrays,</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="n">h</span><span class="p">,</span><span class="n">F</span><span class="p">,</span><span class="n">u</span><span class="p">],</span> <span class="p">[</span><span class="n">h</span><span class="p">,</span><span class="n">F</span><span class="p">,</span><span class="n">u</span><span class="p">],</span> <span class="o">...</span><span class="p">,</span> <span class="p">[</span><span class="n">h</span><span class="p">,</span><span class="n">F</span><span class="p">,</span><span class="n">u</span><span class="p">]]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="n">h</span><span class="p">,</span><span class="n">F</span><span class="p">,</span><span class="n">u</span><span class="p">],</span> <span class="p">[</span><span class="n">h</span><span class="p">,</span><span class="n">F</span><span class="p">,</span><span class="n">u</span><span class="p">],</span> <span class="o">...</span><span class="p">,</span> <span class="p">[</span><span class="n">h</span><span class="p">,</span><span class="n">F</span><span class="p">,</span><span class="n">u</span><span class="p">]]</span>
 </pre></div>
 </div>
 <p>This list, or any Python object, can be stored on file for later
 retrieval of the results, using the <em>pickling</em> functionality
 in Python:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cPickle</span> <span class="kn">as</span> <span class="nn">pickle</span>
-<span class="c"># Or using a more advanced module</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cPickle</span> <span class="kn">as</span> <span class="nn">pickle</span>
+<span class="c1"># Or using a more advanced module</span>
 <span class="kn">import</span> <span class="nn">dill</span> <span class="kn">as</span> <span class="nn">pickle</span>
-<span class="n">outfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;bumpy.res&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">outfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;bumpy.res&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
 <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">outfile</span><span class="p">)</span>
 <span class="n">outfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
@@ -692,7 +692,7 @@ a number for the typical amplitude of the vibrations:</p>
 \thinspace .\]</div>
 <p>The last expression can be computed as follows using a vectorized
 sum (<code class="docutils literal"><span class="pre">np.sum(u**2)</span></code>):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">u_rms</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">u_rms</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">h</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">:]:</span>
     <span class="n">u_rms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="mf">1.</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
 </pre></div>
@@ -700,18 +700,18 @@ sum (<code class="docutils literal"><span class="pre">np.sum(u**2)</span></code>
 <p id="index-2">Very often in numerical computing we have some list/array and want
 to compute a new list/array where each element is some expression
 involving an element of the first list/array, typically</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">v</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">u</span><span class="p">:</span>
     <span class="n">v</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">(</span><span class="n">element</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>This code can more compactly be written as a <em>list comprehension</em>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="n">expression</span><span class="p">(</span><span class="n">element</span><span class="p">)</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">u</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="n">expression</span><span class="p">(</span><span class="n">element</span><span class="p">)</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">u</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>We may use the list comprehension construction for computing the <code class="docutils literal"><span class="pre">u_rms</span></code>
 values:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">u_rms</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="mf">1.</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">u_rms</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="mf">1.</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">u</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
          <span class="k">for</span> <span class="n">h</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">:]]</span>
 </pre></div>
 </div>
@@ -762,14 +762,11 @@ values:</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>

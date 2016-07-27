@@ -28,9 +28,9 @@ The complete program reads
 
 .. code-block:: python
 
-        x = 2
-        y = 6*x**2 + 3*x + 2
-        print y
+    x = 2
+    y = 6*x**2 + 3*x + 2
+    print y
 
 .. --- end solution of exercise ---
 
@@ -45,11 +45,11 @@ Code:
 
 .. code-block:: python
 
-        def f(x):
-            return 6*x**2 + 3*x + 2
-        
-        y = f(2)
-        print y
+    def f(x):
+        return 6*x**2 + 3*x + 2
+    
+    y = f(2)
+    print y
 
 .. --- end solution of exercise ---
 
@@ -66,7 +66,7 @@ Let :math:`y=x^2`. Make a program that writes the text
 
 .. code-block:: text
 
-        y(2.550)=6.502
+    y(2.550)=6.502
 
 if :math:`x=2.55`. The values of :math:`x` and :math:`y` should be written with three
 decimals. Run the program for :math:`x=\pi` too (the value if :math:`\pi` is available
@@ -79,18 +79,18 @@ Here is the code:
 
 .. code-block:: python
 
-        x = 2.55
-        y = x**2
-        print 'y(%.3f)=%.3f' % (x, y)
+    x = 2.55
+    y = x**2
+    print 'y(%.3f)=%.3f' % (x, y)
 
 Changing :math:`x=2.55` to :math:`x=\pi`,
 
 .. code-block:: python
 
-        from math import pi
-        x = pi
-        y = x**2
-        print 'y(%.3f)=%.3f' % (x, y)
+    from math import pi
+    x = pi
+    y = x**2
+    print 'y(%.3f)=%.3f' % (x, y)
 
 gives the output ``y(3.142)=9.870``.
 
@@ -121,11 +121,11 @@ Complete program:
 
 .. code-block:: python
 
-        n = 0
-        while n <= 20:
-            x_n = n**2 + 1
-            print 'x%d=%d' % (n, x_n)
-            n = n + 1
+    n = 0
+    while n <= 20:
+        x_n = n**2 + 1
+        print 'x%d=%d' % (n, x_n)
+        n = n + 1
 
 .. --- end solution of exercise ---
 
@@ -148,12 +148,12 @@ Code:
 
 .. code-block:: python
 
-        n = 0
-        x = []  # the x_n values
-        while n <= 20:
-            x.append(n**2 + 1)
-            n = n + 1
-        print x
+    n = 0
+    x = []  # the x_n values
+    while n <= 20:
+        x.append(n**2 + 1)
+        n = n + 1
+    print x
 
 .. --- end solution of exercise ---
 
@@ -175,17 +175,17 @@ Code:
 
 .. code-block:: python
 
-        x = []
-        for n in range(21):
-            x.append(n**2 + 1)
-        print x
+    x = []
+    for n in range(21):
+        x.append(n**2 + 1)
+    print x
 
 One can also make the code shorter using a list comprehension:
 
 .. code-block:: python
 
-        x = [n**2 + 1 for n in range(21)]
-        print x
+    x = [n**2 + 1 for n in range(21)]
+    print x
 
 .. --- end solution of exercise ---
 
@@ -209,10 +209,10 @@ Code:
 
 .. code-block:: python
 
-        def x(n):
-            return n^2 + 1
-        
-        print x(4)
+    def x(n):
+        return n^2 + 1
+    
+    print x(4)
 
 .. --- end solution of exercise ---
 
@@ -236,20 +236,20 @@ Code:
 
 .. code-block:: python
 
-        from math import sin, cos, pi
-        
-        def deriv2(x):
-            return cos(2*x), -2*sin(2*x), -4*cos(2*x)
-        
-        f, df, d2f = deriv2(x=pi)
-        print f, df, d2f
+    from math import sin, cos, pi
+    
+    def deriv2(x):
+        return cos(2*x), -2*sin(2*x), -4*cos(2*x)
+    
+    f, df, d2f = deriv2(x=pi)
+    print f, df, d2f
 
 Running the program gives
 
 .. code-block:: text
 
-        Terminal> python deriv2.py
-        1.0 4.89858719659e-16 -4.0
+    Terminal> python deriv2.py
+    1.0 4.89858719659e-16 -4.0
 
 as expected.
 
@@ -277,21 +277,21 @@ Appropriate code is
 
 .. code-block:: python
 
-        import numpy as np
-        import matplotlib.pyplot as plt
-        from numpy import exp, sin  # avoid np. prefix in g(y) formula
-        
-        def g(y):
-            return exp(-y)*sin(4*y)
-        
-        y = np.linspace(0, 4, 501)
-        values = g(y)
-        plt.figure()
-        plt.plot(y, values, 'r-')
-        plt.xlabel('$y$'); plt.ylabel('$g(y)$')
-        plt.title('Damped sine wave')
-        plt.savefig('tmp.png'); plt.savefig('tmp.pdf')
-        plt.show()
+    import numpy as np
+    import matplotlib.pyplot as plt
+    from numpy import exp, sin  # avoid np. prefix in g(y) formula
+    
+    def g(y):
+        return exp(-y)*sin(4*y)
+    
+    y = np.linspace(0, 4, 501)
+    values = g(y)
+    plt.figure()
+    plt.plot(y, values, 'r-')
+    plt.xlabel('$y$'); plt.ylabel('$g(y)$')
+    plt.title('Damped sine wave')
+    plt.savefig('tmp.png'); plt.savefig('tmp.pdf')
+    plt.show()
 
 .. figure:: plot_exer1.png
    :width: 500
@@ -319,24 +319,24 @@ Here is the program:
 
 .. code-block:: python
 
-        import numpy as np
-        import matplotlib.pyplot as plt
-        from numpy import exp, sin  # avoid np. prefix in g(y) and h(y)
-        
-        def g(y):
-            return exp(-y)*sin(4*y)
-        
-        def h(y):
-            return exp(-(3./2)*y)*sin(4*y)
-        
-        y = np.linspace(0, 4, 501)
-        plt.figure()
-        plt.plot(y, g(y), 'r-', y, h(y), 'k--')
-        plt.xlabel('$y$'); plt.ylabel('$g(y)$')
-        plt.title('Damped sine wave')
-        plt.legend(['g', 'h'])
-        plt.savefig('tmp.png'); plt.savefig('tmp.pdf')
-        plt.show()
+    import numpy as np
+    import matplotlib.pyplot as plt
+    from numpy import exp, sin  # avoid np. prefix in g(y) and h(y)
+    
+    def g(y):
+        return exp(-y)*sin(4*y)
+    
+    def h(y):
+        return exp(-(3./2)*y)*sin(4*y)
+    
+    y = np.linspace(0, 4, 501)
+    plt.figure()
+    plt.plot(y, g(y), 'r-', y, h(y), 'k--')
+    plt.xlabel('$y$'); plt.ylabel('$g(y)$')
+    plt.title('Damped sine wave')
+    plt.legend(['g', 'h'])
+    plt.savefig('tmp.png'); plt.savefig('tmp.pdf')
+    plt.show()
 
 .. figure:: plot_exer2.png
    :width: 500
@@ -364,24 +364,24 @@ computing using the ``sin`` function from ``numpy``.
 
 .. code-block:: ipy
 
-        In [1]: import numpy as np
-        
-        In [2]: n = 1000000
-        
-        In [3]: x = np.linspace(0, 1, n+1)
-        
-        In [4]: def sin_func(x):
-           ...:     r = np.zeros_like(x)  # result
-           ...:     for i in range(len(x)):
-           ...:         r[i] = np.sin(x[i])
-           ...:     return r
-           ...:
-        
-        In [5]: %timeit y = sin_func(x)
-        1 loops, best of 3: 2.68 s per loop
-        
-        In [6]: %timeit y = np.sin(x)
-        10 loops, best of 3: 40.1 ms per loop
+    In [1]: import numpy as np
+    
+    In [2]: n = 1000000
+    
+    In [3]: x = np.linspace(0, 1, n+1)
+    
+    In [4]: def sin_func(x):
+       ...:     r = np.zeros_like(x)  # result
+       ...:     for i in range(len(x)):
+       ...:         r[i] = np.sin(x[i])
+       ...:     return r
+       ...:
+    
+    In [5]: %timeit y = sin_func(x)
+    1 loops, best of 3: 2.68 s per loop
+    
+    In [6]: %timeit y = np.sin(x)
+    10 loops, best of 3: 40.1 ms per loop
 
 Here, ``%timeit`` ran our function once, but the vectorized function
 10 times. The most relevant CPU times measured are listed, and we
