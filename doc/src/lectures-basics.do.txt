@@ -1,4 +1,4 @@
-TITLE: Introduction to Scientific Python programming - Apdapted to TKT4140 Numerical Methods with Computer Laboratory
+TITLE: Introduction to Scientific Python programming - Adapted to TKT4140 Numerical Methods with Computer Laboratory
 AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 AUTHOR: Leif Rune Hellevik Email:leif.r.hellevik@ntnu.no at Biomechanichs Group, Department of Structural Engineering NTNU & Center for Biomedical Computing, Simula Research Laboratory
 DATE: today
