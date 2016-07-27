@@ -10,9 +10,13 @@ Full tutorials on scientific programming with Python
 
   * `Python Scientific Lecture Notes <http://scipy-lectures.github.com/>`__ (from EuroSciPy tutorials, based on `Python Scientific <http://web.phys.ntnu.no/~ingves/Teaching/TFY4240/Assignments/PythonScientific.pdf>`__)
 
+  * `Practical Numerical Methods with Python <https://github.com/numerical-mooc/numerical-mooc>`__
+
   * `Scientific Python Lectures as IPython notebooks <https://github.com/jrjohansson/scientific-python-lectures>`__
 
   * `Stefan van der Walt's lectures <https://github.com/stefanv/teaching>`__
+
+  * "Finite Difference Computing with Exponential Decay Models": " `<http://www.springer.com/gp/book/9783319294384>`_" (open access)
 
 NumPy resources
 ~~~~~~~~~~~~~~~
@@ -71,6 +75,10 @@ Some relevant Python books
 
   * `A Primer on Scientific Programming with Python <http://goo.gl/SWEQlz>`__
     (`slides <http://hplgit.github.io/scipro-primer/slides/index.html>`__ are also available)
+
+  * "Finite Difference Computing with Exponential Decay Models": " `<http://www.springer.com/gp/book/9783319294384>`_" (open access)
+
+  * `Programming for Computations <http://www.springer.com/gp/book/9783319324272>`__ (open access)
 
   * `Python Scripting for Computational Science <http://goo.gl/q8tM7D>`__
 

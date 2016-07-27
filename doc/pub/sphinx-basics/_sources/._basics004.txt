@@ -27,19 +27,19 @@ function ``dump`` that writes the contents of ``a``:
 
 .. code-block:: python
 
-        class Trivial:
-            def __init__(self, a):
-                self.a = a
-        
-            def dump(self):
-                print self.a
+    class Trivial:
+        def __init__(self, a):
+            self.a = a
+    
+        def dump(self):
+            print self.a
 
 How can we use this class? First, we must make an *instance* (object)
 of the class:
 
 .. code-block:: python
 
-        t = Trivial(a=4)
+    t = Trivial(a=4)
 
 The syntax ``Trivial(a=4)`` implies a call to the ``__init__`` method (function)
 with ``4`` as the value of the argument ``a``. Inside ``__init__``,
@@ -54,7 +54,7 @@ as follows:
 
 .. code-block:: python
 
-        t.dump()
+    t.dump()
 
 Even though both ``__init__`` and ``dump`` have ``self`` as first argument,
 this argument *is not used in a call*.
@@ -96,14 +96,14 @@ The class code
 
 .. code-block:: python
 
-        class Distance:
-            def __init__(self, v0, a):
-                self.v0 = v0
-                self.a = a
-        
-            def __call__(self, t):
-                v0, a = self.v0, self.a  # make local variables
-                return v0*t + 0.5*a*t**2
+    class Distance:
+        def __init__(self, v0, a):
+            self.v0 = v0
+            self.a = a
+    
+        def __call__(self, t):
+            v0, a = self.v0, self.a  # make local variables
+            return v0*t + 0.5*a*t**2
 
 Dissection
 ~~~~~~~~~~
@@ -127,8 +127,8 @@ were a function. Let us illustrate by some code:
 
 .. code-block:: python
 
-        s = Distance(v0=2, a=0.5)  # create instance
-        v = s(t=0.2)               # runs s.__call__(t=0.2)
+    s = Distance(v0=2, a=0.5)  # create instance
+    v = s(t=0.2)               # runs s.__call__(t=0.2)
 
 The last line has some magic: ``s`` is a class instance, not a function,
 but still we can write ``s(t=0.2)`` or ``s(0.2)`` as if ``s`` were
@@ -144,20 +144,20 @@ we can pack the function and the parameters together in a class:
 
 .. code-block:: python
 
-        class F:
-            def __init__(self, p1, p2, ...):
-                self.p1 = p1
-                self.p2 = p2
-                ...
-        
-            def __call__(self, x, y, z):
-                # return formula involving x, y, z and self.p1, self.p2 ...
+    class F:
+        def __init__(self, p1, p2, ...):
+            self.p1 = p1
+            self.p2 = p2
+            ...
+    
+        def __call__(self, x, y, z):
+            # return formula involving x, y, z and self.p1, self.p2 ...
 
 The :math:`f` function is initialized by
 
 .. code-block:: python
 
-        f = F(p1=..., p2=..., ...)
+    f = F(p1=..., p2=..., ...)
 
 and later called as ``f(x, y, z)``.
 

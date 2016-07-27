@@ -20,6 +20,22 @@ Automatically generated HTML file from DocOnce source
 <style type="text/css">
 /* Let inline verbatim have the same color as the surroundings */
 code { color: inherit; background-color: transparent; }
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:50px;      /* fixed header height for style bootstrap */
+  margin:-50px 0 0; /* negative fixed header height */
+}
 </style>
 
 
@@ -27,7 +43,11 @@ code { color: inherit; background-color: transparent; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [('Variables, loops, lists, and arrays',
+ 'sections': [('Table of contents',
+               1,
+               'table_of_contents',
+               'table_of_contents'),
+              ('Variables, loops, lists, and arrays',
                1,
                'basics:basic:objects',
                'basics:basic:objects'),
@@ -150,16 +170,54 @@ MathJax.Hub.Config({
     </button>
     <a class="navbar-brand" href="basics.html">A very basic introduction to scientific Python programming</a>
   </div>
+
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._basics001.html#basics:basic:objects" style="font-size: 80%;">Variables, loops, lists, and arrays</a></li>
-     <!-- navigation toc: --> <li><a href="._basics002.html#basics:func:branching" style="font-size: 80%;">Functions and branching</a></li>
-     <!-- navigation toc: --> <li><a href="._basics003.html#basics:files" style="font-size: 80%;">Files</a></li>
-     <!-- navigation toc: --> <li><a href="._basics004.html#basics:class" style="font-size: 80%;">Classes</a></li>
-     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="#table_of_contents" style="font-size: 80%;"><b>Table of contents</b></a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#basics:basic:objects" style="font-size: 80%;"><b>Variables, loops, lists, and arrays</b></a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#basics:accesspy" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Getting access to Python</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mac and Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ubuntu</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Web access</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mathematical example</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#basics:formula:eval" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A program for evaluating a formula</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#basics:printf" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Formatted output with text and numbers</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#basics:while" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;While loops</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#basics:list" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Lists</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#basics:for" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;For loops</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#basics:numpy" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Arrays</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#basics:math" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mathematical functions</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#basics:plot" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Plotting</a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#basics:func:branching" style="font-size: 80%;"><b>Functions and branching</b></a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#basics:func" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Functions</a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#basics:formula:piecewise" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A more general mathematical formula</a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#basics:if" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;If tests</a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using the <code>where</code> function</a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using array indexing</a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#___sec20" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Array view versus array copying</a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Linear systems</a></li>
+     <!-- navigation toc: --> <li><a href="._basics003.html#basics:files" style="font-size: 80%;"><b>Files</b></a></li>
+     <!-- navigation toc: --> <li><a href="._basics003.html#___sec23" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;File reading</a></li>
+     <!-- navigation toc: --> <li><a href="._basics003.html#___sec24" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;File writing</a></li>
+     <!-- navigation toc: --> <li><a href="._basics004.html#basics:class" style="font-size: 80%;"><b>Classes</b></a></li>
+     <!-- navigation toc: --> <li><a href="._basics004.html#___sec26" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A very simple class</a></li>
+     <!-- navigation toc: --> <li><a href="._basics004.html#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A class for representing a mathematical function</a></li>
+     <!-- navigation toc: --> <li><a href="._basics004.html#___sec28" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The class code</a></li>
+     <!-- navigation toc: --> <li><a href="._basics004.html#___sec29" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dissection</a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer" style="font-size: 80%;"><b>Exercises</b></a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer:formula1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 1: Program a formula</a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer:printf1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 2: Combine text and numbers in output</a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer:while1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 3: Program a while loop</a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer:while2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 4: Create a list with a while loop</a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer:for1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Program a for loop</a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer:func1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 6: Write a Python function</a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer:func3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Return three values from a Python function</a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer:plot1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 8: Plot a function</a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer:plot2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Plot two functions</a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer:timeit" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 10: Measure the efficiency of vectorization</a></li>
 
         </ul>
       </li>
@@ -199,7 +257,7 @@ MathJax.Hub.Config({
 <center>[3] <b>Biomechanichs Group, Department of Structural Engineering NTNU</b></center>
 <br>
 <p>
-<center><h4>Nov 1, 2015</h4></center> <!-- date -->
+<center><h4>Jul 27, 2016</h4></center> <!-- date -->
 <br>
 <p>
 <div class="alert alert-block alert-warning alert-text-normal"><b>Contents.</b>
@@ -218,7 +276,10 @@ vectorization of code is also given.
 </div>
 
 
-<h2>Table of contents</h2>
+<p>
+</div> <!-- end jumbotron -->
+
+<h1 id="table_of_contents">Table of contents</h2>
 
 <p>
 <a href="._basics001.html#basics:basic:objects"> Variables, loops, lists, and arrays </a><br>
@@ -257,13 +318,6 @@ vectorization of code is also given.
 &nbsp; &nbsp; &nbsp; <a href="._basics005.html#basics:exer:timeit"> Exercise 10: Measure the efficiency of vectorization </a><br>
 </p>
 <p>
-
-
-<p><a href="._basics001.html" class="btn btn-primary btn-lg">Read &raquo;</a></p>
-
-
-</div> <!-- end jumbotron -->
-
 <p>
 <!-- navigation buttons at the bottom of the page -->
 <ul class="pagination">

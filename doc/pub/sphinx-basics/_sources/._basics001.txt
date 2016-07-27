@@ -35,20 +35,20 @@ list of the packages you need to install for this introduction:
 
 .. code-block:: text
 
-        Terminal> sudo apt-get install python-pip python-setuptools \ 
-          python-scipy python-sympy python-cython python-matplotlib \ 
-          python-dev python-profiler pydb spyder imagemagick gedit vim \ 
-          emacs python-mode git mercurial lib-avtools gnome-terminal
+    Terminal> sudo apt-get install python-pip python-setuptools \ 
+      python-scipy python-sympy python-cython python-matplotlib \ 
+      python-dev python-profiler pydb spyder imagemagick gedit vim \ 
+      emacs python-mode git mercurial lib-avtools gnome-terminal
 
 In addition, run
 
 .. code-block:: text
 
-        Terminal> pip install nose
-        Terminal> pip install pytest
-        Terminal> pip install ipython --upgrade
-        Terminal> pip install tornado --upgrade
-        Terminal> pip install pyzmq --upgrade
+    Terminal> pip install nose
+    Terminal> pip install pytest
+    Terminal> pip install ipython --upgrade
+    Terminal> pip install tornado --upgrade
+    Terminal> pip install pyzmq --upgrade
 
 Web access
 ~~~~~~~~~~
@@ -93,11 +93,11 @@ and :math:`a=0.2`:
 
 .. code-block:: python
 
-        t = 0.5
-        v0 = 2
-        a = 0.2
-        s = v0*t + 0.5*a*t**2
-        print s
+    t = 0.5
+    v0 = 2
+    a = 0.2
+    s = v0*t + 0.5*a*t**2
+    print s
 
 The program is pure text and must be placed in a *pure text file* using
 a *text editor*. Popular text editors are
@@ -111,8 +111,8 @@ Terminal application on Mac OS X, ``xterm`` or ``gnome-terminal`` on Linux):
 
 .. code-block:: text
 
-        Terminal> python distance.py
-        1.025
+    Terminal> python distance.py
+    1.025
 
 The result of the ``print`` statement is the number ``1.025`` in the terminal
 window.
@@ -181,7 +181,7 @@ This is easily accomplished using *printf* syntax:
 
 .. code-block:: python
 
-        print 's=%g' % s
+    print 's=%g' % s
 
 The output is specified as a string, enclosed in single or double quotes.
 Inside the string, there can be "slots" for numbers (or other
@@ -195,7 +195,7 @@ Printing out ``s=1.03``, i.e., ``s`` with two decimals, is done by
 
 .. code-block:: python
 
-        print 's=%.2f' % s
+    print 's=%.2f' % s
 
 where the ``f`` signifies a *decimal number* and the preceding ``.2`` means
 2 decimals. Scientific notation, as in ``s=1.03E+00`` (:math:`1.03\cdot 10^0`),
@@ -208,7 +208,7 @@ Python also offers a related variant, called *format string syntax*:
 
 .. code-block:: python
 
-        print 's={s:.2f}'.format(s=s)
+    print 's={s:.2f}'.format(s=s)
 
 .. _basics:while:
 
@@ -228,41 +228,41 @@ program applies a *while* loop:
 
 .. code-block:: python
 
-        v0 = 2
-        a = 0.2
-        dt = 0.1  # Increment
-        t = 0     # Start value
-        while t <= 2:
-            s = v0*t + 0.5*a*t**2
-            print t, s
-            t = t + dt
+    v0 = 2
+    a = 0.2
+    dt = 0.1  # Increment
+    t = 0     # Start value
+    while t <= 2:
+        s = v0*t + 0.5*a*t**2
+        print t, s
+        t = t + dt
 
 The result of running this program in a terminal window
 is
 
 .. code-block:: text
 
-        Terminal> python while.py
-        0 0.0
-        0.1 0.201
-        0.2 0.404
-        0.3 0.609
-        0.4 0.816
-        0.5 1.025
-        0.6 1.236
-        0.7 1.449
-        0.8 1.664
-        0.9 1.881
-        1.0 2.1
-        1.1 2.321
-        1.2 2.544
-        1.3 2.769
-        1.4 2.996
-        1.5 3.225
-        1.6 3.456
-        1.7 3.689
-        1.8 3.924
-        1.9 4.161
+    Terminal> python while.py
+    0 0.0
+    0.1 0.201
+    0.2 0.404
+    0.3 0.609
+    0.4 0.816
+    0.5 1.025
+    0.6 1.236
+    0.7 1.449
+    0.8 1.664
+    0.9 1.881
+    1.0 2.1
+    1.1 2.321
+    1.2 2.544
+    1.3 2.769
+    1.4 2.996
+    1.5 3.225
+    1.6 3.456
+    1.7 3.689
+    1.8 3.924
+    1.9 4.161
 
 .. index:: boolean expression
 
@@ -278,10 +278,10 @@ Then comes the while loop:
 
 .. code-block:: python
 
-        while condition:
-            <intented statement>
-            <intented statement>
-            <intented statement>
+    while condition:
+        <intented statement>
+        <intented statement>
+        <intented statement>
 
 Observe the colon at the end of the ``while`` line.
 The set of indented statements are repeated as long as the expression or
@@ -312,9 +312,9 @@ Tutor:
 
 .. raw:: html
 
-        <iframe width="950" height="500" frameborder="0"
-                src="http://pythontutor.com/iframe-embed.html#code=a+%3D+0%0Ada+%3D+0.4%0Awhile+a+%3C%3D+1.2%3A%0A++++print+a%0A++++a+%3D+a+%2B+da&curInstr=0&py=2&cumulative=false">
-        </iframe>
+    <iframe width="950" height="500" frameborder="0"
+            src="http://pythontutor.com/iframe-embed.html#code=a+%3D+0%0Ada+%3D+0.4%0Awhile+a+%3C%3D+1.2%3A%0A++++print+a%0A++++a+%3D+a+%2B+da&curInstr=0&py=2&cumulative=false">
+    </iframe>
 
 The Python Online Tutor executes each statement and displays the contents
 of variables such that you can track the program flow and the evolution
@@ -327,9 +327,9 @@ scientific notation (printf specification ``%.16E``):
 
 .. raw:: html
 
-        <iframe width="950" height="500" frameborder="0"
-                src="http://pythontutor.com/iframe-embed.html#code=a+%3D+0%0Ada+%3D+0.4%0Awhile+a+%3C%3D+1.2%3A%0A++++print+a%0A++++a+%3D+a+%2B+da%0A++++%23+Inspect+all+decimals+in+da+and+a%0A++++print+%27da%3D%25.16E%5Cna%3D%25.16E%27+%25+%28da%2C+a%29%0A++++print+%27a+%3C%3D+1.2%3A+%25g%27+%25++%28a+%3C%3D+1.2%29&curInstr=0&py=2&cumulative=false">
-        </iframe>
+    <iframe width="950" height="500" frameborder="0"
+            src="http://pythontutor.com/iframe-embed.html#code=a+%3D+0%0Ada+%3D+0.4%0Awhile+a+%3C%3D+1.2%3A%0A++++print+a%0A++++a+%3D+a+%2B+da%0A++++%23+Inspect+all+decimals+in+da+and+a%0A++++print+%27da%3D%25.16E%5Cna%3D%25.16E%27+%25+%28da%2C+a%29%0A++++print+%27a+%3C%3D+1.2%3A+%25g%27+%25++%28a+%3C%3D+1.2%29&curInstr=0&py=2&cumulative=false">
+    </iframe>
 
 The problem is that ``da`` is not exactly 0.4, but contains a small round-off
 error. Doing ``a = a + da`` then results in a slightly inaccurate ``a``.
@@ -344,11 +344,11 @@ exact equality, ``a == 1.2``, becomes ``False``, and the loop is terminated.
    
    .. code-block:: python
    
-           a = 1.2
-           b = 0.4 + 0.4 + 0.4
-           boolean_condition1 = a == b              # False
-           tol = 1E-14
-           boolean_condition2 = abs(a - b) < tol    # True
+       a = 1.2
+       b = 0.4 + 0.4 + 0.4
+       boolean_condition1 = a == b              # False
+       tol = 1E-14
+       boolean_condition2 = abs(a - b) < tol    # True
 
 
 
@@ -371,7 +371,7 @@ sequence. For example,
 
 .. code-block:: python
 
-        L = [-1, 1, 8.0]
+    L = [-1, 1, 8.0]
 
 is a list of three numbers. Lists are enclosed in square brackets
 and may contain any type of objects separated by commas. Here
@@ -379,7 +379,7 @@ we mix a filename (string), a real number, and an integer:
 
 .. code-block:: python
 
-        L = ['mydata.txt', 3.14, 10]
+    L = ['mydata.txt', 3.14, 10]
 
 The different list *elements* can be reached via indexing: ``L[0]`` is
 the first element, ``L[1]`` is the second, and ``L[-1]`` is the last element.
@@ -388,19 +388,19 @@ and examine the contents of variables as we perform various operations:
 
 .. code-block:: python
 
-        >>> L = ['mydata.txt', 3.14, 10]
-        >>> print L[0]
-        mydata.txt
-        >>> print L[1]
-        3.14
-        >>> del L[0]  # delete the first element
-        >>> print L
-        [3.14, 10]
-        >>> print len(L)  # length of L
-        2
-        >>> L.append(-1)  # add -1 at the end of the list
-        >>> print L
-        [3.14, 10, -1]
+    >>> L = ['mydata.txt', 3.14, 10]
+    >>> print L[0]
+    mydata.txt
+    >>> print L[1]
+    3.14
+    >>> del L[0]  # delete the first element
+    >>> print L
+    [3.14, 10]
+    >>> print len(L)  # length of L
+    2
+    >>> L.append(-1)  # add -1 at the end of the list
+    >>> print L
+    [3.14, 10, -1]
 
 Let us store the numbers in the previous table in lists, one for each
 column. We can start with empty lists ``[]`` and use ``append`` to
@@ -410,41 +410,41 @@ nice, tabular fashion:
 
 .. code-block:: python
 
-        v0 = 2
-        a = 0.2
-        dt = 0.1  # Increment
-        t = 0
-        t_values = []
-        s_values = []
-        while t <= 2:
-            s = v0*t + 0.5*a*t**2
-            t_values.append(t)
-            s_values.append(s)
-            t = t + dt
-        print s_values  # Just take a look at a created list
-        
-        # Print a nicely formatted table
-        i = 0
-        while i <= len(t_values)-1:
-            print '%.2f  %.4f' % (t_values[i], s_values[i])
-            i += 1   # Same as i = i + 1
+    v0 = 2
+    a = 0.2
+    dt = 0.1  # Increment
+    t = 0
+    t_values = []
+    s_values = []
+    while t <= 2:
+        s = v0*t + 0.5*a*t**2
+        t_values.append(t)
+        s_values.append(s)
+        t = t + dt
+    print s_values  # Just take a look at a created list
+    
+    # Print a nicely formatted table
+    i = 0
+    while i <= len(t_values)-1:
+        print '%.2f  %.4f' % (t_values[i], s_values[i])
+        i += 1   # Same as i = i + 1
 
 The output looks like
 
 .. code-block:: text
 
-        [0.0, 0.201, 0.404, 0.6090000000000001, 0.8160000000000001,
-         1.025, 1.236, 1.4489999999999998, 1.664, 1.8809999999999998,
-         2.0999999999999996, 2.3209999999999997, ...]
-        0.00  0.0000
-        0.10  0.2010
-        0.20  0.4040
-        0.30  0.6090
-        0.40  0.8160
-        0.50  1.0250
-        0.60  1.2360
-        0.70  1.4490
-        ...
+    [0.0, 0.201, 0.404, 0.6090000000000001, 0.8160000000000001,
+     1.025, 1.236, 1.4489999999999998, 1.664, 1.8809999999999998,
+     2.0999999999999996, 2.3209999999999997, ...]
+    0.00  0.0000
+    0.10  0.2010
+    0.20  0.4040
+    0.30  0.6090
+    0.40  0.8160
+    0.50  1.0250
+    0.60  1.2360
+    0.70  1.4490
+    ...
 
 Note that ``print s_values`` here leads to output with many
 decimals and small round-off errors. To get complete control of the
@@ -466,14 +466,14 @@ A for loop is used for visiting elements in a list, one by one:
 
 .. code-block:: python
 
-        >>> L = [1, 4, 8, 9]
-        >>> for e in L:
-        ...     print e
-        ...
-        1
-        4
-        8
-        9
+    >>> L = [1, 4, 8, 9]
+    >>> for e in L:
+    ...     print e
+    ...
+    1
+    4
+    8
+    9
 
 The variable ``e`` is successively set equal to the elements in the list,
 in the right order. Note the colon at the end of the ``for`` line.
@@ -485,16 +485,16 @@ Try the following code out in the Python Online Tutor:
 
 .. raw:: html
 
-        <iframe width="950" height="500" frameborder="0"
-                src="http://pythontutor.com/iframe-embed.html#code=list1+%3D+%5B0%2C+0.1%2C+0.2%5D%0Alist2+%3D+%5B%5D%0Afor+element+in+somelist%3A%0A++++p+%3D+element+%2B+2%0A++++list2.append%28p%29%0Aprint+list2&curInstr=0&py=2&cumulative=false">
-        </iframe>
+    <iframe width="950" height="500" frameborder="0"
+            src="http://pythontutor.com/iframe-embed.html#code=list1+%3D+%5B0%2C+0.1%2C+0.2%5D%0Alist2+%3D+%5B%5D%0Afor+element+in+somelist%3A%0A++++p+%3D+element+%2B+2%0A++++list2.append%28p%29%0Aprint+list2&curInstr=0&py=2&cumulative=false">
+    </iframe>
 
 A for loop over the valid indices in a list is created by
 
 .. code-block:: python
 
-        for i in range(len(somelist)):
-            # Work with somelist[i]
+    for i in range(len(somelist)):
+        # Work with somelist[i]
 
 The ``range`` function returns a list of integers: ``range(a, b, s)``
 returns the integers ``a, a+s, a+2*s, ...`` up to *but not including* ``b``.
@@ -513,16 +513,16 @@ Just writing ``range(b)`` implies ``a=0`` and ``s=1``, so
    
    .. code-block:: python
    
-           # Need loop over 0, 0.1, 0.2, ..., 1
-           values = []
-           for i in range(11):
-               values.append(i*0.1)
-           
-           # Shorter version using list comprehension (same as the loop above)
-           values = [i*0.1 for i in range(11)]
-           
-           for value in values:
-               # work with value
+       # Need loop over 0, 0.1, 0.2, ..., 1
+       values = []
+       for i in range(11):
+           values.append(i*0.1)
+       
+       # Shorter version using list comprehension (same as the loop above)
+       values = [i*0.1 for i in range(11)]
+       
+       for value in values:
+           # work with value
 
 
 
@@ -532,26 +532,26 @@ for loops instead:
 
 .. code-block:: python
 
-        v0 = 2
-        a = 0.2
-        dt = 0.1  # Increment
-        t_values = []
-        s_values = []
-        n = int(round(2/dt)) + 1  # No of t values
-        for i in range(n):
-            t = i*dt
-            s = v0*t + 0.5*a*t**2
-            t_values.append(t)
-            s_values.append(s)
-        print s_values  # Just take a look at a created list
-        
-        # Make nicely formatted table
-        for t, s in zip(t_values, s_values):
-            print '%.2f  %.4f' % (t, s)
-        
-        # Alternative implementation
-        for i in range(len(t_values)):
-            print '%.2f  %.4f' % (t_values[i], s_values[i])
+    v0 = 2
+    a = 0.2
+    dt = 0.1  # Increment
+    t_values = []
+    s_values = []
+    n = int(round(2/dt)) + 1  # No of t values
+    for i in range(n):
+        t = i*dt
+        s = v0*t + 0.5*a*t**2
+        t_values.append(t)
+        s_values.append(s)
+    print s_values  # Just take a look at a created list
+    
+    # Make nicely formatted table
+    for t, s in zip(t_values, s_values):
+        print '%.2f  %.4f' % (t, s)
+    
+    # Alternative implementation
+    for i in range(len(t_values)):
+        print '%.2f  %.4f' % (t_values[i], s_values[i])
 
 Observe that we have here used a slightly different technique
 for computing the :math:`t`
@@ -572,17 +572,17 @@ construction:
 
 .. code-block:: python
 
-        for e1, e2, e3, ... in zip(list1, list2, list3, ...):
+    for e1, e2, e3, ... in zip(list1, list2, list3, ...):
 
 One may instead create a for loop over all the legal index values
 instead and index each array,
 
 .. code-block:: python
 
-        for i in range(len(list1)):
-            e1 = list1[i]
-            e2 = list2[i]
-            ...
+    for i in range(len(list1)):
+        e1 = list1[i]
+        e2 = list2[i]
+        ...
 
 .. _basics:numpy:
 
@@ -610,18 +610,18 @@ Here is an example involving basic operations with arrays:
 
 .. code-block:: python
 
-        >>> L = [1, 4, 10.0]    # List of numbers
-        >>> import numpy
-        >>> a = numpy.array(L)  # Make corresponding array
-        >>> print a
-        [  1.   4.  10.]
-        >>> print a[1]
-        4.0
-        >>> print a.dtype       # Data type of an element
-        float64
-        >>> b = 2*a + 1
-        >>> print b
-        [  3.   9.  21.]
+    >>> L = [1, 4, 10.0]    # List of numbers
+    >>> import numpy
+    >>> a = numpy.array(L)  # Make corresponding array
+    >>> print a
+    [  1.   4.  10.]
+    >>> print a[1]
+    4.0
+    >>> print a.dtype       # Data type of an element
+    float64
+    >>> b = 2*a + 1
+    >>> print b
+    [  3.   9.  21.]
 
 Note that all elements in the ``a`` array are of ``float`` type
 (because one element in ``L`` was ``float``).
@@ -630,9 +630,9 @@ as list. In fact, we can pass arrays to mathematical functions:
 
 .. code-block:: python
 
-        >>> c = numpy.log(a)
-        >>> print c
-        [ 0.          1.38629436  2.30258509]
+    >>> c = numpy.log(a)
+    >>> print c
+    [ 0.          1.38629436  2.30258509]
 
 .. index:: linspace
 
@@ -643,25 +643,25 @@ can use ``linspace``:
 
 .. code-block:: python
 
-        t = numpy.linspace(a, b, n+1)
+    t = numpy.linspace(a, b, n+1)
 
 This construction makes it easy to create arrays for the :math:`t` and :math:`s`
 values in our tables:
 
 .. code-block:: python
 
-        import numpy
-        v0 = 2
-        a = 0.2
-        dt = 0.1  # Increment
-        n = int(round(2/dt)) + 1  # No of t values
-        
-        t_values = numpy.linspace(0, 2, n+1)
-        s_values = v0*t + 0.5*a*t**2
-        
-        # Make nicely formatted table
-        for t, s in zip(t_values, s_values):
-            print '%.2f  %.4f' % (t, s)
+    import numpy
+    v0 = 2
+    a = 0.2
+    dt = 0.1  # Increment
+    n = int(round(2/dt)) + 1  # No of t values
+    
+    t_values = numpy.linspace(0, 2, n+1)
+    s_values = v0*t + 0.5*a*t**2
+    
+    # Make nicely formatted table
+    for t, s in zip(t_values, s_values):
+        print '%.2f  %.4f' % (t, s)
 
 .. _basics:math:
 
@@ -681,21 +681,21 @@ For scalars (single numbers) the relevant module is ``math``:
 
 .. code-block:: python
 
-        >>> import math
-        >>> print math.sin(math.pi)
-        1.2246467991473532e-16
+    >>> import math
+    >>> print math.sin(math.pi)
+    1.2246467991473532e-16
 
 which shows that the sine function is only approximate (to 16 digits).
 Many prefer to write mathematical expressions without the ``math`` prefix:
 
 .. code-block:: python
 
-        from math import sin, pi
-        print sin(pi)
-        
-        # Or import everything from math
-        from math import *
-        print sin(pi), log(e), tanh(0.5)
+    from math import sin, pi
+    print sin(pi)
+    
+    # Or import everything from math
+    from math import *
+    print sin(pi), log(e), tanh(0.5)
 
 The ``numpy`` module contains sine, cosine, and other mathematical functions
 that work on scalars as well as arrays.
@@ -710,18 +710,18 @@ that work on scalars as well as arrays.
    
    .. code-block:: python
    
-           from numpy import *
-           x = linspace(0, 1, 101)
-           y = exp(-x)*sin(pi*x)
+       from numpy import *
+       x = linspace(0, 1, 101)
+       y = exp(-x)*sin(pi*x)
    
    However, in the Python community it has been a culture to use
    a prefix ``np`` as abbreviation for ``numpy``:
    
    .. code-block:: python
    
-           import numpy as np
-           x = np.linspace(0, 1, 101)
-           y = np.exp(-x)*np.sin(np.pi*x)
+       import numpy as np
+       x = np.linspace(0, 1, 101)
+       y = np.exp(-x)*np.sin(np.pi*x)
    
    Our convention is to use the ``np`` prefix for typical Matlab functions,
    but skip the prefix when working with mathematical functions like
@@ -730,10 +730,10 @@ that work on scalars as well as arrays.
    
    .. code-block:: python
    
-           import numpy as np
-           from numpy import sin, exp, pi
-           x = np.linspace(0, 1, 101)
-           y = exp(-x)*sin(pi*x)
+       import numpy as np
+       from numpy import sin, exp, pi
+       x = np.linspace(0, 1, 101)
+       y = exp(-x)*sin(pi*x)
 
 
 
@@ -761,19 +761,19 @@ code:
 
 .. code-block:: python
 
-        import numpy as np
-        import matplotlib.pyplot as plt
-        
-        v0 = 0.2
-        a = 2
-        n = 21  # No of t values for plotting
-        
-        t = np.linspace(0, 2, n+1)
-        s = v0*t + 0.5*a*t**2
-        
-        plt.plot(t, s)
-        plt.savefig('myplot.png')
-        plt.show()
+    import numpy as np
+    import matplotlib.pyplot as plt
+    
+    v0 = 0.2
+    a = 2
+    n = 21  # No of t values for plotting
+    
+    t = np.linspace(0, 2, n+1)
+    s = v0*t + 0.5*a*t**2
+    
+    plt.plot(t, s)
+    plt.savefig('myplot.png')
+    plt.show()
 
 The plotfile ``myplot.png`` looks like
 
@@ -784,8 +784,8 @@ Matlab users may prefer to do
 
 .. code-block:: python
 
-        from numpy import *
-        from matplotlib.pyplot import *
+    from numpy import *
+    from matplotlib.pyplot import *
 
 such that they can use ``linspace`` and ``plot`` without any prefix, just as
 in Matlab.
@@ -795,19 +795,19 @@ axis and a box with legends such that we can distinguish the two curves:
 
 .. code-block:: python
 
-        import numpy as np
-        import matplotlib.pyplot as plt
-        
-        v0 = 0.2
-        a = 2
-        n = 21  # No of t values for plotting
-        
-        t = np.linspace(0, 2, n+1)
-        s = v0*t + 0.5*a*t**2
-        
-        plt.plot(t, s)
-        plt.savefig('myplot.png')
-        plt.show()
+    import numpy as np
+    import matplotlib.pyplot as plt
+    
+    v0 = 0.2
+    a = 2
+    n = 21  # No of t values for plotting
+    
+    t = np.linspace(0, 2, n+1)
+    s = v0*t + 0.5*a*t**2
+    
+    plt.plot(t, s)
+    plt.savefig('myplot.png')
+    plt.show()
 
 .. figure:: plot2_s.png
    :width: 500

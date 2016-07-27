@@ -22,7 +22,7 @@ The simulation is run as
 
 .. code-block:: text
 
-        Terminal> python bumpy.py --v 10
+    Terminal> python bumpy.py --v 10
 
 meaning that all other parameters have their default values as
 specified in the ``command_line_arguments`` function.
@@ -35,16 +35,16 @@ plotting and computing with arrays:
 
 .. code-block:: python
 
-        from numpy import *
-        from matplotlib.pyplot import *
+    from numpy import *
+    from matplotlib.pyplot import *
 
 The Python community often prefers to prefix ``numpy`` by ``np`` and
 ``matplotlib`` by ``plt`` or ``mpl``:
 
 .. code-block:: python
 
-        import numpy as np
-        import matplotlib.pyplot as plt
+    import numpy as np
+    import matplotlib.pyplot as plt
 
 However, we shall stick to the former import to make the code as close
 as possible to the Matlab equivalent.
@@ -57,14 +57,14 @@ use the same module (``cPickle`` or ``dill``) as we used for writing the data:
 
 .. code-block:: python
 
-        import cPickle as pickle
-        # or
-        import dill as pickle
-        outfile = open('bumpy.res', 'r')
-        data = pickle.load(outfile)
-        outfile.close()
-        
-        x, t = data[0:2]
+    import cPickle as pickle
+    # or
+    import dill as pickle
+    outfile = open('bumpy.res', 'r')
+    data = pickle.load(outfile)
+    outfile.close()
+    
+    x, t = data[0:2]
 
 Note that ``data`` first contains ``x`` and ``t``, thereafter
 a sequence of 3-lists ``[h, F, u]``. With ``data[0:2]`` we extract
@@ -78,9 +78,9 @@ using boolean arrays as indices:
 
 .. code-block:: python
 
-        indices = t >= t_s   # True/False boolean array
-        t = t[indices]       # fetch the part of t for which t >= t_s
-        x = x[indices]       # fetch the part of x for which t >= t_s
+    indices = t >= t_s   # True/False boolean array
+    t = t[indices]       # fetch the part of t for which t >= t_s
+    x = x[indices]       # fetch the part of x for which t >= t_s
 
 Indexing by a boolean array extracts all the elements corresponding to
 the ``True`` elements in the index array.
@@ -93,11 +93,11 @@ is easy to create:
 
 .. code-block:: python
 
-        figure()
-        realization = 1
-        u = data[2+realization][2][indices]
-        plot(t, u)
-        title('Displacement')
+    figure()
+    realization = 1
+    u = data[2+realization][2][indices]
+    plot(t, u)
+    title('Displacement')
 
 Note that ``data[2:]`` holds the triplets ``[h,F,u]``, so the second
 realization is ``data[3]``. The ``u`` part of the triplet is then ``data[3][2]``,
@@ -131,22 +131,22 @@ is done by
 
 .. code-block:: python
 
-        v = zeros_like(u)           # same length and data type as u
-        dt = t[1] - t[0]            # time step
-        for i in range(1,u.size-1):
-            v[i] = (u[i+1] - u[i-1])/(2*dt)
-        v[0] = (u[1] - u[0])/dt
-        v[N] = (u[N] - u[N-1])/dt
+    v = zeros_like(u)           # same length and data type as u
+    dt = t[1] - t[0]            # time step
+    for i in range(1,u.size-1):
+        v[i] = (u[i+1] - u[i-1])/(2*dt)
+    v[0] = (u[1] - u[0])/dt
+    v[N] = (u[N] - u[N-1])/dt
 
 Plotting of ``v`` is done by
 
 .. code-block:: python
 
-        figure()
-        plot(t, v)
-        legend(['velocity'])
-        xlabel('t')
-        title('Velocity')
+    figure()
+    plot(t, v)
+    legend(['velocity'])
+    xlabel('t')
+    title('Velocity')
 
 Figure :ref:`bumpy:fig3` (right) shows that the velocity is much more
 "noisy" than the displacement.
@@ -167,10 +167,10 @@ avoided is much more efficient:
 
 .. code-block:: python
 
-        v = zeros_like(u)
-        v[1:-1] = (u[2:] - u[:-2])/(2*dt)
-        v[0] = (u[1] - u[0])/dt
-        v[-1] = (u[-1] - u[-2])/dt
+    v = zeros_like(u)
+    v[1:-1] = (u[2:] - u[:-2])/(2*dt)
+    v[0] = (u[1] - u[0])/dt
+    v[-1] = (u[-1] - u[-2])/dt
 
 The challenging expression here is ``u[2:] - u[:-2]``.
 The array slice ``u[2:]`` starts at index ``2`` and goes to the very end of
@@ -192,22 +192,22 @@ a convenient feature to test the efficiency of Python constructions:
 
 .. code-block:: ipy
 
-        In [1]: from numpy import zeros
-        
-        In [2]: N = 1000000
-        
-        In [3]: u = zeros(N)
-        
-        In [4]: %timeit v = u[2:] - u[:-2]
-        1 loops, best of 3: 5.76 ms per loop
-        
-        In [5]: v = zeros(N)
-        
-        In [6]: %timeit for i in range(1,N-1): v[i] = u[i+1] - u[i-1]
-        1 loops, best of 3: 836 ms per loop
-        
-        In [7]: 836/5.76
-        Out[20]: 145.13888888888889
+    In [1]: from numpy import zeros
+    
+    In [2]: N = 1000000
+    
+    In [3]: u = zeros(N)
+    
+    In [4]: %timeit v = u[2:] - u[:-2]
+    1 loops, best of 3: 5.76 ms per loop
+    
+    In [5]: v = zeros(N)
+    
+    In [6]: %timeit for i in range(1,N-1): v[i] = u[i+1] - u[i-1]
+    1 loops, best of 3: 836 ms per loop
+    
+    In [7]: 836/5.76
+    Out[20]: 145.13888888888889
 
 This session show that the vectorized expression is 145 times faster
 than the explicit loop!
@@ -220,19 +220,19 @@ the arrays ``u`` and ``t``, can be computed by the Python function
 
 .. code-block:: python
 
-        def frequency_analysis(u, t):
-            A = fft(u)
-            A = 2*A
-            dt = t[1] - t[0]
-            N = t.size
-            freq = arange(N/2, dtype=float)/N/dt
-            A = abs(A[0:freq.size])/N
-            # Remove small high frequency part
-            tol = 0.05*A.max()
-            for i in xrange(len(A)-1, 0, -1):
-                if A[i] > tol:
-                    break
-            return freq[:i+1], A[:i+1]
+    def frequency_analysis(u, t):
+        A = fft(u)
+        A = 2*A
+        dt = t[1] - t[0]
+        N = t.size
+        freq = arange(N/2, dtype=float)/N/dt
+        A = abs(A[0:freq.size])/N
+        # Remove small high frequency part
+        tol = 0.05*A.max()
+        for i in xrange(len(A)-1, 0, -1):
+            if A[i] > tol:
+                break
+        return freq[:i+1], A[:i+1]
 
 Note here that we truncate that last part of the spectrum where the
 amplitudes are small (this usually gives a plot that is easier to inspect).
@@ -241,11 +241,11 @@ In the present case, we utilize the ``frequency_analysis`` through
 
 .. code-block:: python
 
-        figure()
-        u = data[3][2][indices]  # second realization of u
-        f, A = frequency_analysis(u, t)
-        plot(f, A)
-        title('Spectrum of u')
+    figure()
+    u = data[3][2][indices]  # second realization of u
+    f, A = frequency_analysis(u, t)
+    plot(f, A)
+    title('Spectrum of u')
 
 Figure :ref:`bumpy:fig2` shows the amplitudes and that the
 dominating frequencies lie around 0.5 and 1 Hz.
@@ -265,30 +265,30 @@ these curves in the same plot figure:
 
 .. code-block:: python
 
-        for realization in range(len(data[2:])):
-            h, F, u = data[2+realization]
-            h = h[indices]
-            F = F[indices]
-            u = u[indices]
-        
-            figure()
-            subplot(3, 1, 1)
-            plot(x, h, 'g-')
-            legend(['h %d' % realization])
-            hmax = (abs(h.max()) + abs(h.min()))/2
-            axis([x[0], x[-1], -hmax*5, hmax*5])
-            xlabel('distance'); ylabel('height')
-        
-            subplot(3, 1, 2)
-            plot(t, F)
-            legend(['F %d' % realization])
-            xlabel('t'); ylabel('acceleration')
-        
-            subplot(3, 1, 3)
-            plot(t, u, 'r-')
-            legend(['u %d' % realization])
-            xlabel('t'); ylabel('displacement')
-            savefig('hFu%d.png' % realization)
+    for realization in range(len(data[2:])):
+        h, F, u = data[2+realization]
+        h = h[indices]
+        F = F[indices]
+        u = u[indices]
+    
+        figure()
+        subplot(3, 1, 1)
+        plot(x, h, 'g-')
+        legend(['h %d' % realization])
+        hmax = (abs(h.max()) + abs(h.min()))/2
+        axis([x[0], x[-1], -hmax*5, hmax*5])
+        xlabel('distance'); ylabel('height')
+    
+        subplot(3, 1, 2)
+        plot(t, F)
+        legend(['F %d' % realization])
+        xlabel('t'); ylabel('acceleration')
+    
+        subplot(3, 1, 3)
+        plot(t, u, 'r-')
+        legend(['u %d' % realization])
+        xlabel('t'); ylabel('displacement')
+        savefig('hFu%d.png' % realization)
 
 .. _bumpy:fig4:
 

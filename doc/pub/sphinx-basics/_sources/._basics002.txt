@@ -17,12 +17,12 @@ it as a function in Python too:
 
 .. code-block:: python
 
-        def s(t):
-            return v0*t + 0.5*a*t**2
-        
-        v0 = 0.2
-        a = 4
-        value = s(3)   # Call the function
+    def s(t):
+        return v0*t + 0.5*a*t**2
+    
+    v0 = 0.2
+    a = 4
+    value = s(3)   # Call the function
 
 Note that
 
@@ -46,13 +46,13 @@ function arguments:
 
 .. code-block:: python
 
-        def s(t, v0, a):
-            return v0*t + 0.5*a*t**2
-        
-        value = s(3, 0.2, 4)   # Call the function
-        
-        # More readable call
-        value = s(t=3, v0=0.2, a=4)
+    def s(t, v0, a):
+        return v0*t + 0.5*a*t**2
+    
+    value = s(3, 0.2, 4)   # Call the function
+    
+    # More readable call
+    value = s(t=3, v0=0.2, a=4)
 
 .. index:: keyword arguments
 
@@ -65,15 +65,15 @@ is appropriate. Such arguments are called *keyword arguments* or
 
 .. code-block:: python
 
-        def s(t, v0=1, a=1):
-            return v0*t + 0.5*a*t**2
-        
-        value = s(3, 0.2, 4)         # specify new v0 and a
-        value = s(3)                 # rely on v0=1 and a=1
-        value = s(3, a=2)            # rely on v0=1
-        value = s(3, v0=2)           # rely on a=1
-        value = s(t=3, v0=2, a=2)    # specify everything
-        value = s(a=2, t=3, v0=2)    # any sequence allowed
+    def s(t, v0=1, a=1):
+        return v0*t + 0.5*a*t**2
+    
+    value = s(3, 0.2, 4)         # specify new v0 and a
+    value = s(3)                 # rely on v0=1 and a=1
+    value = s(3, a=2)            # rely on v0=1
+    value = s(3, v0=2)           # rely on a=1
+    value = s(t=3, v0=2, a=2)    # specify everything
+    value = s(a=2, t=3, v0=2)    # any sequence allowed
 
 
 .. note::
@@ -102,12 +102,12 @@ is appropriate. Such arguments are called *keyword arguments* or
    
    .. code-block:: python
    
-           # Scalar code: work with one element at a time
-           for i in range(len(t)):
-               s_values[i] = s(t_values[i], v0, a)
-           
-           # Vectorized code: apply s to the entire array
-           s_values = s(t_values, v0, a)
+       # Scalar code: work with one element at a time
+       for i in range(len(t)):
+           s_values[i] = s(t_values[i], v0, a)
+       
+       # Vectorized code: apply s to the entire array
+       s_values = s(t_values, v0, a)
    
    For the last line to work, the function ``s`` must contain statements
    that work correctly when ``t`` is an array argument.
@@ -127,12 +127,12 @@ velocity :math:`s'(t)=v_0 + at`:
 
 .. code-block:: python
 
-        def movement(t, v0, a):
-            s = v0*t + 0.5*a*t**2
-            v = v0 + a*t
-            return s, v
-        
-        s_value, v_value = movement(t=0.2, v0=2, a=4)
+    def movement(t, v0, a):
+        s = v0*t + 0.5*a*t**2
+        v = v0 + a*t
+        return s, v
+    
+    s_value, v_value = movement(t=0.2, v0=2, a=4)
 
 When :math:`n` values are returned, we list :math:`n` variables on the left-hand
 side in the call.
@@ -146,16 +146,16 @@ side in the call.
    
    .. code-block:: python
    
-           >>> def f(x):
-           ...     return x+1, x+2, x+3
-           ...
-           >>> r = f(3)     # Store all three return values in one object r
-           >>> print r
-           (4, 5, 6)
-           >>> type(r)      # What type of object is r?
-           <type 'tuple'>
-           >>> print r[1]
-           5
+       >>> def f(x):
+       ...     return x+1, x+2, x+3
+       ...
+       >>> r = f(3)     # Store all three return values in one object r
+       >>> print r
+       (4, 5, 6)
+       >>> type(r)      # What type of object is r?
+       <type 'tuple'>
+       >>> print r[1]
+       5
    
    Tuples are constant lists, so you can index them as lists, but you cannot
    change the contents (``append`` or ``del`` is illegal).
@@ -246,10 +246,10 @@ An if test has the structure
 
 .. code-block:: python
 
-        if condition:
-            <statements when condition is True>
-        else:
-            <statements when condition is False>
+    if condition:
+        <statements when condition is True>
+    else:
+        <statements when condition is False>
 
 Here, ``condition`` is a boolean expression that evaluates to ``True`` or
 ``False``. For the piecewisely defined function :ref:`(5) <Eq:basics:seq2>`
@@ -257,37 +257,37 @@ we would use an if test in the implementation:
 
 .. code-block:: python
 
-        if t <= t1:
-            s = v0*t + 0.5*a0*t**2
-        else:
-            s = v0*t + 0.5*a0*t1**2 + a0*t1*(t-t1)
+    if t <= t1:
+        s = v0*t + 0.5*a0*t**2
+    else:
+        s = v0*t + 0.5*a0*t1**2 + a0*t1*(t-t1)
 
 The ``else`` part can be omitted when not needed. Several branches are
 also possible:
 
 .. code-block:: python
 
-        if condition1:
-            <statements when condition1 is True>
-        elif condition2:
-            <statements when condition1 is False and condition2 is True>
-        elif condition3:
-            <statements when condition1 and conditon 2 are False
-             and condition3 is True>
-        else:
-            <statements when condition1/2/3 all are False>
+    if condition1:
+        <statements when condition1 is True>
+    elif condition2:
+        <statements when condition1 is False and condition2 is True>
+    elif condition3:
+        <statements when condition1 and conditon 2 are False
+         and condition3 is True>
+    else:
+        <statements when condition1/2/3 all are False>
 
 A Python function implementing the mathematical function :ref:`(5) <Eq:basics:seq2>`
 reads
 
 .. code-block:: python
 
-        def s_func(t, v0, a0, t1):
-            if t <= t1:
-                s = v0*t + 0.5*a0*t**2
-            else:
-                s = v0*t + 0.5*a0*t1**2 + a0*t1*(t-t1)
-            return s
+    def s_func(t, v0, a0, t1):
+        if t <= t1:
+            s = v0*t + 0.5*a0*t**2
+        else:
+            s = v0*t + 0.5*a0*t1**2 + a0*t1*(t-t1)
+        return s
 
 To plot this :math:`s(t)`, we need to compute points on the curve.
 Trying to call ``s_func`` with an array ``t`` as argument will not
@@ -302,24 +302,24 @@ Appropriate code is
 
 .. code-block:: python
 
-        n = 201  # No of t values for plotting
-        t1 = 1.5
-        
-        t = np.linspace(0, 2, n+1)
-        s = np.zeros(n+1)
-        for i in range(len(t)):
-            s[i] = s_func(t=t[i], v0=0.2, a0=20, t1=t1)
+    n = 201  # No of t values for plotting
+    t1 = 1.5
+    
+    t = np.linspace(0, 2, n+1)
+    s = np.zeros(n+1)
+    for i in range(len(t)):
+        s[i] = s_func(t=t[i], v0=0.2, a0=20, t1=t1)
 
 Relevant statements for plotting are now
 
 .. code-block:: python
 
-        plt.plot(t, s, 'b-')
-        plt.plot([t1, t1], [0, s_func(t=t1, v0=0.2, a0=20, t1=t1)], 'r--')
-        plt.xlabel('t')
-        plt.ylabel('s')
-        plt.savefig('myplot.png')
-        plt.show()
+    plt.plot(t, s, 'b-')
+    plt.plot([t1, t1], [0, s_func(t=t1, v0=0.2, a0=20, t1=t1)], 'r--')
+    plt.xlabel('t')
+    plt.ylabel('s')
+    plt.savefig('myplot.png')
+    plt.show()
 
 .. index:: vectorizing if tests
 
@@ -338,7 +338,7 @@ Relevant statements for plotting are now
    
    .. code-block:: python
    
-           s = np.where(condition, s1, s2)
+       s = np.where(condition, s1, s2)
    
    Here, ``condition`` is an array of boolean values, and
    ``s[i] = s1[i]`` if ``condition[i]`` is ``True``, and otherwise ``s[i] = s2[i]``.
@@ -347,9 +347,9 @@ Relevant statements for plotting are now
    
    .. code-block:: python
    
-           s = np.where(t <= t1,
-                        v0*t + 0.5*a0*t**2,
-                        v0*t + 0.5*a0*t1**2 + a0*t1*(t-t1))
+       s = np.where(t <= t1,
+                    v0*t + 0.5*a0*t**2,
+                    v0*t + 0.5*a0*t1**2 + a0*t1*(t-t1))
    
    Note that ``t <= t1`` with array ``t`` and scalar ``t1`` results in a boolean
    array ``b`` where ``b[i] = t[i] <= t1``.
@@ -365,15 +365,15 @@ Relevant statements for plotting are now
    
    .. code-block:: python
    
-           s[b] = (expr)[b]
+       s[b] = (expr)[b]
    
    Our example can utilize this technique with ``b`` as ``t <= t1`` and ``t > t1``:
    
    .. code-block:: python
    
-           s = np.zeros_like(t)  # Make s as zeros, same size & type as t
-           s[t <= t1] = (v0*t + 0.5*a0*t**2)[t <= t1]
-           s[t > t1]  = (v0*t + 0.5*a0*t1**2 + a0*t1*(t-t1))[t > t1]
+       s = np.zeros_like(t)  # Make s as zeros, same size & type as t
+       s[t <= t1] = (v0*t + 0.5*a0*t**2)[t <= t1]
+       s[t > t1]  = (v0*t + 0.5*a0*t1**2 + a0*t1*(t-t1))[t > t1]
 
 
 
@@ -387,8 +387,8 @@ If you do a simple assignment,
 
 .. code-block:: python
 
-        a = np.linspace(1, 5, 5)
-        b = a
+    a = np.linspace(1, 5, 5)
+    b = a
 
 ``b`` becomes a just *view* of ``a``: the variables ``b`` and ``a`` point
 to the same data. In other languages one may say that ``b`` is a
@@ -397,13 +397,13 @@ pointer or reference to the array. This means that changing ``a`` changes
 
 .. code-block:: python
 
-        array([ 1.,  2.,  3.,  4.,  5.])
-        >>> b[0] = 5                       # changes a[0] to 5
-        >>> a
-        array([ 5.,  2.,  3.,  4.,  5.])
-        >>> a[1] = 9                       # changes b[1] to 9
-        >>> b
-        array([ 5.,  9.,  3.,  4.,  5.])
+    array([ 1.,  2.,  3.,  4.,  5.])
+    >>> b[0] = 5                       # changes a[0] to 5
+    >>> a
+    array([ 5.,  2.,  3.,  4.,  5.])
+    >>> a[1] = 9                       # changes b[1] to 9
+    >>> b
+    array([ 5.,  9.,  3.,  4.,  5.])
 
 Similarly, ``b[1:-1]`` gives a view to a subset of ``a`` and no copy of data.
 If we want to change ``b`` without affecting ``a``, a copy of the array
@@ -411,14 +411,14 @@ is required:
 
 .. code-block:: python
 
-        >>> c = a.copy()       # copy all elements to new array c
-        >>> c[0] = 6           # a is not changed
-        >>> a
-        array([ 1.,  2.,  3.,  4.,  5.])
-        >>> c
-        array([ 6.,  2.,  3.,  4.,  5.])
-        >>> b
-        array([ 5.,  2.,  3.,  4.,  5.])
+    >>> c = a.copy()       # copy all elements to new array c
+    >>> c[0] = 6           # a is not changed
+    >>> a
+    array([ 1.,  2.,  3.,  4.,  5.])
+    >>> c
+    array([ 6.,  2.,  3.,  4.,  5.])
+    >>> b
+    array([ 5.,  2.,  3.,  4.,  5.])
 
 Note that ``b`` remains unchanged by the change in ``c`` since the ``b`` and ``c``
 variables now refer to different data. Copying of the elements of a sub-array
@@ -433,9 +433,9 @@ is also done by the ``copy()`` method: ``b = a[1:-1].copy()``.
    
    .. code-block:: python
    
-           a = np.array([-1, 4.5, 8, 9])
-           b = a[1:-2]            # view: changes in a are reflected in b
-           b = a[1:-2].copy()     # copy: changes in a are not reflected in b
+       a = np.array([-1, 4.5, 8, 9])
+       b = a[1:-2]            # view: changes in a are reflected in b
+       b = a[1:-2].copy()     # copy: changes in a are not reflected in b
 
 
 
@@ -455,11 +455,11 @@ can be coded as
 
 .. code-block:: python
 
-        import numpy as np
-        A = np.array([[1., 2],
-                      [4,  2]])
-        b = np.array([1., -2])
-        x = np.linalg.solve(A, b)
+    import numpy as np
+    A = np.array([[1., 2],
+                  [4,  2]])
+    b = np.array([1., -2])
+    x = np.linalg.solve(A, b)
 
 Many scientific computing problems involves large matrices with special
 *sparse* structures. Significant memory and computing time can be
@@ -477,21 +477,21 @@ Here is an example of constructing a *tridiagonal* matrix:
 
 .. code-block:: python
 
-        >>> import numpy as np
-        >>> N = 6
-        >>> diagonals = np.zeros((3, N))   # 3 diagonals
-        diagonals[0,:] = np.linspace(-1, -N, N)
-        diagonals[1,:] = -2
-        diagonals[2,:] = np.linspace(1, N, N)
-        >>> import scipy.sparse
-        >>> A = scipy.sparse.spdiags(diagonals, [-1,0,1], N, N, format='csc')
-        >>> A.toarray()    # look at corresponding dense matrix
-        [[-2.  2.  0.  0.  0.  0.]
-         [-1. -2.  3.  0.  0.  0.]
-         [ 0. -2. -2.  4.  0.  0.]
-         [ 0.  0. -3. -2.  5.  0.]
-         [ 0.  0.  0. -4. -2.  6.]
-         [ 0.  0.  0.  0. -5. -2.]]
+    >>> import numpy as np
+    >>> N = 6
+    >>> diagonals = np.zeros((3, N))   # 3 diagonals
+    diagonals[0,:] = np.linspace(-1, -N, N)
+    diagonals[1,:] = -2
+    diagonals[2,:] = np.linspace(1, N, N)
+    >>> import scipy.sparse
+    >>> A = scipy.sparse.spdiags(diagonals, [-1,0,1], N, N, format='csc')
+    >>> A.toarray()    # look at corresponding dense matrix
+    [[-2.  2.  0.  0.  0.  0.]
+     [-1. -2.  3.  0.  0.  0.]
+     [ 0. -2. -2.  4.  0.  0.]
+     [ 0.  0. -3. -2.  5.  0.]
+     [ 0.  0.  0. -4. -2.  6.]
+     [ 0.  0.  0.  0. -5. -2.]]
 
 Solving a linear system with a tridiagonal coefficient matrix requires
 a special function with a special algorithm to take advantage of
@@ -502,12 +502,12 @@ and then solves :math:`Ax=b`:
 
 .. code-block:: python
 
-        >>> x = np.linspace(-1, 1, N)  # choose solution
-        >>> b = A.dot(x)               # sparse matrix vector product
-        >>> import scipy.sparse.linalg
-        >>> x = scipy.sparse.linalg.spsolve(A, b)
-        >>> print x
-        [-1.  -0.6 -0.2  0.2  0.6  1. ]
+    >>> x = np.linspace(-1, 1, N)  # choose solution
+    >>> b = A.dot(x)               # sparse matrix vector product
+    >>> import scipy.sparse.linalg
+    >>> x = scipy.sparse.linalg.spsolve(A, b)
+    >>> print x
+    [-1.  -0.6 -0.2  0.2  0.6  1. ]
 
 Although we can easily check that ``x`` is correctly computed, we can
 do another check by converting the linear system to its dense
@@ -515,9 +515,9 @@ counterpart:
 
 .. code-block:: python
 
-        >>> A_d = A.toarray()            # corresponding dense matrix
-        >>> b = np.dot(A_d, x)           # standard matrix vector product
-        >>> x = np.linalg.solve(A_d, b)  # standard Ax=b algorithm
-        >>> print x
-        [-1.  -0.6 -0.2  0.2  0.6  1. ]
+    >>> A_d = A.toarray()            # corresponding dense matrix
+    >>> b = np.dot(A_d, x)           # standard matrix vector product
+    >>> x = np.linalg.solve(A_d, b)  # standard Ax=b algorithm
+    >>> print x
+    [-1.  -0.6 -0.2  0.2  0.6  1. ]
 

@@ -95,20 +95,20 @@ are fixed parameters and that the user is allowed to vary
 the programmer, to specify <span class="math">\(b\)</span> as the first command-line
 argument to the program. If the name of the program file
 is <code class="docutils literal"><span class="pre">bumpy.py</span></code> and <span class="math">\(b=10\)</span> is desired, we can write</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; python bumpy.py 10
+<div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; python bumpy.py 10
 </pre></div>
 </div>
 <p>The corresponding code in the program for setting input data
 and extract the user-given value of <span class="math">\(b\)</span> reads</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">prepare_input</span><span class="p">():</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz&#39;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">prepare_input</span><span class="p">():</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz&#39;</span>
     <span class="n">m</span> <span class="o">=</span> <span class="mi">60</span>
     <span class="n">k</span> <span class="o">=</span> <span class="mi">60</span>
     <span class="n">v</span> <span class="o">=</span> <span class="mi">5</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">b</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
-        <span class="n">b</span> <span class="o">=</span> <span class="mi">80</span>  <span class="c"># default</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="mi">80</span>  <span class="c1"># default</span>
     <span class="k">return</span> <span class="n">url</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span>
 </pre></div>
 </div>
@@ -127,7 +127,7 @@ if no command-line argument is given.</p>
 <h2>Option-value pairs on the command line<a class="headerlink" href="#option-value-pairs-on-the-command-line" title="Permalink to this headline">¶</a></h2>
 <p>Letting the user set many parameters on the command line is most
 conveniently done by allowing option-value pairs, e.g.,</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; python bumpy.py --m 40 --b 280
+<div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; python bumpy.py --m 40 --b 280
 </pre></div>
 </div>
 <p>All parameters have a default value which can be overridden on
@@ -136,22 +136,22 @@ the command line by providing the string (option) <code class="docutils literal"
 the parameter. Implementation of option-value input is
 most easily carried out using Python&#8217;s <code class="docutils literal"><span class="pre">argparse</span></code> module.
 The recipe goes as follows.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">command_line_options</span><span class="p">():</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">command_line_options</span><span class="p">():</span>
     <span class="kn">import</span> <span class="nn">argparse</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;--m&#39;</span><span class="p">,</span> <span class="s">&#39;--mass&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
-                        <span class="n">default</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s">&#39;mass of vehicle&#39;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;--k&#39;</span><span class="p">,</span> <span class="s">&#39;--spring&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
-                        <span class="n">default</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s">&#39;spring parameter&#39;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;--b&#39;</span><span class="p">,</span> <span class="s">&#39;--damping&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
-                        <span class="n">default</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s">&#39;damping parameter&#39;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;--v&#39;</span><span class="p">,</span> <span class="s">&#39;--velocity&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
-                        <span class="n">default</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s">&#39;velocity of vehicle&#39;</span><span class="p">)</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz&#39;</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;--roadfile&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
-              <span class="n">default</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s">&#39;filename/URL with road data&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--m&#39;</span><span class="p">,</span> <span class="s1">&#39;--mass&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+                        <span class="n">default</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;mass of vehicle&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--k&#39;</span><span class="p">,</span> <span class="s1">&#39;--spring&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+                        <span class="n">default</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;spring parameter&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--b&#39;</span><span class="p">,</span> <span class="s1">&#39;--damping&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+                        <span class="n">default</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;damping parameter&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--v&#39;</span><span class="p">,</span> <span class="s1">&#39;--velocity&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+                        <span class="n">default</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;velocity of vehicle&#39;</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz&#39;</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--roadfile&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+              <span class="n">default</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;filename/URL with road data&#39;</span><span class="p">)</span>
     <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
-    <span class="c"># Extract input parameters</span>
+    <span class="c1"># Extract input parameters</span>
     <span class="n">m</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">m</span><span class="p">;</span> <span class="n">k</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">k</span><span class="p">;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">b</span><span class="p">;</span> <span class="n">v</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">v</span>
     <span class="n">url</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">roadfile</span>
     <span class="k">return</span> <span class="n">url</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span>
@@ -199,14 +199,11 @@ mathematical symbol (like <code class="docutils literal"><span class="pre">--v</
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>

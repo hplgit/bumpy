@@ -16,10 +16,10 @@ demo program for evaluating the formula :math:`s(t)=v_0t + \frac{1}{2}at^2`:
 
 .. code-block:: text
 
-        v0 = 2
-        a = 0.2
-        dt = 0.1
-        interval = [0, 2]
+    v0 = 2
+    a = 0.2
+    dt = 0.1
+    interval = [0, 2]
 
 We want to read the parameters in the file into Python variables and
 create a table with columns of :math:`t` and :math:`S(t)` for :math:`t\in [0,2]` with
@@ -30,20 +30,20 @@ assigning values to variables is given next.
 
 .. code-block:: python
 
-        infile = open('.input.dat', 'r')
-        for line in infile:
-            # Typical line: variable = value
-            variable, value = line.split('=')
-            variable = variable.strip()  # remove leading/traling blanks
-            if variable == 'v0':
-                v0 = float(value)
-            elif variable == 'a':
-                a = float(value)
-            elif variable == 'dt':
-                dt = float(value)
-            elif variable == 'interval':
-                interval = eval(value)
-        infile.close()
+    infile = open('.input.dat', 'r')
+    for line in infile:
+        # Typical line: variable = value
+        variable, value = line.split('=')
+        variable = variable.strip()  # remove leading/traling blanks
+        if variable == 'v0':
+            v0 = float(value)
+        elif variable == 'a':
+            a = float(value)
+        elif variable == 'dt':
+            dt = float(value)
+        elif variable == 'interval':
+            interval = eval(value)
+    infile.close()
 
 The name of the file is here ``.input.dat``, and it is opened with the
 parameter ``'r'`` for reading. The for loop ``for line in infile`` will
@@ -54,12 +54,12 @@ the words. For example,
 
 .. code-block:: python
 
-        >>> line = 'v0 = 5.3'
-        >>> variable, value = line.split('=')
-        >>> variable
-        'v0 '
-        >>> value
-        ' 5.3'
+    >>> line = 'v0 = 5.3'
+    >>> variable, value = line.split('=')
+    >>> variable
+    'v0 '
+    >>> value
+    ' 5.3'
 
 Note that there are blanks in the strings. Leading and trailing blanks
 can be removed by ``variable.strip()``. We do this before comparing
@@ -78,9 +78,9 @@ A more modern Python way of opening files is
 
 .. code-block:: python
 
-        with open('.input.dat', 'r') as infile:
-            for line in infile:
-                ...
+    with open('.input.dat', 'r') as infile:
+        for line in infile:
+            ...
 
 Now it is not necessary to close the file as it will be automatically done
 after the ``with`` block.
@@ -94,10 +94,10 @@ The following code does the work:
 
 .. code-block:: python
 
-        outfile = open('table1.dat', 'w')
-        outfile.write('# t    s(t)\n')  # write table header
-        for t, s in zip(t_values, s_values):
-            outfile.write('%.2f  %.4f\n' % (t, s))
+    outfile = open('table1.dat', 'w')
+    outfile.write('# t    s(t)\n')  # write table header
+    for t, s in zip(t_values, s_values):
+        outfile.write('%.2f  %.4f\n' % (t, s))
 
 Files intended for writing must be opened with a ``'w'`` parameter.
 The key statement is ``outfile.write(s)`` for writing a string to
@@ -114,20 +114,20 @@ added (``header``) and the header lines begin with a comment character
 
 .. code-block:: python
 
-        import numpy as np
-        # Make two-dimensional array of [t, s(t)] values in each row
-        data = np.array([t_values, s_values]).transpose()
-        
-        # Write data array to file in table format
-        np.savetxt('table2.dat', data, fmt=['%.2f', '%.4f'],
-                   header='t   s(t)', comments='# ')
+    import numpy as np
+    # Make two-dimensional array of [t, s(t)] values in each row
+    data = np.array([t_values, s_values]).transpose()
+    
+    # Write data array to file in table format
+    np.savetxt('table2.dat', data, fmt=['%.2f', '%.4f'],
+               header='t   s(t)', comments='# ')
 
 The tabular data in the file can be read back into a
 ``numpy`` array by the ``loadtxt`` function:
 
 .. code-block:: python
 
-        data = np.loadtxt('table2.dat', comments='#')
+    data = np.loadtxt('table2.dat', comments='#')
 
 Lines beginning with the comment character are skipped in the reading.
 The resulting object ``data`` is a two-dimensional array: ``data[i,j]`` contains

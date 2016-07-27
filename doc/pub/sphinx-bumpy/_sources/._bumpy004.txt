@@ -12,21 +12,21 @@ polynomial, integrate it again, and find the roots:
 
 .. code-block:: python
 
-        >>> import sympy as sp
-        >>> x, a = sp.symbols('x a')        # Define mathematical symbols
-        >>> Q = a*x**2 - 1                  # Quadratic function
-        >>> dQdx = sp.diff(Q, x)            # Differentiate wrt x
-        >>> dQdx
-        2*a*x
-        >>> Q2 = sp.integrate(dQdx, x)      # Integrate (no constant)
-        >>> Q2
-        a*x**2
-        >>> Q2 = sp.integrate(Q, (x, 0, a)) # Definite integral
-        >>> Q2
-        a**4/3 - a
-        >>> roots = sp.solve(Q, x)          # Solve Q = 0 wrt x
-        >>> roots
-        [-sqrt(1/a), sqrt(1/a)]
+    >>> import sympy as sp
+    >>> x, a = sp.symbols('x a')        # Define mathematical symbols
+    >>> Q = a*x**2 - 1                  # Quadratic function
+    >>> dQdx = sp.diff(Q, x)            # Differentiate wrt x
+    >>> dQdx
+    2*a*x
+    >>> Q2 = sp.integrate(dQdx, x)      # Integrate (no constant)
+    >>> Q2
+    a*x**2
+    >>> Q2 = sp.integrate(Q, (x, 0, a)) # Definite integral
+    >>> Q2
+    a**4/3 - a
+    >>> roots = sp.solve(Q, x)          # Solve Q = 0 wrt x
+    >>> roots
+    [-sqrt(1/a), sqrt(1/a)]
 
 One can easily convert a SymPy expression like ``Q`` into
 a Python function ``Q(x, a)`` to be used for further numerical
@@ -34,9 +34,9 @@ computing:
 
 .. code-block:: python
 
-        >>> Q = sp.lambdify([x, a], Q)      # Turn Q into Py func.
-        >>> Q(x=2, a=3)                     # 3*2**2 - 1 = 11
-        11
+    >>> Q = sp.lambdify([x, a], Q)      # Turn Q into Py func.
+    >>> Q(x=2, a=3)                     # 3*2**2 - 1 = 11
+    11
 
 Sympy can do a lot of other things. Here is an example on
 computing the Taylor series of :math:`e^{-x}\sin(rx)`, where :math:`r`
@@ -44,10 +44,10 @@ is the smallest root of :math:`Q=ax^2-1=0` as computed above:
 
 .. code-block:: python
 
-        >>> f = sp.exp(-a*x)*sp.sin(roots[0]*x)
-        >>> f.series(x, 0, 4)
-        -x*sqrt(1/a) + x**3*(-a**2*sqrt(1/a)/2 + (1/a)**(3/2)/6) +
-        a*x**2*sqrt(1/a) + O(x**4)
+    >>> f = sp.exp(-a*x)*sp.sin(roots[0]*x)
+    >>> f.series(x, 0, 4)
+    -x*sqrt(1/a) + x**3*(-a**2*sqrt(1/a)/2 + (1/a)**(3/2)/6) +
+    a*x**2*sqrt(1/a) + O(x**4)
 
 Testing
 -------
@@ -67,96 +67,95 @@ Example on a test function
 
 .. code-block:: python
 
-        def halve(x):
-            """Return half of x."""
-            return x/2.0
-        
-        def test_halve():
-            x = 4
-            expected = 2
-            computed = halve(x)
-            # Compare real numbers using tolerance
-            tol = 1E-14
-            diff = abs(computed - expected)
-            assert diff < tol
+    def halve(x):
+        """Return half of x."""
+        return x/2.0
+    
+    def test_halve():
+        x = 4
+        expected = 2
+        computed = halve(x)
+        # Compare real numbers using tolerance
+        tol = 1E-14
+        diff = abs(computed - expected)
+        assert diff < tol
 
 Test function for the numerical solver
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A frequently used technique to test differential equation solvers
-is to just specify a solution and fit a source term in the differential
-equation such that the specified solution solves the equation.
-The initial conditions must be set according to the specified
+A frequently used technique to test differential equation solvers is
+to just specify a solution and fit a source term in the differential
+equation such that the specified solution solves the equation.  The
+initial conditions must be set according to the specified
 solution. This technique is known as the *method of manufactured
 solutions*.
 
-Here we shall specify a solution that is quadratic or linear
-in :math:`t` because
-such lower-order polynomials will often be an exact solution of both
-the differential equation *and* the finite difference equations.
-This means that the polynomial should be reproduced to machine
-precision by our ``solver`` function.
+Here we shall specify a solution that is quadratic or linear in :math:`t`
+because such lower-order polynomials will often be an exact solution
+of both the differential equation *and* the finite difference
+equations.  This means that the polynomial should be reproduced to
+machine precision by our ``solver`` function.
 
 We can use SymPy to find an appropriate :math:`F(t)` term in the
-differential equation such that a specified solution :math:`u(t)=I + Vt + qt^2`
-fits the equation and initial conditions. With quadratic damping,
-only a linear :math:`u` will solve the discrete equation so in this case
-we choose :math:`u=I+Vt`.
+differential equation such that a specified solution :math:`u(t)=I + Vt +
+qt^2` fits the equation and initial conditions. With quadratic
+damping, only a linear :math:`u` will solve the discrete equation so in this
+case we choose :math:`u=I+Vt`.
 
 We embed the SymPy calculations and the numerical calculations
 in a *test function*:
 
 .. code-block:: python
 
-        def lhs_eq(t, m, b, s, u, damping='linear'):
-            """Return lhs of differential equation as sympy expression."""
-            v = sp.diff(u, t)
-            d = b*v if damping == 'linear' else b*v*sp.Abs(v)
-            return m*sp.diff(u, t, t) + d + s(u)
-        
-        def test_solver():
-            """Verify linear/quadratic solution."""
-            # Set input data for the test
-            I = 1.2; V = 3; m = 2; b = 0.9; k = 4
-            s = lambda u: k*u
-            T = 2
-            dt = 0.2
-            N = int(round(T/dt))
-            time_points = np.linspace(0, T, N+1)
-        
-            # Test linear damping
-            t = sp.Symbol('t')
-            q = 2  # arbitrary constant
-            u_exact = I + V*t + q*t**2   # sympy expression
-            F_term = lhs_eq(t, m, b, s, u_exact, 'linear')
-            print 'Fitted source term, linear case:', F_term
-            F = sp.lambdify([t], F_term)
-            u, t_ = solver(I, V, m, b, s, F, time_points, 'linear')
-            u_e = sp.lambdify([t], u_exact, modules='numpy')
-            error = abs(u_e(t_) - u).max()
-            tol = 1E-13
-            assert error < tol
-        
-            # Test quadratic damping: u_exact must be linear
-            u_exact = I + V*t
-            F_term = lhs_eq(t, m, b, s, u_exact, 'quadratic')
-            print 'Fitted source term, quadratic case:', F_term
-            F = sp.lambdify([t], F_term)
-            u, t_ = solver(I, V, m, b, s, F, time_points, 'quadratic')
-            u_e = sp.lambdify([t], u_exact, modules='numpy')
-            error = abs(u_e(t_) - u).max()
-            assert error < tol
+    def lhs_eq(t, m, b, s, u, damping='linear'):
+        """Return lhs of differential equation as sympy expression."""
+        v = sp.diff(u, t)
+        d = b*v if damping == 'linear' else b*v*sp.Abs(v)
+        return m*sp.diff(u, t, t) + d + s(u)
+    
+    def test_solver():
+        """Verify linear/quadratic solution."""
+        # Set input data for the test
+        I = 1.2; V = 3; m = 2; b = 0.9; k = 4
+        s = lambda u: k*u
+        T = 2
+        dt = 0.2
+        N = int(round(T/dt))
+        time_points = np.linspace(0, T, N+1)
+    
+        # Test linear damping
+        t = sp.Symbol('t')
+        q = 2  # arbitrary constant
+        u_exact = I + V*t + q*t**2   # sympy expression
+        F_term = lhs_eq(t, m, b, s, u_exact, 'linear')
+        print 'Fitted source term, linear case:', F_term
+        F = sp.lambdify([t], F_term)
+        u, t_ = solver(I, V, m, b, s, F, time_points, 'linear')
+        u_e = sp.lambdify([t], u_exact, modules='numpy')
+        error = abs(u_e(t_) - u).max()
+        tol = 1E-13
+        assert error < tol
+    
+        # Test quadratic damping: u_exact must be linear
+        u_exact = I + V*t
+        F_term = lhs_eq(t, m, b, s, u_exact, 'quadratic')
+        print 'Fitted source term, quadratic case:', F_term
+        F = sp.lambdify([t], F_term)
+        u, t_ = solver(I, V, m, b, s, F, time_points, 'quadratic')
+        u_e = sp.lambdify([t], u_exact, modules='numpy')
+        error = abs(u_e(t_) - u).max()
+        assert error < tol
 
 Using a test framework
 ~~~~~~~~~~~~~~~~~~~~~~
 
 We recommend to use ``pytest`` as test framework. Subdirectories ``test*``
-are examined for files ``test_*.py`` that have test functions ``test_*()``,
-and all such tests are executed by the following command:
+are examined for files ``test_*.py`` that have test functions
+``test_*()``, and all such tests are executed by the following command:
 
 .. code-block:: text
 
-        Terminal> py.test -s
+    Terminal> py.test -s
 
 The ``-s`` option makes all output from the tests appear in the terminal
 window.
@@ -165,7 +164,7 @@ To run the tests in a specific file ``tests/test_bumpy.py``, do
 
 .. code-block:: text
 
-        Terminal> py.test -s tests/test_bumpy.py
+    Terminal> py.test -s tests/test_bumpy.py
 
 Modules
 -------
@@ -184,24 +183,24 @@ end of the module:
 
 .. code-block:: python
 
-        if __name__ == '__main__':
-            <statements in the main program>
+    if __name__ == '__main__':
+        <statements in the main program>
 
 The module file, say its name is ``mymod.py``, now typically looks like
 
 .. code-block:: python
 
-        import module1
-        from module2 import func1, func2
-        
-        def myfunc1(...):
-            ...
-        
-        def myfunc2(...):
-            ...
-        
-        if __name__ == '__main__':
-            <statements in the main program>
+    import module1
+    from module2 import func1, func2
+    
+    def myfunc1(...):
+        ...
+    
+    def myfunc2(...):
+        ...
+    
+    if __name__ == '__main__':
+        <statements in the main program>
 
 The name of the module ``mymod`` if the filename is ``mymod.py``.
 During ``import mymod`` or ``from mymod import *``, the special Python

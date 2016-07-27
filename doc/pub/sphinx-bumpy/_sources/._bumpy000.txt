@@ -13,7 +13,7 @@ A worked example on scientific computing with Python
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen (hpl at simula.no)
-:Date: Nov 1, 2015
+:Date: Jul 27, 2016
 
 .. Make corresponding slides
 
@@ -89,7 +89,7 @@ Optimal background for reading this note
 
 
 If you need motivation for using Python as programming language,
-see Appendix :ref:`app:motivation`. Lists of many useful tutorials
+see  :ref:`app:motivation`. Lists of many useful tutorials
 and introductions to Python, with emphasis on scientific computing,
-are found in Appendix :ref:`app:resources`.
+are found in  :ref:`app:resources`.
 

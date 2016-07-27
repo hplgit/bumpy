@@ -95,7 +95,7 @@ that dominate in the signal</li>
 <div class="section" id="test-case">
 <h2>Test case<a class="headerlink" href="#test-case" title="Permalink to this headline">¶</a></h2>
 <p>The simulation is run as</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; python bumpy.py --v 10
+<div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; python bumpy.py --v 10
 </pre></div>
 </div>
 <p>meaning that all other parameters have their default values as
@@ -105,13 +105,13 @@ specified in the <code class="docutils literal"><span class="pre">command_line_a
 <h2>Importing array and plot functionality<a class="headerlink" href="#importing-array-and-plot-functionality" title="Permalink to this headline">¶</a></h2>
 <p>The following two imports give access to Matlab-style functions for
 plotting and computing with arrays:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 </div>
 <p>The Python community often prefers to prefix <code class="docutils literal"><span class="pre">numpy</span></code> by <code class="docutils literal"><span class="pre">np</span></code> and
 <code class="docutils literal"><span class="pre">matplotlib</span></code> by <code class="docutils literal"><span class="pre">plt</span></code> or <code class="docutils literal"><span class="pre">mpl</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 </pre></div>
 </div>
@@ -122,10 +122,10 @@ as possible to the Matlab equivalent.</p>
 <h2>Reading results from file<a class="headerlink" href="#reading-results-from-file" title="Permalink to this headline">¶</a></h2>
 <p>Loading the computational data from file back to a list <code class="docutils literal"><span class="pre">data</span></code> must
 use the same module (<code class="docutils literal"><span class="pre">cPickle</span></code> or <code class="docutils literal"><span class="pre">dill</span></code>) as we used for writing the data:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cPickle</span> <span class="kn">as</span> <span class="nn">pickle</span>
-<span class="c"># or</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cPickle</span> <span class="kn">as</span> <span class="nn">pickle</span>
+<span class="c1"># or</span>
 <span class="kn">import</span> <span class="nn">dill</span> <span class="kn">as</span> <span class="nn">pickle</span>
-<span class="n">outfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;bumpy.res&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">outfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;bumpy.res&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">outfile</span><span class="p">)</span>
 <span class="n">outfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
@@ -140,9 +140,9 @@ All the remaining 3-lists <code class="docutils literal"><span class="pre">[h,</
 <p>Since now we concentrate on the part <span class="math">\(t\geq t_s\)</span> of the data, we
 can grab the corresponding parts of the arrays in the following way,
 using boolean arrays as indices:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">indices</span> <span class="o">=</span> <span class="n">t</span> <span class="o">&gt;=</span> <span class="n">t_s</span>   <span class="c"># True/False boolean array</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>       <span class="c"># fetch the part of t for which t &gt;= t_s</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>       <span class="c"># fetch the part of x for which t &gt;= t_s</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">indices</span> <span class="o">=</span> <span class="n">t</span> <span class="o">&gt;=</span> <span class="n">t_s</span>   <span class="c1"># True/False boolean array</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>       <span class="c1"># fetch the part of t for which t &gt;= t_s</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>       <span class="c1"># fetch the part of x for which t &gt;= t_s</span>
 </pre></div>
 </div>
 <p>Indexing by a boolean array extracts all the elements corresponding to
@@ -152,11 +152,11 @@ the <code class="docutils literal"><span class="pre">True</span></code> elements
 <h2>Plotting <span class="math">\(u\)</span><a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h2>
 <p>A plot of <span class="math">\(u\)</span>, corresponding to the second realization of the bumpy road,
 is easy to create:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">figure</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">figure</span><span class="p">()</span>
 <span class="n">realization</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">u</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="o">+</span><span class="n">realization</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="n">indices</span><span class="p">]</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
-<span class="n">title</span><span class="p">(</span><span class="s">&#39;Displacement&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Displacement&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Note that <code class="docutils literal"><span class="pre">data[2:]</span></code> holds the triplets <code class="docutils literal"><span class="pre">[h,F,u]</span></code>, so the second
@@ -177,8 +177,8 @@ with less accurate one-sided differences:</p>
 \[v^0 = \frac{u^1-u^0}{\Delta t},\quad v^{N} = \frac{u^N-u^{N-1}}{\Delta t}\]</div>
 <p>Computing <span class="math">\(v=u'\)</span> by <a class="reference internal" href="#eq-bumpy-fdm-centered"><span class="std std-ref">(6)</span></a> for the part <span class="math">\(t\geq t_s\)</span>
 is done by</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">v</span> <span class="o">=</span> <span class="n">zeros_like</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>           <span class="c"># same length and data type as u</span>
-<span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>            <span class="c"># time step</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">zeros_like</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>           <span class="c1"># same length and data type as u</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>            <span class="c1"># time step</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">u</span><span class="o">.</span><span class="n">size</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
     <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dt</span><span class="p">)</span>
 <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">dt</span>
@@ -186,11 +186,11 @@ is done by</p>
 </pre></div>
 </div>
 <p>Plotting of <code class="docutils literal"><span class="pre">v</span></code> is done by</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">figure</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-<span class="n">legend</span><span class="p">([</span><span class="s">&#39;velocity&#39;</span><span class="p">])</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;t&#39;</span><span class="p">)</span>
-<span class="n">title</span><span class="p">(</span><span class="s">&#39;Velocity&#39;</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">([</span><span class="s1">&#39;velocity&#39;</span><span class="p">])</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Velocity&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Figure <a class="reference internal" href="#bumpy-fig3"><span class="std std-ref">Displacement (left) and velocity (right) for </span></a> (right) shows that the velocity is much more
@@ -205,7 +205,7 @@ is done by</p>
 <p>For large arrays, finite difference formulas like <a class="reference internal" href="#eq-bumpy-fdm-centered"><span class="std std-ref">(6)</span></a>
 can be heavy to compute. A vectorized expression where the loop is
 avoided is much more efficient:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">v</span> <span class="o">=</span> <span class="n">zeros_like</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">zeros_like</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
 <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dt</span><span class="p">)</span>
 <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">dt</span>
 <span class="n">v</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span><span class="n">dt</span>
@@ -227,7 +227,7 @@ we use the <code class="docutils literal"><span class="pre">-1</span></code> ind
 last element.</p>
 <p>How efficient is this vectorization? The interactive IPython shell has
 a convenient feature to test the efficiency of Python constructions:</p>
-<div class="highlight-ipy"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">zeros</span>
+<div class="highlight-ipy"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">zeros</span>
 
 <span class="gp">In [2]: </span><span class="n">N</span> <span class="o">=</span> <span class="mi">1000000</span>
 
@@ -251,14 +251,14 @@ than the explicit loop!</p>
 <h3>Computing the spectrum of signals<a class="headerlink" href="#computing-the-spectrum-of-signals" title="Permalink to this headline">¶</a></h3>
 <p>The spectrum of a <span class="math">\(u(t)\)</span> function, here represented by discrete values in
 the arrays <code class="docutils literal"><span class="pre">u</span></code> and <code class="docutils literal"><span class="pre">t</span></code>, can be computed by the Python function</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">frequency_analysis</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">frequency_analysis</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
     <span class="n">A</span> <span class="o">=</span> <span class="n">fft</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
     <span class="n">A</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">A</span>
     <span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">N</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">size</span>
     <span class="n">freq</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span><span class="o">/</span><span class="n">N</span><span class="o">/</span><span class="n">dt</span>
     <span class="n">A</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">freq</span><span class="o">.</span><span class="n">size</span><span class="p">])</span><span class="o">/</span><span class="n">N</span>
-    <span class="c"># Remove small high frequency part</span>
+    <span class="c1"># Remove small high frequency part</span>
     <span class="n">tol</span> <span class="o">=</span> <span class="mf">0.05</span><span class="o">*</span><span class="n">A</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">:</span>
@@ -269,11 +269,11 @@ the arrays <code class="docutils literal"><span class="pre">u</span></code> and 
 <p>Note here that we truncate that last part of the spectrum where the
 amplitudes are small (this usually gives a plot that is easier to inspect).</p>
 <p>In the present case, we utilize the <code class="docutils literal"><span class="pre">frequency_analysis</span></code> through</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">figure</span><span class="p">()</span>
-<span class="n">u</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="n">indices</span><span class="p">]</span>  <span class="c"># second realization of u</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">figure</span><span class="p">()</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="n">indices</span><span class="p">]</span>  <span class="c1"># second realization of u</span>
 <span class="n">f</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="n">frequency_analysis</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
-<span class="n">title</span><span class="p">(</span><span class="s">&#39;Spectrum of u&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Spectrum of u&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Figure <a class="reference internal" href="#bumpy-fig2"><span class="std std-ref">Spectra of displacement and excitation</span></a> shows the amplitudes and that the
@@ -287,7 +287,7 @@ dominating frequencies lie around 0.5 and 1 Hz.</p>
 <h3>Multiple plots in the same figure<a class="headerlink" href="#multiple-plots-in-the-same-figure" title="Permalink to this headline">¶</a></h3>
 <p>Finally, we can run through all the 3-lists <code class="docutils literal"><span class="pre">[h,</span> <span class="pre">a,</span> <span class="pre">u]</span></code> and visualize
 these curves in the same plot figure:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">realization</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">:])):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">realization</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">:])):</span>
     <span class="n">h</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">u</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="o">+</span><span class="n">realization</span><span class="p">]</span>
     <span class="n">h</span> <span class="o">=</span> <span class="n">h</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
     <span class="n">F</span> <span class="o">=</span> <span class="n">F</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
@@ -295,22 +295,22 @@ these curves in the same plot figure:</p>
 
     <span class="n">figure</span><span class="p">()</span>
     <span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="s">&#39;g-&#39;</span><span class="p">)</span>
-    <span class="n">legend</span><span class="p">([</span><span class="s">&#39;h </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">realization</span><span class="p">])</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="s1">&#39;g-&#39;</span><span class="p">)</span>
+    <span class="n">legend</span><span class="p">([</span><span class="s1">&#39;h </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">realization</span><span class="p">])</span>
     <span class="n">hmax</span> <span class="o">=</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">max</span><span class="p">())</span> <span class="o">+</span> <span class="nb">abs</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">min</span><span class="p">()))</span><span class="o">/</span><span class="mi">2</span>
     <span class="n">axis</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="n">hmax</span><span class="o">*</span><span class="mi">5</span><span class="p">,</span> <span class="n">hmax</span><span class="o">*</span><span class="mi">5</span><span class="p">])</span>
-    <span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;distance&#39;</span><span class="p">);</span> <span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;height&#39;</span><span class="p">)</span>
+    <span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;distance&#39;</span><span class="p">);</span> <span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">)</span>
 
     <span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">F</span><span class="p">)</span>
-    <span class="n">legend</span><span class="p">([</span><span class="s">&#39;F </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">realization</span><span class="p">])</span>
-    <span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;t&#39;</span><span class="p">);</span> <span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;acceleration&#39;</span><span class="p">)</span>
+    <span class="n">legend</span><span class="p">([</span><span class="s1">&#39;F </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">realization</span><span class="p">])</span>
+    <span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">);</span> <span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;acceleration&#39;</span><span class="p">)</span>
 
     <span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-    <span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="s">&#39;r-&#39;</span><span class="p">)</span>
-    <span class="n">legend</span><span class="p">([</span><span class="s">&#39;u </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">realization</span><span class="p">])</span>
-    <span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;t&#39;</span><span class="p">);</span> <span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;displacement&#39;</span><span class="p">)</span>
-    <span class="n">savefig</span><span class="p">(</span><span class="s">&#39;hFu</span><span class="si">%d</span><span class="s">.png&#39;</span> <span class="o">%</span> <span class="n">realization</span><span class="p">)</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">)</span>
+    <span class="n">legend</span><span class="p">([</span><span class="s1">&#39;u </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">realization</span><span class="p">])</span>
+    <span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">);</span> <span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;displacement&#39;</span><span class="p">)</span>
+    <span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;hFu</span><span class="si">%d</span><span class="s1">.png&#39;</span> <span class="o">%</span> <span class="n">realization</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="figure" id="id3">
@@ -370,14 +370,11 @@ IPython or IPython notebook.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
