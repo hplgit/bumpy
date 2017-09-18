@@ -566,7 +566,7 @@ diagonals[2,:] = np.linspace(1, N, N)
 An alternative function that may be used to construct sparse matrices is the `diags` function. It differs from `spdiags` 
 in the way it handles of diagonals.
 
- * All diagonals need to be given with their correct lengths
+ * All diagonals need to be given with their correct lengths (i.e. super- and sub-diagonals are shorter than the main diagonal)
  * It also supports scalar broadcasting
  
 Here is how to construct the same matrix as in the previous example:
