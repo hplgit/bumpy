@@ -34,12 +34,12 @@ fi
 
 # system doconce spellcheck -d .dict4spell.txt $name.do.txt
 
-system doconce format pdflatex $name --device=paper --minted_latex_style=trac $opt
-system doconce ptex2tex $name envir=minted
-pdflatex -shell-escape $name
-makeindex $name
-pdflatex -shell-escape $name
-pdflatex -shell-escape $name
+# system doconce format pdflatex $name --device=paper --minted_latex_style=trac $opt
+# system doconce ptex2tex $name envir=minted
+# pdflatex -shell-escape $name
+# makeindex $name
+# pdflatex -shell-escape $name
+# pdflatex -shell-escape $name
 
 # Plain HTML
 system doconce format html $name --html_style=bootstrap $opt --html_code_style=inherit
