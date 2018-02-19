@@ -12,14 +12,30 @@ Automatically generated HTML file from DocOnce source
 <title>A very basic introduction to scientific Python programming</title>
 
 <!-- Bootstrap style: bootstrap -->
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 <!-- not necessary
-<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
 <style type="text/css">
 /* Let inline verbatim have the same color as the surroundings */
 code { color: inherit; background-color: transparent; }
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:50px;      /* fixed header height for style bootstrap */
+  margin:-50px 0 0; /* negative fixed header height */
+}
 </style>
 
 
@@ -27,98 +43,102 @@ code { color: inherit; background-color: transparent; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [('Variables, loops, lists, and arrays',
+ 'sections': [('Table of contents',
                1,
-               'basics:basic:objects',
-               'basics:basic:objects'),
-              ('Getting access to Python',
-               2,
-               'basics:accesspy',
-               'basics:accesspy'),
-              ('Mac and Windows', 3, None, '___sec2'),
-              ('Ubuntu', 3, None, '___sec3'),
-              ('Web access', 3, None, '___sec4'),
-              ('Mathematical example', 2, None, '___sec5'),
-              ('A program for evaluating a formula',
-               2,
-               'basics:formula:eval',
-               'basics:formula:eval'),
-              ('Formatted output with text and numbers',
-               2,
-               'basics:printf',
-               'basics:printf'),
-              ('While loops', 2, 'basics:while', 'basics:while'),
-              ('Lists', 2, 'basics:list', 'basics:list'),
-              ('For loops', 2, 'basics:for', 'basics:for'),
-              ('Arrays', 2, 'basics:numpy', 'basics:numpy'),
-              ('Mathematical functions', 2, 'basics:math', 'basics:math'),
-              ('Plotting', 2, 'basics:plot', 'basics:plot'),
-              ('Functions and branching',
+               'table_of_contents',
+               'table_of_contents'),
+              (u'Variables, loops, lists, and arrays',
                1,
-               'basics:func:branching',
-               'basics:func:branching'),
-              ('Functions', 2, 'basics:func', 'basics:func'),
-              ('A more general mathematical formula',
+               u'basics:basic:objects',
+               u'basics:basic:objects'),
+              (u'Getting access to Python',
                2,
-               'basics:formula:piecewise',
-               'basics:formula:piecewise'),
-              ('If tests', 2, 'basics:if', 'basics:if'),
-              ('Using the `where` function', 3, None, '___sec18'),
-              ('Using array indexing', 3, None, '___sec19'),
-              ('Array view versus array copying', 2, None, '___sec20'),
-              ('Linear systems', 2, None, '___sec21'),
-              ('Files', 1, 'basics:files', 'basics:files'),
-              ('File reading', 2, None, '___sec23'),
-              ('File writing', 2, None, '___sec24'),
-              ('Classes', 1, 'basics:class', 'basics:class'),
-              ('A very simple class', 2, None, '___sec26'),
-              ('A class for representing a mathematical function',
+               u'basics:accesspy',
+               u'basics:accesspy'),
+              (u'Mac and Windows', 3, None, '___sec2'),
+              (u'Ubuntu', 3, None, '___sec3'),
+              (u'Web access', 3, None, '___sec4'),
+              (u'Mathematical example', 2, None, '___sec5'),
+              (u'A program for evaluating a formula',
+               2,
+               u'basics:formula:eval',
+               u'basics:formula:eval'),
+              (u'Formatted output with text and numbers',
+               2,
+               u'basics:printf',
+               u'basics:printf'),
+              (u'While loops', 2, u'basics:while', u'basics:while'),
+              (u'Lists', 2, u'basics:list', u'basics:list'),
+              (u'For loops', 2, u'basics:for', u'basics:for'),
+              (u'Arrays', 2, u'basics:numpy', u'basics:numpy'),
+              (u'Mathematical functions', 2, u'basics:math', u'basics:math'),
+              (u'Plotting', 2, u'basics:plot', u'basics:plot'),
+              (u'Functions and branching',
+               1,
+               u'basics:func:branching',
+               u'basics:func:branching'),
+              (u'Functions', 2, u'basics:func', u'basics:func'),
+              (u'A more general mathematical formula',
+               2,
+               u'basics:formula:piecewise',
+               u'basics:formula:piecewise'),
+              (u'If tests', 2, u'basics:if', u'basics:if'),
+              (u'Using the `where` function', 3, None, '___sec18'),
+              (u'Using array indexing', 3, None, '___sec19'),
+              (u'Array view versus array copying', 2, None, '___sec20'),
+              (u'Linear systems', 2, None, '___sec21'),
+              (u'Files', 1, u'basics:files', u'basics:files'),
+              (u'File reading', 2, None, '___sec23'),
+              (u'File writing', 2, None, '___sec24'),
+              (u'Classes', 1, u'basics:class', u'basics:class'),
+              (u'A very simple class', 2, None, '___sec26'),
+              (u'A class for representing a mathematical function',
                2,
                None,
                '___sec27'),
-              ('The class code', 3, None, '___sec28'),
-              ('Dissection', 3, None, '___sec29'),
-              ('Exercises', 1, 'basics:exer', 'basics:exer'),
-              ('Exercise 1: Program a formula',
+              (u'The class code', 3, None, '___sec28'),
+              (u'Dissection', 3, None, '___sec29'),
+              (u'Exercises', 1, u'basics:exer', u'basics:exer'),
+              (u'Exercise 1: Program a formula',
                2,
-               'basics:exer:formula1',
-               'basics:exer:formula1'),
-              ('Exercise 2: Combine text and numbers in output',
+               u'basics:exer:formula1',
+               u'basics:exer:formula1'),
+              (u'Exercise 2: Combine text and numbers in output',
                2,
-               'basics:exer:printf1',
-               'basics:exer:printf1'),
-              ('Exercise 3: Program a while loop',
+               u'basics:exer:printf1',
+               u'basics:exer:printf1'),
+              (u'Exercise 3: Program a while loop',
                2,
-               'basics:exer:while1',
-               'basics:exer:while1'),
-              ('Exercise 4: Create a list with a while loop',
+               u'basics:exer:while1',
+               u'basics:exer:while1'),
+              (u'Exercise 4: Create a list with a while loop',
                2,
-               'basics:exer:while2',
-               'basics:exer:while2'),
-              ('Exercise 5: Program a for loop',
+               u'basics:exer:while2',
+               u'basics:exer:while2'),
+              (u'Exercise 5: Program a for loop',
                2,
-               'basics:exer:for1',
-               'basics:exer:for1'),
-              ('Exercise 6: Write a Python function',
+               u'basics:exer:for1',
+               u'basics:exer:for1'),
+              (u'Exercise 6: Write a Python function',
                2,
-               'basics:exer:func1',
-               'basics:exer:func1'),
-              ('Exercise 7: Return three values from a Python function',
+               u'basics:exer:func1',
+               u'basics:exer:func1'),
+              (u'Exercise 7: Return three values from a Python function',
                2,
-               'basics:exer:func3',
-               'basics:exer:func3'),
-              ('Exercise 8: Plot a function',
+               u'basics:exer:func3',
+               u'basics:exer:func3'),
+              (u'Exercise 8: Plot a function',
                2,
-               'basics:exer:plot1',
-               'basics:exer:plot1'),
-              ('Exercise 9: Plot two functions',
+               u'basics:exer:plot1',
+               u'basics:exer:plot1'),
+              (u'Exercise 9: Plot two functions',
                2,
-               'basics:exer:plot2',
-               'basics:exer:plot2'),
-              ('Exercise 10: Measure the efficiency of vectorization',
+               u'basics:exer:plot2',
+               u'basics:exer:plot2'),
+              (u'Exercise 10: Measure the efficiency of vectorization',
                2,
-               'basics:exer:timeit',
-               'basics:exer:timeit')]}
+               u'basics:exer:timeit',
+               u'basics:exer:timeit')]}
 end of tocinfo -->
 
 <body>
@@ -133,8 +153,8 @@ MathJax.Hub.Config({
   }
 });
 </script>
-<script type="text/javascript"
- src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script type="text/javascript" async
+ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 
@@ -150,16 +170,54 @@ MathJax.Hub.Config({
     </button>
     <a class="navbar-brand" href="basics.html">A very basic introduction to scientific Python programming</a>
   </div>
+
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._basics001.html#basics:basic:objects" style="font-size: 80%;">Variables, loops, lists, and arrays</a></li>
-     <!-- navigation toc: --> <li><a href="._basics002.html#basics:func:branching" style="font-size: 80%;">Functions and branching</a></li>
-     <!-- navigation toc: --> <li><a href="._basics003.html#basics:files" style="font-size: 80%;">Files</a></li>
-     <!-- navigation toc: --> <li><a href="._basics004.html#basics:class" style="font-size: 80%;">Classes</a></li>
-     <!-- navigation toc: --> <li><a href="#basics:exer" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._basics000.html#table_of_contents" style="font-size: 80%;"><b>Table of contents</b></a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#basics:basic:objects" style="font-size: 80%;"><b>Variables, loops, lists, and arrays</b></a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#basics:accesspy" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Getting access to Python</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mac and Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ubuntu</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Web access</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mathematical example</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#basics:formula:eval" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A program for evaluating a formula</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#basics:printf" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Formatted output with text and numbers</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#basics:while" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;While loops</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#basics:list" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Lists</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#basics:for" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;For loops</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#basics:numpy" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Arrays</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#basics:math" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mathematical functions</a></li>
+     <!-- navigation toc: --> <li><a href="._basics001.html#basics:plot" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Plotting</a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#basics:func:branching" style="font-size: 80%;"><b>Functions and branching</b></a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#basics:func" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Functions</a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#basics:formula:piecewise" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A more general mathematical formula</a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#basics:if" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;If tests</a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using the <code>where</code> function</a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using array indexing</a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#___sec20" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Array view versus array copying</a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Linear systems</a></li>
+     <!-- navigation toc: --> <li><a href="._basics003.html#basics:files" style="font-size: 80%;"><b>Files</b></a></li>
+     <!-- navigation toc: --> <li><a href="._basics003.html#___sec23" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;File reading</a></li>
+     <!-- navigation toc: --> <li><a href="._basics003.html#___sec24" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;File writing</a></li>
+     <!-- navigation toc: --> <li><a href="._basics004.html#basics:class" style="font-size: 80%;"><b>Classes</b></a></li>
+     <!-- navigation toc: --> <li><a href="._basics004.html#___sec26" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A very simple class</a></li>
+     <!-- navigation toc: --> <li><a href="._basics004.html#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A class for representing a mathematical function</a></li>
+     <!-- navigation toc: --> <li><a href="._basics004.html#___sec28" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The class code</a></li>
+     <!-- navigation toc: --> <li><a href="._basics004.html#___sec29" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dissection</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:exer" style="font-size: 80%;"><b>Exercises</b></a></li>
+     <!-- navigation toc: --> <li><a href="#basics:exer:formula1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 1: Program a formula</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:exer:printf1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 2: Combine text and numbers in output</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:exer:while1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 3: Program a while loop</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:exer:while2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 4: Create a list with a while loop</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:exer:for1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Program a for loop</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:exer:func1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 6: Write a Python function</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:exer:func3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Return three values from a Python function</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:exer:plot1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 8: Plot a function</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:exer:plot2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Plot two functions</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:exer:timeit" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 10: Measure the efficiency of vectorization</a></li>
 
         </ul>
       </li>
@@ -175,12 +233,12 @@ MathJax.Hub.Config({
 <a name="part0005"></a>
 <!-- !split -->
 
-<h1 id="basics:exer">Exercises</h1>
+<h1 id="basics:exer" class="anchor">Exercises</h1>
 
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="basics:exer:formula1">Exercise 1: Program a formula</h2>
+<h2 id="basics:exer:formula1" class="anchor">Exercise 1: Program a formula</h2>
 
 <p>
 <b>a)</b>
@@ -208,7 +266,7 @@ The complete program reads
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">x <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>x <span style="color: #666666">=</span> <span style="color: #666666">2</span>
 y <span style="color: #666666">=</span> <span style="color: #666666">6*</span>x<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #666666">3*</span>x <span style="color: #666666">+</span> <span style="color: #666666">2</span>
 <span style="color: #008000; font-weight: bold">print</span> y
 </pre></div>
@@ -241,7 +299,7 @@ Code:
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">6*</span>x<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #666666">3*</span>x <span style="color: #666666">+</span> <span style="color: #666666">2</span>
 
 y <span style="color: #666666">=</span> f(<span style="color: #666666">2</span>)
@@ -261,7 +319,7 @@ y <span style="color: #666666">=</span> f(<span style="color: #666666">2</span>)
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="basics:exer:printf1">Exercise 2: Combine text and numbers in output</h2>
+<h2 id="basics:exer:printf1" class="anchor">Exercise 2: Combine text and numbers in output</h2>
 
 <p>
 Let \( y=x^2 \). Make a program that writes the text
@@ -269,7 +327,7 @@ Let \( y=x^2 \). Make a program that writes the text
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">y(2.550)=6.502
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>y(2.550)=6.502
 </pre></div>
 <p>
 if \( x=2.55 \). The values of \( x \) and \( y \) should be written with three
@@ -292,7 +350,7 @@ Here is the code:
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">x <span style="color: #666666">=</span> <span style="color: #666666">2.55</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>x <span style="color: #666666">=</span> <span style="color: #666666">2.55</span>
 y <span style="color: #666666">=</span> x<span style="color: #666666">**2</span>
 <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;y(</span><span style="color: #BB6688; font-weight: bold">%.3f</span><span style="color: #BA2121">)=</span><span style="color: #BB6688; font-weight: bold">%.3f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (x, y)
 </pre></div>
@@ -302,7 +360,7 @@ Changing \( x=2.55 \) to \( x=\pi \),
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
 x <span style="color: #666666">=</span> pi
 y <span style="color: #666666">=</span> x<span style="color: #666666">**2</span>
 <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;y(</span><span style="color: #BB6688; font-weight: bold">%.3f</span><span style="color: #BA2121">)=</span><span style="color: #BB6688; font-weight: bold">%.3f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (x, y)
@@ -324,7 +382,7 @@ gives the output <code>y(3.142)=9.870</code>.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="basics:exer:while1">Exercise 3: Program a while loop</h2>
+<h2 id="basics:exer:while1" class="anchor">Exercise 3: Program a while loop</h2>
 
 <p>
 Define a sequence of numbers,
@@ -351,7 +409,7 @@ Complete program:
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">n <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>n <span style="color: #666666">=</span> <span style="color: #666666">0</span>
 <span style="color: #008000; font-weight: bold">while</span> n <span style="color: #666666">&lt;=</span> <span style="color: #666666">20</span>:
     x_n <span style="color: #666666">=</span> n<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #666666">1</span>
     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;x</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">=</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (n, x_n)
@@ -371,7 +429,7 @@ Complete program:
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="basics:exer:while2">Exercise 4: Create a list with a while loop</h2>
+<h2 id="basics:exer:while2" class="anchor">Exercise 4: Create a list with a while loop</h2>
 
 <p>
 Store all the \( x_n \) values computed in <a href="#basics:exer:while1">Exercise 3: Program a while loop</a>
@@ -393,7 +451,7 @@ Code:
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">n <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>n <span style="color: #666666">=</span> <span style="color: #666666">0</span>
 x <span style="color: #666666">=</span> []  <span style="color: #408080; font-style: italic"># the x_n values</span>
 <span style="color: #008000; font-weight: bold">while</span> n <span style="color: #666666">&lt;=</span> <span style="color: #666666">20</span>:
     x<span style="color: #666666">.</span>append(n<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #666666">1</span>)
@@ -414,7 +472,7 @@ x <span style="color: #666666">=</span> []  <span style="color: #408080; font-st
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="basics:exer:for1">Exercise 5: Program a for loop</h2>
+<h2 id="basics:exer:for1" class="anchor">Exercise 5: Program a for loop</h2>
 
 <p>
 Do <a href="#basics:exer:while2">Exercise 4: Create a list with a while loop</a>, but use a for loop.
@@ -435,7 +493,7 @@ Code:
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">x <span style="color: #666666">=</span> []
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>x <span style="color: #666666">=</span> []
 <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">21</span>):
     x<span style="color: #666666">.</span>append(n<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #666666">1</span>)
 <span style="color: #008000; font-weight: bold">print</span> x
@@ -446,7 +504,7 @@ One can also make the code shorter using a list comprehension:
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">x <span style="color: #666666">=</span> [n<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">21</span>)]
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>x <span style="color: #666666">=</span> [n<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">21</span>)]
 <span style="color: #008000; font-weight: bold">print</span> x
 </pre></div>
 <p>
@@ -463,7 +521,7 @@ One can also make the code shorter using a list comprehension:
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="basics:exer:func1">Exercise 6: Write a Python function</h2>
+<h2 id="basics:exer:func1" class="anchor">Exercise 6: Write a Python function</h2>
 
 <p>
 Write a function <code>x(n)</code> for computing an element in the
@@ -486,7 +544,7 @@ Code:
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">x</span>(n):
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">x</span>(n):
     <span style="color: #008000; font-weight: bold">return</span> n<span style="color: #666666">^2</span> <span style="color: #666666">+</span> <span style="color: #666666">1</span>
 
 <span style="color: #008000; font-weight: bold">print</span> x(<span style="color: #666666">4</span>)
@@ -505,7 +563,7 @@ Code:
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="basics:exer:func3">Exercise 7: Return three values from a Python function</h2>
+<h2 id="basics:exer:func3" class="anchor">Exercise 7: Return three values from a Python function</h2>
 
 <p>
 Write a Python function that evaluates the mathematical functions
@@ -528,7 +586,7 @@ Code:
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, cos, pi
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, cos, pi
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">deriv2</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> cos(<span style="color: #666666">2*</span>x), <span style="color: #666666">-2*</span>sin(<span style="color: #666666">2*</span>x), <span style="color: #666666">-4*</span>cos(<span style="color: #666666">2*</span>x)
@@ -542,7 +600,7 @@ Running the program gives
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python deriv2.py
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal&gt; python deriv2.py
 1.0 4.89858719659e-16 -4.0
 </pre></div>
 <p>
@@ -562,7 +620,7 @@ as expected.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="basics:exer:plot1">Exercise 8: Plot a function</h2>
+<h2 id="basics:exer:plot1" class="anchor">Exercise 8: Plot a function</h2>
 
 <p>
 Make a program that plots the function \( g(y)=e^{-y}\sin (4y) \) for
@@ -587,7 +645,7 @@ Appropriate code is
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin  <span style="color: #408080; font-style: italic"># avoid np. prefix in g(y) formula</span>
 
@@ -604,7 +662,7 @@ plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&#3
 plt<span style="color: #666666">.</span>show()
 </pre></div>
 <p>
-<center><p><img src="fig-bumpy/plot_exer1.png" align="bottom" width=500></p></center>
+<br /><br /><center><p><img src="fig-bumpy/plot_exer1.png" align="bottom" width=500></p></center><br /><br />
 
 <p>
 </div></p>
@@ -620,7 +678,7 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="basics:exer:plot2">Exercise 9: Plot two functions</h2>
+<h2 id="basics:exer:plot2" class="anchor">Exercise 9: Plot two functions</h2>
 
 <p>
 As <a href="#basics:exer:plot2">Exercise 9: Plot two functions</a>, but add a black dashed
@@ -644,7 +702,7 @@ Here is the program:
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> exp, sin  <span style="color: #408080; font-style: italic"># avoid np. prefix in g(y) and h(y)</span>
 
@@ -664,7 +722,7 @@ plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&#3
 plt<span style="color: #666666">.</span>show()
 </pre></div>
 <p>
-<center><p><img src="fig-bumpy/plot_exer2.png" align="bottom" width=500></p></center>
+<br /><br /><center><p><img src="fig-bumpy/plot_exer2.png" align="bottom" width=500></p></center><br /><br />
 
 <p>
 </div></p>
@@ -680,7 +738,7 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="basics:exer:timeit">Exercise 10: Measure the efficiency of vectorization</h2>
+<h2 id="basics:exer:timeit" class="anchor">Exercise 10: Measure the efficiency of vectorization</h2>
 
 <p>
 <a href="http://ipython.org/" target="_self">IPython</a> an enhanced interactive shell
@@ -695,25 +753,25 @@ computing using the <code>sin</code> function from <code>numpy</code>.
 
 <p>
 
-<!-- code=ipy (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<!-- code=python (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>In [<span style="color: #666666">1</span>]: <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 
-<span style="color: #000080; font-weight: bold">In [2]: </span>n <span style="color: #666666">=</span> <span style="color: #666666">1000000</span>
+In [<span style="color: #666666">2</span>]: n <span style="color: #666666">=</span> <span style="color: #666666">1000000</span>
 
-<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, n<span style="color: #666666">+1</span>)
+In [<span style="color: #666666">3</span>]: x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, n<span style="color: #666666">+1</span>)
 
-<span style="color: #000080; font-weight: bold">In [4]: </span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">sin_func</span>(x):
-<span style="color: #000080; font-weight: bold">   ...: </span>    r <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros_like(x)  <span style="color: #408080; font-style: italic"># result</span>
-<span style="color: #000080; font-weight: bold">   ...: </span>    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(x)):
-<span style="color: #000080; font-weight: bold">   ...: </span>        r[i] <span style="color: #666666">=</span> np<span style="color: #666666">.</span>sin(x[i])
-<span style="color: #000080; font-weight: bold">   ...: </span>    <span style="color: #008000; font-weight: bold">return</span> r
-<span style="color: #000080; font-weight: bold">   ...:</span>
+In [<span style="color: #666666">4</span>]: <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">sin_func</span>(x):
+   <span style="color: #666666">...</span>:     r <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros_like(x)  <span style="color: #408080; font-style: italic"># result</span>
+   <span style="color: #666666">...</span>:     <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(x)):
+   <span style="color: #666666">...</span>:         r[i] <span style="color: #666666">=</span> np<span style="color: #666666">.</span>sin(x[i])
+   <span style="color: #666666">...</span>:     <span style="color: #008000; font-weight: bold">return</span> r
+   <span style="color: #666666">...</span>:
 
-<span style="color: #000080; font-weight: bold">In [5]: </span><span style="color: #666666">%</span><span style="color: #008000; font-weight: bold">timeit</span> y = sin_func(x)
-<span style="color: #888888">1 loops, best of 3: 2.68 s per loop</span>
+In [<span style="color: #666666">5</span>]: <span style="color: #666666">%</span>timeit y <span style="color: #666666">=</span> sin_func(x)
+<span style="color: #666666">1</span> loops, best of <span style="color: #666666">3</span>: <span style="color: #666666">2.68</span> s per loop
 
-<span style="color: #000080; font-weight: bold">In [6]: </span><span style="color: #666666">%</span><span style="color: #008000; font-weight: bold">timeit</span> y = np.sin(x)
-<span style="color: #888888">10 loops, best of 3: 40.1 ms per loop</span>
+In [<span style="color: #666666">6</span>]: <span style="color: #666666">%</span>timeit y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>sin(x)
+<span style="color: #666666">10</span> loops, best of <span style="color: #666666">3</span>: <span style="color: #666666">40.1</span> ms per loop
 </pre></div>
 <p>
 Here, <code>%timeit</code> ran our function once, but the vectorized function
@@ -746,8 +804,8 @@ the section <a href="._basics002.html#basics:func">Functions</a>.
 
 </div>  <!-- end container -->
 <!-- include javascript, jQuery *first* -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 <!-- Bootstrap footer
 <footer>

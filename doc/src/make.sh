@@ -3,6 +3,8 @@
 
 set -x  # show all commands in output
 
+PYTHON_INSTALL='false' # set to'true'/'false' to include/discard sec. on python installation
+
 function system {
   "$@"
   if [ $? -ne 0 ]; then
@@ -17,12 +19,52 @@ if [ $# -ge 1 ]; then
 else
   COURSE=any
 fi
+
 opt="COURSE=$COURSE"
 
-names="basics bumpy"
+#names="basics bumpy"
+names="basics"
+
 if [ $# -ge 2 ]; then
   names="$2"
 fi
+
+
+# function do_spellcheck {
+# name=$1
+# system doconce spellcheck -d .dict4spell.txt $name.do.txt
+# }
+
+function compile {
+    name=$1
+    
+    system doconce format pdflatex $name --device=paper --minted_latex_style=trac $opt
+    system doconce ptex2tex $name envir=minted
+    pdflatex -shell-escape $name
+    makeindex $name
+    pdflatex -shell-escape $name
+    pdflatex -shell-escape $name
+}
+
+function generate_html {
+    name=$1    
+# Plain HTML
+    system doconce format html $name --html_style=bootstrap $opt --html_code_style=inherit
+    system doconce split_html $name.html --pagination
+}
+
+function generate_sphinx {
+    name=$1
+    system doconce format sphinx $name $opt # always generate new
+    system doconce split_rst $name
+    system doconce sphinx_dir theme=cbc copyright="H. P. Langtangen" $name
+    system python automake_sphinx.py
+}
+
+function generate_ipynb {
+    name=$1
+    system doconce format ipynb $name $opt
+}
 
 for name in $names; do
 
@@ -32,29 +74,15 @@ if [ $COURSE != "any" ]; then
    cp ${oldname}.do.txt ${name}.do.txt
 fi
 
-system doconce spellcheck -d .dict4spell.txt $name.do.txt
+#do_spellcheck $name
+#compile $name
+#generate_html $name
+#generate_sphinx $name
+generate_ipynb $name
 
-system doconce format pdflatex $name --device=paper --minted_latex_style=trac $opt
-system doconce ptex2tex $name envir=minted
-pdflatex -shell-escape $name
-makeindex $name
-pdflatex -shell-escape $name
-pdflatex -shell-escape $name
-
-# Plain HTML
-system doconce format html $name --html_style=bootstrap $opt --html_code_style=inherit
-if [ $? -ne 0 ]; then echo "doconce could not compile document"; exit; fi
-system doconce split_html $name.html --pagination
-
-# Sphinx
-system doconce format sphinx $name $opt # always generate new
-system doconce split_rst $name
-system doconce sphinx_dir theme=cbc copyright="H. P. Langtangen" $name
-system python automake_sphinx.py
-
-# Publish
-dest=../pub
-rm -rf $dest/sphinx-${name}
-cp -r sphinx-rootdir/_build/html $dest/sphinx-${name}
-cp -r fig-bumpy $name.html ._${name}*.html ${name}.pdf $dest/
+# # Publish
+# dest=../pub
+# rm -rf $dest/sphinx-${name}
+# cp -r sphinx-rootdir/_build/html $dest/sphinx-${name}
+# cp -r fig-bumpy $name.html ._${name}*.html ${name}.pdf $dest/
 done

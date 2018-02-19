@@ -12,14 +12,30 @@ Automatically generated HTML file from DocOnce source
 <title>A very basic introduction to scientific Python programming</title>
 
 <!-- Bootstrap style: bootstrap -->
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 <!-- not necessary
-<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
 <style type="text/css">
 /* Let inline verbatim have the same color as the surroundings */
 code { color: inherit; background-color: transparent; }
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:50px;      /* fixed header height for style bootstrap */
+  margin:-50px 0 0; /* negative fixed header height */
+}
 </style>
 
 
@@ -27,98 +43,102 @@ code { color: inherit; background-color: transparent; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [('Variables, loops, lists, and arrays',
+ 'sections': [('Table of contents',
                1,
-               'basics:basic:objects',
-               'basics:basic:objects'),
-              ('Getting access to Python',
-               2,
-               'basics:accesspy',
-               'basics:accesspy'),
-              ('Mac and Windows', 3, None, '___sec2'),
-              ('Ubuntu', 3, None, '___sec3'),
-              ('Web access', 3, None, '___sec4'),
-              ('Mathematical example', 2, None, '___sec5'),
-              ('A program for evaluating a formula',
-               2,
-               'basics:formula:eval',
-               'basics:formula:eval'),
-              ('Formatted output with text and numbers',
-               2,
-               'basics:printf',
-               'basics:printf'),
-              ('While loops', 2, 'basics:while', 'basics:while'),
-              ('Lists', 2, 'basics:list', 'basics:list'),
-              ('For loops', 2, 'basics:for', 'basics:for'),
-              ('Arrays', 2, 'basics:numpy', 'basics:numpy'),
-              ('Mathematical functions', 2, 'basics:math', 'basics:math'),
-              ('Plotting', 2, 'basics:plot', 'basics:plot'),
-              ('Functions and branching',
+               'table_of_contents',
+               'table_of_contents'),
+              (u'Variables, loops, lists, and arrays',
                1,
-               'basics:func:branching',
-               'basics:func:branching'),
-              ('Functions', 2, 'basics:func', 'basics:func'),
-              ('A more general mathematical formula',
+               u'basics:basic:objects',
+               u'basics:basic:objects'),
+              (u'Getting access to Python',
                2,
-               'basics:formula:piecewise',
-               'basics:formula:piecewise'),
-              ('If tests', 2, 'basics:if', 'basics:if'),
-              ('Using the `where` function', 3, None, '___sec18'),
-              ('Using array indexing', 3, None, '___sec19'),
-              ('Array view versus array copying', 2, None, '___sec20'),
-              ('Linear systems', 2, None, '___sec21'),
-              ('Files', 1, 'basics:files', 'basics:files'),
-              ('File reading', 2, None, '___sec23'),
-              ('File writing', 2, None, '___sec24'),
-              ('Classes', 1, 'basics:class', 'basics:class'),
-              ('A very simple class', 2, None, '___sec26'),
-              ('A class for representing a mathematical function',
+               u'basics:accesspy',
+               u'basics:accesspy'),
+              (u'Mac and Windows', 3, None, '___sec2'),
+              (u'Ubuntu', 3, None, '___sec3'),
+              (u'Web access', 3, None, '___sec4'),
+              (u'Mathematical example', 2, None, '___sec5'),
+              (u'A program for evaluating a formula',
+               2,
+               u'basics:formula:eval',
+               u'basics:formula:eval'),
+              (u'Formatted output with text and numbers',
+               2,
+               u'basics:printf',
+               u'basics:printf'),
+              (u'While loops', 2, u'basics:while', u'basics:while'),
+              (u'Lists', 2, u'basics:list', u'basics:list'),
+              (u'For loops', 2, u'basics:for', u'basics:for'),
+              (u'Arrays', 2, u'basics:numpy', u'basics:numpy'),
+              (u'Mathematical functions', 2, u'basics:math', u'basics:math'),
+              (u'Plotting', 2, u'basics:plot', u'basics:plot'),
+              (u'Functions and branching',
+               1,
+               u'basics:func:branching',
+               u'basics:func:branching'),
+              (u'Functions', 2, u'basics:func', u'basics:func'),
+              (u'A more general mathematical formula',
+               2,
+               u'basics:formula:piecewise',
+               u'basics:formula:piecewise'),
+              (u'If tests', 2, u'basics:if', u'basics:if'),
+              (u'Using the `where` function', 3, None, '___sec18'),
+              (u'Using array indexing', 3, None, '___sec19'),
+              (u'Array view versus array copying', 2, None, '___sec20'),
+              (u'Linear systems', 2, None, '___sec21'),
+              (u'Files', 1, u'basics:files', u'basics:files'),
+              (u'File reading', 2, None, '___sec23'),
+              (u'File writing', 2, None, '___sec24'),
+              (u'Classes', 1, u'basics:class', u'basics:class'),
+              (u'A very simple class', 2, None, '___sec26'),
+              (u'A class for representing a mathematical function',
                2,
                None,
                '___sec27'),
-              ('The class code', 3, None, '___sec28'),
-              ('Dissection', 3, None, '___sec29'),
-              ('Exercises', 1, 'basics:exer', 'basics:exer'),
-              ('Exercise 1: Program a formula',
+              (u'The class code', 3, None, '___sec28'),
+              (u'Dissection', 3, None, '___sec29'),
+              (u'Exercises', 1, u'basics:exer', u'basics:exer'),
+              (u'Exercise 1: Program a formula',
                2,
-               'basics:exer:formula1',
-               'basics:exer:formula1'),
-              ('Exercise 2: Combine text and numbers in output',
+               u'basics:exer:formula1',
+               u'basics:exer:formula1'),
+              (u'Exercise 2: Combine text and numbers in output',
                2,
-               'basics:exer:printf1',
-               'basics:exer:printf1'),
-              ('Exercise 3: Program a while loop',
+               u'basics:exer:printf1',
+               u'basics:exer:printf1'),
+              (u'Exercise 3: Program a while loop',
                2,
-               'basics:exer:while1',
-               'basics:exer:while1'),
-              ('Exercise 4: Create a list with a while loop',
+               u'basics:exer:while1',
+               u'basics:exer:while1'),
+              (u'Exercise 4: Create a list with a while loop',
                2,
-               'basics:exer:while2',
-               'basics:exer:while2'),
-              ('Exercise 5: Program a for loop',
+               u'basics:exer:while2',
+               u'basics:exer:while2'),
+              (u'Exercise 5: Program a for loop',
                2,
-               'basics:exer:for1',
-               'basics:exer:for1'),
-              ('Exercise 6: Write a Python function',
+               u'basics:exer:for1',
+               u'basics:exer:for1'),
+              (u'Exercise 6: Write a Python function',
                2,
-               'basics:exer:func1',
-               'basics:exer:func1'),
-              ('Exercise 7: Return three values from a Python function',
+               u'basics:exer:func1',
+               u'basics:exer:func1'),
+              (u'Exercise 7: Return three values from a Python function',
                2,
-               'basics:exer:func3',
-               'basics:exer:func3'),
-              ('Exercise 8: Plot a function',
+               u'basics:exer:func3',
+               u'basics:exer:func3'),
+              (u'Exercise 8: Plot a function',
                2,
-               'basics:exer:plot1',
-               'basics:exer:plot1'),
-              ('Exercise 9: Plot two functions',
+               u'basics:exer:plot1',
+               u'basics:exer:plot1'),
+              (u'Exercise 9: Plot two functions',
                2,
-               'basics:exer:plot2',
-               'basics:exer:plot2'),
-              ('Exercise 10: Measure the efficiency of vectorization',
+               u'basics:exer:plot2',
+               u'basics:exer:plot2'),
+              (u'Exercise 10: Measure the efficiency of vectorization',
                2,
-               'basics:exer:timeit',
-               'basics:exer:timeit')]}
+               u'basics:exer:timeit',
+               u'basics:exer:timeit')]}
 end of tocinfo -->
 
 <body>
@@ -133,8 +153,8 @@ MathJax.Hub.Config({
   }
 });
 </script>
-<script type="text/javascript"
- src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script type="text/javascript" async
+ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 
@@ -150,16 +170,54 @@ MathJax.Hub.Config({
     </button>
     <a class="navbar-brand" href="basics.html">A very basic introduction to scientific Python programming</a>
   </div>
+
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="#basics:basic:objects" style="font-size: 80%;">Variables, loops, lists, and arrays</a></li>
-     <!-- navigation toc: --> <li><a href="._basics002.html#basics:func:branching" style="font-size: 80%;">Functions and branching</a></li>
-     <!-- navigation toc: --> <li><a href="._basics003.html#basics:files" style="font-size: 80%;">Files</a></li>
-     <!-- navigation toc: --> <li><a href="._basics004.html#basics:class" style="font-size: 80%;">Classes</a></li>
-     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._basics000.html#table_of_contents" style="font-size: 80%;"><b>Table of contents</b></a></li>
+     <!-- navigation toc: --> <li><a href="#basics:basic:objects" style="font-size: 80%;"><b>Variables, loops, lists, and arrays</b></a></li>
+     <!-- navigation toc: --> <li><a href="#basics:accesspy" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Getting access to Python</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mac and Windows</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ubuntu</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Web access</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mathematical example</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:formula:eval" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A program for evaluating a formula</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:printf" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Formatted output with text and numbers</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:while" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;While loops</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:list" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Lists</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:for" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;For loops</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:numpy" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Arrays</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:math" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mathematical functions</a></li>
+     <!-- navigation toc: --> <li><a href="#basics:plot" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Plotting</a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#basics:func:branching" style="font-size: 80%;"><b>Functions and branching</b></a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#basics:func" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Functions</a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#basics:formula:piecewise" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A more general mathematical formula</a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#basics:if" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;If tests</a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using the <code>where</code> function</a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using array indexing</a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#___sec20" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Array view versus array copying</a></li>
+     <!-- navigation toc: --> <li><a href="._basics002.html#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Linear systems</a></li>
+     <!-- navigation toc: --> <li><a href="._basics003.html#basics:files" style="font-size: 80%;"><b>Files</b></a></li>
+     <!-- navigation toc: --> <li><a href="._basics003.html#___sec23" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;File reading</a></li>
+     <!-- navigation toc: --> <li><a href="._basics003.html#___sec24" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;File writing</a></li>
+     <!-- navigation toc: --> <li><a href="._basics004.html#basics:class" style="font-size: 80%;"><b>Classes</b></a></li>
+     <!-- navigation toc: --> <li><a href="._basics004.html#___sec26" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A very simple class</a></li>
+     <!-- navigation toc: --> <li><a href="._basics004.html#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A class for representing a mathematical function</a></li>
+     <!-- navigation toc: --> <li><a href="._basics004.html#___sec28" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The class code</a></li>
+     <!-- navigation toc: --> <li><a href="._basics004.html#___sec29" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dissection</a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer" style="font-size: 80%;"><b>Exercises</b></a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer:formula1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 1: Program a formula</a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer:printf1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 2: Combine text and numbers in output</a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer:while1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 3: Program a while loop</a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer:while2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 4: Create a list with a while loop</a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer:for1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 5: Program a for loop</a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer:func1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 6: Write a Python function</a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer:func3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 7: Return three values from a Python function</a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer:plot1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 8: Plot a function</a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer:plot2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 9: Plot two functions</a></li>
+     <!-- navigation toc: --> <li><a href="._basics005.html#basics:exer:timeit" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 10: Measure the efficiency of vectorization</a></li>
 
         </ul>
       </li>
@@ -175,9 +233,9 @@ MathJax.Hub.Config({
 <a name="part0001"></a>
 <!-- !split -->
 
-<h1 id="basics:basic:objects">Variables, loops, lists, and arrays</h1>
+<h1 id="basics:basic:objects" class="anchor">Variables, loops, lists, and arrays</h1>
 
-<h2 id="basics:accesspy">Getting access to Python</h2>
+<h2 id="basics:accesspy" class="anchor">Getting access to Python</h2>
 
 <p>
 Simple mathematical calculations can be done in plain Python, but for
@@ -186,7 +244,7 @@ packages are needed. Getting all software correctly installed used to
 be quite challenging, but today there are several easy-to-use approaches
 to get access to Python.
 
-<h3 id="___sec2">Mac and Windows </h3>
+<h3 id="___sec2" class="anchor">Mac and Windows </h3>
 
 <p>
 We recommend to download and install
@@ -195,7 +253,7 @@ which is a free distribution of Python that
 comes with most of the packages you need for
 advanced scientific computing.
 
-<h3 id="___sec3">Ubuntu </h3>
+<h3 id="___sec3" class="anchor">Ubuntu </h3>
 
 <p>
 Debian-based Linux systems, such as Ubuntu, can also use Anaconda,
@@ -206,7 +264,7 @@ list of the packages you need to install for this introduction:
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; sudo apt-get install python-pip python-setuptools \ 
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal&gt; sudo apt-get install python-pip python-setuptools \ 
   python-scipy python-sympy python-cython python-matplotlib \ 
   python-dev python-profiler pydb spyder imagemagick gedit vim \ 
   emacs python-mode git mercurial lib-avtools gnome-terminal
@@ -217,14 +275,14 @@ In addition, run
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; pip install nose
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal&gt; pip install nose
 Terminal&gt; pip install pytest
 Terminal&gt; pip install ipython --upgrade
 Terminal&gt; pip install tornado --upgrade
 Terminal&gt; pip install pyzmq --upgrade
 </pre></div>
 
-<h3 id="___sec4">Web access </h3>
+<h3 id="___sec4" class="anchor">Web access </h3>
 
 <p>
 You can also access Python directly through a web browser without having
@@ -232,7 +290,7 @@ it installed on your local computer. We refer to the document
 <a href="http://hplgit.github.io/edu/accesspy/accesspy.html" target="_self">How to access Python for doing scientific computing</a> for more details on such tools and also
 installations based on Anaconda and Ubuntu.
 
-<h2 id="___sec5">Mathematical example </h2>
+<h2 id="___sec5" class="anchor">Mathematical example </h2>
 
 <p>
 We shall use a famous mathematical formula in our
@@ -251,7 +309,7 @@ $$
 We may view \( s \) as a function of \( t \): \( s(t) \), and also include the
 parameters in the notation: \( s(t;v_0,a) \).
 
-<h2 id="basics:formula:eval">A program for evaluating a formula</h2>
+<h2 id="basics:formula:eval" class="anchor">A program for evaluating a formula</h2>
 
 <p>
 Here is a Python program for computing \( s \), given \( t=0.5 \), \( v_0=2 \),
@@ -260,11 +318,13 @@ and \( a=0.2 \):
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">t <span style="color: #666666">=</span> <span style="color: #666666">0.5</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>t <span style="color: #666666">=</span> <span style="color: #666666">0.5</span>
 v0 <span style="color: #666666">=</span> <span style="color: #666666">2</span>
 a <span style="color: #666666">=</span> <span style="color: #666666">0.2</span>
 s <span style="color: #666666">=</span> v0<span style="color: #666666">*</span>t <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>a<span style="color: #666666">*</span>t<span style="color: #666666">**2</span>
 <span style="color: #008000; font-weight: bold">print</span> s
+<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;s=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> s
+<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;s</span><span style="color: #BB6622; font-weight: bold">\t</span><span style="color: #BA2121"> = </span><span style="color: #BB6622; font-weight: bold">\t</span><span style="color: #BA2121"> </span><span style="color: #BB6688; font-weight: bold">%.3f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> s
 </pre></div>
 <p>
 The program is pure text and must be placed in a <em>pure text file</em> using
@@ -281,7 +341,7 @@ Terminal application on Mac OS X, <code>xterm</code> or <code>gnome-terminal</co
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python distance.py
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal&gt; python distance.py
 1.025
 </pre></div>
 <p>
@@ -326,7 +386,7 @@ dictionaries, arrays, files, ...
 </div>
 
 
-<h2 id="basics:printf">Formatted output with text and numbers</h2>
+<h2 id="basics:printf" class="anchor">Formatted output with text and numbers</h2>
 
 <p>
 For any object <code>s</code> in Python, <code>print s</code> will (normally) print the contents
@@ -337,7 +397,7 @@ This is easily accomplished using <em>printf</em> syntax:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;s=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> s
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;s=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> s
 </pre></div>
 <p>
 The output is specified as a string, enclosed in single or double quotes.
@@ -354,7 +414,7 @@ Printing out <code>s=1.03</code>, i.e., <code>s</code> with two decimals, is don
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;s=</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> s
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;s=</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> s
 </pre></div>
 <p>
 where the <code>f</code> signifies a <em>decimal number</em> and the preceding <code>.2</code> means
@@ -368,10 +428,10 @@ Python also offers a related variant, called <em>format string syntax</em>:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;s={s:.2f}&#39;</span><span style="color: #666666">.</span>format(s<span style="color: #666666">=</span>s)
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;s={s:.2f}&#39;</span><span style="color: #666666">.</span>format(s<span style="color: #666666">=</span>s)
 </pre></div>
 
-<h2 id="basics:while">While loops</h2>
+<h2 id="basics:while" class="anchor">While loops</h2>
 
 <p>
 Suppose we want to make a table with two columns, one with \( t \) values and
@@ -387,7 +447,7 @@ program applies a <em>while</em> loop:
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">v0 <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>v0 <span style="color: #666666">=</span> <span style="color: #666666">2</span>
 a <span style="color: #666666">=</span> <span style="color: #666666">0.2</span>
 dt <span style="color: #666666">=</span> <span style="color: #666666">0.1</span>  <span style="color: #408080; font-style: italic"># Increment</span>
 t <span style="color: #666666">=</span> <span style="color: #666666">0</span>     <span style="color: #408080; font-style: italic"># Start value</span>
@@ -403,7 +463,7 @@ is
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python while.py
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal&gt; python while.py
 0 0.0
 0.1 0.201
 0.2 0.404
@@ -435,7 +495,7 @@ Then comes the while loop:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">while</span> condition:
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">while</span> condition:
     <span style="color: #666666">&lt;</span>intented statement<span style="color: #666666">&gt;</span>
     <span style="color: #666666">&lt;</span>intented statement<span style="color: #666666">&gt;</span>
     <span style="color: #666666">&lt;</span>intented statement<span style="color: #666666">&gt;</span>
@@ -500,7 +560,7 @@ Always compare real numbers using the difference and a tolerance:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">1.2</span>
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>a <span style="color: #666666">=</span> <span style="color: #666666">1.2</span>
 b <span style="color: #666666">=</span> <span style="color: #666666">0.4</span> <span style="color: #666666">+</span> <span style="color: #666666">0.4</span> <span style="color: #666666">+</span> <span style="color: #666666">0.4</span>
 boolean_condition1 <span style="color: #666666">=</span> a <span style="color: #666666">==</span> b              <span style="color: #408080; font-style: italic"># False</span>
 tol <span style="color: #666666">=</span> <span style="color: #666666">1E-14</span>
@@ -515,7 +575,7 @@ The Python Online Tutor is ideal for demonstrating program flow and
 contents of variables in small and simple programs. However, you should
 use a real debugger instead when searching for errors in real programs.
 
-<h2 id="basics:list">Lists</h2>
+<h2 id="basics:list" class="anchor">Lists</h2>
 
 <p>
 The table created in the previous section has two columns of data.
@@ -526,7 +586,7 @@ sequence. For example,
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">L <span style="color: #666666">=</span> [<span style="color: #666666">-1</span>, <span style="color: #666666">1</span>, <span style="color: #666666">8.0</span>]
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>L <span style="color: #666666">=</span> [<span style="color: #666666">-1</span>, <span style="color: #666666">1</span>, <span style="color: #666666">8.0</span>]
 </pre></div>
 <p>
 is a list of three numbers. Lists are enclosed in square brackets
@@ -536,7 +596,7 @@ we mix a filename (string), a real number, and an integer:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">L <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;mydata.txt&#39;</span>, <span style="color: #666666">3.14</span>, <span style="color: #666666">10</span>]
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>L <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;mydata.txt&#39;</span>, <span style="color: #666666">3.14</span>, <span style="color: #666666">10</span>]
 </pre></div>
 <p>
 The different list <em>elements</em> can be reached via indexing: <code>L[0]</code> is
@@ -547,7 +607,7 @@ and examine the contents of variables as we perform various operations:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> L <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;mydata.txt&#39;</span>, <span style="color: #666666">3.14</span>, <span style="color: #666666">10</span>]
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> L <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;mydata.txt&#39;</span>, <span style="color: #666666">3.14</span>, <span style="color: #666666">10</span>]
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> L[<span style="color: #666666">0</span>]
 mydata<span style="color: #666666">.</span>txt
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> L[<span style="color: #666666">1</span>]
@@ -571,23 +631,24 @@ nice, tabular fashion:
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">v0 <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>v0 <span style="color: #666666">=</span> <span style="color: #666666">2</span>
 a <span style="color: #666666">=</span> <span style="color: #666666">0.2</span>
 dt <span style="color: #666666">=</span> <span style="color: #666666">0.1</span>  <span style="color: #408080; font-style: italic"># Increment</span>
 t <span style="color: #666666">=</span> <span style="color: #666666">0</span>
 t_values <span style="color: #666666">=</span> []
 s_values <span style="color: #666666">=</span> []
-<span style="color: #008000; font-weight: bold">while</span> t <span style="color: #666666">&lt;=</span> <span style="color: #666666">2</span>:
+<span style="color: #008000; font-weight: bold">while</span> t <span style="color: #666666">&lt;=</span> <span style="color: #666666">2.1</span>:
     s <span style="color: #666666">=</span> v0<span style="color: #666666">*</span>t <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>a<span style="color: #666666">*</span>t<span style="color: #666666">**2</span>
     t_values<span style="color: #666666">.</span>append(t)
     s_values<span style="color: #666666">.</span>append(s)
     t <span style="color: #666666">=</span> t <span style="color: #666666">+</span> dt
 <span style="color: #008000; font-weight: bold">print</span> s_values  <span style="color: #408080; font-style: italic"># Just take a look at a created list</span>
+<span style="color: #008000; font-weight: bold">print</span> t_values
 
 <span style="color: #408080; font-style: italic"># Print a nicely formatted table</span>
 i <span style="color: #666666">=</span> <span style="color: #666666">0</span>
 <span style="color: #008000; font-weight: bold">while</span> i <span style="color: #666666">&lt;=</span> <span style="color: #008000">len</span>(t_values)<span style="color: #666666">-1</span>:
-    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">  </span><span style="color: #BB6688; font-weight: bold">%.4f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (t_values[i], s_values[i])
+    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%.18f</span><span style="color: #BA2121">  </span><span style="color: #BB6688; font-weight: bold">%.4f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (t_values[i], s_values[i])
     i <span style="color: #666666">+=</span> <span style="color: #666666">1</span>   <span style="color: #408080; font-style: italic"># Same as i = i + 1</span>
 </pre></div>
 <p>
@@ -596,7 +657,7 @@ The output looks like
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[0.0, 0.201, 0.404, 0.6090000000000001, 0.8160000000000001,
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>[0.0, 0.201, 0.404, 0.6090000000000001, 0.8160000000000001,
  1.025, 1.236, 1.4489999999999998, 1.664, 1.8809999999999998,
  2.0999999999999996, 2.3209999999999997, ...]
 0.00  0.0000
@@ -620,7 +681,7 @@ Lists come with a lot of functionality. See the
 <a href="https://docs.python.org/2/tutorial/introduction.html#lists" target="_self">Python Tutorial</a>
 for many more examples.
 
-<h2 id="basics:for">For loops</h2>
+<h2 id="basics:for" class="anchor">For loops</h2>
 
 <p>
 A for loop is used for visiting elements in a list, one by one:
@@ -628,7 +689,7 @@ A for loop is used for visiting elements in a list, one by one:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> L <span style="color: #666666">=</span> [<span style="color: #666666">1</span>, <span style="color: #666666">4</span>, <span style="color: #666666">8</span>, <span style="color: #666666">9</span>]
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> L <span style="color: #666666">=</span> [<span style="color: #666666">1</span>, <span style="color: #666666">4</span>, <span style="color: #666666">8</span>, <span style="color: #666666">9</span>]
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">for</span> e <span style="color: #AA22FF; font-weight: bold">in</span> L:
 <span style="color: #666666">...</span>     <span style="color: #008000; font-weight: bold">print</span> e
 <span style="color: #666666">...</span>
@@ -657,7 +718,7 @@ A for loop over the valid indices in a list is created by
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(somelist)):
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(somelist)):
     <span style="color: #408080; font-style: italic"># Work with somelist[i]</span>
 </pre></div>
 <p>
@@ -676,7 +737,7 @@ through an integer counter:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic"># Need loop over 0, 0.1, 0.2, ..., 1</span>
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Need loop over 0, 0.1, 0.2, ..., 1</span>
 values <span style="color: #666666">=</span> []
 <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">11</span>):
     values<span style="color: #666666">.</span>append(i<span style="color: #666666">*0.1</span>)
@@ -698,7 +759,7 @@ for loops instead:
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">v0 <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>v0 <span style="color: #666666">=</span> <span style="color: #666666">2</span>
 a <span style="color: #666666">=</span> <span style="color: #666666">0.2</span>
 dt <span style="color: #666666">=</span> <span style="color: #666666">0.1</span>  <span style="color: #408080; font-style: italic"># Increment</span>
 t_values <span style="color: #666666">=</span> []
@@ -737,7 +798,7 @@ construction:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> e1, e2, e3, <span style="color: #666666">...</span> <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">zip</span>(list1, list2, list3, <span style="color: #666666">...</span>):
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">for</span> e1, e2, e3, <span style="color: #666666">...</span> <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">zip</span>(list1, list2, list3, <span style="color: #666666">...</span>):
 </pre></div>
 <p>
 One may instead create a for loop over all the legal index values
@@ -746,13 +807,13 @@ instead and index each array,
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(list1)):
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(list1)):
     e1 <span style="color: #666666">=</span> list1[i]
     e2 <span style="color: #666666">=</span> list2[i]
     <span style="color: #666666">...</span>
 </pre></div>
 
-<h2 id="basics:numpy">Arrays</h2>
+<h2 id="basics:numpy" class="anchor">Arrays</h2>
 
 <p>
 Lists are useful for collecting a set of numbers or other objects
@@ -769,7 +830,7 @@ To use arrays, you must import the <code>numpy</code> module:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> L <span style="color: #666666">=</span> [<span style="color: #666666">1</span>, <span style="color: #666666">4</span>, <span style="color: #666666">10.0</span>]    <span style="color: #408080; font-style: italic"># List of numbers</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> a <span style="color: #666666">=</span> numpy<span style="color: #666666">.</span>array(L)  <span style="color: #408080; font-style: italic"># Make corresponding array</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> a
@@ -791,7 +852,7 @@ as list. In fact, we can pass arrays to mathematical functions:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> c <span style="color: #666666">=</span> numpy<span style="color: #666666">.</span>log(a)
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> c <span style="color: #666666">=</span> numpy<span style="color: #666666">.</span>log(a)
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> c
 [ <span style="color: #666666">0.</span>          <span style="color: #666666">1.38629436</span>  <span style="color: #666666">2.30258509</span>]
 </pre></div>
@@ -804,7 +865,7 @@ can use <code>linspace</code>:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">t <span style="color: #666666">=</span> numpy<span style="color: #666666">.</span>linspace(a, b, n<span style="color: #666666">+1</span>)
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>t <span style="color: #666666">=</span> numpy<span style="color: #666666">.</span>linspace(a, b, n<span style="color: #666666">+1</span>)
 </pre></div>
 <p>
 This construction makes it easy to create arrays for the \( t \) and \( s \)
@@ -813,7 +874,7 @@ values in our tables:
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span>
 v0 <span style="color: #666666">=</span> <span style="color: #666666">2</span>
 a <span style="color: #666666">=</span> <span style="color: #666666">0.2</span>
 dt <span style="color: #666666">=</span> <span style="color: #666666">0.1</span>  <span style="color: #408080; font-style: italic"># Increment</span>
@@ -827,7 +888,7 @@ s_values <span style="color: #666666">=</span> v0<span style="color: #666666">*<
     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">  </span><span style="color: #BB6688; font-weight: bold">%.4f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (t, s)
 </pre></div>
 
-<h2 id="basics:math">Mathematical functions</h2>
+<h2 id="basics:math" class="anchor">Mathematical functions</h2>
 
 <p>
 Python offers access to all standard mathematical functions such as
@@ -840,7 +901,7 @@ For scalars (single numbers) the relevant module is <code>math</code>:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">math</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">math</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> math<span style="color: #666666">.</span>sin(math<span style="color: #666666">.</span>pi)
 <span style="color: #666666">1.2246467991473532e-16</span>
 </pre></div>
@@ -851,7 +912,7 @@ Many prefer to write mathematical expressions without the <code>math</code> pref
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, pi
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, pi
 <span style="color: #008000; font-weight: bold">print</span> sin(pi)
 
 <span style="color: #408080; font-style: italic"># Or import everything from math</span>
@@ -870,7 +931,7 @@ do a &quot;start import&quot; of everything,
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
 x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, <span style="color: #666666">101</span>)
 y <span style="color: #666666">=</span> exp(<span style="color: #666666">-</span>x)<span style="color: #666666">*</span>sin(pi<span style="color: #666666">*</span>x)
 </pre></div>
@@ -881,7 +942,7 @@ a prefix <code>np</code> as abbreviation for <code>numpy</code>:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, <span style="color: #666666">101</span>)
 y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>x)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>x)
 </pre></div>
@@ -894,7 +955,7 @@ in the program and in the mathematical description of the problem.
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin, exp, pi
 x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, <span style="color: #666666">101</span>)
 y <span style="color: #666666">=</span> exp(<span style="color: #666666">-</span>x)<span style="color: #666666">*</span>sin(pi<span style="color: #666666">*</span>x)
@@ -903,7 +964,7 @@ y <span style="color: #666666">=</span> exp(<span style="color: #666666">-</span
 </div>
 
 
-<h2 id="basics:plot">Plotting</h2>
+<h2 id="basics:plot" class="anchor">Plotting</h2>
 
 <p>
 We can easily make a graph of a function \( s(t) \) using the module
@@ -917,7 +978,7 @@ code:
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
 
 v0 <span style="color: #666666">=</span> <span style="color: #666666">0.2</span>
@@ -935,7 +996,7 @@ plt<span style="color: #666666">.</span>show()
 The plotfile <code>myplot.png</code> looks like
 
 <p>
-<center><p><img src="fig-bumpy/plot1_s.png" align="bottom" width=500></p></center>
+<br /><br /><center><p><img src="fig-bumpy/plot1_s.png" align="bottom" width=500></p></center><br /><br />
 
 <p>
 Matlab users may prefer to do
@@ -943,7 +1004,7 @@ Matlab users may prefer to do
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
 </pre></div>
 <p>
@@ -957,7 +1018,7 @@ axis and a box with legends such that we can distinguish the two curves:
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
 
 v0 <span style="color: #666666">=</span> <span style="color: #666666">0.2</span>
@@ -972,7 +1033,7 @@ plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&#3
 plt<span style="color: #666666">.</span>show()
 </pre></div>
 <p>
-<center><p><img src="fig-bumpy/plot2_s.png" align="bottom" width=500></p></center>
+<br /><br /><center><p><img src="fig-bumpy/plot2_s.png" align="bottom" width=500></p></center><br /><br />
 
 <p>
 <p>
@@ -991,8 +1052,8 @@ plt<span style="color: #666666">.</span>show()
 
 </div>  <!-- end container -->
 <!-- include javascript, jQuery *first* -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 <!-- Bootstrap footer
 <footer>

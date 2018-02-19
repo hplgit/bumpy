@@ -1,6 +1,6 @@
-TITLE: A very basic introduction to scientific Python programming
-AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
-AUTHOR: Leif Rune Hellevik Email:leif.r.hellevik@ntnu.no at Biomechanichs Group, Department of Structural Engineering NTNU & Center for Biomedical Computing, Simula Research Laboratory
+TITLE: A short introduction to scientific Python programming
+AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
+AUTHOR: Leif Rune Hellevik at Biomechanichs Group, Department of Structural Engineering NTNU
 DATE: today
 
 !bsummary Contents
@@ -8,7 +8,7 @@ This note introduces very basic programming elements, such as
 
  * variables for numbers, lists, and arrays
  * while loops and for loops
- * functions
+ * functifions
  * if tests
  * plotting
 
@@ -19,11 +19,14 @@ vectorization of code is also given.
 TOC: on
 
 !split
+
 ======= Variables, loops, lists, and arrays =======
 label{basics:basic:objects}
 
+% if PYTHON_INSTALL == 'true':
 ===== Getting access to Python =====
 label{basics:accesspy}
+
 
 Simple mathematical calculations can be done in plain Python, but for
 more advanced scientific computing, as we do here, several add-on
@@ -68,7 +71,7 @@ You can also access Python directly through a web browser without having
 it installed on your local computer. We refer to the document
 "How to access Python for doing scientific computing": "http://hplgit.github.io/edu/accesspy/accesspy.html" for more details on such tools and also
 installations based on Anaconda and Ubuntu.
-
+% endif
 ===== Mathematical example =====
 
 We shall use a famous mathematical formula in our
@@ -387,6 +390,8 @@ we can run a new while loop and print the contents of the lists in a
 nice, tabular fashion:
 
 @@@CODE src-bumpy/while_list.py
+
+% if FORMAT != 'ipynb':
 The output looks like
 
 !bc
@@ -403,6 +408,8 @@ The output looks like
 0.70  1.4490
 ...
 !ec
+% endif
+
 Note that `print s_values` here leads to output with many
 decimals and small round-off errors. To get complete control of the
 formatting of real numbers in the table, we use the printf
