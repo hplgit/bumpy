@@ -1,0 +1,32 @@
+.. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
+   (https://github.com/hplgit/doconce/)
+
+.. Document title:
+
+A very basic introduction to scientific Python programming
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:Authors: Hans Petter Langtangen (hpl at simula.no), Leif Rune Hellevik (leif.r.hellevik at ntnu.no)
+:Date: Jul 27, 2016
+
+
+.. admonition:: Contents
+
+   This note introduces very basic programming elements, such as
+   
+    * variables for numbers, lists, and arrays
+   
+    * while loops and for loops
+   
+    * functions
+   
+    * if tests
+   
+    * plotting
+   
+   through examples involving a mathematical formula. A glimpse of
+   vectorization of code is also given.
+
+
+
+

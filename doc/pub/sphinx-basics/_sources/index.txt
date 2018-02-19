@@ -1,0 +1,24 @@
+
+.. Master file automatically created by doconce sphinx_dir
+
+
+A very basic introduction to scientific Python programming
+==========================================================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+
+   ._basics000
+   ._basics001
+   ._basics002
+   ._basics003
+   ._basics004
+   ._basics005
+
+
+Index
+=====
+
+* :ref:`genindex`

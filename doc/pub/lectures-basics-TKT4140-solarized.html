@@ -6,10 +6,10 @@ Automatically generated HTML file from DocOnce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="Introduction to Scientific Python programming - Apdapted to TKT4140 Numerical Methods with Computer Laboratory">
+<meta name="description" content="Introduction to Scientific Python programming - Adapted to TKT4140 Numerical Methods with Computer Laboratory">
 <meta name="keywords" content="text editor,program file,assignment statement,print statement,variable,objects,format string syntax,while loop,boolean expression,Python Online Tutor,list,for loop,array,mathematical functions,import of modules,plotting,graphics,visualization,global variables,keyword arguments,vectorization,vectorized functions,multiple return values,branching,if test,boolean expression,vectorizing if tests">
 
-<title>Introduction to Scientific Python programming - Apdapted to TKT4140 Numerical Methods with Computer Laboratory</title>
+<title>Introduction to Scientific Python programming - Adapted to TKT4140 Numerical Methods with Computer Laboratory</title>
 
 
 <link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
@@ -61,11 +61,15 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
+<<<<<<< HEAD
  'sections': [('Table of contents',
                1,
                'table_of_contents',
                'table_of_contents'),
               ('This is a very quick intro to Python programming',
+=======
+ 'sections': [('This is a very quick intro to Python programming',
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
                2,
                None,
                '___sec0'),
@@ -166,6 +170,7 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec28'),
+<<<<<<< HEAD
               ('Example on constructing a tridiagonal matrix',
                2,
                None,
@@ -266,6 +271,112 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec65')]}
+=======
+              ('Example on constructing a tridiagonal matrix using spdiags',
+               2,
+               None,
+               '___sec29'),
+              ('Example on constructing a tridiagonal matrix using diags',
+               2,
+               None,
+               '___sec30'),
+              ('Example on solving a tridiagonal system',
+               2,
+               None,
+               '___sec31'),
+              ('Plotting', 2, 'basics:plot', 'basics:plot'),
+              ('Plotting of multiple curves', 2, None, '___sec33'),
+              ('Functions and branching',
+               1,
+               'basics:func:branching',
+               'basics:func:branching'),
+              ('Functions', 2, 'basics:func', 'basics:func'),
+              ('Functions can have multiple arguments', 2, None, '___sec36'),
+              ('Keyword arguments are arguments with default values',
+               2,
+               None,
+               '___sec37'),
+              ('Vectorization speeds up the code', 2, None, '___sec38'),
+              ('Python functions written for scalars normally work for arrays too!',
+               2,
+               None,
+               '___sec39'),
+              ('Python functions can return multiple values',
+               2,
+               None,
+               '___sec40'),
+              ('A more general mathematical formula (part I)',
+               2,
+               'basics:formula:piecewise',
+               'basics:formula:piecewise'),
+              ('A more general mathematical formula (part II)',
+               2,
+               None,
+               '___sec42'),
+              ('Basic if-else tests', 2, 'basics:if', 'basics:if'),
+              ('Multi-branch if tests', 2, None, '___sec44'),
+              ('Implementation of a piecewisely defined function with if',
+               2,
+               None,
+               '___sec45'),
+              ('Python functions containing if will not accept array arguments',
+               2,
+               None,
+               '___sec46'),
+              ('Remedy 1: Call the function with scalar arguments',
+               2,
+               None,
+               '___sec47'),
+              ('Remedy 2: Vectorize the if test with `where`',
+               2,
+               None,
+               '___sec48'),
+              ('Remedy 3: Vectorize the if test with array indexing',
+               2,
+               None,
+               '___sec49'),
+              ('Files', 1, 'basics:files', 'basics:files'),
+              ('File reading', 2, None, '___sec51'),
+              ('Code for reading files with lines `variable = value`',
+               2,
+               None,
+               '___sec52'),
+              ('Splitting lines into words is a frequent operation',
+               2,
+               None,
+               '___sec53'),
+              ('The magic `eval` function', 2, None, '___sec54'),
+              ('Implementing a calculator in Python', 2, None, '___sec55'),
+              ('Modern Python often applies the `with` statement for file handling',
+               2,
+               None,
+               '___sec56'),
+              ('File writing', 2, None, '___sec57'),
+              ('Simplified writing of tabular data to file via `numpy.savetxt`',
+               2,
+               None,
+               '___sec58'),
+              ('Simplified reading of tabular data from file via `numpy.loadtxt`',
+               2,
+               None,
+               '___sec59'),
+              ('Classes', 1, 'basics:class', 'basics:class'),
+              ('A very simple class', 2, None, '___sec61'),
+              ('How can we use this class?', 2, None, '___sec62'),
+              ('The `self` argument is a difficult thing for newcomers...',
+               2,
+               None,
+               '___sec63'),
+              ('A class for representing a mathematical function',
+               2,
+               None,
+               '___sec64'),
+              ('The class code', 2, None, '___sec65'),
+              ('Class implementation of $f(x,y,z; p_1,p_2,\\ldots,p_n)$',
+               2,
+               None,
+               '___sec66')]}
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 end of tocinfo -->
 
 <body>
@@ -291,7 +402,7 @@ MathJax.Hub.Config({
 
 
 
-<center><h1>Introduction to Scientific Python programming - Apdapted to TKT4140 Numerical Methods with Computer Laboratory</h1></center>  <!-- document title -->
+<center><h1>Introduction to Scientific Python programming - Adapted to TKT4140 Numerical Methods with Computer Laboratory</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen, and Leif Rune Hellevik -->
@@ -312,7 +423,11 @@ MathJax.Hub.Config({
 <center>[3] <b>Biomechanichs Group, Department of Structural Engineering NTNU</b></center>
 <br>
 <p>
+<<<<<<< HEAD
 <center><h4>Feb 19, 2018</h4></center> <!-- date -->
+=======
+<center><h4>Dec 11, 2015</h4></center> <!-- date -->
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 <br>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
@@ -349,6 +464,7 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; <a href="#___sec26"> Array assignment gives view (no copy!) of array data </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec27"> Copying array data requires special action via the <code>copy</code> method </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec28"> Construction of tridiagonal and sparse matrices </a><br>
+<<<<<<< HEAD
 &nbsp; &nbsp; &nbsp; <a href="#___sec29"> Example on constructing a tridiagonal matrix </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec30"> Example on solving a tridiagonal system </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#basics:plot"> Plotting </a><br>
@@ -386,6 +502,46 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; <a href="#___sec63"> A class for representing a mathematical function </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec64"> The class code </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec65"> Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \) </a><br>
+=======
+&nbsp; &nbsp; &nbsp; <a href="#___sec29"> Example on constructing a tridiagonal matrix using spdiags </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec30"> Example on constructing a tridiagonal matrix using diags </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec31"> Example on solving a tridiagonal system </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#basics:plot"> Plotting </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec33"> Plotting of multiple curves </a><br>
+<a href="#basics:func:branching"> Functions and branching </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#basics:func"> Functions </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec36"> Functions can have multiple arguments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec37"> Keyword arguments are arguments with default values </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec38"> Vectorization speeds up the code </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec39"> Python functions written for scalars normally work for arrays too! </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec40"> Python functions can return multiple values </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#basics:formula:piecewise"> A more general mathematical formula (part I) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec42"> A more general mathematical formula (part II) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#basics:if"> Basic if-else tests </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec44"> Multi-branch if tests </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec45"> Implementation of a piecewisely defined function with if </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec46"> Python functions containing if will not accept array arguments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec47"> Remedy 1: Call the function with scalar arguments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec48"> Remedy 2: Vectorize the if test with <code>where</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec49"> Remedy 3: Vectorize the if test with array indexing </a><br>
+<a href="#basics:files"> Files </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec51"> File reading </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec52"> Code for reading files with lines <code>variable = value</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec53"> Splitting lines into words is a frequent operation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec54"> The magic <code>eval</code> function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec55"> Implementing a calculator in Python </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec56"> Modern Python often applies the <code>with</code> statement for file handling </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec57"> File writing </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec58"> Simplified writing of tabular data to file via <code>numpy.savetxt</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec59"> Simplified reading of tabular data from file via <code>numpy.loadtxt</code> </a><br>
+<a href="#basics:class"> Classes </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec61"> A very simple class </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec62"> How can we use this class? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec63"> The <code>self</code> argument is a difficult thing for newcomers... </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec64"> A class for representing a mathematical function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec65"> The class code </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec66"> Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \) </a><br>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 </p>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
@@ -417,16 +573,17 @@ Method: show program code through math examples
 <h2 id="basics:accesspy">Do you have access to Python?</h2>
 
 <p>
-See <a href="https://www.ntnu.no/wiki/display/kt/Python" target="_blank">TKT4140 Course specific installation guidelines</a>
-
-<p>
-Other methods:
+Many methods:
 
 <ul>
  <li> Mac and Windows: <a href="https://store.continuum.io/cshop/anaconda/" target="_blank">Anaconda</a></li>
+ <li> Ubuntu: <code>sudo apt-get install</code></li>
  <li> Web browser (<a href="https://wakari.io/" target="_blank">Wakari</a> or <a href="https://cloud.sagemath.com/" target="_blank">SageMathCloud</a>)</li>
 </ul>
 
+See <a href="http://hplgit.github.io/edu/accesspy/accesspy.html" target="_blank">How to access Python for doing scientific computing</a> for more details!
+
+<p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
 <h2 id="___sec3">Mathematical example </h2>
@@ -1017,7 +1174,11 @@ Consider <em>array assignment</em> <code>b=a</code>:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<<<<<<< HEAD
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>a = np.linspace(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">5</span>, <span style="color: #B452CD">5</span>)
+=======
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">a = np.linspace(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">5</span>, <span style="color: #B452CD">5</span>)
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 b = a
 </pre></div>
 <p>
@@ -1029,7 +1190,11 @@ See the following example how changes in <code>b</code> inflict changes in <code
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<<<<<<< HEAD
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>&gt;&gt;&gt; a
+=======
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; a
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 array([ <span style="color: #B452CD">1.</span>,  <span style="color: #B452CD">2.</span>,  <span style="color: #B452CD">3.</span>,  <span style="color: #B452CD">4.</span>,  <span style="color: #B452CD">5.</span>])
 &gt;&gt;&gt; b[<span style="color: #B452CD">0</span>] = <span style="color: #B452CD">5</span>                          <span style="color: #228B22"># changes a[0] to 5</span>
 &gt;&gt;&gt; a
@@ -1046,7 +1211,11 @@ array([ <span style="color: #B452CD">5.</span>,  <span style="color: #B452CD">9.
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<<<<<<< HEAD
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>&gt;&gt;&gt; c = a.copy()       <span style="color: #228B22"># copy all elements to new array c</span>
+=======
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; c = a.copy()       <span style="color: #228B22"># copy all elements to new array c</span>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 &gt;&gt;&gt; c[<span style="color: #B452CD">0</span>] = <span style="color: #B452CD">6</span>           <span style="color: #228B22"># a is not changed</span>
 &gt;&gt;&gt; a
 array([ <span style="color: #B452CD">1.</span>,  <span style="color: #B452CD">2.</span>,  <span style="color: #B452CD">3.</span>,  <span style="color: #B452CD">4.</span>,  <span style="color: #B452CD">5.</span>])
@@ -1073,11 +1242,86 @@ Note: <code>b</code> has still the values from the previous example
 
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec29">Example on constructing a tridiagonal matrix </h2>
+=======
+<h2 id="___sec29">Example on constructing a tridiagonal matrix using spdiags </h2>
 
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+&gt;&gt;&gt; N = <span style="color: #B452CD">6</span>
+&gt;&gt;&gt; diagonals = np.zeros((<span style="color: #B452CD">3</span>, N))   <span style="color: #228B22"># 3 diagonals</span>
+diagonals[<span style="color: #B452CD">0</span>,:] = np.linspace(-<span style="color: #B452CD">1</span>, -N, N)
+diagonals[<span style="color: #B452CD">1</span>,:] = -<span style="color: #B452CD">2</span>
+diagonals[<span style="color: #B452CD">2</span>,:] = np.linspace(<span style="color: #B452CD">1</span>, N, N)
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">scipy.sparse</span>
+&gt;&gt;&gt; A = scipy.sparse.spdiags(diagonals, [-<span style="color: #B452CD">1</span>,<span style="color: #B452CD">0</span>,<span style="color: #B452CD">1</span>], N, N, format=<span style="color: #CD5555">&#39;csc&#39;</span>)
+&gt;&gt;&gt; A.toarray()    <span style="color: #228B22"># look at corresponding dense matrix</span>
+[[-<span style="color: #B452CD">2.</span>  <span style="color: #B452CD">2.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>]
+ [-<span style="color: #B452CD">1.</span> -<span style="color: #B452CD">2.</span>  <span style="color: #B452CD">3.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>]
+ [ <span style="color: #B452CD">0.</span> -<span style="color: #B452CD">2.</span> -<span style="color: #B452CD">2.</span>  <span style="color: #B452CD">4.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>]
+ [ <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span> -<span style="color: #B452CD">3.</span> -<span style="color: #B452CD">2.</span>  <span style="color: #B452CD">5.</span>  <span style="color: #B452CD">0.</span>]
+ [ <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span> -<span style="color: #B452CD">4.</span> -<span style="color: #B452CD">2.</span>  <span style="color: #B452CD">6.</span>]
+ [ <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span> -<span style="color: #B452CD">5.</span> -<span style="color: #B452CD">2.</span>]]
+</pre></div>
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec30">Example on constructing a tridiagonal matrix using diags </h2>
+An alternative function that may be used to construct sparse matrices is the <code>diags</code> function. It differs from <code>spdiags</code> 
+in the way it handles of diagonals.
+
+<ul>
+ <li> All diagonals need to be given with their correct lengths</li>
+ <li> It also supports scalar broadcasting</li>
+</ul>
+
+Here is how to construct the same matrix as in the previous example:
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; diagonals = [-np.linspace(<span style="color: #B452CD">1</span>, N, N)[<span style="color: #B452CD">0</span>:-<span style="color: #B452CD">1</span>], -<span style="color: #B452CD">2</span>*np.ones(N), np.linspace(<span style="color: #B452CD">1</span>, N, N)[<span style="color: #B452CD">1</span>:]]   <span style="color: #228B22"># 3 diagonals</span>
+&gt;&gt;&gt; A = scipy.sparse.diags(diagonals, [-<span style="color: #B452CD">1</span>,<span style="color: #B452CD">0</span>,<span style="color: #B452CD">1</span>], format=<span style="color: #CD5555">&#39;csc&#39;</span>)
+&gt;&gt;&gt; A.toarray()    <span style="color: #228B22"># look at corresponding dense matrix</span>
+[[-<span style="color: #B452CD">2.</span>  <span style="color: #B452CD">2.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>]
+ [-<span style="color: #B452CD">1.</span> -<span style="color: #B452CD">2.</span>  <span style="color: #B452CD">3.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>]
+ [ <span style="color: #B452CD">0.</span> -<span style="color: #B452CD">2.</span> -<span style="color: #B452CD">2.</span>  <span style="color: #B452CD">4.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>]
+ [ <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span> -<span style="color: #B452CD">3.</span> -<span style="color: #B452CD">2.</span>  <span style="color: #B452CD">5.</span>  <span style="color: #B452CD">0.</span>]
+ [ <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span> -<span style="color: #B452CD">4.</span> -<span style="color: #B452CD">2.</span>  <span style="color: #B452CD">6.</span>]
+ [ <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span> -<span style="color: #B452CD">5.</span> -<span style="color: #B452CD">2.</span>]]
+</pre></div>
+<p>
+Here's an example using scalar broadcasting (need to specify shape):
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; B = scipy.sparse.diags([<span style="color: #B452CD">1</span>, <span style="color: #B452CD">2</span>, <span style="color: #B452CD">3</span>], [-<span style="color: #B452CD">2</span>, <span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>], shape=(<span style="color: #B452CD">6</span>, <span style="color: #B452CD">6</span>), format=<span style="color: #CD5555">&#39;csc&#39;</span>)
+&gt;&gt;&gt; B.toarray()    <span style="color: #228B22"># look at corresponding dense matrix</span>
+[[ <span style="color: #B452CD">2.</span>  <span style="color: #B452CD">3.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>]
+ [ <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">2.</span>  <span style="color: #B452CD">3.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>]
+ [ <span style="color: #B452CD">1.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">2.</span>  <span style="color: #B452CD">3.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>]
+ [ <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">1.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">2.</span>  <span style="color: #B452CD">3.</span>  <span style="color: #B452CD">0.</span>]
+ [ <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">1.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">2.</span>  <span style="color: #B452CD">3.</span>]
+ [ <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">1.</span>  <span style="color: #B452CD">0.</span>  <span style="color: #B452CD">2.</span>]]
+</pre></div>
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec31">Example on solving a tridiagonal system </h2>
+
+<p>
+We can solve \( Ax=b \) with tridiagonal matrix \( A \): choose some \( x \),
+compute \( b=Ax \) (sparse/tridiagonal matrix product!), solve \( Ax=b \),
+and check that \( x \) is the desired solution:
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<<<<<<< HEAD
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 &gt;&gt;&gt; N = <span style="color: #B452CD">6</span>
 &gt;&gt;&gt; diagonals = np.zeros((<span style="color: #B452CD">3</span>, N))   <span style="color: #228B22"># 3 diagonals</span>
@@ -1108,6 +1352,9 @@ and check that \( x \) is the desired solution:
 
 <!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>&gt;&gt;&gt; x = np.linspace(-<span style="color: #B452CD">1</span>, <span style="color: #B452CD">1</span>, N)  <span style="color: #228B22"># choose solution</span>
+=======
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; x = np.linspace(-<span style="color: #B452CD">1</span>, <span style="color: #B452CD">1</span>, N)  <span style="color: #228B22"># choose solution</span>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 &gt;&gt;&gt; b = A.dot(x)               <span style="color: #228B22"># sparse matrix vector product</span>
 &gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">scipy.sparse.linalg</span>
 &gt;&gt;&gt; x = scipy.sparse.linalg.spsolve(A, b)
@@ -1120,7 +1367,11 @@ Check against dense matrix computations:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<<<<<<< HEAD
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>&gt;&gt;&gt; A_d = A.toarray()            <span style="color: #228B22"># corresponding dense matrix</span>
+=======
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; A_d = A.toarray()            <span style="color: #228B22"># corresponding dense matrix</span>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 &gt;&gt;&gt; b = np.dot(A_d, x)           <span style="color: #228B22"># standard matrix vector product</span>
 &gt;&gt;&gt; x = np.linalg.solve(A_d, b)  <span style="color: #228B22"># standard Ax=b algorithm</span>
 &gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> x
@@ -1160,7 +1411,11 @@ The plotfile <code>myplot.png</code> looks like
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec32">Plotting of multiple curves </h2>
+=======
+<h2 id="___sec33">Plotting of multiple curves </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 
@@ -1233,7 +1488,11 @@ Note:
 
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec35">Functions can have multiple arguments </h2>
+=======
+<h2 id="___sec36">Functions can have multiple arguments </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 <code>v0</code> and <code>a</code> as function arguments instead of global variables:
@@ -1252,7 +1511,11 @@ value = s(t=<span style="color: #B452CD">3</span>, v0=<span style="color: #B452C
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec36">Keyword arguments are arguments with default values </h2>
+=======
+<h2 id="___sec37">Keyword arguments are arguments with default values </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 
@@ -1276,7 +1539,11 @@ value = s(a=<span style="color: #B452CD">2</span>, t=<span style="color: #B452CD
 
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec37">Vectorization speeds up the code </h2>
+=======
+<h2 id="___sec38">Vectorization speeds up the code </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 Scalar code (work with one number at a time):
@@ -1311,7 +1578,11 @@ How can this work?
 
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec38">Python functions written for scalars normally work for arrays too! </h2>
+=======
+<h2 id="___sec39">Python functions written for scalars normally work for arrays too! </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 True if computations involve arithmetic operations and math functions:
@@ -1334,7 +1605,11 @@ v = f(x)  <span style="color: #228B22"># f(x) works with array x</span>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec39">Python functions can return multiple values </h2>
+=======
+<h2 id="___sec40">Python functions can return multiple values </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 Return \( s(t)=v_0t+\frac{1}{2}at^2 \) and \( s'(t)=v_0 + at \):
@@ -1396,7 +1671,11 @@ $$ v(t) = v_0 + \int_0^t a(t)dt $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec41">A more general mathematical formula (part II) </h2>
+=======
+<h2 id="___sec42">A more general mathematical formula (part II) </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 Integrate again over \( [0,t] \) to find \( s(t) \):
@@ -1451,7 +1730,11 @@ Here,
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec43">Multi-branch if tests </h2>
+=======
+<h2 id="___sec44">Multi-branch if tests </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 
@@ -1478,7 +1761,11 @@ Just if, no else:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec44">Implementation of a piecewisely defined function with if </h2>
+=======
+<h2 id="___sec45">Implementation of a piecewisely defined function with if </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 A Python function implementing the mathematical function
@@ -1506,7 +1793,11 @@ reads
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec45">Python functions containing if will not accept array arguments </h2>
+=======
+<h2 id="___sec46">Python functions containing if will not accept array arguments </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 
@@ -1527,7 +1818,11 @@ Problem: <code>x &lt; 1</code> evaluates to a boolean array, not just a boolean
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec46">Remedy 1: Call the function with scalar arguments </h2>
+=======
+<h2 id="___sec47">Remedy 1: Call the function with scalar arguments </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 
@@ -1556,7 +1851,11 @@ plt.show()
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec47">Remedy 2: Vectorize the if test with <code>where</code> </h2>
+=======
+<h2 id="___sec48">Remedy 2: Vectorize the if test with <code>where</code> </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 Functions with if tests require a complete rewrite to work with
@@ -1592,7 +1891,11 @@ array <code>b</code> where <code>b[i] = t[i] &lt;= t1</code>.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec48">Remedy 3: Vectorize the if test with array indexing </h2>
+=======
+<h2 id="___sec49">Remedy 3: Vectorize the if test with array indexing </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <ul>
  <li> Let <code>b</code> be a boolean array (e.g., <code>b = t &lt;= t1</code>)</li>
@@ -1621,7 +1924,11 @@ s[t &gt; t1]  = (v0*t + <span style="color: #B452CD">0.5</span>*a0*t1**<span sty
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec50">File reading </h2>
+=======
+<h2 id="___sec51">File reading </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 Put input data in a text file:
@@ -1646,7 +1953,11 @@ How can we read this file into variables <code>v0</code>, <code>a</code>, <code>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec51">Code for reading files with lines <code>variable = value</code> </h2>
+=======
+<h2 id="___sec52">Code for reading files with lines <code>variable = value</code> </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 
@@ -1669,7 +1980,11 @@ infile.close()
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec52">Splitting lines into words is a frequent operation </h2>
+=======
+<h2 id="___sec53">Splitting lines into words is a frequent operation </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 
@@ -1690,7 +2005,11 @@ the value!
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec53">The magic <code>eval</code> function </h2>
+=======
+<h2 id="___sec54">The magic <code>eval</code> function </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 <code>eval(s)</code> executes a string <code>s</code> as a Python expression and creates the
@@ -1718,7 +2037,11 @@ text from file and with <code>eval</code> turn them into live Python objects!
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec54">Implementing a calculator in Python </h2>
+=======
+<h2 id="___sec55">Implementing a calculator in Python </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 Demo:
@@ -1746,7 +2069,11 @@ result = <span style="color: #658b00">eval</span>(command_line_expression)
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec55">Modern Python often applies the <code>with</code> statement for file handling </h2>
+=======
+<h2 id="___sec56">Modern Python often applies the <code>with</code> statement for file handling </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 
@@ -1761,7 +2088,11 @@ No need to close the file when using <code>with</code>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec56">File writing </h2>
+=======
+<h2 id="___sec57">File writing </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <ul>
  <li> We have \( t \) and \( s(t) \) values in two lists, <code>t_values</code> and
@@ -1782,7 +2113,11 @@ outfile.write(<span style="color: #CD5555">&#39;# t    s(t)\n&#39;</span>)  <spa
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec57">Simplified writing of tabular data to file via <code>numpy.savetxt</code> </h2>
+=======
+<h2 id="___sec58">Simplified writing of tabular data to file via <code>numpy.savetxt</code> </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 
@@ -1816,7 +2151,11 @@ np.savetxt(<span style="color: #CD5555">&#39;table2.dat&#39;</span>, data, fmt=[
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec58">Simplified reading of tabular data from file via <code>numpy.loadtxt</code> </h2>
+=======
+<h2 id="___sec59">Simplified reading of tabular data from file via <code>numpy.loadtxt</code> </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 
@@ -1866,7 +2205,11 @@ Note:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec60">A very simple class </h2>
+=======
+<h2 id="___sec61">A very simple class </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <ul>
  <li> One variable: <code>a</code></li>
@@ -1890,7 +2233,11 @@ Class terminology: Functions are called
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec61">How can we use this class? </h2>
+=======
+<h2 id="___sec62">How can we use this class? </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 First, make an <em>instance</em> (object) of the class:
@@ -1914,7 +2261,11 @@ Note:
 
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec62">The <code>self</code> argument is a difficult thing for newcomers... </h2>
+=======
+<h2 id="___sec63">The <code>self</code> argument is a difficult thing for newcomers... </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 It takes time and experience to understand the <code>self</code> argument in
@@ -1941,7 +2292,11 @@ the understanding of how classes work!
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec63">A class for representing a mathematical function </h2>
+=======
+<h2 id="___sec64">A class for representing a mathematical function </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 Function with one independent variable \( t \) and two parameters
@@ -1968,7 +2323,11 @@ v = s(t=<span style="color: #B452CD">0.2</span>)               <span style="colo
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec64">The class code </h2>
+=======
+<h2 id="___sec65">The class code </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <p>
 
@@ -1988,7 +2347,11 @@ v = s(t=<span style="color: #B452CD">0.2</span>)               <span style="colo
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
+<<<<<<< HEAD
 <h2 id="___sec65">Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \) </h2>
+=======
+<h2 id="___sec66">Class implementation of \( f(x,y,z; p_1,p_2,\ldots,p_n) \) </h2>
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 <ul>
  <li> The \( n \) parameters \( p_1,p_2,\ldots,p_n \) are attributes</li>

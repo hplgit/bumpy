@@ -1,0 +1,163 @@
+.. !split
+
+.. _basics:class:
+
+Classes
+=======
+
+All objects in Python are in fact implemented as classes, but you can
+program with objects without knowing about classes. Nevertheless,
+the class concept is a powerful tool and some basic knowledge will
+make it easier to understand much useful Python information that is
+floating around.
+
+A very simple class
+-------------------
+
+A class packs together a set of variables and a set of functions. All
+functions can access all variables. [#class-terminology]_ The idea is
+to encapsulate variables and functions in logical units such that a
+larger program can be composed by combing such units (classes).
+
+.. [#class-terminology] In classes, the functions are called
+   *methods* and the variables are called *attributes*.
+
+Here is a trivial class that has one variable ``a`` and one
+function ``dump`` that writes the contents of ``a``:
+
+.. code-block:: python
+
+    class Trivial:
+        def __init__(self, a):
+            self.a = a
+    
+        def dump(self):
+            print self.a
+
+How can we use this class? First, we must make an *instance* (object)
+of the class:
+
+.. code-block:: python
+
+    t = Trivial(a=4)
+
+The syntax ``Trivial(a=4)`` implies a call to the ``__init__`` method (function)
+with ``4`` as the value of the argument ``a``. Inside ``__init__``,
+we store the value of ``a`` as an attribute in the class: ``self.a``.
+If there were several methods in the class, all of them could then
+access ``self.a`` (as if ``a`` were some global variable in the class).
+The ``__init__`` function is called a *constructor* since it is used
+to construct an instance (object) of the class.
+
+Having an instance ``t`` of class ``Trivial``, we can call the ``dump`` method
+as follows:
+
+.. code-block:: python
+
+    t.dump()
+
+Even though both ``__init__`` and ``dump`` have ``self`` as first argument,
+this argument *is not used in a call*.
+
+
+.. admonition:: The ``self`` argument
+
+   It takes time and experience to understand the ``self`` argument in
+   class methods.
+   
+   1. ``self`` must always be the first argument.
+   
+   2. ``self`` is never used in calls.
+   
+   3. ``self`` is used to access attributes and methods inside methods.
+   
+   We refer to a `more comprehensive text on classes <http://hplgit.github.io/primer.html/doc/pub/class/index.html>`__
+   for better explanation of ``self``.
+
+
+
+
+A class for representing a mathematical function
+------------------------------------------------
+
+The Python implementation of the mathematical function
+
+.. math::
+         s(t; v_0, a) = v_0t + \frac{1}{2}at^2
+
+can benefit from being implemented as a class. The reason is that
+:math:`s` is a function of one variable, :math:`t`, so it should be called as
+:math:`s(t)`, but the function also contains two parameters, :math:`v_0` and :math:`a`.
+Using a class, we can pack :math:`v_0` and :math:`a` together with a function
+computing :math:`s(t)` and that can be called with one argument.
+
+The class code
+~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    class Distance:
+        def __init__(self, v0, a):
+            self.v0 = v0
+            self.a = a
+    
+        def __call__(self, t):
+            v0, a = self.v0, self.a  # make local variables
+            return v0*t + 0.5*a*t**2
+
+Dissection
+~~~~~~~~~~
+
+The class has two methods (functions). The name of a method can
+be freely chosen by the programmer, say ``dump`` as we used above,
+but here we have used three
+special names, starting and
+ending with double underscores, which allows us to use special
+attractive syntax in the calls (such methods are actually known as
+*special methods*).
+
+The constructor ``__init__`` has one purpose: storing data in
+class attributes, here ``self.v0`` and ``self.a``. We can then access
+these data in class methods.
+
+The ``__call__`` method is used to evaluate :math:`s(t)`. It has one
+argument (``self`` does not count since it is never used in calls).
+This special methods allows us to view a class instance as if
+were a function. Let us illustrate by some code:
+
+.. code-block:: python
+
+    s = Distance(v0=2, a=0.5)  # create instance
+    v = s(t=0.2)               # runs s.__call__(t=0.2)
+
+The last line has some magic: ``s`` is a class instance, not a function,
+but still we can write ``s(t=0.2)`` or ``s(0.2)`` as if ``s`` were
+a function. This is the purpose of the special method ``__call__``:
+to allow such syntax. Actually, ``s(0.2)`` means
+``s.__call__(0.2)``. The nice result is that ``s`` looks like a
+function, it takes one argument ``t``, as the mathematical function :math:`s(t)`,
+but it also contains values of the two parameters :math:`v_0` and :math:`a`.
+
+In general, for a function :math:`f(x,y,z; p_1,p_2,\ldots,p_n)`, here with
+three independent variables and :math:`n` parameters :math:`p_1,p_2,\ldots,p_n`,
+we can pack the function and the parameters together in a class:
+
+.. code-block:: python
+
+    class F:
+        def __init__(self, p1, p2, ...):
+            self.p1 = p1
+            self.p2 = p2
+            ...
+    
+        def __call__(self, x, y, z):
+            # return formula involving x, y, z and self.p1, self.p2 ...
+
+The :math:`f` function is initialized by
+
+.. code-block:: python
+
+    f = F(p1=..., p2=..., ...)
+
+and later called as ``f(x, y, z)``.
+

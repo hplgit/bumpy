@@ -1,0 +1,97 @@
+.. !split
+
+User input
+==========
+
+We can in this example easily set the input data directly in
+the program, e.g., in the call to the ``solve`` function, as
+demonstrated above. However, most users will find it more
+convenient to set parameters through a user interface rather
+than editing the source code directly.
+
+Positional command-line arguments
+---------------------------------
+
+The simplest, and often also the most effective type of
+user interface is to use the command line. Suppose :math:`m`, :math:`k`,
+and :math:`v`, as well as the URL or filename for the road shapes,
+are fixed parameters and that the user is allowed to vary
+:math:`b` only. Then it is convenient, both for the user and
+the programmer, to specify :math:`b` as the first command-line
+argument to the program. If the name of the program file
+is ``bumpy.py`` and :math:`b=10` is desired, we can write
+
+.. code-block:: text
+
+    Terminal> python bumpy.py 10
+
+The corresponding code in the program for setting input data
+and extract the user-given value of :math:`b` reads
+
+.. code-block:: python
+
+    def prepare_input():
+        url = 'http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz'
+        m = 60
+        k = 60
+        v = 5
+        try:
+            b = float(sys.argv[1])
+        except IndexError:
+            b = 80  # default
+        return url, m, b, k, v
+
+The command-line arguments are available as strings in the
+list ``sys.argv``, from the element with index 1 and onward.
+The first command-line argument ``sys.argv[1]`` is a string
+so it must be converted to a ``float`` object (representing
+real number) prior to computations. If the command-line
+argument is missing, ``sys.argv[1]`` is illegal indexing
+and the ``IndexError`` exception is raised. We can test for this
+error and provide a default value. Without the ``try-except``
+construction, the program will abort with an error message
+if no command-line argument is given.
+
+Option-value pairs on the command line
+--------------------------------------
+
+Letting the user set many parameters on the command line is most
+conveniently done by allowing option-value pairs, e.g.,
+
+.. code-block:: text
+
+    Terminal> python bumpy.py --m 40 --b 280
+
+All parameters have a default value which can be overridden on
+the command line by providing the string (option) ``--name``, where
+``name`` is the name of the parameter, followed by the desired value of
+the parameter. Implementation of option-value input is
+most easily carried out using Python's ``argparse`` module.
+The recipe goes as follows.
+
+.. code-block:: python
+
+    def command_line_options():
+        import argparse
+        parser = argparse.ArgumentParser()
+        parser.add_argument('--m', '--mass', type=float,
+                            default=60, help='mass of vehicle')
+        parser.add_argument('--k', '--spring', type=float,
+                            default=60, help='spring parameter')
+        parser.add_argument('--b', '--damping', type=float,
+                            default=80, help='damping parameter')
+        parser.add_argument('--v', '--velocity', type=float,
+                            default=5, help='velocity of vehicle')
+        url = 'http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz'
+        parser.add_argument('--roadfile', type=str,
+                  default=url, help='filename/URL with road data')
+        args = parser.parse_args()
+        # Extract input parameters
+        m = args.m; k = args.k; b = args.b; v = args.v
+        url = args.roadfile
+        return url, m, b, k, v
+
+We may offer two options for each parameter, one reflecting the
+mathematical symbol (like ``--v``) and one more descriptive text
+(like ``--velocity``).
+

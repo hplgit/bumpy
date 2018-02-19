@@ -1,6 +1,14 @@
+<<<<<<< HEAD
 TITLE: Introduction to Scientific Python programming. 
 AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 AUTHOR: Leif Rune Hellevik at Biomechanichs Group, Department of Structural Engineering NTNUDATE: today
+=======
+TITLE: Introduction to Scientific Python programming.
+TITLE: Adapted to TKT4140 Numerical Methods
+AUTHOR: Hans Petter Langtangen Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
+AUTHOR: Leif Rune Hellevik Email:leif.r.hellevik@ntnu.no at Biomechanichs Group, Department of Structural Engineering NTNU & Center for Biomedical Computing, Simula Research Laboratory
+DATE: today
+>>>>>>> ded9ed9541da0be2c283fb37544f350727a325ec
 
 !split
 TOC: on

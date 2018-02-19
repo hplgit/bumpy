@@ -20,6 +20,22 @@ Automatically generated HTML file from DocOnce source
 <style type="text/css">
 /* Let inline verbatim have the same color as the surroundings */
 code { color: inherit; background-color: transparent; }
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:50px;      /* fixed header height for style bootstrap */
+  margin:-50px 0 0; /* negative fixed header height */
+}
 </style>
 
 
@@ -111,17 +127,50 @@ MathJax.Hub.Config({
     </button>
     <a class="navbar-brand" href="bumpy.html">A worked example on scientific computing with Python</a>
   </div>
+
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._bumpy002.html#___sec1" style="font-size: 80%;">A scientific application</a></li>
-     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec12" style="font-size: 80%;">User input</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec15" style="font-size: 80%;">Visual exploration</a></li>
-     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec24" style="font-size: 80%;">Advanced topics</a></li>
-     <!-- navigation toc: --> <li><a href="._bumpy010.html#app:motivation" style="font-size: 80%;">Appendix: Quick motivation for programming with Python</a></li>
-     <!-- navigation toc: --> <li><a href="._bumpy010.html#app:resources" style="font-size: 80%;">Appendix: Scientific Python resources</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy001.html#___sec0" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Optimal background for reading this note</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy002.html#___sec1" style="font-size: 80%;"><b>A scientific application</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy002.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Physical problem and mathematical model</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy003.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Numerical model</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy004.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Simple implementation</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy004.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dissection of the code</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy005.html#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;More advanced implementation</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy005.html#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dissection of the code</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy006.html#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The excitation force</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy007.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A high-level solve function</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy007.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Storing Python objects in files</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy007.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Computing the root mean square value</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec12" style="font-size: 80%;"><b>User input</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Positional command-line arguments</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Option-value pairs on the command line</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec15" style="font-size: 80%;"><b>Visual exploration</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test case</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Importing array and plot functionality</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reading results from file</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plotting \( u \)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec20" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Computing and plotting \( u' \)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vectorized computation of \( u' \)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec22" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Computing the spectrum of signals</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec23" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Multiple plots in the same figure</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec24" style="font-size: 80%;"><b>Advanced topics</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Symbolic computing via SymPy</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec26" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Testing</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example on a test function</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec28" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test function for the numerical solver</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec29" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using a test framework</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec30" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Modules</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#app:motivation" style="font-size: 80%;"><b>Appendix: Quick motivation for programming with Python</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#app:resources" style="font-size: 80%;"><b>Appendix: Scientific Python resources</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec33" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Full tutorials on scientific programming with Python</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumPy resources</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec35" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Useful resources</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Some relevant Python books</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy010.html#___sec37" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Course material on Python programming in general</a></li>
 
         </ul>
       </li>
@@ -137,7 +186,7 @@ MathJax.Hub.Config({
 <a name="part0009"></a>
 <!-- !split -->
 
-<h1 id="___sec15">Visual exploration </h1>
+<h1 id="___sec15" class="anchor">Visual exploration </h1>
 
 <p>
 This section explains how to load the data from the computation, stored
@@ -152,7 +201,7 @@ to visualize these arrays. We want to produce the following plots:
    \( t \geq t_s \)</li>
 </ul>
 
-<h3 id="___sec16">Test case </h3>
+<h3 id="___sec16" class="anchor">Test case </h3>
 
 <p>
 The simulation is run as
@@ -160,13 +209,13 @@ The simulation is run as
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python bumpy.py --v 10
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal&gt; python bumpy.py --v 10
 </pre></div>
 <p>
 meaning that all other parameters have their default values as
 specified in the <code>command_line_arguments</code> function.
 
-<h3 id="___sec17">Importing array and plot functionality </h3>
+<h3 id="___sec17" class="anchor">Importing array and plot functionality </h3>
 
 <p>
 The following two imports give access to Matlab-style functions for
@@ -175,7 +224,7 @@ plotting and computing with arrays:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
 </pre></div>
 <p>
@@ -185,14 +234,14 @@ The Python community often prefers to prefix <code>numpy</code> by <code>np</cod
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
 </pre></div>
 <p>
 However, we shall stick to the former import to make the code as close
 as possible to the Matlab equivalent.
 
-<h3 id="___sec18">Reading results from file </h3>
+<h3 id="___sec18" class="anchor">Reading results from file </h3>
 
 <p>
 Loading the computational data from file back to a list <code>data</code> must
@@ -201,7 +250,7 @@ use the same module (<code>cPickle</code> or <code>dill</code>) as we used for w
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">cPickle</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pickle</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">cPickle</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pickle</span>
 <span style="color: #408080; font-style: italic"># or</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">dill</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pickle</span>
 outfile <span style="color: #666666">=</span> <span style="color: #008000">open</span>(<span style="color: #BA2121">&#39;bumpy.res&#39;</span>, <span style="color: #BA2121">&#39;r&#39;</span>)
@@ -225,7 +274,7 @@ using boolean arrays as indices:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">indices <span style="color: #666666">=</span> t <span style="color: #666666">&gt;=</span> t_s   <span style="color: #408080; font-style: italic"># True/False boolean array</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>indices <span style="color: #666666">=</span> t <span style="color: #666666">&gt;=</span> t_s   <span style="color: #408080; font-style: italic"># True/False boolean array</span>
 t <span style="color: #666666">=</span> t[indices]       <span style="color: #408080; font-style: italic"># fetch the part of t for which t &gt;= t_s</span>
 x <span style="color: #666666">=</span> x[indices]       <span style="color: #408080; font-style: italic"># fetch the part of x for which t &gt;= t_s</span>
 </pre></div>
@@ -233,7 +282,7 @@ x <span style="color: #666666">=</span> x[indices]       <span style="color: #40
 Indexing by a boolean array extracts all the elements corresponding to
 the <code>True</code> elements in the index array.
 
-<h3 id="___sec19">Plotting \( u \) </h3>
+<h3 id="___sec19" class="anchor">Plotting \( u \) </h3>
 
 <p>
 A plot of \( u \), corresponding to the second realization of the bumpy road,
@@ -242,7 +291,7 @@ is easy to create:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">figure()
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>figure()
 realization <span style="color: #666666">=</span> <span style="color: #666666">1</span>
 u <span style="color: #666666">=</span> data[<span style="color: #666666">2+</span>realization][<span style="color: #666666">2</span>][indices]
 plot(t, u)
@@ -256,7 +305,7 @@ and the part of <code>u</code> where \( t\geq t_s \) is then <code>data[3][2][in
 <p>
 Figure <a href="#bumpy:fig3">3</a> (left) shows the result.
 
-<h3 id="___sec20">Computing and plotting \( u' \) </h3>
+<h3 id="___sec20" class="anchor">Computing and plotting \( u' \) </h3>
 
 <p>
 Given a discrete function \( u^n \), \( n=0,\ldots,N \), the corresponding
@@ -281,7 +330,7 @@ is done by
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">v <span style="color: #666666">=</span> zeros_like(u)           <span style="color: #408080; font-style: italic"># same length and data type as u</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>v <span style="color: #666666">=</span> zeros_like(u)           <span style="color: #408080; font-style: italic"># same length and data type as u</span>
 dt <span style="color: #666666">=</span> t[<span style="color: #666666">1</span>] <span style="color: #666666">-</span> t[<span style="color: #666666">0</span>]            <span style="color: #408080; font-style: italic"># time step</span>
 <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>,u<span style="color: #666666">.</span>size<span style="color: #666666">-1</span>):
     v[i] <span style="color: #666666">=</span> (u[i<span style="color: #666666">+1</span>] <span style="color: #666666">-</span> u[i<span style="color: #666666">-1</span>])<span style="color: #666666">/</span>(<span style="color: #666666">2*</span>dt)
@@ -294,7 +343,7 @@ Plotting of <code>v</code> is done by
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">figure()
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>figure()
 plot(t, v)
 legend([<span style="color: #BA2121">&#39;velocity&#39;</span>])
 xlabel(<span style="color: #BA2121">&#39;t&#39;</span>)
@@ -305,13 +354,13 @@ Figure <a href="#bumpy:fig3">3</a> (right) shows that the velocity is much more
 &quot;noisy&quot; than the displacement.
 
 <p>
-<center> <!-- figure -->
+<center> <!-- figure label: --> <div id="bumpy:fig3"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 3:  Displacement (left) and velocity (right) for \( t\geq t_s=180 \). <div id="bumpy:fig3"></div> </p></center>
+<center><p class="caption">Figure 3:  Displacement (left) and velocity (right) for \( t\geq t_s=180 \).  <!-- caption label: bumpy:fig3 --> </p></center>
 <p><img src="fig-bumpy/uv1.png" align="bottom" width=800></p>
 </center>
 
-<h3 id="___sec21">Vectorized computation of \( u' \) </h3>
+<h3 id="___sec21" class="anchor">Vectorized computation of \( u' \) </h3>
 
 <p>
 For large arrays, finite difference formulas like <a href="#mjx-eqn-6">(6)</a>
@@ -321,7 +370,7 @@ avoided is much more efficient:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">v <span style="color: #666666">=</span> zeros_like(u)
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>v <span style="color: #666666">=</span> zeros_like(u)
 v[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> (u[<span style="color: #666666">2</span>:] <span style="color: #666666">-</span> u[:<span style="color: #666666">-2</span>])<span style="color: #666666">/</span>(<span style="color: #666666">2*</span>dt)
 v[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> (u[<span style="color: #666666">1</span>] <span style="color: #666666">-</span> u[<span style="color: #666666">0</span>])<span style="color: #666666">/</span>dt
 v[<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> (u[<span style="color: #666666">-1</span>] <span style="color: #666666">-</span> u[<span style="color: #666666">-2</span>])<span style="color: #666666">/</span>dt
@@ -349,7 +398,7 @@ a convenient feature to test the efficiency of Python constructions:
 <p>
 
 <!-- code=ipy (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> zeros
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> zeros
 
 <span style="color: #000080; font-weight: bold">In [2]: </span>N <span style="color: #666666">=</span> <span style="color: #666666">1000000</span>
 
@@ -370,7 +419,7 @@ a convenient feature to test the efficiency of Python constructions:
 This session show that the vectorized expression is 145 times faster
 than the explicit loop!
 
-<h2 id="___sec22">Computing the spectrum of signals </h2>
+<h2 id="___sec22" class="anchor">Computing the spectrum of signals </h2>
 
 <p>
 The spectrum of a \( u(t) \) function, here represented by discrete values in
@@ -379,7 +428,7 @@ the arrays <code>u</code> and <code>t</code>, can be computed by the Python func
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">frequency_analysis</span>(u, t):
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">frequency_analysis</span>(u, t):
     A <span style="color: #666666">=</span> fft(u)
     A <span style="color: #666666">=</span> <span style="color: #666666">2*</span>A
     dt <span style="color: #666666">=</span> t[<span style="color: #666666">1</span>] <span style="color: #666666">-</span> t[<span style="color: #666666">0</span>]
@@ -403,7 +452,7 @@ In the present case, we utilize the <code>frequency_analysis</code> through
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">figure()
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>figure()
 u <span style="color: #666666">=</span> data[<span style="color: #666666">3</span>][<span style="color: #666666">2</span>][indices]  <span style="color: #408080; font-style: italic"># second realization of u</span>
 f, A <span style="color: #666666">=</span> frequency_analysis(u, t)
 plot(f, A)
@@ -414,13 +463,13 @@ Figure <a href="#bumpy:fig2">4</a> shows the amplitudes and that the
 dominating frequencies lie around 0.5 and 1 Hz.
 
 <p>
-<center> <!-- figure -->
+<center> <!-- figure label: --> <div id="bumpy:fig2"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 4:  Spectra of displacement and excitation. <div id="bumpy:fig2"></div> </p></center>
+<center><p class="caption">Figure 4:  Spectra of displacement and excitation.  <!-- caption label: bumpy:fig2 --> </p></center>
 <p><img src="fig-bumpy/spectra1.png" align="bottom" width=700></p>
 </center>
 
-<h2 id="___sec23">Multiple plots in the same figure </h2>
+<h2 id="___sec23" class="anchor">Multiple plots in the same figure </h2>
 
 <p>
 Finally, we can run through all the 3-lists <code>[h, a, u]</code> and visualize
@@ -429,7 +478,7 @@ these curves in the same plot figure:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> realization <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(data[<span style="color: #666666">2</span>:])):
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">for</span> realization <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(data[<span style="color: #666666">2</span>:])):
     h, F, u <span style="color: #666666">=</span> data[<span style="color: #666666">2+</span>realization]
     h <span style="color: #666666">=</span> h[indices]
     F <span style="color: #666666">=</span> F[indices]
@@ -455,9 +504,9 @@ these curves in the same plot figure:
     savefig(<span style="color: #BA2121">&#39;hFu</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">.png&#39;</span> <span style="color: #666666">%</span> realization)
 </pre></div>
 <p>
-<center> <!-- figure -->
+<center> <!-- figure label: --> <div id="bumpy:fig4"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 5:  First realization of a bumpy road, with corresponding excitation of the wheel and resulting vertical vibrations. <div id="bumpy:fig4"></div> </p></center>
+<center><p class="caption">Figure 5:  First realization of a bumpy road, with corresponding excitation of the wheel and resulting vertical vibrations.  <!-- caption label: bumpy:fig4 --> </p></center>
 <p><img src="fig-bumpy/hFu0.png" align="bottom" width=700></p>
 </center>
 

@@ -20,6 +20,22 @@ Automatically generated HTML file from DocOnce source
 <style type="text/css">
 /* Let inline verbatim have the same color as the surroundings */
 code { color: inherit; background-color: transparent; }
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:50px;      /* fixed header height for style bootstrap */
+  margin:-50px 0 0; /* negative fixed header height */
+}
 </style>
 
 
@@ -111,17 +127,50 @@ MathJax.Hub.Config({
     </button>
     <a class="navbar-brand" href="bumpy.html">A worked example on scientific computing with Python</a>
   </div>
+
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._bumpy002.html#___sec1" style="font-size: 80%;">A scientific application</a></li>
-     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec12" style="font-size: 80%;">User input</a></li>
-     <!-- navigation toc: --> <li><a href="._bumpy009.html#___sec15" style="font-size: 80%;">Visual exploration</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec24" style="font-size: 80%;">Advanced topics</a></li>
-     <!-- navigation toc: --> <li><a href="#app:motivation" style="font-size: 80%;">Appendix: Quick motivation for programming with Python</a></li>
-     <!-- navigation toc: --> <li><a href="#app:resources" style="font-size: 80%;">Appendix: Scientific Python resources</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy001.html#___sec0" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Optimal background for reading this note</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy002.html#___sec1" style="font-size: 80%;"><b>A scientific application</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy002.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Physical problem and mathematical model</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy003.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Numerical model</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy004.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Simple implementation</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy004.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dissection of the code</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy005.html#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;More advanced implementation</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy005.html#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dissection of the code</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy006.html#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The excitation force</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy007.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A high-level solve function</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy007.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Storing Python objects in files</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy007.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Computing the root mean square value</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec12" style="font-size: 80%;"><b>User input</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Positional command-line arguments</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy008.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Option-value pairs on the command line</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy009.html#___sec15" style="font-size: 80%;"><b>Visual exploration</b></a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy009.html#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test case</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy009.html#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Importing array and plot functionality</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy009.html#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reading results from file</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy009.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plotting \( u \)</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy009.html#___sec20" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Computing and plotting \( u' \)</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy009.html#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vectorized computation of \( u' \)</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy009.html#___sec22" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Computing the spectrum of signals</a></li>
+     <!-- navigation toc: --> <li><a href="._bumpy009.html#___sec23" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Multiple plots in the same figure</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec24" style="font-size: 80%;"><b>Advanced topics</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Symbolic computing via SymPy</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec26" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Testing</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example on a test function</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec28" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test function for the numerical solver</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec29" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using a test framework</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec30" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Modules</a></li>
+     <!-- navigation toc: --> <li><a href="#app:motivation" style="font-size: 80%;"><b>Appendix: Quick motivation for programming with Python</b></a></li>
+     <!-- navigation toc: --> <li><a href="#app:resources" style="font-size: 80%;"><b>Appendix: Scientific Python resources</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec33" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Full tutorials on scientific programming with Python</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NumPy resources</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec35" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Useful resources</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Some relevant Python books</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec37" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Course material on Python programming in general</a></li>
 
         </ul>
       </li>
@@ -137,9 +186,9 @@ MathJax.Hub.Config({
 <a name="part0010"></a>
 <!-- !split -->
 
-<h1 id="___sec24">Advanced topics </h1>
+<h1 id="___sec24" class="anchor">Advanced topics </h1>
 
-<h2 id="___sec25">Symbolic computing via SymPy </h2>
+<h2 id="___sec25" class="anchor">Symbolic computing via SymPy </h2>
 
 <p>
 Python has a package SymPy that offers symbolic computing. Here is
@@ -149,7 +198,7 @@ polynomial, integrate it again, and find the roots:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sympy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">sp</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sympy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">sp</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> x, a <span style="color: #666666">=</span> sp<span style="color: #666666">.</span>symbols(<span style="color: #BA2121">&#39;x a&#39;</span>)        <span style="color: #408080; font-style: italic"># Define mathematical symbols</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> Q <span style="color: #666666">=</span> a<span style="color: #666666">*</span>x<span style="color: #666666">**2</span> <span style="color: #666666">-</span> <span style="color: #666666">1</span>                  <span style="color: #408080; font-style: italic"># Quadratic function</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> dQdx <span style="color: #666666">=</span> sp<span style="color: #666666">.</span>diff(Q, x)            <span style="color: #408080; font-style: italic"># Differentiate wrt x</span>
@@ -173,7 +222,7 @@ computing:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> Q <span style="color: #666666">=</span> sp<span style="color: #666666">.</span>lambdify([x, a], Q)      <span style="color: #408080; font-style: italic"># Turn Q into Py func.</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> Q <span style="color: #666666">=</span> sp<span style="color: #666666">.</span>lambdify([x, a], Q)      <span style="color: #408080; font-style: italic"># Turn Q into Py func.</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> Q(x<span style="color: #666666">=2</span>, a<span style="color: #666666">=3</span>)                     <span style="color: #408080; font-style: italic"># 3*2**2 - 1 = 11</span>
 <span style="color: #666666">11</span>
 </pre></div>
@@ -185,13 +234,13 @@ is the smallest root of \( Q=ax^2-1=0 \) as computed above:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> f <span style="color: #666666">=</span> sp<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>a<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>sp<span style="color: #666666">.</span>sin(roots[<span style="color: #666666">0</span>]<span style="color: #666666">*</span>x)
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> f <span style="color: #666666">=</span> sp<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>a<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>sp<span style="color: #666666">.</span>sin(roots[<span style="color: #666666">0</span>]<span style="color: #666666">*</span>x)
 <span style="color: #666666">&gt;&gt;&gt;</span> f<span style="color: #666666">.</span>series(x, <span style="color: #666666">0</span>, <span style="color: #666666">4</span>)
 <span style="color: #666666">-</span>x<span style="color: #666666">*</span>sqrt(<span style="color: #666666">1/</span>a) <span style="color: #666666">+</span> x<span style="color: #666666">**3*</span>(<span style="color: #666666">-</span>a<span style="color: #666666">**2*</span>sqrt(<span style="color: #666666">1/</span>a)<span style="color: #666666">/2</span> <span style="color: #666666">+</span> (<span style="color: #666666">1/</span>a)<span style="color: #666666">**</span>(<span style="color: #666666">3/2</span>)<span style="color: #666666">/6</span>) <span style="color: #666666">+</span>
 a<span style="color: #666666">*</span>x<span style="color: #666666">**2*</span>sqrt(<span style="color: #666666">1/</span>a) <span style="color: #666666">+</span> O(x<span style="color: #666666">**4</span>)
 </pre></div>
 
-<h2 id="___sec26">Testing </h2>
+<h2 id="___sec26" class="anchor">Testing </h2>
 
 <p>
 Software testing in Python is best done with a <em>unit test framework</em>
@@ -204,12 +253,12 @@ directory tree. Each <code>test_*</code> function is called a <em>test function<
 and must take no arguments and apply <code>assert</code> to a boolean expression
 that is <code>True</code> if the test passes and <code>False</code> if it fails.
 
-<h3 id="___sec27">Example on a test function </h3>
+<h3 id="___sec27" class="anchor">Example on a test function </h3>
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">halve</span>(x):
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">halve</span>(x):
     <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Return half of x.&quot;&quot;&quot;</span>
     <span style="color: #008000; font-weight: bold">return</span> x<span style="color: #666666">/2.0</span>
 
@@ -223,30 +272,29 @@ that is <code>True</code> if the test passes and <code>False</code> if it fails.
     <span style="color: #008000; font-weight: bold">assert</span> diff <span style="color: #666666">&lt;</span> tol
 </pre></div>
 
-<h3 id="___sec28">Test function for the numerical solver </h3>
+<h3 id="___sec28" class="anchor">Test function for the numerical solver </h3>
 
 <p>
-A frequently used technique to test differential equation solvers
-is to just specify a solution and fit a source term in the differential
-equation such that the specified solution solves the equation.
-The initial conditions must be set according to the specified
+A frequently used technique to test differential equation solvers is
+to just specify a solution and fit a source term in the differential
+equation such that the specified solution solves the equation.  The
+initial conditions must be set according to the specified
 solution. This technique is known as the <em>method of manufactured
 solutions</em>.
 
 <p>
-Here we shall specify a solution that is quadratic or linear
-in \( t \) because
-such lower-order polynomials will often be an exact solution of both
-the differential equation <em>and</em> the finite difference equations.
-This means that the polynomial should be reproduced to machine
-precision by our <code>solver</code> function.
+Here we shall specify a solution that is quadratic or linear in \( t \)
+because such lower-order polynomials will often be an exact solution
+of both the differential equation <em>and</em> the finite difference
+equations.  This means that the polynomial should be reproduced to
+machine precision by our <code>solver</code> function.
 
 <p>
 We can use SymPy to find an appropriate \( F(t) \) term in the
-differential equation such that a specified solution \( u(t)=I + Vt + qt^2 \)
-fits the equation and initial conditions. With quadratic damping,
-only a linear \( u \) will solve the discrete equation so in this case
-we choose \( u=I+Vt \).
+differential equation such that a specified solution \( u(t)=I + Vt +
+qt^2 \) fits the equation and initial conditions. With quadratic
+damping, only a linear \( u \) will solve the discrete equation so in this
+case we choose \( u=I+Vt \).
 
 <p>
 We embed the SymPy calculations and the numerical calculations
@@ -255,7 +303,7 @@ in a <em>test function</em>:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">lhs_eq</span>(t, m, b, s, u, damping<span style="color: #666666">=</span><span style="color: #BA2121">&#39;linear&#39;</span>):
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">lhs_eq</span>(t, m, b, s, u, damping<span style="color: #666666">=</span><span style="color: #BA2121">&#39;linear&#39;</span>):
     <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Return lhs of differential equation as sympy expression.&quot;&quot;&quot;</span>
     v <span style="color: #666666">=</span> sp<span style="color: #666666">.</span>diff(u, t)
     d <span style="color: #666666">=</span> b<span style="color: #666666">*</span>v <span style="color: #008000; font-weight: bold">if</span> damping <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;linear&#39;</span> <span style="color: #008000; font-weight: bold">else</span> b<span style="color: #666666">*</span>v<span style="color: #666666">*</span>sp<span style="color: #666666">.</span>Abs(v)
@@ -295,17 +343,17 @@ in a <em>test function</em>:
     <span style="color: #008000; font-weight: bold">assert</span> error <span style="color: #666666">&lt;</span> tol
 </pre></div>
 
-<h3 id="___sec29">Using a test framework </h3>
+<h3 id="___sec29" class="anchor">Using a test framework </h3>
 
 <p>
 We recommend to use <code>pytest</code> as test framework. Subdirectories <code>test*</code>
-are examined for files <code>test_*.py</code> that have test functions <code>test_*()</code>,
-and all such tests are executed by the following command:
+are examined for files <code>test_*.py</code> that have test functions
+<code>test_*()</code>, and all such tests are executed by the following command:
 
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; py.test -s
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal&gt; py.test -s
 </pre></div>
 <p>
 The <code>-s</code> option makes all output from the tests appear in the terminal
@@ -317,10 +365,10 @@ To run the tests in a specific file <code>tests/test_bumpy.py</code>, do
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; py.test -s tests/test_bumpy.py
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Terminal&gt; py.test -s tests/test_bumpy.py
 </pre></div>
 
-<h2 id="___sec30">Modules </h2>
+<h2 id="___sec30" class="anchor">Modules </h2>
 
 <p>
 Python software is frequently organized as modules, or in collection
@@ -339,7 +387,7 @@ end of the module:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">if</span> __name__ <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;__main__&#39;</span>:
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">if</span> __name__ <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;__main__&#39;</span>:
     <span style="color: #666666">&lt;</span>statements <span style="color: #AA22FF; font-weight: bold">in</span> the main program<span style="color: #666666">&gt;</span>
 </pre></div>
 <p>
@@ -348,7 +396,7 @@ The module file, say its name is <code>mymod.py</code>, now typically looks like
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">module1</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">module1</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">module2</span> <span style="color: #008000; font-weight: bold">import</span> func1, func2
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">myfunc1</span>(<span style="color: #666666">...</span>):
@@ -376,12 +424,6 @@ A <code>from mymod import *</code> will import the global functions
 the global names <code>module1</code>, <code>somefunc1</code>, and <code>somefunc2</code>.
 
 <p>
-<!-- ===== Installation via setup.py scripts ===== -->
-
-<p>
-<!-- Install the <code>solver</code> module using a very simple <code>setup.py</code> script. -->
-
-<p>
 <!-- Comment on usefulness even for those without phys/math background, -->
 <!-- but with extensive programming background: being a programmer -->
 <!-- means divining into domains with a lot of details, yet being able -->
@@ -391,24 +433,26 @@ the global names <code>module1</code>, <code>somefunc1</code>, and <code>somefun
 <!-- Python Scientific are also in 5620/literature, some of those above -->
 <!-- could be copied here -->
 
-<h1 id="app:motivation">Appendix: Quick motivation for programming with Python</h1>
+<h1 id="app:motivation" class="anchor">Appendix: Quick motivation for programming with Python</h1>
 
 <ul>
   <li> <a href="http://www.pyzo.org/whypython.html" target="_self">Why Python?</a></li>
   <li> <a href="http://fperez.org/py4science/warts.html" target="_self">Why Python for Scientific Computing?</a></li>
 </ul>
 
-<h1 id="app:resources">Appendix: Scientific Python resources</h1>
+<h1 id="app:resources" class="anchor">Appendix: Scientific Python resources</h1>
 
-<h3 id="___sec33">Full tutorials on scientific programming with Python </h3>
+<h3 id="___sec33" class="anchor">Full tutorials on scientific programming with Python </h3>
 
 <ul>
   <li> <a href="http://scipy-lectures.github.com/" target="_self">Python Scientific Lecture Notes</a> (from EuroSciPy tutorials, based on <a href="http://web.phys.ntnu.no/~ingves/Teaching/TFY4240/Assignments/PythonScientific.pdf" target="_self">Python Scientific</a>)</li>
+  <li> <a href="https://github.com/numerical-mooc/numerical-mooc" target="_self">Practical Numerical Methods with Python</a></li>
   <li> <a href="https://github.com/jrjohansson/scientific-python-lectures" target="_self">Scientific Python Lectures as IPython notebooks</a></li>
   <li> <a href="https://github.com/stefanv/teaching" target="_self">Stefan van der Walt's lectures</a></li>
+  <li> "Finite Difference Computing with Exponential Decay Models": " <a href="http://www.springer.com/gp/book/9783319294384" target="_self"><tt>http://www.springer.com/gp/book/9783319294384</tt></a>" (open access)</li>
 </ul>
 
-<h3 id="___sec34">NumPy resources </h3>
+<h3 id="___sec34" class="anchor">NumPy resources </h3>
 
 <ul>
   <li> <a href="http://www.scipy.org/Tentative_NumPy_Tutorial" target="_self">NumPy Tutorial</a></li>
@@ -422,7 +466,7 @@ the global names <code>module1</code>, <code>somefunc1</code>, and <code>somefun
   <li> <a href="http://mathesaurus.sf.net" target="_self">NumPy for Matlab/R/IDL Users</a></li>
 </ul>
 
-<h3 id="___sec35">Useful resources </h3>
+<h3 id="___sec35" class="anchor">Useful resources </h3>
 
 <ul>
   <li> <a href="http://www.astropython.org/" target="_self">AstroPython</a></li>
@@ -436,7 +480,7 @@ the global names <code>module1</code>, <code>somefunc1</code>, and <code>somefun
 <!-- and animation - check it out --></li>
 </ul>
 
-<h3 id="___sec36">Some relevant Python books </h3>
+<h3 id="___sec36" class="anchor">Some relevant Python books </h3>
 
 <ul>
   <li> <a href="http://www.greenteapress.com/thinkpython/" target="_self">Think Python</a></li>
@@ -446,10 +490,12 @@ the global names <code>module1</code>, <code>somefunc1</code>, and <code>somefun
   <li> <a href="http://femhub.com/textbook-python/python_en.pdf/" target="_self">Introduction to Python Programming</a> (for scientists)</li>
   <li> <a href="http://goo.gl/SWEQlz" target="_self">A Primer on Scientific Programming with Python</a>
     (<a href="http://hplgit.github.io/scipro-primer/slides/index.html" target="_self">slides</a> are also available)</li>
+  <li> "Finite Difference Computing with Exponential Decay Models": " <a href="http://www.springer.com/gp/book/9783319294384" target="_self"><tt>http://www.springer.com/gp/book/9783319294384</tt></a>" (open access)</li>
+  <li> <a href="http://www.springer.com/gp/book/9783319324272" target="_self">Programming for Computations</a> (open access)</li>
   <li> <a href="http://goo.gl/q8tM7D" target="_self">Python Scripting for Computational Science</a></li>
 </ul>
 
-<h3 id="___sec37">Course material on Python programming in general </h3>
+<h3 id="___sec37" class="anchor">Course material on Python programming in general </h3>
 
 <ul>
   <li> <a href="http://docs.python.org/2/tutorial/" target="_self">The Official Python Tutorial</a></li>

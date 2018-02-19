@@ -541,7 +541,7 @@ Note: `b` has still the values from the previous example
  * The last  $k$ elements are not used of the $-k$ sub-diagonal
 
 !split
-===== Example on constructing a tridiagonal matrix =====
+===== Example on constructing a tridiagonal matrix using spdiags =====
 
 !bc pyshell
 >>> import numpy as np
@@ -559,6 +559,40 @@ diagonals[2,:] = np.linspace(1, N, N)
  [ 0.  0. -3. -2.  5.  0.]
  [ 0.  0.  0. -4. -2.  6.]
  [ 0.  0.  0.  0. -5. -2.]]
+!ec
+
+!split
+===== Example on constructing a tridiagonal matrix using diags =====
+An alternative function that may be used to construct sparse matrices is the `diags` function. It differs from `spdiags` 
+in the way it handles of diagonals.
+
+ * All diagonals need to be given with their correct lengths (i.e. super- and sub-diagonals are shorter than the main diagonal)
+ * It also supports scalar broadcasting
+ 
+Here is how to construct the same matrix as in the previous example:
+!bc pyshell
+>>> diagonals = [-np.linspace(1, N, N)[0:-1], -2*np.ones(N), np.linspace(1, N, N)[1:]]   # 3 diagonals
+>>> A = scipy.sparse.diags(diagonals, [-1,0,1], format='csc')
+>>> A.toarray()    # look at corresponding dense matrix
+[[-2.  2.  0.  0.  0.  0.]
+ [-1. -2.  3.  0.  0.  0.]
+ [ 0. -2. -2.  4.  0.  0.]
+ [ 0.  0. -3. -2.  5.  0.]
+ [ 0.  0.  0. -4. -2.  6.]
+ [ 0.  0.  0.  0. -5. -2.]]
+!ec
+
+Here's an example using scalar broadcasting (need to specify shape):
+
+!bc pyshell
+>>> B = scipy.sparse.diags([1, 2, 3], [-2, 0, 1], shape=(6, 6), format='csc')
+>>> B.toarray()    # look at corresponding dense matrix
+[[ 2.  3.  0.  0.  0.  0.]
+ [ 0.  2.  3.  0.  0.  0.]
+ [ 1.  0.  2.  3.  0.  0.]
+ [ 0.  1.  0.  2.  3.  0.]
+ [ 0.  0.  1.  0.  2.  3.]
+ [ 0.  0.  0.  1.  0.  2.]]
 !ec
 
 !split

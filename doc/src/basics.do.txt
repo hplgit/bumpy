@@ -534,11 +534,16 @@ but the downside is that an array has (in practice) a fixed length and
 all elements must be of the same type. This is usually no important
 restriction in scientific computations.
 
-To use arrays, you must import the `numpy` module:
+Much of Python's functionality are coded in *modules*. To use such
+functionality, one must *import* the relevant modules. Arrays, for
+example, are available in the `numpy` module, which must be imported.
+Functions or variables in the module must be prefixed by `numpy`.
+This will be demonstrated below.
+Here is an example involving basic operations with arrays:
 
 !bc pyshell
->>> import numpy
 >>> L = [1, 4, 10.0]    # List of numbers
+>>> import numpy
 >>> a = numpy.array(L)  # Make corresponding array
 >>> print a
 [  1.   4.  10.]

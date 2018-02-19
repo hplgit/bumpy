@@ -1,0 +1,398 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Exercises</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
+    <link rel="top" title="A very basic introduction to scientific Python programming" href="index.html" />
+    <link rel="prev" title="Classes" href="._basics004.html" />
+ 
+  
+       <style type="text/css">
+         div.admonition {
+           background-color: whiteSmoke;
+           border: 1px solid #bababa;
+         }
+       </style>
+      </head>
+    
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="._basics004.html" title="Classes"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">A very basic introduction to scientific Python programming</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="exercises">
+<span id="basics-exer"></span><h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="exercise-1-program-a-formula">
+<span id="basics-exer-formula1"></span><h2>Exercise 1: Program a formula<a class="headerlink" href="#exercise-1-program-a-formula" title="Permalink to this headline">¶</a></h2>
+<p><strong>a)</strong>
+Make a simplest possible
+Python program that calculates and prints the value of the
+formula</p>
+<div class="math">
+\[y = 6x^2 + 3x + 2,
+for $x=2$.\]</div>
+<p><strong>Solution.</strong>
+The complete program reads</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">6</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="k">print</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p><strong>b)</strong>
+Make a Python function that takes <span class="math">\(x\)</span> as argument and returns <span class="math">\(y\)</span>.
+Call the function for <span class="math">\(x=2\)</span> and print the answer.</p>
+<p><strong>Solution.</strong>
+Code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">6</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">2</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise-2-combine-text-and-numbers-in-output">
+<span id="basics-exer-printf1"></span><h2>Exercise 2: Combine text and numbers in output<a class="headerlink" href="#exercise-2-combine-text-and-numbers-in-output" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math">\(y=x^2\)</span>. Make a program that writes the text</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>y(2.550)=6.502
+</pre></div>
+</div>
+<p>if <span class="math">\(x=2.55\)</span>. The values of <span class="math">\(x\)</span> and <span class="math">\(y\)</span> should be written with three
+decimals. Run the program for <span class="math">\(x=\pi\)</span> too (the value if <span class="math">\(\pi\)</span> is available
+as the variable <code class="docutils literal"><span class="pre">pi</span></code> in the <code class="docutils literal"><span class="pre">math</span></code> module).</p>
+<p><strong>Solution.</strong>
+Here is the code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">2.55</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+<span class="k">print</span> <span class="s1">&#39;y(</span><span class="si">%.3f</span><span class="s1">)=</span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Changing <span class="math">\(x=2.55\)</span> to <span class="math">\(x=\pi\)</span>,</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">pi</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+<span class="k">print</span> <span class="s1">&#39;y(</span><span class="si">%.3f</span><span class="s1">)=</span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>gives the output <code class="docutils literal"><span class="pre">y(3.142)=9.870</span></code>.</p>
+</div>
+<div class="section" id="exercise-3-program-a-while-loop">
+<span id="basics-exer-while1"></span><h2>Exercise 3: Program a while loop<a class="headerlink" href="#exercise-3-program-a-while-loop" title="Permalink to this headline">¶</a></h2>
+<p>Define a sequence of numbers,</p>
+<div class="math">
+\[x_n = n^2 + 1,\]</div>
+<p>for integers <span class="math">\(n=0,1,2,\ldots,N\)</span>.
+Write a program that prints out <span class="math">\(x_n\)</span> for <span class="math">\(n=0,1,\ldots,20\)</span> using
+a while loop.</p>
+<p><strong>Solution.</strong>
+Complete program:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">:</span>
+    <span class="n">x_n</span> <span class="o">=</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">print</span> <span class="s1">&#39;x</span><span class="si">%d</span><span class="s1">=</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">x_n</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise-4-create-a-list-with-a-while-loop">
+<span id="basics-exer-while2"></span><h2>Exercise 4: Create a list with a while loop<a class="headerlink" href="#exercise-4-create-a-list-with-a-while-loop" title="Permalink to this headline">¶</a></h2>
+<p>Store all the <span class="math">\(x_n\)</span> values computed in <a class="reference internal" href="#basics-exer-while1"><span class="std std-ref">Exercise 3: Program a while loop</span></a>
+in a list (using a while loop). Print the entire list (as one object).</p>
+<p><strong>Solution.</strong>
+Code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># the x_n values</span>
+<span class="k">while</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">:</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">print</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise-5-program-a-for-loop">
+<span id="basics-exer-for1"></span><h2>Exercise 5: Program a for loop<a class="headerlink" href="#exercise-5-program-a-for-loop" title="Permalink to this headline">¶</a></h2>
+<p>Do <a class="reference internal" href="#basics-exer-while2"><span class="std std-ref">Exercise 4: Create a list with a while loop</span></a>, but use a for loop.</p>
+<p><strong>Solution.</strong>
+Code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">21</span><span class="p">):</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">x</span>
+</pre></div>
+</div>
+<p>One can also make the code shorter using a list comprehension:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">21</span><span class="p">)]</span>
+<span class="k">print</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise-6-write-a-python-function">
+<span id="basics-exer-func1"></span><h2>Exercise 6: Write a Python function<a class="headerlink" href="#exercise-6-write-a-python-function" title="Permalink to this headline">¶</a></h2>
+<p>Write a function <code class="docutils literal"><span class="pre">x(n)</span></code> for computing an element in the
+sequence <span class="math">\(x_n=n^2+1\)</span>. Call the function for <span class="math">\(n=4\)</span> and write
+out the result.</p>
+<p><strong>Solution.</strong>
+Code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="k">print</span> <span class="n">x</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise-7-return-three-values-from-a-python-function">
+<span id="basics-exer-func3"></span><h2>Exercise 7: Return three values from a Python function<a class="headerlink" href="#exercise-7-return-three-values-from-a-python-function" title="Permalink to this headline">¶</a></h2>
+<p>Write a Python function that evaluates the mathematical functions
+<span class="math">\(f(x)=\cos(2x)\)</span>, <span class="math">\(f'(x)=-2\sin(2x)\)</span>, and <span class="math">\(f''(x)=-4\cos(2x)\)</span>. Return
+these three values. Write out the results of these values for <span class="math">\(x=\pi\)</span>.</p>
+<p><strong>Solution.</strong>
+Code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span>
+
+<span class="k">def</span> <span class="nf">deriv2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">),</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">),</span> <span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">f</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">d2f</span> <span class="o">=</span> <span class="n">deriv2</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">pi</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">f</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">d2f</span>
+</pre></div>
+</div>
+<p>Running the program gives</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Terminal&gt; python deriv2.py
+1.0 4.89858719659e-16 -4.0
+</pre></div>
+</div>
+<p>as expected.</p>
+</div>
+<div class="section" id="exercise-8-plot-a-function">
+<span id="basics-exer-plot1"></span><h2>Exercise 8: Plot a function<a class="headerlink" href="#exercise-8-plot-a-function" title="Permalink to this headline">¶</a></h2>
+<p>Make a program that plots the function <span class="math">\(g(y)=e^{-y}\sin (4y)\)</span> for
+<span class="math">\(y\in [0,4]\)</span> using a red solid line.
+Use 500 intervals for evaluating points in <span class="math">\([0,4]\)</span>.
+Store all coordinates and values in arrays. Set labels on the
+axis and use a title &#8220;Damped sine wave&#8221;.</p>
+<p><strong>Solution.</strong>
+Appropriate code is</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">exp</span><span class="p">,</span> <span class="n">sin</span>  <span class="c1"># avoid np. prefix in g(y) formula</span>
+
+<span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">501</span><span class="p">)</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">g</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$y$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$g(y)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Damped sine wave&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;tmp.png&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;tmp.pdf&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/plot_exer1.png"><img alt="_images/plot_exer1.png" src="_images/plot_exer1.png" style="width: 500px;" /></a>
+</div>
+</div>
+<div class="section" id="exercise-9-plot-two-functions">
+<span id="basics-exer-plot2"></span><h2>Exercise 9: Plot two functions<a class="headerlink" href="#exercise-9-plot-two-functions" title="Permalink to this headline">¶</a></h2>
+<p>As <a class="reference internal" href="#basics-exer-plot2"><span class="std std-ref">Exercise 9: Plot two functions</span></a>, but add a black dashed
+curve for the function
+<span class="math">\(h(y)=e^{-\frac{3}{2}y}\sin (4y)\)</span>. Include a legend for each
+curve (with names <code class="docutils literal"><span class="pre">g</span></code> and <code class="docutils literal"><span class="pre">h</span></code>).</p>
+<p><strong>Solution.</strong>
+Here is the program:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">exp</span><span class="p">,</span> <span class="n">sin</span>  <span class="c1"># avoid np. prefix in g(y) and h(y)</span>
+
+<span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">y</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="mf">3.</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">501</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">g</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$y$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$g(y)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Damped sine wave&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;tmp.png&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;tmp.pdf&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/plot_exer2.png"><img alt="_images/plot_exer2.png" src="_images/plot_exer2.png" style="width: 500px;" /></a>
+</div>
+</div>
+<div class="section" id="exercise-10-measure-the-efficiency-of-vectorization">
+<span id="basics-exer-timeit"></span><h2>Exercise 10: Measure the efficiency of vectorization<a class="headerlink" href="#exercise-10-measure-the-efficiency-of-vectorization" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://ipython.org/">IPython</a> an enhanced interactive shell
+for doing computing with Python. IPython has some user-friendly functionality
+for quick testing of the efficiency of different Python constructions.
+Start IPython by writing <code class="docutils literal"><span class="pre">ipython</span></code> in a terminal window.
+The interactive session below demonstrates how we can use the
+timer feature <code class="docutils literal"><span class="pre">%timeit</span></code> to measure the CPU time required by
+computing <span class="math">\(\sin (x)\)</span>, where <span class="math">\(x\)</span> is an array of 1M elements, using
+scalar computing with a loop (function <code class="docutils literal"><span class="pre">sin_func</span></code>) and vectorized
+computing using the <code class="docutils literal"><span class="pre">sin</span></code> function from <code class="docutils literal"><span class="pre">numpy</span></code>.</p>
+<div class="highlight-ipy"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="gp">In [2]: </span><span class="n">n</span> <span class="o">=</span> <span class="mi">1000000</span>
+
+<span class="gp">In [3]: </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="gp">In [4]: </span><span class="k">def</span> <span class="nf">sin_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">   ...: </span>    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># result</span>
+<span class="gp">   ...: </span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+<span class="gp">   ...: </span>        <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="gp">   ...: </span>    <span class="k">return</span> <span class="n">r</span>
+<span class="gp">   ...:</span>
+
+<span class="gp">In [5]: </span><span class="o">%</span><span class="k">timeit</span> y = sin_func(x)
+<span class="go">1 loops, best of 3: 2.68 s per loop</span>
+
+<span class="gp">In [6]: </span><span class="o">%</span><span class="k">timeit</span> y = np.sin(x)
+<span class="go">10 loops, best of 3: 40.1 ms per loop</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal"><span class="pre">%timeit</span></code> ran our function once, but the vectorized function
+10 times. The most relevant CPU times measured are listed, and we
+realize that
+the vectorized code is <span class="math">\(2.68/(40.1/1000)\approx 67\)</span> times faster
+than the loop-based scalar code.</p>
+<p>Use the recipe above to investigate the speed up of the
+vectorized computation of the <span class="math">\(s(t)\)</span> function in
+the section <a class="reference internal" href="._basics002.html#basics-func"><span class="std std-ref">Functions</span></a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <center>
+            <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
+              <img class="logo" src="_static/cbc_logo.png" alt="Logo"/>
+            </a></p>
+            </center>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Exercises</a><ul>
+<li><a class="reference internal" href="#exercise-1-program-a-formula">Exercise 1: Program a formula</a></li>
+<li><a class="reference internal" href="#exercise-2-combine-text-and-numbers-in-output">Exercise 2: Combine text and numbers in output</a></li>
+<li><a class="reference internal" href="#exercise-3-program-a-while-loop">Exercise 3: Program a while loop</a></li>
+<li><a class="reference internal" href="#exercise-4-create-a-list-with-a-while-loop">Exercise 4: Create a list with a while loop</a></li>
+<li><a class="reference internal" href="#exercise-5-program-a-for-loop">Exercise 5: Program a for loop</a></li>
+<li><a class="reference internal" href="#exercise-6-write-a-python-function">Exercise 6: Write a Python function</a></li>
+<li><a class="reference internal" href="#exercise-7-return-three-values-from-a-python-function">Exercise 7: Return three values from a Python function</a></li>
+<li><a class="reference internal" href="#exercise-8-plot-a-function">Exercise 8: Plot a function</a></li>
+<li><a class="reference internal" href="#exercise-9-plot-two-functions">Exercise 9: Plot two functions</a></li>
+<li><a class="reference internal" href="#exercise-10-measure-the-efficiency-of-vectorization">Exercise 10: Measure the efficiency of vectorization</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="._basics004.html"
+                        title="previous chapter">Classes</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/._basics005.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="._basics004.html" title="Classes"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">A very basic introduction to scientific Python programming</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
+    <br />
+    <br />
+      &copy;H. P. Langtangen.
+  </div>
+</div>
+
+  </body>
+</html>

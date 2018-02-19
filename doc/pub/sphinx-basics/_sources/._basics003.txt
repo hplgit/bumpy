@@ -1,0 +1,137 @@
+.. !split
+
+.. _basics:files:
+
+Files
+=====
+
+This section outlines basic file handling in Python, including file
+utilities in the ``numpy`` package.
+
+File reading
+------------
+
+Suppose we create a file with typical input data to our little
+demo program for evaluating the formula :math:`s(t)=v_0t + \frac{1}{2}at^2`:
+
+.. code-block:: text
+
+    v0 = 2
+    a = 0.2
+    dt = 0.1
+    interval = [0, 2]
+
+We want to read the parameters in the file into Python variables and
+create a table with columns of :math:`t` and :math:`S(t)` for :math:`t\in [0,2]` with
+steps of :math:`\Delta t=0.1` (as specified by ``dt`` and ``interval`` in the file).
+
+The code for reading the lines in the file, interpreting them, and
+assigning values to variables is given next.
+
+.. code-block:: python
+
+    infile = open('.input.dat', 'r')
+    for line in infile:
+        # Typical line: variable = value
+        variable, value = line.split('=')
+        variable = variable.strip()  # remove leading/traling blanks
+        if variable == 'v0':
+            v0 = float(value)
+        elif variable == 'a':
+            a = float(value)
+        elif variable == 'dt':
+            dt = float(value)
+        elif variable == 'interval':
+            interval = eval(value)
+    infile.close()
+
+The name of the file is here ``.input.dat``, and it is opened with the
+parameter ``'r'`` for reading. The for loop ``for line in infile`` will
+read the lines from the file, one by one, and in the current line
+is available in the string ``line``. To split a line into words separated
+by a character '=', we use ``line.split('=')``, resulting in a list of
+the words. For example,
+
+.. code-block:: python
+
+    >>> line = 'v0 = 5.3'
+    >>> variable, value = line.split('=')
+    >>> variable
+    'v0 '
+    >>> value
+    ' 5.3'
+
+Note that there are blanks in the strings. Leading and trailing blanks
+can be removed by ``variable.strip()``. We do this before comparing
+the variable name with ``v0``, ``a``, etc.
+
+It is important to note that ``value`` (the text to the right of ``=`` on
+each line) is a string variable. We need to convert to a ``float`` object to
+get a variable that we can compute with.
+The assignment ``interval = eval(value)`` does some magic and deserve
+an explanation: ``eval(s)`` interprets the text in the string ``s`` as
+Python code. In the present example, ``value`` is ``[0, 2]`` and this
+is interpreted as Python code, i.e., as a list, and ``interval`` becomes
+a name for a list object with content ``[0, 2]``.
+
+A more modern Python way of opening files is
+
+.. code-block:: python
+
+    with open('.input.dat', 'r') as infile:
+        for line in infile:
+            ...
+
+Now it is not necessary to close the file as it will be automatically done
+after the ``with`` block.
+
+File writing
+------------
+
+Suppose we generate :math:`t` and :math:`s(t)` values in two lists, ``t_values`` and
+``s_values``, and want to write these as a nicely formatted table to file.
+The following code does the work:
+
+.. code-block:: python
+
+    outfile = open('table1.dat', 'w')
+    outfile.write('# t    s(t)\n')  # write table header
+    for t, s in zip(t_values, s_values):
+        outfile.write('%.2f  %.4f\n' % (t, s))
+
+Files intended for writing must be opened with a ``'w'`` parameter.
+The key statement is ``outfile.write(s)`` for writing a string to
+a file (recall that while ``print`` automatically adds a newline
+at the end of the string to be printed, ``outfile.write(s)`` does not
+append a newline so ``s`` must contain the newline).
+
+The ``numpy`` package contains a convenient function ``savetxt`` for saving
+tabular data. The data must be stored in a two-dimensional ``numpy`` array.
+The ``savetxt`` function enables control of the format of the numbers
+in each column (``fmt``) through the printf syntax, a header can be
+added (``header``) and the header lines begin with a comment character
+(``comment``). The code reads
+
+.. code-block:: python
+
+    import numpy as np
+    # Make two-dimensional array of [t, s(t)] values in each row
+    data = np.array([t_values, s_values]).transpose()
+    
+    # Write data array to file in table format
+    np.savetxt('table2.dat', data, fmt=['%.2f', '%.4f'],
+               header='t   s(t)', comments='# ')
+
+The tabular data in the file can be read back into a
+``numpy`` array by the ``loadtxt`` function:
+
+.. code-block:: python
+
+    data = np.loadtxt('table2.dat', comments='#')
+
+Lines beginning with the comment character are skipped in the reading.
+The resulting object ``data`` is a two-dimensional array: ``data[i,j]`` contains
+row number ``i`` and column number ``j`` in the table, i.e., ``data[i,0]``
+holds the :math:`t` value and ``data[i,1]`` the :math:`s(t)` value in the ``i``-th
+row.
+

@@ -1,0 +1,529 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Functions and branching</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
+    <link rel="top" title="A very basic introduction to scientific Python programming" href="index.html" />
+    <link rel="next" title="Files" href="._basics003.html" />
+    <link rel="prev" title="Variables, loops, lists, and arrays" href="._basics001.html" />
+ 
+  
+       <style type="text/css">
+         div.admonition {
+           background-color: whiteSmoke;
+           border: 1px solid #bababa;
+         }
+       </style>
+      </head>
+    
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="._basics003.html" title="Files"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="._basics001.html" title="Variables, loops, lists, and arrays"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">A very basic introduction to scientific Python programming</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="functions-and-branching">
+<span id="basics-func-branching"></span><h1>Functions and branching<a class="headerlink" href="#functions-and-branching" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="functions">
+<span id="basics-func"></span><h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<p id="index-0">Since <span class="math">\(s(t)\)</span> is a function in mathematics, it is convenient to have
+it as a function in Python too:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">s</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">v0</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>   <span class="c1"># Call the function</span>
+</pre></div>
+</div>
+<p>Note that</p>
+<blockquote>
+<div><ul class="simple">
+<li>functions start with the keyword <code class="docutils literal"><span class="pre">def</span></code></li>
+<li>statements belonging to the function must be indented</li>
+<li>function input is represented by arguments
+(separated by comma if more than one)</li>
+<li>function output is returned to the calling code</li>
+</ul>
+</div></blockquote>
+<p id="index-1">In this program, <code class="docutils literal"><span class="pre">v0</span></code> and <code class="docutils literal"><span class="pre">a</span></code> are <em>global variables</em>, which must be
+defined before calling the <code class="docutils literal"><span class="pre">s(t)</span></code> function, otherwise <code class="docutils literal"><span class="pre">v0</span></code> and <code class="docutils literal"><span class="pre">a</span></code>
+becomes undefined variables in the expression inside the function.</p>
+<p>Instead of having <code class="docutils literal"><span class="pre">v0</span></code> and <code class="docutils literal"><span class="pre">a</span></code> as global variables, we may let them be
+function arguments:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">s</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">v0</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">value</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>   <span class="c1"># Call the function</span>
+
+<span class="c1"># More readable call</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">v0</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<span class="target" id="index-2"></span><p id="index-3">Function arguments may also be declared to have a default value,
+allowing us to drop the argument in the call if the default value
+is appropriate. Such arguments are called <em>keyword arguments</em> or
+<em>default arguments</em>. Here is an example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">s</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">v0</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">value</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>         <span class="c1"># specify new v0 and a</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>                 <span class="c1"># rely on v0=1 and a=1</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>            <span class="c1"># rely on v0=1</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">v0</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>           <span class="c1"># rely on a=1</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">v0</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>    <span class="c1"># specify everything</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">v0</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>    <span class="c1"># any sequence allowed</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>Arguments without the argument name are called <em>positional arguments</em>.</li>
+<li>Positional arguments must always be listed before the keyword arguments
+in the function and in any call.</li>
+<li>The sequence of the keyword arguments can be arbitrary.</li>
+<li>If argument names are used for all arguments (as in the last line above)
+the sequence of the arguments is not important.</li>
+</ul>
+</div>
+<span class="target" id="index-4"></span><div class="admonition-vectorized-functions admonition" id="index-5">
+<p class="first admonition-title">Vectorized functions</p>
+<p>Applying the function <code class="docutils literal"><span class="pre">s(t,</span> <span class="pre">v0,</span> <span class="pre">a)</span></code> to an array <code class="docutils literal"><span class="pre">t</span></code> can be done
+in two ways:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Scalar code: work with one element at a time</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)):</span>
+    <span class="n">s_values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="n">t_values</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">v0</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+
+<span class="c1"># Vectorized code: apply s to the entire array</span>
+<span class="n">s_values</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="n">t_values</span><span class="p">,</span> <span class="n">v0</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For the last line to work, the function <code class="docutils literal"><span class="pre">s</span></code> must contain statements
+that work correctly when <code class="docutils literal"><span class="pre">t</span></code> is an array argument.</p>
+<p class="last">The advantage of vectorized code is that we avoid a loop in Python.
+Instead, we carry out mathematical operations on entire arrays, e.g.,
+<code class="docutils literal"><span class="pre">v0*t</span></code> and <code class="docutils literal"><span class="pre">a*t**2</span></code>. Technically, such (binary) operations are
+executed as loops in very fast (compiled) C code.</p>
+</div>
+<p id="index-6">A function can return more than one value, say <span class="math">\(s(t)\)</span> and the
+velocity <span class="math">\(s'(t)=v_0 + at\)</span>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">movement</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">v0</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">v0</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">t</span>
+    <span class="k">return</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span>
+
+<span class="n">s_value</span><span class="p">,</span> <span class="n">v_value</span> <span class="o">=</span> <span class="n">movement</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">v0</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When <span class="math">\(n\)</span> values are returned, we list <span class="math">\(n\)</span> variables on the left-hand
+side in the call.</p>
+<div class="admonition-python-functions-return-only-one-object admonition">
+<p class="first admonition-title">Python functions return only one object</p>
+<p>Even when we return several values, as in <code class="docutils literal"><span class="pre">return</span> <span class="pre">s,</span> <span class="pre">v</span></code>, actually only
+one object is returned. The <code class="docutils literal"><span class="pre">s</span></code> and <code class="docutils literal"><span class="pre">v</span></code> values are packed together
+in a <em>tuple</em> object (which is very similar to a list).</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">3</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>     <span class="c1"># Store all three return values in one object r</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">r</span>
+<span class="go">(4, 5, 6)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>      <span class="c1"># What type of object is r?</span>
+<span class="go">&lt;type &#39;tuple&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+<p class="last">Tuples are constant lists, so you can index them as lists, but you cannot
+change the contents (<code class="docutils literal"><span class="pre">append</span></code> or <code class="docutils literal"><span class="pre">del</span></code> is illegal).</p>
+</div>
+</div>
+<div class="section" id="a-more-general-mathematical-formula">
+<span id="basics-formula-piecewise"></span><h2>A more general mathematical formula<a class="headerlink" href="#a-more-general-mathematical-formula" title="Permalink to this headline">¶</a></h2>
+<p>The formula <a class="reference internal" href="._basics001.html#eq-basics-seq"><span class="std std-ref">(1)</span></a> arises from the basic differential
+equations in kinematics:</p>
+<div class="math" id="eq-basics-vdef">
+\[\tag{2}
+v = \frac{ds}{dt},\quad s(0)=s_0,\]</div>
+<div class="math" id="eq-basics-adef">
+\[\tag{3}
+a = \frac{dv}{dt},\quad v(0)=v_0\thinspace .\]</div>
+<p>Given any acceleration <span class="math">\(a(t)\)</span>, we can solve for <span class="math">\(s(t)\)</span> through integration.
+First, we integrate to find <span class="math">\(v(t)\)</span>:</p>
+<div class="math">
+\[\int_0^t a(t)dt = \int_0^t \frac{dv}{dt} dt,\]</div>
+<p>which gives</p>
+<div class="math">
+\[v(t) = v_0 + \int_0^t a(t)dt\thinspace .\]</div>
+<p>Then we integrate again over <span class="math">\([0,t]\)</span> to find <span class="math">\(s(t)\)</span>:</p>
+<div class="math" id="eq-basics-s-at">
+\[\tag{4}
+s(t) = s_0 + v_0t + \int_0^t\left( \int_0^t a(t)dt \right) dt\thinspace .\]</div>
+<p>Suppose we have some constant acceleration <span class="math">\(a_0\)</span> in <span class="math">\([0,t_1]\)</span> and no
+acceleration thereafter. We find</p>
+<div class="math" id="eq-basics-seq2">
+\[\begin{split}\tag{5}
+s(t) = \left\lbrace\begin{array}{ll}
+    s_0 + v_0 t + \frac{1}{2}a_0 t^2,&amp; t\leq t_1\\
+    s_0 + v_0t_1 + \frac{1}{2}a_0 t_1^2 + a_0t_1(t-t_1),&amp; t&gt; t_1
+    \end{array}\right.\end{split}\]</div>
+<p>To implement a function like <a class="reference internal" href="#eq-basics-seq2"><span class="std std-ref">(5)</span></a>, we need to
+branch into one type of code (formula) if <span class="math">\(t\leq t_1\)</span> and another
+type of code (formula) if <span class="math">\(t&gt;t_1\)</span>. This is called <em>branching</em> and
+the <em>if test</em> is the primary construction to use.</p>
+</div>
+<div class="section" id="if-tests">
+<span id="basics-if"></span><h2>If tests<a class="headerlink" href="#if-tests" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="index-7"></span><span class="target" id="index-8"></span><p id="index-9">An if test has the structure</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statements</span> <span class="n">when</span> <span class="n">condition</span> <span class="ow">is</span> <span class="bp">True</span><span class="o">&gt;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statements</span> <span class="n">when</span> <span class="n">condition</span> <span class="ow">is</span> <span class="bp">False</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal"><span class="pre">condition</span></code> is a boolean expression that evaluates to <code class="docutils literal"><span class="pre">True</span></code> or
+<code class="docutils literal"><span class="pre">False</span></code>. For the piecewisely defined function <a class="reference internal" href="#eq-basics-seq2"><span class="std std-ref">(5)</span></a>
+we would use an if test in the implementation:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">t</span> <span class="o">&lt;=</span> <span class="n">t1</span><span class="p">:</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a0</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a0</span><span class="o">*</span><span class="n">t1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">a0</span><span class="o">*</span><span class="n">t1</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">t1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">else</span></code> part can be omitted when not needed. Several branches are
+also possible:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition1</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statements</span> <span class="n">when</span> <span class="n">condition1</span> <span class="ow">is</span> <span class="bp">True</span><span class="o">&gt;</span>
+<span class="k">elif</span> <span class="n">condition2</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statements</span> <span class="n">when</span> <span class="n">condition1</span> <span class="ow">is</span> <span class="bp">False</span> <span class="ow">and</span> <span class="n">condition2</span> <span class="ow">is</span> <span class="bp">True</span><span class="o">&gt;</span>
+<span class="k">elif</span> <span class="n">condition3</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statements</span> <span class="n">when</span> <span class="n">condition1</span> <span class="ow">and</span> <span class="n">conditon</span> <span class="mi">2</span> <span class="n">are</span> <span class="bp">False</span>
+     <span class="ow">and</span> <span class="n">condition3</span> <span class="ow">is</span> <span class="bp">True</span><span class="o">&gt;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statements</span> <span class="n">when</span> <span class="n">condition1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span> <span class="nb">all</span> <span class="n">are</span> <span class="bp">False</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>A Python function implementing the mathematical function <a class="reference internal" href="#eq-basics-seq2"><span class="std std-ref">(5)</span></a>
+reads</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">s_func</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">v0</span><span class="p">,</span> <span class="n">a0</span><span class="p">,</span> <span class="n">t1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;=</span> <span class="n">t1</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a0</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a0</span><span class="o">*</span><span class="n">t1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">a0</span><span class="o">*</span><span class="n">t1</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">t1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">s</span>
+</pre></div>
+</div>
+<p>To plot this <span class="math">\(s(t)\)</span>, we need to compute points on the curve.
+Trying to call <code class="docutils literal"><span class="pre">s_func</span></code> with an array <code class="docutils literal"><span class="pre">t</span></code> as argument will not
+work because of the if test. In general, functions with if tests
+will not automatically work with arrays because a test
+like <code class="docutils literal"><span class="pre">if</span> <span class="pre">t</span> <span class="pre">&lt;=</span> <span class="pre">t1</span></code> evaluates to an if applied to a boolean
+array (<code class="docutils literal"><span class="pre">t</span> <span class="pre">&lt;=</span> <span class="pre">t1</span></code> becomes a boolean array, not just a boolean).</p>
+<p>One solution is to compute the function values one by one in a loop
+such that the <code class="docutils literal"><span class="pre">s</span></code> function is always called with a scalar value for <code class="docutils literal"><span class="pre">t</span></code>.
+Appropriate code is</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">201</span>  <span class="c1"># No of t values for plotting</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="mf">1.5</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)):</span>
+    <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_func</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">v0</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">a0</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">t1</span><span class="o">=</span><span class="n">t1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Relevant statements for plotting are now</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">t1</span><span class="p">,</span> <span class="n">t1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">s_func</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t1</span><span class="p">,</span> <span class="n">v0</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">a0</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">t1</span><span class="o">=</span><span class="n">t1</span><span class="p">)],</span> <span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;myplot.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition-vectorization-of-functions-with-if-tests admonition" id="index-10">
+<p class="first admonition-title">Vectorization of functions with if tests</p>
+<p>To vectorize the computation of the array of <span class="math">\(s(t)\)</span> values, i.e.,
+avoid a loop where <code class="docutils literal"><span class="pre">s_func</span></code> is called for each <code class="docutils literal"><span class="pre">t[i]</span></code> element,
+we must completely rewrite the if test. There are two methods:
+the <code class="docutils literal"><span class="pre">numpy.where</span></code> function and array indexing.</p>
+<p>A vectorized if-else test can be coded as</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal"><span class="pre">condition</span></code> is an array of boolean values, and
+<code class="docutils literal"><span class="pre">s[i]</span> <span class="pre">=</span> <span class="pre">s1[i]</span></code> if <code class="docutils literal"><span class="pre">condition[i]</span></code> is <code class="docutils literal"><span class="pre">True</span></code>, and otherwise <code class="docutils literal"><span class="pre">s[i]</span> <span class="pre">=</span> <span class="pre">s2[i]</span></code>.</p>
+<p>Our example then becomes</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">t</span> <span class="o">&lt;=</span> <span class="n">t1</span><span class="p">,</span>
+             <span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a0</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span>
+             <span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a0</span><span class="o">*</span><span class="n">t1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">a0</span><span class="o">*</span><span class="n">t1</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">t1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Note that <code class="docutils literal"><span class="pre">t</span> <span class="pre">&lt;=</span> <span class="pre">t1</span></code> with array <code class="docutils literal"><span class="pre">t</span></code> and scalar <code class="docutils literal"><span class="pre">t1</span></code> results in a boolean
+array <code class="docutils literal"><span class="pre">b</span></code> where <code class="docutils literal"><span class="pre">b[i]</span> <span class="pre">=</span> <span class="pre">t[i]</span> <span class="pre">&lt;=</span> <span class="pre">t1</span></code>.</p>
+<p>It is possible to index a subset of indices in an array <code class="docutils literal"><span class="pre">s</span></code> using
+a boolean array <code class="docutils literal"><span class="pre">b</span></code>: <code class="docutils literal"><span class="pre">s[b]</span></code>. This construction picks out all the
+elements <code class="docutils literal"><span class="pre">s[i]</span></code> where <code class="docutils literal"><span class="pre">b[i]</span></code> is <code class="docutils literal"><span class="pre">True</span></code>. On the right-hand side
+we can then assign some array expression <code class="docutils literal"><span class="pre">expr</span></code> of the same length
+as <code class="docutils literal"><span class="pre">s[b]</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">expr</span><span class="p">)[</span><span class="n">b</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Our example can utilize this technique with <code class="docutils literal"><span class="pre">b</span></code> as <code class="docutils literal"><span class="pre">t</span> <span class="pre">&lt;=</span> <span class="pre">t1</span></code> and <code class="docutils literal"><span class="pre">t</span> <span class="pre">&gt;</span> <span class="pre">t1</span></code>:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  <span class="c1"># Make s as zeros, same size &amp; type as t</span>
+<span class="n">s</span><span class="p">[</span><span class="n">t</span> <span class="o">&lt;=</span> <span class="n">t1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a0</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">)[</span><span class="n">t</span> <span class="o">&lt;=</span> <span class="n">t1</span><span class="p">]</span>
+<span class="n">s</span><span class="p">[</span><span class="n">t</span> <span class="o">&gt;</span> <span class="n">t1</span><span class="p">]</span>  <span class="o">=</span> <span class="p">(</span><span class="n">v0</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a0</span><span class="o">*</span><span class="n">t1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">a0</span><span class="o">*</span><span class="n">t1</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">t1</span><span class="p">))[</span><span class="n">t</span> <span class="o">&gt;</span> <span class="n">t1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="array-view-versus-array-copying">
+<h2>Array view versus array copying<a class="headerlink" href="#array-view-versus-array-copying" title="Permalink to this headline">¶</a></h2>
+<p>Arrays are usually large and most array libraries have carefully designed
+functionality for avoiding unnecessary copying of large of amounts of data.
+If you do a simple assignment,</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">b</span></code> becomes a just <em>view</em> of <code class="docutils literal"><span class="pre">a</span></code>: the variables <code class="docutils literal"><span class="pre">b</span></code> and <code class="docutils literal"><span class="pre">a</span></code> point
+to the same data. In other languages one may say that <code class="docutils literal"><span class="pre">b</span></code> is a
+pointer or reference to the array. This means that changing <code class="docutils literal"><span class="pre">a</span></code> changes
+<code class="docutils literal"><span class="pre">b</span></code> and vice versa:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">,</span>  <span class="mf">5.</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>                       <span class="c1"># changes a[0] to 5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="n">array</span><span class="p">([</span> <span class="mf">5.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">,</span>  <span class="mf">5.</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span>                       <span class="c1"># changes b[1] to 9</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
+<span class="n">array</span><span class="p">([</span> <span class="mf">5.</span><span class="p">,</span>  <span class="mf">9.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">,</span>  <span class="mf">5.</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Similarly, <code class="docutils literal"><span class="pre">b[1:-1]</span></code> gives a view to a subset of <code class="docutils literal"><span class="pre">a</span></code> and no copy of data.
+If we want to change <code class="docutils literal"><span class="pre">b</span></code> without affecting <code class="docutils literal"><span class="pre">a</span></code>, a copy of the array
+is required:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>       <span class="c1"># copy all elements to new array c</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span>           <span class="c1"># a is not changed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([ 1.,  2.,  3.,  4.,  5.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
+<span class="go">array([ 6.,  2.,  3.,  4.,  5.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<span class="go">array([ 5.,  2.,  3.,  4.,  5.])</span>
+</pre></div>
+</div>
+<p>Note that <code class="docutils literal"><span class="pre">b</span></code> remains unchanged by the change in <code class="docutils literal"><span class="pre">c</span></code> since the <code class="docutils literal"><span class="pre">b</span></code> and <code class="docutils literal"><span class="pre">c</span></code>
+variables now refer to different data. Copying of the elements of a sub-array
+is also done by the <code class="docutils literal"><span class="pre">copy()</span></code> method: <code class="docutils literal"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">a[1:-1].copy()</span></code>.</p>
+<div class="admonition-understand-the-difference-between-view-and-copy admonition">
+<p class="first admonition-title">Understand the difference between view and copy</p>
+<p>Mathematical errors and/or inefficient code may easily arise from
+confusion between array view and array copying. Make sure you
+understand the implication of any variable assignment to arrays!</p>
+<div class="last highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>            <span class="c1"># view: changes in a are reflected in b</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>     <span class="c1"># copy: changes in a are not reflected in b</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="linear-systems">
+<h2>Linear systems<a class="headerlink" href="#linear-systems" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="index-11"></span><span class="target" id="index-12"></span><p id="index-13">Solving linear systems of the form <span class="math">\(Ax=b\)</span> with a matrix <span class="math">\(A\)</span> and vectors
+<span class="math">\(x\)</span> and <span class="math">\(b\)</span> is a frequently encountered task. A sample <span class="math">\(2\times 2\)</span> system
+can be coded as</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">4</span><span class="p">,</span>  <span class="mi">2</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Many scientific computing problems involves large matrices with special
+<em>sparse</em> structures. Significant memory and computing time can be
+saved by utilizing <em>sparse matrix</em> data structures and associated
+algorithms.
+Python has sparse matrix package <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/sparse.html">scipy.sparse</a> that can be used to construct
+various types of sparse matrices. The particular
+function <code class="docutils literal"><span class="pre">scipy.sparse.spdiags</span></code> can construct a sparse matrix from
+a few vectors representing the diagonals in the matrix
+(all the diagonals must have the same length as the dimension of their
+sparse matrix, consequently some elements of the diagonals are not used:
+the first <span class="math">\(k\)</span> elements are not used of the <span class="math">\(k\)</span> super-diagonal, and
+the last  <span class="math">\(k\)</span> elements are not used of the <span class="math">\(-k\)</span> sub-diagonal).
+Here is an example of constructing a <em>tridiagonal</em> matrix:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">N</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">diagonals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>   <span class="c1"># 3 diagonals</span>
+<span class="go">diagonals[0,:] = np.linspace(-1, -N, N)</span>
+<span class="go">diagonals[1,:] = -2</span>
+<span class="go">diagonals[2,:] = np.linspace(1, N, N)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scipy.sparse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">spdiags</span><span class="p">(</span><span class="n">diagonals</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s1">&#39;csc&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>    <span class="c1"># look at corresponding dense matrix</span>
+<span class="go">[[-2.  2.  0.  0.  0.  0.]</span>
+<span class="go"> [-1. -2.  3.  0.  0.  0.]</span>
+<span class="go"> [ 0. -2. -2.  4.  0.  0.]</span>
+<span class="go"> [ 0.  0. -3. -2.  5.  0.]</span>
+<span class="go"> [ 0.  0.  0. -4. -2.  6.]</span>
+<span class="go"> [ 0.  0.  0.  0. -5. -2.]]</span>
+</pre></div>
+</div>
+<p>Solving a linear system with a tridiagonal coefficient matrix requires
+a special function with a special algorithm to take advantage of
+the matrix&#8217; structure. The next example chooses a solution <code class="docutils literal"><span class="pre">x</span></code>,
+computes the corresponding right-hand side <span class="math">\(b=Ax\)</span> using the
+sparse matrix vector product associated with the sparse matrix <span class="math">\(A\)</span>,
+and then solves <span class="math">\(Ax=b\)</span>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>  <span class="c1"># choose solution</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>               <span class="c1"># sparse matrix vector product</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scipy.sparse.linalg</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">spsolve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">x</span>
+<span class="go">[-1.  -0.6 -0.2  0.2  0.6  1. ]</span>
+</pre></div>
+</div>
+<p>Although we can easily check that <code class="docutils literal"><span class="pre">x</span></code> is correctly computed, we can
+do another check by converting the linear system to its dense
+counterpart:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A_d</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>            <span class="c1"># corresponding dense matrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A_d</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>           <span class="c1"># standard matrix vector product</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A_d</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># standard Ax=b algorithm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">x</span>
+<span class="go">[-1.  -0.6 -0.2  0.2  0.6  1. ]</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <center>
+            <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
+              <img class="logo" src="_static/cbc_logo.png" alt="Logo"/>
+            </a></p>
+            </center>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Functions and branching</a><ul>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+<li><a class="reference internal" href="#a-more-general-mathematical-formula">A more general mathematical formula</a></li>
+<li><a class="reference internal" href="#if-tests">If tests</a></li>
+<li><a class="reference internal" href="#array-view-versus-array-copying">Array view versus array copying</a></li>
+<li><a class="reference internal" href="#linear-systems">Linear systems</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="._basics001.html"
+                        title="previous chapter">Variables, loops, lists, and arrays</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="._basics003.html"
+                        title="next chapter">Files</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/._basics002.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="._basics003.html" title="Files"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="._basics001.html" title="Variables, loops, lists, and arrays"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">A very basic introduction to scientific Python programming</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
+    <br />
+    <br />
+      &copy;H. P. Langtangen.
+  </div>
+</div>
+
+  </body>
+</html>

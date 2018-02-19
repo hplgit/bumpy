@@ -83,7 +83,7 @@ system doconce split_html $html.html --method=space8
 
 # One bit HTML file with space between the slides (as above) with Bootstrap-gray
 html=${name}-bootstrap_bg
-doconce format html $name --html_style=bootstrap_bluegray --html_links_in_new_window --html_output=$html $opt
+doconce format html $name --html_style=bootstrap --html_links_in_new_window --html_output=$html $opt
 doconce split_html $html.html --method=space8
 
 
