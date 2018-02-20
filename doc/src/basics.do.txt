@@ -1,6 +1,6 @@
 TITLE: A short introduction to scientific Python programming
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
-AUTHOR: Leif Rune Hellevik at Biomechanichs Group, Department of Structural Engineering NTNU
+AUTHOR: Leif Rune Hellevik at Biomechanics Group, Department of Structural Engineering NTNU
 DATE: today
 
 !bsummary Contents
