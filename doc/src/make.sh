@@ -78,9 +78,10 @@ fi
 #generate_sphinx $name
 generate_ipynb $name
 
-# # Publish
-# dest=../pub
+# Publish
+dest=../pub
 # rm -rf $dest/sphinx-${name}
 # cp -r sphinx-rootdir/_build/html $dest/sphinx-${name}
 # cp -r fig-bumpy $name.html ._${name}*.html ${name}.pdf $dest/
+cp -r  *.ipynb $dest/
 done
