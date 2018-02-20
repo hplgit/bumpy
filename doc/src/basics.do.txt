@@ -18,12 +18,15 @@ vectorization of code is also given.
 
 TOC: on
 
+
 !split
+
 
 ======= Variables, loops, lists, and arrays =======
 label{basics:basic:objects}
 
-% if PYTHON_INSTALL == 'true':
+% if FORMAT != 'ipynb':
+
 ===== Getting access to Python =====
 label{basics:accesspy}
 
@@ -71,7 +74,9 @@ You can also access Python directly through a web browser without having
 it installed on your local computer. We refer to the document
 "How to access Python for doing scientific computing": "http://hplgit.github.io/edu/accesspy/accesspy.html" for more details on such tools and also
 installations based on Anaconda and Ubuntu.
+
 % endif
+
 ===== Mathematical example =====
 
 We shall use a famous mathematical formula in our
@@ -99,6 +104,7 @@ Here is a Python program for computing $s$, given $t=0.5$, $v_0=2$,
 and $a=0.2$:
 
 @@@CODE src-bumpy/distance.py
+% if FORMAT != 'ipynb':
 The program is pure text and must be placed in a *pure text file* using
 a *text editor*. Popular text editors are
 Gedit, Nano, Emacs, and Vim on Linux,
@@ -125,8 +131,11 @@ environment to work in. Anaconda installations come with Spyder.
 idx{assignment statement}
 idx{print statement}
 idx{variable}
+% endif
 
-The `distance.py` program first contains four *assignment statements* where we
+
+
+The code snippet above first contains four *assignment statements* where we
 assign numbers or the results of arithmetic expressions to *variables*.
 The variables have names coinciding with the mathematical notation
 used in the formula: `t`, `v0`, `a`, and `s`. You may think of
@@ -211,6 +220,8 @@ Let the $t$ values go from 0 to 2 in increments of 0.1. The following
 program applies a *while* loop:
 
 @@@CODE src-bumpy/while.py
+
+% if FORMAT != 'ipynb':
 The result of running this program in a terminal window
 is
 
@@ -237,6 +248,7 @@ Terminal> python while.py
 1.8 3.924
 1.9 4.161
 !ec
+% endif
 
 idx{boolean expression}
 idx{`True`}
@@ -447,7 +459,7 @@ Try the following code out in the Python Online Tutor:
 !bc pyoptpro
 list1 = [0, 0.1, 0.2]
 list2 = []
-for element in somelist:
+for element in list1:
     p = element + 2
     list2.append(p)
 print list2

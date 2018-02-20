@@ -3,9 +3,6 @@
 
 set -x  # show all commands in output
 
-#PYTHON_INSTALL='false' # set to'true'/'false' to include/discard sec. on python installation
-PYTHON_INSTALL='true' # set to'true'/'false' to include/discard sec. on python installation
-
 function system {
   "$@"
   if [ $? -ne 0 ]; then
