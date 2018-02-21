@@ -13,12 +13,12 @@ function system {
 }
 
 if [ $# -ge 1 ]; then
-  COURSE=$1
+  PYTHONVERSION=$1
 else
-  COURSE=any
+  PYTHONVERSION=py3
 fi
 
-opt="COURSE=$COURSE"
+opt="PYTHONVERSION=$PYTHONVERSION"
 
 #names="basics bumpy"
 names="basics"
@@ -66,11 +66,6 @@ function generate_ipynb {
 
 for name in $names; do
 
-if [ $COURSE != "any" ]; then
-   oldname=$name
-   name="${name}-${COURSE}"
-   cp ${oldname}.do.txt ${name}.do.txt
-fi
 
 #do_spellcheck $name
 #compile $name
@@ -80,8 +75,5 @@ generate_ipynb $name
 
 # Publish
 dest=../pub
-# rm -rf $dest/sphinx-${name}
-# cp -r sphinx-rootdir/_build/html $dest/sphinx-${name}
-# cp -r fig-bumpy $name.html ._${name}*.html ${name}.pdf $dest/
 cp -r  *.ipynb $dest/
 done

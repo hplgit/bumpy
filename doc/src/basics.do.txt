@@ -21,6 +21,10 @@ TOC: on
 
 !split
 
+% if PYTHONVERSION == 'py3':
+hello python
+% endif
+
 
 ======= Variables, loops, lists, and arrays =======
 label{basics:basic:objects}
@@ -91,7 +95,7 @@ s = v_0t + \frac{1}{2}at^2\thinspace .
 label{basics:seq}
 \end{equation}
 !et
-We may view $s$ as a function of $t$: $s(t)$, and also include the
+We ma	y view $s$ as a function of $t$: $s(t)$, and also include the
 parameters in the notation: $s(t;v_0,a)$.
 
 ===== A program for evaluating a formula =====
