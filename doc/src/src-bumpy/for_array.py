@@ -9,4 +9,4 @@ s_values = v0*t + 0.5*a*t**2
 
 # Make nicely formatted table
 for t, s in zip(t_values, s_values):
-    print '%.2f  %.4f' % (t, s)
+    print('%.2f  %.4f' % (t, s))

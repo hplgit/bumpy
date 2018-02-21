@@ -4,5 +4,5 @@ dt = 0.1  # Increment
 t = 0     # Start value
 while t <= 2:
     s = v0*t + 0.5*a*t**2
-    print t, s
+    print(t, s)
     t = t + dt

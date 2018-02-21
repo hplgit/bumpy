@@ -9,12 +9,12 @@ for i in range(n):
     s = v0*t + 0.5*a*t**2
     t_values.append(t)
     s_values.append(s)
-print s_values  # Just take a look at a created list
+print(s_values)  # Just take a look at a created list
 
 # Make nicely formatted table
 for t, s in zip(t_values, s_values):
-    print '%.2f  %.4f' % (t, s)
+    print('%.2f  %.4f' % (t, s))
 
 # Alternative implementation
 for i in range(len(t_values)):
-    print '%.2f  %.4f' % (t_values[i], s_values[i])
+    print('%.2f  %.4f' % (t_values[i], s_values[i]))
