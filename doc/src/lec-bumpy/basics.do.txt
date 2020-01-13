@@ -22,10 +22,6 @@ label{basics:basic:objects}
 FIGURE: [fig-bumpy/implementation5, width=500 frac=0.7]
 
 
-% if PYTHON_INSTALL=='false':
- hello world
-% endif
-!split
 ===== Do you have access to Python? =====
 label{basics:accesspy}
 
