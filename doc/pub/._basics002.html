@@ -373,11 +373,11 @@ in a <em>tuple</em> object (which is very similar to a list).
 <span style="color: #666666">...</span>     <span style="color: #008000; font-weight: bold">return</span> x<span style="color: #666666">+1</span>, x<span style="color: #666666">+2</span>, x<span style="color: #666666">+3</span>
 <span style="color: #666666">...</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> r <span style="color: #666666">=</span> f(<span style="color: #666666">3</span>)     <span style="color: #408080; font-style: italic"># Store all three return values in one object r</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> r
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span>(r)
 (<span style="color: #666666">4</span>, <span style="color: #666666">5</span>, <span style="color: #666666">6</span>)
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000">type</span>(r)      <span style="color: #408080; font-style: italic"># What type of object is r?</span>
 <span style="color: #666666">&lt;</span><span style="color: #008000">type</span> <span style="color: #BA2121">&#39;tuple&#39;</span><span style="color: #666666">&gt;</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> r[<span style="color: #666666">1</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span>(r[<span style="color: #666666">1</span>])
 <span style="color: #666666">5</span>
 </pre></div>
 <p>
@@ -730,7 +730,7 @@ and then solves \( Ax=b \):
 <span style="color: #666666">&gt;&gt;&gt;</span> b <span style="color: #666666">=</span> A<span style="color: #666666">.</span>dot(x)               <span style="color: #408080; font-style: italic"># sparse matrix vector product</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">scipy.sparse.linalg</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> scipy<span style="color: #666666">.</span>sparse<span style="color: #666666">.</span>linalg<span style="color: #666666">.</span>spsolve(A, b)
-<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> x
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span>(x)
 [<span style="color: #666666">-1.</span>  <span style="color: #666666">-0.6</span> <span style="color: #666666">-0.2</span>  <span style="color: #666666">0.2</span>  <span style="color: #666666">0.6</span>  <span style="color: #666666">1.</span> ]
 </pre></div>
 <p>
@@ -744,7 +744,7 @@ counterpart:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> A_d <span style="color: #666666">=</span> A<span style="color: #666666">.</span>toarray()            <span style="color: #408080; font-style: italic"># corresponding dense matrix</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> b <span style="color: #666666">=</span> np<span style="color: #666666">.</span>dot(A_d, x)           <span style="color: #408080; font-style: italic"># standard matrix vector product</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linalg<span style="color: #666666">.</span>solve(A_d, b)  <span style="color: #408080; font-style: italic"># standard Ax=b algorithm</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> x
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span>(x)
 [<span style="color: #666666">-1.</span>  <span style="color: #666666">-0.6</span> <span style="color: #666666">-0.2</span>  <span style="color: #666666">0.2</span>  <span style="color: #666666">0.6</span>  <span style="color: #666666">1.</span> ]
 </pre></div>
 <p>
