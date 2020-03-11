@@ -21,7 +21,7 @@ label{basics:basic:objects}
 
 FIGURE: [fig-bumpy/implementation5, width=500 frac=0.7]
 
-!split
+
 ===== Do you have access to Python? =====
 label{basics:accesspy}
 
