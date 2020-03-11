@@ -69,11 +69,14 @@ for name in $names; do
 
 #do_spellcheck $name
 #compile $name
-#generate_html $name
+generate_html $name
 #generate_sphinx $name
 generate_ipynb $name
 
 # Publish
 dest=../pub
 cp -r  *.ipynb $dest/
+cp -r  *.html $dest/
+cp -r  .*.html $dest/
+
 done
