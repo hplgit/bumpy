@@ -415,7 +415,7 @@ Printing out <code>s=1.03</code>, i.e., <code>s</code> with two decimals, is don
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;s=</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> s
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;s=</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> s)
 </pre></div>
 <p>
 where the <code>f</code> signifies a <em>decimal number</em> and the preceding <code>.2</code> means
@@ -429,7 +429,7 @@ Python also offers a related variant, called <em>format string syntax</em>:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;s={s:.2f}&#39;</span><span style="color: #666666">.</span>format(s<span style="color: #666666">=</span>s)
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;s={s:.2f}&#39;</span><span style="color: #666666">.</span>format(s<span style="color: #666666">=</span>s))
 </pre></div>
 
 <h2 id="basics:while" class="anchor">While loops</h2>
@@ -545,7 +545,7 @@ scientific notation (printf specification <code>%.16E</code>):
 <p>
 
 <iframe width="950" height="500" frameborder="0"
-        src="http://pythontutor.com/iframe-embed.html#code=a+%3D+0%0Ada+%3D+0.4%0Awhile+a+%3C%3D+1.2%3A%0A++++print+a%0A++++a+%3D+a+%2B+da%0A++++%23+Inspect+all+decimals+in+da+and+a%0A++++print%28%27da%3D%25.16E%5Cna%3D%25.16E%27+%25+%28da%2C+a%29%29%0A++++print%28%27a+%3C%3D+1.2%3A+%25g%27+%25++%28a+%3C%3D+1.2%29%29&curInstr=0&py=2&cumulative=false">
+        src="http://pythontutor.com/iframe-embed.html#code=a+%3D+0%0Ada+%3D+0.4%0Awhile+a+%3C%3D+1.2%3A%0A++++print%28a%29%0A++++a+%3D+a+%2B+da%0A++++%23+Inspect+all+decimals+in+da+and+a%0A++++print%28%27da%3D%25.16E%5Cna%3D%25.16E%27+%25+%28da%2C+a%29%29%0A++++print%28%27a+%3C%3D+1.2%3A+%25g%27+%25++%28a+%3C%3D+1.2%29%29&curInstr=0&py=2&cumulative=false">
 </iframe>
 <p>
 The problem is that <code>da</code> is not exactly 0.4, but contains a small round-off
@@ -607,7 +607,7 @@ and examine the contents of variables as we perform various operations:
 <span style="color: #008000; font-weight: bold">print</span>(L[<span style="color: #666666">1</span>])
 <span style="color: #008000; font-weight: bold">del</span>(L[<span style="color: #666666">0</span>])  <span style="color: #408080; font-style: italic"># delete the first element</span>
 <span style="color: #008000; font-weight: bold">print</span>(L)
-<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #008000">len</span>(L)  <span style="color: #408080; font-style: italic"># length of L</span>
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #008000">len</span>(L))  <span style="color: #408080; font-style: italic"># length of L</span>
 L<span style="color: #666666">.</span>append(<span style="color: #666666">-1</span>)  <span style="color: #408080; font-style: italic"># add -1 at the end of the list</span>
 <span style="color: #008000; font-weight: bold">print</span>(L)
 </pre></div>
@@ -893,7 +893,7 @@ For scalars (single numbers) the relevant module is <code>math</code>:
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">math</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> math<span style="color: #666666">.</span>sin(math<span style="color: #666666">.</span>pi)
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span>(math<span style="color: #666666">.</span>sin(math<span style="color: #666666">.</span>pi))
 <span style="color: #666666">1.2246467991473532e-16</span>
 </pre></div>
 <p>
@@ -904,11 +904,11 @@ Many prefer to write mathematical expressions without the <code>math</code> pref
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, pi
-<span style="color: #008000; font-weight: bold">print</span> sin(pi)
+<span style="color: #008000; font-weight: bold">print</span>(sin(pi))
 
 <span style="color: #408080; font-style: italic"># Or import everything from math</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-<span style="color: #008000; font-weight: bold">print</span> sin(pi), log(e), tanh(<span style="color: #666666">0.5</span>)
+<span style="color: #008000; font-weight: bold">print</span>(sin(pi), log(e), tanh(<span style="color: #666666">0.5</span>))
 </pre></div>
 <p>
 The <code>numpy</code> module contains sine, cosine, and other mathematical functions
